@@ -10,7 +10,6 @@ alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias hidden='ls -a | grep "^\."'           # List all hidden files
-cdls() { cd "$@" && ls; }                   # Always list files on cd
 
 #functions
 
