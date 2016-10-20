@@ -1,5 +1,5 @@
 #reload profile
-alias reload='source ~/.bash_profile'
+alias reload='. ~/.bash_profile && echo "reloaded"'
 
 #set default editor to vim
 export EDITOR=vim
@@ -13,5 +13,5 @@ alias rm='rm -i'                            # Preferred 'rm' implementation
 alias hidden='ls -a | grep "^\."'           # List all hidden files
 
 #functions
-cdls() { cd "$@" && ls }
+cdls() { cd "$@" && ls; }
 
