@@ -13,5 +13,5 @@ alias rm='rm -i'                            # Preferred 'rm' implementation
 alias hidden='ls -a | grep "^\."'           # List all hidden files
 
 #functions
-cdls() { cd $@ && ls }
+cdls() { cd "$@" && ls }
 
