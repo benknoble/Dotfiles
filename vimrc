@@ -3,6 +3,7 @@ set number
 set ruler
 set incsearch
 set autoindent
+set nowrap
 set showcmd
 syntax on
 filetype plugin indent on
