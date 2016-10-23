@@ -14,3 +14,5 @@ set t_Co=256
 set background=dark
 set confirm
 set hlsearch
+set showmatch
+set ignorecase
