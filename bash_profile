@@ -27,3 +27,8 @@ aliases() { cat ~/.bash_profile | grep -o --color=auto "^alias [\.A-Za-z0-9]*" ;
 functions() { cat ~/.bash_profile | grep -o --color=auto "[A-Za-z0-9]*()" ; }      # List all functions found in this file
 findPid() { lsof -t -c "$@" ; }             # Find Pid of specified process
 
+
+# Setting PATH for Python 3.5
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+export PATH
