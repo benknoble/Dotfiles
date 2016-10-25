@@ -17,7 +17,6 @@ alias edit='vim'                            # Open a file in vim
 alias readonly='vim -R'                         # Open a file in readonly mode in vim
 alias explore='vim +Explore'                # Open vim's Explore mode in current directory
 alias finder='open -a Finder ./'            # Open current directory in Finder
-alias path='echo "$PATH"'                   # Show path
 alias epath='vim /etc/paths'                # Edit paths
 
 #functions
@@ -26,6 +25,7 @@ trash() { mv "$@" ~/.Trash ; }              # Move a file to Trash
 aliases() { cat ~/.bash_profile | grep -o --color=auto "^alias [\.A-Za-z0-9]*" ; } # List all aliases found in this file
 functions() { cat ~/.bash_profile | grep -o --color=auto "[A-Za-z0-9]*()" ; }      # List all functions found in this file
 findPid() { lsof -t -c "$@" ; }             # Find Pid of specified process
+displayPath() { for path in ${PATH//:/ }; do echo "$path"; done; }                        # Print path separated by newlines 
 
 
 # Setting PATH for Python 3.5
