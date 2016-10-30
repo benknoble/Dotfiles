@@ -18,3 +18,4 @@ set confirm
 set hlsearch
 set showmatch
 set ignorecase
+nnoremap <C-E> :Vexplore<CR>
