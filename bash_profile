@@ -41,5 +41,8 @@ export PATH
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
 
+# Set PATH for scala
+export PATH="/Users/Knoble/scala-2.11.8/bin:${PATH}"
+
 # Add bin folder for scripts to path
 export PATH="$HOME/bin:${PATH}"
