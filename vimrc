@@ -15,7 +15,6 @@ syntax enable
 set t_Co=256
 set background=dark
 set confirm
-set hlsearch
 set showmatch
 set ignorecase
 nnoremap <C-E> :Vexplore<CR>
