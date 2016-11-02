@@ -41,5 +41,5 @@ export PATH
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 export PATH
 
-# Add folder for scripts to path
-export PATH="$HOME/Scripts:${PATH}"
+# Add bin folder for scripts to path
+export PATH="$HOME/bin:${PATH}"
