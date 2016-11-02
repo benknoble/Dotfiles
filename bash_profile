@@ -6,6 +6,7 @@ export EDITOR=vim
 
 #aliases
 alias quit='exit'                           # Because Mac OS X tends to call it quit
+alias ls='ls -aF'                           # Preferred 'ls' implementation
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
