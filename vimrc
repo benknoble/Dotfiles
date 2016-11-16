@@ -4,6 +4,7 @@ set number
 set ruler
 set incsearch
 set autoindent
+set tabstop=4
 set nowrap
 set showcmd
 syntax on
