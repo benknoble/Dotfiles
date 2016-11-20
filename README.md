@@ -12,6 +12,7 @@ If you create a really awesome feature that you want to share, send a pull reque
 First, clone the repo into your dotfiles directory
 
 > $ mkdir Dotfiles && cd Dotfiles
+>
 > $ git clone https://github.com/benknoble/Dotfiles.git
 
 Then run the makesymlinks script
