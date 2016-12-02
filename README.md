@@ -9,15 +9,13 @@ If you create a really awesome feature that you want to share, send a pull reque
 
 ## Usage
 
-First, clone the repo into your home directory
+First, clone the repo into your dotfiles directory
 
+> $ mkdir Dotfiles && cd Dotfiles
+>
 > $ git clone https://github.com/benknoble/Dotfiles.git
 
-Then, cd into your new Dotfiles directory
-
-> $ cd Dotfiles
-
-and run the makesymlinks script
+Then run the makesymlinks script
 
 > $ ./makesymlinks.sh
 
