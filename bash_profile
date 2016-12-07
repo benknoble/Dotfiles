@@ -25,7 +25,7 @@ alias gitpretty='gitk'                      # pretty git display using wish
 cdls() { cd "$@" && ls ; }                  # cd and ls
 trash() { mv "$@" ~/.Trash ; }              # Move a file to Trash
 aliases() { cat ~/.bash_profile | grep -o --color=auto "^alias [\.A-Za-z0-9]*" ; } # List all aliases found in this file
-functions() { cat ~/.bash_profile | grep -o --color=auto "[A-Za-z0-9]*()" ; }      # List all functions found in this file
+functions() { cat ~/.bash_profile | grep -o --color=auto "^[A-Za-z0-9]*()" ; }      # List all functions found in this file
 findPid() { lsof -t -c "$@" ; }             # Find Pid of specified process
 displayPath() { for path in ${PATH//:/ }; do echo "$path"; done; }                        # Print path separated by newlines 
 mkcd() { mkdir "$@" && cd "$@" ; }          # mkdir and cd
