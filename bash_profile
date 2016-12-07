@@ -29,6 +29,7 @@ functions() { cat ~/.bash_profile | grep -o --color=auto "[A-Za-z0-9]*()" ; }   
 findPid() { lsof -t -c "$@" ; }             # Find Pid of specified process
 displayPath() { for path in ${PATH//:/ }; do echo "$path"; done; }                        # Print path separated by newlines 
 mkcd() { mkdir "$@" && cd "$@" ; }          # mkdir and cd
+editall() { vim -p "$@" ; }                 # edit all files provided as arguments in vim tabs 
 
 # Setting PATH for Python 3.5
 # The original version is saved in .bash_profile.pysave
