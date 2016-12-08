@@ -22,6 +22,7 @@ nnoremap <C-E> :Vexplore<CR>
 set laststatus=2
 let g:airline_theme='dark'
 set ttimeoutlen=10
+set hidden
 
 " check if dictionary exists
 if !exists('g:airline_symbols')
