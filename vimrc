@@ -19,3 +19,4 @@ set confirm
 set showmatch
 set ignorecase
 nnoremap <C-E> :Vexplore<CR>
+set laststatus=2
