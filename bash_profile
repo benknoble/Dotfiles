@@ -49,6 +49,9 @@ export ON_BWHITE='\[\033[0;107m\]'
 #add git branch to prompt when available and colorize
 export PS1="$PURPLE\!$NC $WHITE\u$NC:$CYAN\W$NC $YELLOW\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$NC\$ "
 
+#add git autocompletion, if it exists
+[[ -e ~/.git-completion.bash ]] && . ~/.git-completion.bash
+
 #set default editor to vim
 export EDITOR=vim
 
