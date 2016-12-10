@@ -55,9 +55,12 @@ export PS1="$PURPLE\!$NC $WHITE\u$NC:$CYAN\W$NC $YELLOW\$(git branch 2>/dev/null
 #set default editor to vim
 export EDITOR=vim
 
+#use my color scheme for ls
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+
 #aliases
 alias quit='exit'                           # Because Mac OS X tends to call it quit
-alias ls='ls -aF'                           # Preferred 'ls' implementation
+alias ls='ls -aGF'                          # Preferred 'ls' implementation
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
