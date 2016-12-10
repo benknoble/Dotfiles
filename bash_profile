@@ -1,6 +1,9 @@
 #reload profile
 alias reload='. ~/.bash_profile && echo "reloaded"'
 
+#add git branch to prompt when available
+export PS1="\h:\W \u \$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
+
 #set default editor to vim
 export EDITOR=vim
 
