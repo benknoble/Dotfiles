@@ -46,8 +46,8 @@ export ON_BPURPLE='\[\033[0;105m\]'
 export ON_BCYAN='\[\033[0;106m\]'
 export ON_BWHITE='\[\033[0;107m\]'
 
-#add git branch to prompt when available
-export PS1="\! \u:\W \$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\$ "
+#add git branch to prompt when available and colorize
+export PS1="$PURPLE\!$NC $WHITE\u$NC:$CYAN\W$NC $YELLOW\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$NC\$ "
 
 #set default editor to vim
 export EDITOR=vim
