@@ -58,6 +58,9 @@ export EDITOR=vim
 #use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
+#use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
+shopt -s nullglob
+
 #aliases
 alias quit='exit'                           # Because Mac OS X tends to call it quit
 alias ls='ls -aGF'                          # Preferred 'ls' implementation
