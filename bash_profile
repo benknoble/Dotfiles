@@ -77,6 +77,7 @@ alias readonly='vim -R'                     # Open a file in readonly mode in vi
 alias explore='vim +Explore'                # Open vim's Explore mode in current directory
 alias finder='open -a Finder ./'            # Open current directory in Finder
 alias gitpretty='gitk'                      # pretty git display using wish
+alias app='open -a'                         # Open an application
 
 #functions
 cdls() { cd "$@" && ls ; }                  # cd and ls
