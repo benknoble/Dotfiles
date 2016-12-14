@@ -7,14 +7,21 @@ echo "INSTALL CUSTOM VIM"
 read -n 1 -p "Install Pathogen for Vim [Y/n]? " installPathogen && echo
 if [[ $installPathogen =~ ^(y|Y) ]]; then
 	echo "Installing Pathogen..."
+	(mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+		curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim) || echo "Pathogen installation failed"
+
 	#install vim-airline
 	read -n 1 -p "Install Vim-Airline [Y/n]? " installVAirline && echo
 	if [[ $installVAirline =~ ^(y|Y) ]]; then
 		echo "Installing Vim-Airline..."
+		(git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline && \
+			vim +'Helptags' +'q') || echo "Vim-Airline installation failed"
+
 		#install vim-airline-themes
 		read -n 1 -p "Install Vim-Airline-Themes [Y/n]? " installVAThemes && echo
 		if [[ $installVAThemes =~ ^(y|Y) ]]; then
 			echo "Installing Vim-Airline-Themes..."
+			(git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/bundle/vim-airline-themes) || echo "Vim-Airline-Themes installation failed"
 		else
 			echo "Skipping Vim-Airline-Themes..."
 		fi
@@ -26,6 +33,8 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	read -n 1 -p "Install Vim-Fugitive [Y/n]? " installVFugitive && echo
 	if [[ $installVFugitive =~ ^(y|Y) ]]; then
 		echo "Installing Vim-Fugitive..."
+		(git clone https://github.com/tpope/vim-fugitive ~/.vim/bundle/vim-fugitive && \
+			vim +'helptags ~/.vim/bundle/vim-fugitive/doc' +'q') || echo "Vim-Fugitive installation failed"
 	else
 		echo "Skipping Vim-Fugitive..."
 	fi
