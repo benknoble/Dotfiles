@@ -1,4 +1,8 @@
-execute pathogen#infect()
+" only attempt to use pathogen if installed
+if !empty(glob("~/.vim/autoload/pathogen.vim"))
+	execute pathogen#infect()
+endif
+
 set nocompatible
 set number
 set ruler
