@@ -33,4 +33,4 @@ Run the install-all script
 
 If this doesn't work, you probably need to make it executable with
 
-> $ chmod +x ./install-all.sh
+> $ chmod +x install-all.sh
