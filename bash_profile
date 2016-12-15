@@ -78,6 +78,7 @@ alias explore='vim +Explore'                # Open vim's Explore mode in current
 alias finder='open -a Finder ./'            # Open current directory in Finder
 alias gitpretty='gitk'                      # Pretty git display using wish
 alias app='open -a'                         # Open an application
+alias updateDotfiles='~/Dotfiles/update.sh' # Update dotfiles
 
 #functions
 cdls() { cd "$@" && ls ; }                  # cd and ls
