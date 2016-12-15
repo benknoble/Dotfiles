@@ -79,6 +79,7 @@ alias finder='open -a Finder ./'            # Open current directory in Finder
 alias gitpretty='gitk'                      # Pretty git display using wish
 alias app='open -a'                         # Open an application
 alias updateDotfiles='~/Dotfiles/update.sh' # Update dotfiles
+alias starwars='telnet towel.blinkenlights.nl'      # Watch Star Wars
 
 #functions
 cdls() { cd "$@" && ls ; }                  # cd and ls
