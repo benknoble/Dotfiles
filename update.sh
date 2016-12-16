@@ -1,4 +1,4 @@
 #!/bin/bash
 # updates Dotfiles
 
-(cd ~/Dotfiles && git pull origin master && reload) && echo "Updated" || echo "Update failed"
+(cd ~/Dotfiles && git pull origin master) && echo "Updated" || echo "Update failed"
