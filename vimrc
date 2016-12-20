@@ -58,3 +58,16 @@ if !empty(glob("~/.vim/bundle/vim-airline"))
 	let g:airline_symbols.notexists = '∄'
 	let g:airline_symbols.whitespace = 'Ξ'
 endif
+
+" customize syntastic if installed
+if !empty(glob("~/.vim/bundle/vim-syntastic"))
+	" uncomment below if airline not installed
+	" set statusline+=%#warningmsg#
+	" set statusline+=%{SyntasticStatuslineFlag()}
+	" set statusline+=%*
+	
+	let g:syntastic_always_populate_loc_list = 1
+	let g:syntastic_auto_loc_list = 1
+	let g:syntastic_check_on_open = 1
+	let g:syntastic_check_on_wq = 0
+endif
