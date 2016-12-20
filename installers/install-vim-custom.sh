@@ -1,5 +1,5 @@
 #!/bin/bash
-# installer script for brew and certain formulae
+# installer script for Pathogen and certain vim plugins
 
 echo "INSTALL CUSTOM VIM"
 
