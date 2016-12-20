@@ -1,5 +1,5 @@
 #!/bin/bash
-# installer script for brew and certain formulae
+# installer script for Pathogen and certain vim plugins
 
 echo "INSTALL CUSTOM VIM"
 
@@ -34,9 +34,19 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	if [[ $installVFugitive =~ ^(y|Y) ]]; then
 		echo "Installing Vim-Fugitive..."
 		(git clone https://github.com/tpope/vim-fugitive ~/.vim/bundle/vim-fugitive && \
-			vim +'helptags ~/.vim/bundle/vim-fugitive/doc' +'q') || echo "Vim-Fugitive installation failed"
+			vim +'Helptags' +'q') || echo "Vim-Fugitive installation failed"
 	else
 		echo "Skipping Vim-Fugitive..."
+	fi
+
+	#install syntastic
+	read -n 1 -p "Install Syntastic [Y/n]? " installSyntastic && echo
+	if [[ $installSyntastic =~ ^(y|Y) ]]; then
+		echo "Installing Syntastic..."
+		(git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/vim-syntastic && \
+			vim +'Helptags' +'q') || echo "Syntastic installation failed"
+	else
+		echo "Skipping Syntastic..."
 	fi
 else
 	echo "Skipping Pathogen..."
