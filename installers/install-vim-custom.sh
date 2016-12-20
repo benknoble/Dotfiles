@@ -38,6 +38,16 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	else
 		echo "Skipping Vim-Fugitive..."
 	fi
+
+	#install syntastic
+	read -n 1 -p "Install Syntastic [Y/n]? " installSyntastic && echo
+	if [[ $installSyntastic =~ ^(y|Y) ]]; then
+		echo "Installing Syntastic..."
+		(git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/vim-syntastic && \
+			vim +'Helptags' +'q') || echo "Syntastic installation failed"
+	else
+		echo "Skipping Syntastic..."
+	fi
 else
 	echo "Skipping Pathogen..."
 fi
