@@ -34,7 +34,7 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	if [[ $installVFugitive =~ ^(y|Y) ]]; then
 		echo "Installing Vim-Fugitive..."
 		(git clone https://github.com/tpope/vim-fugitive ~/.vim/bundle/vim-fugitive && \
-			vim +'helptags ~/.vim/bundle/vim-fugitive/doc' +'q') || echo "Vim-Fugitive installation failed"
+			vim +'Helptags' +'q') || echo "Vim-Fugitive installation failed"
 	else
 		echo "Skipping Vim-Fugitive..."
 	fi
