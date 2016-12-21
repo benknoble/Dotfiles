@@ -47,7 +47,12 @@ export ON_BCYAN='\[\033[0;106m\]'
 export ON_BWHITE='\[\033[0;107m\]'
 
 #add git branch to prompt when available and colorize
-export PS1="$BPURPLE\!$NC $BWHITE\u$NC:$BCYAN\W$NC $BYELLOW\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$NC\$ "
+if [[ -s ~/.git-prompt.sh ]]; then
+	. ~/.git-prompt.sh
+	export PS1="$BPURPLE\!$NC $BWHITE\u$NC:$BCYAN\W$NC $BYELLOW\$(__git_ps1 '%s ')$NC\$ "
+else
+	export PS1="$BPURPLE\!$NC $BWHITE\u$NC:$BCYAN\W$NC $BYELLOW\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$NC\$ "
+fi
 
 #add git autocompletion, if it exists
 [[ -s ~/.git-completion.bash ]] && . ~/.git-completion.bash
