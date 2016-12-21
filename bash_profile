@@ -49,6 +49,11 @@ export ON_BWHITE='\[\033[0;107m\]'
 #add git branch to prompt when available and colorize
 if [[ -s ~/.git-prompt.sh ]]; then
 	. ~/.git-prompt.sh
+	export GIT_PS1_SHOWDIRTYSTATE='true'
+	export GIT_PS1_SHOWSTASHSTATE='true'
+	export GIT_PS1_SHOWUNTRACKEDFILES='true'
+	export GIT_PS1_SHOWUPSTREAM='auto'
+	export GIT_PS1_STATESEPARATOR=' '
 	export PS1="$BPURPLE\!$NC $BWHITE\u$NC:$BCYAN\W$NC $BYELLOW\$(__git_ps1 '%s ')$NC\$ "
 else
 	export PS1="$BPURPLE\!$NC $BWHITE\u$NC:$BCYAN\W$NC $BYELLOW\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$NC\$ "
