@@ -50,7 +50,7 @@ export ON_BWHITE='\[\033[0;107m\]'
 export PS1="$BPURPLE\!$NC $BWHITE\u$NC:$BCYAN\W$NC $BYELLOW\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)$NC\$ "
 
 #add git autocompletion, if it exists
-[[ -e ~/.git-completion.bash ]] && . ~/.git-completion.bash
+[[ -s ~/.git-completion.bash ]] && . ~/.git-completion.bash
 
 #set default editor to vim
 export EDITOR=vim
