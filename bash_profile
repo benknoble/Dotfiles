@@ -62,6 +62,11 @@ fi
 #add git autocompletion, if it exists
 [[ -s ~/.git-completion.bash ]] && . ~/.git-completion.bash
 
+#some useful git aliases
+git config --global --replace-all alias.cd checkout
+git config --global --replace-all alias.stat status
+git config --global --replace-all alias.ls branch
+
 #set default editor to vim
 export EDITOR=vim
 
