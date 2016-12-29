@@ -26,6 +26,10 @@ nnoremap <C-E> :Vexplore<CR>
 set laststatus=2
 set ttimeoutlen=10
 set hidden
+" center search results
+nnoremap n nzz
+nnoremap N Nzz
+cnoremap <expr> <CR> getcmdtype() =~ '[/?]' ? '<CR>zz' : '<CR>'
 
 " set airline-theme if installed
 if !empty(glob("~/.vim/bundle/vim-airline-themes"))
