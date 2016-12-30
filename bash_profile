@@ -108,6 +108,25 @@ findPid() { lsof -t -c "$@" ; }             # Find Pid of specified process
 displayPath() { for path in ${PATH//:/ }; do echo "$path"; done; }                  # Print path separated by newlines
 mkcd() { mkdir "$@" && cd "$@" ; }          # mkdir and cd
 editall() { vim -p "$@" ; }                 # edit all files provided as arguments in vim tabs
+extract () {								# attempt to extract file with correct extraction method
+	if [ -f $1 ]; then
+		case $1 in
+			*.tar.bz2)	tar xjf $1		;;
+			*.tar.gz)	tar xzf $1		;;
+			*.bz2)		bunzip2 $1		;;
+			*.rar)		rar x $1		;;
+			*.gz)		gunzip $1		;;
+			*.tar)		tar xf $1		;;
+			*.tbz2)		tar xjf $1		;;
+			*.tgz)		tar xzf $1		;;
+			*.zip)		unzip $1		;;
+			*.Z)		uncompress $1	;;
+			*)			echo "'$1' cannot be extracted via extract()" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
+}
 
 # Setting PATH for Python 3.5
 # The original version is saved in .bash_profile.pysave
