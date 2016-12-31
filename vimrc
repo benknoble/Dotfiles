@@ -30,6 +30,7 @@ set hidden
 nnoremap n nzz
 nnoremap N Nzz
 cnoremap <expr> <CR> getcmdtype() =~ '[/?]' ? '<CR>zz' : '<CR>'
+let g:netrw_liststyle=3
 
 " set airline-theme if installed
 if !empty(glob("~/.vim/bundle/vim-airline-themes"))
