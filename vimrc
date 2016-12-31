@@ -76,3 +76,8 @@ if !empty(glob("~/.vim/bundle/vim-syntastic"))
 	let g:syntastic_check_on_open = 1
 	let g:syntastic_check_on_wq = 0
 endif
+
+" customize ctrl-p if installed
+if !empty(glob("~/.vim/bundle/vim-ctrlp"))
+	let g:ctrlp_show_hidden = 1
+endif
