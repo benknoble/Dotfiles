@@ -48,6 +48,16 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	else
 		echo "Skipping Syntastic..."
 	fi
+
+	#install ctrl-p
+	read -n 1 -p "Install Ctrl-P [Y/n]? " installCP && echo
+	if [[ $installCP =~ ^(y|Y) ]]; then
+		echo "Installing Ctrl-P..."
+		(git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/vim-ctrlp && \
+			vim +'Helptags' +'q') || echo "Ctrl-P installation failed"
+	else
+		echo "Skipping Ctrl-P..."
+	fi
 else
 	echo "Skipping Pathogen..."
 fi
