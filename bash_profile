@@ -81,7 +81,8 @@ shopt -s nullglob
 
 #aliases
 alias quit='exit'                           # Because Mac OS X tends to call it quit
-alias ls='ls -aGF'                          # Preferred 'ls' implementation
+alias ls='ls -GF'                           # Preferred 'ls' implementation
+alias lsa='ls -aGF'                         # Preferred 'ls -a' alias
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
