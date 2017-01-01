@@ -99,6 +99,7 @@ alias gitpretty='gitk'                      # Pretty git display using wish
 alias app='open -a'                         # Open an application
 alias updateDotfiles='~/Dotfiles/update.sh' # Update dotfiles
 alias starwars='telnet towel.blinkenlights.nl'      # Watch Star Wars
+alias beep="echo $'\a'"                     # Do a beep
 
 #functions
 cdls () { cd "$@" && ls ; }                  # cd and ls
