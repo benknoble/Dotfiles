@@ -80,4 +80,13 @@ endif
 " customize ctrl-p if installed
 if !empty(glob("~/.vim/bundle/vim-ctrlp"))
 	let g:ctrlp_show_hidden = 1
+	let g:ctrlp_by_filename = 1
+	let g:ctrlp_regexp = 1
+	let g:ctrlp_switch_buffer = 'E'
+	let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
+	let g:ctrlp_working_path_mode = 'ra'
+	let g:ctrlp_arg_map = 1
+	let g:ctrlp_match_current_file = 1
+	let g:ctrlp_lazy_update = 1
+	let g:ctrlp_tilde_homedir = 1
 endif
