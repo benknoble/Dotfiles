@@ -34,6 +34,19 @@ if [[ $installBrew =~ ^(y|Y) ]]; then
 	else
 		echo "Skipping Git..."
 	fi
+
+	#install and configure bash 4.0
+	read -n 1 -p "Install Bash 4.0 via Brew (admin priviledge required for some steps) [Y/n]? " installBash && echo
+	if [[ $installBash =~ ^(y|Y) ]]; then
+		echo "Installing Bash..."
+		(brew install bash) || echo "Brew/Bash installation failed"
+		echo "Add /usr/local/bin/bash to allowed shells"
+		sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
+		echo "Change default shell to /usr/local/bin/bash"
+		chsh -s /usr/local/bin/bash $USER
+	else
+		echo "Skipping Bash..."
+	fi
 else
 	echo "Skipping Brew..."
 fi
