@@ -10,6 +10,7 @@ set incsearch
 set autoindent
 set tabstop=4
 set nowrap
+set textwidth=78
 set showcmd
 syntax on
 filetype plugin indent on
