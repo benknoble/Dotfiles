@@ -113,7 +113,7 @@ findPid () { lsof -t -c "$@" ; }             # Find Pid of specified process
 displayPath () { for path in ${PATH//:/ }; do echo "$path"; done; }                  # Print path separated by newlines
 mkcd () { mkdir "$@" && cd "$@" ; }          # mkdir and cd
 editall () { vim -p "$@" ; }                 # edit all files provided as arguments in vim tabs
-extract () {								# attempt to extract file with correct extraction method
+extract () {                                 # attempt to extract file with correct extraction method
 	if [ -f $1 ]; then
 		case $1 in
 			*.tar.bz2)	tar xjf $1		;;
