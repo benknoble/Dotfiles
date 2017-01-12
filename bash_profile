@@ -133,18 +133,22 @@ extract () {								# attempt to extract file with correct extraction method
 	fi
 }
 
+pathadd() {                                 # add to path
+	if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+		PATH="${PATH:+"$PATH:"}$1"
+	fi
+}
+
 # Setting PATH for Python 3.5
 # The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
+pathadd "/Library/Frameworks/Python.framework/Versions/3.5/bin"
 
 # Setting PATH for Python 2.7
 # The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
-export PATH
+pathadd "/Library/Frameworks/Python.framework/Versions/2.7/bin"
 
 # Set PATH for scala
-export PATH="/Users/Knoble/scala-2.11.8/bin:${PATH}"
+pathadd "/Users/Knoble/scala-2.11.8/bin"
 
 # Add bin folder for scripts to path
-export PATH="$HOME/bin:${PATH}"
+pathadd "$HOME/bin"
