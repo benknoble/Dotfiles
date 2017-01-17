@@ -2,16 +2,16 @@
 alias reload='. ~/.bash_profile && echo "reloaded"'
 
 #load colors
-source ~/Dotfiles/colors.bash
+source ~/Dotfiles/bash/colors.bash
 
 #load aliases
-source ~/Dotfiles/aliases.bash
+source ~/Dotfiles/bash/aliases.bash
 
 #load functions
-source ~/Dotfiles/functions.bash
+source ~/Dotfiles/bash/functions.bash
 
 #load git config
-source ~/Dotfiles/gitconfig.bash
+source ~/Dotfiles/bash/gitconfig.bash
 
 if [[ -z "$PS1" ]]; then
 	export $PS1="\! \u:\W \$ "
