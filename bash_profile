@@ -4,6 +4,9 @@ alias reload='. ~/.bash_profile && echo "reloaded"'
 #load colors
 source ~/Dotfiles/colors.bash
 
+#load aliases
+source ~/Dotfiles/aliases.bash
+
 #add git branch to prompt when available and colorize
 if [[ -s ~/.git-prompt.sh ]]; then
 	. ~/.git-prompt.sh
@@ -37,32 +40,10 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 #use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
 
-#aliases
-alias quit='exit'                           # Because Mac OS X tends to call it quit
-alias ls='ls -GF'                           # Preferred 'ls' implementation
-alias lsa='ls -aGF'                         # Preferred 'ls -a' alias
-alias cp='cp -iv'                           # Preferred 'cp' implementation
-alias mv='mv -iv'                           # Preferred 'mv' implementation
-alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
-alias rm='rm -i'                            # Preferred 'rm' implementation
-alias hidden='ls -a | grep "^\."'           # List all hidden files
-alias cd..='cd ../'                         # Go back one directory level
-alias ..='cd ../'                           # Shorter version of cd..
-alias ~='cd ~'                              # Shortcut to cd ~
-alias edit='vim'                            # Open a file in vim
-alias readonly='vim -R'                     # Open a file in readonly mode in vim
-alias explore='vim +Explore'                # Open vim's Explore mode in current directory
-alias finder='open -a Finder ./'            # Open current directory in Finder
-alias gitpretty='gitk'                      # Pretty git display using wish
-alias app='open -a'                         # Open an application
-alias updateDotfiles='~/Dotfiles/update.sh' # Update dotfiles
-alias starwars='telnet towel.blinkenlights.nl'      # Watch Star Wars
-alias beep="echo $'\a'"                     # Do a beep
-
 #functions
 cdls () { cd "$@" && ls ; }                  # cd and ls
 trash () { mv "$@" ~/.Trash ; }              # Move a file to Trash
-aliases () { cat ~/.bash_profile | grep -o --color=auto "^alias [\.A-Za-z0-9~]*" ; } # List all aliases found in this file
+aliases () { cat ~/Dotfiles/aliases.bash | tail -n +4 ; }                             # List all aliases found in this file
 functions () { cat ~/.bash_profile | grep -o --color=auto "^[A-Za-z0-9]* ()" ; }      # List all functions found in this file
 findPid () { lsof -t -c "$@" ; }             # Find Pid of specified process
 displayPath () { for path in ${PATH//:/ }; do echo "$path"; done; }                  # Print path separated by newlines
