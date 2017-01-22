@@ -43,7 +43,7 @@ if [[ $installBrew =~ ^(y|Y) ]]; then
 		echo "Add /usr/local/bin/bash to allowed shells"
 		sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 		echo "Change default shell to /usr/local/bin/bash"
-		chsh -s /usr/local/bin/bash $USER
+		chsh -s /usr/local/bin/bash "$USER"
 	else
 		echo "Skipping Bash..."
 	fi
