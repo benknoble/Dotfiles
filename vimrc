@@ -1,6 +1,7 @@
 " only attempt to use pathogen if installed
 if !empty(glob("~/.vim/autoload/pathogen.vim"))
 	execute pathogen#infect()
+	:Helptags
 endif
 
 set nocompatible

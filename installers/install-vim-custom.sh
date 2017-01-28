@@ -14,8 +14,8 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	read -n 1 -p "Install Vim-Airline [Y/n]? " installVAirline && echo
 	if [[ $installVAirline =~ ^(y|Y) ]]; then
 		echo "Installing Vim-Airline..."
-		(git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline && \
-			vim +'Helptags' +'q') || echo "Vim-Airline installation failed"
+		(git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline)
+		|| echo "Vim-Airline installation failed"
 
 		#install vim-airline-themes
 		read -n 1 -p "Install Vim-Airline-Themes [Y/n]? " installVAThemes && echo
@@ -33,8 +33,8 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	read -n 1 -p "Install Vim-Fugitive [Y/n]? " installVFugitive && echo
 	if [[ $installVFugitive =~ ^(y|Y) ]]; then
 		echo "Installing Vim-Fugitive..."
-		(git clone https://github.com/tpope/vim-fugitive ~/.vim/bundle/vim-fugitive && \
-			vim +'Helptags' +'q') || echo "Vim-Fugitive installation failed"
+		(git clone https://github.com/tpope/vim-fugitive ~/.vim/bundle/vim-fugitive)
+		|| echo "Vim-Fugitive installation failed"
 	else
 		echo "Skipping Vim-Fugitive..."
 	fi
@@ -43,8 +43,8 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	read -n 1 -p "Install Syntastic [Y/n]? " installSyntastic && echo
 	if [[ $installSyntastic =~ ^(y|Y) ]]; then
 		echo "Installing Syntastic..."
-		(git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/vim-syntastic && \
-			vim +'Helptags' +'q') || echo "Syntastic installation failed"
+		(git clone --depth=1 https://github.com/vim-syntastic/syntastic.git ~/.vim/bundle/vim-syntastic)
+		|| echo "Syntastic installation failed"
 	else
 		echo "Skipping Syntastic..."
 	fi
@@ -53,8 +53,8 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	read -n 1 -p "Install Ctrl-P [Y/n]? " installCP && echo
 	if [[ $installCP =~ ^(y|Y) ]]; then
 		echo "Installing Ctrl-P..."
-		(git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/vim-ctrlp && \
-			vim +'Helptags' +'q') || echo "Ctrl-P installation failed"
+		(git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/vim-ctrlp)
+		|| echo "Ctrl-P installation failed"
 	else
 		echo "Skipping Ctrl-P..."
 	fi
