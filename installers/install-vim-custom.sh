@@ -58,6 +58,16 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	else
 		echo "Skipping Ctrl-P..."
 	fi
+
+	#install auto-pairs
+	read -n 1 -p "Install Auto-Pairs [Y/n]? " installAP && echo
+	if [[ $installAP =~ ^(y|Y) ]]; then
+		echo "Installing Auto-Pairs"
+		(git clone git://github.com/jiangmiao/auto-pairs.git ~/.vim/bundle/vim-auto-pairs)
+		|| echo "Auto-Pairs installation failed"
+	else
+		echo "Skipping Auto-Pairs..."
+	fi
 else
 	echo "Skipping Pathogen..."
 fi
