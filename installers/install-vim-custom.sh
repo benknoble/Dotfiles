@@ -58,10 +58,19 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 	#install auto-pairs
 	read -n 1 -p "Install Auto-Pairs [Y/n]? " installAP && echo
 	if [[ $installAP =~ ^(y|Y) ]]; then
-		echo "Installing Auto-Pairs"
+		echo "Installing Auto-Pairs..."
 		(git clone git://github.com/jiangmiao/auto-pairs.git ~/.vim/bundle/vim-auto-pairs) || echo "Auto-Pairs installation failed"
 	else
 		echo "Skipping Auto-Pairs..."
+	fi
+
+	#install invaders
+	read -n 1 -p "Install Invaders [Y/n]? " installInv && echo
+	if [[ $installInv =~ ^(y|Y) ]]; then
+		echo "Installing Invaders..."
+		(git clone https://github.com/mattn/invader-vim.git vim-invader) || echo "Invaders installation failed"
+	else
+		echo "Skipping Invaders..."
 	fi
 else
 	echo "Skipping Pathogen..."
