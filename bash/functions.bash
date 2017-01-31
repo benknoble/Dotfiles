@@ -34,3 +34,13 @@ pathadd() {                                 # add to path
 		PATH="${PATH:+"$PATH:"}$1"
 	fi
 }
+
+vimupdate() {
+	if [ -d ~/.vim/bundle ]; then
+		for dir in `ls ~/.vim/bundle`; do
+			echo ~/.vim/bundle/"$dir"
+			echo "$date"
+			(cd ~/.vim/bundle/"$dir" && git pull)
+		done
+	fi
+}
