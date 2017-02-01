@@ -40,7 +40,7 @@ vimupdate() {
 		for dir in `ls ~/.vim/bundle`; do
 			echo ~/.vim/bundle/"$dir"
 			echo "$date"
-			(cd ~/.vim/bundle/"$dir" && git pull)
+			(cd ~/.vim/bundle/"$dir" && git checkout master && git pull)
 		done
 	fi
 }
