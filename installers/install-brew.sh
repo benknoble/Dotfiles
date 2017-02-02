@@ -13,6 +13,15 @@ if [[ $installBrew =~ ^(y|Y) ]]; then
 	if [[ $installCask =~ ^(y|Y) ]]; then
 		echo "Installing Cask..."
 		(brew tap caskroom/cask) || echo "Brew/Cask installation failed"
+
+		#install mactex
+		read -n 1 -p "Install Mactex via Cask [Y/n]? " installTex && echo
+		if [[ $installTex =~ ^(y|Y) ]]; then
+			echo "Installing Mactex..."
+			(brew cask install mactex) || echo "Brew/Cask/Mactex installation failed"
+		else
+			echo "Skipping Mactex..."
+		fi
 	else
 		echo "Skipping Cask..."
 	fi
@@ -46,6 +55,15 @@ if [[ $installBrew =~ ^(y|Y) ]]; then
 		chsh -s /usr/local/bin/bash "$USER"
 	else
 		echo "Skipping Bash..."
+	fi
+
+	#install archey
+	read -n 1 -p "Install Archey via Brew [Y/n]? " installArchey && echo
+	if [[ $installArchey =~ ^(y|Y) ]]; then
+		echo "Installing Archey..."
+		(brew install archey) || echo "Brew/Archey installation failed"
+	else
+		echo "Skipping Archey..."
 	fi
 else
 	echo "Skipping Brew..."
