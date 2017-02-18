@@ -4,6 +4,8 @@
 alias quit='exit'                           # Because Mac OS X tends to call it quit
 alias ls='ls -GF'                           # Preferred 'ls' implementation
 alias lsa='ls -aGF'                         # Preferred 'ls -a' alias
+alias ll='ls -lGF'                          # Long ls listing
+alias lh='ls -lhGF'                         # Human readable sizes
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
