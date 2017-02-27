@@ -1,7 +1,7 @@
 #!/bin/bash
 # cleans up the cache and outdated version downloads
 
-source ~/Dotfiles/brew/brewutils.sh
+source "$brewscripts/brewutils.sh"
 
 brew_exists exists
 if [[ "$exists" -eq "0" ]]; then
