@@ -1,7 +1,7 @@
 #!/bin/bash
 # updates brew, upgrades formula (removes old versions)
 
-source ./brewutils.sh
+source ~/Dotfiles/brew/brewutils.sh
 
 brew_exists exists
 if [[ "$exists" -eq "0" ]]; then
