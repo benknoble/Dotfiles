@@ -39,3 +39,6 @@ pathadd "/Users/Knoble/scala-2.11.8/bin"
 
 # Add bin folder for scripts to path
 pathadd "$HOME/bin"
+
+# dir for brew scripts
+export brewscripts="$HOME/Dotfiles/brew"
