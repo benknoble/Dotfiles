@@ -5,8 +5,8 @@ source "$brewscripts/brewutils.sh"
 
 brew_exists exists
 if [[ "$exists" -eq "0" ]]; then
-	echo "brew found"
-	brew cleanup -s
+    echo "brew found"
+    brew cleanup -s
 else
-	echo "brew not found"
+    echo "brew not found"
 fi

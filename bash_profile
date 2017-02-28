@@ -14,7 +14,7 @@ source ~/Dotfiles/bash/functions.bash
 source ~/Dotfiles/bash/gitconfig.bash
 
 if [[ -z "$PS1" ]]; then
-	export $PS1="\! \u:\W \$ "
+    export $PS1="\! \u:\W \$ "
 fi
 
 #set default editor to vim
