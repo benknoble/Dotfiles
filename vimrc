@@ -10,6 +10,7 @@ set ruler
 set incsearch
 set autoindent
 set tabstop=4
+set expandtab
 set nowrap
 set textwidth=78
 set showcmd
