@@ -21,6 +21,10 @@ fi
 git config --global --replace-all alias.cd checkout
 git config --global --replace-all alias.stat status
 git config --global --replace-all alias.ls branch
+git config --global --replace-all alias.cc commit
+git config --global --replace-all alias.cm 'commit -m'
+git config --global --replace-all alias.notes 'commit -m "Notes $(today)"'
 git config --global --replace-all merge.tool vimdiff
 git config --global --replace-all merge.conflictstyle diff3
 git config --global --replace-all color.ui true
+git config --global --replace-all core.autocrlf input
