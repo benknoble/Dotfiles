@@ -65,6 +65,24 @@ if [[ $installBrew =~ ^(y|Y) ]]; then
     else
         echo "Skipping Archey..."
     fi
+
+    #install smlnj
+    read -n 1 -p "Install SML/NJ via Brew [Y/n]? " installsmlnj && echo
+    if [[ $installsmlnj =~ ^(y|Y) ]]; then
+        echo "Installing SML/NJ..."
+        (brew install smlnj) || echo "Brew/SML-NJ installation failed"
+    else
+        echo "Skipping SML/NJ..."
+    fi
+
+    #install nethack
+    read -n 1 -p "Install nethack via Brew [Y/n]? " installNethack && echo
+    if [[ $installNethack =~ ^(y|Y) ]]; then
+        echo "Installing nethack..."
+        (brew install nethack) || echo "Brew/nethack installation failed"
+    else
+        echo "Skipping nethack..."
+    fi
 else
     echo "Skipping Brew..."
 fi
