@@ -27,3 +27,4 @@ alias starwars='telnet towel.blinkenlights.nl'      # Watch Star Wars
 alias beep="echo $'\a'"                     # Do a beep
 alias brewclean="$brewscripts/cleanup.sh"   # Clean up brew
 alias brewupdate="$brewscripts/update.sh"   # Update brew
+alias today='date -j +"%e %B %Y"'             # A format of the date
