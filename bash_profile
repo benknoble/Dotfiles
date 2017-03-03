@@ -4,6 +4,9 @@ alias reload='. ~/.bash_profile && echo "reloaded"'
 #load colors
 source ~/Dotfiles/bash/colors.bash
 
+# dir for brew scripts
+export brewscripts="$HOME/Dotfiles/brew"
+
 #load aliases
 source ~/Dotfiles/bash/aliases.bash
 
@@ -39,6 +42,3 @@ pathadd "/Users/Knoble/scala-2.11.8/bin"
 
 # Add bin folder for scripts to path
 pathadd "$HOME/bin"
-
-# dir for brew scripts
-export brewscripts="$HOME/Dotfiles/brew"
