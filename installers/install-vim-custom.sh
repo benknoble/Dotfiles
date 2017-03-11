@@ -68,7 +68,7 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
     read -n 1 -p "Install Invaders [Y/n]? " installInv && echo
     if [[ $installInv =~ ^(y|Y) ]]; then
         echo "Installing Invaders..."
-        (git clone https://github.com/mattn/invader-vim.git vim-invader) || echo "Invaders installation failed"
+        (git clone https://github.com/mattn/invader-vim.git ~/.vim/bundle/vim-invader) || echo "Invaders installation failed"
     else
         echo "Skipping Invaders..."
     fi
