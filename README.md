@@ -3,7 +3,7 @@ Dotfiles for configuration of different software
 
 So far this includes a vimrc, bashrc, and bash_profile that utilizes bashrc.
 There is also an install-all.sh script which will prompt for and install some custom features, like brew or vim-airline. It is primarily useful for new machine setups.
-There is also an updateDotfiles alias provided which will attempt to pull recent updates from origin/master (this repo). Use it to keep your files up-to-date without learning git (if you want).
+There is also an `updateDotfiles` alias provided which will attempt to pull recent updates from origin/master (this repo). Use it to keep your files up-to-date without learning git (if you want).
 I wrote a few utils for brew to make my life easier, and provided aliases for
 those as well. You can view all aliases with the `aliases` command, and
 functions with the `functions` command.
