@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 # cleans up the cache and outdated version downloads
 
 source "$brewscripts/brewutils.sh"

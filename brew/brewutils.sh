@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 # contains utility functions for brew scripts
 
 function brew_exists() {

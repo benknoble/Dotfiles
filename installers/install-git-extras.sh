@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 # installer script for git extras
 
 echo "INSTALL GIT EXTRAS"

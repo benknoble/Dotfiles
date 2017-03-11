@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 # installer script for brew and certain formulae
 
 echo "INSTALL BREW"
