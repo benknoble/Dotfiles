@@ -4,7 +4,7 @@
 export brewscripts="$HOME/Dotfiles/brew"
 
 #reload profile
-alias reload='. ~/.bash_profile && echo "reloaded"'
+alias reload='. ~/.bashrc && echo "reloaded"'
 
 #load colors
 source ~/Dotfiles/bash/colors.bash
