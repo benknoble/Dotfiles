@@ -1,11 +1,13 @@
+# VARS
+
+# dir for brew scripts
+export brewscripts="$HOME/Dotfiles/brew"
+
 #reload profile
 alias reload='. ~/.bash_profile && echo "reloaded"'
 
 #load colors
 source ~/Dotfiles/bash/colors.bash
-
-# dir for brew scripts
-export brewscripts="$HOME/Dotfiles/brew"
 
 #load aliases
 source ~/Dotfiles/bash/aliases.bash
