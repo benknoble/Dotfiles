@@ -3,6 +3,12 @@
 # dir for brew scripts
 export brewscripts="$HOME/Dotfiles/brew"
 
+#set default editor to vim
+export EDITOR=vim
+
+#use my color scheme for ls
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+
 #reload profile
 alias reload='. ~/.bashrc && echo "reloaded"'
 
@@ -21,12 +27,6 @@ source ~/Dotfiles/bash/gitconfig.bash
 if [[ -z "$PS1" ]]; then
     export $PS1="\! \u:\W \$ "
 fi
-
-#set default editor to vim
-export EDITOR=vim
-
-#use my color scheme for ls
-export LSCOLORS="gxfxcxdxbxegedabagacad"
 
 #use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
