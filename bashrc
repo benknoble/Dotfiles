@@ -29,14 +29,6 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 #use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
 
-# Setting PATH for Python 3.5
-# The original version is saved in .bash_profile.pysave
-pathadd "/Library/Frameworks/Python.framework/Versions/3.5/bin"
-
-# Setting PATH for Python 2.7
-# The original version is saved in .bash_profile.pysave
-pathadd "/Library/Frameworks/Python.framework/Versions/2.7/bin"
-
 # Set PATH for scala
 pathadd "/Users/Knoble/scala-2.11.8/bin"
 
