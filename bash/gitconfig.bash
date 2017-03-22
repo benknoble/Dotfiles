@@ -27,3 +27,10 @@ git config --global --replace-all merge.tool vimdiff
 git config --global --replace-all merge.conflictstyle diff3
 git config --global --replace-all color.ui true
 git config --global --replace-all core.autocrlf input
+
+gitignoreGlobal=~/.gitignore_global
+
+#global gitignore
+if [[ -s "$gitignoreGlobal" ]]; then
+    git config --global --replace-all core.excludesfile "$gitignoreGlobal"
+fi
