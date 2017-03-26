@@ -1,11 +1,15 @@
 #! /bin/bash
 # git config done on install
 
-backup=~/Dotfiles_old/gitconfig
-echo "Backing up old gitconfig file to $backup"
-mv ~/.gitconfig "$backup"
+[[ -s ~/.gitconfig ]] && {
+backup=~/Dotfiles_old/gitconfig;
+echo "Backing up old gitconfig file to $backup";
+mv ~/.gitconfig "$backup";
+}
 
+echo
 echo "Configuring git..."
+echo
 
 #some useful git aliases
 git config --global --replace-all alias.cd checkout
@@ -20,9 +24,11 @@ git config --global --replace-all core.autocrlf input
 
 gitignoreglobal=~/.gitignore_global
 
+echo "[Will overwrite current file if it exists]"
+echo "[If file does not exist, it will be created]"
 read -n 1 -p "Create coreexcludes file at $gitignoreglobal [Y/n]? " core && echo
-if [[ $core =~ ^(y|Y) ]]; then
-    echo >$gitignoreglobal <<END
+if [[ $core =~ ^(y|Y) || !( -s "$gitignoreglobal" ) ]]; then
+    cat >"$gitignoreglobal" <<'END'
 # no backups
 *.~
 .*.swp
