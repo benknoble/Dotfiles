@@ -11,7 +11,7 @@ echo
 echo "Configuring git..."
 echo
 
-#some useful git aliases
+# some useful git aliases
 git config --global --replace-all alias.cd checkout
 git config --global --replace-all alias.stat status
 git config --global --replace-all alias.ls branch
@@ -39,7 +39,14 @@ END
     echo "coreexcludes file created"
 fi
 
-#global gitignore
+# global gitignore
 if [[ -s "$gitignoreglobal" ]]; then
     git config --global --replace-all core.excludesfile "$gitignoreglobal"
 fi
+
+# reconfigure user name, email address
+echo "User name and email will need to be reconfigured..."
+read -p "Enter git user name: " user
+git config --global user.name "$user"
+read -p "Enter git email address: " email
+git config --global user.email "$email"
