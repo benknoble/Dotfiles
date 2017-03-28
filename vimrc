@@ -34,6 +34,9 @@ nnoremap n nzz
 nnoremap N Nzz
 cnoremap <expr> <CR> getcmdtype() =~ '[/?]' ? '<CR>zz' : '<CR>'
 let g:netrw_liststyle=3
+" Make 'jj' and 'jk' throw you into normal mode
+inoremap jj <esc>
+inoremap kk <esc>
 
 " set airline-theme if installed
 if !empty(glob("~/.vim/bundle/vim-airline-themes"))
