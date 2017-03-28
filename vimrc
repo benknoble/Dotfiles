@@ -12,7 +12,10 @@ set autoindent
 set tabstop=4
 set expandtab
 set nowrap
-set textwidth=78
+set textwidth=80
+" Git commits prefer 72 wrap
+autocmd FileType gitcommit set textwidth=72
+set colorcolumn=+1
 set showcmd
 syntax on
 filetype plugin indent on
