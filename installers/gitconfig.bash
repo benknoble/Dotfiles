@@ -17,10 +17,16 @@ git config --global --replace-all alias.stat status
 git config --global --replace-all alias.ls branch
 git config --global --replace-all alias.cc commit
 git config --global --replace-all alias.cm 'commit -m'
+git config --global --replace-all alias.sdiff '!'"git diff && git submodule foreach 'git diff'"
+git config --global --replace-all alias.spush 'push --recurse-submodules=on-demand'
+git config --global --replace-all alias.supdate 'submodule update --remote --merge'
 git config --global --replace-all merge.tool vimdiff
 git config --global --replace-all merge.conflictstyle diff3
 git config --global --replace-all color.ui true
 git config --global --replace-all core.autocrlf input
+git config --global --replace-all diff.submodule log
+git config --global --replace-all status.submodulesummary 1
+git config --global --replace-all push.recurseSubmodules check
 
 gitignoreglobal=~/.gitignore_global
 
