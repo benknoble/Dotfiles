@@ -20,7 +20,6 @@ alias edit='vim'                            # Open a file in vim
 alias vimread='vim -R'                      # Open a file in readonly mode in vim
 alias explore='vim +Explore'                # Open vim's Explore mode in current directory
 alias finder='open -a Finder ./'            # Open current directory in Finder
-alias gitpretty='gitk'                      # Pretty git display using wish
 alias app='open -a'                         # Open an application
 alias updateDotfiles='~/Dotfiles/update.sh' # Update dotfiles
 alias starwars='telnet towel.blinkenlights.nl'      # Watch Star Wars

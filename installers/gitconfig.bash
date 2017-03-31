@@ -20,6 +20,9 @@ git config --global --replace-all alias.cm 'commit -m'
 git config --global --replace-all alias.sdiff '!'"git diff && git submodule foreach 'git diff'"
 git config --global --replace-all alias.spush 'push --recurse-submodules=on-demand'
 git config --global --replace-all alias.supdate 'submodule update --remote --merge'
+git config --global --replace-all alias.unstage 'reset HEAD --'
+git config --global --replace-all alias.last 'log -1 HEAD'
+git config --global --replace-all alias.visual '!gitk &'
 git config --global --replace-all merge.tool vimdiff
 git config --global --replace-all merge.conflictstyle diff3
 git config --global --replace-all color.ui true
