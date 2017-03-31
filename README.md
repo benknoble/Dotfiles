@@ -20,34 +20,64 @@ application; it is a settings file ready for import.
 
 First, clone the repo into your dotfiles directory
 
-> $ mkdir Dotfiles && cd Dotfiles
->
-> $ git clone https://github.com/benknoble/Dotfiles.git
+```bash
+$ mkdir Dotfiles && cd Dotfiles
+
+$ git clone https://github.com/benknoble/Dotfiles.git
+```
 
 Then run the makesymlinks script
 
-> $ ./makesymlinks.sh
+```bash
+$ ./makesymlinks.sh
+```
 
 If this doesn't work, you probably need to make it executable with
 
-> $ chmod +x makesymlinks.sh
+```bash
+$ chmod +x makesymlinks.sh
+```
+
+This should set up symlinks for config files, which will take effect when you
+load a new Terminal session. Alternatively, you could `source ~/.bashrc` to get things going. A helpful alias is `reload` to bring any changes
+into affect.
 
 ## Install usage
 
 Run the install-all script
 
-> $ ./install-all.sh
+```bash
+$ ./install-all.sh
+```
 
 If this doesn't work, you probably need to make it executable with
 
-> $ chmod +x install-all.sh
+```bash
+$ chmod +x install-all.sh
+```
+
+The purpose of this script is to make use of the `/installers` directory, which
+contains scripts used to install various things (brew tools, vim plugins, git
+completion scripts, &c.), and it also configures git.
+
+The scripts are organized by dependencies, so choosing not to install brew will
+skip anything brew dependent. You can also run each script individually, e.g. to
+fix a broken install or to later install something not previously done. The
+gitconfig script can also be used to recover those settings.
 
 ## Update usage
 
 Run the update script to pull in any changes from the remote
 
-> $ ./update.sh
+```bash
+$ ./update.sh
+```
 
 If this doesn't work, you probably need to make it executable with
 
-> $ chmod +x update.sh
+```bash
+$ chmod +x update.sh
+```
+
+This script will pull in changes from the configured remote origin. You'll need
+to pull in upstream changes manually if you forked this on GitHub.
