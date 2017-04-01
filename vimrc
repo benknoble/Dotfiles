@@ -39,6 +39,7 @@ let g:netrw_liststyle=3
 " Make 'jj' and 'jk' throw you into normal mode
 inoremap jj <esc>
 inoremap jk <esc>
+" Make buffers like a jetpack: you can fly
 nnoremap gb :ls<CR>:b<Space>
 
 " set airline-theme if installed
