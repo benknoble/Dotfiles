@@ -20,7 +20,7 @@ syntax on
 filetype plugin indent on
 set whichwrap=b,s,<,>,[,]
 set foldcolumn=4
-set cindent shiftwidth=4
+set shiftwidth=4
 syntax enable
 set t_Co=256
 set background=dark
