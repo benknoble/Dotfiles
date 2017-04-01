@@ -41,6 +41,7 @@ inoremap jj <esc>
 inoremap jk <esc>
 " Make buffers like a jetpack: you can fly
 nnoremap gb :ls<CR>:b<Space>
+noremap x "_x
 
 " set airline-theme if installed
 if !empty(glob("~/.vim/bundle/vim-airline-themes"))
