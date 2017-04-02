@@ -1,0 +1,29 @@
+[alias]
+	cd = checkout
+	stat = status
+	ls = branch
+	cc = commit
+	cm = commit -m
+	sdiff = !git diff && git submodule foreach 'git diff'
+	spush = push --recurse-submodules=on-demand
+	supdate = submodule update --remote --merge
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	visual = !gitk --all &
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[color]
+	ui = true
+[core]
+	autocrlf = input
+	excludesfile = /Users/Knoble/.gitignore_global
+[diff]
+	submodule = log
+[status]
+	submodulesummary = 1
+[push]
+	recurseSubmodules = check
+[user]
+	name = David Ben Knoble
+	email = ben.knoble@gmail.com
