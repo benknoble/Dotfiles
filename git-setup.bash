@@ -44,6 +44,7 @@ fi
 echo
 
 echo "...done with user info"
+echo
 
 echo "Configure global gitignore..."
 
@@ -51,5 +52,6 @@ echo "Configure global gitignore..."
 globalignore="~/.gitignore_global"
 git config --global --replace-all core.excludesfile "$globalignore"
 echo "...done with global gitignore"
+echo
 
 echo "...done configuring git"
