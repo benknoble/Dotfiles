@@ -1,6 +1,7 @@
 #! /bin/bash
 # installer script for git extras
 
+echo
 echo "INSTALL GIT EXTRAS"
 
 read -n 1 -p "Install Git Completion Bash [Y/n]? " installGitCompletionBash && echo
@@ -18,3 +19,4 @@ if [[ $installGitPrompt =~ ^(y|Y) ]]; then
 else
     echo "Skipping Git Prompt..."
 fi
+echo

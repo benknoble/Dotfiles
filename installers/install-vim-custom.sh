@@ -1,6 +1,7 @@
 #! /bin/bash
 # installer script for Pathogen and certain vim plugins
 
+echo
 echo "INSTALL CUSTOM VIM"
 
 #install pathogen
@@ -75,3 +76,4 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 else
     echo "Skipping Pathogen..."
 fi
+echo
