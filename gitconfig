@@ -17,7 +17,7 @@
 	ui = true
 [core]
 	autocrlf = input
-	excludesfile = /Users/Knoble/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [diff]
 	submodule = log
 [status]
