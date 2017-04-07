@@ -122,7 +122,7 @@ application; it is a settings file ready for import.
 The following files depend on the structure `~/Dotfiles` and must be edited to
 use a different directory:
 
-- [/bashrc](/bahsrc)
+- [/bashrc](/bashrc)
 - [/bootstrap.sh](/bootsraph.sh)
 - [/bash/aliases.bash](/bash/aliases.bash)
 - [/bash/functions.bash](/bash/functions.bash)
