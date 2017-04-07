@@ -40,7 +40,7 @@ Directory structure
 - git config/ignore files for git settings and aliases
 - lots of useful scripts
 
-See [Full Feature List](#documentation-&-full-feature-list)
+See [Full Feature List](#documentation--full-feature-list)
 
 **Planned Ideas**
 
@@ -122,11 +122,11 @@ application; it is a settings file ready for import.
 The following files depend on the structure `~/Dotfiles` and must be edited to
 use a different directory:
 
-- /bashrc
-- /bootstrap.sh
-- /bash/aliases.bash
-- /bash/functions.bash
-- /setup/install-all.sh
-- /setup/makesymlinks.sh
-- /update.sh
+- [/bashrc](/bahsrc)
+- [/bootstrap.sh](/bootsraph.sh)
+- [/bash/aliases.bash](/bash/aliases.bash)
+- [/bash/functions.bash](/bash/functions.bash)
+- [/setup/install-all.sh](/setup/install-all.sh)
+- [/setup/makesymlinks.sh](/setup/makesymlinks.sh)
+- [/update.sh](/update.sh)
 
