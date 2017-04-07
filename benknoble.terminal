@@ -14,6 +14,8 @@
 	</data>
 	<key>Bell</key>
 	<false/>
+	<key>CommandString</key>
+	<string></string>
 	<key>CursorBlink</key>
 	<true/>
 	<key>CursorColor</key>
@@ -39,6 +41,8 @@
 	<integer>1</integer>
 	<key>ProfileCurrentVersion</key>
 	<real>2.04</real>
+	<key>RunCommandAsShell</key>
+	<true/>
 	<key>SelectionColor</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGFRZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
@@ -91,5 +95,7 @@
 	<integer>2</integer>
 	<key>type</key>
 	<string>Window Settings</string>
+	<key>useOptionAsMetaKey</key>
+	<true/>
 </dict>
 </plist>
