@@ -40,6 +40,8 @@ Directory structure
 - git config/ignore files for git settings and aliases
 - lots of useful scripts
 
+See [Full Feature List](#documentation-&-full-feature-list)
+
 **Planned Ideas**
 
 - [ ] To come...
@@ -49,8 +51,8 @@ Directory structure
 
 First, clone the repo into your dotfiles directory. This directory needs to be
 named Dotfiles, otherwise many of the scripts and aliases will fail. I'm looking
-into solving this problem, but for now see [Name Dependencies](### Name
-Dependencies).
+into solving this problem, but for now see [Name
+Dependencies](#name-dependencies).
 
 ```bash
 $ mkdir ~/Dotfiles && cd ~/Dotfiles
@@ -104,11 +106,13 @@ changes. Should you have set origin to your fork, it will pull from the fork;
 otherwise, from this repo. If you want to pull in from upstream, you need to use
 `git pull upstream master` on the command line or simply edit `update.sh`
 
-## Documentation
+## Documentation & Full Feature List
 
 See the [docs](/docs) folder.
 
-### Misc
+## Misc
+
+### Terminal
 
 The file benknoble.terminal is an XML file for use with Apple's *Terminal*
 application; it is a settings file ready for import.
