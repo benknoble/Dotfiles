@@ -1,83 +1,128 @@
 # dotfiles
-Dotfiles for configuration of different software
+Dotfiles for configuration of different software and command-line programs
 
-So far this includes a vimrc, bashrc, and bash_profile that utilizes bashrc.
-There is also an install-all.sh script which will prompt for and install some custom features, like brew or vim-airline. It is primarily useful for new machine setups.
-There is also an `updateDotfiles` alias provided which will attempt to pull recent updates from origin/master (this repo). Use it to keep your files up-to-date without learning git (if you want).
-I wrote a few utils for brew to make my life easier, and provided aliases for
-those as well. You can view all aliases with the `aliases` command, and
-functions with the `functions` command.
+Directory structure
+```
+.
+├── README.md
+├── bash
+│   ├── aliases.bash
+│   ├── colors.bash
+│   ├── functions.bash
+│   └── gitconfig.bash
+├── bash_profile
+├── bashrc
+├── benknoble.terminal
+├── bootstrap.sh
+├── brew
+│   ├── README.md
+│   ├── brewutils.sh
+│   ├── cleanup.sh
+│   └── update.sh
+├── gitconfig
+├── gitignore_global
+├── installers
+│   ├── install-brew.sh
+│   ├── install-git-extras.sh
+│   └── install-vim-custom.sh
+├── setup
+│   ├── git-setup.bash
+│   ├── install-all.sh
+│   └── makesymlinks.sh
+├── update.sh
+└── vimrc
+```
 
-Most of the code is either garnered from webcrawling or help files, so feel free to use it as there are no proprietary rights attached. A decent portion of it I actually figured out myself.
-And of course, it's yours to change too if you prefer a different set up.
+## Features
 
-If you create a really awesome feature that you want to share, send a pull request. I love cool features, especially if they make me more productive.
+- bashrc for making bash more fun
+- vimrc for starting arguments about vim settings
+- git config/ignore files for git settings and aliases
+- lots of useful scripts
 
-The file benknoble.terminal is an XML file for use with Apple's *Terminal*
-application; it is a settings file ready for import.
+**Planned Ideas**
 
-## Usage
+- [ ] To come...
 
-First, clone the repo into your dotfiles directory
+
+## Getting Started
+
+First, clone the repo into your dotfiles directory. This directory needs to be
+named Dotfiles, otherwise many of the scripts and aliases will fail. I'm looking
+into solving this problem, but for now see [Name Dependencies](### Name
+Dependencies).
 
 ```bash
-$ mkdir Dotfiles && cd Dotfiles
+$ mkdir ~/Dotfiles && cd ~/Dotfiles
 
 $ git clone https://github.com/benknoble/Dotfiles.git
 ```
 
-Then run the makesymlinks script
+Next, run the `bootstrap` script to kick things off:
 
 ```bash
-$ ./makesymlinks.sh
+$ ./bootstrap.sh    # or bash bootstrap.sh
 ```
 
-If this doesn't work, you probably need to make it executable with
+This will do several things; if you want to do them individually, you need to
+execute the scripts in the setup directory yourself. `bootstrap` is pretty
+verbose though, and works best.
+
+1. Executes `./setup/makesymlinks.sh`, which backups old conf files and symlinks
+   the files here
+2. (Optional) Executes `./setup/install-all.sh`, which in turns executes any
+   scripts in `./installers`. Understandably, this is brittle. You may wish to
+   inspect the scripts yourself to verify nothing malicious is happening, but
+   the scripts are supposed to install *brew* (+utils), *vim* plugins, and *git*
+   extras. They are organized by dependency (e.g., skipping brew skips anything
+   installed by brew), and they will prompt for confirmation at each step. You
+   can execute them yourself if you want to deal with it later, or to reinstall
+   something removed.
+3. Executes `./setup/git-setup.bash`, which has two tasks. It confirms the git
+   user name and email, allowing you to set your own, and wires up the global
+   gitignore file to point to the write spot.
+
+The next time you start a Terminal session, your new bashrc will load (or
+bash_profile, which simply sources the bashrc), giving you access to a whole
+host of new command-line fu. If you don't want to wait, try
 
 ```bash
-$ chmod +x makesymlinks.sh
+$ source ./bashrc && reload
 ```
 
-This should set up symlinks for config files, which will take effect when you
-load a new Terminal session. Alternatively, you could `source ~/.bashrc` to get things going. A helpful alias is `reload` to bring any changes
-into affect.
+`reload` is a helpful alias for when changes have been made to dotfiles: it
+essentially loads those changes into the environment. (See
+[aliases](/docs/aliases.md))
 
-## Install usage
+## Keeping Up-to-date
 
-Run the install-all script
+Since this repo is constantly in development, you may find you want to pull in
+changes from the origin (or upstream remote if you forked this on GitHub). I
+have provided a simple mechanism for doing so: `update.sh`. Aliased to execute
+with `updateDotfiles`, the script will checkout the master branch and pull in
+changes. Should you have set origin to your fork, it will pull from the fork;
+otherwise, from this repo. If you want to pull in from upstream, you need to use
+`git pull upstream master` on the command line or simply edit `update.sh`
 
-```bash
-$ ./install-all.sh
-```
+## Documentation
 
-If this doesn't work, you probably need to make it executable with
+See the [docs](/docs) folder.
 
-```bash
-$ chmod +x install-all.sh
-```
+### Misc
 
-The purpose of this script is to make use of the `/installers` directory, which
-contains scripts used to install various things (brew tools, vim plugins, git
-completion scripts, &c.), and it also configures git.
+The file benknoble.terminal is an XML file for use with Apple's *Terminal*
+application; it is a settings file ready for import.
 
-The scripts are organized by dependencies, so choosing not to install brew will
-skip anything brew dependent. You can also run each script individually, e.g. to
-fix a broken install or to later install something not previously done. The
-gitconfig script can also be used to recover those settings.
+### Name Dependencies
 
-## Update usage
+The following files depend on the structure `~/Dotfiles` and must be edited to
+use a different directory:
 
-Run the update script to pull in any changes from the remote
+- /bashrc
+- /bootstrap.sh
+- /bash/aliases.bash
+- /bash/functions.bash
+- /setup/install-all.sh
+- /setup/makesymlinks.sh
+- /update.sh
 
-```bash
-$ ./update.sh
-```
-
-If this doesn't work, you probably need to make it executable with
-
-```bash
-$ chmod +x update.sh
-```
-
-This script will pull in changes from the configured remote origin. You'll need
-to pull in upstream changes manually if you forked this on GitHub.
