@@ -17,7 +17,8 @@ alias cd..='cd ../'                         # Go back one directory level
 alias ..='cd ../'                           # Shorter version of cd..
 alias ~='cd ~'                              # Shortcut to cd ~
 alias edit='vim'                            # Open a file in vim
-alias vimread='vim -R'                      # Open a file in readonly mode in vim
+# Unnecessary... use view instead
+#alias vimread='vim -R'                     # Open a file in readonly mode in vim
 alias explore='vim +Explore'                # Open vim's Explore mode in current directory
 alias finder='open -a Finder ./'            # Open current directory in Finder
 alias app='open -a'                         # Open an application
