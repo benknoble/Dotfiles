@@ -27,7 +27,6 @@ set background=dark
 set confirm
 set showmatch
 set ignorecase
-nnoremap <C-E> :Vexplore<CR>
 set laststatus=2
 set ttimeoutlen=10
 set hidden
