@@ -1,0 +1,23 @@
+set completion-ignore-case on
+
+# opt+left, opt+right outside tmux
+"\e[1;9D": backward-word
+"\e[1;9C": forward-word
+# opt+left, opt+right in tmux
+#"\e[1;3D": backward-word
+#"\e[1;3C": forward-word
+# shift+left, shift+right
+#"\e[1;2D": backward-word
+#"\e[1;2C": forward-word
+
+# https://coderwall.com/p/oqtj8w/the-single-most-useful-thing-in-bash
+# E.g. type "cd" and hit up arrow to search through history for that prefix.
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# Be more intelligent when autocompleting by also looking at the text after
+# the cursor. For example, when the current line is "cd ~/src/mozil", and
+# the cursor is on the "z", pressing Tab will not autocomplete it to "cd
+# ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
+# Readline used by Bash 4.)
+set skip-completed-text on
