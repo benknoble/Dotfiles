@@ -101,3 +101,6 @@ if !empty(glob("~/.vim/bundle/vim-ctrlp"))
     let g:ctrlp_lazy_update = 1
     let g:ctrlp_tilde_homedir = 1
 endif
+
+packadd! matchit
+packadd! justify
