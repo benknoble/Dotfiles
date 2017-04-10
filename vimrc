@@ -136,7 +136,11 @@ if has("autocmd")
         autocmd FileType text setlocal textwidth=78
 
         " Git commits prefer 72 wrap
-        autocmd FileType gitcommit set textwidth=72
+        autocmd FileType gitcommit setlocal textwidth=72
+
+        " Shell scripts and the like are 80
+        autocmd FileType *.sh setlocal textwidth=80
+        autocmd FileType *.bash setlocal textwidth=80
 
         " Automatically add foldcolumn if folds present
         au CursorHold,BufWinEnter ?* call HasFolds()
