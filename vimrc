@@ -143,7 +143,7 @@ if has("autocmd")
         autocmd FileType *.bash setlocal textwidth=80
 
         " Automatically add foldcolumn if folds present
-        au CursorHold,BufWinEnter ?* call HasFolds()
+        au BufWinEnter ?* call HasFolds()
 
     augroup END
 else
