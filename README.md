@@ -70,9 +70,9 @@ This will do several things; if you want to do them individually, you need to
 execute the scripts in the setup directory yourself. `bootstrap` is pretty
 verbose though, and works best.
 
-1. Executes `./setup/makesymlinks.sh`, which backups old conf files and symlinks
+1. Executes `./setup/makesymlinks.sh`, which backs up old conf files and symlinks
    the files here
-2. (Optional) Executes `./setup/install-all.sh`, which in turns executes any
+2. (Optional) Executes `./setup/install-all.sh`, which in turn executes any
    scripts in `./installers`. Understandably, this is brittle. You may wish to
    inspect the scripts yourself to verify nothing malicious is happening, but
    the scripts are supposed to install *brew* (+utils), *vim* plugins, and *git*
@@ -82,7 +82,7 @@ verbose though, and works best.
    something removed.
 3. Executes `./setup/git-setup.bash`, which has two tasks. It confirms the git
    user name and email, allowing you to set your own, and wires up the global
-   gitignore file to point to the write spot.
+   gitignore file to point to the right spot.
 
 The next time you start a Terminal session, your new bashrc will load (or
 bash_profile, which simply sources the bashrc), giving you access to a whole
