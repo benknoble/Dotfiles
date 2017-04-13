@@ -111,6 +111,17 @@ if [[ $installBrew =~ ^(y|Y) ]]; then
     else
         echo "Skipping tree..."
     fi
+
+    #install gnu utils
+    read -n 1 -p "Install GNU utilities [Y/n]? " installGnu && echo
+    if [[ $installGnu =~ ^(y|Y) ]]; then
+        echo "Installing GNU utilities..."
+        (brew install coreutils && brew install moreutils && brew install \
+        findutils && brew install gnu-sed) || echo "Brew/GNUtils installation \
+        failed"
+    else
+        echo "Skipping GNUtils..."
+    fi
 else
     echo "Skipping Brew..."
 fi
