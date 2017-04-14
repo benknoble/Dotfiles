@@ -139,8 +139,10 @@ if has("autocmd")
         autocmd FileType gitcommit setlocal textwidth=72
 
         " Shell scripts and the like are 80
-        autocmd FileType *.sh setlocal textwidth=80
-        autocmd FileType *.bash setlocal textwidth=80
+        autocmd FileType sh setlocal textwidth=80
+
+        " Markdown is 80
+        autocmd FileType markdown setlocal textwidth=80
 
         " Automatically add foldcolumn if folds present
         au BufWinEnter ?* call HasFolds()
