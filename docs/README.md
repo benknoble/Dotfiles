@@ -3,7 +3,7 @@ Documenation of Dotfiles
 
 ## Links to files
 
-- [aliases](/aliases.md)
-- [functions](/functions.md)
-- [whats installed](/installed.md)
+- [aliases](/docs/aliases.md)
+- [functions](/docs/functions.md)
+- [whats installed](/docs/installed.md)
 - ...
