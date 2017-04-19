@@ -191,6 +191,8 @@ inoremap jk <esc>
 
 " Make buffers like a jetpack: you can fly
 nnoremap gb :ls<CR>:b<Space>
+
+" Remap x to delete into the blackhole buffer to make p work better
 noremap x "_x
 
 " End Mappings }}}
