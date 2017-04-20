@@ -133,16 +133,16 @@ if has("autocmd")
         au!
 
         " For all text files set 'textwidth' to 78 characters.
-        autocmd FileType text setlocal textwidth=78
+        autocmd FileType text setlocal textwidth=78 spell spelllang=en_us
 
         " Git commits prefer 72 wrap
-        autocmd FileType gitcommit setlocal textwidth=72
+        autocmd FileType gitcommit setlocal textwidth=72 spell spelllang=en_us
 
         " Shell scripts and the like are 80
         autocmd FileType sh setlocal textwidth=80
 
         " Markdown is 80
-        autocmd FileType markdown setlocal textwidth=80
+        autocmd FileType markdown setlocal textwidth=80 spell spelllang=en_us
 
         " Automatically add foldcolumn if folds present
         au BufWinEnter ?* call HasFolds()
