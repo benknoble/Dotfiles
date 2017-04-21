@@ -2,7 +2,7 @@
 # installer script for brew and certain formulae
 
 echo
-echo "INSTALL BREW"
+echo "Install Brew..."
 
 read -n 1 -p "Install Brew [Y/n]? " installBrew && echo
 if [[ $installBrew =~ ^(y|Y) ]]; then
@@ -125,4 +125,5 @@ if [[ $installBrew =~ ^(y|Y) ]]; then
 else
     echo "Skipping Brew..."
 fi
+echo "...done with Brew"
 echo
