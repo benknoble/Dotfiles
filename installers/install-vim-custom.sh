@@ -2,7 +2,7 @@
 # installer script for Pathogen and certain vim plugins
 
 echo
-echo "INSTALL CUSTOM VIM"
+echo "Install custom vim..."
 
 #install pathogen
 read -n 1 -p "Install Pathogen for Vim [Y/n]? " installPathogen && echo
@@ -76,4 +76,5 @@ if [[ $installPathogen =~ ^(y|Y) ]]; then
 else
     echo "Skipping Pathogen..."
 fi
+echo "...done with custom vim"
 echo
