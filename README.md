@@ -21,6 +21,7 @@ Directory structure
 │   └── update.sh
 ├── gitconfig
 ├── gitignore_global
+├── inputrc
 ├── installers
 │   ├── install-brew.sh
 │   ├── install-git-extras.sh
