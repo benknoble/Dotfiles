@@ -4,6 +4,9 @@ endif
 
 " Options {{{
 
+" Set <Leader> used for mappings
+let mapleader="/"
+
 " Allow backspacking over everything in insert mode
 set backspace=indent,eol,start
 
