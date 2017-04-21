@@ -134,6 +134,8 @@ if has("autocmd")
 
         " For all text files set 'textwidth' to 78 characters.
         autocmd FileType text setlocal textwidth=78 spell spelllang=en_us
+        " But not for help files
+        autocmd FileType help setlocal nospell
 
         " Git commits prefer 72 wrap
         autocmd FileType gitcommit setlocal textwidth=72 spell spelllang=en_us
