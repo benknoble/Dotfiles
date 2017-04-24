@@ -19,7 +19,7 @@ echo "...done with installers"
 echo
 echo "Setting up git..."
 echo
-bash ~/Dotfiles/setup/git-setup.bash
+bash ~/Dotfiles/setup/git-setup.sh
 echo
 echo "...done with git"
 echo

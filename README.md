@@ -27,7 +27,7 @@ Directory structure
 │   ├── install-git-extras.sh
 │   └── install-vim-custom.sh
 ├── setup
-│   ├── git-setup.bash
+│   ├── git-setup.sh
 │   ├── install-all.sh
 │   └── makesymlinks.sh
 ├── update.sh
@@ -81,7 +81,7 @@ verbose though, and works best.
    installed by brew), and they will prompt for confirmation at each step. You
    can execute them yourself if you want to deal with it later, or to reinstall
    something removed.
-3. Executes `./setup/git-setup.bash`, which has two tasks. It confirms the git
+3. Executes `./setup/git-setup.sh`, which has two tasks. It confirms the git
    user name and email, allowing you to set your own, and wires up the global
    gitignore file to point to the right spot.
 
