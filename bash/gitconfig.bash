@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -
 # git config
 
 #add git branch to prompt when available and colorize
