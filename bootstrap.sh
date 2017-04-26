@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -
 # bootstrap is not quite the correct term for this installer based on wikipedia,
 # but it is more fun than 'setup.' The script will execute commands from the
 # setup directory to get things running
