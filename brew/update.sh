@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -
 # updates brew, upgrades formula (removes old versions)
 
 source "$brewscripts/brewutils.sh"

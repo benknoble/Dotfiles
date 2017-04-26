@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -
 # bootstrap is not quite the correct term for this installer based on wikipedia,
 # but it is more fun than 'setup.' The script will execute commands from the
 # setup directory to get things running
@@ -19,7 +19,7 @@ echo "...done with installers"
 echo
 echo "Setting up git..."
 echo
-bash ~/Dotfiles/setup/git-setup.bash
+bash ~/Dotfiles/setup/git-setup.sh
 echo
 echo "...done with git"
 echo
