@@ -187,6 +187,10 @@ inoremap <C-U> <C-G>u<C-U>
 nnoremap n nzz
 nnoremap N Nzz
 cnoremap <expr> <CR> getcmdtype() =~ '[/?]' ? '<CR>zz' : '<CR>'
+" And other motions
+nnoremap G Gzz
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
 
 " Make 'jj' and 'jk' throw you into normal mode
 inoremap jj <esc>
