@@ -219,7 +219,7 @@ endif
 
 " Detects if folds present, sets foldcolumn to 2 if true or 0 if false
 " From http://stackoverflow.com/questions/8757168/gvim-automatic-show-foldcolumn-when-there-are-folds-in-a-file
-function HasFolds()
+function! HasFolds()
     "Attempt to move between folds, checking line numbers to see if it worked.
     "If it did, there are folds.
 
