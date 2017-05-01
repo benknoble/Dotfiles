@@ -190,7 +190,13 @@ cnoremap <expr> <CR> getcmdtype() =~ '[/?]' ? '<CR>zz' : '<CR>'
 
 " Make 'jj' and 'jk' throw you into normal mode
 inoremap jj <esc>
+inoremap JJ <esc>
+inoremap Jj <esc>
+inoremap jJ <esc>
 inoremap jk <esc>
+inoremap JK <esc>
+inoremap Jk <esc>
+inoremap jK <esc>
 
 " Make buffers like a jetpack: you can fly
 nnoremap gb :ls<CR>:b<Space>
