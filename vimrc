@@ -210,6 +210,9 @@ noremap x "_x
 
 map <Leader>s :w<CR>
 
+" Reload with F6
+map <F6> :Reload<CR>
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
@@ -221,6 +224,17 @@ map <Leader>s :w<CR>
 if !exists(":DiffOrig")
     command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
         \ | wincmd p | diffthis
+endif
+
+" Reload vimrc
+" If airline gets weird, try ":ReloadAir"
+if !exists(":Reload")
+    command -bar Reload source $MYVIMRC
+endif
+
+" Reload vimrc and refresh airline
+if !exists(":ReloadAir")
+    command -bar ReloadAir :Reload | AirlineRefresh
 endif
 
 " Detects if folds present, sets foldcolumn to 2 if true or 0 if false
