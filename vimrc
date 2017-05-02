@@ -191,6 +191,8 @@ cnoremap <expr> <CR> getcmdtype() =~ '[/?]' ? '<CR>zz' : '<CR>'
 nnoremap G Gzz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
+" Center cursor on click
+nnoremap <LeftMouse> <LeftMouse>zz
 
 " Make 'jj' and 'jk' throw you into normal mode
 inoremap jj <esc>
