@@ -208,6 +208,8 @@ nnoremap gb :ls<CR>:b<Space>
 " Remap x to delete into the blackhole buffer to make p work better
 noremap x "_x
 
+map <Leader>s :w<CR>
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
