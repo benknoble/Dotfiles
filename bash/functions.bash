@@ -48,8 +48,8 @@ vimupdate() {
 }
 
 freewrite() {
-    date="$(date -j +"%e %B %Y")"
-    file="$(echo "$date" | tr ' ' '-').md"
+    date="$(date -j +"%e-%B-%Y" | tr -d '[:space:]' | tr '-' ' ')"
+    file="$(date -j +"%e-%B-%Y" | tr -d '[:space:]')".md
     echo -e "Free-write $date\n\n" > "$file"
     vim +3 "$file"
 }
