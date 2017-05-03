@@ -27,7 +27,7 @@ source ~/Dotfiles/bash/gitconfig.bash
 #set PS1
 #__gps1 is a special value exported by gitconfig above
 #it is basically a bash command that returns the branch name for PS1 formatting
-export PS1="$CS$BRED$CE\j$CS$NC$CE $CS$BPURPLE$CE\!$CS$NC$CE $CS$BWHITE$CE\u$CS$NC$CE:$CS$BCYAN$CE\W$CS$NC$CE $CS$BYELLOW$CE\$("$__gps1")$CS$NC$CE\$ "
+export PS1="$CS$BRED$CE\j$CS$NC$CE $CS$BPURPLE$CE\!$CS$NC$CE $CS$BWHITE$CE\u$CS$NC$CE:$CS$BCYAN$CE\W$CS$NC$CE $CS$BYELLOW$CE\$("$__gps1")$CS$NC$CE"'\$ '
 
 #use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
