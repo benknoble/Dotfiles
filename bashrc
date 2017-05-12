@@ -53,5 +53,5 @@ complete -o default -F _pip_completion pip
 # pip bash completion end
 
 # brew completion if possible
-
-[[ -s "$(brew --prefix)/Homebrew/completions/bash/brew" ]] && source "$(brew --prefix)/Homebrew/completions/bash/brew"
+brewcomp=/usr/local/etc/bash_completion.d/brew
+[[ -s "$brewcomp" ]] && source "$brewcomp"
