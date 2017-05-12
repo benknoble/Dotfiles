@@ -36,13 +36,6 @@ pathadd() {                                 # add to path
 }
 
 vimupdate() {
-    if [ -d ~/.vim/bundle ]; then
-        for dir in `ls ~/.vim/bundle`; do
-            echo
-            echo ~/.vim/bundle/"$dir"
-            echo "$(date)"
-            (cd ~/.vim/bundle/"$dir" && git checkout master && git pull)
-            echo
-        done
-    fi
+    cd ~/Dotfiles
+    git submodule update --remote --merge
 }

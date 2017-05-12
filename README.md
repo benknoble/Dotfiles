@@ -1,7 +1,7 @@
 # dotfiles
 Dotfiles for configuration of different software and command-line programs
 
-Directory structure
+Directory structure (output of `tree -L 3 --noreport`)
 ```
 .
 ├── README.md
@@ -21,6 +21,7 @@ Directory structure
 │   └── update.sh
 ├── gitconfig
 ├── gitignore_global
+├── inputrc
 ├── installers
 │   ├── install-brew.sh
 │   ├── install-git-extras.sh
@@ -30,13 +31,29 @@ Directory structure
 │   ├── install-all.sh
 │   └── makesymlinks.sh
 ├── update.sh
+├── vim
+│   ├── autoload
+│   ├── bundle
+│   │   ├── vim-airline
+│   │   ├── vim-airline-themes
+│   │   ├── vim-auto-pairs
+│   │   ├── vim-ctrlp
+│   │   ├── vim-fugitive
+│   │   ├── vim-invader
+│   │   ├── vim-pathogen
+│   │   ├── vim-syntastic
+│   │   ├── vim-windowswap
+│   │   └── vim-winresizer
+│   └── spell
+│       ├── en.utf-8.add
+│       └── en.utf-8.add.spl
 └── vimrc
 ```
 
 ## Features
 
 - bashrc for making bash more fun
-- vimrc for starting arguments about vim settings
+- vimrc/vim for starting arguments about vim settings
 - git config/ignore files for git settings and aliases
 - lots of useful scripts
 
@@ -57,7 +74,7 @@ Dependencies](#name-dependencies).
 ```bash
 $ mkdir ~/Dotfiles && cd ~/Dotfiles
 
-$ git clone https://github.com/benknoble/Dotfiles.git
+$ git clone --recursive https://github.com/benknoble/Dotfiles.git
 ```
 
 Next, run the `bootstrap` script to kick things off:

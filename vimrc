@@ -293,11 +293,9 @@ endfunction
 " Make netrw use a tree
 let g:netrw_liststyle=3
 
-" only attempt to use pathogen if installed
-if !empty(glob("~/.vim/autoload/pathogen.vim"))
-    execute pathogen#infect()
-    :Helptags
-endif
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+:Helptags
 
 " set airline-theme if installed
 if !empty(glob("~/.vim/bundle/vim-airline-themes"))
