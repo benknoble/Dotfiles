@@ -32,7 +32,6 @@ export PS1="$CS$BRED$CE\j$CS$NC$CE $CS$BPURPLE$CE\!$CS$NC$CE $CS$BWHITE$CE\u$CS$
 #use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
 
-HISTCONTROL="ignoredups:erasedups"
 HISTSIZE=100000
 HISTFILESIZE="$HISTSIZE"
 shopt -s histappend
