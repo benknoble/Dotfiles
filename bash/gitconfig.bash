@@ -2,8 +2,9 @@
 # git config
 
 #add git branch to prompt when available and colorize
-if [[ -s ~/.git-prompt.sh ]]; then
-    . ~/.git-prompt.sh
+gitprompt=/usr/local/etc/bash_completion.d/git-prompt.sh
+if [[ -s "$gitprompt" ]]; then
+    . "$gitprompt"
     export GIT_PS1_SHOWDIRTYSTATE='true'
     export GIT_PS1_SHOWSTASHSTATE='true'
     export GIT_PS1_SHOWUNTRACKEDFILES='true'
@@ -15,4 +16,5 @@ else
 fi
 
 #add git autocompletion, if it exists
-[[ -s ~/.git-completion.bash ]] && . ~/.git-completion.bash
+gitcomp=/usr/local/etc/bash_completion.d/git-completion.bash
+[[ -s "$gitcomp" ]] && . "$gitcomp"
