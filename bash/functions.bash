@@ -3,10 +3,10 @@
 
 cdls () { cd "$@" && ls ; }                  # cd and ls
 trash () { mv "$@" ~/.Trash ; }              # Move a file to Trash
-aliases () { cat ~/Dotfiles/bash/aliases.bash | tail -n +4 ; }                        # List all aliases found in this file
-functions () { cat ~/Dotfiles/bash/functions.bash | tail -n +4 ; }                    # List all functions found in this file
+aliases () { cat ~/Dotfiles/bash/aliases.bash | tail -n +4 | less ; }                 # List all aliases found in this file
+functions () { cat ~/Dotfiles/bash/functions.bash | tail -n +4 | less ; }             # List all functions found in this file
 findPid () { lsof -t -c "$@" ; }             # Find Pid of specified process
-displayPath () { for path in "${PATH//:/ }"; do echo "$path"; done; }                   # Print path separated by newlines
+displayPath () { for path in "${PATH//:/ }"; do echo "$path"; done; }                 # Print path separated by newlines
 mkcd () { mkdir "$@" && cd "$@" ; }          # mkdir and cd
 editall () { vim -p "$@" ; }                 # edit all files provided as arguments in vim tabs
 extract () {                                 # attempt to extract file with correct extraction method
@@ -36,13 +36,13 @@ pathadd() {                                 # add to path
 }
 
 vimupdate() {
-    if [ -d ~/.vim/bundle ]; then
-        for dir in `ls ~/.vim/bundle`; do
-            echo
-            echo ~/.vim/bundle/"$dir"
-            echo "$(date)"
-            (cd ~/.vim/bundle/"$dir" && git checkout master && git pull)
-            echo
-        done
-    fi
+    cd ~/Dotfiles
+    git submodule update --remote --merge
+}
+
+freewrite() {
+    date="$(date -j +"%e-%B-%Y" | tr -d '[:space:]' | tr '-' ' ')"
+    file="$(date -j +"%e-%B-%Y" | tr -d '[:space:]')".md
+    echo -e "Free-write $date\n\n" > "$file"
+    vim +3 "$file"
 }

@@ -1,0 +1,30 @@
+[submodule "vim/bundle/vim-pathogen"]
+	path = vim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "vim/bundle/vim-airline"]
+	path = vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/bundle/vim-airline-themes"]
+	path = vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "vim/bundle/vim-auto-pairs"]
+	path = vim/bundle/vim-auto-pairs
+	url = git://github.com/jiangmiao/auto-pairs.git
+[submodule "vim/bundle/vim-ctrlp"]
+	path = vim/bundle/vim-ctrlp
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/bundle/vim-invader"]
+	path = vim/bundle/vim-invader
+	url = https://github.com/mattn/invader-vim.git
+[submodule "vim/bundle/vim-syntastic"]
+	path = vim/bundle/vim-syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "vim/bundle/vim-windowswap"]
+	path = vim/bundle/vim-windowswap
+	url = https://github.com/wesQ3/vim-windowswap.git
+[submodule "vim/bundle/vim-winresizer"]
+	path = vim/bundle/vim-winresizer
+	url = https://github.com/simeji/winresizer.git

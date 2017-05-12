@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -
 # git setup
 
 # config function
@@ -7,7 +7,7 @@
 # -- Prompts for user name and then does git config --global user.name $input
 config() {
     read -p "Enter git $1 $2 > " u_in
-    git config --global $1.$2 "$u_in"
+    git config --global "$1.$2" "$u_in"
     echo "git $1 $2 = $u_in"
 }
 
@@ -16,8 +16,8 @@ echo
 
 # reconfigure user name, email address
 echo "Configure user name and email..."
-name=$(git config --global --get user.name)
-email=$(git config --global --get user.email)
+name="$(git config --global --get user.name)"
+email="$(git config --global --get user.email)"
 
 if [[ -z "$name" ]]; then
     echo "No previous user name"
@@ -25,7 +25,7 @@ if [[ -z "$name" ]]; then
 else
     echo "Previous user name: $name"
     read -n 1 -p "Is [name = $name] ok [Y/n] ? " nameok && echo
-    if [[ !($nameok =~ ^(y|Y)) ]]; then
+    if [[ !("$nameok" =~ ^(y|Y)) ]]; then
         config user name
     fi
 fi
@@ -37,7 +37,7 @@ if [[ -z "$email" ]]; then
 else
     echo "Previous user email: $email"
     read -n 1 -p "Is [email = $email] ok [Y/n] ? " emailok && echo
-    if [[ !($emailok =~ ^(y|Y)) ]]; then
+    if [[ !("$emailok" =~ ^(y|Y)) ]]; then
         config user email
     fi
 fi
