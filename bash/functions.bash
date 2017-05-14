@@ -35,11 +35,6 @@ pathadd() {                                 # add to path
     fi
 }
 
-vimupdate() {
-    cd ~/Dotfiles
-    git submodule update --remote --merge
-}
-
 freewrite() {
     date="$(date -j +"%e-%B-%Y" | tr -d '[:space:]' | tr '-' ' ')"
     file="$(date -j +"%e-%B-%Y" | tr -d '[:space:]')".md
