@@ -4,20 +4,20 @@
 echo
 echo "Install custom vim..."
 
-#install pathogen
+# install pathogen
 read -n 1 -p "Install Pathogen for Vim [Y/n]? " installPathogen && echo
 if [[ "$installPathogen" =~ ^(y|Y) ]]; then
     echo "Installing Pathogen..."
     (mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim) || echo "Pathogen installation failed"
 
-    #install vim-airline
+    # install vim-airline
     read -n 1 -p "Install Vim-Airline [Y/n]? " installVAirline && echo
     if [[ "$installVAirline" =~ ^(y|Y) ]]; then
         echo "Installing Vim-Airline..."
         (git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline) || echo "Vim-Airline installation failed"
 
-        #install vim-airline-themes
+        # install vim-airline-themes
         read -n 1 -p "Install Vim-Airline-Themes [Y/n]? " installVAThemes && echo
         if [[ "$installVAThemes" =~ ^(y|Y) ]]; then
             echo "Installing Vim-Airline-Themes..."
@@ -29,7 +29,7 @@ if [[ "$installPathogen" =~ ^(y|Y) ]]; then
         echo "Skipping Vim-Airline..."
     fi
 
-    #install vim-fugitive
+    # install vim-fugitive
     read -n 1 -p "Install Vim-Fugitive [Y/n]? " installVFugitive && echo
     if [[ "$installVFugitive" =~ ^(y|Y) ]]; then
         echo "Installing Vim-Fugitive..."
@@ -38,7 +38,7 @@ if [[ "$installPathogen" =~ ^(y|Y) ]]; then
         echo "Skipping Vim-Fugitive..."
     fi
 
-    #install syntastic
+    # install syntastic
     read -n 1 -p "Install Syntastic [Y/n]? " installSyntastic && echo
     if [[ "$installSyntastic" =~ ^(y|Y) ]]; then
         echo "Installing Syntastic..."
@@ -47,7 +47,7 @@ if [[ "$installPathogen" =~ ^(y|Y) ]]; then
         echo "Skipping Syntastic..."
     fi
 
-    #install ctrl-p
+    # install ctrl-p
     read -n 1 -p "Install Ctrl-P [Y/n]? " installCP && echo
     if [[ "$installCP" =~ ^(y|Y) ]]; then
         echo "Installing Ctrl-P..."
@@ -56,7 +56,7 @@ if [[ "$installPathogen" =~ ^(y|Y) ]]; then
         echo "Skipping Ctrl-P..."
     fi
 
-    #install auto-pairs
+    # install auto-pairs
     read -n 1 -p "Install Auto-Pairs [Y/n]? " installAP && echo
     if [[ "$installAP" =~ ^(y|Y) ]]; then
         echo "Installing Auto-Pairs..."
@@ -65,7 +65,7 @@ if [[ "$installPathogen" =~ ^(y|Y) ]]; then
         echo "Skipping Auto-Pairs..."
     fi
 
-    #install invaders
+    # install invaders
     read -n 1 -p "Install Invaders [Y/n]? " installInv && echo
     if [[ "$installInv" =~ ^(y|Y) ]]; then
         echo "Installing Invaders..."

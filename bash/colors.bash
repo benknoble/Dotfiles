@@ -1,5 +1,5 @@
 #! /bin/bash -
-#color definitions
+# color definitions
 
 ########################################
 #         COLOR DEFINITIONS            #
@@ -19,7 +19,7 @@ export PURPLE='\033[0;35m'
 export CYAN='\033[0;36m'
 export WHITE='\033[0;37m'
 
-#bold
+# bold
 export BBLACK='\033[0;90m'
 export BRED='\033[0;91m'
 export BGREEN='\033[0;92m'
@@ -29,7 +29,7 @@ export BPURPLE='\033[0;95m'
 export BCYAN='\033[0;96m'
 export BWHITE='\033[0;97m'
 
-#background
+# background
 export ON_BLACK='\033[0;40m'
 export ON_RED='\033[0;41m'
 export ON_GREEN='\033[0;42m'
@@ -39,7 +39,7 @@ export ON_PURPLE='\033[0;45m'
 export ON_CYAN='\033[0;46m'
 export ON_WHITE='\033[0;47m'
 
-#bold background
+# bold background
 export ON_BBLACK='\033[0;100m'
 export ON_BRED='\033[0;101m'
 export ON_BGREEN='\033[0;102m'
