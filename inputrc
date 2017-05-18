@@ -4,11 +4,11 @@ set completion-ignore-case on
 "\e[1;9D": backward-word
 "\e[1;9C": forward-word
 # opt+left, opt+right in tmux
-#"\e[1;3D": backward-word
-#"\e[1;3C": forward-word
+# "\e[1;3D": backward-word
+# "\e[1;3C": forward-word
 # shift+left, shift+right
-#"\e[1;2D": backward-word
-#"\e[1;2C": forward-word
+# "\e[1;2D": backward-word
+# "\e[1;2C": forward-word
 
 # https://coderwall.com/p/oqtj8w/the-single-most-useful-thing-in-bash
 # E.g. type "cd" and hit up arrow to search through history for that prefix.

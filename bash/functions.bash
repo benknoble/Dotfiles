@@ -1,5 +1,5 @@
 #! /bin/bash -
-#function definitions
+# function definitions
 
 cdls () { cd "$@" && ls ; }                  # cd and ls
 trash () { mv "$@" ~/.Trash ; }              # Move a file to Trash

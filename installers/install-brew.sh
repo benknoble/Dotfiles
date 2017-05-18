@@ -9,13 +9,13 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
     echo "Installing Brew..."
     (/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)") || echo "Brew installation failed"
 
-    #install cask
+    # install cask
     read -n 1 -p "Install Cask [Y/n]? " installCask && echo
     if [[ "$installCask" =~ ^(y|Y) ]]; then
         echo "Installing Cask..."
         (brew tap caskroom/cask) || echo "Brew/Cask installation failed"
 
-        #install mactex
+        # install mactex
         read -n 1 -p "Install Mactex via Cask [Y/n]? " installTex && echo
         if [[ "$installTex" =~ ^(y|Y) ]]; then
             echo "Installing Mactex..."
@@ -27,7 +27,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping Cask..."
     fi
 
-    #install brew vim
+    # install brew vim
     read -n 1 -p "Install Vim via Brew [Y/n]? " installVim && echo
     if [[ "$installVim" =~ ^(y|Y) ]]; then
         echo "Installing Vim..."
@@ -36,7 +36,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping Vim..."
     fi
 
-    #install brew git
+    # install brew git
     read -n 1 -p "Install Git via Brew [Y/n]? " installGit && echo
     if [[ "$installGit" =~ ^(y|Y) ]]; then
         echo "Installing Git..."
@@ -45,7 +45,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping Git..."
     fi
 
-    #install and configure bash 4.0
+    # install and configure bash 4.0
     read -n 1 -p "Install Bash 4.0 via Brew (admin priviledge required for some steps) [Y/n]? " installBash && echo
     if [[ "$installBash" =~ ^(y|Y) ]]; then
         echo "Installing Bash..."
@@ -58,7 +58,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping Bash..."
     fi
 
-    #install archey
+    # install archey
     read -n 1 -p "Install Archey via Brew [Y/n]? " installArchey && echo
     if [[ "$installArchey" =~ ^(y|Y) ]]; then
         echo "Installing Archey..."
@@ -67,7 +67,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping Archey..."
     fi
 
-    #install smlnj
+    # install smlnj
     read -n 1 -p "Install SML/NJ via Brew [Y/n]? " installsmlnj && echo
     if [[ "$installsmlnj" =~ ^(y|Y) ]]; then
         echo "Installing SML/NJ..."
@@ -76,7 +76,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping SML/NJ..."
     fi
 
-    #install nethack
+    # install nethack
     read -n 1 -p "Install nethack via Brew [Y/n]? " installNethack && echo
     if [[ "$installNethack" =~ ^(y|Y) ]]; then
         echo "Installing nethack..."
@@ -85,7 +85,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping nethack..."
     fi
 
-    #install python
+    # install python
     read -n 1 -p "Install python via Brew [Y/n]? " installPython && echo
     if [[ "$installPython" =~ ^(y|Y) ]]; then
         echo "Installing Python..."
@@ -94,7 +94,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping python..."
     fi
 
-    #install python3
+    # install python3
     read -n 1 -p "Install python3 via Brew [Y/n]? " installPython3 && echo
     if [[ "$installPython3" =~ ^(y|Y) ]]; then
         echo "Installing python3..."
@@ -103,7 +103,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping python3..."
     fi
 
-    #install tree
+    # install tree
     read -n 1 -p "Install tree via Brew [Y/n]? " installTree && echo
     if [[ "$installTree" =~ ^(y|Y) ]]; then
         echo "Installing tree..."
@@ -112,7 +112,7 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
         echo "Skipping tree..."
     fi
 
-    #install gnu utils
+    # install gnu utils
     read -n 1 -p "Install GNU utilities [Y/n]? " installGnu && echo
     if [[ "$installGnu" =~ ^(y|Y) ]]; then
         echo "Installing GNU utilities..."
