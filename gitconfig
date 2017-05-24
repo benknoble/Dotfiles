@@ -1,7 +1,7 @@
 [alias]
 	cd = checkout
 	stat = status
-	ls = branch
+	ls = branch --list
 	cc = commit
 	cm = commit -m
 	sdiff = !git diff && git submodule foreach 'git diff'
