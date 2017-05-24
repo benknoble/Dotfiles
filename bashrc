@@ -55,3 +55,6 @@ complete -o default -F _pip_completion pip
 # brew completion if possible
 brewcomp=/usr/local/etc/bash_completion.d/brew
 [[ -s "$brewcomp" ]] && source "$brewcomp"
+
+# add brew ext commands to path
+pathadd "$brewscripts/ext"
