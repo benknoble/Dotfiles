@@ -36,8 +36,8 @@ pathadd() {                                 # add to path
 }
 
 freewrite() {
-    date="$(date -j +"%e-%B-%Y" | tr -d '[:space:]' | tr '-' ' ')"
-    file="$(date -j +"%e-%B-%Y" | tr -d '[:space:]')".md
+    local date="$(date -j +"%e-%B-%Y" | tr -d '[:space:]' | tr '-' ' ')"
+    local file="$(date -j +"%e-%B-%Y" | tr -d '[:space:]')".md
     echo -e "Free-write $date\n\n" > "$file"
     vim +3 "$file"
 }
