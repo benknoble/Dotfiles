@@ -17,8 +17,9 @@ Directory structure (output of `tree -L 3 --noreport`)
 ├── brew
 │   ├── README.md
 │   ├── brewutils.sh
-│   ├── cleanup.sh
-│   └── update.sh
+│   └── ext
+│       ├── brew-superclean
+│       └── brew-superupdate
 ├── gitconfig
 ├── gitignore_global
 ├── inputrc
