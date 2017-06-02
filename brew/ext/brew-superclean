@@ -1,0 +1,7 @@
+#! /bin/bash -
+#:  * `superclean`:
+#:    Cleans up the cache and outdated version downloads, calling `cleanup -s`
+#:
+#:    See `brew help cleanup` for more information
+
+brew cleanup -s

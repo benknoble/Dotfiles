@@ -1,12 +1,12 @@
 [alias]
 	cd = checkout
 	stat = status
-	ls = branch
+	ls = branch --list
 	cc = commit
 	cm = commit -m
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
-	supdate = submodule update --remote --merge
+	supdate = submodule update --remote --checkout
 	unstage = reset HEAD --
 	last = log -1 HEAD
 	visual = !gitk --all &

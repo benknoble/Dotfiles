@@ -1,6 +1,6 @@
 #! /bin/bash -
 ############################
-#.make.sh
+# .make.sh
 # This script creates symlinks from the home directory to any desired dotfiles in ~/Dotfiles
 ############################
 
@@ -16,6 +16,13 @@ files="bash_profile vimrc bashrc inputrc gitconfig gitignore_global vim"
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing Dotfiles in ~"
 mkdir -p "$olddir"
+sleep 1
+echo "...done"
+echo
+
+# clean out dotfiles_old
+echo "Cleaning out $olddir to hold fresh backups"
+find ~/Dotfiles_old/ -not -path ~/Dotfiles_old/ -delete
 sleep 1
 echo "...done"
 echo

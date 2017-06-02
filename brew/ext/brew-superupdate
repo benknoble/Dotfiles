@@ -1,0 +1,9 @@
+#! /bin/bash -
+#:  * `superupdate`:
+#:    Updates brew and upgrades formula (removes old versions) in one command
+#:
+#:    Calls `brew update` and `brew upgrade --cleanup`; see their help for more
+#:    information
+
+brew update
+brew upgrade --cleanup

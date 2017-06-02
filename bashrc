@@ -3,33 +3,33 @@
 # dir for brew scripts
 export brewscripts="$HOME/Dotfiles/brew"
 
-#set default editor to vim
+# set default editor to vim
 export EDITOR=vim
 
-#use my color scheme for ls
+# use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
-#reload profile
+# reload profile
 alias reload='. ~/.bashrc && echo "reloaded"'
 
-#load colors
+# load colors
 source ~/Dotfiles/bash/colors.bash
 
-#load aliases
+# load aliases
 source ~/Dotfiles/bash/aliases.bash
 
-#load functions
+# load functions
 source ~/Dotfiles/bash/functions.bash
 
-#load git config
+# load git config
 source ~/Dotfiles/bash/gitconfig.bash
 
-#set PS1
-#__gps1 is a special value exported by gitconfig above
-#it is basically a bash command that returns the branch name for PS1 formatting
-export PS1="$CS$BRED$CE\j$CS$NC$CE $CS$BPURPLE$CE\!$CS$NC$CE $CS$BWHITE$CE\u$CS$NC$CE:$CS$BCYAN$CE\W$CS$NC$CE $CS$BYELLOW$CE\$("$__gps1")$CS$NC$CE"'\$ '
+# set PS1
+# __gps1 is a special value exported by gitconfig above
+# it is basically a bash command that returns the branch name for PS1 formatting
+export PS1="$CS$BRED$CE\jj$CS$NC$CE $CS$BPURPLE$CE#\!$CS$NC$CE $CS$BWHITE$CE\u$CS$NC$CE:$CS$BCYAN$CE\W$CS$NC$CE $CS$BYELLOW$CE\$("$__gps1")$CS$NC$CE"'\$ '
 
-#use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
+# use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
 
 HISTSIZE=100000
@@ -55,3 +55,6 @@ complete -o default -F _pip_completion pip
 # brew completion if possible
 brewcomp=/usr/local/etc/bash_completion.d/brew
 [[ -s "$brewcomp" ]] && source "$brewcomp"
+
+# add brew ext commands to path
+pathadd "$brewscripts/ext"
