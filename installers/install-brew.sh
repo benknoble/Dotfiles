@@ -122,6 +122,17 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
     else
         echo "Skipping GNUtils..."
     fi
+
+    # install cowsay
+    read -n 1 -p "Install message utils [Y/n]? " installMotd && echo
+    if [[ "$installMotd" =~ ^(y|Y) ]]; then
+        echo "Installing message utils..."
+        (brew install cowsay && brew install fortune && brew install ponysay \
+        brew install lolcat) || echo "Brew/Message utils installation \
+        failed"
+    else
+        echo "Skipping message utils..."
+    fi
 else
     echo "Skipping Brew..."
 fi
