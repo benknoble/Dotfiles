@@ -9,8 +9,14 @@ export EDITOR=vim
 # use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
+# Message of the Day control
+# COW controls which cow to use (use `cowsay -l` for options)
+# COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
+export COW=small
+export COLOR=1
+
 # reload profile
-alias reload='. ~/.bashrc && echo "reloaded"'
+alias reload='. ~/.bashrc >/dev/null && echo "reloaded"'
 
 # load colors
 source ~/Dotfiles/bash/colors.bash
@@ -58,3 +64,19 @@ brewcomp=/usr/local/etc/bash_completion.d/brew
 
 # add brew ext commands to path
 pathadd "$brewscripts/ext"
+
+# Message of the Day
+# COW controls which cow to use (use `cowsay -l` for options)
+# COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
+if [[ $(which -s cowsay) -eq 0 && $(which -s fortune) -eq 0 ]]; then
+    message="$(fortune -a)"
+    if [[ -z "$COW" ]]; then
+        COW=default
+    fi
+    message="$(echo "$message" | cowsay -f "$COW" -n)"
+    if [[ $(which -s lolcat) -eq 0 && "$COLOR" -eq 0 ]]; then
+        lolcat <<<"$message"
+    else
+        echo "$message"
+    fi
+fi
