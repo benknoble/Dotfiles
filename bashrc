@@ -80,7 +80,7 @@ if [[ $(which -s cowsay) -eq 0 && $(which -s fortune) -eq 0 ]]; then
         COW=default
     fi
     message="$(echo "$message" | cowsay -f "$COW" -n)"
-    if [[ $(which -s lolcat) -eq 0 && "$COLOR" -eq 0 ]]; then
+    if [[ $(which -s lolcat) -eq 0 && "$COLOR" = "0" ]]; then
         lolcat <<<"$message"
     else
         echo "$message"
