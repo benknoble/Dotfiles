@@ -15,6 +15,12 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 export COW=small
 export COLOR=1
 
+# set PS2
+# PS2="λ "
+PS2="» "
+# set PS3
+PS3="$PS2"
+
 # reload profile
 alias reload='. ~/.bashrc >/dev/null && echo "reloaded"'
 
