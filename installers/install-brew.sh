@@ -128,8 +128,8 @@ if [[ "$installBrew" =~ ^(y|Y) ]]; then
     if [[ "$installMotd" =~ ^(y|Y) ]]; then
         echo "Installing message utils..."
         (brew install cowsay && brew install fortune && brew install ponysay \
-        brew install lolcat) || echo "Brew/Message utils installation \
-        failed"
+        brew install lolcat && brew install figlet) \
+        || echo "Brew/Message utils installation failed"
     else
         echo "Skipping message utils..."
     fi
