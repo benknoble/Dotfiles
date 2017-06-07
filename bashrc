@@ -13,7 +13,7 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 # COW controls which cow to use (use `cowsay -l` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
 export COW=small
-export COLOR=1
+export COLOR=0
 
 # set PS2
 # PS2="λ "
