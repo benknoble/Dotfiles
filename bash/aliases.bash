@@ -28,3 +28,4 @@ alias beep="echo -n $'\a'"                  # Do a beep
 alias brewclean="$brewscripts/cleanup.sh"   # Clean up brew
 alias brewupdate="$brewscripts/update.sh"   # Update brew
 alias today='date -j +"%e %B %Y"'           # A format of the date
+alias battery='pmset -g batt'               # Display battery info
