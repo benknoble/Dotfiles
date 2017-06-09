@@ -10,41 +10,76 @@ CE='\]'
 
 export NC='\e[0m'
 
-export BLACK='\e[0;30m'
-export RED='\e[0;31m'
-export GREEN='\e[0;32m'
-export YELLOW='\e[0;33m'
-export BLUE='\e[0;34m'
-export PURPLE='\e[0;35m'
-export CYAN='\e[0;36m'
-export WHITE='\e[0;37m'
+# attributes
+none=00
+bold=01
+uscore=04
+blink=05
+rev=07
+hide=08
 
-# bold
-export BBLACK='\e[0;90m'
-export BRED='\e[0;91m'
-export BGREEN='\e[0;92m'
-export BYELLOW='\e[0;93m'
-export BBLUE='\e[0;94m'
-export BPURPLE='\e[0;95m'
-export BCYAN='\e[0;96m'
-export BWHITE='\e[0;97m'
+# text color
+black=30
+red=31
+green=32
+yellow=33
+blue=34
+magenta=35
+cyan=36
+white=37
+
+# pass in a color from text above
+function brighten {
+    echo $(( $1 + 60 ))
+}
+
+# pass in a color from text above
+function background {
+    echo $(( $1 + 10 ))
+}
+
+# build color string
+# colorbuild color attribute
+# e.g., colorbuild "$red" "$BOLD"
+function colorbuild {
+    echo '\e['"$2"';'"$1"'m'
+}
+
+Black="$(colorbuild "$black" "$none")"
+Red="$(colorbuild "$red" "$none")"
+Green="$(colorbuild "$green" "$none")"
+Yellow="$(colorbuild "$yellow" "$none")"
+Blue="$(colorbuild "$blue" "$none")"
+Magenta="$(colorbuild "$magenta" "$none")"
+Cyan="$(colorbuild "$cyan" "$none")"
+White="$(colorbuild "$white" "$none")"
+
+# bright
+BBlack="$(colorbuild "$(brighten "$black")" "$none")"
+BRed="$(colorbuild "$(brighten "$red")" "$none")"
+BGreen="$(colorbuild "$(brighten "$green")" "$none")"
+BYellow="$(colorbuild "$(brighten "$yellow")" "$none")"
+BBlue="$(colorbuild "$(brighten "$blue")" "$none")"
+BMagenta="$(colorbuild "$(brighten "$magenta")" "$none")"
+BCyan="$(colorbuild "$(brighten "$cyan")" "$none")"
+BWhite="$(colorbuild "$(brighten "$white")" "$none")"
 
 # background
-export ON_BLACK='\e[0;40m'
-export ON_RED='\e[0;41m'
-export ON_GREEN='\e[0;42m'
-export ON_YELLOW='\e[0;43m'
-export ON_BLUE='\e[0;44m'
-export ON_PURPLE='\e[0;45m'
-export ON_CYAN='\e[0;46m'
-export ON_WHITE='\e[0;47m'
+On_Black="$(colorbuild "$(background "$black")" "$none")"
+On_Red="$(colorbuild "$(background "$red")" "$none")"
+On_Green="$(colorbuild "$(background "$green")" "$none")"
+On_Yellow="$(colorbuild "$(background "$yellow")" "$none")"
+On_Blue="$(colorbuild "$(background "$blue")" "$none")"
+On_Magenta="$(colorbuild "$(background "$magenta")" "$none")"
+On_Cyan="$(colorbuild "$(background "$cyan")" "$none")"
+On_White="$(colorbuild "$(background "$white")" "$none")"
 
-# bold background
-export ON_BBLACK='\e[0;100m'
-export ON_BRED='\e[0;101m'
-export ON_BGREEN='\e[0;102m'
-export ON_BYELLOW='\e[0;103m'
-export ON_BBLUE='\e[0;104m'
-export ON_BPURPLE='\e[0;105m'
-export ON_BCYAN='\e[0;106m'
-export ON_BWHITE='\e[0;107m'
+# bright background
+On_BBlack="$(colorbuild "$(background "$(brighten "$black")")" "$none")"
+On_BRed="$(colorbuild "$(background "$(brighten "$red")")" "$none")"
+On_BGreen="$(colorbuild "$(background "$(brighten "$green")")" "$none")"
+On_BYellow="$(colorbuild "$(background "$(brighten "$yellow")")" "$none")"
+On_BBlue="$(colorbuild "$(background "$(brighten "$blue")")" "$none")"
+On_BMagenta="$(colorbuild "$(background "$(brighten "$magenta")")" "$none")"
+On_BCyan="$(colorbuild "$(background "$(brighten "$cyan")")" "$none")"
+On_BWhite="$(colorbuild "$(background "$(brighten "$white")")" "$none")"
