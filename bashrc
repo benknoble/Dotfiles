@@ -39,7 +39,7 @@ source ~/Dotfiles/bash/gitconfig.bash
 # set PS1
 # __gps1 is a special value exported by gitconfig above
 # it is basically a bash command that returns the branch name for PS1 formatting
-# PS1="$CS$BRed$CE\jj$NC $CS$BMagenta$CE#\!$NC $CS$BWhite$CE\u$NC:$CS$BCyan$CE\W$NC $CS$BYellow$CE\$("$__gps1")$NC"'\$ '
+# PS1="$CS$BRed$CE\jj$CS$NC$CE $CS$BMagenta$CE#\!$CS$NC$CE $CS$BWhite$CE\u$CS$NC$CE:$CS$BCyan$CE\W$CS$NC$CE $CS$BYellow$CE\$("$__gps1")$CS$NC$CE"'\$ '
 source ~/Dotfiles/bash/PS1.bash
 
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
