@@ -113,9 +113,9 @@ function _date_prompt {
 function _user_prompt {
     if [[ "$_show_user" = "$_value_on" ]]; then
         if [[ "$_show_host" = "$_value_on" ]]; then
-            echo '\u@\h'
+            echo '\u@\h '
         else
-            echo '\u'
+            echo '\u '
         fi
     fi
 }
@@ -152,7 +152,7 @@ function _dir_prompt {
 
 function _history_prompt {
     if [[ "$_show_history" = "$_value_on" ]]; then
-        echo '#\!'
+        echo '#\! '
     fi
 }
 
@@ -161,15 +161,15 @@ function _history_prompt {
 function _build_PS1 {
     _exit="$?"
     local highlight
-    local exit
+    local exit_sym
 
     if [[ "$_exit" = "0" ]]; then
         highlight="$BGreen"
-        exit='✔︎'
+        exit_sym='✓'
     else
         highlight="$BRed"
-        exit="✘ $_exit"
+        exit_sym="✗ $_exit"
     fi
 
-    PS1="$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$NC$CS$BRed$CE$(_jobs_prompt)$NC$CS$BMagenta$CE$(_history_prompt)$NC[$CS$highlight$CE$exit$NC] $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$NC$CS$BCyan$CE$(_user_prompt)$(_dir_prompt)$NC$CS$BYellow$CE\$("$__gps1")$NC"'\$ '
+    PS1="$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$CS$BCyan$CE$(_user_prompt)$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE"'\$ '
 }
