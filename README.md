@@ -6,6 +6,7 @@ Directory structure (output of `tree -L 3 --noreport`)
 .
 ├── README.md
 ├── bash
+│   ├── PS1.bash
 │   ├── aliases.bash
 │   ├── colors.bash
 │   ├── functions.bash
