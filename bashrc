@@ -1,10 +1,10 @@
 # VARS
 
 # dir for brew scripts
-export brewscripts="$HOME/Dotfiles/brew"
+brewscripts="$HOME/Dotfiles/brew"
 
 # set default editor to vim
-export EDITOR=vim
+EDITOR=vim
 
 # use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
@@ -12,8 +12,8 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 # Message of the Day control
 # COW controls which cow to use (use `cowsay -l` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
-export COW=small
-export COLOR=0
+COW=small
+COLOR=0
 
 # set PS2
 # PS2="λ "
@@ -39,7 +39,7 @@ source ~/Dotfiles/bash/gitconfig.bash
 # set PS1
 # __gps1 is a special value exported by gitconfig above
 # it is basically a bash command that returns the branch name for PS1 formatting
-export PS1="$CS$BRed$CE\jj$NC $CS$BMagenta$CE#\!$NC $CS$BWhite$CE\u$NC:$CS$BCyan$CE\W$NC $CS$BYellow$CE\$("$__gps1")$NC"'\$ '
+PS1="$CS$BRed$CE\jj$NC $CS$BMagenta$CE#\!$NC $CS$BWhite$CE\u$NC:$CS$BCyan$CE\W$NC $CS$BYellow$CE\$("$__gps1")$NC"'\$ '
 
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob

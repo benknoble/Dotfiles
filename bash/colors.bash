@@ -8,7 +8,7 @@
 CS='\['
 CE='\]'
 
-export NC='\e[0m'
+NC='\e[0m'
 
 # attributes
 none=00
