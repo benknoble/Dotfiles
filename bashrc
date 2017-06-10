@@ -4,7 +4,7 @@
 brewscripts="$HOME/Dotfiles/brew"
 
 # set default editor to vim
-EDITOR=vim
+export EDITOR=vim
 
 # use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
