@@ -75,13 +75,13 @@ pathadd "$brewscripts/ext"
 # Message of the Day
 # COW controls which cow to use (use `cowsay -l` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
-if [[ $(which -s cowsay) -eq 0 && $(which -s fortune) -eq 0 ]]; then
+if which -s cowsay && which -s fortune; then
     message="$(fortune -a)"
     if [[ -z "$COW" ]]; then
         COW=default
     fi
     message="$(echo "$message" | cowsay -f "$COW" -n)"
-    if [[ $(which -s lolcat) -eq 0 && "$COLOR" = "0" ]]; then
+    if which -s lolcat && [[ "$COLOR" = "0" ]]; then
         lolcat <<<"$message"
     else
         echo "$message"
