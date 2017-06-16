@@ -94,7 +94,7 @@ function _dirtrim {
 
 _show_date="$_value_off"
 _show_user="$_value_on"
-_show_host="$_value_off"
+_show_host="$_value_on"
 _show_jobs="$_value_on"
 _show_tty="$_value_off"
 _show_shell_name="$_value_off"
@@ -113,7 +113,7 @@ function _date_prompt {
 function _user_prompt {
     if [[ "$_show_user" = "$_value_on" ]]; then
         if [[ "$_show_host" = "$_value_on" ]]; then
-            echo '\u@\h '
+            echo '\u @ \h '
         else
             echo '\u '
         fi
@@ -171,5 +171,5 @@ function _build_PS1 {
         exit_sym="✗ $_exit"
     fi
 
-    PS1="$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$CS$BCyan$CE$(_user_prompt)$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE"'\$ '
+    PS1="$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE"'\$ '
 }
