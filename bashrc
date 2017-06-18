@@ -45,6 +45,9 @@ source ~/Dotfiles/bash/PS1.bash
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
 
+# don't accidentally overwrite files with '>' (use '>|' to force overwriting)
+set -o noclobber
+
 HISTSIZE=100000
 HISTFILESIZE="$HISTSIZE"
 shopt -s histappend
