@@ -162,6 +162,10 @@ function _build_PS1 {
     _exit="$?"
     local highlight
     local exit_sym
+    local cols=$(tput cols)
+    local p=""
+    local len=0
+    local newline=""
 
     if [[ "$_exit" = "0" ]]; then
         highlight="$BGreen"
@@ -171,5 +175,11 @@ function _build_PS1 {
         exit_sym="✗ $_exit"
     fi
 
-    PS1="$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE"'\$ '
+    p="$(_time_prompt)$(_date_prompt)$(_jobs_prompt)$(_history_prompt)$exit_sym $(_tty_prompt)$(_shell_name_prompt)$(_user_prompt)$(_dir_prompt)\$("$__gps1")"'\$ '
+    len=$(echo ${p@P} | wc -m)
+    if [[ "$len" -gt $(($cols / 2)) ]]; then
+        newline=$'\n'
+    fi
+
+    PS1="$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline"'\$ '
 }
