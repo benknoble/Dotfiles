@@ -290,6 +290,9 @@ endfunction
 
 " Plugin customization {{{
 
+" Load Man plugin (see `:help Man` for more info)
+runtime ftplugin/man.vim
+
 " Make netrw use a tree
 let g:netrw_liststyle=3
 
