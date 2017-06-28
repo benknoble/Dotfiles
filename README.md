@@ -108,7 +108,8 @@ bash_profile, which simply sources the bashrc), giving you access to a whole
 host of new command-line fu. If you don't want to wait, try
 
 ```bash
-$ source ./bashrc && reload
+$ source ./bashrc
+$ reload
 ```
 
 `reload` is a helpful alias for when changes have been made to dotfiles: it
