@@ -17,8 +17,10 @@ Directory structure (output of `tree -L 3 --noreport`)
 ├── bootstrap.sh
 ├── brew
 │   ├── README.md
+│   ├── brewlist
 │   ├── brewutils.sh
 │   └── ext
+│       ├── brew-dump
 │       ├── brew-superclean
 │       └── brew-superupdate
 ├── gitconfig

@@ -1,0 +1,17 @@
+#! /bin/bash -
+#:  * `dump` <file> [<file> ...]:
+#:    Writes the output of `brew ls` to the provided <file>(s)
+#:
+#:    If no file is provided, write to standard output
+
+output=$(brew list)
+
+if [[ -z "$1" ]]; then
+    echo "$output"
+    exit
+fi
+
+while [[ -n "$1" ]]; do
+    echo "$output" > "$1"
+    shift
+done
