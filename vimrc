@@ -215,6 +215,10 @@ map <Leader>s :w<CR>
 " Reload with F6
 map <F6> :Reload<CR>
 
+" Quit with Q too, so you can hold shift
+" Note that it displays ':q' even if you type ':Q'
+cnoremap Q q
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
