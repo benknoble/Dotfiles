@@ -14,6 +14,15 @@ Directory structure (output of `tree -L 3 --noreport`)
 ├── bash_profile
 ├── bashrc
 ├── benknoble.terminal
+├── bin
+│   ├── checkdistnoted
+│   ├── cowvis
+│   ├── exit_msg
+│   ├── isnumber
+│   ├── itunes
+│   ├── listcmds
+│   ├── loading
+│   └── msgtest
 ├── bootstrap.sh
 ├── brew
 │   ├── README.md

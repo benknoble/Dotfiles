@@ -1,0 +1,32 @@
+#!/bin/bash
+# an inifite loading bar
+
+USAGE="$(cat <<EOF
+usage: $0 [time] [name]
+       $0 -h | --help
+
+Emits an infinite loading spinner (postfixed with "name" if specified).
+The spinner spins on a delay of "time" (0.25 by default).
+
+Options:
+    -h | --help    display help message
+EOF
+)"
+
+if [[ $# -gt 2 || "$1" == "-h" || "$1" == "--help" ]]; then
+    echo "$USAGE" >&2
+    exit 2
+fi
+
+timetosleep=0.25
+if [[ -n "$1" ]]; then
+    (isnumber $1) &> /dev/null && { timetosleep="$1"; } || { echo "$USAGE" >&2; exit 1; }
+fi
+name=""
+[[ -z "$2" ]] || { name=" $2"; }
+i=0
+s='|/-\'
+while :; do
+    echo -en "\rLoading$name... ${s:i=(i+1)%4:1}"
+    sleep $timetosleep
+done

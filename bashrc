@@ -10,7 +10,7 @@ export EDITOR=vim
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
 # Message of the Day control
-# COW controls which cow to use (use `cowsay -l` for options)
+# COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
 COW=small
 COLOR=0
@@ -60,7 +60,7 @@ shopt -s histappend
 pathadd "/Users/Knoble/scala-2.11.8/bin"
 
 # Add bin folder for scripts to path
-pathadd "$HOME/bin"
+pathadd "$HOME/Dotfiles/bin"
 
 # pip bash completion start
 _pip_completion()
@@ -80,7 +80,7 @@ brewcomp=/usr/local/etc/bash_completion.d/brew
 pathadd "$brewscripts/ext"
 
 # Message of the Day
-# COW controls which cow to use (use `cowsay -l` for options)
+# COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
 if which -s cowsay && which -s fortune; then
     message="$(fortune -a)"
