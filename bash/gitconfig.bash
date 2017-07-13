@@ -10,6 +10,7 @@ if [[ -s "$gitprompt" ]]; then
     GIT_PS1_SHOWUNTRACKEDFILES='true'
     GIT_PS1_SHOWUPSTREAM='auto'
     GIT_PS1_STATESEPARATOR=' '
+    GIT_PS1_DESCRIBE_STYLE='branch'
     __gps1="__git_ps1 '%s '"
 else
     __gps1="git branch 2>/dev/null | grep '^*' | colrm 1 2"
