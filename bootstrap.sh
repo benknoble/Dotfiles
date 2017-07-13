@@ -6,6 +6,17 @@
 echo "Bootstrapping Dotfiles..."
 echo
 echo "Making symlinks to configuration files..."
+echo "WARNING: Backups in the old directory (~/Dotfiles_old)
+will be DELETED and OVERWRITTEN
+
+If you want to keep them, abort and move them!
+
+Are you sure you want to continue bootstrapping Dotfiles? "
+read -n 1 -p "[y/n]> " install && echo
+[[ "$install" =~ ^(y|Y) ]] || {
+    echo "Aborting installation..."
+    exit 1
+}
 echo
 bash ~/Dotfiles/setup/makesymlinks.sh
 echo
