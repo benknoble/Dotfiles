@@ -1,4 +1,5 @@
 #! /bin/bash -
 # Update the file `docs/tree.md` pre-commit to include any changes
-tree -L 3 --noreport >| docs/tree.md
+output=$(echo '```'; tree -L 3 --noreport; echo '```')
+echo "$output" >| docs/tree.md
 git add docs/tree.md
