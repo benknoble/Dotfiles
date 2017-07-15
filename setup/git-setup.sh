@@ -47,7 +47,6 @@ echo "...done with user info"
 echo
 
 echo "Configure global gitignore..."
-
 # replace with the name of your global gitignore file if you've changed it
 globalignore="~/.gitignore_global"
 git config --global --replace-all core.excludesfile "$globalignore"
