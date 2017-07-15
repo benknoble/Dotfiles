@@ -4,3 +4,6 @@
 
 # no macOS pesky files
 .DS_Store
+
+# vim file browsing history
+.netrwhist
