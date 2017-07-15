@@ -41,3 +41,8 @@ freewrite() {
     echo -e "Free-write $date\n\n" > "$file"
     vim +3 "$file"
 }
+
+getip() {
+    ipconfig getifaddr en0
+    echo
+}
