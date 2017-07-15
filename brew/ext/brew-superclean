@@ -2,6 +2,9 @@
 #:  * `superclean`:
 #:    Cleans up the cache and outdated version downloads, calling `cleanup -s`
 #:
+#:    Also calls `brew cask cleanup`
+#:
 #:    See `brew help cleanup` for more information
 
 brew cleanup -s
+brew cask cleanup
