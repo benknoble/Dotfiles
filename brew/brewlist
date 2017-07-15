@@ -47,3 +47,8 @@ tree
 unrar
 vim
 xz
+# Casks
+cmake
+gitter
+mactex
+xquartz

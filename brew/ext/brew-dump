@@ -1,10 +1,11 @@
 #! /bin/bash -
 #:  * `dump` <file> [<file> ...]:
-#:    Writes the output of `brew ls` to the provided <file>(s)
+#:    Writes the output of `brew ls` and `brew cask list`
+#:    to the provided <file>(s)
 #:
 #:    If no file is provided, write to standard output
 
-output=$(brew list)
+output=$(brew list; echo '# Casks'; brew cask list)
 
 if [[ -z "$1" ]]; then
     echo "$output"
