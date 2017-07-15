@@ -1,0 +1,67 @@
+```
+.
+├── README.md
+├── bash
+│   ├── PS1.bash
+│   ├── aliases.bash
+│   ├── colors.bash
+│   ├── functions.bash
+│   └── gitconfig.bash
+├── bash_profile
+├── bashrc
+├── benknoble.terminal
+├── bin
+│   ├── checkdistnoted
+│   ├── cowvis
+│   ├── exit_msg
+│   ├── isnumber
+│   ├── itunes
+│   ├── listcmds
+│   ├── loading
+│   └── msgtest
+├── bootstrap.sh
+├── brew
+│   ├── README.md
+│   ├── brewlist
+│   ├── brewutils.sh
+│   └── ext
+│       ├── brew-dump
+│       ├── brew-superclean
+│       └── brew-superupdate
+├── docs
+│   └── tree.md
+├── gitconfig
+├── gitignore_global
+├── hooks
+│   ├── multihooks.py
+│   ├── pre-commit -> multihooks.py
+│   └── pre-commit.d
+│       └── 01-tree
+├── inputrc
+├── installers
+│   ├── install-brew.sh
+│   ├── install-git-extras.sh
+│   └── install-vim-custom.sh
+├── setup
+│   ├── git-setup.sh
+│   ├── install-all.sh
+│   └── makesymlinks.sh
+├── update.sh
+├── vim
+│   ├── autoload
+│   ├── bundle
+│   │   ├── vim-airline
+│   │   ├── vim-airline-themes
+│   │   ├── vim-auto-pairs
+│   │   ├── vim-ctrlp
+│   │   ├── vim-fugitive
+│   │   ├── vim-invader
+│   │   ├── vim-pathogen
+│   │   ├── vim-syntastic
+│   │   ├── vim-windowswap
+│   │   └── vim-winresizer
+│   └── spell
+│       ├── en.utf-8.add
+│       └── en.utf-8.add.spl
+└── vimrc
+```
