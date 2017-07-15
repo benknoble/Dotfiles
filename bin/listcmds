@@ -1,0 +1,18 @@
+#! /bin/zsh
+
+directories=(`echo $PATH | column -s ':' -t`)
+
+for directory in $directories
+do
+  [[ -d $directory ]] || continue
+
+  pushd "$directory"
+
+  for file in *
+  do
+      [[ -x $file && ! -d $file ]] || continue
+      echo $PWD/$file
+  done
+
+  popd
+done | sort | uniq | less

@@ -1,0 +1,27 @@
+#! /bin/bash
+# tests if the input is a number
+
+USAGE="$(cat <<EOF
+usage: $0 string
+       $0 -h | --help
+
+Reports Number if string is a number, Not Number otherwise.
+Exit 0 if number, 1 otherwise.
+
+Options:
+    -h | --help    display help message
+EOF
+)"
+
+if [[ "$#" -gt 1 || -z "$1" || "$1" == "-h" || "$1" == "--help" ]]; then
+    echo "$USAGE" >&2
+    exit 2
+fi
+
+if [[ "$1" =~ ^-?[0-9]+([.][0-9]+)?$ ]]; then
+    echo "Number"
+    exit 0
+else
+    echo "Not Number"
+    exit 1
+fi

@@ -1,0 +1,4 @@
+#! /bin/bash -
+[[ $# -ge 1 ]] || exec exit_msg "$0" 1 "Not enough arguments"
+echo "$@"
+exec exit_msg "$0" "" "Finished"

@@ -1,7 +1,7 @@
 # VARS
 
 # dir for brew scripts
-export brewscripts="$HOME/Dotfiles/brew"
+brewscripts="$HOME/Dotfiles/brew"
 
 # set default editor to vim
 export EDITOR=vim
@@ -9,8 +9,20 @@ export EDITOR=vim
 # use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
+# Message of the Day control
+# COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
+# COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
+COW=small
+COLOR=0
+
+# set PS2
+# PS2="λ "
+PS2="» "
+# set PS3
+PS3="$PS2"
+
 # reload profile
-alias reload='. ~/.bashrc && echo "reloaded"'
+alias reload='. ~/.bashrc >/dev/null && echo "reloaded"'
 
 # load colors
 source ~/Dotfiles/bash/colors.bash
@@ -27,10 +39,18 @@ source ~/Dotfiles/bash/gitconfig.bash
 # set PS1
 # __gps1 is a special value exported by gitconfig above
 # it is basically a bash command that returns the branch name for PS1 formatting
-export PS1="$CS$BRED$CE\jj$CS$NC$CE $CS$BPURPLE$CE#\!$CS$NC$CE $CS$BWHITE$CE\u$CS$NC$CE:$CS$BCYAN$CE\W$CS$NC$CE $CS$BYELLOW$CE\$("$__gps1")$CS$NC$CE"'\$ '
+# PS1="$CS$BRed$CE\jj$CS$NC$CE $CS$BMagenta$CE#\!$CS$NC$CE $CS$BWhite$CE\u$CS$NC$CE:$CS$BCyan$CE\W$CS$NC$CE $CS$BYellow$CE\$("$__gps1")$CS$NC$CE"'\$ '
+source ~/Dotfiles/bash/PS1.bash
 
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
+
+# don't accidentally overwrite files with '>' (use '>|' to force overwriting)
+set -o noclobber
+
+# let 'space' magically expand history command-line fu
+# use M-C-e to expand *all* command-line fu
+bind Space:magic-space
 
 HISTSIZE=100000
 HISTFILESIZE="$HISTSIZE"
@@ -40,7 +60,7 @@ shopt -s histappend
 pathadd "/Users/Knoble/scala-2.11.8/bin"
 
 # Add bin folder for scripts to path
-pathadd "$HOME/bin"
+pathadd "$HOME/Dotfiles/bin"
 
 # pip bash completion start
 _pip_completion()
@@ -58,3 +78,19 @@ brewcomp=/usr/local/etc/bash_completion.d/brew
 
 # add brew ext commands to path
 pathadd "$brewscripts/ext"
+
+# Message of the Day
+# COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
+# COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
+if which -s cowsay && which -s fortune; then
+    message="$(fortune -a)"
+    if [[ -z "$COW" ]]; then
+        COW=default
+    fi
+    message="$(echo "$message" | cowsay -f "$COW" -n)"
+    if which -s lolcat && [[ "$COLOR" = "0" ]]; then
+        lolcat <<<"$message"
+    else
+        echo "$message"
+    fi
+fi

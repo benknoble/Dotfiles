@@ -1,55 +1,8 @@
 # dotfiles
 Dotfiles for configuration of different software and command-line programs
 
-Directory structure (output of `tree -L 3 --noreport`)
-```
-.
-├── README.md
-├── bash
-│   ├── aliases.bash
-│   ├── colors.bash
-│   ├── functions.bash
-│   └── gitconfig.bash
-├── bash_profile
-├── bashrc
-├── benknoble.terminal
-├── bootstrap.sh
-├── brew
-│   ├── README.md
-│   ├── brewutils.sh
-│   └── ext
-│       ├── brew-superclean
-│       └── brew-superupdate
-├── gitconfig
-├── gitignore_global
-├── inputrc
-├── installers
-│   ├── install-brew.sh
-│   ├── install-git-extras.sh
-│   └── install-vim-custom.sh
-├── setup
-│   ├── git-setup.sh
-│   ├── install-all.sh
-│   └── makesymlinks.sh
-├── update.sh
-├── vim
-│   ├── autoload
-│   ├── bundle
-│   │   ├── vim-airline
-│   │   ├── vim-airline-themes
-│   │   ├── vim-auto-pairs
-│   │   ├── vim-ctrlp
-│   │   ├── vim-fugitive
-│   │   ├── vim-invader
-│   │   ├── vim-pathogen
-│   │   ├── vim-syntastic
-│   │   ├── vim-windowswap
-│   │   └── vim-winresizer
-│   └── spell
-│       ├── en.utf-8.add
-│       └── en.utf-8.add.spl
-└── vimrc
-```
+You can find the [directory structure here](/docs/tree.md) [generated with `tree
+-L 3 --noreport`].
 
 ## Features
 
@@ -107,7 +60,8 @@ bash_profile, which simply sources the bashrc), giving you access to a whole
 host of new command-line fu. If you don't want to wait, try
 
 ```bash
-$ source ./bashrc && reload
+$ source ./bashrc
+$ reload
 ```
 
 `reload` is a helpful alias for when changes have been made to dotfiles: it
