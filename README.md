@@ -1,7 +1,9 @@
 # dotfiles
 Dotfiles for configuration of different software and command-line programs
 
-You can find the [directory structure here](/docs/tree.md)
+You can find the [directory structure here](/docs/tree.md) [generated with `tree
+-L 3 --noreport`].
+
 ## Features
 
 - bashrc for making bash more fun
