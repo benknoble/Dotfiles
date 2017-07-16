@@ -21,3 +21,9 @@ set completion-ignore-case on
 # ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
 # Readline used by Bash 4.)
 set skip-completed-text on
+
+# Show the common prefix highlighted
+set colored-completion-prefix on
+
+# Highlight the completion suggestions based on filetype
+set colored-stats on
