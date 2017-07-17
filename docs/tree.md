@@ -1,5 +1,7 @@
 ```
 .
+├── CODE_OF_CONDUCT.md
+├── LICENSE
 ├── README.md
 ├── bash
 │   ├── PS1.bash
