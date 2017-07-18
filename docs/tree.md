@@ -29,6 +29,10 @@
 │       ├── brew-superclean
 │       └── brew-superupdate
 ├── docs
+│   ├── README.md
+│   ├── aliases.md
+│   ├── functions.md
+│   ├── installed.md
 │   └── tree.md
 ├── gitconfig
 ├── gitignore_global

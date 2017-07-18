@@ -1,5 +1,4 @@
-# docs
-Documenation of Dotfiles
+# Documentation of Dotfiles
 
 ## Links to files
 
