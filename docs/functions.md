@@ -36,7 +36,7 @@ strings. So actually just better.
 
 **`displayPath`**
 
-*Print PATH entries on new lines.* Easy to read. Page to less if you have a busy
+*Print PATH entries on new lines.* Easy to read. Page to `less` if you have a busy
 PATH, or consider cutting down on it.
 
 0 arguments.
