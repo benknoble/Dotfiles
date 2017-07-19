@@ -31,6 +31,7 @@
 ├── docs
 │   ├── README.md
 │   ├── aliases.md
+│   ├── features.md
 │   ├── functions.md
 │   ├── installed.md
 │   └── tree.md

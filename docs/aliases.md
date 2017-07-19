@@ -72,7 +72,7 @@ Force.
 **`explore`**
 
 *Browse the current working directory in Vim.* Explore! Be free! Maps may be necessary and can be
-accessed with <F1>.
+accessed with `<F1>`.
 
 **`finder`**
 

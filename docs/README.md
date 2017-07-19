@@ -5,7 +5,8 @@
 - [aliases](/docs/aliases.md)
 - [functions](/docs/functions.md)
 - [whats installed](/docs/installed.md)
-- ...
+- [features](/docs/features.md)
+- [tree](/docs/tree.md)
 
 ## Format of documentation
 
@@ -28,7 +29,7 @@
 
 **Features** will be documented as follows (without the quote block):
 
-> ### Feature name
+> ### Feature name (H3)
 >
 > *Short description.* This is a longer description that explains the feature,
 > how to use it, any caveats, &c. It will probably be more than one sentence.
