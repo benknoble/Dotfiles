@@ -25,7 +25,14 @@
 
 *Reload the startup file.* Like the 2nd Matrix.
 
-**Functions** follow the same format.
+**Functions** follow the same format. On a line by itself following the
+descriptions, there will be a description of the function arguments.
+
+Examples:
+
+- 0 arguments
+- 1 argument: `dir` to destroy
+- Variadic: `dir[s...]` to destroy
 
 **Features** will be documented as follows (without the quote block):
 
