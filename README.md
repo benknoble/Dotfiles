@@ -13,11 +13,6 @@ You can find the [directory structure here](/docs/tree.md) [generated with `tree
 
 See [Full Feature List](#documentation--full-feature-list)
 
-**Planned Ideas**
-
-- [ ] To come...
-
-
 ## Getting Started
 
 First, clone the repo into your dotfiles directory. This directory needs to be
