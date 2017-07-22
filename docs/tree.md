@@ -38,7 +38,8 @@
 │   ├── multihooks.py
 │   ├── pre-commit -> multihooks.py
 │   └── pre-commit.d
-│       └── 01-tree
+│       ├── 01-tree
+│       └── 02-brew
 ├── inputrc
 ├── installers
 │   ├── install-brew.sh

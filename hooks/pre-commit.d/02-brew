@@ -1,0 +1,4 @@
+#! /bin/bash -
+# Update the file `brew/brewlist` pre-commit to include any changes
+brew dump brew/brewlist
+git add brew/brewlist
