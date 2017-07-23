@@ -26,9 +26,11 @@ into solving this problem, but for now see [Name
 Dependencies](#name-dependencies).
 
 ```bash
-$ mkdir ~/Dotfiles && cd ~/Dotfiles
+$ mkdir ~/Dotfiles
 
 $ git clone --recursive https://github.com/benknoble/Dotfiles.git
+
+$ cd ~/Dotfiles
 ```
 
 Next, run the `bootstrap` script to kick things off:
