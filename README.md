@@ -28,7 +28,7 @@ Dependencies](#name-dependencies).
 ```bash
 $ mkdir ~/Dotfiles
 
-$ git clone --recursive https://github.com/benknoble/Dotfiles.git
+$ git clone --recursive https://github.com/benknoble/Dotfiles.git ~/Dotfiles
 
 $ cd ~/Dotfiles
 ```
