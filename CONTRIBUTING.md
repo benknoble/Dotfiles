@@ -279,8 +279,8 @@ duplicate:                covered somewhere else
 
 github:                   related to github (templates, wikis, &c.)
 
-help-wanted:              not going to be reached immediately, good point for
-contributors to jump in
+help-wanted:              not going to be reached immediately;
+                          good point for contributors to jump in
 
 invalid:                  against core philosophy, or simply unrelated
 
