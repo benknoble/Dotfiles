@@ -102,3 +102,37 @@ use a different directory:
 - [/setup/makesymlinks.sh](/setup/makesymlinks.sh)
 - [/update.sh](/update.sh)
 
+## Contributing
+
+Please see our [Contributing Guidelines](/CONTRIBUTING.md) for information on
+how to get involved.
+
+### Code of Conduct
+
+Note that we also have a [Code of Conduct](/CODE_OF_CONDUCT.md) that governs the
+behavioral expectations of the Dotfiles.
+
+## License
+
+This project is licensed under the MIT License--see [LICENSE](/LICENSE) for more
+information.
+
+(c) 2016 David Ben Knoble
+
+## Acknowledgments
+
+This project was inspired by a [blog
+post](http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/)
+from [this guy](https://github.com/michaeljsmalley).
+
+I've also grabbed code from a number of places over the development of the
+project. I've tried to attribute you in the code where possible, but I can't hit
+everybody.
+
+Thanks to [steve losh](http://stevelosh.com/blog/2010/09/coming-home-to-vim/)
+for some Vim help and [teaching](http://learnvimscriptthehardway.stevelosh.com).
+
+Thanks further to the kind Internet for providing a wealth of resources when
+things go wonky.
+
+See our [contributors list](/docs/humans.txt)!
