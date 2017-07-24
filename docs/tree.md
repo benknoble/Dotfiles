@@ -32,6 +32,7 @@
 │       ├── brew-superclean
 │       └── brew-superupdate
 ├── docs
+│   ├── humans.txt
 │   └── tree.md
 ├── gitconfig
 ├── gitignore_global
