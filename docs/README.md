@@ -8,6 +8,11 @@
 - [features](/docs/features.md)
 - [tree](/docs/tree.md)
 
+See also
+- [Contributing](/CONTRIBUTING.md)
+- [Code of Conduct](/CODE_OF_CONDUCT.md)
+- [License](/LICENSE)
+
 ## Format of documentation
 
 **Aliases** and **functions** will be documented in the order in which they appear as definitions.
