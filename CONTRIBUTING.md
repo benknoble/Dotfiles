@@ -258,11 +258,13 @@ as follows:
 
 **Status**
 
-*bug*:                      file a bug report
+```
+bug:                      file a bug report
 
-*documentation*:            document something, or indicate that it's missing
+documentation:            document something, or indicate that it's missing
 
-*feature-request*:          discuss a feature request
+feature-request:          discuss a feature request
+```
 
 **Topics**
 
@@ -272,18 +274,20 @@ should likely be developed on that topic branch.
 
 **Meta**
 
-*duplicate*:                covered somewhere else
+```
+duplicate:                covered somewhere else
 
-*github*:                   related to github (templates, wikis, &c.)
+github:                   related to github (templates, wikis, &c.)
 
-*help-wanted*:              not going to be reached immediately, good point for
+help-wanted:              not going to be reached immediately, good point for
 contributors to jump in
 
-*invalid*:                  against core philosophy, or simply unrelated
+invalid:                  against core philosophy, or simply unrelated
 
-*question*:                 this is a question and doesn't belong here
+question:                 this is a question and doesn't belong here
 
-*wontfix*:                  the bug/feature is by design and won't be changed
+wontfix:                  the bug/feature is by design and won't be changed
+```
 
 ## Thanks!
 
