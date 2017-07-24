@@ -1,5 +1,8 @@
 ```
 .
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
 ├── README.md
 ├── bash
 │   ├── PS1.bash
@@ -29,6 +32,7 @@
 │       ├── brew-superclean
 │       └── brew-superupdate
 ├── docs
+│   ├── humans.txt
 │   └── tree.md
 ├── gitconfig
 ├── gitignore_global
