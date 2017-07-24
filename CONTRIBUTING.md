@@ -299,4 +299,8 @@ relevant changes, fixes, and work, will be added to
 [docs/humans.txt](/docs/humans.txt). Make my life easier consider including that
 in your PR.
 
-Thanks, David Knoble, Dotfiles creator.
+Thanks,
+
+David Knoble,
+
+Dotfiles creator.
