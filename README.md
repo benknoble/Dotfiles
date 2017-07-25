@@ -6,7 +6,7 @@ You can find the [directory structure here](/docs/tree.md) [generated with `tree
 
 Find us on Gitter!
 
-[![Gitter chat](https://badges.gitter.im/benknoble/Dotfiles.png)](https://gitter.im/benknoble/Dotfiles)
+[![Gitter chat](https://badges.gitter.im/benknoble-Dotfiles/Lobby.png)](https://gitter.im/benknoble-Dotfiles/Lobby)
 
 ## Features
 
