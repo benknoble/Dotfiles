@@ -4,6 +4,10 @@ Dotfiles for configuration of different software and command-line programs
 You can find the [directory structure here](/docs/tree.md) [generated with `tree
 -L 3 --noreport`].
 
+Find us on Gitter!
+
+[![Gitter chat](https://badges.gitter.im/benknoble/Dotfiles.png)](https://gitter.im/benknoble/Dotfiles)
+
 ## Features
 
 - bashrc for making bash more fun
