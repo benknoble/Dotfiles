@@ -184,7 +184,7 @@ if has("autocmd")
         au!
 
         " Automatically add foldcolumn if folds present
-        au BufWinEnter ?* call HasFolds()
+        au CursorHold,BufWinEnter ?* call HasFolds()
 
         au FileType * setlocal formatoptions-=cro
 
@@ -402,6 +402,8 @@ function! HasFolds()
         return 0
     endfunction
 
+    let l:old_belloff=&belloff " save belloff setting
+    set belloff=error " don't beep when we cause an error
     let l:winview=winsaveview() "save window and cursor position
     let foldsexist=HasFoldsInner()
     if foldsexist
@@ -423,6 +425,7 @@ function! HasFolds()
             set foldcolumn=0
         endif
     end
+    let belloff=l:old_belloff
     call winrestview(l:winview) "restore window/cursor position
 endfunction
 
