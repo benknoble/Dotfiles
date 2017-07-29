@@ -32,6 +32,11 @@
 │       ├── brew-superclean
 │       └── brew-superupdate
 ├── docs
+│   ├── README.md
+│   ├── aliases.md
+│   ├── features.md
+│   ├── functions.md
+│   ├── installed.md
 │   ├── humans.txt
 │   └── tree.md
 ├── gitconfig
