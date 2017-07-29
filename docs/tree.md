@@ -1,5 +1,8 @@
 ```
 .
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
 ├── README.md
 ├── bash
 │   ├── PS1.bash
@@ -34,6 +37,7 @@
 │   ├── features.md
 │   ├── functions.md
 │   ├── installed.md
+│   ├── humans.txt
 │   └── tree.md
 ├── gitconfig
 ├── gitignore_global
