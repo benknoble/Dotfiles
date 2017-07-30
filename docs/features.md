@@ -105,7 +105,11 @@ have a nice, large Terminal screen with dark background and white font.
 
 ### Gitconfig
 
-*Contains important git aliases.* Here's the quick list:
+*Contains important git aliases.* The caveat is that it also contains my user
+info, so if you value your identity follow the installation prompts closely. You
+may also want to run `setup/git-setup.sh` every now and then just in case.
+
+Here's the quick list:
 
 - **cd** for checking out branches.
 
