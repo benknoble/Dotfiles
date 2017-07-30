@@ -36,8 +36,8 @@
 │   ├── aliases.md
 │   ├── features.md
 │   ├── functions.md
-│   ├── installed.md
 │   ├── humans.txt
+│   ├── installed.md
 │   └── tree.md
 ├── gitconfig
 ├── gitignore_global
