@@ -71,11 +71,4 @@ fi
 echo "...done with gitconfig"
 echo
 
-echo "Configure global gitignore..."
-# replace with the name of your global gitignore file if you've changed it
-globalignore="~/.gitignore_global"
-git config --global --replace-all core.excludesfile "$globalignore"
-echo "...done with global gitignore"
-echo
-
 echo "...done configuring git"
