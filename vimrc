@@ -62,6 +62,8 @@ set showmatch
 
 " Ignore case in /? searches
 set ignorecase
+" Unless capitals are present
+set smartcase
 
 " Always display status line
 set laststatus=2
