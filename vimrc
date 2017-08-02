@@ -230,6 +230,10 @@ inoremap jK <esc>
 " Make buffers like a jetpack: you can fly
 nnoremap gb :ls<CR>:b<Space>
 
+" gi goes to end of last insert (`^)
+" gI goes to last change
+nnoremap gI `.
+
 " Remap x to delete into the blackhole buffer to make p work better
 noremap x "_x
 
