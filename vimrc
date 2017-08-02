@@ -254,6 +254,32 @@ map <F6> :Reload<CR>
 " Note that it displays ':q' even if you type ':Q'
 cnoremap Q q
 
+" "Uppercase word" mapping.
+"
+" This mapping allows you toress <c-u> in insert mode to convert the current
+" word to uppercase.  It's handy when you're writing names of constants and
+" don't want to use Capslock.
+"
+" To use it you type the name of the constant in lowercase.  While your
+" cursor is at the end of the word,ress <c-u> to uppercase it, and then
+" continue happily on your way:
+"
+"                            cursor
+"                            v
+"     max_connections_allowed|
+"     <c-u>
+"     MAX_CONNECTIONS_ALLOWED|
+"                            ^
+"                            cursor
+"
+" It works by exiting out of insert mode, recording the current cursor location
+" in the z mark, using gUiw to uppercase inside the current word, moving back to
+" the z mark, and entering insert mode again.
+"
+" Note that this will overwrite the contents of the z mark.  I never use it, but
+" if you do you'llrobably want to use another mark.
+inoremap <C-u> <esc>mzgUiw`za
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
