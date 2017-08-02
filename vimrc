@@ -305,6 +305,16 @@ nnoremap <Leader>c ddO<ESC>
 " Quickly edit vimrc
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 
+" Surround word with "
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+" Surround word with '
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+
+" Surround visual selection with "
+vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
+" Surround visual selection with '
+vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
