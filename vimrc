@@ -372,6 +372,13 @@ set keywordprg=:Man
 
 " Make netrw use a long listing
 let g:netrw_liststyle=1
+" Don't display baner
+let g:netrw_banner=0
+" Sort by size
+let g:netrw_sort_by="size"
+" Hide things not tracked by gitignore
+" let g:netrw_list_hide=netrw_gitignore#Hide()
+" Something is going screwy here^
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
