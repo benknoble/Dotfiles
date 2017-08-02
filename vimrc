@@ -299,6 +299,7 @@ endfunction
 " Load Man plugin (see `:help Man` for more info)
 runtime ftplugin/man.vim
 let g:ft_man_open_mode='vert'
+set keywordprg=:Man
 
 " Make netrw use a tree
 let g:netrw_liststyle=3
