@@ -47,6 +47,10 @@ set shiftwidth=4
 
 " Wrap lines that are too long
 set wrap
+" Show wrapped lines with a marker in front
+let &showbreak='» '
+" Break at word boundaries
+set linebreak
 " Allow movements Left and Right to move over wrapped lines
 set whichwrap=b,s,<,>,[,]
 
