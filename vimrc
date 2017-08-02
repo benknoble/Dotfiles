@@ -229,6 +229,7 @@ inoremap jK <esc>
 
 " Make buffers like a jetpack: you can fly
 nnoremap gb :ls<CR>:b<Space>
+nnoremap <Leader>b :ls<CR>:b<Space>
 
 " gi goes to end of last insert (`^)
 " gI goes to last change
@@ -247,8 +248,11 @@ set pastetoggle=<Leader>p
 nnoremap <Leader>n :setlocal number!<CR>
 nnoremap <Leader>N :setlocal relativenumber!<CR>
 
-" Reload with F6
-map <F6> :Reload<CR>
+" Reload with F5
+map <F5> :Reload<CR>
+" Or <Leader>[rR]
+nnoremap <Leader>r :Reload<CR>
+nnoremap <Leader>R :ReloadAir<CR>
 
 " Quit with Q too, so you can hold shift
 " Note that it displays ':q' even if you type ':Q'
