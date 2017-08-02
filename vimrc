@@ -205,7 +205,7 @@ endif
 
 " Don't use Ex mode, use Q for formatting
 " Revert with ":unmap Q"
-map Q gq
+nnoremap Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -244,7 +244,7 @@ nnoremap gI `.
 " Remap x to delete into the blackhole buffer to make p work better
 noremap x "_x
 
-map <Leader>s :w<CR>
+nnoremap <Leader>s :w<CR>
 
 " Not technically a mapping, but acts like one
 " Use <Leader>p to toggle 'paste'
@@ -255,7 +255,7 @@ nnoremap <Leader>n :setlocal number!<CR>
 nnoremap <Leader>N :setlocal relativenumber!<CR>
 
 " Reload with F5
-map <F5> :Reload<CR>
+nnoremap <F5> :Reload<CR>
 " Or <Leader>[rR]
 nnoremap <Leader>r :Reload<CR>
 nnoremap <Leader>R :ReloadAir<CR>
