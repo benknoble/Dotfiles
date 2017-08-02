@@ -21,6 +21,8 @@ set cursorline
 set showcmd
 " Display completion matches in the status line
 set wildmenu
+" Search in subdirs for finding files
+set path+=**
 
 " Time out for key codes
 set ttimeout
@@ -522,20 +524,6 @@ if !empty(glob("~/.vim/bundle/vim-syntastic"))
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
     let g:syntastic_java_javac_classpath = "."
-endif
-
-" customize ctrl-p if installed
-if !empty(glob("~/.vim/bundle/vim-ctrlp"))
-    let g:ctrlp_show_hidden = 1
-    let g:ctrlp_by_filename = 1
-    let g:ctrlp_regexp = 1
-    let g:ctrlp_switch_buffer = 'E'
-    let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
-    let g:ctrlp_working_path_mode = 'ra'
-    let g:ctrlp_arg_map = 1
-    let g:ctrlp_match_current_file = 1
-    let g:ctrlp_lazy_update = 1
-    let g:ctrlp_tilde_homedir = 1
 endif
 
 " End plugin customization }}}
