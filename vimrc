@@ -370,8 +370,8 @@ runtime ftplugin/man.vim
 let g:ft_man_open_mode='vert'
 set keywordprg=:Man
 
-" Make netrw use a tree
-let g:netrw_liststyle=3
+" Make netrw use a long listing
+let g:netrw_liststyle=1
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
