@@ -306,14 +306,17 @@ nnoremap <Leader>c ddO<ESC>
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
 
 " Surround word with "
-nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <Leader>" viw<esc>a"<esc>bi"<esc>lel
 " Surround word with '
-nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+nnoremap <Leader>' viw<esc>a'<esc>bi'<esc>lel
 
 " Surround visual selection with "
-vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
+vnoremap <Leader>" <esc>`<i"<esc>`>a"<esc>
 " Surround visual selection with '
-vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
+vnoremap <Leader>' <esc>`<i'<esc>`>a'<esc>
+
+" Quit quickly
+nnoremap <Leader>q :q<CR>
 
 " End Mappings }}}
 
