@@ -302,6 +302,9 @@ nnoremap _ ddkP
 " Clear lines
 nnoremap <Leader>c ddO<ESC>
 
+" Quickly edit vimrc
+nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
