@@ -176,6 +176,12 @@ if has("autocmd")
         au BufWinEnter ?* call HasFolds()
 
     augroup END
+
+    augroup plugins
+        au!
+
+        autocmd User AirlineAfterInit call AirlineInit()
+    augroup END
 else
     set autoindent
 endif " has("autocmd")
@@ -359,6 +365,11 @@ function! HasFolds()
         endif
     end
     call winrestview(l:winview) "restore window/cursor position
+endfunction
+
+" Customize airline (call in autocmd AirlineAfterInit)
+function! AirlineInit()
+    let g:airline_section_c=airline#section#create(['path'])
 endfunction
 
 " End Commands }}}
