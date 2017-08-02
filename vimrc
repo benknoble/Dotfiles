@@ -36,6 +36,9 @@ set display=truncate
 " scroll if you mouse-click near the start or end of the window
 set scrolloff=5
 
+" Don't equalize window sizes automatically
+set noequalalways
+
 " Do not recognize octal number for Ctrl-A and Ctrl-K
 " Also add alpha to formats
 set nrformats-=octal
