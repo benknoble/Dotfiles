@@ -77,6 +77,9 @@ set ignorecase
 " Unless capitals are present
 set smartcase
 
+" Complete from dictionary if spell on
+set complete+=kspell
+
 " Always display status line
 set laststatus=2
 
