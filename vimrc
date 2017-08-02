@@ -217,6 +217,10 @@ noremap x "_x
 
 map <Leader>s :w<CR>
 
+" Not technically a mapping, but acts like one
+" Use <Leader>p to toggle 'paste'
+set pastetoggle=<Leader>p
+
 " Reload with F6
 map <F6> :Reload<CR>
 
