@@ -283,6 +283,9 @@ inoremap <C-u> <esc>mzgUiw`za
 " Panic button
 nnoremap <F9> mzggg?G`z
 
+" Edit alternate file
+nnoremap <Leader>` <C-^>
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
