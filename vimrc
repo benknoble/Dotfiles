@@ -21,8 +21,6 @@ set cursorline
 set showcmd
 " Display completion matches in the status line
 set wildmenu
-" Display line numbers
-set number
 
 " Time out for key codes
 set ttimeout
@@ -234,6 +232,10 @@ map <Leader>s :w<CR>
 " Not technically a mapping, but acts like one
 " Use <Leader>p to toggle 'paste'
 set pastetoggle=<Leader>p
+
+" Toggle linenumbers
+nnoremap <Leader>n :setlocal number!<CR>
+nnoremap <Leader>N :setlocal relativenumber!<CR>
 
 " Reload with F6
 map <F6> :Reload<CR>
