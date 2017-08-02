@@ -15,6 +15,12 @@ set backspace=indent,eol,start
 " Keep 200 lines of command history
 set history=200
 
+" Update faster
+set updatetime=250
+
+" Keep marks
+set viminfo+=f1
+
 " Show the cursor position all the time
 set ruler
 " And highlight the line it's on
@@ -556,6 +562,12 @@ if !empty(glob("~/.vim/bundle/vim-windowswap"))
     let g:windowswap_map_keys=0
     " Use this instead
     nnoremap <Leader>wm :call WindowSwap#EasyWindowSwap()<CR>
+endif
+
+" Customize undotree
+if !empty(glob("~/.vim/bundle/vim-undotree"))
+  nnoremap <Leader>u :UndotreeToggle<CR>
+  let g:undotree_SetFocusWhenToggle=1
 endif
 
 " End plugin customization }}}
