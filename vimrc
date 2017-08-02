@@ -122,6 +122,12 @@ if &t_Co > 2 || has("gui_running")
     let c_comment_strings=1
 endif
 
+set undofile undodir=~/.undo
+
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
