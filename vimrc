@@ -296,6 +296,10 @@ nnoremap <F9> mzggg?G`z
 " Edit alternate file
 nnoremap <Leader>` <C-^>
 
+" Move lines up and down
+nnoremap - ddp
+nnoremap _ ddkP
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
