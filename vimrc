@@ -15,6 +15,8 @@ set history=200
 
 " Show the cursor position all the time
 set ruler
+" And highlight the line it's on
+set cursorline
 " Display incomplete commands
 set showcmd
 " Display completion matches in the status line
