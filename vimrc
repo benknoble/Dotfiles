@@ -280,6 +280,9 @@ cnoremap Q q
 " if you do you'llrobably want to use another mark.
 inoremap <C-u> <esc>mzgUiw`za
 
+" Panic button
+nnoremap <F9> mzggg?G`z
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
