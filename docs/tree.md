@@ -69,6 +69,12 @@
 │   │   ├── vim-syntastic
 │   │   ├── vim-windowswap
 │   │   └── vim-winresizer
+│   ├── ftplugin
+│   │   ├── gitcommit.vim
+│   │   ├── markdown.vim
+│   │   ├── sh.vim
+│   │   ├── text.vim
+│   │   └── vim.vim
 │   └── spell
 │       ├── en.utf-8.add
 │       └── en.utf-8.add.spl

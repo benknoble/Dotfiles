@@ -6,6 +6,8 @@ endif
 
 " Set <Leader> used for mappings
 let mapleader=" "
+" And <LocalLeader> for buffer mappings
+let maplocalleader="\\"
 
 " Allow backspacking over everything in insert mode
 set backspace=indent,eol,start
@@ -44,11 +46,17 @@ set noequalalways
 set nrformats-=octal
 set nrformats+=alpha
 
-" Tab settings: 4 spaces
-set tabstop=4
+" Tab settings: 4 spaces (unless overriden by ftplugin)
+" A Tab character has length 8
+set tabstop=8
+" Use spaces when pressing Tab in insert
 set expandtab
 " Used for indent-features ('<<' and the like)
 set shiftwidth=4
+" Round < and the like to nearest shiftwidth
+set shiftround
+" Backspace over 4 spaces if possible
+set softtabstop=4
 
 " Wrap lines that are too long
 set wrap
@@ -163,23 +171,10 @@ if has("autocmd")
     augroup vimrcEx
         au!
 
-        " For all text files set 'textwidth' to 78 characters.
-        autocmd FileType text setlocal textwidth=78 spell spelllang=en_us
-        " But not for help files
-        autocmd FileType help setlocal nospell
-
-        " Git commits prefer 72 wrap
-        autocmd FileType gitcommit setlocal textwidth=72 spell spelllang=en_us
-
-        " Shell scripts and the like are 80
-        autocmd FileType sh setlocal textwidth=80
-
-        " Markdown is 80
-        autocmd FileType markdown setlocal textwidth=80 spell spelllang=en_us
-
         " Automatically add foldcolumn if folds present
         au BufWinEnter ?* call HasFolds()
 
+        au FileType * setlocal formatoptions-=cro
     augroup END
 
     augroup plugins
