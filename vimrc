@@ -303,6 +303,9 @@ nnoremap - ddp
 nnoremap _ ddkP
 " Clear lines
 nnoremap <Leader>c ddO<ESC>
+" Yank to end rather than full line
+" Like c/C and d/D
+nnoremap Y y$
 
 " Quickly edit vimrc
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
