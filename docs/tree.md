@@ -63,7 +63,6 @@
 │   │   ├── vim-airline
 │   │   ├── vim-airline-themes
 │   │   ├── vim-auto-pairs
-│   │   ├── vim-ctrlp
 │   │   ├── vim-fugitive
 │   │   ├── vim-invader
 │   │   ├── vim-pathogen

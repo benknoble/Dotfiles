@@ -15,12 +15,14 @@ set history=200
 
 " Show the cursor position all the time
 set ruler
+" And highlight the line it's on
+set cursorline
 " Display incomplete commands
 set showcmd
 " Display completion matches in the status line
 set wildmenu
-" Display line numbers
-set number
+" Search in subdirs for finding files
+set path+=**
 
 " Time out for key codes
 set ttimeout
@@ -33,6 +35,9 @@ set display=truncate
 " Show a few lines of context around the cursor. Note that this makes the text
 " scroll if you mouse-click near the start or end of the window
 set scrolloff=5
+
+" Don't equalize window sizes automatically
+set noequalalways
 
 " Do not recognize octal number for Ctrl-A and Ctrl-K
 " Also add alpha to formats
@@ -47,8 +52,15 @@ set shiftwidth=4
 
 " Wrap lines that are too long
 set wrap
+" Show wrapped lines with a marker in front
+let &showbreak='» '
+" Break at word boundaries
+set linebreak
 " Allow movements Left and Right to move over wrapped lines
 set whichwrap=b,s,<,>,[,]
+
+" Display certain whitespace characters
+set list listchars=tab:»\ ,trail:·,nbsp:⎵
 
 " Set dark background because I like my terminal dark
 set background=dark
@@ -62,6 +74,11 @@ set showmatch
 
 " Ignore case in /? searches
 set ignorecase
+" Unless capitals are present
+set smartcase
+
+" Complete from dictionary if spell on
+set complete+=kspell
 
 " Always display status line
 set laststatus=2
@@ -88,6 +105,11 @@ if has('mouse')
     set mouse=a
 endif
 
+" Set window title if possible (for Terminal applications)
+if has('title')
+    set title
+endif
+
 if &term =~ "xterm-256color"
     set t_Co=256
 elseif &term =~ "xterm"
@@ -103,6 +125,12 @@ if &t_Co > 2 || has("gui_running")
     " I like highlighting strings inside C comments.
     " Revert with ":unlet c_comment_strings".
     let c_comment_strings=1
+endif
+
+set undofile undodir=~/.undo
+
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -153,6 +181,12 @@ if has("autocmd")
         au BufWinEnter ?* call HasFolds()
 
     augroup END
+
+    augroup plugins
+        au!
+
+        autocmd User AirlineAfterInit call AirlineInit()
+    augroup END
 else
     set autoindent
 endif " has("autocmd")
@@ -176,7 +210,7 @@ endif
 
 " Don't use Ex mode, use Q for formatting
 " Revert with ":unmap Q"
-map Q gq
+nnoremap Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -206,18 +240,114 @@ inoremap jK <esc>
 
 " Make buffers like a jetpack: you can fly
 nnoremap gb :ls<CR>:b<Space>
+nnoremap <Leader>b :ls<CR>:b<Space>
+
+" gi goes to end of last insert (`^)
+" gI goes to last change
+nnoremap gI `.
 
 " Remap x to delete into the blackhole buffer to make p work better
 noremap x "_x
 
-map <Leader>s :w<CR>
+nnoremap <Leader>s :w<CR>
 
-" Reload with F6
-map <F6> :Reload<CR>
+" Not technically a mapping, but acts like one
+" Use <Leader>p to toggle 'paste'
+set pastetoggle=<Leader>p
+
+" Toggle linenumbers
+nnoremap <Leader>n :setlocal number!<CR>
+nnoremap <Leader>N :setlocal relativenumber!<CR>
+
+" Reload with F5
+nnoremap <F5> :Reload<CR>
+" Or <Leader>[rR]
+nnoremap <Leader>r :Reload<CR>
+nnoremap <Leader>R :ReloadAir<CR>
 
 " Quit with Q too, so you can hold shift
 " Note that it displays ':q' even if you type ':Q'
 cnoremap Q q
+
+" "Uppercase word" mapping.
+"
+" This mapping allows you toress <c-u> in insert mode to convert the current
+" word to uppercase.  It's handy when you're writing names of constants and
+" don't want to use Capslock.
+"
+" To use it you type the name of the constant in lowercase.  While your
+" cursor is at the end of the word,ress <c-u> to uppercase it, and then
+" continue happily on your way:
+"
+"                            cursor
+"                            v
+"     max_connections_allowed|
+"     <c-u>
+"     MAX_CONNECTIONS_ALLOWED|
+"                            ^
+"                            cursor
+"
+" It works by exiting out of insert mode, recording the current cursor location
+" in the z mark, using gUiw to uppercase inside the current word, moving back to
+" the z mark, and entering insert mode again.
+"
+" Note that this will overwrite the contents of the z mark.  I never use it, but
+" if you do you'llrobably want to use another mark.
+inoremap <C-u> <esc>mzgUiw`za
+
+" Panic button
+nnoremap <F9> mzggg?G`z
+
+" Edit alternate file
+nnoremap <Leader>` <C-^>
+
+" Move lines up and down
+nnoremap - ddp
+nnoremap _ ddkP
+" Clear lines
+nnoremap <Leader>c ddO<ESC>
+" Yank to end rather than full line
+" Like c/C and d/D
+nnoremap Y y$
+
+" Quickly edit vimrc
+nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+
+" Surround word with "
+nnoremap <Leader>" viw<esc>a"<esc>bi"<esc>lel
+" Surround word with '
+nnoremap <Leader>' viw<esc>a'<esc>bi'<esc>lel
+
+" Surround visual selection with "
+vnoremap <Leader>" <esc>`<i"<esc>`>a"<esc>
+" Surround visual selection with '
+vnoremap <Leader>' <esc>`<i'<esc>`>a'<esc>
+
+" Quit quickly
+nnoremap <Leader>q :q<CR>
+
+" Window mappings {{{
+
+nnoremap <C-w>w     <nop>
+nnoremap <C-w>n     <nop>
+nnoremap <C-w>s     <nop>
+nnoremap <C-w>v     <nop>
+nnoremap <C-w>h     <nop>
+nnoremap <C-w>j     <nop>
+nnoremap <C-w>k     <nop>
+nnoremap <C-w>l     <nop>
+nnoremap <C-w>c     <nop>
+nnoremap <Leader>ww <C-w>w
+nnoremap <Leader>wn <C-w>n
+nnoremap <Leader>ws <C-w>s
+nnoremap <Leader>wv <C-w>v
+nnoremap <Leader>wh <C-w>h
+nnoremap <Leader>wj <C-w>j
+nnoremap <Leader>wk <C-w>k
+nnoremap <Leader>wl <C-w>l
+nnoremap <Leader>wc <C-w>c
+
+" End Window mappings }}}
 
 " End Mappings }}}
 
@@ -290,15 +420,29 @@ function! HasFolds()
     call winrestview(l:winview) "restore window/cursor position
 endfunction
 
+" Customize airline (call in autocmd AirlineAfterInit)
+function! AirlineInit()
+    let g:airline_section_c=airline#section#create(['path'])
+endfunction
+
 " End Commands }}}
 
 " Plugin customization {{{
 
 " Load Man plugin (see `:help Man` for more info)
 runtime ftplugin/man.vim
+let g:ft_man_open_mode='vert'
+set keywordprg=:Man
 
-" Make netrw use a tree
-let g:netrw_liststyle=3
+" Make netrw use a long listing
+let g:netrw_liststyle=1
+" Don't display baner
+let g:netrw_banner=0
+" Sort by size
+let g:netrw_sort_by="size"
+" Hide things not tracked by gitignore
+" let g:netrw_list_hide=netrw_gitignore#Hide()
+" Something is going screwy here^
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
@@ -411,18 +555,20 @@ if !empty(glob("~/.vim/bundle/vim-syntastic"))
     let g:syntastic_java_javac_classpath = "."
 endif
 
-" customize ctrl-p if installed
-if !empty(glob("~/.vim/bundle/vim-ctrlp"))
-    let g:ctrlp_show_hidden = 1
-    let g:ctrlp_by_filename = 1
-    let g:ctrlp_regexp = 1
-    let g:ctrlp_switch_buffer = 'E'
-    let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
-    let g:ctrlp_working_path_mode = 'ra'
-    let g:ctrlp_arg_map = 1
-    let g:ctrlp_match_current_file = 1
-    let g:ctrlp_lazy_update = 1
-    let g:ctrlp_tilde_homedir = 1
+" Customize windowswap if installed
+if !empty(glob("~/.vim/bundle/vim-windowswap"))
+    " Don't use windowswap keys
+    let g:windowswap_map_keys=0
+    " Use this instead
+    nnoremap <Leader>wm :call WindowSwap#EasyWindowSwap()<CR>
 endif
 
 " End plugin customization }}}
+
+" Abbreviations {{{
+
+iabbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
+iabbrev llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi
+iabbrev lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
+
+" Eng abbreviations }}}
