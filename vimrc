@@ -50,6 +50,9 @@ set wrap
 " Allow movements Left and Right to move over wrapped lines
 set whichwrap=b,s,<,>,[,]
 
+" Display certain whitespace characters
+set list listchars=tab:»\ ,trail:·,nbsp:⎵
+
 " Set dark background because I like my terminal dark
 set background=dark
 
