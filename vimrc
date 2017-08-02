@@ -299,6 +299,8 @@ nnoremap <Leader>` <C-^>
 " Move lines up and down
 nnoremap - ddp
 nnoremap _ ddkP
+" Clear lines
+nnoremap <Leader>c ddO<ESC>
 
 " End Mappings }}}
 
