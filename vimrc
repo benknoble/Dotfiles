@@ -309,6 +309,8 @@ nnoremap - ddp
 nnoremap _ ddkP
 " Clear lines
 nnoremap <Leader>c ddO<ESC>
+" Insert blank lines with <CR>
+nnoremap <CR> o<esc>
 " Yank to end rather than full line
 " Like c/C and d/D
 nnoremap Y y$
