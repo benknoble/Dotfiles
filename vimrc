@@ -331,24 +331,10 @@ nnoremap <Leader>q :q<CR>
 
 " Window mappings {{{
 
-nnoremap <C-w>w     <nop>
-nnoremap <C-w>n     <nop>
-nnoremap <C-w>s     <nop>
-nnoremap <C-w>v     <nop>
-nnoremap <C-w>h     <nop>
-nnoremap <C-w>j     <nop>
-nnoremap <C-w>k     <nop>
-nnoremap <C-w>l     <nop>
-nnoremap <C-w>c     <nop>
-nnoremap <Leader>ww <C-w>w
-nnoremap <Leader>wn <C-w>n
-nnoremap <Leader>ws <C-w>s
-nnoremap <Leader>wv <C-w>v
-nnoremap <Leader>wh <C-w>h
-nnoremap <Leader>wj <C-w>j
-nnoremap <Leader>wk <C-w>k
-nnoremap <Leader>wl <C-w>l
-nnoremap <Leader>wc <C-w>c
+" Don't even let me use <C-w>
+nnoremap <C-w>     <nop>
+" Because I can use <Leader>w for everything
+nnoremap <Leader>w <C-w>
 
 " End Window mappings }}}
 
