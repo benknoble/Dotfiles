@@ -183,6 +183,11 @@ if has("autocmd")
         au BufWinEnter ?* call HasFolds()
 
         au FileType * setlocal formatoptions-=cro
+
+        " Add omnicompletion using syntax if a file doesn't already have it
+        au FileType * if &omnifunc == "" |
+              \ setlocal omnifunc=syntaxcomplete#Complete |
+              \ endif
     augroup END
 
     augroup plugins
