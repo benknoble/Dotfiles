@@ -62,6 +62,7 @@
 │   ├── bundle
 │   │   ├── vim-airline
 │   │   ├── vim-airline-themes
+│   │   ├── vim-clam
 │   │   ├── vim-commentary
 │   │   ├── vim-fugitive
 │   │   ├── vim-invader
