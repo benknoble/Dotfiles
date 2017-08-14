@@ -6,12 +6,20 @@ endif
 
 " Set <Leader> used for mappings
 let mapleader=" "
+" And <LocalLeader> for buffer mappings
+let maplocalleader="\\"
 
 " Allow backspacking over everything in insert mode
 set backspace=indent,eol,start
 
 " Keep 200 lines of command history
 set history=200
+
+" Update faster
+set updatetime=250
+
+" Keep marks
+set viminfo+=f1
 
 " Show the cursor position all the time
 set ruler
@@ -44,11 +52,19 @@ set noequalalways
 set nrformats-=octal
 set nrformats+=alpha
 
-" Tab settings: 4 spaces
-set tabstop=4
+" Tab settings: 4 spaces (unless overriden by ftplugin)
+" A Tab character has length 8
+set tabstop=8
+" Use spaces when pressing Tab in insert
 set expandtab
 " Used for indent-features ('<<' and the like)
 set shiftwidth=4
+" Round < and the like to nearest shiftwidth
+set shiftround
+" Backspace over 4 spaces if possible
+set softtabstop=4
+
+set textwidth=80
 
 " Wrap lines that are too long
 set wrap
@@ -163,23 +179,15 @@ if has("autocmd")
     augroup vimrcEx
         au!
 
-        " For all text files set 'textwidth' to 78 characters.
-        autocmd FileType text setlocal textwidth=78 spell spelllang=en_us
-        " But not for help files
-        autocmd FileType help setlocal nospell
-
-        " Git commits prefer 72 wrap
-        autocmd FileType gitcommit setlocal textwidth=72 spell spelllang=en_us
-
-        " Shell scripts and the like are 80
-        autocmd FileType sh setlocal textwidth=80
-
-        " Markdown is 80
-        autocmd FileType markdown setlocal textwidth=80 spell spelllang=en_us
-
         " Automatically add foldcolumn if folds present
         au BufWinEnter ?* call HasFolds()
 
+        au FileType * setlocal formatoptions-=cro
+
+        " Add omnicompletion using syntax if a file doesn't already have it
+        au FileType * if &omnifunc == "" |
+              \ setlocal omnifunc=syntaxcomplete#Complete |
+              \ endif
     augroup END
 
     augroup plugins
@@ -306,6 +314,8 @@ nnoremap - ddp
 nnoremap _ ddkP
 " Clear lines
 nnoremap <Leader>c ddO<ESC>
+" Insert blank lines with <CR>
+nnoremap <CR> o<esc>
 " Yank to end rather than full line
 " Like c/C and d/D
 nnoremap Y y$
@@ -328,24 +338,10 @@ nnoremap <Leader>q :q<CR>
 
 " Window mappings {{{
 
-nnoremap <C-w>w     <nop>
-nnoremap <C-w>n     <nop>
-nnoremap <C-w>s     <nop>
-nnoremap <C-w>v     <nop>
-nnoremap <C-w>h     <nop>
-nnoremap <C-w>j     <nop>
-nnoremap <C-w>k     <nop>
-nnoremap <C-w>l     <nop>
-nnoremap <C-w>c     <nop>
-nnoremap <Leader>ww <C-w>w
-nnoremap <Leader>wn <C-w>n
-nnoremap <Leader>ws <C-w>s
-nnoremap <Leader>wv <C-w>v
-nnoremap <Leader>wh <C-w>h
-nnoremap <Leader>wj <C-w>j
-nnoremap <Leader>wk <C-w>k
-nnoremap <Leader>wl <C-w>l
-nnoremap <Leader>wc <C-w>c
+" Don't even let me use <C-w>
+nnoremap <C-w>     <nop>
+" Because I can use <Leader>w for everything
+nnoremap <Leader>w <C-w>
 
 " End Window mappings }}}
 
@@ -561,6 +557,12 @@ if !empty(glob("~/.vim/bundle/vim-windowswap"))
     let g:windowswap_map_keys=0
     " Use this instead
     nnoremap <Leader>wm :call WindowSwap#EasyWindowSwap()<CR>
+endif
+
+" Customize undotree
+if !empty(glob("~/.vim/bundle/vim-undotree"))
+  nnoremap <Leader>u :UndotreeToggle<CR>
+  let g:undotree_SetFocusWhenToggle=1
 endif
 
 " End plugin customization }}}

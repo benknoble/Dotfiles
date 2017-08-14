@@ -7,9 +7,6 @@
 [submodule "vim/bundle/vim-airline-themes"]
 	path = vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "vim/bundle/vim-auto-pairs"]
-	path = vim/bundle/vim-auto-pairs
-	url = git://github.com/jiangmiao/auto-pairs.git
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
@@ -19,9 +16,21 @@
 [submodule "vim/bundle/vim-syntastic"]
 	path = vim/bundle/vim-syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
-[submodule "vim/bundle/vim-windowswap"]
-	path = vim/bundle/vim-windowswap
-	url = https://github.com/wesQ3/vim-windowswap.git
 [submodule "vim/bundle/vim-winresizer"]
 	path = vim/bundle/vim-winresizer
 	url = https://github.com/simeji/winresizer.git
+[submodule "vim/bundle/vim-undotree"]
+	path = vim/bundle/vim-undotree
+	url = https://github.com/mbbill/undotree
+[submodule "vim/bundle/vim-markology"]
+	path = vim/bundle/vim-markology
+	url = https://github.com/jeetsukumaran/vim-markology
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/bundle/vim-commentary"]
+	path = vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim/bundle/vim-clam"]
+	path = vim/bundle/vim-clam
+	url = https://github.com/benknoble/clam.vim.git

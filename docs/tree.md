@@ -62,13 +62,23 @@
 │   ├── bundle
 │   │   ├── vim-airline
 │   │   ├── vim-airline-themes
-│   │   ├── vim-auto-pairs
+│   │   ├── vim-clam
+│   │   ├── vim-commentary
 │   │   ├── vim-fugitive
 │   │   ├── vim-invader
+│   │   ├── vim-markology
 │   │   ├── vim-pathogen
+│   │   ├── vim-surround
 │   │   ├── vim-syntastic
-│   │   ├── vim-windowswap
+│   │   ├── vim-undotree
 │   │   └── vim-winresizer
+│   ├── ftplugin
+│   │   ├── gitcommit.vim
+│   │   ├── help.vim
+│   │   ├── markdown.vim
+│   │   ├── sh.vim
+│   │   ├── text.vim
+│   │   └── vim.vim
 │   └── spell
 │       ├── en.utf-8.add
 │       └── en.utf-8.add.spl
