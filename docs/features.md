@@ -166,6 +166,10 @@ them all.
 
 - Save with `<Leader>s`.
 
+- Quit with `<Leader>q`.
+
+- And do *all* the window things with a quick `<Leader>w`!
+
 - Reload vimrc with `<F6>` or `:Reload`.
 
 - Use the `Man` plugin! Finally, browse man pages from Vim.

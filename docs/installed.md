@@ -33,9 +33,10 @@ Quick list:
 - Airline
   - Airline themes
 - Commentary
-- Markology
+- Clam
 - Fugitive
 - Invader
+- Markology
 - Pathogen
 - Surround
 - Syntastic
