@@ -36,6 +36,8 @@ set path+=**
 set ttimeout
 " Wait up to 100ms after <Esc> for special key
 set ttimeoutlen=100
+" But 3000ms (3s) for mappings
+set timeoutlen=3000
 
 " Show @@@ in the last line if it is truncated
 set display=truncate
