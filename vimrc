@@ -221,6 +221,8 @@ endif
 " Don't use Ex mode, use Q for formatting
 " Revert with ":unmap Q"
 nnoremap Q gq
+" Format the whole line
+nnoremap QQ gqgq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
