@@ -123,9 +123,9 @@ if has('mouse')
     set mouse=a
 endif
 
-" Set window title if possible (for Terminal applications)
+" DONT set window title if possible (for Terminal applications)--plays weird
 if has('title')
-    set title
+    set notitle
 endif
 
 if &term =~ "xterm-256color"
