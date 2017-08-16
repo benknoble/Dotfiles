@@ -191,6 +191,10 @@ if has("autocmd")
         au FileType * if &omnifunc == "" |
               \ setlocal omnifunc=syntaxcomplete#Complete |
               \ endif
+
+        " Don't use cursorline in Insert mode
+        au InsertEnter * setlocal nocursorline
+        au InsertLeave * setlocal cursorline
     augroup END
 
     augroup plugins
