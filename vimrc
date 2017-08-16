@@ -269,8 +269,8 @@ nnoremap <Leader>s :w<CR>
 set pastetoggle=<Leader>p
 
 " Toggle linenumbers
-nnoremap <Leader>n :setlocal number!<CR>
-nnoremap <Leader>N :setlocal relativenumber!<CR>
+nnoremap <silent> <Leader>n :setlocal number!<CR>
+nnoremap <silent> <Leader>N :setlocal relativenumber!<CR>
 
 " Reload with F5
 nnoremap <F5> :Reload<CR>
