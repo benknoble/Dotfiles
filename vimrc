@@ -178,7 +178,8 @@ if has("autocmd")
     augroup END
 
     " Put these in an autocmd group, so that we can delete them easily.
-    augroup vimrcEx
+    " Revert with ":augroup myvimrc | au! | augroup END"
+    augroup myvimrc
         au!
 
         " Automatically add foldcolumn if folds present
