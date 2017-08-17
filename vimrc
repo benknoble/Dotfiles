@@ -271,7 +271,7 @@ nnoremap <Leader>s :w<CR>
 
 " Not technically a mapping, but acts like one
 " Use <Leader>p to toggle 'paste'
-set pastetoggle=<Leader>p
+set pastetoggle=<C-p>
 
 " Toggle linenumbers
 nnoremap <silent> <Leader>n :setlocal number!<CR>
