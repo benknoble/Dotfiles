@@ -310,7 +310,7 @@ cnoremap Q q
 " the z mark, and entering insert mode again.
 "
 " Note that this will overwrite the contents of the z mark.  I never use it, but
-" if you do you'llrobably want to use another mark.
+" if you do you'll probably want to use another mark.
 inoremap <C-u> <esc>mzgUiw`za
 
 " Panic button
