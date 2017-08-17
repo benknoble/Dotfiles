@@ -20,6 +20,7 @@ set updatetime=250
 
 " Keep marks
 set viminfo+=f1
+set viminfofile=$HOME/.viminfo
 
 " Show the cursor position all the time
 set ruler
