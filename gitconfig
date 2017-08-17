@@ -26,3 +26,5 @@
 [user]
     name = David Ben Knoble
     email = ben.knoble@gmail.com
+[commit]
+	verbose = true
