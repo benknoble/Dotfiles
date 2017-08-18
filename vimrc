@@ -184,7 +184,7 @@ if has("autocmd")
         au!
 
         " Automatically add foldcolumn if folds present
-        au CursorHold,BufWinEnter * call HasFolds()
+        au CursorHold,BufWinEnter * let &foldcolumn=HasFolds(2,0)
 
         au FileType * setlocal formatoptions-=cro
 
@@ -382,7 +382,7 @@ endif
 
 " Detects if folds present, sets foldcolumn to 2 if true or 0 if false
 " From http://stackoverflow.com/questions/8757168/gvim-automatic-show-foldcolumn-when-there-are-folds-in-a-file
-function! HasFolds()
+function! HasFolds(column_width, default)
     "Attempt to move between folds, checking line numbers to see if it worked.
     "If it did, there are folds.
 
@@ -406,8 +406,9 @@ function! HasFolds()
     set belloff=error " don't beep when we cause an error
     let l:winview=winsaveview() "save window and cursor position
     let foldsexist=HasFoldsInner()
+    let retval=a:default
     if foldsexist
-        set foldcolumn=2
+        let retval=a:column_width
     else
         "Move to the end of the current fold and check again in case the
         "cursor was on the sole fold in the file when we checked
@@ -420,13 +421,12 @@ function! HasFolds()
         endif
         let foldsexist=HasFoldsInner()
         if foldsexist
-            set foldcolumn=2
-        else
-            set foldcolumn=0
+            let retval=a:column_width
         endif
     end
     let &belloff=l:old_belloff
     call winrestview(l:winview) "restore window/cursor position
+    return retval
 endfunction
 
 " Customize airline (call in autocmd AirlineAfterInit)
