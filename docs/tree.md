@@ -58,6 +58,8 @@
 │   └── makesymlinks.sh
 ├── update.sh
 ├── vim
+│   ├── after
+│   │   └── ftplugin
 │   ├── autoload
 │   ├── bundle
 │   │   ├── vim-airline
