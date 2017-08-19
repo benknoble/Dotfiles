@@ -2,6 +2,7 @@ archey
 autoconf
 automake
 bash
+brew-cask-completion
 cairo
 coreutils
 cowsay
@@ -53,5 +54,6 @@ cmake
 gitter
 mactex
 mono-mdk
+qtspim
 visual-studio
 xquartz
