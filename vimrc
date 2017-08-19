@@ -163,8 +163,8 @@ if has("autocmd")
     filetype plugin indent on
 
     " Put these in an autocmd group, so that you can revert them with:
-    " ":augroup vimStartup | au! | augroup END"
-    augroup vimStartup
+    " ":augroup lastCursorPosition | au! | augroup END"
+    augroup vimrc_lastCursorPosition
         au!
 
         " When editing a file, always jump to the last known cursor position.
@@ -175,33 +175,55 @@ if has("autocmd")
             \   exe "normal! g`\"" |
             \ endif
 
-
     augroup END
 
-    " Put these in an autocmd group, so that we can delete them easily.
-    " Revert with ":augroup myvimrc | au! | augroup END"
-    augroup myvimrc
+    " Put these in an autocmd group, so that you can revert them with:
+    " ":augroup autofoldcolumn | au! | augroup END"
+    augroup vimrc_autofoldcolumn
         au!
 
         " Automatically add foldcolumn if folds present
         au CursorHold,BufWinEnter * let &foldcolumn=HasFolds(2,0)
 
+    augroup END
+
+    " Put these in an autocmd group, so that you can revert them with:
+    " ":augroup formatoptions | au! | augroup END"
+    augroup vimrc_formatoptions
+        au!
+
         au FileType * setlocal formatoptions-=cro
+
+    augroup END
+
+    " Put these in an autocmd group, so that you can revert them with:
+    " ":augroup completion | au! | augroup END"
+    augroup vimrc_completion
+        au!
 
         " Add omnicompletion using syntax if a file doesn't already have it
         au FileType * if &omnifunc == "" |
               \ setlocal omnifunc=syntaxcomplete#Complete |
               \ endif
 
+    augroup END
+
+    " Put these in an autocmd group, so that you can revert them with:
+    " ":augroup completion | au! | augroup END"
+    augroup vimrc_togglecursorline
+        au!
+
         " Don't use cursorline in Insert mode
         au InsertEnter * setlocal nocursorline
         au InsertLeave * setlocal cursorline
+
     augroup END
 
-    augroup plugins
+    augroup vimrc_plugins
         au!
 
         autocmd User AirlineAfterInit call AirlineInit()
+
     augroup END
 else
     set autoindent
