@@ -75,6 +75,7 @@
 │   │   ├── vim-undotree
 │   │   └── vim-winresizer
 │   ├── ftplugin
+│   │   ├── c.vim
 │   │   ├── gitcommit.vim
 │   │   ├── help.vim
 │   │   ├── markdown.vim
