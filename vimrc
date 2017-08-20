@@ -1,5 +1,5 @@
 if &compatible
-    set nocompatible
+  set nocompatible
 endif
 
 " Options {{{
@@ -112,132 +112,132 @@ set foldmethod=marker
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 if has('win32')
-    set guioptions-=t
+  set guioptions-=t
 endif
 
 " Do incremental searching when it's possible to timeout
 if has('reltime')
-    set incsearch
+  set incsearch
 endif
 
 if has('mouse')
-    set mouse=a
+  set mouse=a
 endif
 
 " DONT set window title if possible (for Terminal applications)--plays weird
 if has('title')
-    set notitle
+  set notitle
 endif
 
 if &term =~ "xterm-256color"
-    set t_Co=256
+  set t_Co=256
 elseif &term =~ "xterm"
-    set t_Co=8
+  set t_Co=8
 endif
 
 " Switch syntax highlighting on when the terminal has colors or when using the
 " GUI (which always has colors).
 if &t_Co > 2 || has("gui_running")
-    " Revert with ":syntax off".
-    syntax on
+  " Revert with ":syntax off".
+  syntax on
 
-    " I like highlighting strings inside C comments.
-    " Revert with ":unlet c_comment_strings".
-    let c_comment_strings=1
+  " I like highlighting strings inside C comments.
+  " Revert with ":unlet c_comment_strings".
+  let c_comment_strings=1
 endif
 
 set undofile undodir=~/.undo
 
 if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
+  call mkdir(expand(&undodir), "p")
 endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-    " Enable file type detection.
-    " Use the default filetype settings, so that mail gets 'tw' set to 72,
-    " 'cindent' is on in C files, etc.
-    " Also load indent files, to automatically do language-dependent indenting.
-    " Revert with ":filetype off".
-    filetype plugin indent on
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  " Revert with ":filetype off".
+  filetype plugin indent on
 
-    " Put these in an autocmd group, so that you can revert them with:
-    " ":augroup lastCursorPosition | au! | augroup END"
-    augroup vimrc_lastCursorPosition
-        au!
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup lastCursorPosition | au! | augroup END"
+  augroup vimrc_lastCursorPosition
+    au!
 
-        " When editing a file, always jump to the last known cursor position.
-        " Don't do it when the position is invalid or when inside an event handler
-        " (happens when dropping a file on gvim).
-        autocmd BufReadPost *
-            \ if line("'\"") >= 1 && line("'\"") <= line("$") |
-            \   exe "normal! g`\"" |
-            \ endif
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+          \ if line("'\"") >= 1 && line("'\"") <= line("$") |
+          \   exe "normal! g`\"" |
+          \ endif
 
-    augroup END
+  augroup END
 
-    " Put these in an autocmd group, so that you can revert them with:
-    " ":augroup autofoldcolumn | au! | augroup END"
-    augroup vimrc_autofoldcolumn
-        au!
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup autofoldcolumn | au! | augroup END"
+  augroup vimrc_autofoldcolumn
+    au!
 
-        " Automatically add foldcolumn if folds present
-        au CursorHold,BufWinEnter * let &foldcolumn=HasFolds(2,0)
+    " Automatically add foldcolumn if folds present
+    au CursorHold,BufWinEnter * let &foldcolumn=HasFolds(2,0)
 
-    augroup END
+  augroup END
 
-    " Put these in an autocmd group, so that you can revert them with:
-    " ":augroup formatoptions | au! | augroup END"
-    augroup vimrc_formatoptions
-        au!
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup formatoptions | au! | augroup END"
+  augroup vimrc_formatoptions
+    au!
 
-        au FileType * setlocal formatoptions-=cro
+    au FileType * setlocal formatoptions-=cro
 
-    augroup END
+  augroup END
 
-    " Put these in an autocmd group, so that you can revert them with:
-    " ":augroup completion | au! | augroup END"
-    augroup vimrc_completion
-        au!
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup completion | au! | augroup END"
+  augroup vimrc_completion
+    au!
 
-        " Add omnicompletion using syntax if a file doesn't already have it
-        au FileType * if &omnifunc == "" |
-              \ setlocal omnifunc=syntaxcomplete#Complete |
-              \ endif
+    " Add omnicompletion using syntax if a file doesn't already have it
+    au FileType * if &omnifunc == "" |
+          \ setlocal omnifunc=syntaxcomplete#Complete |
+          \ endif
 
-    augroup END
+  augroup END
 
-    " Put these in an autocmd group, so that you can revert them with:
-    " ":augroup completion | au! | augroup END"
-    augroup vimrc_togglecursorline
-        au!
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup completion | au! | augroup END"
+  augroup vimrc_togglecursorline
+    au!
 
-        " Don't use cursorline in Insert mode
-        au InsertEnter * setlocal nocursorline
-        au InsertLeave * setlocal cursorline
+    " Don't use cursorline in Insert mode
+    au InsertEnter * setlocal nocursorline
+    au InsertLeave * setlocal cursorline
 
-    augroup END
+  augroup END
 
-    augroup vimrc_plugins
-        au!
+  augroup vimrc_plugins
+    au!
 
-        autocmd User AirlineAfterInit call AirlineInit()
+    autocmd User AirlineAfterInit call AirlineInit()
 
-    augroup END
+  augroup END
 else
-    set autoindent
+  set autoindent
 endif " has("autocmd")
 
 if has('langmap') && exists('+langremap')
-    " Prevent that the langmap option applies to characters that result from a
-    " mapping.  If set (default), this may break plugins (but it's backward
-    " compatible).
-    set nolangremap
+  " Prevent that the langmap option applies to characters that result from a
+  " mapping.  If set (default), this may break plugins (but it's backward
+  " compatible).
+  set nolangremap
 endif
 
 if has('syntax') && has('eval')
-    packadd! matchit
+  packadd! matchit
 endif
 
 " End complex options }}}
@@ -404,73 +404,73 @@ onoremap al{ :<C-u>normal! F}va{<CR>
 " Revert with: ":delcommand DiffOrig".
 " Undo with ":set nodiff foldmethod=marker"
 if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
         \ | wincmd p | diffthis
 endif
 
 " Reload vimrc
 " If airline gets weird, try ":ReloadAir"
 if !exists(":Reload")
-    command -bar Reload source $MYVIMRC
+  command -bar Reload source $MYVIMRC
 endif
 
 " Reload vimrc and refresh airline
 if !exists(":ReloadAir")
-    command -bar ReloadAir :Reload | AirlineRefresh
+  command -bar ReloadAir :Reload | AirlineRefresh
 endif
 
 " Detects if folds present, sets foldcolumn to 2 if true or 0 if false
 " From http://stackoverflow.com/questions/8757168/gvim-automatic-show-foldcolumn-when-there-are-folds-in-a-file
 function! HasFolds(column_width, default)
-    "Attempt to move between folds, checking line numbers to see if it worked.
-    "If it did, there are folds.
+  "Attempt to move between folds, checking line numbers to see if it worked.
+  "If it did, there are folds.
 
-    function! HasFoldsInner()
-        let origline=line('.')
-        :norm zk
-        if origline==line('.')
-            :norm zj
-            if origline==line('.')
-                return 0
-            else
-                return 1
-            endif
-        else
-            return 1
-        endif
+  function! HasFoldsInner()
+    let origline=line('.')
+    :norm zk
+    if origline==line('.')
+      :norm zj
+      if origline==line('.')
         return 0
-    endfunction
-
-    let l:old_belloff=&belloff " save belloff setting
-    set belloff=error " don't beep when we cause an error
-    let l:winview=winsaveview() "save window and cursor position
-    let foldsexist=HasFoldsInner()
-    let retval=a:default
-    if foldsexist
-        let retval=a:column_width
+      else
+        return 1
+      endif
     else
-        "Move to the end of the current fold and check again in case the
-        "cursor was on the sole fold in the file when we checked
-        if line('.')!=1
-            :norm [z
-            :norm k
-        else
-            :norm ]z
-            :norm j
-        endif
-        let foldsexist=HasFoldsInner()
-        if foldsexist
-            let retval=a:column_width
-        endif
-    end
-    let &belloff=l:old_belloff
-    call winrestview(l:winview) "restore window/cursor position
-    return retval
+      return 1
+    endif
+    return 0
+  endfunction
+
+  let l:old_belloff=&belloff " save belloff setting
+  set belloff=error " don't beep when we cause an error
+  let l:winview=winsaveview() "save window and cursor position
+  let foldsexist=HasFoldsInner()
+  let retval=a:default
+  if foldsexist
+    let retval=a:column_width
+  else
+    "Move to the end of the current fold and check again in case the
+    "cursor was on the sole fold in the file when we checked
+    if line('.')!=1
+      :norm [z
+      :norm k
+    else
+      :norm ]z
+      :norm j
+    endif
+    let foldsexist=HasFoldsInner()
+    if foldsexist
+      let retval=a:column_width
+    endif
+  end
+  let &belloff=l:old_belloff
+  call winrestview(l:winview) "restore window/cursor position
+  return retval
 endfunction
 
 " Customize airline (call in autocmd AirlineAfterInit)
 function! AirlineInit()
-    let g:airline_section_c=airline#section#create(['path'])
+  let g:airline_section_c=airline#section#create(['path'])
 endfunction
 
 " End Commands }}}
@@ -498,117 +498,117 @@ execute pathogen#infect()
 
 " set airline-theme if installed
 if !empty(glob("~/.vim/bundle/vim-airline-themes"))
-    let g:airline_theme='dark'
+  let g:airline_theme='dark'
 endif
 
 " customize airline if installed
 if !empty(glob("~/.vim/bundle/vim-airline"))
-    " check if dictionary exists
-    if !exists('g:airline_symbols')
-        let g:airline_symbols = {}
-    endif
+  " check if dictionary exists
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
 
-    " unicode symbols
-    let g:airline_left_sep = '»'
-    "let g:airline_left_sep = '▶'
-    let g:airline_right_sep = '«'
-    "let g:airline_right_sep = '◀'
-    let g:airline_symbols.crypt = '🔒'
-    let g:airline_symbols.linenr = '␊'
-    "let g:airline_symbols.linenr = '␤'
-    "let g:airline_symbols.linenr = '¶'
-    let g:airline_symbols.maxlinenr = '☰'
-    "let g:airline_symbols.maxlinenr = ''
-    let g:airline_symbols.branch = '⎇'
-    let g:airline_symbols.paste = 'ρ'
-    "let g:airline_symbols.paste = 'Þ'
-    "let g:airline_symbols.paste = '∥'
-    let g:airline_symbols.spell = 'Ꞩ'
-    let g:airline_symbols.notexists = '∄'
-    let g:airline_symbols.whitespace = 'Ξ'
+  " unicode symbols
+  let g:airline_left_sep = '»'
+  "let g:airline_left_sep = '▶'
+  let g:airline_right_sep = '«'
+  "let g:airline_right_sep = '◀'
+  let g:airline_symbols.crypt = '🔒'
+  let g:airline_symbols.linenr = '␊'
+  "let g:airline_symbols.linenr = '␤'
+  "let g:airline_symbols.linenr = '¶'
+  let g:airline_symbols.maxlinenr = '☰'
+  "let g:airline_symbols.maxlinenr = ''
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  "let g:airline_symbols.paste = 'Þ'
+  "let g:airline_symbols.paste = '∥'
+  let g:airline_symbols.spell = 'Ꞩ'
+  let g:airline_symbols.notexists = '∄'
+  let g:airline_symbols.whitespace = 'Ξ'
 
-    " Enable tabline
-    let g:airline#extensions#tabline#enabled = 1
-    " Show splits
-    let g:airline#extensions#tabline#show_splits = 1
-    " Show buffers with one tab
-    let g:airline#extensions#tabline#show_buffers = 1
-    " Don't show preview window buffer
-    let g:airline#extensions#tabline#exclude_preview = 1
-    " Show splits and tab number
-    let g:airline#extensions#tabline#tab_nr_type = 2
-    " Show tab type (far right)
-    let g:airline#extensions#tabline#show_tab_type = 1
-    " Use default formatter
-    let g:airline#extensions#tabline#formatter = 'default'
-    " Don't show buffer numbers
-    let g:airline#extensions#tabline#buffer_nr_show = 0
-    " Configure separators for the tabline only
-    let g:airline#extensions#tabline#left_sep = ' '
-    let g:airline#extensions#tabline#left_alt_sep = '|'
-    let g:airline#extensions#tabline#right_sep = ' '
-    let g:airline#extensions#tabline#right_alt_sep = '|'
-    " Don't show close button
-    let g:airline#extensions#tabline#show_close_button = 0
-    " Buffer number formatting
-    " let g:airline#extensions#tabline#buffer_nr_format = 'b#%s '
-    " Filename formatting
-    let g:airline#extensions#tabline#fnamemod = ':~:.'
-    " Fixes unneccessary redraw, when e.g. opening Gundo window
-    let airline#extensions#tabline#ignore_bufadd_pat =
-                \ '\c\vgundo|undotree|vimfiler|tagbar|nerd_tree'
-    " Enable buffer index number
-    let g:airline#extensions#tabline#buffer_idx_mode = 1
-    nmap <leader>1 <Plug>AirlineSelectTab1
-    nmap <leader>2 <Plug>AirlineSelectTab2
-    nmap <leader>3 <Plug>AirlineSelectTab3
-    nmap <leader>4 <Plug>AirlineSelectTab4
-    nmap <leader>5 <Plug>AirlineSelectTab5
-    nmap <leader>6 <Plug>AirlineSelectTab6
-    nmap <leader>7 <Plug>AirlineSelectTab7
-    nmap <leader>8 <Plug>AirlineSelectTab8
-    nmap <leader>9 <Plug>AirlineSelectTab9
-    nmap <leader>- <Plug>AirlineSelectPrevTab
-    nmap <leader>+ <Plug>AirlineSelectNextTab
-    " Change the display format of the buffer index
-    let g:airline#extensions#tabline#buffer_idx_format = {
-          \ '0': '#0 ',
-          \ '1': '#1 ',
-          \ '2': '#2 ',
-          \ '3': '#3 ',
-          \ '4': '#4 ',
-          \ '5': '#5 ',
-          \ '6': '#6 ',
-          \ '7': '#7 ',
-          \ '8': '#8 ',
-          \ '9': '#9 '
-          \}
+  " Enable tabline
+  let g:airline#extensions#tabline#enabled = 1
+  " Show splits
+  let g:airline#extensions#tabline#show_splits = 1
+  " Show buffers with one tab
+  let g:airline#extensions#tabline#show_buffers = 1
+  " Don't show preview window buffer
+  let g:airline#extensions#tabline#exclude_preview = 1
+  " Show splits and tab number
+  let g:airline#extensions#tabline#tab_nr_type = 2
+  " Show tab type (far right)
+  let g:airline#extensions#tabline#show_tab_type = 1
+  " Use default formatter
+  let g:airline#extensions#tabline#formatter = 'default'
+  " Don't show buffer numbers
+  let g:airline#extensions#tabline#buffer_nr_show = 0
+  " Configure separators for the tabline only
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  let g:airline#extensions#tabline#right_sep = ' '
+  let g:airline#extensions#tabline#right_alt_sep = '|'
+  " Don't show close button
+  let g:airline#extensions#tabline#show_close_button = 0
+  " Buffer number formatting
+  " let g:airline#extensions#tabline#buffer_nr_format = 'b#%s '
+  " Filename formatting
+  let g:airline#extensions#tabline#fnamemod = ':~:.'
+  " Fixes unneccessary redraw, when e.g. opening Gundo window
+  let airline#extensions#tabline#ignore_bufadd_pat =
+        \ '\c\vgundo|undotree|vimfiler|tagbar|nerd_tree'
+  " Enable buffer index number
+  let g:airline#extensions#tabline#buffer_idx_mode = 1
+  nmap <leader>1 <Plug>AirlineSelectTab1
+  nmap <leader>2 <Plug>AirlineSelectTab2
+  nmap <leader>3 <Plug>AirlineSelectTab3
+  nmap <leader>4 <Plug>AirlineSelectTab4
+  nmap <leader>5 <Plug>AirlineSelectTab5
+  nmap <leader>6 <Plug>AirlineSelectTab6
+  nmap <leader>7 <Plug>AirlineSelectTab7
+  nmap <leader>8 <Plug>AirlineSelectTab8
+  nmap <leader>9 <Plug>AirlineSelectTab9
+  nmap <leader>- <Plug>AirlineSelectPrevTab
+  nmap <leader>+ <Plug>AirlineSelectNextTab
+  " Change the display format of the buffer index
+  let g:airline#extensions#tabline#buffer_idx_format = {
+        \ '0': '#0 ',
+        \ '1': '#1 ',
+        \ '2': '#2 ',
+        \ '3': '#3 ',
+        \ '4': '#4 ',
+        \ '5': '#5 ',
+        \ '6': '#6 ',
+        \ '7': '#7 ',
+        \ '8': '#8 ',
+        \ '9': '#9 '
+        \}
 
-    " Enable windowswap
-    let g:airline#extensions#windowswap#enabled = 1
-    let g:airline#extensions#windowswap#indicator_text = 'WS'
+  " Enable windowswap
+  let g:airline#extensions#windowswap#enabled = 1
+  let g:airline#extensions#windowswap#indicator_text = 'WS'
 endif
 
 " customize syntastic if installed
 if !empty(glob("~/.vim/bundle/vim-syntastic"))
-    " uncomment below if airline not installed
-    " set statusline+=%#warningmsg#
-    " set statusline+=%{SyntasticStatuslineFlag()}
-    " set statusline+=%*
+  " uncomment below if airline not installed
+  " set statusline+=%#warningmsg#
+  " set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_java_javac_classpath = "."
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_java_javac_classpath = "."
 endif
 
 " Customize windowswap if installed
 if !empty(glob("~/.vim/bundle/vim-windowswap"))
-    " Don't use windowswap keys
-    let g:windowswap_map_keys=0
-    " Use this instead
-    nnoremap <Leader>wm :call WindowSwap#EasyWindowSwap()<CR>
+  " Don't use windowswap keys
+  let g:windowswap_map_keys=0
+  " Use this instead
+  nnoremap <Leader>wm :call WindowSwap#EasyWindowSwap()<CR>
 endif
 
 " Customize undotree
