@@ -4,3 +4,6 @@
 
 " Add system tags
 setlocal tags+=~/.sys_c_tags
+
+" Rebuild tags
+nnoremap <LocalLeader>tr :!ctags --extra=+f -R *<CR><CR>
