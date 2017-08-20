@@ -17,9 +17,9 @@ function! UnderlineHeading(level)
   endif
 endfunction
 
-nnoremap <LocalLeader>u1 :call UnderlineHeading(1)<CR>
-nnoremap <LocalLeader>u2 :call UnderlineHeading(2)<CR>
-nnoremap <LocalLeader>u3 :call UnderlineHeading(3)<CR>
+nnoremap <buffer> <LocalLeader>u1 :call UnderlineHeading(1)<CR>
+nnoremap <buffer> <LocalLeader>u2 :call UnderlineHeading(2)<CR>
+nnoremap <buffer> <LocalLeader>u3 :call UnderlineHeading(3)<CR>
 
 onoremap <buffer> ih= :<C-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<CR>
 onoremap <buffer> ih- :<C-u>execute "normal! ?^--\\+$\r:nohlsearch\rkvg_"<CR>
