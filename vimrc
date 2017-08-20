@@ -470,7 +470,7 @@ endfunction
 
 " Customize airline (call in autocmd AirlineAfterInit)
 function! AirlineInit()
-  let g:airline_section_c=airline#section#create(['path'])
+  let g:airline_section_c=airline#section#create(['path', ' ', 'readonly'])
 endfunction
 
 " End Commands }}}
