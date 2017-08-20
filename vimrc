@@ -95,6 +95,8 @@ set showmatch
 set ignorecase
 " Unless capitals are present
 set smartcase
+" Highlight searches
+set hlsearch
 
 " Complete from dictionary if spell on
 set complete+=kspell
@@ -257,6 +259,11 @@ nnoremap QQ gqgq
 " Revert with ":iunmap <C-U>".
 inoremap <C-U> <C-G>u<C-U>
 
+" Search very magically
+" Seriously who doesn't want this
+nnoremap / /\v
+nnoremap ? ?\v
+
 " Center search results
 nnoremap n nzz
 nnoremap N Nzz
@@ -298,6 +305,9 @@ set pastetoggle=<C-p>
 " Toggle linenumbers
 nnoremap <silent> <Leader>n :setlocal number!<CR>
 nnoremap <silent> <Leader>N :setlocal relativenumber!<CR>
+
+" Unhighlight last search
+nnoremap <silent> <Leader>h :nohlsearch<CR>
 
 " Reload with F5
 nnoremap <F5> :Reload<CR>
