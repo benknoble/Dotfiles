@@ -376,7 +376,7 @@ vnoremap <Leader>" <esc>`<i"<esc>`>a"<esc>
 vnoremap <Leader>' <esc>`<i'<esc>`>a'<esc>
 
 " Quit quickly
-nnoremap <Leader>q :q<CR>
+nnoremap <silent> <Leader>q :q<CR>
 
 " Window mappings {{{
 
@@ -388,21 +388,21 @@ nnoremap <Leader>w <C-w>
 " End Window mappings }}}
 
 " Operator motion for In Next ( in line
-onoremap in( :<C-u>normal! f(vi(<CR>
+onoremap <silent> in( :<C-u>normal! f(vi(<CR>
 " Operator motion for In Last ( in line
-onoremap il( :<C-u>normal! F)vi(<CR>
+onoremap <silent> il( :<C-u>normal! F)vi(<CR>
 " Operator motion for Around Next ( in line
-onoremap an( :<C-u>normal! f(va(<CR>
+onoremap <silent> an( :<C-u>normal! f(va(<CR>
 " Operator motion for Around Last ( in line
-onoremap al( :<C-u>normal! F)va(<CR>
+onoremap <silent> al( :<C-u>normal! F)va(<CR>
 " Operator motion for In Next { in line
-onoremap in{ :<C-u>normal! f{vi{<CR>
+onoremap <silent> in{ :<C-u>normal! f{vi{<CR>
 " Operator motion for In Last { in line
-onoremap il{ :<C-u>normal! F}vi{<CR>
+onoremap <silent> il{ :<C-u>normal! F}vi{<CR>
 " Operator motion for Around Next { in line
-onoremap an{ :<C-u>normal! f{va{<CR>
+onoremap <silent> an{ :<C-u>normal! f{va{<CR>
 " Operator motion for Around Last { in line
-onoremap al{ :<C-u>normal! F}va{<CR>
+onoremap <silent> al{ :<C-u>normal! F}va{<CR>
 
 " End Mappings }}}
 
@@ -623,7 +623,7 @@ endif
 
 " Customize undotree
 if !empty(glob("~/.vim/bundle/vim-undotree"))
-  nnoremap <Leader>u :UndotreeToggle<CR>
+  nnoremap <silent> <Leader>u :UndotreeToggle<CR>
   let g:undotree_SetFocusWhenToggle=1
 endif
 
