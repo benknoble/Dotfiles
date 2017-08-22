@@ -404,6 +404,12 @@ onoremap <silent> an{ :<C-u>normal! f{va{<CR>
 " Operator motion for Around Last { in line
 onoremap <silent> al{ :<C-u>normal! F}va{<CR>
 
+" Quickfix {{{
+" Quickly navigate quickfix
+nnoremap <silent> <Leader>cn :cnext<CR>
+nnoremap <silent> <Leader>cp :cprev<CR>
+" End Quickfix }}}
+
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
