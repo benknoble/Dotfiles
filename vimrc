@@ -412,7 +412,7 @@ nnoremap <Leader>` <C-^>
 " Save
 nnoremap <Leader>s :write<CR>
 " Clear lines
-nnoremap <Leader>c ddO<ESC>
+nnoremap <Leader>cl ddO<ESC>
 
 " Quickly edit vimrc
 nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
