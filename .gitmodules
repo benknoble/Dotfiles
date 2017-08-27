@@ -34,3 +34,6 @@
 [submodule "vim/bundle/vim-clam"]
 	path = vim/bundle/vim-clam
 	url = https://github.com/benknoble/clam.vim.git
+[submodule "vim/bundle/vim-auto-origami"]
+	path = vim/bundle/vim-auto-origami
+	url = https://github.com/benknoble/vim-auto-origami

@@ -219,7 +219,9 @@ if has("autocmd")
     au!
 
     " Automatically add foldcolumn if folds present
-    au CursorHold,BufWinEnter * let &foldcolumn=HasFolds(2,0)
+    " Needs Auto Origami plugin
+    au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
+          \ auto_origami#Foldcolumn()
 
   augroup END
   " End vimrc_autofoldcolumn }}}
@@ -504,57 +506,6 @@ if !exists(":ReloadAir")
   command -bar ReloadAir :Reload | AirlineRefresh
 endif
 " End Reload }}}
-
-" AutofoldColumn {{{
-" Detects if folds present, sets foldcolumn to 2 if true or 0 if false
-" From http://stackoverflow.com/questions/8757168/gvim-automatic-show-foldcolumn-when-there-are-folds-in-a-file
-function! HasFolds(column_width, default)
-  "Attempt to move between folds, checking line numbers to see if it worked.
-  "If it did, there are folds.
-
-  function! HasFoldsInner()
-    let origline=line('.')
-    :norm zk
-    if origline==line('.')
-      :norm zj
-      if origline==line('.')
-        return 0
-      else
-        return 1
-      endif
-    else
-      return 1
-    endif
-    return 0
-  endfunction
-
-  let l:old_belloff=&belloff " save belloff setting
-  set belloff=error " don't beep when we cause an error
-  let l:winview=winsaveview() "save window and cursor position
-  let foldsexist=HasFoldsInner()
-  let retval=a:default
-  if foldsexist
-    let retval=a:column_width
-  else
-    "Move to the end of the current fold and check again in case the
-    "cursor was on the sole fold in the file when we checked
-    if line('.')!=1
-      :norm [z
-      :norm k
-    else
-      :norm ]z
-      :norm j
-    endif
-    let foldsexist=HasFoldsInner()
-    if foldsexist
-      let retval=a:column_width
-    endif
-  end
-  let &belloff=l:old_belloff
-  call winrestview(l:winview) "restore window/cursor position
-  return retval
-endfunction
-" End Autofoldcolumn }}}
 
 " AirlineInit {{{
 " Customize airline (call in autocmd AirlineAfterInit)

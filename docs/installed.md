@@ -32,6 +32,7 @@ Quick list:
 
 - Airline
   - Airline themes
+- Auto Origami
 - Commentary
 - Clam
 - Fugitive

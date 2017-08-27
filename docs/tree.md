@@ -64,6 +64,7 @@
 │   ├── bundle
 │   │   ├── vim-airline
 │   │   ├── vim-airline-themes
+│   │   ├── vim-auto-origami
 │   │   ├── vim-clam
 │   │   ├── vim-commentary
 │   │   ├── vim-fugitive
