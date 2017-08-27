@@ -58,10 +58,13 @@
 │   └── makesymlinks.sh
 ├── update.sh
 ├── vim
+│   ├── after
+│   │   └── ftplugin
 │   ├── autoload
 │   ├── bundle
 │   │   ├── vim-airline
 │   │   ├── vim-airline-themes
+│   │   ├── vim-auto-origami
 │   │   ├── vim-clam
 │   │   ├── vim-commentary
 │   │   ├── vim-fugitive
@@ -73,12 +76,15 @@
 │   │   ├── vim-undotree
 │   │   └── vim-winresizer
 │   ├── ftplugin
+│   │   ├── c.vim
 │   │   ├── gitcommit.vim
 │   │   ├── help.vim
 │   │   ├── markdown.vim
 │   │   ├── sh.vim
 │   │   ├── text.vim
 │   │   └── vim.vim
+│   ├── plugin
+│   │   └── grep-operator.vim
 │   └── spell
 │       ├── en.utf-8.add
 │       └── en.utf-8.add.spl

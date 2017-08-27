@@ -101,3 +101,7 @@ accessed with `<F1>`.
 **`battery`**
 
 *Display battery information.* Don't die!
+
+**`lvim`**
+
+*Open your last vim position.* Because you needed *another* way to invoke vim.
