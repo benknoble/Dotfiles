@@ -141,9 +141,8 @@ Here's the quick list:
 
 ### Vimrc
 
-*Starts a lot of arguments.* Well, not too many. Like, I'm not stupid enough not
-to not `set nocompatible`. Read the full file for all the features. Here's a
-quick look.
+*Starts a lot of arguments.* Well, not too many. Like, I'm smart enough to `set
+nocompatible`. Read the full file for all the features. Here's a quick look.
 
 - `<Leader> = <Space>`
 
@@ -166,7 +165,11 @@ them all.
 
 - Save with `<Leader>s`.
 
-- Reload vimrc with `<F6>` or `:Reload`.
+- Quit with `<Leader>q`.
+
+- And do *all* the window things with a quick `<Leader>w`!
+
+- Reload vimrc with `<F5>` or `:Reload`.
 
 - Use the `Man` plugin! Finally, browse man pages from Vim.
 

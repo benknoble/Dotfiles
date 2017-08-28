@@ -32,13 +32,16 @@ Quick list:
 
 - Airline
   - Airline themes
-- Auto Pairs
-- Ctrl P
+- Auto Origami
+- Commentary
+- Clam
 - Fugitive
 - Invader
+- Markology
 - Pathogen
+- Surround
 - Syntastic
-- Windowswap
+- Undotree
 - Winresizer
 
 If you want links to the github repos that contain these plugins, you can check
