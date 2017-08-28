@@ -1,3 +1,9 @@
+# If not running interactively, don't do anything
+case $- in
+  *i*) ;;
+    *) return ;;
+esac
+
 # VARS
 
 # dir for brew scripts
