@@ -23,7 +23,9 @@ set updatetime=250
 " Viminfo {{{
 " Keep marks
 set viminfo+=f1
-set viminfofile=$HOME/.viminfo
+if exists("&viminfofile")
+  set viminfofile=$HOME/.viminfo
+endif
 " End Viminfo }}}
 
 " Status display {{{
@@ -54,8 +56,12 @@ set timeoutlen=3000
 " End Timeout }}}
 
 " Window Display {{{
-" Show @@@ in the last line if it is truncated
-set display=truncate
+if has("patch-7.4.2109")
+  " Show @@@ in the last line if it is truncated
+  set display=truncate
+else
+  set display=lastline
+endif
 " Show a few lines of context around the cursor. Note that this makes the text
 " scroll if you mouse-click near the start or end of the window
 set scrolloff=5
