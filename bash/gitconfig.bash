@@ -19,3 +19,7 @@ fi
 # add git autocompletion, if it exists
 gitcomp=/usr/local/etc/bash_completion.d/git-completion.bash
 [[ -s "$gitcomp" ]] && . "$gitcomp"
+
+# add hub completion
+hubcomp=/usr/local/etc/bash_completion.d/hub.bash_completion.sh
+[[ -s "$hubcomp" ]] && . "$hubcomp"
