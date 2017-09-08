@@ -82,9 +82,13 @@ brewcomp=/usr/local/etc/bash_completion.d/brew
 caskcomp=/usr/local/etc/bash_completion.d/brew-cask
 [[ -s "$caskcomp" ]] && source "$caskcomp"
 
-# scala completion is possible
+# scala completion if possible
 scalacomp=/usr/local/Cellar/scala/2.12.3/etc/bash_completion.d/scala
 [[ -s "$scalacomp" ]] && source "$scalacomp"
+
+# bash completion
+bashcomp=/usr/local/share/bash-completion/bash_completion
+[[ -s "$bashcomp" ]] && source "$bashcomp"
 
 # add brew ext commands to path
 pathadd "$brewscripts/ext"

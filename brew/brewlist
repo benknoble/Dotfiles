@@ -2,6 +2,7 @@ archey
 autoconf
 automake
 bash
+bash-completion@2
 brew-cask-completion
 cairo
 coreutils
