@@ -62,9 +62,6 @@ HISTSIZE=100000
 HISTFILESIZE="$HISTSIZE"
 shopt -s histappend
 
-# Set PATH for scala
-pathadd "/Users/Knoble/scala-2.11.8/bin"
-
 # Add bin folder for scripts to path
 pathadd "$HOME/Dotfiles/bin"
 
@@ -81,6 +78,10 @@ complete -o default -F _pip_completion pip
 # brew completion if possible
 brewcomp=/usr/local/etc/bash_completion.d/brew
 [[ -s "$brewcomp" ]] && source "$brewcomp"
+
+# scala completion is possible
+scalacomp=/usr/local/Cellar/scala/2.12.3/etc/bash_completion.d/scala
+[[ -s "$scalacomp" ]] && source "$scalacomp"
 
 # add brew ext commands to path
 pathadd "$brewscripts/ext"
