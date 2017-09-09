@@ -2,6 +2,7 @@ archey
 autoconf
 automake
 bash
+bash-completion@2
 brew-cask-completion
 cairo
 coreutils
@@ -45,6 +46,7 @@ python
 python3
 readline
 ruby
+scala
 smlnj
 sqlite
 tree
