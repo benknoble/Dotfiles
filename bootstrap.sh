@@ -17,8 +17,8 @@ If you want to keep them, abort and move them!
 Are you sure you want to continue bootstrapping Dotfiles? "
 read -n 1 -p "[y/n]> " install && echo
 [[ "$install" =~ ^(y|Y) ]] || {
-    echo "Aborting installation..."
-    exit 1
+  echo "Aborting installation..."
+  exit 1
 }
 echo
 bash ~/Dotfiles/setup/makesymlinks.sh

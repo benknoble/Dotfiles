@@ -14,19 +14,19 @@ EOF
 )"
 
 if [[ $# -gt 2 || "$1" == "-h" || "$1" == "--help" ]]; then
-    echo "$USAGE" >&2
-    exit 2
+  echo "$USAGE" >&2
+  exit 2
 fi
 
 timetosleep=0.25
 if [[ -n "$1" ]]; then
-    (isnumber $1) &> /dev/null && { timetosleep="$1"; } || { echo "$USAGE" >&2; exit 1; }
+  (isnumber $1) &> /dev/null && { timetosleep="$1"; } || { echo "$USAGE" >&2; exit 1; }
 fi
 name=""
 [[ -z "$2" ]] || { name=" $2"; }
 i=0
 s='|/-\'
 while :; do
-    echo -en "\rLoading$name... ${s:i=(i+1)%4:1}"
-    sleep $timetosleep
+  echo -en "\rLoading$name... ${s:i=(i+1)%4:1}"
+  sleep $timetosleep
 done

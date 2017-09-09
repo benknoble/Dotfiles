@@ -27,4 +27,5 @@
     Bash Project
     Vim
     Git
+    Homebrew
     various plugins, people who shared dotfiles and tricks, and the like
