@@ -4,15 +4,15 @@ directories=(`echo $PATH | column -s ':' -t`)
 
 for directory in $directories
 do
-  [[ -d $directory ]] || continue
+    [[ -d $directory ]] || continue
 
-  pushd "$directory"
+    pushd "$directory"
 
-  for file in *
-  do
-      [[ -x $file && ! -d $file ]] || continue
-      echo $PWD/$file
-  done
+    for file in *
+    do
+        [[ -x $file && ! -d $file ]] || continue
+        echo $PWD/$file
+    done
 
-  popd
+    popd
 done | sort | uniq | less

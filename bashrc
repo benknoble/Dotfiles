@@ -1,7 +1,7 @@
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
-    *) return ;;
+  *) return ;;
 esac
 
 # VARS
@@ -68,9 +68,9 @@ pathadd "$HOME/Dotfiles/bin"
 # pip bash completion start
 _pip_completion()
 {
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-                   COMP_CWORD=$COMP_CWORD \
-                   PIP_AUTO_COMPLETE=1 $1 ) )
+  COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+    COMP_CWORD=$COMP_CWORD \
+    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
 # pip bash completion end
@@ -97,14 +97,14 @@ pathadd "$brewscripts/ext"
 # COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
 if [[ -x "$(which cowsay)" && -x "$(which fortune)" ]]; then
-    message="$(fortune -a)"
-    if [[ -z "$COW" ]]; then
-        COW=default
-    fi
-    message="$(echo "$message" | cowsay -f "$COW" -n)"
-    if [[ -x "$(which lolcat)" && "$COLOR" = "0" ]]; then
-        lolcat <<<"$message"
-    else
-        echo "$message"
-    fi
+  message="$(fortune -a)"
+  if [[ -z "$COW" ]]; then
+    COW=default
+  fi
+  message="$(echo "$message" | cowsay -f "$COW" -n)"
+  if [[ -x "$(which lolcat)" && "$COLOR" = "0" ]]; then
+    lolcat <<<"$message"
+  else
+    echo "$message"
+  fi
 fi

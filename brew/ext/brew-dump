@@ -8,11 +8,11 @@
 output=$(brew list; echo '# Casks'; brew cask list)
 
 if [[ -z "$1" ]]; then
-    echo "$output"
-    exit
+  echo "$output"
+  exit
 fi
 
 while [[ -n "$1" ]]; do
-    echo "$output" > "$1"
-    shift
+  echo "$output" > "$1"
+  shift
 done
