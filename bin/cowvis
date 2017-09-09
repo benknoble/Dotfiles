@@ -11,8 +11,8 @@ EOF
 )"
 
 if [[ $# -gt 0 ]]; then
-    echo "$USAGE" >&2
-    exit 2
+  echo "$USAGE" >&2
+  exit 2
 fi
 
 IFS=' ' read -a cows <<<$(cowsay -l | tail +2 | tr '\n' ' ')

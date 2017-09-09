@@ -16,8 +16,8 @@ echo
 echo "Removing hooks in .git/hooks..."
 echo
 [[ -e .git/hooks ]] && {
-    [[ -L .git/hooks ]] && { rm -fv .git/hooks; }
-    [[ -d .git/hooks ]] && { rm -fv .git/hooks/*; rmdir .git/hooks; }
+  [[ -L .git/hooks ]] && { rm -fv .git/hooks; }
+  [[ -d .git/hooks ]] && { rm -fv .git/hooks/*; rmdir .git/hooks; }
 }
 echo "...done removing hooks"
 echo

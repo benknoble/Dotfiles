@@ -30,19 +30,19 @@ white=37
 
 # pass in a color from text above
 function brighten {
-    echo $(( $1 + 60 ))
+  echo $(( $1 + 60 ))
 }
 
 # pass in a color from text above
 function background {
-    echo $(( $1 + 10 ))
+  echo $(( $1 + 10 ))
 }
 
 # build color string
 # colorbuild color attribute
 # e.g., colorbuild "$red" "$BOLD"
 function colorbuild {
-    echo '\e['"$2"';'"$1"'m'
+  echo '\e['"$2"';'"$1"'m'
 }
 
 Black="$(colorbuild "$black" "$none")"

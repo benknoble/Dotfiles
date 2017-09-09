@@ -3,9 +3,9 @@
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
-    *) return ;;
+  *) return ;;
 esac
 
 if [[ -f ~/.bashrc ]]; then
-    source ~/.bashrc
+  source ~/.bashrc
 fi
