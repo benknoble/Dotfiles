@@ -186,9 +186,6 @@ them all.
 
 *External commands callable from `brew`.* Just some easy things.
 
-- **brew dump** dumps all the `brew` formulae (and `Cask` apps) to standard
-output, or the provided files.
-
 - **brew superclean** cleans up all the caches and extraneous downloads.
 
 - **brew superupdate** upgrades `brew` and updates all the formulae.

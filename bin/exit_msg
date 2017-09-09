@@ -1,10 +1,10 @@
 #! /bin/bash -
 
 _exit_msg() {
-    [[ $# -gt 0 ]] && {
-        echo >&2 "${1##*/}: (${2:-0}) - ${3:-Problem occured}"
-    }
-    exit ${2:-0}
+  [[ $# -gt 0 ]] && {
+    echo >&2 "${1##*/}: (${2:-0}) - ${3:-Problem occured}"
+  }
+  exit ${2:-0}
 }
 
 usage="Meant for use by shell scripts ONLY
@@ -17,8 +17,8 @@ exit_code defaults to 0, and problem_desc to \"Problem occured\"
 typical usage might be \`exec exit_msg \"\$0\" 1 \"\$file not found\"\`"
 
 [[ $# -gt 0 ]] || {
-    echo >&2 "$usage";
-    _exit_msg "$0" "1" "Not enough arguments";
+  echo >&2 "$usage";
+  _exit_msg "$0" "1" "Not enough arguments";
 }
 
 _exit_msg "$@"

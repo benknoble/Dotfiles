@@ -1,5 +1,6 @@
 ```
 .
+├── Brewfile
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── LICENSE
@@ -25,10 +26,8 @@
 ├── bootstrap.sh
 ├── brew
 │   ├── README.md
-│   ├── brewlist
 │   ├── brewutils.sh
 │   └── ext
-│       ├── brew-dump
 │       ├── brew-superclean
 │       └── brew-superupdate
 ├── docs
