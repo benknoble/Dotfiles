@@ -26,10 +26,8 @@
 ├── bootstrap.sh
 ├── brew
 │   ├── README.md
-│   ├── brewlist
 │   ├── brewutils.sh
 │   └── ext
-│       ├── brew-dump
 │       ├── brew-superclean
 │       └── brew-superupdate
 ├── docs
