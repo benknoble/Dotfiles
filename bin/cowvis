@@ -15,6 +15,6 @@ if [[ $# -gt 0 ]]; then
   exit 2
 fi
 
-IFS=' ' read -a cows <<<$(cowsay -l | tail +2 | tr '\n' ' ')
+IFS=' ' read -a cows <<<$(cowsay -l | tail -n +2 | tr '\n' ' ')
 
 for cow in "${cows[@]}"; do cowsay -f "$cow" "$cow"; done | less
