@@ -420,11 +420,52 @@ cnoremap Q q
 inoremap <C-u> <esc>mzgUiw`za
 " End uppercase word mapping }}}
 
+" Function Keys {{{
+" <F1> is help
+
+" <F2> is edit file
+nnoremap <F2> :call EditFile()<CR>
+function! EditFile()
+    call inputsave()
+    let l:file = input("File: ", "", "file")
+    call inputrestore()
+    execute "edit" file
+endfunction
+
+" <[S-]F3> for normal searches
+nnoremap <F3> /
+nnoremap <S-F3> ?
+
+" <F4> for insta quit
+nnoremap <F4> qall!
+
+" <F5> reloads (see "Reload")
+
+" <F6> to cycle through tabs (but just Tab/S-Tab)
+nnoremap <F6> gt
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+
 " Not technically a mapping, but acts like one
 " Toggle paste mode during an insert with <F7>
 set pastetoggle=<F7>
+
+" <F8> to spawn a terminal
+nnoremap <F8> :terminal<CR>
+
 " Panic button
 nnoremap <F9> mzggg?G`z
+
+" <F10> to compile
+nnoremap <F10> :make<CR>
+
+" <F11> to full screen a window
+nnoremap <F11> :only<CR>
+
+" <F12> to print
+nnoremap <F12> :hardcopy<CR>
+
+" End Function Keys }}}
 
 " Leader shortcuts {{{
 " Edit alternate file
