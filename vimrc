@@ -280,6 +280,18 @@ if has("autocmd")
 
   augroup END
   "End vimrc_plugins }}}
+
+  " vimrc_gitcommit {{{
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup vimrc_gitcommit | au! | augroup END"
+  augroup vimrc_gitcommit
+    au!
+
+    autocmd FileType gitcommit :normal! gg
+
+  augroup END
+  "End vimrc_gitcommit }}}
+
 else
   set autoindent
 endif " has("autocmd")

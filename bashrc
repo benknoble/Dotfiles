@@ -48,6 +48,10 @@ source ~/Dotfiles/bash/gitconfig.bash
 # PS1="$CS$BRed$CE\jj$CS$NC$CE $CS$BMagenta$CE#\!$CS$NC$CE $CS$BWhite$CE\u$CS$NC$CE:$CS$BCyan$CE\W$CS$NC$CE $CS$BYellow$CE\$("$__gps1")$CS$NC$CE"'\$ '
 source ~/Dotfiles/bash/PS1.bash
 
+# source .private for meant to never be seen
+private=~/.private
+[[ -r "$private" ]] && source "$private"
+
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
 
