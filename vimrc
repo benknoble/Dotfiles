@@ -498,6 +498,14 @@ nnoremap <silent> <Leader>q :q<CR>
 nnoremap <C-w>     <nop>
 " Because I can use <Leader>w for everything
 nnoremap <Leader>w <C-w>
+nnoremap <Up> <C-w>k
+nnoremap <S-Up> <C-w>K
+nnoremap <Down> <C-w>j
+nnoremap <S-Down> <C-w>J
+nnoremap <Left> <C-w>h
+nnoremap <S-Left> <C-w>H
+nnoremap <Right> <C-w>l
+nnoremap <S-Right> <C-w>L
 
 " End Window mappings }}}
 
