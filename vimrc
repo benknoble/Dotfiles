@@ -372,9 +372,6 @@ nnoremap gI `.
 " Remap x to delete into the blackhole buffer to make p work better
 noremap x "_x
 
-" Not technically a mapping, but acts like one
-set pastetoggle=<C-p>
-
 " Line numbers {{{
 " Toggle linenumbers
 nnoremap <silent> <Leader>n :setlocal number!<CR>
@@ -423,6 +420,9 @@ cnoremap Q q
 inoremap <C-u> <esc>mzgUiw`za
 " End uppercase word mapping }}}
 
+" Not technically a mapping, but acts like one
+" Toggle paste mode during an insert with <F7>
+set pastetoggle=<F7>
 " Panic button
 nnoremap <F9> mzggg?G`z
 
