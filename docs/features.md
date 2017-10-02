@@ -63,6 +63,10 @@ PS1. `NC` is the color reset sequence.
 git status, based on whether or not it has git prompt scripts. Then, it adds git
 completion if it can find it.
 
+- **~/.private** is a place you can store exports of keys and things like that.
+It will be sourced, but it doesn't get included in version control. Keep it
+private.
+
 ### Inputrc
 
 *Tune input in bash.* This gives me opt+{left,right} in bash to move between
