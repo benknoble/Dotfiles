@@ -15,6 +15,12 @@ export EDITOR=vim
 # use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
+# set term properly
+export TERM="xterm-256color"
+
+# use less on any system
+export PAGER="less"
+
 # Message of the Day control
 # COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
