@@ -46,3 +46,7 @@ getip() {
   ipconfig getifaddr en0
   echo
 }
+
+quote() {
+  printf %s\\n "$1" | sed "s/'/'\\\\''/g;1s/^/'/;\$s/\$/'/"
+}
