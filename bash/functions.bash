@@ -46,7 +46,6 @@ freewrite() {
 
 getip() {
   ipconfig getifaddr en0
-  echo
 }
 
 quote() {
