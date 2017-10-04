@@ -18,6 +18,7 @@
 │   ├── checkdistnoted
 │   ├── cowvis
 │   ├── exit_msg
+│   ├── figvis
 │   ├── isnumber
 │   ├── itunes
 │   ├── listcmds

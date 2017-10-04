@@ -100,6 +100,21 @@ bashcomp=/usr/local/share/bash-completion/bash_completion
 # add brew ext commands to path
 pathadd "$brewscripts/ext"
 
+# Handle commands not found
+if [[ "$(type -t command_not_found_handle)" != function ]]; then
+  command_not_found_handle() {
+    {
+      echo -e "$BRed"Command not found: "$NC$BYellow$1$NC"
+      shift
+      if [[ $# -gt 0 ]]; then
+        echo "$#" args: "$(join_by ', ' "${@@Q}")"
+      fi
+      echo -e Try "$BGreen"'`displayPath`'"$NC" to see the path
+    } >&2
+    return 127
+  }
+fi
+
 # Message of the Day
 # COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)

@@ -28,3 +28,4 @@ alias beep="echo -n $'\a'"                  # Do a beep
 alias today='date -j +"%e %B %Y"'           # A format of the date
 alias battery='pmset -g batt'               # Display battery info
 alias lvim='vim -c ''"normal '"'0"'"'       # Start vim with it's last cursor position
+alias screensaver='open -a ScreenSaverEngine'       # Start the screensaver
