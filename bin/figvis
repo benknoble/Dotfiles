@@ -1,0 +1,24 @@
+#! /bin/bash
+# a figlet font visualizing program
+
+USAGE="$(cat <<EOF
+usage: $0
+
+Visualize all the fonts. Press 'q' to quit.
+
+Supply options to get this message.
+EOF
+)"
+
+if [[ $# -gt 0 ]]; then
+    echo "$USAGE" >&2
+    exit 2
+fi
+
+cols=$(tput cols)
+read -a fonts <<<$(figlist | awk '/Figlet/{p=!p;next}p')
+
+for font in "${fonts[@]}"; do
+    figlet -w "$cols" -f "$font" "$font"
+    echo "$font"
+done | less
