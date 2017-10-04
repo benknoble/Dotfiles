@@ -62,3 +62,16 @@ join_by() {
   printf "%s" "${@/#/$d}"
   echo
 }
+
+# mktouch path/to/file ...
+mktouch() {
+  if [ $# -lt 1 ]; then 
+    echo "Missing argument" >&2
+    return 1
+  fi
+
+  for f in "$@"; do
+    mkdir -p -- "$(dirname -- "$f")"
+    touch -- "$f"
+  done
+}
