@@ -76,6 +76,16 @@ source ~/Dotfiles/bash/PS1.bash
 # source .private for meant to never be seen
 [[ -r "$private" ]] && source "$private"
 
+# source anything in ~/.personal
+if [[ -d ~/.personal ]]; then
+  for file in ~/.personal/*.sh; do
+    if [[ -r ~/.personal ]]; then
+      source "$file"
+    fi
+  done
+  unset file
+fi
+
 # Add bin folder for scripts to path
 pathadd "$HOME/Dotfiles/bin"
 
