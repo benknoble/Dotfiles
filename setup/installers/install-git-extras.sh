@@ -1,4 +1,4 @@
-#! /bin/bash -
+#! /usr/bin/env bash
 # installer script for git extras
 
 echo
