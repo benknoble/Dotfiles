@@ -29,7 +29,7 @@ echo
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory..."
-cd "$dir"
+cd "$dir" || { echo "Failed to find $dir"; exit 1; }
 sleep 1
 echo "...done"
 echo
