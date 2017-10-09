@@ -30,6 +30,28 @@ PS2="» "
 # set PS3
 PS3="$PS2"
 
+# file to hold private keys
+private=~/.private
+# completion paths
+brewcomp=/usr/local/etc/bash_completion.d/brew
+caskcomp=/usr/local/etc/bash_completion.d/brew-cask
+scalacomp=/usr/local/Cellar/scala/2.12.3/etc/bash_completion.d/scala
+bashcomp=/usr/local/share/bash-completion/bash_completion
+
+# use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
+shopt -s nullglob
+
+# don't accidentally overwrite files with '>' (use '>|' to force overwriting)
+set -o noclobber
+
+# let 'space' magically expand history command-line fu
+# use M-C-e to expand *all* command-line fu
+bind Space:magic-space
+
+HISTSIZE=100000
+HISTFILESIZE="$HISTSIZE"
+shopt -s histappend
+
 # reload profile
 alias reload='. ~/.bashrc >/dev/null && echo "reloaded"'
 
@@ -52,22 +74,17 @@ source ~/Dotfiles/bash/gitconfig.bash
 source ~/Dotfiles/bash/PS1.bash
 
 # source .private for meant to never be seen
-private=~/.private
 [[ -r "$private" ]] && source "$private"
 
-# use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
-shopt -s nullglob
-
-# don't accidentally overwrite files with '>' (use '>|' to force overwriting)
-set -o noclobber
-
-# let 'space' magically expand history command-line fu
-# use M-C-e to expand *all* command-line fu
-bind Space:magic-space
-
-HISTSIZE=100000
-HISTFILESIZE="$HISTSIZE"
-shopt -s histappend
+# source anything in ~/.personal
+if [[ -d ~/.personal ]]; then
+  for file in ~/.personal/*.sh; do
+    if [[ -r ~/.personal ]]; then
+      source "$file"
+    fi
+  done
+  unset file
+fi
 
 # Add bin folder for scripts to path
 pathadd "$HOME/Dotfiles/bin"
@@ -83,18 +100,14 @@ complete -o default -F _pip_completion pip
 # pip bash completion end
 
 # brew completion if possible
-brewcomp=/usr/local/etc/bash_completion.d/brew
 [[ -s "$brewcomp" ]] && source "$brewcomp"
 # and brew cask
-caskcomp=/usr/local/etc/bash_completion.d/brew-cask
 [[ -s "$caskcomp" ]] && source "$caskcomp"
 
 # scala completion if possible
-scalacomp=/usr/local/Cellar/scala/2.12.3/etc/bash_completion.d/scala
 [[ -s "$scalacomp" ]] && source "$scalacomp"
 
 # bash completion
-bashcomp=/usr/local/share/bash-completion/bash_completion
 [[ -s "$bashcomp" ]] && source "$bashcomp"
 
 # add brew ext commands to path
