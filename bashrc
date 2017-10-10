@@ -84,6 +84,10 @@ if [[ -d ~/.personal ]]; then
     fi
   done
   unset file
+  # add ~/.personal/bin to path
+  if [[ -d ~/.personal/bin ]]; then
+    pathadd "$HOME/.personal/bin"
+  fi
 fi
 
 # Add bin folder for scripts to path
