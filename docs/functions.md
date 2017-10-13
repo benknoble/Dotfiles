@@ -85,7 +85,7 @@ in. 'Cause you're free, free writin'.
 
 *Quote a string.* Useful if you're having quote problems in bash.
 
-1 arguments: `string` to quote.
+1 argument: `string` to quote.
 
 **`join_by`**
 
@@ -93,3 +93,9 @@ in. 'Cause you're free, free writin'.
 in [bashrc](/bashrc).
 
 Variadic: `delim` `string[s...]` to join
+
+**`mktouch`**
+
+*Touch a file whose path doesn't exist.*
+
+1 argument: `/path/to/file`
