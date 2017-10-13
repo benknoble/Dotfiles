@@ -87,6 +87,9 @@ you with their names so you can pick your favorites.
 - **exit_msg** is a script I put together for exiting other scripts with a useful
 message. Read it's docs.
 
+- **figvis** is like cowvis: get a visual representation of fonts from
+`figlet`
+
 - **isnumber** takes input and decides whether it is a valid number or not.
 
 - **itunes** gives you CLI control of iTunes. The disadvantage? If iTunes isn't
