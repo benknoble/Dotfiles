@@ -80,3 +80,9 @@ in. 'Cause you're free, free writin'.
 *Display IP Address.* Does not get you tips.
 
 0 arguments.
+
+**`quote`**
+
+*Quote a string.* Useful if you're having quote problems in bash.
+
+1 arguments: `string` to quote.
