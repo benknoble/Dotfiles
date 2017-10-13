@@ -60,7 +60,7 @@ Variadic: `file[s...]` to open.
 *Inflate an archive.* Guesses based on the file extension the correct extraction
 method and applies it, failing with a message if not possible.
 
-1 argument: `archive` to extract.
+Variadic: `archive[s...]` to extract.
 
 **`pathadd`**
 
