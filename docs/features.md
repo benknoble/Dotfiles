@@ -67,6 +67,17 @@ completion if it can find it.
 It will be sourced, but it doesn't get included in version control. Keep it
 private.
 
+- **~/.personal/** is a directory where you can keep personal tweaks. Every
+`*.sh` file will get *sourced* (**not executed**) at startup. This is a great
+place to tweak env variables unique to your machine, like COW, a completion
+path, or a PATH. This is different from the **.private** above--this is meant to
+be potentially version-controlled, so you get my setup, your tweaks, and no
+conflicts. Particularly relevant if you work on multiple types of machines, and
+some things need tweaks (`ls` flags, e.g.).
+
+- **~/.personal/bin** is a directory of executables that gets added to your PATH
+if it exists.
+
 ### Inputrc
 
 *Tune input in bash.* This gives me opt+{left,right} in bash to move between
