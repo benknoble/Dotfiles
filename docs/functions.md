@@ -86,3 +86,10 @@ in. 'Cause you're free, free writin'.
 *Quote a string.* Useful if you're having quote problems in bash.
 
 1 arguments: `string` to quote.
+
+**`join_by`**
+
+*Join values with a delimiter*. Used by completion not found handle, found
+in [bashrc](/bashrc).
+
+Variadic: `delim` `string[s...]` to join
