@@ -226,8 +226,9 @@ if has("autocmd")
 
     " Automatically add foldcolumn if folds present
     " Needs Auto Origami plugin
-    au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
-          \ auto_origami#Foldcolumn()
+    " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
+    "       \ auto_origami#Foldcolumn()
+    au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
 
   augroup END
   " End vimrc_autofoldcolumn }}}
