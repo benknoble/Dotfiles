@@ -1,4 +1,4 @@
-#! /bin/bash -
+#! /usr/bin/env bash
 # installer script for brew and certain formulae
 
 _install_brew() {
