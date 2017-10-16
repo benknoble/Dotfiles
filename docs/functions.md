@@ -60,7 +60,7 @@ Variadic: `file[s...]` to open.
 *Inflate an archive.* Guesses based on the file extension the correct extraction
 method and applies it, failing with a message if not possible.
 
-1 argument: `archive` to extract.
+Variadic: `archive[s...]` to extract.
 
 **`pathadd`**
 
@@ -80,3 +80,22 @@ in. 'Cause you're free, free writin'.
 *Display IP Address.* Does not get you tips.
 
 0 arguments.
+
+**`quote`**
+
+*Quote a string.* Useful if you're having quote problems in bash.
+
+1 argument: `string` to quote.
+
+**`join_by`**
+
+*Join values with a delimiter*. Used by completion not found handle, found
+in [bashrc](/bashrc).
+
+Variadic: `delim` `string[s...]` to join
+
+**`mktouch`**
+
+*Touch a file whose path doesn't exist.*
+
+1 argument: `/path/to/file`

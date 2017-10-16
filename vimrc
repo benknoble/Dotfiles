@@ -162,7 +162,7 @@ endif
 " End Window title }}}
 
 " 't_Co' {{{
-if &term =~ "xterm-256color"
+if &term =~ "xterm-256color" || &term =~ "screen-256color"
   set t_Co=256
 elseif &term =~ "xterm"
   set t_Co=8

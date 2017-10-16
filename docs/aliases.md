@@ -105,3 +105,7 @@ accessed with `<F1>`.
 **`lvim`**
 
 *Open your last vim position.* Because you needed *another* way to invoke vim.
+
+**`screensaver`**
+
+*SOS: Save our screen!*

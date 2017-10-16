@@ -18,6 +18,7 @@
 │   ├── checkdistnoted
 │   ├── cowvis
 │   ├── exit_msg
+│   ├── figvis
 │   ├── isnumber
 │   ├── itunes
 │   ├── listcmds
@@ -47,13 +48,13 @@
 │       ├── 01-tree
 │       └── 02-brew
 ├── inputrc
-├── installers
-│   ├── install-brew.sh
-│   ├── install-git-extras.sh
-│   └── install-vim-custom.sh
 ├── setup
 │   ├── git-setup.sh
 │   ├── install-all.sh
+│   ├── installers
+│   │   ├── install-brew.sh
+│   │   ├── install-git-extras.sh
+│   │   └── install-vim-custom.sh
 │   └── makesymlinks.sh
 ├── update.sh
 ├── vim
