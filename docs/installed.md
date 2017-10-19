@@ -27,8 +27,11 @@ Quick list:
 - Commentary
 - Clam
 - Fugitive
+- Go
 - Invader
+- Javascript
 - Markology
+- Node
 - Pathogen
 - Surround
 - Syntastic
