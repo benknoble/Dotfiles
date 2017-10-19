@@ -85,7 +85,8 @@
 │   │   ├── markdown.vim
 │   │   ├── sh.vim
 │   │   ├── text.vim
-│   │   └── vim.vim
+│   │   ├── vim.vim
+│   │   └── yaml.vim
 │   ├── plugin
 │   │   └── grep-operator.vim
 │   └── spell
