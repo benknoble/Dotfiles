@@ -81,6 +81,7 @@
 │   ├── ftplugin
 │   │   ├── c.vim
 │   │   ├── gitcommit.vim
+│   │   ├── go.vim
 │   │   ├── help.vim
 │   │   ├── markdown.vim
 │   │   ├── sh.vim
