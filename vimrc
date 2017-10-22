@@ -609,12 +609,14 @@ let g:netrw_sort_by="size"
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 :Helptags
+
+colorscheme dracula
 " End Pathogen }}}
 
 " Airline theme {{{
 " set airline-theme if installed
-if !empty(glob("~/.vim/bundle/vim-airline-themes"))
-  let g:airline_theme='dark'
+if !empty(glob("~/.vim/bundle/vim-dracula"))
+  let g:airline_theme='dracula'
 endif
 " End Airline theme }}}
 

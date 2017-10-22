@@ -3,6 +3,11 @@
 ├── Brewfile
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
+├── Dracula
+│   └── terminal-app
+│       ├── Dracula.terminal
+│       ├── LICENSE
+│       └── README.md
 ├── LICENSE
 ├── README.md
 ├── bash
@@ -67,6 +72,7 @@
 │   │   ├── vim-auto-origami
 │   │   ├── vim-clam
 │   │   ├── vim-commentary
+│   │   ├── vim-dracula
 │   │   ├── vim-fugitive
 │   │   ├── vim-go
 │   │   ├── vim-invader

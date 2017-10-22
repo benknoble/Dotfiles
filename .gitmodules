@@ -46,3 +46,9 @@
 [submodule "vim/bundle/vim-node"]
 	path = vim/bundle/vim-node
 	url = https://github.com/moll/vim-node.git
+[submodule "Dracula/terminal-app"]
+	path = Dracula/terminal-app
+	url = https://github.com/benknoble/terminal.app.git
+[submodule "vim/bundle/vim-dracula"]
+	path = vim/bundle/vim-dracula
+	url = git://github.com/dracula/vim.git
