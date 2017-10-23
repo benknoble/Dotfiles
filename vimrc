@@ -511,9 +511,13 @@ nnoremap <S-Right> <C-w>L
 " End Window mappings }}}
 
 " Lines {{{
-" Move lines up and down
+" Bubble single lines up and down
 nnoremap - ddp
 nnoremap _ ddkP
+" Bubble lines up and down in visual mode
+vnoremap - xp`[V`]
+vnoremap _ xkP`[V`]
+
 " Insert blank lines with <CR>
 nnoremap <CR> o<esc>
 " Yank to end rather than full line
