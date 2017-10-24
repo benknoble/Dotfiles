@@ -293,6 +293,19 @@ if has("autocmd")
   augroup END
   "End vimrc_gitcommit }}}
 
+  " vimrc_CRfix {{{
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup vimrc_CRfix | au! | augroup END"
+  augroup vimrc_CRfix
+    au!
+
+    " Quickfix, Location list, &c. remap <CR> to work as expected
+    autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+    autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
+
+  augroup END
+  "End vimrc_CRfix }}}
+
 else
   set autoindent
 endif " has("autocmd")
@@ -519,6 +532,7 @@ vnoremap - xp`[V`]
 vnoremap _ xkP`[V`]
 
 " Insert blank lines with <CR>
+" See also augroup vimrc_CRfix
 nnoremap <CR> o<esc>
 " Yank to end rather than full line
 " Like c/C and d/D
