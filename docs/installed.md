@@ -26,6 +26,7 @@ Quick list:
 - Auto Origami
 - Commentary
 - Clam
+- Dracula theme
 - Fugitive
 - Go
 - Invader
