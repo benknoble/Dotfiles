@@ -83,6 +83,7 @@
 │   │   ├── vim-surround
 │   │   ├── vim-syntastic
 │   │   ├── vim-undotree
+│   │   ├── vim-unimpaired
 │   │   └── vim-winresizer
 │   ├── ftplugin
 │   │   ├── c.vim

@@ -36,6 +36,7 @@ Quick list:
 - Surround
 - Syntastic
 - Undotree
+- Unimpaired
 - Winresizer
 
 If you want links to the github repos that contain these plugins, you can check
