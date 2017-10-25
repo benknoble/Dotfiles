@@ -388,7 +388,10 @@ nnoremap <Leader>b :ls<CR>:b<Space>
 nnoremap gI `.
 
 " Remap x to delete into the blackhole buffer to make p work better
-noremap x "_x
+" noremap x "_x
+" Use "0p if x clobbered your yank
+" or "1,2... if it clobbered your delete
+" or use named registers
 
 " Line numbers {{{
 " Toggle linenumbers
