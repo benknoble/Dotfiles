@@ -67,6 +67,8 @@ endif
 set scrolloff=5
 " Diff vertically
 set diffopt+=vertical
+" Open help files at height lines - 10
+let &helpheight=(&lines - 10)
 " End Window Display }}}
 
 " Don't equalize window sizes automatically
