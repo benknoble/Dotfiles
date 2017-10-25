@@ -3,6 +3,9 @@
 " Maintainer            Ben Knoble <ben.knoble@gmail.com>
 
 function! MarkdownFolds()
+  if s:IsFenced(v:lnum)
+    return "="
+  endif
   let thisline = getline(v:lnum)
   if match(thisline, '^###') >= 0
       return ">3"
@@ -13,8 +16,11 @@ function! MarkdownFolds()
   else
     return "="
   endif
+endfunction
 
-  return "0"
+function! s:IsFenced(lnum)
+  let syntaxgroup = map(synstack(a:lnum,1), 'synIDattr(v:val, "name")')
+  return index(syntaxgroup, 'markdownCode') >= 0
 endfunction
 
 function! MarkdownFoldText()
