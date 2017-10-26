@@ -4,3 +4,6 @@
 
 " Spell check off, by default
 setlocal nospell
+
+" Use :help for K in help docs
+set keywordprg=:help
