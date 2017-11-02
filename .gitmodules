@@ -37,3 +37,21 @@
 [submodule "vim/bundle/vim-auto-origami"]
 	path = vim/bundle/vim-auto-origami
 	url = https://github.com/benknoble/vim-auto-origami
+[submodule "vim/bundle/vim-go"]
+	path = vim/bundle/vim-go
+	url = https://github.com/fatih/vim-go.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/vim-node"]
+	path = vim/bundle/vim-node
+	url = https://github.com/moll/vim-node.git
+[submodule "Dracula/terminal-app"]
+	path = Dracula/terminal-app
+	url = https://github.com/benknoble/terminal.app.git
+[submodule "vim/bundle/vim-dracula"]
+	path = vim/bundle/vim-dracula
+	url = git://github.com/dracula/vim.git
+[submodule "vim/bundle/vim-unimpaired"]
+	path = vim/bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git

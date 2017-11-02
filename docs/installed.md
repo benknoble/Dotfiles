@@ -26,13 +26,18 @@ Quick list:
 - Auto Origami
 - Commentary
 - Clam
+- Dracula theme
 - Fugitive
+- Go
 - Invader
+- Javascript
 - Markology
+- Node
 - Pathogen
 - Surround
 - Syntastic
 - Undotree
+- Unimpaired
 - Winresizer
 
 If you want links to the github repos that contain these plugins, you can check

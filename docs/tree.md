@@ -3,6 +3,11 @@
 ├── Brewfile
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
+├── Dracula
+│   └── terminal-app
+│       ├── Dracula.terminal
+│       ├── LICENSE
+│       └── README.md
 ├── LICENSE
 ├── README.md
 ├── bash
@@ -56,6 +61,7 @@
 │   │   ├── install-git-extras.sh
 │   │   └── install-vim-custom.sh
 │   └── makesymlinks.sh
+├── tmux.conf
 ├── update.sh
 ├── vim
 │   ├── after
@@ -67,22 +73,29 @@
 │   │   ├── vim-auto-origami
 │   │   ├── vim-clam
 │   │   ├── vim-commentary
+│   │   ├── vim-dracula
 │   │   ├── vim-fugitive
+│   │   ├── vim-go
 │   │   ├── vim-invader
+│   │   ├── vim-javascript
 │   │   ├── vim-markology
+│   │   ├── vim-node
 │   │   ├── vim-pathogen
 │   │   ├── vim-surround
 │   │   ├── vim-syntastic
 │   │   ├── vim-undotree
+│   │   ├── vim-unimpaired
 │   │   └── vim-winresizer
 │   ├── ftplugin
 │   │   ├── c.vim
 │   │   ├── gitcommit.vim
+│   │   ├── go.vim
 │   │   ├── help.vim
 │   │   ├── markdown.vim
 │   │   ├── sh.vim
 │   │   ├── text.vim
-│   │   └── vim.vim
+│   │   ├── vim.vim
+│   │   └── yaml.vim
 │   ├── plugin
 │   │   └── grep-operator.vim
 │   └── spell

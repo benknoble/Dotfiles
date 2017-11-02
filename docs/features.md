@@ -119,6 +119,9 @@ spins.
 *`benknoble.terminal` is a settings file for import into Terminal.* Import it to
 have a nice, large Terminal screen with dark background and white font.
 
+Alternately, use *`Dracula/terminal-app/Dracula.terminal`* for a Dracula color
+theme.
+
 ## Git
 
 ### Gitconfig

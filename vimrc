@@ -65,6 +65,10 @@ endif
 " Show a few lines of context around the cursor. Note that this makes the text
 " scroll if you mouse-click near the start or end of the window
 set scrolloff=5
+" Diff vertically
+set diffopt+=vertical
+" Open help files at height lines - 10
+let &helpheight=(&lines - 10)
 " End Window Display }}}
 
 " Don't equalize window sizes automatically
@@ -226,8 +230,9 @@ if has("autocmd")
 
     " Automatically add foldcolumn if folds present
     " Needs Auto Origami plugin
-    au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
-          \ auto_origami#Foldcolumn()
+    " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
+    "       \ auto_origami#Foldcolumn()
+    au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
 
   augroup END
   " End vimrc_autofoldcolumn }}}
@@ -291,6 +296,19 @@ if has("autocmd")
 
   augroup END
   "End vimrc_gitcommit }}}
+
+  " vimrc_CRfix {{{
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup vimrc_CRfix | au! | augroup END"
+  augroup vimrc_CRfix
+    au!
+
+    " Quickfix, Location list, &c. remap <CR> to work as expected
+    autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+    autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
+
+  augroup END
+  "End vimrc_CRfix }}}
 
 else
   set autoindent
@@ -370,7 +388,10 @@ nnoremap <Leader>b :ls<CR>:b<Space>
 nnoremap gI `.
 
 " Remap x to delete into the blackhole buffer to make p work better
-noremap x "_x
+" noremap x "_x
+" Use "0p if x clobbered your yank
+" or "1,2... if it clobbered your delete
+" or use named registers
 
 " Line numbers {{{
 " Toggle linenumbers
@@ -510,10 +531,15 @@ nnoremap <S-Right> <C-w>L
 " End Window mappings }}}
 
 " Lines {{{
-" Move lines up and down
-nnoremap - ddp
-nnoremap _ ddkP
+" Bubble single lines up and down
+nnoremap - @='ddp'<CR>
+nnoremap _ @='ddkP'<CR>
+" Bubble lines up and down in visual mode
+vnoremap - @='xp`[V`]'<CR>
+vnoremap _ @='xkP`[V`]'<CR>
+
 " Insert blank lines with <CR>
+" See also augroup vimrc_CRfix
 nnoremap <CR> o<esc>
 " Yank to end rather than full line
 " Like c/C and d/D
@@ -608,12 +634,14 @@ let g:netrw_sort_by="size"
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 :Helptags
+
+colorscheme dracula
 " End Pathogen }}}
 
 " Airline theme {{{
 " set airline-theme if installed
-if !empty(glob("~/.vim/bundle/vim-airline-themes"))
-  let g:airline_theme='dark'
+if !empty(glob("~/.vim/bundle/vim-dracula"))
+  let g:airline_theme='dracula'
 endif
 " End Airline theme }}}
 
