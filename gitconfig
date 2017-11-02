@@ -36,3 +36,7 @@
 	prompt = no
 [gitsh "color"]
 	default = cyan
+[gitsh]
+	prompt = "%D (%c%b %#%w) git>"
+	noGreeting = true
+	defaultCommand = status -sb
