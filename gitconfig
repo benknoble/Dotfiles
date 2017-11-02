@@ -39,4 +39,4 @@
 [gitsh]
 	prompt = "%D (%c%b %#%w) git>"
 	noGreeting = true
-	defaultCommand = status -sb
+	defaultCommand = status -sb && :echo
