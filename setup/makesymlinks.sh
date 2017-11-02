@@ -17,6 +17,7 @@ declare -A files=(
   [gitignore_global]=.gitignore_global
   [vim]=.vim
   [tmux.conf]=.tmux.conf
+  [gitshrc]=.gitshrc
 )
 
 ##########

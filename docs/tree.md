@@ -46,6 +46,7 @@
 │   └── tree.md
 ├── gitconfig
 ├── gitignore_global
+├── gitshrc
 ├── hooks
 │   ├── multihooks.py
 │   ├── pre-commit -> multihooks.py
