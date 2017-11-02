@@ -34,3 +34,5 @@
 	prompt = no
 [mergetool]
 	prompt = no
+[gitsh "color"]
+	default = cyan
