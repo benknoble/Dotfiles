@@ -1,15 +1,15 @@
 # vim: noet:sw=8:sts=8
 [alias]
-	cd = checkout
-	stat = status
-	ls = branch --list
 	cc = commit
+	cd = checkout
 	cm = commit -m
+	last = log -1 HEAD
+	ls = branch --list
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
+	stat = status
 	supdate = submodule update --remote --checkout
 	unstage = reset HEAD --
-	last = log -1 HEAD
 	visual = !gitk --all &
 [merge]
 	tool = vimdiff
