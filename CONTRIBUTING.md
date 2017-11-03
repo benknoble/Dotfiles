@@ -269,8 +269,7 @@ feature-request:          discuss a feature request
 **Topics**
 
 These are those blue tags (color #1d76db, if you're interested). They simply
-indicate that a feature or bug is part of a topic like bash, vim, or git and
-should likely be developed on that topic branch.
+indicate that a feature or bug is part of a topic like bash, vim, or git.
 
 **Meta**
 
