@@ -69,10 +69,12 @@ set scrolloff=5
 set diffopt+=vertical
 " Open help files at height lines - 10
 let &helpheight=(&lines - 10)
-" End Window Display }}}
-
 " Don't equalize window sizes automatically
 set noequalalways
+
+" Display line/rel numbers by default
+set number relativenumber
+" End Window Display }}}
 
 " Do not recognize octal number for Ctrl-A and Ctrl-K
 " Also add alpha to formats
