@@ -13,7 +13,7 @@
 	unstage = reset HEAD --
 	visual = !gitk --all &
 [merge]
-	tool = vimdiff
+	tool = fugitive
 	conflictstyle = diff3
 [color]
 	ui = true
@@ -41,3 +41,6 @@
 	prompt = "%D (%c%b %#%w) git>"
 	noGreeting = true
 	defaultCommand = status -sb && :echo
+[mergetool "fugitive"]
+	cmd = vim --nofork -c \"Gvdiff\" \"$MERGED\"
+	trustExitCode = true
