@@ -158,6 +158,16 @@ Here's the quick list:
 
 *Ignores stupid backup files, .DS_Store on macOS, and .netrwhist from `Vim`.*
 
+### Git/ext
+
+*External commands callable from `git`.* Just some easy things.
+
+- **git weekly** gives you a weekly summary of a repo
+
+- **git new** shows you the changes from the most recent HEAD change
+
+Add the `-h` parameter for more information.
+
 ## Vim
 
 ### Vimrc

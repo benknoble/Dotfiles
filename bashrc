@@ -9,6 +9,9 @@ esac
 # dir for brew scripts
 brewscripts="$HOME/Dotfiles/brew"
 
+# dir for git scripts
+gitscripts="$HOME/Dotfiles/git/ext"
+
 # set default editor to vim
 export EDITOR=vim
 
@@ -116,6 +119,9 @@ complete -o default -F _pip_completion pip
 
 # add brew ext commands to path
 pathadd "$brewscripts/ext"
+
+# add git ext commands to path
+pathadd "$gitscripts"
 
 # Handle commands not found
 if [[ "$(type -t command_not_found_handle)" != function ]]; then

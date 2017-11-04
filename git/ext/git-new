@@ -1,0 +1,34 @@
+#! /usr/bin/env bash
+
+# set up some common variables
+USAGE='[-h] [ref]
+Display commits introduced by last change to HEAD [or ref]'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+source "$(git --exec-path)"/git-sh-setup
+
+new() {
+  git log "${ref}@{1}..${ref}@{0}" "$@"
+}
+
+valid_ref() {
+  type="$(git cat-file -t "$ref" 2> /dev/null)"
+  case "$type" in
+    commit)
+      git rev-parse --verify --quiet "$ref" &> /dev/null
+      return $?
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+ref=${1:-HEAD}
+if [[ "$1" = "-h" ]] || ! valid_ref ; then
+  usage
+else
+  shift
+  new "$@"
+fi
