@@ -21,6 +21,7 @@
 ├── benknoble.terminal
 ├── bin
 │   ├── checkdistnoted
+│   ├── color-test
 │   ├── cowvis
 │   ├── exit_msg
 │   ├── figvis
@@ -44,6 +45,10 @@
 │   ├── humans.txt
 │   ├── installed.md
 │   └── tree.md
+├── git
+│   └── ext
+│       ├── git-new
+│       └── git-weekly
 ├── gitconfig
 ├── gitignore_global
 ├── gitshrc
