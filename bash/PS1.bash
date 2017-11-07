@@ -83,6 +83,14 @@ function _toggle_history {
   fi
 }
 
+function _toggle_venv {
+  if [[ "$_show_venv" = "$_value_on" ]]; then
+    _show_venv="$_value_off"
+  else
+    _show_venv="$_value_on"
+  fi
+}
+
 function _dirtrim {
   if [[ -z "$1" ]]; then
     PROMPT_DIRTRIM=2
@@ -101,6 +109,7 @@ _show_shell_name="$_value_off"
 _show_time="$_value_on"
 _show_dir="$_value_on"
 _show_history="$_value_on"
+_show_venv="$_value_on"
 
 # display functions
 
@@ -156,6 +165,17 @@ function _history_prompt {
   fi
 }
 
+function _venv_prompt {
+  if [[ "$_show_venv" = "$_value_on" ]]; then
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+      local venv
+      venv="$(basename "$(dirname "$VIRTUAL_ENV")")"
+      echo "($venv) "
+    fi
+  fi
+}
+
+
 # build PS1
 
 function _build_PS1 {
@@ -175,11 +195,11 @@ function _build_PS1 {
     exit_sym="✗ $_exit"
   fi
 
-  p="$(_time_prompt)$(_date_prompt)$(_jobs_prompt)$(_history_prompt)$exit_sym $(_tty_prompt)$(_shell_name_prompt)$(_user_prompt)$(_dir_prompt)\$("$__gps1")"'\$ '
+  p="$(_venv_prompt)$(_time_prompt)$(_date_prompt)$(_jobs_prompt)$(_history_prompt)$exit_sym $(_tty_prompt)$(_shell_name_prompt)$(_user_prompt)$(_dir_prompt)\$("$__gps1")"'\$ '
   len=$(echo "${p@P}" | wc -m)
   if [[ "$len" -gt $(($cols / 2)) ]]; then
     newline=$'\n'
   fi
 
-  PS1="$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline"'\$ '
+  PS1="$(_venv_prompt)$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline"'\$ '
 }
