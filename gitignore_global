@@ -1,6 +1,6 @@
 # no backups
 *.~
-.*.swp
+.*.sw*
 
 # no macOS pesky files
 .DS_Store
