@@ -6,4 +6,4 @@
 setlocal nospell
 
 " Use :help for K in help docs
-set keywordprg=:help
+setlocal keywordprg=:help
