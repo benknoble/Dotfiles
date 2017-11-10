@@ -102,11 +102,11 @@ function _dirtrim {
 
 _show_date="$_value_off"
 _show_user="$_value_on"
-_show_host="$_value_on"
+_show_host="$_value_off"
 _show_jobs="$_value_on"
 _show_tty="$_value_off"
 _show_shell_name="$_value_off"
-_show_time="$_value_on"
+_show_time="$_value_off"
 _show_dir="$_value_on"
 _show_history="$_value_on"
 _show_venv="$_value_on"
