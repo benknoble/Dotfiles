@@ -87,6 +87,7 @@
 │   │   ├── vim-markology
 │   │   ├── vim-node
 │   │   ├── vim-pathogen
+│   │   ├── vim-pydoc
 │   │   ├── vim-surround
 │   │   ├── vim-syntastic
 │   │   ├── vim-undotree

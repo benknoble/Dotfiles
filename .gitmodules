@@ -55,3 +55,6 @@
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "vim/bundle/vim-pydoc"]
+	path = vim/bundle/vim-pydoc
+	url = git://github.com/fs111/pydoc.vim.git
