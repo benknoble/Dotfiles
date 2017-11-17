@@ -771,6 +771,11 @@ if !empty(glob("~/.vim/bundle/vim-undotree"))
 endif
 " End Undotree }}}
 
+" Pydoc {{{
+" let g:pydoc_perform_mappings = 0
+let g:pydoc_cmd = 'python -m pydoc'
+" End Pydoc }}}
+
 " End plugin customization }}}
 
 " Abbreviations {{{
