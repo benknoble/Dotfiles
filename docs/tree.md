@@ -81,6 +81,7 @@
 │   │   ├── vim-commentary
 │   │   ├── vim-dracula
 │   │   ├── vim-fugitive
+│   │   ├── vim-game-code-break
 │   │   ├── vim-go
 │   │   ├── vim-invader
 │   │   ├── vim-javascript

@@ -58,3 +58,6 @@
 [submodule "vim/bundle/vim-pydoc"]
 	path = vim/bundle/vim-pydoc
 	url = git://github.com/fs111/pydoc.vim.git
+[submodule "vim/bundle/vim-game-code-break"]
+	path = vim/bundle/vim-game-code-break
+	url = git://github.com/johngrib/vim-game-code-break.git

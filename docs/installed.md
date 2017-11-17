@@ -24,6 +24,7 @@ Quick list:
 - Airline
   - Airline themes
 - Auto Origami
+- Code Break
 - Commentary
 - Clam
 - Dracula theme
@@ -34,6 +35,7 @@ Quick list:
 - Markology
 - Node
 - Pathogen
+- Pydoc
 - Surround
 - Syntastic
 - Undotree
