@@ -44,3 +44,5 @@
 [mergetool "fugitive"]
 	cmd = vim --nofork -c \"Gvdiff\" \"$MERGED\"
 	trustExitCode = true
+[fetch]
+	recurseSubmodules = on-demand
