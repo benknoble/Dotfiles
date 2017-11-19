@@ -61,3 +61,6 @@
 [submodule "vim/bundle/vim-game-code-break"]
 	path = vim/bundle/vim-game-code-break
 	url = git://github.com/johngrib/vim-game-code-break.git
+[submodule "vim/bundle/vim-indent-object"]
+	path = vim/bundle/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git

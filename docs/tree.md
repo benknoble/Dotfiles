@@ -83,6 +83,7 @@
 │   │   ├── vim-fugitive
 │   │   ├── vim-game-code-break
 │   │   ├── vim-go
+│   │   ├── vim-indent-object
 │   │   ├── vim-invader
 │   │   ├── vim-javascript
 │   │   ├── vim-markology
