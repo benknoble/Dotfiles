@@ -77,9 +77,7 @@ set number relativenumber
 " End Window Display }}}
 
 " Do not recognize octal number for Ctrl-A and Ctrl-K
-" Also add alpha to formats
 set nrformats-=octal
-set nrformats+=alpha
 
 " Tabs {{{
 " Tab settings: 4 spaces (unless overriden by ftplugin)
