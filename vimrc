@@ -91,6 +91,8 @@ set shiftwidth=4
 set shiftround
 " Backspace over 4 spaces if possible
 set softtabstop=4
+" Use 'autoindent', which mostly does what you want and stays out of your way
+set autoindent
 " End Tabs }}}
 
 " Wrap {{{
