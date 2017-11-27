@@ -416,6 +416,9 @@ nnoremap <Leader>R :ReloadAir<CR>
 " Note that it displays ':q' even if you type ':Q'
 cnoremap <expr> Q getcmdtype() == ':' ? 'q' : 'Q'
 
+" Quickly input the directory of the current file on the command line
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
+
 " "Uppercase word" mapping {{{
 "
 " This mapping allows you toress <c-u> in insert mode to convert the current
