@@ -414,7 +414,7 @@ nnoremap <Leader>R :ReloadAir<CR>
 
 " Quit with Q too, so you can hold shift
 " Note that it displays ':q' even if you type ':Q'
-cnoremap Q q
+cnoremap <expr> Q getcmdtype() == ':' ? 'q' : 'Q'
 
 " "Uppercase word" mapping {{{
 "
