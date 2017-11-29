@@ -77,9 +77,7 @@ set number relativenumber
 " End Window Display }}}
 
 " Do not recognize octal number for Ctrl-A and Ctrl-K
-" Also add alpha to formats
 set nrformats-=octal
-set nrformats+=alpha
 
 " Tabs {{{
 " Tab settings: 4 spaces (unless overriden by ftplugin)
@@ -93,6 +91,8 @@ set shiftwidth=4
 set shiftround
 " Backspace over 4 spaces if possible
 set softtabstop=4
+" Use 'autoindent', which mostly does what you want and stays out of your way
+set autoindent
 " End Tabs }}}
 
 " Wrap {{{
@@ -414,7 +414,10 @@ nnoremap <Leader>R :ReloadAir<CR>
 
 " Quit with Q too, so you can hold shift
 " Note that it displays ':q' even if you type ':Q'
-cnoremap Q q
+cnoremap <expr> Q getcmdtype() == ':' ? 'q' : 'Q'
+
+" Quickly input the directory of the current file on the command line
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
 " "Uppercase word" mapping {{{
 "
