@@ -32,6 +32,7 @@ set colored-stats on
 set vi-ins-mode-string +
 set vi-cmd-mode-string :
 set show-mode-in-prompt on
+set editing-mode vi
 
 # let 'space' magically expand history command-line fu
 # use M-C-e to expand *all* command-line fu
