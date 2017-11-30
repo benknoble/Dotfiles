@@ -27,3 +27,15 @@ set colored-completion-prefix on
 
 # Highlight the completion suggestions based on filetype
 set colored-stats on
+
+# vi editing mode-strings
+set vi-ins-mode-string +
+set vi-cmd-mode-string :
+set show-mode-in-prompt on
+
+# let 'space' magically expand history command-line fu
+# use M-C-e to expand *all* command-line fu
+SPACE: magic-space
+
+# reload init file with C-x C-r
+"\C-x\C-r": re-read-init-file
