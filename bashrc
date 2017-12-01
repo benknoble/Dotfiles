@@ -49,7 +49,10 @@ set -o noclobber
 
 # let 'space' magically expand history command-line fu
 # use M-C-e to expand *all* command-line fu
-bind Space:magic-space
+bind "SPACE: magic-space"
+
+# use vi readline bindings
+set -o vi
 
 HISTSIZE=100000
 HISTFILESIZE="$HISTSIZE"
@@ -137,6 +140,9 @@ if [[ "$(type -t command_not_found_handle)" != function ]]; then
     return 127
   }
 fi
+
+# disable flow control
+stty -ixon -ixoff
 
 # Message of the Day
 # COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
