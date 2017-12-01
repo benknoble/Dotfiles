@@ -47,6 +47,10 @@ shopt -s nullglob
 # don't accidentally overwrite files with '>' (use '>|' to force overwriting)
 set -o noclobber
 
+# let 'space' magically expand history command-line fu
+# use M-C-e to expand *all* command-line fu
+bind "SPACE: magic-space"
+
 # use vi readline bindings
 set -o vi
 

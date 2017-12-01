@@ -34,9 +34,5 @@ set vi-cmd-mode-string :
 set show-mode-in-prompt on
 set editing-mode vi
 
-# let 'space' magically expand history command-line fu
-# use M-C-e to expand *all* command-line fu
-SPACE: magic-space
-
 # reload init file with C-x C-r
 "\C-x\C-r": re-read-init-file
