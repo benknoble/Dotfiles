@@ -141,6 +141,9 @@ if [[ "$(type -t command_not_found_handle)" != function ]]; then
   }
 fi
 
+# disable flow control
+stty -ixon -ixoff
+
 # Message of the Day
 # COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
