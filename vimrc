@@ -354,6 +354,13 @@ nnoremap / /\v
 nnoremap ? ?\v
 " End Search }}}
 
+" Substitute {{{
+" Make & substitute with previous flags as well
+nnoremap & :&&<CR>
+" Visual mode
+xnoremap & :&&<CR>
+" End Substitute }}}
+
 " Center {{{
 " Center search results
 nnoremap n nzz
