@@ -467,10 +467,8 @@ nnoremap <F4> qall!
 
 " <F5> reloads (see "Reload")
 
-" <F6> to cycle through tabs (but just Tab/S-Tab)
+" <F6> to cycle through tabs
 nnoremap <F6> gt
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
 
 " Not technically a mapping, but acts like one
 " Toggle paste mode during an insert with <F7>
