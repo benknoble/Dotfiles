@@ -11,9 +11,9 @@ source "$(git --exec-path)"/git-sh-setup
 weekly_summary() {
   LAST_WEEK=$(date -v-7d +%m/%d)
   STATS=$(
-    git log --since=1.week --oneline |
-    tail -n 1                        |
-    awk '{ print $1 }'               |
+    git log --color=never --since=1.week --oneline |
+    tail -n 1                                      |
+    awk '{ print $1 }'                             |
     xargs git diff --shortstat
   )
   FEATURES=$(
