@@ -19,7 +19,7 @@ export EDITOR=vim
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
 # use less on any system
-export PAGER="less"
+export PAGER="less -R"
 
 # Message of the Day control
 # COW controls which cow to use (use `cowsay -l` or `cowvis` for options)

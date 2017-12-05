@@ -8,6 +8,9 @@
 # sort files
 --sort-files
 
+# page resultes
+--pager
+
 ### File Types
 
 # Markdown

@@ -18,7 +18,7 @@
 	tool = fugitive
 	conflictstyle = diff3
 [color]
-	ui = true
+	ui = always
 [core]
 	excludesfile = ~/.gitignore_global
 [diff]
