@@ -10,6 +10,7 @@
 │       └── README.md
 ├── LICENSE
 ├── README.md
+├── ackrc
 ├── bash
 │   ├── PS1.bash
 │   ├── aliases.bash

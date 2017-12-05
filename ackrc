@@ -1,0 +1,16 @@
+### ack configuration file
+
+### Options
+
+# smartcase matching, like in Vim
+--smart-case
+
+# sort files
+--sort-files
+
+### File Types
+
+# Markdown
+--type-set=md=.md
+--type-set=md=.markdown
+--type-add=md=.mkd
