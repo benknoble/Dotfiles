@@ -18,6 +18,7 @@ declare -A files=(
   [vim]=.vim
   [tmux.conf]=.tmux.conf
   [gitshrc]=.gitshrc
+  [ackrc]=.ackrc
 )
 
 ##########

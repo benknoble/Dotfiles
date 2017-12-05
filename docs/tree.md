@@ -10,6 +10,7 @@
 │       └── README.md
 ├── LICENSE
 ├── README.md
+├── ackrc
 ├── bash
 │   ├── PS1.bash
 │   ├── aliases.bash
@@ -74,6 +75,7 @@
 │   │   └── ftplugin
 │   ├── autoload
 │   ├── bundle
+│   │   ├── ack-vim
 │   │   ├── vim-airline
 │   │   ├── vim-airline-themes
 │   │   ├── vim-auto-origami

@@ -1,0 +1,4 @@
+# Dotfiles ack config
+
+# ignore bundle directory
+--ignore-dir=vim/bundle
