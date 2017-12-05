@@ -129,8 +129,13 @@ set smartcase
 set hlsearch
 " End Search }}}
 
+" Completion {{{
 " Complete from dictionary if spell on
 set complete+=kspell
+
+" Make matching handle case better
+set infercase
+" End Completion }}}
 
 " Make buffers hidden when unloaded, just in case you want them back
 set hidden
