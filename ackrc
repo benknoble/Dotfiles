@@ -11,6 +11,12 @@
 # page resultes
 --pager
 
+# Ignore databases
+--ignore-file=ext:db
+
+# Ignore tags files
+--ignore-file=match:/tag(s)?/
+
 ### File Types
 
 # Markdown
