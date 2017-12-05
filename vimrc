@@ -129,8 +129,13 @@ set smartcase
 set hlsearch
 " End Search }}}
 
+" Completion {{{
 " Complete from dictionary if spell on
 set complete+=kspell
+
+" Make matching handle case better
+set infercase
+" End Completion }}}
 
 " Make buffers hidden when unloaded, just in case you want them back
 set hidden
@@ -354,6 +359,13 @@ nnoremap / /\v
 nnoremap ? ?\v
 " End Search }}}
 
+" Substitute {{{
+" Make & substitute with previous flags as well
+nnoremap & :&&<CR>
+" Visual mode
+xnoremap & :&&<CR>
+" End Substitute }}}
+
 " Center {{{
 " Center search results
 nnoremap n nzz
@@ -467,10 +479,8 @@ nnoremap <F4> qall!
 
 " <F5> reloads (see "Reload")
 
-" <F6> to cycle through tabs (but just Tab/S-Tab)
+" <F6> to cycle through tabs
 nnoremap <F6> gt
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
 
 " Not technically a mapping, but acts like one
 " Toggle paste mode during an insert with <F7>
