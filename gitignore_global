@@ -7,3 +7,10 @@
 
 # vim file browsing history
 .netrwhist
+
+# tags files
+tag
+tags
+
+# project ackrc's
+.ackrc

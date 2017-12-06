@@ -68,6 +68,7 @@
 │   │   ├── install-git-extras.sh
 │   │   └── install-vim-custom.sh
 │   └── makesymlinks.sh
+├── tags
 ├── tmux.conf
 ├── update.sh
 ├── vim
