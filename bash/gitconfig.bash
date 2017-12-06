@@ -13,7 +13,7 @@ if [[ -s "$gitprompt" ]]; then
   GIT_PS1_DESCRIBE_STYLE='branch'
   __gps1="__git_ps1 '%s '"
 else
-  __gps1="git branch 2>/dev/null | grep '^*' | colrm 1 2"
+  __gps1="git branch --no-color 2>/dev/null | grep '^*' | colrm 1 2"
 fi
 
 # add git autocompletion, if it exists
