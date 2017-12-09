@@ -1,4 +1,9 @@
 #! /usr/bin/env bash
+# display weekly statistics about a git repo
+
+set -eo pipefail
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 # set up some common variables
 USAGE='[-h]
@@ -8,35 +13,53 @@ SUBDIRECTORY_OK=true
 # source git-sh-setup for some helpers
 source "$(git --exec-path)"/git-sh-setup
 
-weekly_summary() {
-  LAST_WEEK=$(date -v-7d +%m/%d)
-  STATS=$(
-    git log --color=never --since=1.week --oneline |
-    tail -n 1                                      |
-    awk '{ print $1 }'                             |
-    xargs git diff --shortstat
-  )
-  FEATURES=$(
-    git log --since=1.week --oneline |
-    grep -E "Merge (pull|branch) "
-  )
-  FEATURES_COUNT=$(
-    echo "$FEATURES" |
-    sed '/^\s*$/d'   |
-    wc -l            |
-    awk '{ print $1 }'
-  )
-  echo "Stats ($LAST_WEEK - Today)"
+weekly_git_log() {
+  git log --color=never --since=1.week --oneline
+}
+
+weekly_git_stats() {
+  weekly_git_log \
+    | tail -n 1 \
+    | awk '{ print $1 }' \
+    | xargs git diff --shortstat
+}
+
+features_merged() {
+  weekly_git_log \
+    | grep -E "Merge (pull|branch) "
+}
+
+count_features() {
+  echo "${1:?}" \
+    | sed '/^\s*$/d' \
+    | wc -l \
+    | awk '{ print $1 }'
+}
+
+display_weekly_stats() {
+  echo "Stats (${1:?} - Today)"
   echo "---------------------"
-  echo "$STATS"
+  echo "${2:?}"
   echo
-  echo "Features ($FEATURES_COUNT)"
+  echo "Features (${3:?})"
   echo "-------------"
-  echo "$FEATURES"
+  echo "${4:?}"
+}
+
+weekly() {
+  local last_week
+  last_week=$(date -v-7d +%m/%d)
+  local stats
+  stats="$(weekly_git_stats)"
+  local features
+  features="$(features_merged)"
+  local features_count
+  features_count="$(count_features)"
+  display_weekly_stats "$last_week" "$stats" "$features_count" "$features"
 }
 
 if [[ $# -gt 0 ]]; then
   usage
 else
-  weekly_summary
+  weekly
 fi

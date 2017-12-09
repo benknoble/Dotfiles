@@ -1,4 +1,9 @@
 #! /usr/bin/env bash
+# display most recently introduced commits
+
+set -eo pipefail
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 # set up some common variables
 USAGE='[-h] [ref]
