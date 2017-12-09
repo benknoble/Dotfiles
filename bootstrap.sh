@@ -1,43 +1,59 @@
 #! /usr/bin/env bash
+# bootstrap the dotfiles into your home directory and install software
+
 # bootstrap is not quite the correct term for this installer based on wikipedia,
 # but it is more fun than 'setup.' The script will execute commands from the
 # setup directory to get things running
 
-echo
-echo "Bootstrapping Dotfiles..."
-echo
+# turn on "strict mode"
+set -euo pipefail
 
-echo "Making symlinks to configuration files..."
-echo
-echo "WARNING: Backups in the old directory (~/Dotfiles_old)
+dotfiles_dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
+setup_dir="$dotfiles_dir/setup"
+
+source "$dotfiles_dir/dotfiles-support"
+
+confirm_bootstrap() {
+  display_message "WARNING: Backups in the old directory (~/Dotfiles_old)
 will be DELETED and OVERWRITTEN
 
 If you want to keep them, abort and move them!
 
-Are you sure you want to continue bootstrapping Dotfiles? "
-read -n 1 -p "[y/n]> " install && echo
-[[ "$install" =~ ^(y|Y) ]] || {
-  echo "Aborting installation..."
-  exit 1
+Are you sure you want to continue bootstrapping Dotfiles?"
+
+  read -n 1 -p "[y/n]> " install && echo
+  input_matches_yY "$install"
 }
-echo
-bash ~/Dotfiles/setup/makesymlinks.sh
-echo
-echo "...done with symlinks"
-echo
 
-echo "Running installers..."
-echo
-bash ~/Dotfiles/setup/install-all.sh
-echo
-echo "...done with installers"
-echo
+symlink_dotfiles() {
+  display_message "Making symlinks to configuration files..."
+  bash "$setup_dir/makesymlinks.sh"
+  display_message "...done with symlinks"
+}
 
-echo "Setting up git..."
-echo
-bash ~/Dotfiles/setup/git-setup.sh
-echo
-echo "...done with git"
+install_software() {
+  display_message "Running installers..."
+  bash "$setup_dir/install-all.sh"
+  display_message "...done with installers"
+}
 
-echo
-echo "...done bootstrapping"
+setup_git() {
+  display_message "Setting up git..."
+  bash "$setup_dir/git-setup.sh"
+  display_message "...done with git"
+}
+
+
+bootstrap() {
+  display_message "Bootstrapping Dotfiles..."
+  symlink_dotfiles
+  install_software
+  setup_git
+  display_message "...done bootstrapping"
+}
+
+if confirm_bootstrap; then
+  bootstrap
+else
+  display_message "Aborting bootrap"
+fi
