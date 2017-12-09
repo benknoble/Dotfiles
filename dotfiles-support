@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+# a library of common functions for dotfiles scripts
+
+# display a newline-separated message to the user
+display_message() {
+  echo
+  printf "%s\n" "$1"
+  echo
+}
+
+input_matches_yY() {
+  [[ "$1" =~ ^(y|Y) ]]
+}
