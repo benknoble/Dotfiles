@@ -1,36 +1,49 @@
 #! /usr/bin/env bash
 # installer script for brew and certain formulae
 
-_install_brew() {
+set -euo pipefail
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
+setup_dir="$( dirname "$dir" )"
+dotfiles_dir="$( dirname "$setup_dir")"
+
+source "$dotfiles_dir/dotfiles-support"
+
+install_brew() {
   if ! /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ; then
-    echo "Brew installation failed!" >&2
+    display_message "Brew installation failed!"
     exit 1
   fi
+  bundle
 }
 
-_set_shell() {
-  echo "Add $1 to allowed shells"
+bundle() {
+  brew tap Homebrew/bundle
+  brew bundle install
+}
+
+set_shell() {
+  display_message "Add $1 to allowed shells (sudo password required)"
   sudo bash -c "echo $1 >> /etc/shells"
-  echo "Change default shell to $1"
+  display_message "Change default shell to $1"
   chsh -s "$1" "$USER"
 }
 
-echo
-echo "Install Brew..."
+confirm_homebrew() {
+  read -n 1 -p "Install brew [Y/n]? " installBrew && echo
+  input_matches_yY "$installBrew"
+}
 
-read -n 1 -p "Install Brew [Y/n]? " installBrew && echo
-if [[ "$installBrew" =~ ^(y|Y) ]]; then
-  echo "Installing Brew..."
+homebrew() {
+  display_message "Installing brew..."
+  if confirm_homebrew ; then
+    install_brew
+    local bash_path=/usr/local/bin/bash
+    [[ -x "$bash_path" ]] && set_shell "$bash_path"
+  else
+    display_message "Skipping Brew..."
+  fi
+  display_message "...done with brew"
+}
 
-  _install_brew
-  brew tap Homebrew/bundle
-  brew bundle install
-  bash_path=/usr/local/bin/bash
-  [[ -x "$bash_path" ]] && _set_shell "$bash_path"
-
-else
-  echo "Skipping Brew..."
-fi
-
-echo "...done with Brew"
-echo
+homebrew
