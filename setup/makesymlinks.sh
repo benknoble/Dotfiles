@@ -1,13 +1,11 @@
 #! /usr/bin/env bash
-############################
-# .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/Dotfiles
-############################
+# This script creates symlinks from the home directory to dotfiles
 
-########## Variables
+set -euo pipefail
 
-dir=~/Dotfiles                                                  # dotfiles directory
-olddir=~/Dotfiles_old                                           # old dotfiles backup directory
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
+dotfiles_dir="$(dirname "$dir")"
+olddir="${dotfiles_dir}_old"
 # list of files/folders to symlink in homedir
 declare -A files=(
   [bash_profile]=.bash_profile
@@ -21,40 +19,58 @@ declare -A files=(
   [ackrc]=.ackrc
 )
 
-##########
+source "$dotfiles_dir/dotfiles-support"
 
-# create dotfiles_old in homedir
-echo "Creating $olddir for backup of any existing Dotfiles in ~..."
-mkdir -p "$olddir"
-sleep 1
-echo "...done"
-echo
+create_backup_dir() {
+  display_message "Creating $olddir for backup of any existing files in $HOME..."
+  mkdir -p "$olddir"
+  display_message "...done"
+}
 
-# clean out dotfiles_old
-echo "Cleaning out $olddir to hold fresh backups..."
-find ~/Dotfiles_old/ -not -path ~/Dotfiles_old/ -delete
-sleep 1
-echo "...done"
-echo
+clean_backup_dir() {
+  display_message "Cleaning out $olddir to hold fresh backups..."
+  find "$olddir" -not -path "$olddir" -delete
+  display_message "...done"
+}
 
-# change to the dotfiles directory
-echo "Changing to the $dir directory..."
-cd "$dir" || { echo "Failed to find $dir"; exit 1; }
-sleep 1
-echo "...done"
-echo
+verify_directory() {
+  display_message "Checking for the $dotfiles_dir directory..."
+  if [[ "$PWD" == "$dotfiles_dir" ]]; then
+    display_message "...Found $dotfiles_dir directory"
+    true
+  else
+    display_message "...Failed to find $dotfiles_dir"
+    false
+  fi
+}
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
-for file in "${!files[@]}"; do
-  echo "Moving ${files[$file]} from ~ to $olddir"
-  mv ~/"${files[$file]}" "$olddir"/"${files[$file]}"
+# handle the file by moving it to backup and symlinking
+# args: 1: dotfile key (that is, the name it has in this repo)
+handle_file() {
+  display_message "Starting ${files[$1]}..."
+  display_message "Moving ${files[$1]} from $HOME to $olddir"
+  mv ~/"${files[$1]}" "$olddir"/"${files[$1]}"
+  display_message "Creating symlink to ${files[$1]} in $HOME"
+  ln -s "$dotfiles_dir"/"$1" ~/"${files[$1]}"
+  display_message "...Finished ${files[$1]}"
   sleep 1
-  echo "Creating symlink to ${files[$file]} in home directory."
-  ln -s "$dir"/"$file" ~/"${files[$file]}"
-  sleep 1
-  echo "Finished ${files[$file]}"
-  sleep 1
-  echo
-done
+}
 
-echo "...done"
+handle_files() {
+  for file in "${!files[@]}"; do
+    handle_file "$file"
+  done
+}
+
+makesymlinks() {
+  display_message "Making symlinks..."
+  if ! verify_directory ; then
+    exit
+  fi
+  create_backup_dir
+  clean_backup_dir
+  handle_files
+  display_message "...done making symlinks"
+}
+
+makesymlinks
