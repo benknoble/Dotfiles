@@ -109,12 +109,8 @@ The following files depend on the structure `~/Dotfiles` and must be edited to
 use a different directory:
 
 - [/bashrc](/bashrc)
-- [/bootstrap.sh](/bootstrap.sh)
 - [/bash/aliases.bash](/bash/aliases.bash)
 - [/bash/functions.bash](/bash/functions.bash)
-- [/setup/install-all.sh](/setup/install-all.sh)
-- [/setup/makesymlinks.sh](/setup/makesymlinks.sh)
-- [/update.sh](/update.sh)
 
 ### Built With
 
