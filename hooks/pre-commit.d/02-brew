@@ -1,4 +1,13 @@
-#! /bin/bash -
+#! /usr/bin/env bash -
 # Update the file `Brewfile` pre-commit to include any changes
-brew bundle dump --force
-git add Brewfile
+
+set -euo pipefail
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
+
+update_brewfile() {
+  brew bundle dump --force
+  git add Brewfile
+}
+
+update_brewfile
