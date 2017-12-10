@@ -49,7 +49,7 @@ verify_directory() {
 handle_file() {
   display_message "Starting ${files[$1]}..."
   display_message "Moving ${files[$1]} from $HOME to $olddir"
-  mv ~/"${files[$1]}" "$olddir"/"${files[$1]}"
+  [[ -e ~/"${files[$1]}" ]] && mv ~/"${files[$1]}" "$olddir"/"${files[$1]}"
   display_message "Creating symlink to ${files[$1]} in $HOME"
   ln -s "$dotfiles_dir"/"$1" ~/"${files[$1]}"
   display_message "...Finished ${files[$1]}"
