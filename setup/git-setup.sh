@@ -1,5 +1,13 @@
-#! /usr/bin/env bash
+#! /usr/bin/env bash -
 # git setup
+
+set -euo pipefail
+
+dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dotfiles_dir="$(dirname "$dir")"
+dotfiles_old="${dotfiles_dir}_old"
+
+source "$dotfiles_dir/dotfiles-support"
 
 # config function
 # Args: 1:section 2:key
@@ -14,61 +22,75 @@ config() {
 # Usage: config_user_info
 # -- Configures user information for someone other than Ben Knoble
 config_user_info() {
+  local name
   name="$(git config --global --get user.name)"
+  local email
   email="$(git config --global --get user.email)"
 
   if [[ -z "$name" ]]; then
-    echo "No previous user name"
+    display_message "No previous user name"
     config user name
   else
-    echo "Previous user name: $name"
+    display_message "Previous user name: $name"
     read -n 1 -p "Is [name = $name] ok [Y/n] ? " nameok && echo
-    if [[ !("$nameok" =~ ^(y|Y)) ]]; then
+    if input_matches_yY "$nameok"; then
       config user name
     fi
   fi
-  echo
 
   if [[ -z "$email" ]]; then
-    echo "No previous user email"
+    display_message "No previous user email"
     config user email
   else
-    echo "Previous user email: $email"
+    display_message "Previous user email: $email"
     read -n 1 -p "Is [email = $email] ok [Y/n] ? " emailok && echo
-    if [[ !("$emailok" =~ ^(y|Y)) ]]; then
+    if input_matches_yY "$emailok"; then
       config user email
     fi
   fi
 }
 
-echo "Configuring git..."
-echo
-
-[[ -e ~/.gitconfig ]] && {
-  echo "Backing up gitconfig..."
-  mv -f ~/.gitconfig ~/Dotfiles_old/gitconfig
-  echo "...done backing up gitconfig"
-  echo
+backup_gitconfig() {
+  if [[ -e ~/.gitconfig ]]; then
+    display_message "Backing up gitconfig..."
+    mv -f ~/.gitconfig "$dotfiles_old/gitconfig"
+    display_message "...done backing up gitconfig"
+  fi
 }
 
-# Check if Ben Knoble
-read -n 1 -p "Are you Ben Knoble (@benknoble) [Y/n] ? " ben && echo
-if [[ "$ben" =~ ^(y|Y) ]]; then
-  # Symlink gitconfig
-  echo "Symlinking gitconfig..."
-  ln -s ~/Dotfiles/gitconfig ~/.gitconfig
-else
-  # Copy gitconfig
-  echo "Copying gitconfig..."
-  cp ~/Dotfiles/gitconfig ~/.gitconfig
+symlink_gitconfig() {
+  display_message "Symlinking gitconfig..."
+  ln -s "$dotfiles_dir/gitconfig" ~/.gitconfig
+  display_message "...done with gitconfig"
+}
 
-  # Reconfigure user name, email address
-  echo "Configure user name and email..."
+copy_gitconfig() {
+  display_message "Copying gitconfig..."
+  cp "$dotfiles_dir/gitconfig" ~/.gitconfig
+  display_message "...done with gitconfig"
+}
+
+reconfigure_name_email() {
+  display_message "Configure user name and email..."
   config_user_info
-  echo "...done with user info"
-fi
+  display_message "...done with user info"
+}
 
-echo "...done with gitconfig"
-echo
+is_ben_knoble() {
+  read -n 1 -p "Are you Ben Knoble (@benknoble) [Y/n] ? " ben && echo
+  input_matches_yY "$ben"
+}
 
-echo "...done configuring git"
+setup_git() {
+  display_message "Configuring git..."
+  backup_gitconfig
+  if is_ben_knoble; then
+    symlink_gitconfig
+  else
+    copy_gitconfig
+    reconfigure_name_email
+  fi
+  display_message "...done configuring git"
+}
+
+setup_git
