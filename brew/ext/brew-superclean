@@ -1,4 +1,4 @@
-#! /bin/bash -
+#! /usr/bin/env bash -
 #:  * `superclean`:
 #:    Cleans up the cache and outdated version downloads, calling `cleanup -s`
 #:
