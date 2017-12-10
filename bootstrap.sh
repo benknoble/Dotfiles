@@ -14,7 +14,7 @@ setup_dir="$dotfiles_dir/setup"
 source "$dotfiles_dir/dotfiles-support"
 
 confirm_bootstrap() {
-  display_message "WARNING: Backups in the old directory (~/Dotfiles_old)
+  display_message "WARNING: Backups in the old directory (${dotfiles_dir}_old)
 will be DELETED and OVERWRITTEN
 
 If you want to keep them, abort and move them!
