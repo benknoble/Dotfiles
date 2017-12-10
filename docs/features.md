@@ -132,25 +132,31 @@ may also want to run `setup/git-setup.sh` every now and then just in case.
 
 Here's the quick list:
 
-- **cd** for checking out branches.
-
-- **stat** for checking the status.
-
-- **ls** for listing branches (and remotes; accepts -vva flags).
+- **amend** for amending commits
 
 - **cc** for commit.
 
+- **cd** for checking out branches.
+
 - **cm** for commit with message passed as options.
+
+- **graph** for seeing a graph
+
+- **graph-long** for seeing a graph with long commits
+
+- **last** for logging the last commit.
+
+- **ls** for listing branches (and remotes; accepts -vva flags).
 
 - **sdiff** for collecting diffs from submodules.
 
 - **spush** for pushing with automatic submodule pushing.
 
+- **stat** for checking the status.
+
 - **supdate** for updating all submodules.
 
 - **unstage** for removing files from the staging area.
-
-- **last** for logging the last commit.
 
 - **visual** for invoking `gitk`.
 
