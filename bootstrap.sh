@@ -55,5 +55,5 @@ bootstrap() {
 if confirm_bootstrap; then
   bootstrap
 else
-  display_message "Aborting bootrap"
+  display_message "Aborting bootstrap"
 fi
