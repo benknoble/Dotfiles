@@ -2,6 +2,7 @@
 # a library of common functions for dotfiles scripts
 
 # display a message to the user
+# I can quickly tune the behavior of message display by tweaking the function
 display_message() {
   printf "%s\n" "$1"
 }
