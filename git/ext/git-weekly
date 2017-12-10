@@ -54,7 +54,7 @@ weekly() {
   local features
   features="$(features_merged)"
   local features_count
-  features_count="$(count_features)"
+  features_count="$(count_features "$features")"
   display_weekly_stats "$last_week" "$stats" "$features_count" "$features"
 }
 
