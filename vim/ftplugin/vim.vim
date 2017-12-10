@@ -6,4 +6,4 @@
 setlocal shiftwidth=2 softtabstop=2
 
 " Use :help for K in vimscript
-set keywordprg=:help
+setlocal keywordprg=:help
