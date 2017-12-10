@@ -21,6 +21,7 @@ use tpope's [pathogen](https://github.com/tpope/vim-pathogen).
 
 Quick list:
 
+- Ack
 - Airline
   - Airline themes
 - Auto Origami
@@ -30,6 +31,7 @@ Quick list:
 - Dracula theme
 - Fugitive
 - Go
+- Indent object
 - Invader
 - Javascript
 - Markology

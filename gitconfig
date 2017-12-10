@@ -4,9 +4,9 @@
 	cc = commit
 	cd = checkout
 	cm = commit -m
-	last = log -1 HEAD
 	graph = log --graph --oneline
 	graph-long = log -- graph
+	last = log -1 HEAD
 	ls = branch --list
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
