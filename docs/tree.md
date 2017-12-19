@@ -105,6 +105,7 @@
 │   │   ├── go.vim
 │   │   ├── help.vim
 │   │   ├── markdown.vim
+│   │   ├── ruby.vim
 │   │   ├── sh.vim
 │   │   ├── text.vim
 │   │   ├── vim.vim
