@@ -626,6 +626,10 @@ endfunction
 
 " Plugin customization {{{
 
+" Matchit {{{
+packadd! matchit
+" End Matchit }}}
+
 " Man {{{
 " Load Man plugin (see `:help Man` for more info)
 runtime ftplugin/man.vim
