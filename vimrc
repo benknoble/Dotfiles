@@ -654,7 +654,9 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 :Helptags
 
-colorscheme dracula
+if ! exists('g:colors_name')
+  colorscheme dracula
+endif
 " End Pathogen }}}
 
 " Airline theme {{{
