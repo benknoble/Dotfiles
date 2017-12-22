@@ -3,7 +3,7 @@
 
 # add git branch to prompt when available and colorize
 gitprompt=/usr/local/etc/bash_completion.d/git-prompt.sh
-if [[ -s "$gitprompt" ]]; then
+if [[ -r "$gitprompt" ]]; then
   . "$gitprompt"
   GIT_PS1_SHOWDIRTYSTATE='true'
   GIT_PS1_SHOWSTASHSTATE='true'
