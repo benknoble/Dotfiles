@@ -7,7 +7,7 @@ esac
 # VARS
 
 # dir for brew scripts
-brewscripts="$HOME/Dotfiles/brew"
+brewscripts="$HOME/Dotfiles/brew/ext"
 
 # dir for git scripts
 gitscripts="$HOME/Dotfiles/git/ext"
@@ -121,7 +121,7 @@ complete -o default -F _pip_completion pip
 [[ -s "$bashcomp" ]] && source "$bashcomp"
 
 # add brew ext commands to path
-pathadd "$brewscripts/ext"
+pathadd "$brewscripts"
 
 # add git ext commands to path
 pathadd "$gitscripts"
