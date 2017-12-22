@@ -3,7 +3,7 @@
 
 # add git branch to prompt when available and colorize
 gitprompt=/usr/local/etc/bash_completion.d/git-prompt.sh
-if [[ -s "$gitprompt" ]]; then
+if [[ -r "$gitprompt" ]]; then
   . "$gitprompt"
   GIT_PS1_SHOWDIRTYSTATE='true'
   GIT_PS1_SHOWSTASHSTATE='true'
@@ -15,11 +15,3 @@ if [[ -s "$gitprompt" ]]; then
 else
   __gps1="git branch --no-color 2>/dev/null | grep '^*' | colrm 1 2"
 fi
-
-# add git autocompletion, if it exists
-gitcomp=/usr/local/etc/bash_completion.d/git-completion.bash
-[[ -s "$gitcomp" ]] && . "$gitcomp"
-
-# add hub completion
-hubcomp=/usr/local/etc/bash_completion.d/hub.bash_completion.sh
-[[ -s "$hubcomp" ]] && . "$hubcomp"

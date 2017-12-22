@@ -36,10 +36,8 @@ PS3="$PS2"
 # file to hold private keys
 private=~/.private
 # completion paths
-brewcomp=/usr/local/etc/bash_completion.d/brew
-caskcomp=/usr/local/etc/bash_completion.d/brew-cask
-scalacomp=/usr/local/Cellar/scala/2.12.4/etc/bash_completion.d/scala
 bashcomp=/usr/local/share/bash-completion/bash_completion
+completion_dir=/usr/local/etc/bash_completion.d
 
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
@@ -109,16 +107,14 @@ _pip_completion()
 complete -o default -F _pip_completion pip
 # pip bash completion end
 
-# brew completion if possible
-[[ -s "$brewcomp" ]] && source "$brewcomp"
-# and brew cask
-[[ -s "$caskcomp" ]] && source "$caskcomp"
-
-# scala completion if possible
-[[ -s "$scalacomp" ]] && source "$scalacomp"
-
 # bash completion
-[[ -s "$bashcomp" ]] && source "$bashcomp"
+[[ -r "$bashcomp" ]] && source "$bashcomp"
+# source files in completion_dir
+for file in "$completion_dir"/*; do
+  if [[ -r "$file" ]]; then
+    source "$file"
+  fi
+done
 
 # add brew ext commands to path
 pathadd "$brewscripts"
