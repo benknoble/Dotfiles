@@ -85,7 +85,7 @@ source ~/Dotfiles/bash/PS1.bash
 # source anything in ~/.personal
 if [[ -d ~/.personal ]]; then
   for file in ~/.personal/*.sh; do
-    if [[ -r ~/.personal ]]; then
+    if [[ -r "$file" ]]; then
       source "$file"
     fi
   done
