@@ -38,7 +38,7 @@ private=~/.private
 # completion paths
 brewcomp=/usr/local/etc/bash_completion.d/brew
 caskcomp=/usr/local/etc/bash_completion.d/brew-cask
-scalacomp=/usr/local/Cellar/scala/2.12.3/etc/bash_completion.d/scala
+scalacomp=/usr/local/Cellar/scala/2.12.4/etc/bash_completion.d/scala
 bashcomp=/usr/local/share/bash-completion/bash_completion
 
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
