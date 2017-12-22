@@ -7,7 +7,7 @@ esac
 # VARS
 
 # dir for brew scripts
-brewscripts="$HOME/Dotfiles/brew"
+brewscripts="$HOME/Dotfiles/brew/ext"
 
 # dir for git scripts
 gitscripts="$HOME/Dotfiles/git/ext"
@@ -38,7 +38,7 @@ private=~/.private
 # completion paths
 brewcomp=/usr/local/etc/bash_completion.d/brew
 caskcomp=/usr/local/etc/bash_completion.d/brew-cask
-scalacomp=/usr/local/Cellar/scala/2.12.3/etc/bash_completion.d/scala
+scalacomp=/usr/local/Cellar/scala/2.12.4/etc/bash_completion.d/scala
 bashcomp=/usr/local/share/bash-completion/bash_completion
 
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
@@ -85,7 +85,7 @@ source ~/Dotfiles/bash/PS1.bash
 # source anything in ~/.personal
 if [[ -d ~/.personal ]]; then
   for file in ~/.personal/*.sh; do
-    if [[ -r ~/.personal ]]; then
+    if [[ -r "$file" ]]; then
       source "$file"
     fi
   done
@@ -121,7 +121,7 @@ complete -o default -F _pip_completion pip
 [[ -s "$bashcomp" ]] && source "$bashcomp"
 
 # add brew ext commands to path
-pathadd "$brewscripts/ext"
+pathadd "$brewscripts"
 
 # add git ext commands to path
 pathadd "$gitscripts"
