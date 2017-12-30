@@ -547,11 +547,11 @@ nnoremap <S-Right> <C-w>L
 
 " Lines {{{
 " Bubble single lines up and down
-nnoremap - @='ddp'<CR>
-nnoremap _ @='ddkP'<CR>
+nnoremap - :.move +1<CR>
+nnoremap _ :.move -2<CR>
 " Bubble lines up and down in visual mode
-vnoremap - @='xp`[V`]'<CR>
-vnoremap _ @='xkP`[V`]'<CR>
+vnoremap - :'<,'>move '>+1 \| normal! gv<CR>
+vnoremap _ :'<,'>move '<-2 \| normal! gv<CR>
 
 " Insert blank lines with <CR>
 " See also augroup vimrc_CRfix
