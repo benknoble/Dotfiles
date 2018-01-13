@@ -11,7 +11,7 @@ _exit=0
 
 # toggle functions
 
-function _toggle_date {
+_toggle_date() {
   if [[ "$_show_date" = "$_value_on" ]]; then
     _show_date="$_value_off"
   else
@@ -19,7 +19,7 @@ function _toggle_date {
   fi
 }
 
-function _toggle_user {
+_toggle_user() {
   if [[ "$_show_user" = "$_value_on" ]]; then
     _show_user="$_value_off"
   else
@@ -27,7 +27,7 @@ function _toggle_user {
   fi
 }
 
-function _toggle_host {
+_toggle_host() {
   if [[ "$_show_host" = "$_value_on" ]]; then
     _show_host="$_value_off"
   else
@@ -35,7 +35,7 @@ function _toggle_host {
   fi
 }
 
-function _toggle_jobs {
+_toggle_jobs() {
   if [[ "$_show_jobs" = "$_value_on" ]]; then
     _show_jobs="$_value_off"
   else
@@ -43,7 +43,7 @@ function _toggle_jobs {
   fi
 }
 
-function _toggle_tty {
+_toggle_tty() {
   if [[ "$_show_tty" = "$_value_on" ]]; then
     _show_tty="$_value_off"
   else
@@ -51,7 +51,7 @@ function _toggle_tty {
   fi
 }
 
-function _toggle_shell_name {
+_toggle_shell_name() {
   if [[ "$_show_shell_name" = "$_value_on" ]]; then
     _show_shell_name="$_value_off"
   else
@@ -59,7 +59,7 @@ function _toggle_shell_name {
   fi
 }
 
-function _toggle_time {
+_toggle_time() {
   if [[ "$_show_time" = "$_value_on" ]]; then
     _show_time="$_value_off"
   else
@@ -67,7 +67,7 @@ function _toggle_time {
   fi
 }
 
-function _toggle_dir {
+_toggle_dir() {
   if [[ "$_show_dir" = "$_value_on" ]]; then
     _show_dir="$_value_off"
   else
@@ -75,7 +75,7 @@ function _toggle_dir {
   fi
 }
 
-function _toggle_history {
+_toggle_history() {
   if [[ "$_show_history" = "$_value_on" ]]; then
     _show_history="$_value_off"
   else
@@ -83,7 +83,7 @@ function _toggle_history {
   fi
 }
 
-function _toggle_venv {
+_toggle_venv() {
   if [[ "$_show_venv" = "$_value_on" ]]; then
     _show_venv="$_value_off"
   else
@@ -91,7 +91,7 @@ function _toggle_venv {
   fi
 }
 
-function _dirtrim {
+_dirtrim() {
   if [[ -z "$1" ]]; then
     PROMPT_DIRTRIM=2
   else
@@ -113,13 +113,13 @@ _show_venv="$_value_on"
 
 # display functions
 
-function _date_prompt {
+_date_prompt() {
   if [[ "$_show_date" = "$_value_on" ]]; then
     echo '\D{%e %B %Y} '
   fi
 }
 
-function _user_prompt {
+_user_prompt() {
   if [[ "$_show_user" = "$_value_on" ]]; then
     if [[ "$_show_host" = "$_value_on" ]]; then
       echo '\u @ \h '
@@ -129,43 +129,43 @@ function _user_prompt {
   fi
 }
 
-function _jobs_prompt {
+_jobs_prompt() {
   if [[ "$_show_jobs" = "$_value_on" ]]; then
     echo '{\jj} '
   fi
 }
 
-function _tty_prompt {
+_tty_prompt() {
   if [[ "$_show_tty" = "$_value_on" ]]; then
     echo '\l '
   fi
 }
 
-function _shell_name_prompt {
+_shell_name_prompt() {
   if [[ "$_show_shell_name" = "$_value_on" ]]; then
     echo '\s-\V '
   fi
 }
 
-function _time_prompt {
+_time_prompt() {
   if [[ "$_show_time" = "$_value_on" ]]; then
     echo '\t⧖ '
   fi
 }
 
-function _dir_prompt {
+_dir_prompt() {
   if [[ "$_show_dir" = "$_value_on" ]]; then
     echo '∈\w '
   fi
 }
 
-function _history_prompt {
+_history_prompt() {
   if [[ "$_show_history" = "$_value_on" ]]; then
     echo '#\! '
   fi
 }
 
-function _venv_prompt {
+_venv_prompt() {
   if [[ "$_show_venv" = "$_value_on" ]]; then
     if [[ -n "$VIRTUAL_ENV" ]]; then
       local venv
@@ -178,7 +178,7 @@ function _venv_prompt {
 
 # build PS1
 
-function _build_PS1 {
+_build_PS1() {
   _exit="$?"
   local highlight
   local exit_sym

@@ -29,19 +29,19 @@ cyan=36
 white=37
 
 # pass in a color from text above
-function brighten {
+brighten() {
   echo $(( $1 + 60 ))
 }
 
 # pass in a color from text above
-function background {
+background() {
   echo $(( $1 + 10 ))
 }
 
 # build color string
 # colorbuild color attribute
 # e.g., colorbuild "$red" "$BOLD"
-function colorbuild {
+colorbuild() {
   echo '\e['"$2"';'"$1"'m'
 }
 
