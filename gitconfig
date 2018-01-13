@@ -4,6 +4,7 @@
 	cc = commit
 	cd = checkout
 	cm = commit -m
+	grall = log --graph --oneline --all
 	graph = log --graph --oneline
 	graph-long = log --graph
 	last = log -1 HEAD
