@@ -9,6 +9,7 @@
 	graph-long = log --graph
 	last = log -1 HEAD
 	ls = branch --list
+	merc = merge --no-ff
 	newb = checkout -b
 	patch = add --patch
 	sdiff = !git diff && git submodule foreach 'git diff'
