@@ -5,7 +5,7 @@
 	cd = checkout
 	cm = commit -m
 	graph = log --graph --oneline
-	graph-long = log -- graph
+	graph-long = log --graph
 	last = log -1 HEAD
 	ls = branch --list
 	sdiff = !git diff && git submodule foreach 'git diff'
