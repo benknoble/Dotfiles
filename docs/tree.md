@@ -114,6 +114,7 @@
 │   │   └── grep-operator.vim
 │   └── spell
 │       ├── en.utf-8.add
-│       └── en.utf-8.add.spl
+│       ├── en.utf-8.add.spl
+│       └── fr.utf-8.spl
 └── vimrc
 ```
