@@ -44,6 +44,8 @@ set laststatus=2
 set wildmenu
 " Search in subdirs for finding files
 set path+=**
+" Stop, for the love of god, 'finding' headers!
+set path-=/usr/include
 " End Command-line quickly }}}
 
 " Timeout {{{
