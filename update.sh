@@ -21,11 +21,16 @@ bundle_check() {
   brew bundle check
 }
 
+tmux_plugin_update() {
+  tmux/plugins/tpm/bin/clean_plugins
+  tmux/plugins/tpm/bin/update_plugins
+}
 
 update() {
   if pull_master ; then
     display_message "Updated"
     has_brew && bundle_check
+    tmux_plugin_update
     display_message "Type 'reload' to reload updates"
     display_message "You may need to logout of the terminal and login for
     changes to take full effect"
