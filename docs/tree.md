@@ -72,6 +72,8 @@
 ├── tags
 ├── tmux
 │   └── plugins
+│       ├── tmux-battery
+│       ├── tmux-cpu
 │       └── tpm
 ├── tmux.conf
 ├── update.sh
