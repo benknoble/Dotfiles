@@ -70,6 +70,9 @@
 │   │   └── install-vim-custom.sh
 │   └── makesymlinks.sh
 ├── tags
+├── tmux
+│   └── plugins
+│       └── tpm
 ├── tmux.conf
 ├── update.sh
 ├── vim

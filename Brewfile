@@ -20,7 +20,7 @@ brew "findutils"
 brew "fortune"
 brew "git"
 brew "gnu-sed"
-brew "go", link: false
+brew "go"
 brew "heroku"
 brew "htop"
 brew "hub"
