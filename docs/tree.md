@@ -102,6 +102,7 @@
 │   │   ├── vim-pydoc
 │   │   ├── vim-surround
 │   │   ├── vim-syntastic
+│   │   ├── vim-tmux
 │   │   ├── vim-undotree
 │   │   ├── vim-unimpaired
 │   │   └── vim-winresizer
