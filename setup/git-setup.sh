@@ -33,7 +33,7 @@ config_user_info() {
   else
     display_message "Previous user name: $name"
     read -n 1 -p "Is [name = $name] ok [Y/n] ? " nameok && echo
-    if input_matches_yY "$nameok"; then
+    if ! input_matches_yY "$nameok"; then
       config user name
     fi
   fi
@@ -44,7 +44,7 @@ config_user_info() {
   else
     display_message "Previous user email: $email"
     read -n 1 -p "Is [email = $email] ok [Y/n] ? " emailok && echo
-    if input_matches_yY "$emailok"; then
+    if ! input_matches_yY "$emailok"; then
       config user email
     fi
   fi
