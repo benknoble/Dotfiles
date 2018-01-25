@@ -70,6 +70,11 @@
 │   │   └── install-vim-custom.sh
 │   └── makesymlinks.sh
 ├── tags
+├── tmux
+│   └── plugins
+│       ├── tmux-battery
+│       ├── tmux-cpu
+│       └── tpm
 ├── tmux.conf
 ├── update.sh
 ├── vim
@@ -96,6 +101,7 @@
 │   │   ├── vim-pydoc
 │   │   ├── vim-surround
 │   │   ├── vim-syntastic
+│   │   ├── vim-tmux
 │   │   ├── vim-undotree
 │   │   ├── vim-unimpaired
 │   │   └── vim-winresizer
@@ -115,6 +121,8 @@
 │   └── spell
 │       ├── en.utf-8.add
 │       ├── en.utf-8.add.spl
+│       ├── fr.utf-8.add
+│       ├── fr.utf-8.add.spl
 │       └── fr.utf-8.spl
 └── vimrc
 ```
