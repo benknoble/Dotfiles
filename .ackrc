@@ -2,3 +2,6 @@
 
 # ignore bundle directory
 --ignore-dir=vim/bundle
+
+# ignore tmux plugins too
+--ignore-dir=tmux
