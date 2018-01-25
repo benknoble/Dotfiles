@@ -122,6 +122,8 @@
 │   └── spell
 │       ├── en.utf-8.add
 │       ├── en.utf-8.add.spl
+│       ├── fr.utf-8.add
+│       ├── fr.utf-8.add.spl
 │       └── fr.utf-8.spl
 └── vimrc
 ```
