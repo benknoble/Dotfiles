@@ -67,7 +67,7 @@ Force.
 
 **`edit`**
 
-*Open a file(s) in Vim.* Because what else are you doing when you `edit`?
+*Open a file(s) in $EDITOR.* Because what else are you doing when you `edit`?
 
 **`explore`**
 

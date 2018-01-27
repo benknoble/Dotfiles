@@ -16,7 +16,7 @@ alias hidden='ls -a | grep "^\."'           # List all hidden files
 alias cd..='cd ../'                         # Go back one directory level
 alias ..='cd ../'                           # Shorter version of cd..
 alias ~='cd ~'                              # Shortcut to cd ~
-alias edit='vim'                            # Open a file in vim
+alias edit='$EDITOR'                        # Open a file
 # Unnecessary... use view instead
 # alias vimread='vim -R'                    # Open a file in readonly mode in vim
 alias explore='vim +Explore'                # Open vim's Explore mode in current directory
