@@ -24,3 +24,22 @@
 
 # Vim
 --type-add=vim:match:/(\.|g)?vimrc/
+
+# Ack
+--type-set=ack:match:/(\.)?ackrc/
+
+# Git
+--type-set=git:ext:gitignore,gitmodules,gitconfig
+--type-add=git:is:gitignore
+--type-add=git:is:gitignore_global
+--type-add=git:is:gitconfig
+--type-add=git:match:/(\.)?gitshrc/
+
+# Bash
+--type-add=shell:match:/(\.)?bashrc/
+
+# Text
+--type-set=txt:ext:txt,text
+
+# Tmux
+--type-set=tmux:match:/(\.)?tmux.conf/
