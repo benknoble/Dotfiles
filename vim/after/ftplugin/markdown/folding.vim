@@ -28,6 +28,6 @@ function! MarkdownFoldText()
   return getline(v:foldstart) . ' (' . foldsize . ' lines )'
 endfunction
 
-setlocal foldmethod=expr
-setlocal foldexpr=MarkdownFolds()
+" setlocal foldmethod=expr
+" setlocal foldexpr=MarkdownFolds()
 setlocal foldtext=MarkdownFoldText()

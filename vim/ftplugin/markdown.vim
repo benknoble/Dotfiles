@@ -7,6 +7,9 @@ setlocal textwidth=80
 " Spell check on
 setlocal spell spelllang=en_us
 
+" Enable folds
+let g:markdown_folding = 1
+
 function! UnderlineHeading(level)
   if a:level == 1
     normal! yypVr=

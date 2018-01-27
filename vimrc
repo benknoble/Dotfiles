@@ -76,6 +76,9 @@ set noequalalways
 
 " Display line/rel numbers by default
 set number relativenumber
+
+" Don't update while running macros
+set lazyredraw
 " End Window Display }}}
 
 " Do not recognize octal number for Ctrl-A and Ctrl-K
@@ -187,7 +190,9 @@ endif
 " GUI (which always has colors).
 if &t_Co > 2 || has("gui_running")
   " Revert with ":syntax off".
-  syntax on
+  if ! exists("g:syntax_on")
+    syntax enable
+  endif
 
   " I like highlighting strings inside C comments.
   " Revert with ":unlet c_comment_strings".
@@ -232,18 +237,20 @@ if has("autocmd")
   " End vimrc_last_cursor_position }}}
 
   " vimrc_autofoldcolumn {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup autofoldcolumn | au! | augroup END"
-  augroup vimrc_autofoldcolumn
-    au!
+  if exists(":AutoOrigamiFoldColumn")
+    " Put these in an autocmd group, so that you can revert them with:
+    " ":augroup autofoldcolumn | au! | augroup END"
+    augroup vimrc_autofoldcolumn
+      au!
 
-    " Automatically add foldcolumn if folds present
-    " Needs Auto Origami plugin
-    " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
-    "       \ auto_origami#Foldcolumn()
-    au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
+      " Automatically add foldcolumn if folds present
+      " Needs Auto Origami plugin
+      " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
+      "       \ auto_origami#Foldcolumn()
+      au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
 
-  augroup END
+    augroup END
+  endif
   " End vimrc_autofoldcolumn }}}
 
   " vimrc_formatoptions {{{
@@ -656,7 +663,9 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 :Helptags
 
-colorscheme dracula
+if ! exists('g:colors_name')
+  colorscheme dracula
+endif
 " End Pathogen }}}
 
 " Airline theme {{{
