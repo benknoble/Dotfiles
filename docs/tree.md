@@ -67,6 +67,7 @@
 │   ├── installers
 │   │   ├── install-brew.sh
 │   │   ├── install-git-extras.sh
+│   │   ├── install-tmux.sh
 │   │   └── install-vim-custom.sh
 │   └── makesymlinks.sh
 ├── tags

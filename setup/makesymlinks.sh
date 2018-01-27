@@ -17,6 +17,7 @@ declare -A files=(
   [tmux.conf]=.tmux.conf
   [gitshrc]=.gitshrc
   [ackrc]=.ackrc
+  [tmux]=.tmux
 )
 
 source "$dotfiles_dir/dotfiles-support"
