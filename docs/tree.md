@@ -107,11 +107,14 @@
 │   │   ├── vim-unimpaired
 │   │   └── vim-winresizer
 │   ├── ftplugin
+│   │   ├── c
 │   │   ├── c.vim
 │   │   ├── gitcommit.vim
 │   │   ├── go.vim
 │   │   ├── help.vim
+│   │   ├── man.vim
 │   │   ├── markdown.vim
+│   │   ├── ruby
 │   │   ├── ruby.vim
 │   │   ├── sh.vim
 │   │   ├── text.vim
