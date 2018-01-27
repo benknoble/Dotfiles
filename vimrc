@@ -235,18 +235,20 @@ if has("autocmd")
   " End vimrc_last_cursor_position }}}
 
   " vimrc_autofoldcolumn {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup autofoldcolumn | au! | augroup END"
-  augroup vimrc_autofoldcolumn
-    au!
+  if exists(":AutoOrigamiFoldColumn")
+    " Put these in an autocmd group, so that you can revert them with:
+    " ":augroup autofoldcolumn | au! | augroup END"
+    augroup vimrc_autofoldcolumn
+      au!
 
-    " Automatically add foldcolumn if folds present
-    " Needs Auto Origami plugin
-    " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
-    "       \ auto_origami#Foldcolumn()
-    au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
+      " Automatically add foldcolumn if folds present
+      " Needs Auto Origami plugin
+      " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
+      "       \ auto_origami#Foldcolumn()
+      au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
 
-  augroup END
+    augroup END
+  endif
   " End vimrc_autofoldcolumn }}}
 
   " vimrc_formatoptions {{{
