@@ -185,7 +185,9 @@ endif
 " GUI (which always has colors).
 if &t_Co > 2 || has("gui_running")
   " Revert with ":syntax off".
-  syntax on
+  if ! exists("g:syntax_on")
+    syntax enable
+  endif
 
   " I like highlighting strings inside C comments.
   " Revert with ":unlet c_comment_strings".
