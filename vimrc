@@ -76,6 +76,9 @@ set noequalalways
 
 " Display line/rel numbers by default
 set number relativenumber
+
+" Don't update while running macros
+set lazyredraw
 " End Window Display }}}
 
 " Do not recognize octal number for Ctrl-A and Ctrl-K
