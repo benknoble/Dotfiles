@@ -116,7 +116,9 @@ set whichwrap=b,s,<,>,[,]
 set list listchars=tab:»\ ,trail:·,nbsp:⎵
 
 " Set dark background because I like my terminal dark
-set background=dark
+if ! exists('g:colors_name')
+  set background=dark
+endif
 
 " Confirm potentially problematic operations
 " Like quitting without writing
