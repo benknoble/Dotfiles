@@ -34,6 +34,6 @@ ref=${1:-HEAD}
 if [[ "$1" = "-h" ]] || ! valid_ref ; then
   usage
 else
-  shift
+  [[ $# -ge 1 ]] && shift # because shift fails when there are no args
   new "$@"
 fi
