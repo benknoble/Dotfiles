@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 # display most recently introduced commits
 
-set -eo pipefail
+set -euo pipefail
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
@@ -11,7 +11,9 @@ Display commits introduced by last change to HEAD [or ref]'
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
+set +u
 source "$(git --exec-path)"/git-sh-setup
+set -u
 
 new() {
   git log "${ref}@{1}..${ref}@{0}" "$@"
@@ -31,7 +33,7 @@ valid_ref() {
 }
 
 ref=${1:-HEAD}
-if [[ "$1" = "-h" ]] || ! valid_ref ; then
+if [[ "${1:-}" = "-h" ]] || ! valid_ref ; then
   usage
 else
   [[ $# -ge 1 ]] && shift # because shift fails when there are no args
