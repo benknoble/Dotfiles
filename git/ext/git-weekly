@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 # display weekly statistics about a git repo
 
-set -eo pipefail
+set -euo pipefail
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
@@ -11,7 +11,9 @@ Display a weekly summary of repo'
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
+set +u
 source "$(git --exec-path)"/git-sh-setup
+set -u
 
 weekly_git_log() {
   git log --color=never --since=1.week --oneline
