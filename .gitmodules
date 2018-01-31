@@ -1,68 +1,68 @@
 [submodule "vim/bundle/vim-pathogen"]
-	path = vim/bundle/vim-pathogen
+	path = vim/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
+	path = vim/bundle/airline
 	url = https://github.com/vim-airline/vim-airline
 [submodule "vim/bundle/vim-airline-themes"]
-	path = vim/bundle/vim-airline-themes
+	path = vim/bundle/airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
 [submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
+	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vim/bundle/vim-invader"]
-	path = vim/bundle/vim-invader
+	path = vim/bundle/invader
 	url = https://github.com/mattn/invader-vim.git
 [submodule "vim/bundle/vim-syntastic"]
-	path = vim/bundle/vim-syntastic
+	path = vim/bundle/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim/bundle/vim-winresizer"]
-	path = vim/bundle/vim-winresizer
+	path = vim/bundle/winresizer
 	url = https://github.com/simeji/winresizer.git
 [submodule "vim/bundle/vim-undotree"]
-	path = vim/bundle/vim-undotree
+	path = vim/bundle/undotree
 	url = https://github.com/mbbill/undotree
 [submodule "vim/bundle/vim-markology"]
-	path = vim/bundle/vim-markology
+	path = vim/bundle/markology
 	url = https://github.com/jeetsukumaran/vim-markology
 [submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
+	path = vim/bundle/surround
 	url = https://github.com/tpope/vim-surround
 [submodule "vim/bundle/vim-commentary"]
-	path = vim/bundle/vim-commentary
+	path = vim/bundle/commentary
 	url = https://github.com/tpope/vim-commentary
 [submodule "vim/bundle/vim-clam"]
-	path = vim/bundle/vim-clam
+	path = vim/bundle/clam
 	url = https://github.com/benknoble/clam.vim.git
 [submodule "vim/bundle/vim-auto-origami"]
-	path = vim/bundle/vim-auto-origami
+	path = vim/bundle/auto-origami
 	url = https://github.com/benknoble/vim-auto-origami
 [submodule "vim/bundle/vim-go"]
-	path = vim/bundle/vim-go
+	path = vim/bundle/go
 	url = https://github.com/fatih/vim-go.git
 [submodule "vim/bundle/vim-javascript"]
-	path = vim/bundle/vim-javascript
+	path = vim/bundle/javascript
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/vim-node"]
-	path = vim/bundle/vim-node
+	path = vim/bundle/node
 	url = https://github.com/moll/vim-node.git
 [submodule "Dracula/terminal-app"]
 	path = Dracula/terminal-app
 	url = https://github.com/benknoble/terminal.app.git
 [submodule "vim/bundle/vim-dracula"]
-	path = vim/bundle/vim-dracula
+	path = vim/bundle/dracula
 	url = git://github.com/dracula/vim.git
 [submodule "vim/bundle/vim-unimpaired"]
-	path = vim/bundle/vim-unimpaired
+	path = vim/bundle/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vim/bundle/vim-pydoc"]
-	path = vim/bundle/vim-pydoc
+	path = vim/bundle/pydoc
 	url = git://github.com/fs111/pydoc.vim.git
 [submodule "vim/bundle/vim-game-code-break"]
-	path = vim/bundle/vim-game-code-break
+	path = vim/bundle/game-code-break
 	url = git://github.com/johngrib/vim-game-code-break.git
 [submodule "vim/bundle/vim-indent-object"]
-	path = vim/bundle/vim-indent-object
+	path = vim/bundle/indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
 [submodule "vim/bundle/ack-vim"]
 	path = vim/bundle/ack-vim
@@ -71,7 +71,7 @@
 	path = tmux/plugins/tpm
 	url = git://github.com/tmux-plugins/tpm.git
 [submodule "vim/bundle/vim-tmux"]
-	path = vim/bundle/vim-tmux
+	path = vim/bundle/tmux
 	url = git://github.com/tmux-plugins/vim-tmux.git
 [submodule "vim/bundle/colorizer"]
 	path = vim/bundle/colorizer

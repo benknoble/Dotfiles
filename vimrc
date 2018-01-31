@@ -657,7 +657,7 @@ let g:netrw_sort_by="size"
 " End netrw }}}
 
 " Pathogen {{{
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 :Helptags
 

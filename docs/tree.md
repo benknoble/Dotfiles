@@ -30,8 +30,7 @@
 │   ├── itunes
 │   ├── listcmds
 │   ├── loading
-│   ├── msgtest
-│   └── mv-subs.bash
+│   └── msgtest
 ├── bootstrap.sh
 ├── brew
 │   ├── README.md
@@ -85,30 +84,30 @@
 │   ├── autoload
 │   ├── bundle
 │   │   ├── ack-vim
+│   │   ├── airline
+│   │   ├── airline-themes
+│   │   ├── auto-origami
+│   │   ├── clam
 │   │   ├── colorizer
+│   │   ├── commentary
+│   │   ├── dracula
+│   │   ├── fugitive
+│   │   ├── game-code-break
+│   │   ├── go
+│   │   ├── indent-object
+│   │   ├── invader
+│   │   ├── javascript
+│   │   ├── markology
+│   │   ├── node
+│   │   ├── pathogen
+│   │   ├── pydoc
 │   │   ├── splitjoin
-│   │   ├── vim-airline
-│   │   ├── vim-airline-themes
-│   │   ├── vim-auto-origami
-│   │   ├── vim-clam
-│   │   ├── vim-commentary
-│   │   ├── vim-dracula
-│   │   ├── vim-fugitive
-│   │   ├── vim-game-code-break
-│   │   ├── vim-go
-│   │   ├── vim-indent-object
-│   │   ├── vim-invader
-│   │   ├── vim-javascript
-│   │   ├── vim-markology
-│   │   ├── vim-node
-│   │   ├── vim-pathogen
-│   │   ├── vim-pydoc
-│   │   ├── vim-surround
-│   │   ├── vim-syntastic
-│   │   ├── vim-tmux
-│   │   ├── vim-undotree
-│   │   ├── vim-unimpaired
-│   │   └── vim-winresizer
+│   │   ├── surround
+│   │   ├── syntastic
+│   │   ├── tmux
+│   │   ├── undotree
+│   │   ├── unimpaired
+│   │   └── winresizer
 │   ├── ftplugin
 │   │   ├── c
 │   │   ├── c.vim
