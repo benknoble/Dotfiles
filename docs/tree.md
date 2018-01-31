@@ -30,7 +30,8 @@
 │   ├── itunes
 │   ├── listcmds
 │   ├── loading
-│   └── msgtest
+│   ├── msgtest
+│   └── mv-subs.bash
 ├── bootstrap.sh
 ├── brew
 │   ├── README.md
@@ -114,7 +115,6 @@
 │   │   ├── gitcommit.vim
 │   │   ├── go.vim
 │   │   ├── help.vim
-│   │   ├── man.vim
 │   │   ├── markdown.vim
 │   │   ├── ruby
 │   │   ├── ruby.vim
