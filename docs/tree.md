@@ -84,6 +84,7 @@
 │   ├── autoload
 │   ├── bundle
 │   │   ├── ack-vim
+│   │   ├── colorizer
 │   │   ├── vim-airline
 │   │   ├── vim-airline-themes
 │   │   ├── vim-auto-origami

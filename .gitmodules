@@ -73,3 +73,6 @@
 [submodule "vim/bundle/vim-tmux"]
 	path = vim/bundle/vim-tmux
 	url = git://github.com/tmux-plugins/vim-tmux.git
+[submodule "vim/bundle/colorizer"]
+	path = vim/bundle/colorizer
+	url = https://github.com/chrisbra/Colorizer.git

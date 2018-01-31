@@ -811,6 +811,10 @@ endif
 let g:pydoc_cmd = 'python -m pydoc'
 " End Pydoc }}}
 
+" Colorizer {{{
+let g:colorizer_auto_filetype='css,html'
+" End Colorizer }}}
+
 " End plugin customization }}}
 
 " Abbreviations {{{
