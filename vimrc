@@ -239,20 +239,18 @@ if has("autocmd")
   " End vimrc_last_cursor_position }}}
 
   " vimrc_autofoldcolumn {{{
-  if exists(":AutoOrigamiFoldColumn")
-    " Put these in an autocmd group, so that you can revert them with:
-    " ":augroup autofoldcolumn | au! | augroup END"
-    augroup vimrc_autofoldcolumn
-      au!
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup autofoldcolumn | au! | augroup END"
+  augroup vimrc_autofoldcolumn
+    au!
 
-      " Automatically add foldcolumn if folds present
-      " Needs Auto Origami plugin
-      " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
-      "       \ auto_origami#Foldcolumn()
-      au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
+    " Automatically add foldcolumn if folds present
+    " Needs Auto Origami plugin
+    " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
+    "       \ auto_origami#Foldcolumn()
+    au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
 
-    augroup END
-  endif
+  augroup END
   " End vimrc_autofoldcolumn }}}
 
   " vimrc_formatoptions {{{
@@ -338,10 +336,6 @@ if has('langmap') && exists('+langremap')
   " mapping.  If set (default), this may break plugins (but it's backward
   " compatible).
   set nolangremap
-endif
-
-if has('syntax') && has('eval')
-  packadd! matchit
 endif
 
 " End complex options }}}
@@ -638,7 +632,9 @@ endfunction
 " Plugin customization {{{
 
 " Matchit {{{
-packadd! matchit
+if has('packages') && has('syntax') && has('eval')
+  packadd! matchit
+endif
 " End Matchit }}}
 
 " Man {{{
@@ -661,7 +657,7 @@ let g:netrw_sort_by="size"
 " End netrw }}}
 
 " Pathogen {{{
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime bundle/pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 :Helptags
 
@@ -672,144 +668,136 @@ endif
 
 " Airline theme {{{
 " set airline-theme if installed
-if !empty(glob("~/.vim/bundle/vim-dracula"))
-  let g:airline_theme='dracula'
-endif
+let g:airline_theme='dracula'
 " End Airline theme }}}
 
 " Airline {{{
 " customize airline if installed
-if !empty(glob("~/.vim/bundle/vim-airline"))
-  " check if dictionary exists
-  if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-  endif
-
-  " unicode symbols
-  let g:airline_left_sep = '»'
-  "let g:airline_left_sep = '▶'
-  let g:airline_right_sep = '«'
-  "let g:airline_right_sep = '◀'
-  let g:airline_symbols.crypt = '🔒'
-  let g:airline_symbols.linenr = '␊'
-  "let g:airline_symbols.linenr = '␤'
-  "let g:airline_symbols.linenr = '¶'
-  let g:airline_symbols.maxlinenr = '☰'
-  "let g:airline_symbols.maxlinenr = ''
-  let g:airline_symbols.branch = '⎇'
-  let g:airline_symbols.paste = 'ρ'
-  "let g:airline_symbols.paste = 'Þ'
-  "let g:airline_symbols.paste = '∥'
-  let g:airline_symbols.spell = 'Ꞩ'
-  let g:airline_symbols.notexists = '∄'
-  let g:airline_symbols.whitespace = 'Ξ'
-
-  " Enable tabline
-  let g:airline#extensions#tabline#enabled = 1
-  " Show splits
-  let g:airline#extensions#tabline#show_splits = 1
-  " Show buffers with one tab
-  let g:airline#extensions#tabline#show_buffers = 1
-  " Don't show preview window buffer
-  let g:airline#extensions#tabline#exclude_preview = 1
-  " Show splits and tab number
-  let g:airline#extensions#tabline#tab_nr_type = 2
-  " Show tab type (far right)
-  let g:airline#extensions#tabline#show_tab_type = 1
-  " Use default formatter
-  let g:airline#extensions#tabline#formatter = 'default'
-  " Don't show buffer numbers
-  let g:airline#extensions#tabline#buffer_nr_show = 0
-  " Configure separators for the tabline only
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline#extensions#tabline#right_sep = ' '
-  let g:airline#extensions#tabline#right_alt_sep = '|'
-  " Don't show close button
-  let g:airline#extensions#tabline#show_close_button = 0
-  " Buffer number formatting
-  " let g:airline#extensions#tabline#buffer_nr_format = 'b#%s '
-  " Filename formatting
-  let g:airline#extensions#tabline#fnamemod = ':~:.'
-  " Fixes unneccessary redraw, when e.g. opening Gundo window
-  let airline#extensions#tabline#ignore_bufadd_pat =
-        \ '\c\vgundo|undotree|vimfiler|tagbar|nerd_tree'
-  " Enable buffer index number
-  let g:airline#extensions#tabline#buffer_idx_mode = 1
-  nmap <leader>1 <Plug>AirlineSelectTab1
-  nmap <leader>2 <Plug>AirlineSelectTab2
-  nmap <leader>3 <Plug>AirlineSelectTab3
-  nmap <leader>4 <Plug>AirlineSelectTab4
-  nmap <leader>5 <Plug>AirlineSelectTab5
-  nmap <leader>6 <Plug>AirlineSelectTab6
-  nmap <leader>7 <Plug>AirlineSelectTab7
-  nmap <leader>8 <Plug>AirlineSelectTab8
-  nmap <leader>9 <Plug>AirlineSelectTab9
-  nmap <leader>- <Plug>AirlineSelectPrevTab
-  nmap <leader>+ <Plug>AirlineSelectNextTab
-  " Change the display format of the buffer index
-  let g:airline#extensions#tabline#buffer_idx_format = {
-        \ '0': '#0 ',
-        \ '1': '#1 ',
-        \ '2': '#2 ',
-        \ '3': '#3 ',
-        \ '4': '#4 ',
-        \ '5': '#5 ',
-        \ '6': '#6 ',
-        \ '7': '#7 ',
-        \ '8': '#8 ',
-        \ '9': '#9 '
-        \}
-
-  " Enable windowswap
-  let g:airline#extensions#windowswap#enabled = 1
-  let g:airline#extensions#windowswap#indicator_text = 'WS'
+" check if dictionary exists
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
 endif
+
+" unicode symbols
+let g:airline_left_sep = '»'
+"let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+"let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '␊'
+"let g:airline_symbols.linenr = '␤'
+"let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '☰'
+"let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+"let g:airline_symbols.paste = 'Þ'
+"let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" Enable tabline
+let g:airline#extensions#tabline#enabled = 1
+" Show splits
+let g:airline#extensions#tabline#show_splits = 1
+" Show buffers with one tab
+let g:airline#extensions#tabline#show_buffers = 1
+" Don't show preview window buffer
+let g:airline#extensions#tabline#exclude_preview = 1
+" Show splits and tab number
+let g:airline#extensions#tabline#tab_nr_type = 2
+" Show tab type (far right)
+let g:airline#extensions#tabline#show_tab_type = 1
+" Use default formatter
+let g:airline#extensions#tabline#formatter = 'default'
+" Don't show buffer numbers
+let g:airline#extensions#tabline#buffer_nr_show = 0
+" Configure separators for the tabline only
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#right_sep = ' '
+let g:airline#extensions#tabline#right_alt_sep = '|'
+" Don't show close button
+let g:airline#extensions#tabline#show_close_button = 0
+" Buffer number formatting
+" let g:airline#extensions#tabline#buffer_nr_format = 'b#%s '
+" Filename formatting
+let g:airline#extensions#tabline#fnamemod = ':~:.'
+" Fixes unneccessary redraw, when e.g. opening Gundo window
+let airline#extensions#tabline#ignore_bufadd_pat =
+      \ '\c\vgundo|undotree|vimfiler|tagbar|nerd_tree'
+" Enable buffer index number
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+" Change the display format of the buffer index
+let g:airline#extensions#tabline#buffer_idx_format = {
+      \ '0': '#0 ',
+      \ '1': '#1 ',
+      \ '2': '#2 ',
+      \ '3': '#3 ',
+      \ '4': '#4 ',
+      \ '5': '#5 ',
+      \ '6': '#6 ',
+      \ '7': '#7 ',
+      \ '8': '#8 ',
+      \ '9': '#9 '
+      \}
+
+" Enable windowswap
+let g:airline#extensions#windowswap#enabled = 1
+let g:airline#extensions#windowswap#indicator_text = 'WS'
 " End Airline }}}
 
 " Syntastic {{{
 " customize syntastic if installed
-if !empty(glob("~/.vim/bundle/vim-syntastic"))
-  " uncomment below if airline not installed
-  " set statusline+=%#warningmsg#
-  " set statusline+=%{SyntasticStatuslineFlag()}
-  " set statusline+=%*
+" uncomment below if airline not installed
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-  let g:syntastic_mode_map = {
-        \ "mode" : "passive",
-        \ "active_filetypes": [],
-        \ "passive_filetypes": []
-        \ }
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 0
-  let g:syntastic_check_on_wq = 0
-  let g:syntastic_java_javac_classpath = "."
-endif
+let g:syntastic_mode_map = {
+      \ "mode" : "passive",
+      \ "active_filetypes": [],
+      \ "passive_filetypes": []
+      \ }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_java_javac_classpath = "."
 " End Syntastic }}}
-
-" Windowswap {{{
-" Customize windowswap if installed
-if !empty(glob("~/.vim/bundle/vim-windowswap"))
-  " Don't use windowswap keys
-  let g:windowswap_map_keys=0
-  " Use this instead
-  nnoremap <Leader>wm :call WindowSwap#EasyWindowSwap()<CR>
-endif
-" End Windowswap }}}
 
 " Undotree {{{
 " Customize undotree
-if !empty(glob("~/.vim/bundle/vim-undotree"))
-  nnoremap <silent> <Leader>u :UndotreeToggle<CR>
-  let g:undotree_SetFocusWhenToggle=1
-endif
+nnoremap <silent> <Leader>u :UndotreeToggle<CR>
+let g:undotree_SetFocusWhenToggle=1
 " End Undotree }}}
 
 " Pydoc {{{
 " let g:pydoc_perform_mappings = 0
 let g:pydoc_cmd = 'python -m pydoc'
 " End Pydoc }}}
+
+" Colorizer {{{
+let g:colorizer_auto_filetype='css,html'
+" End Colorizer }}}
+
+" SplitJoin {{{
+" Turn off mapings, because I couldn't make them work with <Leader>
+let g:splitjoin_split_mapping = ""
+let g:splitjoin_join_mapping = ""
+" End SplitJoin }}}
 
 " End plugin customization }}}
 
