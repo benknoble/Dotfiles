@@ -85,6 +85,7 @@
 │   ├── bundle
 │   │   ├── ack-vim
 │   │   ├── colorizer
+│   │   ├── splitjoin
 │   │   ├── vim-airline
 │   │   ├── vim-airline-themes
 │   │   ├── vim-auto-origami

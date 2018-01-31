@@ -815,6 +815,12 @@ let g:pydoc_cmd = 'python -m pydoc'
 let g:colorizer_auto_filetype='css,html'
 " End Colorizer }}}
 
+" SplitJoin {{{
+" Turn off mapings, because I couldn't make them work with <Leader>
+let g:splitjoin_split_mapping = ""
+let g:splitjoin_join_mapping = ""
+" End SplitJoin }}}
+
 " End plugin customization }}}
 
 " Abbreviations {{{

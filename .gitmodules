@@ -76,3 +76,6 @@
 [submodule "vim/bundle/colorizer"]
 	path = vim/bundle/colorizer
 	url = https://github.com/chrisbra/Colorizer.git
+[submodule "vim/bundle/splitjoin"]
+	path = vim/bundle/splitjoin
+	url = https://github.com/AndrewRadev/splitjoin.vim.git
