@@ -1,4 +1,4 @@
-#! /bin/bash -
+#! /usr/bin/env bash
 # PS1 printing and toggle functions
 
 # vars

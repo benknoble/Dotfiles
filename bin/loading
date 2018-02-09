@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # an inifite loading bar
 
 USAGE="$(cat <<EOF

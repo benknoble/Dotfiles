@@ -1,4 +1,4 @@
-#! /bin/bash -
+#! /usr/bin/env bash
 # function definitions
 
 cdls () { cd "$@" && ls ; }                  # cd and ls

@@ -1,4 +1,4 @@
-#! /bin/bash -
+#! /usr/bin/env bash
 # alias definitions
 
 alias quit='exit'                           # Because Mac OS X tends to call it quit
