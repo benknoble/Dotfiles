@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # a cow visualizing program
 
 USAGE="$(cat <<EOF
