@@ -18,12 +18,15 @@ has_brew() {
 }
 
 bundle_check() {
-  brew bundle check
+  # the "or true" is necessary to prevent a bundle issue from stopping the rest
+  # of the rest update
+  brew bundle check || true
 }
 
 tmux_plugin_update() {
-  tmux/plugins/tpm/bin/clean_plugins
-  tmux/plugins/tpm/bin/update_plugins
+  local tpm=tmux/plugins/tpm/bin
+  "$tpm"/clean_plugins
+  "$tpm"/update_plugins all
 }
 
 update() {
