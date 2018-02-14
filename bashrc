@@ -13,7 +13,8 @@ brewscripts="$HOME/Dotfiles/brew/ext"
 gitscripts="$HOME/Dotfiles/git/ext"
 
 # set default editor to vim
-export EDITOR=vim
+export VISUAL="$(command -v vim)"
+export EDITOR="$VISUAL"
 
 # use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
