@@ -22,8 +22,9 @@ bundle_check() {
 }
 
 tmux_plugin_update() {
-  tmux/plugins/tpm/bin/clean_plugins
-  tmux/plugins/tpm/bin/update_plugins
+  local tpm=tmux/plugins/tpm/bin
+  "$tpm"/clean_plugins
+  "$tpm"/update_plugins all
 }
 
 update() {
