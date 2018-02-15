@@ -80,7 +80,8 @@
 ├── update.sh
 ├── vim
 │   ├── after
-│   │   └── ftplugin
+│   │   ├── ftplugin
+│   │   └── syntax
 │   ├── autoload
 │   ├── bundle
 │   │   ├── ack-vim
