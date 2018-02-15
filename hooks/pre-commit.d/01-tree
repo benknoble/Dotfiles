@@ -1,4 +1,4 @@
-#! /usr/bin/env bash -
+#! /usr/bin/env bash
 # Update the file `docs/tree.md` pre-commit to include any changes
 
 set -euo pipefail
