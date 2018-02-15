@@ -1,4 +1,4 @@
-#! /usr/bin/env bash -
+#! /usr/bin/env bash
 #:  * `superupdate`:
 #:    Updates brew and upgrades formula (removes old versions) in one command
 #:
