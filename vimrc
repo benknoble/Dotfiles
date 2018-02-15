@@ -199,6 +199,9 @@ if &t_Co > 2 || has("gui_running")
   " I like highlighting strings inside C comments.
   " Revert with ":unlet c_comment_strings".
   let c_comment_strings=1
+
+  " Use bash as default shell highlighter (cf :h ft-sh-syntax)
+  let g:is_bash = 1
 endif
 " End Syntax Highlighting }}}
 

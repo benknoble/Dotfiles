@@ -109,3 +109,7 @@ accessed with `<F1>`.
 **`screensaver`**
 
 *SOS: Save our screen!*
+
+**`uhtop`**
+
+*Your personalized htop.* No, it's not a car.
