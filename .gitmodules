@@ -48,7 +48,8 @@
 	url = https://github.com/moll/vim-node.git
 [submodule "Dracula/terminal-app"]
 	path = Dracula/terminal-app
-	url = https://github.com/benknoble/terminal.app.git
+	url = https://github.com/dracula/terminal.app.git
+	branch = benknoble-tweaks
 [submodule "vim/bundle/vim-dracula"]
 	path = vim/bundle/dracula
 	url = git://github.com/dracula/vim.git
