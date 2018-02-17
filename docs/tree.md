@@ -113,6 +113,7 @@
 │   │   ├── c
 │   │   ├── c.vim
 │   │   ├── gitcommit.vim
+│   │   ├── gitconfig.vim
 │   │   ├── go.vim
 │   │   ├── help.vim
 │   │   ├── markdown.vim
