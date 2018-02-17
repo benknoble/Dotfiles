@@ -179,14 +179,6 @@ if has('title')
 endif
 " End Window title }}}
 
-" 't_Co' {{{
-if &term =~ "xterm-256color" || &term =~ "screen-256color"
-  set t_Co=256
-elseif &term =~ "xterm"
-  set t_Co=8
-endif
-" End 't_Co' }}}
-
 " Syntax Highlighting {{{
 " Switch syntax highlighting on when the terminal has colors or when using the
 " GUI (which always has colors).
