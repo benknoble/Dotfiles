@@ -124,7 +124,8 @@
 │   │   ├── vim.vim
 │   │   └── yaml.vim
 │   ├── plugin
-│   │   └── grep-operator.vim
+│   │   ├── grep-operator.vim
+│   │   └── synstack.vim
 │   └── spell
 │       ├── en.utf-8.add
 │       ├── en.utf-8.add.spl
