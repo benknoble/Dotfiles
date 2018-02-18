@@ -1,6 +1,6 @@
 " Vim filetype plugin
-" Language              Markdown
-" Maintainer            Ben Knoble <ben.knoble@gmail.com>
+" Language:              Markdown
+" Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 " Wrap at 80 characters
 setlocal textwidth=80
