@@ -1,6 +1,6 @@
 " Vim filetype plugin for folding
-" Language              Markdown
-" Maintainer            Ben Knoble <ben.knoble@gmail.com>
+" Language:              Markdown
+" Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 function! MarkdownFolds()
   if s:IsFenced(v:lnum)

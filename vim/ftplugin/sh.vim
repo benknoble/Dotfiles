@@ -1,6 +1,6 @@
 " Vim filetype plugin
-" Language              [ba]sh script
-" Maintainer            Ben Knoble <ben.knoble@gmail.com>
+" Language:              [ba]sh script
+" Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 " Wrap at 80 characters
 setlocal textwidth=80

@@ -1,6 +1,6 @@
 " Vim filetype plugin
-" Language              Go
-" Maintainer            Ben Knoble <ben.knoble@gmail.com>
+" Language:              Go
+" Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 function! s:build_go_files()
   let l:file = expand('%')

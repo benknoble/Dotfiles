@@ -1,6 +1,6 @@
 " Vim filetype plugin
-" Language              Text
-" Maintainer            Ben Knoble <ben.knoble@gmail.com>
+" Language:              Text
+" Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 " Wrap at 78 characters
 setlocal textwidth=78
