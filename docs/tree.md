@@ -49,6 +49,7 @@
 ├── dotfiles-support
 ├── git
 │   └── ext
+│       ├── git-churn
 │       ├── git-new
 │       └── git-weekly
 ├── gitconfig
