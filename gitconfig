@@ -8,6 +8,9 @@
 	graph = log --graph --oneline
 	graph-long = log --graph
 	last = log -1 HEAD
+	logp = log --graph --abbrev-commit \
+		--pretty=format:'%C(yellow)%h%Creset%C(bold green)%d%Creset %s %C(magenta)(%cr)%Creset %C(ul bold cyan)<%an>%Creset'
+	logpall = !git logp --all
 	ls = branch --list
 	merc = merge --no-ff
 	newb = checkout -b
