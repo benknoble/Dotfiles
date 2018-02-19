@@ -147,8 +147,14 @@ set infercase
 " Make buffers hidden when unloaded, just in case you want them back
 set hidden
 
+" Folds {{{
 " Use {{{,}}} for marking folds
 set foldmethod=marker
+
+" Start with no folds
+" Toggle with `zi`
+set nofoldenable
+" End Folds }}}
 
 " Complex options {{{
 
