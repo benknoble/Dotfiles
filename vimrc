@@ -327,6 +327,20 @@ if has("autocmd")
   augroup END
   "End vimrc_CRfix }}}
 
+  " dracula_fix {{{
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup dracula_fix | au! | augroup END"
+  augroup dracula_fix
+    au!
+
+    " Purpose:  A (temporary) fix for the dracula colorscheme
+    " Link:     https://github.com/dracula/vim/issues/46
+    autocmd ColorScheme dracula hi link diffRemoved   DiffDelete
+    autocmd ColorScheme dracula hi link diffAdded     DiffAdd
+    autocmd ColorScheme dracula hi link diffChanged   DiffChange
+  augroup END
+  " End dracula_fix }}}
+
 else
   set autoindent
 endif " has("autocmd")
