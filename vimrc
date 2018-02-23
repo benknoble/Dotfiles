@@ -712,62 +712,62 @@ let g:airline_symbols.spell = 'Ꞩ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 
-" Enable tabline
-let g:airline#extensions#tabline#enabled = 1
-" Show splits
-let g:airline#extensions#tabline#show_splits = 1
-" Show buffers with one tab
-let g:airline#extensions#tabline#show_buffers = 1
-" Don't show preview window buffer
-let g:airline#extensions#tabline#exclude_preview = 1
-" Show splits and tab number
-let g:airline#extensions#tabline#tab_nr_type = 2
-" Show tab type (far right)
-let g:airline#extensions#tabline#show_tab_type = 1
-" Use default formatter
-let g:airline#extensions#tabline#formatter = 'default'
-" Don't show buffer numbers
-let g:airline#extensions#tabline#buffer_nr_show = 0
-" Configure separators for the tabline only
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#right_sep = ' '
-let g:airline#extensions#tabline#right_alt_sep = '|'
-" Don't show close button
-let g:airline#extensions#tabline#show_close_button = 0
-" Buffer number formatting
-" let g:airline#extensions#tabline#buffer_nr_format = 'b#%s '
-" Filename formatting
-let g:airline#extensions#tabline#fnamemod = ':~:.'
-" Fixes unneccessary redraw, when e.g. opening Gundo window
-let airline#extensions#tabline#ignore_bufadd_pat =
-      \ '\c\vgundo|undotree|vimfiler|tagbar|nerd_tree'
-" Enable buffer index number
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-nmap <leader>- <Plug>AirlineSelectPrevTab
-nmap <leader>+ <Plug>AirlineSelectNextTab
-" Change the display format of the buffer index
-let g:airline#extensions#tabline#buffer_idx_format = {
-      \ '0': '#0 ',
-      \ '1': '#1 ',
-      \ '2': '#2 ',
-      \ '3': '#3 ',
-      \ '4': '#4 ',
-      \ '5': '#5 ',
-      \ '6': '#6 ',
-      \ '7': '#7 ',
-      \ '8': '#8 ',
-      \ '9': '#9 '
-      \}
+" " Enable tabline
+" let g:airline#extensions#tabline#enabled = 1
+" " Show splits
+" let g:airline#extensions#tabline#show_splits = 1
+" " Show buffers with one tab
+" let g:airline#extensions#tabline#show_buffers = 1
+" " Don't show preview window buffer
+" let g:airline#extensions#tabline#exclude_preview = 1
+" " Show splits and tab number
+" let g:airline#extensions#tabline#tab_nr_type = 2
+" " Show tab type (far right)
+" let g:airline#extensions#tabline#show_tab_type = 1
+" " Use default formatter
+" let g:airline#extensions#tabline#formatter = 'default'
+" " Don't show buffer numbers
+" let g:airline#extensions#tabline#buffer_nr_show = 0
+" " Configure separators for the tabline only
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#right_sep = ' '
+" let g:airline#extensions#tabline#right_alt_sep = '|'
+" " Don't show close button
+" let g:airline#extensions#tabline#show_close_button = 0
+" " Buffer number formatting
+" " let g:airline#extensions#tabline#buffer_nr_format = 'b#%s '
+" " Filename formatting
+" let g:airline#extensions#tabline#fnamemod = ':~:.'
+" " Fixes unneccessary redraw, when e.g. opening Gundo window
+" let airline#extensions#tabline#ignore_bufadd_pat =
+"       \ '\c\vgundo|undotree|vimfiler|tagbar|nerd_tree'
+" " Enable buffer index number
+" let g:airline#extensions#tabline#buffer_idx_mode = 1
+" nmap <leader>1 <Plug>AirlineSelectTab1
+" nmap <leader>2 <Plug>AirlineSelectTab2
+" nmap <leader>3 <Plug>AirlineSelectTab3
+" nmap <leader>4 <Plug>AirlineSelectTab4
+" nmap <leader>5 <Plug>AirlineSelectTab5
+" nmap <leader>6 <Plug>AirlineSelectTab6
+" nmap <leader>7 <Plug>AirlineSelectTab7
+" nmap <leader>8 <Plug>AirlineSelectTab8
+" nmap <leader>9 <Plug>AirlineSelectTab9
+" nmap <leader>- <Plug>AirlineSelectPrevTab
+" nmap <leader>+ <Plug>AirlineSelectNextTab
+" " Change the display format of the buffer index
+" let g:airline#extensions#tabline#buffer_idx_format = {
+"       \ '0': '#0 ',
+"       \ '1': '#1 ',
+"       \ '2': '#2 ',
+"       \ '3': '#3 ',
+"       \ '4': '#4 ',
+"       \ '5': '#5 ',
+"       \ '6': '#6 ',
+"       \ '7': '#7 ',
+"       \ '8': '#8 ',
+"       \ '9': '#9 '
+"       \}
 
 " Enable windowswap
 let g:airline#extensions#windowswap#enabled = 1
