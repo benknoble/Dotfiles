@@ -289,6 +289,9 @@ if has("autocmd")
     au InsertEnter * setlocal nocursorline
     au InsertLeave * setlocal cursorline
 
+    " Turn it off for windows not in use
+    au WinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
   augroup END
   " End vimrc_toggle_cursorline }}}
 
