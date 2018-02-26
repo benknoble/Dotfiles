@@ -80,3 +80,6 @@
 [submodule "vim/bundle/splitjoin"]
 	path = vim/bundle/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim.git
+[submodule "vim/bundle/zelda"]
+	path = vim/bundle/zelda
+	url = https://github.com/benknoble/zelda-vim.git
