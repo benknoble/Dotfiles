@@ -338,6 +338,11 @@ if has("autocmd")
     autocmd ColorScheme dracula hi link diffRemoved   DiffDelete
     autocmd ColorScheme dracula hi link diffAdded     DiffAdd
     autocmd ColorScheme dracula hi link diffChanged   DiffChange
+
+    " Purpose:  A (temporary) fix for dracula's cursorline and listchars
+    " Link:     issues/44, 58
+    autocmd ColorScheme dracula hi SpecialKey ctermbg=NONE
+    autocmd ColorScheme dracula hi CursorLine cterm=underline
   augroup END
   " End dracula_fix }}}
 
