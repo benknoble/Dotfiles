@@ -24,10 +24,12 @@ Quick list:
 - Ack
 - Airline
   - Airline themes
+- ALE
 - Auto Origami
-- Code Break
-- Commentary
 - Clam
+- Code Break
+- Colorizer
+- Commentary
 - Dracula theme
 - Fugitive
 - Go
@@ -38,11 +40,13 @@ Quick list:
 - Node
 - Pathogen
 - Pydoc
+- SplitJoin
 - Surround
-- Syntastic
+- Tmux
 - Undotree
 - Unimpaired
 - Winresizer
+- Zelda
 
 If you want links to the github repos that contain these plugins, you can check
 out [gitmodules](/.gitmodules).
