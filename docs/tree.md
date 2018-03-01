@@ -110,7 +110,8 @@
 │   │   ├── tmux
 │   │   ├── undotree
 │   │   ├── unimpaired
-│   │   └── winresizer
+│   │   ├── winresizer
+│   │   └── zelda
 │   ├── ftplugin
 │   │   ├── c
 │   │   ├── c.vim
