@@ -5,9 +5,6 @@
 ├── CONTRIBUTING.md
 ├── Dracula
 │   └── terminal-app
-│       ├── Dracula.terminal
-│       ├── LICENSE
-│       └── README.md
 ├── LICENSE
 ├── README.md
 ├── ackrc
@@ -106,7 +103,6 @@
 │   │   ├── pydoc
 │   │   ├── splitjoin
 │   │   ├── surround
-│   │   ├── syntastic
 │   │   ├── tmux
 │   │   ├── undotree
 │   │   ├── unimpaired
