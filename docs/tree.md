@@ -72,7 +72,6 @@
 │   │   ├── install-tmux.sh
 │   │   └── install-vim-custom.sh
 │   └── makesymlinks.sh
-├── tags
 ├── tmux
 │   └── plugins
 │       ├── tmux-battery
@@ -84,11 +83,11 @@
 │   ├── after
 │   │   ├── ftplugin
 │   │   └── syntax
-│   ├── autoload
 │   ├── bundle
 │   │   ├── ack-vim
 │   │   ├── airline
 │   │   ├── airline-themes
+│   │   ├── ale
 │   │   ├── auto-origami
 │   │   ├── clam
 │   │   ├── colorizer
@@ -106,7 +105,6 @@
 │   │   ├── pydoc
 │   │   ├── splitjoin
 │   │   ├── surround
-│   │   ├── syntastic
 │   │   ├── tmux
 │   │   ├── undotree
 │   │   ├── unimpaired

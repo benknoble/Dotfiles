@@ -725,24 +725,11 @@ let g:airline#extensions#windowswap#enabled = 1
 let g:airline#extensions#windowswap#indicator_text = 'WS'
 " End Airline }}}
 
-" Syntastic {{{
-" customize syntastic if installed
-" uncomment below if airline not installed
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+" ALE {{{
 
-let g:syntastic_mode_map = {
-      \ "mode" : "passive",
-      \ "active_filetypes": [],
-      \ "passive_filetypes": []
-      \ }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_java_javac_classpath = "."
-" End Syntastic }}}
+let g:ale_lint_on_enter = 0
+
+" End ALE }}}
 
 " Undotree {{{
 " Customize undotree

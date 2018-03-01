@@ -13,9 +13,6 @@
 [submodule "vim/bundle/vim-invader"]
 	path = vim/bundle/invader
 	url = https://github.com/mattn/invader-vim.git
-[submodule "vim/bundle/vim-syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim/bundle/vim-winresizer"]
 	path = vim/bundle/winresizer
 	url = https://github.com/simeji/winresizer.git
@@ -83,3 +80,6 @@
 [submodule "vim/bundle/zelda"]
 	path = vim/bundle/zelda
 	url = https://github.com/benknoble/zelda-vim.git
+[submodule "vim/bundle/ale"]
+	path = vim/bundle/ale
+	url = git://github.com/w0rp/ale.git
