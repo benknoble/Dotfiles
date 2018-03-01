@@ -5,6 +5,9 @@
 ├── CONTRIBUTING.md
 ├── Dracula
 │   └── terminal-app
+│       ├── Dracula.terminal
+│       ├── LICENSE
+│       └── README.md
 ├── LICENSE
 ├── README.md
 ├── ackrc
@@ -69,7 +72,6 @@
 │   │   ├── install-tmux.sh
 │   │   └── install-vim-custom.sh
 │   └── makesymlinks.sh
-├── tags
 ├── tmux
 │   └── plugins
 │       ├── tmux-battery
@@ -81,11 +83,11 @@
 │   ├── after
 │   │   ├── ftplugin
 │   │   └── syntax
-│   ├── autoload
 │   ├── bundle
 │   │   ├── ack-vim
 │   │   ├── airline
 │   │   ├── airline-themes
+│   │   ├── ale
 │   │   ├── auto-origami
 │   │   ├── clam
 │   │   ├── colorizer

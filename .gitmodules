@@ -80,3 +80,6 @@
 [submodule "vim/bundle/zelda"]
 	path = vim/bundle/zelda
 	url = https://github.com/benknoble/zelda-vim.git
+[submodule "vim/bundle/ale"]
+	path = vim/bundle/ale
+	url = git://github.com/w0rp/ale.git
