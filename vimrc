@@ -728,6 +728,7 @@ let g:airline#extensions#windowswap#indicator_text = 'WS'
 " ALE {{{
 
 let g:ale_lint_on_enter = 0
+let g:airline#extensions#ale#enabled = 1
 
 " End ALE }}}
 
