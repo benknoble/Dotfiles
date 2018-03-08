@@ -4,7 +4,7 @@
 # display a message to the user
 # I can quickly tune the behavior of message display by tweaking the function
 display_message() {
-  printf "%s\n" "$1"
+  printf '%s\n' "$1"
 }
 
 input_matches_yY() {
