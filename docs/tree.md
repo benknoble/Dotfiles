@@ -117,6 +117,7 @@
 │   │   ├── gitconfig.vim
 │   │   ├── go.vim
 │   │   ├── help.vim
+│   │   ├── html.vim
 │   │   ├── markdown.vim
 │   │   ├── ruby
 │   │   ├── ruby.vim
