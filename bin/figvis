@@ -16,7 +16,7 @@ if [[ $# -gt 0 ]]; then
 fi
 
 cols=$(tput cols)
-read -a fonts <<<$(figlist | awk '/Figlet/{p=!p;next}p')
+mapfile -t fonts < <(figlist | awk '/Figlet/{p=!p;next}p')
 
 for font in "${fonts[@]}"; do
     figlet -w "$cols" -f "$font" "$font"
