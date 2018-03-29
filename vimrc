@@ -336,15 +336,7 @@ if has("autocmd")
   augroup dracula_fix
     au!
 
-    " Purpose:  A (temporary) fix for the dracula colorscheme
-    " Link:     https://github.com/dracula/vim/issues/46
-    autocmd ColorScheme dracula hi link diffRemoved   DiffDelete
-    autocmd ColorScheme dracula hi link diffAdded     DiffAdd
-    autocmd ColorScheme dracula hi link diffChanged   DiffChange
-
-    " Purpose:  A (temporary) fix for dracula's cursorline and listchars
-    " Link:     issues/44, 58
-    autocmd ColorScheme dracula hi SpecialKey ctermbg=NONE
+    " Purpose:  A fix for dracula's cursorline
     autocmd ColorScheme dracula hi CursorLine cterm=underline
   augroup END
   " End dracula_fix }}}
@@ -685,6 +677,7 @@ execute pathogen#infect()
 :Helptags
 
 if ! exists('g:colors_name')
+  let g:dracula_italic = 0
   colorscheme dracula
 endif
 " End Pathogen }}}
