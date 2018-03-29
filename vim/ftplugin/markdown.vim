@@ -10,6 +10,9 @@ setlocal spell spelllang=en_us
 " Enable folds
 let g:markdown_folding = 1
 
+" Remove underscore from iskeyword
+setlocal iskeyword-=_
+
 function! UnderlineHeading(level)
   if a:level == 1
     normal! yypVr=
