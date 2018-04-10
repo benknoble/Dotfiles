@@ -377,6 +377,9 @@ inoremap <C-U> <C-G>u<C-U>
 " Seriously who doesn't want this
 nnoremap / /\v
 nnoremap ? ?\v
+
+" Jump to lines with word
+nnoremap <Leader>f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 " End Search }}}
 
 " Substitute {{{
