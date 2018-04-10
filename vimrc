@@ -276,6 +276,11 @@ if has("autocmd")
           \ setlocal omnifunc=syntaxcomplete#Complete |
           \ endif
 
+    " Close the preview window after Insert-mode completion.
+    if exists('##CompleteDone')
+      autocmd CompleteDone * pclose
+    endif
+
   augroup END
   " End vimrc_completion }}}
 
