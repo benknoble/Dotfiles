@@ -83,3 +83,6 @@
 [submodule "vim/bundle/ale"]
 	path = vim/bundle/ale
 	url = git://github.com/w0rp/ale.git
+[submodule "vim/bundle/liquid"]
+	path = vim/bundle/liquid
+	url = git://github.com/tpope/vim-liquid.git

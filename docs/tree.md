@@ -99,6 +99,7 @@
 │   │   ├── indent-object
 │   │   ├── invader
 │   │   ├── javascript
+│   │   ├── liquid
 │   │   ├── markology
 │   │   ├── node
 │   │   ├── pathogen
