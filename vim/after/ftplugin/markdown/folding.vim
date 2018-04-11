@@ -2,6 +2,12 @@
 " Language:              Markdown
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
+if exists('b:undo_ftplugin')
+  let b:undo_ftplugin .= ' | '
+else
+  let b:undo_ftplugin = ''
+endif
+
 function! MarkdownFolds()
   if s:IsFenced(v:lnum)
     return "="
@@ -31,3 +37,5 @@ endfunction
 " setlocal foldmethod=expr
 " setlocal foldexpr=MarkdownFolds()
 setlocal foldtext=MarkdownFoldText()
+
+let b:undo_ftplugin .= 'setlocal foldtext<'
