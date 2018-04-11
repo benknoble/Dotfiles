@@ -2,6 +2,12 @@
 " Language:              Go
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
+if exists('b:undo_ftplugin')
+  let b:undo_ftplugin .= ' | '
+else
+  let b:undo_ftplugin = ''
+endif
+
 function! s:build_go_files()
   let l:file = expand('%')
   if l:file =~# '^\f\+_test\.go$'
@@ -35,3 +41,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_extra_types = 1
 
 let g:go_auto_type_info = 1
+
+let b:undo_ftplugin .= 'setlocal keywordprg< shiftwidth< softtabstop<'
+let b:undo_ftplugin .= ' | nunmap <buffer> <localleader>b'
+let b:undo_ftplugin .= ' | nunmap <buffer> <localleader>r'
+let b:undo_ftplugin .= ' | nunmap <buffer> <localleader>t'
+let b:undo_ftplugin .= ' | nunmap <buffer> <localleader>c'

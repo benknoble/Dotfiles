@@ -2,6 +2,12 @@
 " Language:              Markdown
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
+if exists('b:undo_ftplugin')
+  let b:undo_ftplugin .= ' | '
+else
+  let b:undo_ftplugin = ''
+endif
+
 " Wrap at 80 characters
 setlocal textwidth=80
 " Spell check on
@@ -32,3 +38,13 @@ onoremap <buffer> ih- :<C-u>execute "normal! ?^--\\+$\r:nohlsearch\rkvg_"<CR>
 onoremap <buffer> i#1 :<C-u>execute "normal! ?^#\\s.?e\r:nohlsearch\rvg_"<CR>
 onoremap <buffer> i#2 :<C-u>execute "normal! ?^##\\s.?e\r:nohlsearch\rvg_"<CR>
 onoremap <buffer> i#3 :<C-u>execute "normal! ?^###\\s.?e\r:nohlsearch\rvg_"<CR>
+
+let b:undo_ftplugin .= 'setlocal textwidth< spell< spelllang< iskeyword<'
+let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>u1'
+let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>u2'
+let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>u3'
+let b:undo_ftplugin .= ' | ounmap <buffer> ih='
+let b:undo_ftplugin .= ' | ounmap <buffer> ih-'
+let b:undo_ftplugin .= ' | ounmap <buffer> i#1'
+let b:undo_ftplugin .= ' | ounmap <buffer> i#2'
+let b:undo_ftplugin .= ' | ounmap <buffer> i#3'
