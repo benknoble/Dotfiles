@@ -27,7 +27,7 @@
 
 ## Your Environment
 <!--- Include as many relevant details about the environment you experienced the bug in -->
-* Version used: **Dotfiles commit 7c102b6**
-* Operating System and version: **OS X 10.11.6**
-* CLI used: **Terminal**
-* Version info of relevant software: **Vim**
+* Version used: __Dotfiles commit 7c102b6__
+* Operating System and version: __OS X 10.11.6__
+* Terminal Emulator: __Terminal__
+* Version info of relevant software: __Vim__
