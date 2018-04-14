@@ -278,7 +278,7 @@ if has("autocmd")
 
     " Close the preview window after Insert-mode completion.
     if exists('##CompleteDone')
-      autocmd CompleteDone * pclose
+      autocmd CompleteDone * silent! pclose
     endif
 
   augroup END
