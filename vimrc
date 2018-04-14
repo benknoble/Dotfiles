@@ -780,6 +780,7 @@ let g:startify_bookmarks = [
 
 let g:startify_commands = [
             \ { 'E': 'Explore'},
+            \ { 'p': 'e ~/thinkpad.txt' },
             \ { 'r': 'help reference'},
             \ { 'I': 'intro'},
             \]
