@@ -41,7 +41,7 @@ count_features() {
 display_weekly_stats() {
   echo "Stats (${1:?} - Today)"
   echo "---------------------"
-  echo "${2:?}"
+  echo "${2:-No stats available}"
   echo
   echo "Features (${3:?})"
   echo "-------------"
