@@ -104,6 +104,7 @@
 │   │   ├── node
 │   │   ├── pathogen
 │   │   ├── pydoc
+│   │   ├── rhubarb
 │   │   ├── splitjoin
 │   │   ├── surround
 │   │   ├── tmux

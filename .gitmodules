@@ -86,3 +86,6 @@
 [submodule "vim/bundle/liquid"]
 	path = vim/bundle/liquid
 	url = git://github.com/tpope/vim-liquid.git
+[submodule "vim/bundle/rhubarb"]
+	path = vim/bundle/rhubarb
+	url = git://github.com/tpope/vim-rhubarb.git
