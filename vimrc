@@ -755,6 +755,62 @@ let g:splitjoin_split_mapping = ""
 let g:splitjoin_join_mapping = ""
 " End SplitJoin }}}
 
+" Startify {{{
+" Options
+let g:startify_session_dir = '~/.vimsessions'
+let g:startify_files_number = 5
+let g:startify_change_to_dir = 0
+let g:startify_change_to_vcs_root = 1
+let g:startify_enable_special = 0
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
+
+" Lists
+let g:startify_lists = [
+            \ { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
+            \ { 'type': 'dir', 'header': [ getcwd() ] },
+            \ { 'type': 'files', 'header': [ 'Files' ] },
+            \ { 'type': 'commands', 'header': [ 'Commands' ] },
+            \ { 'type': 'sessions', 'header': [ 'Sessions' ] },
+            \ ]
+
+let g:startify_bookmarks = [
+            \ { 'c': '~/Dotfiles/vimrc'},
+            \]
+
+let g:startify_commands = [
+            \ { 'E': 'Explore'},
+            \ { 'r': 'help reference'},
+            \ { 'I': 'intro'},
+            \]
+
+" Header/Footer
+if executable('fortune') && executable('cowsay')
+    let g:startify_custom_header =
+                \ "split(system('fortune -s | cowsay'), '\n')"
+else
+    let g:startify_custom_header = 'startify#fortune#cowsay()'
+endif
+let g:startify_custom_footer = [
+            \ ' ',
+            \ '[b]uffer [s]plit [v]ertical [t]ab',
+            \ ' ',
+            \ '[e]new   [q]uit',
+            \ ]
+
+" Autocmds
+augroup vimrc_startify
+    au!
+
+    au User Startified setlocal signcolumn=no
+    au User Startified setlocal cursorline
+augroup END
+
+" Highlighting
+hi link StartifyFile DraculaLink
+hi link StartifyHeader Normal
+hi link StartifyFooter SpecialKey
+" End Startify }}}
+
 " End plugin customization }}}
 
 " Abbreviations {{{

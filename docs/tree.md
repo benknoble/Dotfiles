@@ -106,6 +106,7 @@
 │   │   ├── pydoc
 │   │   ├── rhubarb
 │   │   ├── splitjoin
+│   │   ├── startify
 │   │   ├── surround
 │   │   ├── tmux
 │   │   ├── undotree
