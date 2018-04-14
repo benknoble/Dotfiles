@@ -776,14 +776,14 @@ let g:startify_lists = [
 
 let g:startify_bookmarks = [
             \ { 'c': '~/Dotfiles/vimrc'},
-            \]
+            \ ]
 
 let g:startify_commands = [
-            \ { 'E': 'Explore'},
+            \ { 'E': 'Explore' },
             \ { 'p': 'e ~/thinkpad.txt' },
-            \ { 'r': 'help reference'},
-            \ { 'I': 'intro'},
-            \]
+            \ { 'r': 'help reference' },
+            \ { 'I': 'intro' },
+            \ ]
 
 " Header/Footer
 if executable('fortune') && executable('cowsay')
