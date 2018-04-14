@@ -42,6 +42,7 @@ set laststatus=2
 " Command-line quickly {{{
 " Display completion matches in the status line
 set wildmenu
+set wildmode=longest,full
 " Search in subdirs for finding files
 set path+=**
 " Stop, for the love of god, 'finding' headers!
