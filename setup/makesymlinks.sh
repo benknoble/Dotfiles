@@ -45,14 +45,22 @@ verify_directory() {
   fi
 }
 
+backup_file() {
+  [[ -e ~/"${files[$1]}" ]] && mv ~/"${files[$1]}" "$olddir"/"${files[$1]}"
+}
+
+symlink_file() {
+  ln -s "$dotfiles_dir"/"$1" ~/"${files[$1]}"
+}
+
 # handle the file by moving it to backup and symlinking
 # args: 1: dotfile key (that is, the name it has in this repo)
 handle_file() {
   display_message "Starting ${files[$1]}..."
   display_message "Moving ${files[$1]} from $HOME to $olddir"
-  [[ -e ~/"${files[$1]}" ]] && mv ~/"${files[$1]}" "$olddir"/"${files[$1]}"
+  backup_file "$1"
   display_message "Creating symlink to ${files[$1]} in $HOME"
-  ln -s "$dotfiles_dir"/"$1" ~/"${files[$1]}"
+  symlink_file "$1"
   display_message "...Finished ${files[$1]}"
   sleep 1
 }
