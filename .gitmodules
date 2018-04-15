@@ -92,3 +92,6 @@
 [submodule "vim/bundle/startify"]
 	path = vim/bundle/startify
 	url = git://github.com/mhinz/vim-startify.git
+[submodule "Dracula/gitk"]
+	path = Dracula/gitk
+	url = git://github.com/dracula/gitk.git

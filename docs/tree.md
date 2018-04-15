@@ -4,6 +4,11 @@
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── Dracula
+│   ├── gitk
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── gitk
+│   │   └── screenshot.png
 │   └── terminal-app
 │       ├── Dracula.terminal
 │       ├── LICENSE
