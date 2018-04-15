@@ -7,6 +7,8 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 setup_dir="$( dirname "$dir" )"
 dotfiles_dir="$( dirname "$setup_dir")"
 
+path_to_gitk_config="${dotfiles_dir}/Dracula/gitk/gitk"
+
 source "$dotfiles_dir/dotfiles-support"
 
 install_git_prompt_completion() {
@@ -37,10 +39,26 @@ link_hooks() {
   display_message "...done linking in hooks"
 }
 
+gitk_submodule_exists() {
+  [[ -r "$path_to_gitk_config" ]]
+}
+
+copy_gitk() {
+  display_message "Copying gitk dracula theme..."
+  if gitk_submodule_exists ; then
+    cp -iv -- "$path_to_gitk_config" \
+      "${XDG_CONFIG_HOME:-$HOME/.config}/git/gitk"
+    display_message "...Done copying gitk dracula theme"
+  else
+    display_message "...no gitk dracula theme found at $path_to_gitk_config"
+  fi
+}
+
 install_git_extras() {
   display_message "Install git extras..."
   install_git_prompt_completion
   install_dotfile_hooks
+  copy_gitk
   display_message "...done with git extras"
 }
 
