@@ -31,6 +31,7 @@
 │   ├── cowvis
 │   ├── exit_msg
 │   ├── figvis
+│   ├── games
 │   ├── isnumber
 │   ├── itunes
 │   ├── listcmds
