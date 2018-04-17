@@ -7,8 +7,8 @@
 │   ├── gitk
 │   │   ├── LICENSE
 │   │   ├── README.md
-│   │   ├── gitk
-│   │   └── screenshot.png
+│   │   ├── backlinks.txt
+│   │   └── gitk
 │   └── terminal-app
 │       ├── Dracula.terminal
 │       ├── LICENSE
