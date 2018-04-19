@@ -8,13 +8,91 @@ bin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 # structure :
 #   | name=game_binary
-#   | name='game command'
+#   | name='game command' (fails with exec and screen)
 declare -A games
+games=(
+  ['Invader ; VimGameCodeBreak']=vim
+  ['nethack : that dungeon thing']=nethack
+  ['Zelda Solarus DX']=zsdx
+  ['Zelda Solarus XD']=zsxd
+  ['Zelda Solarus : Return of the Hylian']=zelda-roth-se
+)
+
+tmux_exists() {
+  which -s tmux
+}
+
+tmux_running() {
+  [[ -n "${TMUX:-}" ]]
+}
+
+launch_tmux() {
+  if tmux_exists ; then
+    log "Found tmux"
+    if tmux_running ; then
+      log "Launching in current tmux session"
+      tmux new-window "$@"
+    else
+      log "Launching in new tmux session"
+      tmux new-session "$@"
+    fi
+  else
+    log "tmux not found!"
+    false
+  fi
+}
+
+screen_exists() {
+  which -s screen
+}
+
+screen_running() {
+  screen -list 2>/dev/null
+}
+
+launch_screen() {
+  if screen_exists ; then
+    log "Found screen"
+    screen "$@"
+  else
+    log "screen not found!"
+    false
+  fi
+}
+
+launch_process_exec() {
+  log "Using 'exec'"
+  exec "$@"
+}
+
+log() {
+  printf '%s\n' "$@" >&2
+}
+
+die() {
+  status="${1:-1}"
+  [[ $# -gt 0 ]] && shift
+  log "${@:-"Error in $0"}"
+  exit "$status"
+}
 
 main() {
-  :
+  PS3="game #> "
+  select game in "${!games[@]}" ; do
+    [[ -z "$game" ]] && {
+      log "Choice not valid. Send interrupt or EOF to cancel."
+      continue;
+    }
+    log "Game '$game'"
+    cmd="${games[$game]}"
+    log "Command '$cmd'"
+    {
+      launch_tmux "$cmd" \
+        || launch_screen "$cmd" \
+        || launch_process_exec "$cmd" \
+        || die 1 "No launcher available!"
+    } && break
+  done
 }
 
 main
-
-# log, die
