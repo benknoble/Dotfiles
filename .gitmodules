@@ -12,7 +12,7 @@
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vim/bundle/vim-invader"]
 	path = vim/bundle/invader
-	url = https://github.com/mattn/invader-vim.git
+	url = https://github.com/benknoble/invader-vim.git
 [submodule "vim/bundle/vim-winresizer"]
 	path = vim/bundle/winresizer
 	url = https://github.com/simeji/winresizer.git
