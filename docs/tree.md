@@ -119,6 +119,7 @@
 │   │   ├── unimpaired
 │   │   ├── winresizer
 │   │   └── zelda
+│   ├── doc
 │   ├── ftplugin
 │   │   ├── c
 │   │   ├── c.vim
