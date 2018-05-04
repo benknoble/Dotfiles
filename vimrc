@@ -111,6 +111,9 @@ let &showbreak='» '
 set linebreak
 " Allow movements Left and Right to move over wrapped lines
 set whichwrap=b,s,<,>,[,]
+" Automagically reformat things as you type. This helps in the case where you
+" insert into a paragraph and don't want to rewrap it on your own
+set formatoptions+=a
 " End Wrap }}}
 
 " Display certain whitespace characters
@@ -254,17 +257,6 @@ if has("autocmd")
 
   augroup END
   " End vimrc_autofoldcolumn }}}
-
-  " vimrc_formatoptions {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup formatoptions | au! | augroup END"
-  augroup vimrc_formatoptions
-    au!
-
-    au FileType * setlocal formatoptions-=cro
-
-  augroup END
-  " End vimrc_formatoptions }}}
 
   " vimrc_completion {{{
   " Put these in an autocmd group, so that you can revert them with:

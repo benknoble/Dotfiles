@@ -11,4 +11,7 @@ endif
 " Spell check on for commit messages
 setlocal spell spelllang=en_us
 
-let b:undo_ftplugin .= 'setlocal spell< spelllang<'
+" Make sure we don't use autoformatting
+setlocal formatoptions-=a
+
+let b:undo_ftplugin .= 'setlocal spell< spelllang< formatoptions<'
