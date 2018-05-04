@@ -255,17 +255,6 @@ if has("autocmd")
   augroup END
   " End vimrc_autofoldcolumn }}}
 
-  " vimrc_formatoptions {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup formatoptions | au! | augroup END"
-  augroup vimrc_formatoptions
-    au!
-
-    au FileType * setlocal formatoptions-=cro
-
-  augroup END
-  " End vimrc_formatoptions }}}
-
   " vimrc_completion {{{
   " Put these in an autocmd group, so that you can revert them with:
   " ":augroup completion | au! | augroup END"
