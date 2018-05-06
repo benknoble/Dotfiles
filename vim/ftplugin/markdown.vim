@@ -12,6 +12,9 @@ endif
 setlocal textwidth=80
 " Spell check on
 setlocal spell spelllang=en_us
+" Automagically reformat things as you type. This helps in the case where you
+" insert into a paragraph and don't want to rewrap it on your own
+set formatoptions+=a
 
 " Enable folds
 let g:markdown_folding = 1
@@ -40,6 +43,7 @@ onoremap <buffer> i#2 :<C-u>execute "normal! ?^##\\s.?e\r:nohlsearch\rvg_"<CR>
 onoremap <buffer> i#3 :<C-u>execute "normal! ?^###\\s.?e\r:nohlsearch\rvg_"<CR>
 
 let b:undo_ftplugin .= 'setlocal textwidth< spell< spelllang< iskeyword<'
+let b:undo_ftplugin .= 'setlocal formatoptions<'
 let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>u1'
 let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>u2'
 let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>u3'
