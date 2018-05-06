@@ -111,9 +111,6 @@ let &showbreak='» '
 set linebreak
 " Allow movements Left and Right to move over wrapped lines
 set whichwrap=b,s,<,>,[,]
-" Automagically reformat things as you type. This helps in the case where you
-" insert into a paragraph and don't want to rewrap it on your own
-set formatoptions+=a
 " End Wrap }}}
 
 " Display certain whitespace characters
