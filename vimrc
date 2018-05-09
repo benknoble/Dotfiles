@@ -103,8 +103,8 @@ set autoindent
 
 " Wrap {{{
 set textwidth=80
-" Wrap lines that are too long
-set wrap
+" Wrap lines that are too long (off by default)
+set nowrap
 " Show wrapped lines with a marker in front
 let &showbreak='» '
 " Break at word boundaries
