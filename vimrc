@@ -802,6 +802,10 @@ hi link StartifyHeader Normal
 hi link StartifyFooter SpecialKey
 " End Startify }}}
 
+" Synstax {{{
+nnoremap <Leader><Leader>s :echo synstax#UnderCursor()<CR>
+" End Synstax }}}
+
 " End plugin customization }}}
 
 " Abbreviations {{{

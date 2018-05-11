@@ -114,6 +114,7 @@
 │   │   ├── splitjoin
 │   │   ├── startify
 │   │   ├── surround
+│   │   ├── synstax
 │   │   ├── tmux
 │   │   ├── undotree
 │   │   ├── unimpaired
@@ -137,8 +138,7 @@
 │   │   ├── vim.vim
 │   │   └── yaml.vim
 │   ├── plugin
-│   │   ├── grep-operator.vim
-│   │   └── synstack.vim
+│   │   └── grep-operator.vim
 │   └── spell
 │       ├── en.utf-8.add
 │       ├── en.utf-8.add.spl

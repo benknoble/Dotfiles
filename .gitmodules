@@ -95,3 +95,6 @@
 [submodule "Dracula/gitk"]
 	path = Dracula/gitk
 	url = git://github.com/dracula/gitk.git
+[submodule "vim/bundle/synstax"]
+	path = vim/bundle/synstax
+	url = git://github.com/benknoble/vim-synstax.git
