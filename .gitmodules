@@ -98,3 +98,6 @@
 [submodule "vim/bundle/synstax"]
 	path = vim/bundle/synstax
 	url = git://github.com/benknoble/vim-synstax.git
+[submodule "vim/bundle/vader"]
+	path = vim/bundle/vader
+	url = https://github.com/junegunn/vader.vim.git

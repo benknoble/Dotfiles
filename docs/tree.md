@@ -118,6 +118,7 @@
 │   │   ├── tmux
 │   │   ├── undotree
 │   │   ├── unimpaired
+│   │   ├── vader
 │   │   ├── winresizer
 │   │   └── zelda
 │   ├── doc
