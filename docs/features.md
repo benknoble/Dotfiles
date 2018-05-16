@@ -8,6 +8,7 @@ I have grouped these into several categories:
 - [git](#git)
 - [vim](#vim)
 - [brew](#brew)
+- [tmux](#tmux)
 
 Within each, I have documented the features provided by various files.
 
@@ -29,18 +30,20 @@ remain constant no matter what.
 - Nullglob
 - Noclobber, to prevent accidentally overwriting files
 - Magic-space, which makes space expand history commands on the command line
+- vi keybindings
 - Bash history settings suitable for most modern computers
 - Add Dotfiles/bin to PATH
 - Add pip completion
 - Add brew completion and external commands to PATH
-- Message of the Day on startup!
+- Custom `command_not_found_handle()` function
+- Message of the Day on startup
 
 ### Bash Files
 
 *PS1, aliases, colors, functions, and gitconfig.* These files give more
 fine-tuned control over the bash setup without bloating the bashrc.
 
-- **PS1** provides my fancy prompt, complete with functions to toggle it's pices.
+- **PS1** provides my fancy prompt, complete with functions to toggle it's pieces.
 Try typing `_toggle` at a command line and using tab-completion to see what's
 available. Experiment, and find a setup that works for you. `_dirtrim` is also
 provided, which sets the number of directories to keep in the prompt. With no
@@ -80,9 +83,8 @@ if it exists.
 
 ### Inputrc
 
-*Tune input in bash.* This gives me opt+{left,right} in bash to move between
-words on the command line and up and down to search history based on what's already
-typed.
+*Tune input in bash.* Turns on some completion colors, enables vi key-strokes,
+and customizes it. Reload with <C-x><C-r>.
 
 ### Bin
 
@@ -114,6 +116,11 @@ spins.
 
 - **msgtest** is a stupid script for testing `exit_msg`
 
+- **color-test** outputs colors for testing your terminal.
+
+- **games** gives you a choice of games to run and then tries to start it in
+  tmux, screen, or just regular bash for you.
+
 ### Terminal
 
 *`benknoble.terminal` is a settings file for import into Terminal.* Import it to
@@ -132,7 +139,9 @@ may also want to run `setup/git-setup.sh` every now and then just in case.
 
 Here's the quick list:
 
-- **amend** for amending commits
+- **amend** for amending commits.
+
+- **ca** for commit --all.
 
 - **cc** for commit.
 
@@ -140,13 +149,23 @@ Here's the quick list:
 
 - **cm** for commit with message passed as options.
 
-- **graph** for seeing a graph
+- **grall** to graph with all references shown.
+
+- **graph** for seeing a graph (oneline messages)
 
 - **graph-long** for seeing a graph with long commits
 
 - **last** for logging the last commit.
 
+- **logp** for a pretty (verbose) log graph.
+
+- **logpall** for `logp` with all references.
+
 - **ls** for listing branches (and remotes; accepts -vva flags).
+
+- **merc** creates a merge commit.
+
+- **newb** creates a new branch.
 
 - **sdiff** for collecting diffs from submodules.
 
@@ -164,6 +183,8 @@ Here's the quick list:
 
 *Ignores stupid backup files, .DS_Store on macOS, and .netrwhist from `Vim`.*
 
+Also tags and .ackrc files.
+
 ### Git/ext
 
 *External commands callable from `git`.* Just some easy things.
@@ -171,6 +192,10 @@ Here's the quick list:
 - **git weekly** gives you a weekly summary of a repo
 
 - **git new** shows you the changes from the most recent HEAD change
+
+- **git churn** to see what gets changed the most
+
+- **git overwritten** is supposed to show what gets overwritten. It needs work.
 
 Add the `-h` parameter for more information.
 
@@ -190,15 +215,13 @@ them all.
 
 - Filetype plugins and syntax on.
 
-- Automatic fold column if the window entered has folds.
-
 - `Q` for formatting.
 
 - Center results of common jumps (`n`, `G`, mouse click)
 
 - Escape insert mode with all variations of `jj` and `jk`
 
-- `gb` to fly through buffers! (Though airline mappings work better.)
+- `gb` to fly through buffers! (Though unimpaired mappings work better.)
 
 - Save with `<Leader>s`.
 
@@ -214,6 +237,8 @@ them all.
 
 ## Brew
 
+See the Brewfile.
+
 ### Brewutils
 
 *Collection of potentially useful `brew` scripts.* Source it and run
@@ -228,3 +253,9 @@ them all.
 - **brew superupdate** upgrades `brew` and updates all the formulae.
 
 Run `brew help <command>` for more help.
+
+## Tmux
+
+Uses `tpm` for plugin management.
+
+See `tmux.conf` for configuration of keybindings and statusline.

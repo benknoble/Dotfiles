@@ -1,4 +1,5 @@
 # dotfiles
+
 My Dotfiles for configuration of different software and command-line programs
 
 You can find the [directory structure here](/docs/tree.md) [generated with `tree
@@ -144,7 +145,7 @@ behavioral expectations of the Dotfiles.
 This project is licensed under the MIT License--see [LICENSE](/LICENSE) for more
 information.
 
-(c) 2016 David Ben Knoble
+© 2016 David Ben Knoble
 
 ## Acknowledgments
 

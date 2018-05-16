@@ -35,13 +35,17 @@ Quick list:
 - Go
 - Indent object
 - Invader
+- Liquid
 - Javascript
 - Markology
 - Node
 - Pathogen
 - Pydoc
+- Rhubarb
 - SplitJoin
+- Startify
 - Surround
+- Synstax
 - Tmux
 - Undotree
 - Unimpaired
