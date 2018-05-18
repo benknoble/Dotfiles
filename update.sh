@@ -15,6 +15,7 @@ pull_master() {
 
 update_submodules() {
   cd "$dir" \
+    && git submodule sync \
     && git submodule update
 }
 
@@ -37,8 +38,6 @@ tmux_plugin_update() {
 update() {
   if pull_master && update_submodules ; then
     display_message "Updated"
-    display_message "To pull in upstream submodules, type
-    'git submodule update --init'"
     has_brew && bundle_check
     tmux_plugin_update
     display_message "Type 'reload' to reload updates"
