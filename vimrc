@@ -287,6 +287,7 @@ if has("autocmd")
     " Turn it off for windows not in use
     au WinEnter * setlocal cursorline
     au WinLeave * setlocal nocursorline
+
   augroup END
   " End vimrc_toggle_cursorline }}}
 
@@ -297,6 +298,9 @@ if has("autocmd")
     au!
 
     autocmd User AirlineAfterInit call AirlineInit()
+
+    au User Startified setlocal signcolumn=no
+    au User Startified setlocal cursorline
 
   augroup END
   "End vimrc_plugins }}}
@@ -571,12 +575,6 @@ onoremap <silent> an{ :<C-u>normal! f{va{<CR>
 onoremap <silent> al{ :<C-u>normal! F}va{<CR>
 " End Operator motions }}}
 
-" Quickfix {{{
-" Quickly navigate quickfix
-nnoremap <silent> <Leader>cn :cnext<CR>
-nnoremap <silent> <Leader>cp :cprev<CR>
-" End Quickfix }}}
-
 " End Mappings }}}
 
 " Commands, Functions, that jazz {{{
@@ -635,8 +633,6 @@ set keywordprg=:Man
 let g:netrw_liststyle=1
 " Don't display baner
 let g:netrw_banner=0
-" Sort by size
-let g:netrw_sort_by="size"
 " Hide things not tracked by gitignore
 " let g:netrw_list_hide=netrw_gitignore#Hide()
 " Something is going screwy here^
@@ -761,14 +757,6 @@ let g:startify_custom_footer = [
             \ '[e]new   [q]uit',
             \ ]
 
-" Autocmds
-augroup vimrc_startify
-    au!
-
-    au User Startified setlocal signcolumn=no
-    au User Startified setlocal cursorline
-augroup END
-
 " Highlighting
 hi link StartifyFile DraculaLink
 hi link StartifyHeader Normal
@@ -790,6 +778,6 @@ iabbrev lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam 
 iabbrev eemail ben.knoble@gmail.com
 iabbrev wweb benknoble.github.io
 iabbrev ssig --<CR>David Ben Knoble<CR>ben.knoble@gmail.com
-iabbrev ccopy © Copyright David Ben Knoble 2017, all rights reserved.
+iabbrev ccopy © Copyright David Ben Knoble 2018, all rights reserved.
 
-" Eng abbreviations }}}
+" End abbreviations }}}
