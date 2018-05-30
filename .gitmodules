@@ -11,7 +11,7 @@
 	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vim/bundle/vim-invader"]
-	path = vim/bundle/invader
+	path = vim/pack/benknoble/start/invader
 	url = https://github.com/benknoble/invader-vim.git
 [submodule "vim/bundle/vim-winresizer"]
 	path = vim/bundle/winresizer
@@ -29,10 +29,10 @@
 	path = vim/bundle/commentary
 	url = https://github.com/tpope/vim-commentary
 [submodule "vim/bundle/vim-clam"]
-	path = vim/bundle/clam
+	path = vim/pack/benknoble/start/clam
 	url = https://github.com/benknoble/clam.vim.git
 [submodule "vim/bundle/vim-auto-origami"]
-	path = vim/bundle/auto-origami
+	path = vim/pack/benknoble/start/auto-origami
 	url = https://github.com/benknoble/vim-auto-origami
 [submodule "vim/bundle/vim-go"]
 	path = vim/bundle/go
@@ -78,7 +78,7 @@
 	path = vim/bundle/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim.git
 [submodule "vim/bundle/zelda"]
-	path = vim/bundle/zelda
+	path = vim/pack/benknoble/start/zelda
 	url = https://github.com/benknoble/zelda-vim.git
 [submodule "vim/bundle/ale"]
 	path = vim/bundle/ale
@@ -96,7 +96,7 @@
 	path = Dracula/gitk
 	url = git://github.com/dracula/gitk.git
 [submodule "vim/bundle/synstax"]
-	path = vim/bundle/synstax
+	path = vim/pack/benknoble/start/synstax
 	url = git://github.com/benknoble/vim-synstax.git
 [submodule "vim/bundle/vader"]
 	path = vim/bundle/vader

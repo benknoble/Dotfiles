@@ -94,8 +94,6 @@
 │   │   ├── airline
 │   │   ├── airline-themes
 │   │   ├── ale
-│   │   ├── auto-origami
-│   │   ├── clam
 │   │   ├── colorizer
 │   │   ├── commentary
 │   │   ├── dracula
@@ -103,7 +101,6 @@
 │   │   ├── game-code-break
 │   │   ├── go
 │   │   ├── indent-object
-│   │   ├── invader
 │   │   ├── javascript
 │   │   ├── liquid
 │   │   ├── markology
@@ -114,14 +111,11 @@
 │   │   ├── splitjoin
 │   │   ├── startify
 │   │   ├── surround
-│   │   ├── synstax
 │   │   ├── tmux
 │   │   ├── undotree
 │   │   ├── unimpaired
 │   │   ├── vader
-│   │   ├── winresizer
-│   │   └── zelda
-│   ├── doc
+│   │   └── winresizer
 │   ├── ftplugin
 │   │   ├── c
 │   │   ├── c.vim
@@ -138,6 +132,8 @@
 │   │   ├── text.vim
 │   │   ├── vim.vim
 │   │   └── yaml.vim
+│   ├── pack
+│   │   └── benknoble
 │   ├── plugin
 │   │   └── grep-operator.vim
 │   └── spell
