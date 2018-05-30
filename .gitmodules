@@ -78,7 +78,7 @@
 	path = vim/bundle/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim.git
 [submodule "vim/bundle/zelda"]
-	path = vim/pack/benknoble/start/zelda
+	path = vim/pack/benknoble/opt/zelda
 	url = https://github.com/benknoble/zelda-vim.git
 [submodule "vim/bundle/ale"]
 	path = vim/bundle/ale
