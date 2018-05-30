@@ -90,31 +90,7 @@
 │   │   ├── ftplugin
 │   │   └── syntax
 │   ├── bundle
-│   │   ├── ack-vim
-│   │   ├── airline
-│   │   ├── airline-themes
-│   │   ├── ale
-│   │   ├── colorizer
-│   │   ├── commentary
-│   │   ├── fugitive
-│   │   ├── game-code-break
-│   │   ├── go
-│   │   ├── indent-object
-│   │   ├── javascript
-│   │   ├── liquid
-│   │   ├── markology
-│   │   ├── node
-│   │   ├── pathogen
-│   │   ├── pydoc
-│   │   ├── rhubarb
-│   │   ├── splitjoin
-│   │   ├── startify
-│   │   ├── surround
-│   │   ├── tmux
-│   │   ├── undotree
-│   │   ├── unimpaired
-│   │   ├── vader
-│   │   └── winresizer
+│   │   └── pathogen
 │   ├── ftplugin
 │   │   ├── c
 │   │   ├── c.vim
@@ -133,7 +109,11 @@
 │   │   └── yaml.vim
 │   ├── pack
 │   │   ├── benknoble
-│   │   └── colors
+│   │   ├── colors
+│   │   ├── games
+│   │   ├── interface
+│   │   ├── languages
+│   │   └── utility
 │   ├── plugin
 │   │   └── grep-operator.vim
 │   └── spell
