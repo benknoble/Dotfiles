@@ -16,8 +16,8 @@ installation. Thanks, Brew Bundle.
 
 ## Vim Plugins
 
-Honestly, just see [tree](/docs/tree.md) and look under `vim/bundle`, since I
-use tpope's [pathogen](https://github.com/tpope/vim-pathogen).
+Honestly, just see [tree](/docs/tree.md) and look under `vim/pack`, since I
+recently switched to vim8's package system.
 
 Quick list:
 
@@ -39,7 +39,6 @@ Quick list:
 - Javascript
 - Markology
 - Node
-- Pathogen
 - Pydoc
 - Rhubarb
 - SplitJoin

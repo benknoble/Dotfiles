@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# installer script for Pathogen and certain vim plugins
+# installer script for certain vim plugins
 
 set -euo pipefail
 

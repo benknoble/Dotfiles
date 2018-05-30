@@ -89,8 +89,6 @@
 │   ├── after
 │   │   ├── ftplugin
 │   │   └── syntax
-│   ├── bundle
-│   │   └── pathogen
 │   ├── ftplugin
 │   │   ├── c
 │   │   ├── c.vim

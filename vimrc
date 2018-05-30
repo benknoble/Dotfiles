@@ -615,6 +615,9 @@ endfunction
 
 " Plugin customization {{{
 
+" Generate all helptags
+helptags ALL
+
 " Matchit {{{
 if has('packages') && has('syntax') && has('eval')
   packadd! matchit
@@ -638,17 +641,13 @@ let g:netrw_banner=0
 " Something is going screwy here^
 " End netrw }}}
 
-" Pathogen {{{
-runtime bundle/pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-:Helptags
-
+" Dracula {{{
 if ! exists('g:colors_name')
   let g:dracula_italic = 0
   let g:dracula_colorterm = 0
   colorscheme dracula
 endif
-" End Pathogen }}}
+" End Dracula }}}
 
 " Airline theme {{{
 " set airline-theme if installed
