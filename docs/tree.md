@@ -89,22 +89,6 @@
 │   ├── after
 │   │   ├── ftplugin
 │   │   └── syntax
-│   ├── ftplugin
-│   │   ├── c
-│   │   ├── c.vim
-│   │   ├── css.vim
-│   │   ├── gitcommit.vim
-│   │   ├── gitconfig.vim
-│   │   ├── go.vim
-│   │   ├── help.vim
-│   │   ├── html.vim
-│   │   ├── markdown.vim
-│   │   ├── ruby
-│   │   ├── ruby.vim
-│   │   ├── sh.vim
-│   │   ├── text.vim
-│   │   ├── vim.vim
-│   │   └── yaml.vim
 │   ├── pack
 │   │   ├── benknoble
 │   │   ├── colors
