@@ -96,7 +96,6 @@
 │   │   ├── ale
 │   │   ├── colorizer
 │   │   ├── commentary
-│   │   ├── dracula
 │   │   ├── fugitive
 │   │   ├── game-code-break
 │   │   ├── go
@@ -133,7 +132,8 @@
 │   │   ├── vim.vim
 │   │   └── yaml.vim
 │   ├── pack
-│   │   └── benknoble
+│   │   ├── benknoble
+│   │   └── colors
 │   ├── plugin
 │   │   └── grep-operator.vim
 │   └── spell

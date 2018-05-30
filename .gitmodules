@@ -48,7 +48,7 @@
 	url = https://github.com/dracula/terminal.app.git
 	branch = benknoble-tweaks
 [submodule "vim/bundle/vim-dracula"]
-	path = vim/bundle/dracula
+	path = vim/pack/colors/start/dracula
 	url = git://github.com/dracula/vim.git
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/unimpaired
