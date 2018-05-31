@@ -30,7 +30,7 @@ bundle_check() {
 }
 
 tmux_plugin_update() {
-  local tpm=tmux/plugins/tpm/bin
+  local tpm=~/.tmux/plugins/tpm/bin
   "$tpm"/clean_plugins
   "$tpm"/update_plugins all
 }
