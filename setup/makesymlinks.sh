@@ -12,7 +12,6 @@ declare -A files=(
   [bashrc]=.bashrc
   [bash]=.bash
   [vim]=.vim
-  [vimrc]=.vimrc
   [inputrc]=.inputrc
   [gitignore_global]=.gitignore_global
   [gitshrc]=.gitshrc

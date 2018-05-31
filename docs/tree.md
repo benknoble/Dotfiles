@@ -85,24 +85,24 @@
 │       └── tpm
 ├── tmux.conf
 ├── update.sh
-├── vim
-│   ├── after
-│   │   ├── ftplugin
-│   │   └── syntax
-│   ├── pack
-│   │   ├── benknoble
-│   │   ├── colors
-│   │   ├── games
-│   │   ├── interface
-│   │   ├── languages
-│   │   └── utility
-│   ├── plugin
-│   │   └── grep-operator.vim
-│   └── spell
-│       ├── en.utf-8.add
-│       ├── en.utf-8.add.spl
-│       ├── fr.utf-8.add
-│       ├── fr.utf-8.add.spl
-│       └── fr.utf-8.spl
-└── vimrc
+└── vim
+    ├── after
+    │   ├── ftplugin
+    │   └── syntax
+    ├── pack
+    │   ├── benknoble
+    │   ├── colors
+    │   ├── games
+    │   ├── interface
+    │   ├── languages
+    │   └── utility
+    ├── plugin
+    │   └── grep-operator.vim
+    ├── spell
+    │   ├── en.utf-8.add
+    │   ├── en.utf-8.add.spl
+    │   ├── fr.utf-8.add
+    │   ├── fr.utf-8.add.spl
+    │   └── fr.utf-8.spl
+    └── vimrc
 ```
