@@ -9,15 +9,16 @@ olddir="${dotfiles_dir}_old"
 # list of files/folders to symlink in homedir
 declare -A files=(
   [bash_profile]=.bash_profile
-  [vimrc]=.vimrc
   [bashrc]=.bashrc
+  [bash]=.bash
+  [vim]=.vim
+  [vimrc]=.vimrc
   [inputrc]=.inputrc
   [gitignore_global]=.gitignore_global
-  [vim]=.vim
-  [tmux.conf]=.tmux.conf
   [gitshrc]=.gitshrc
-  [ackrc]=.ackrc
+  [tmux.conf]=.tmux.conf
   [tmux]=.tmux
+  [ackrc]=.ackrc
 )
 
 source "$dotfiles_dir/dotfiles-support"
@@ -46,7 +47,9 @@ verify_directory() {
 }
 
 backup_file() {
-  [[ -e ~/"${files[$1]}" ]] && mv ~/"${files[$1]}" "$olddir"/"${files[$1]}"
+  if [[ -e ~/"${files[$1]}" ]]; then
+    mv ~/"${files[$1]}" "$olddir"/"${files[$1]}"
+  fi
 }
 
 symlink_file() {

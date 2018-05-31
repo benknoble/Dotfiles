@@ -61,22 +61,22 @@ shopt -s histappend
 alias reload='. ~/.bashrc >/dev/null && echo "reloaded"'
 
 # load colors
-source ~/Dotfiles/bash/colors.bash
+source ~/.bash/colors.bash
 
 # load aliases
-source ~/Dotfiles/bash/aliases.bash
+source ~/.bash/aliases.bash
 
 # load functions
-source ~/Dotfiles/bash/functions.bash
+source ~/.bash/functions.bash
 
 # load git config
-source ~/Dotfiles/bash/gitconfig.bash
+source ~/.bash/gitconfig.bash
 
 # set PS1
 # __gps1 is a special value exported by gitconfig above
 # it is basically a bash command that returns the branch name for PS1 formatting
 # PS1="$CS$BRed$CE\jj$CS$NC$CE $CS$BMagenta$CE#\!$CS$NC$CE $CS$BWhite$CE\u$CS$NC$CE:$CS$BCyan$CE\W$CS$NC$CE $CS$BYellow$CE\$("$__gps1")$CS$NC$CE"'\$ '
-source ~/Dotfiles/bash/PS1.bash
+source ~/.bash/PS1.bash
 
 # source .private for meant to never be seen
 [[ -r "$private" ]] && source "$private"
