@@ -3,8 +3,8 @@
 
 cdls () { cd "$@" && ls ; }                  # cd and ls
 trash () { mv "$@" ~/.Trash ; }              # Move a file to Trash
-aliases () { cat ~/Dotfiles/bash/aliases.bash | tail -n +4 | less ; }                 # List all aliases found in this file
-functions () { cat ~/Dotfiles/bash/functions.bash | tail -n +4 | less ; }             # List all functions found in this file
+aliases () { cat ~/.bash/aliases.bash | tail -n +4 | less ; }                 # List all aliases found in this file
+functions () { cat ~/.bash/functions.bash | tail -n +4 | less ; }             # List all functions found in this file
 findPid () { lsof -t -c "$@" ; }             # Find Pid of specified process
 displayPath () { echo "${PATH//:/$'\n'}" ; } # Print path separated by newlines
 mkcd () { mkdir "$@" && cd "$@" ; }          # mkdir and cd

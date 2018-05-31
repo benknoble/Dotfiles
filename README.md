@@ -111,7 +111,6 @@ use a different directory:
 
 - [/bashrc](/bashrc)
 - [/bash/aliases.bash](/bash/aliases.bash)
-- [/bash/functions.bash](/bash/functions.bash)
 
 ### Built With
 
