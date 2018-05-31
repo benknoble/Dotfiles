@@ -91,7 +91,6 @@
 ├── tmux
 │   └── plugins
 │       ├── tmux-battery
-│       ├── tmux-cpu
-│       └── tpm
+│       └── tmux-cpu
 └── update.sh
 ```

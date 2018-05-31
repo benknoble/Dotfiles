@@ -62,9 +62,6 @@
 [submodule "vim/bundle/ack-vim"]
 	path = links/vim/pack/utility/start/ack
 	url = git://github.com/mileszs/ack.vim.git
-[submodule "tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
-	url = git://github.com/tmux-plugins/tpm.git
 [submodule "vim/bundle/vim-tmux"]
 	path = links/vim/pack/languages/start/tmux
 	url = git://github.com/tmux-plugins/vim-tmux.git
