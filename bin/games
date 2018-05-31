@@ -11,7 +11,7 @@ bin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 #   | name='game command' (fails with exec and screen)
 declare -A games
 games=(
-  ['Invader ; VimGameCodeBreak']=vim
+  ['vim : Invader,VimGameCodeBreak']=vim
   ['nethack : that dungeon thing']=nethack
   ['Zelda Solarus DX']=zsdx
   ['Zelda Solarus XD']=zsxd
