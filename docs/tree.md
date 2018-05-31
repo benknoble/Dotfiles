@@ -15,15 +15,6 @@
 │       └── README.md
 ├── LICENSE
 ├── README.md
-├── ackrc
-├── bash
-│   ├── PS1.bash
-│   ├── aliases.bash
-│   ├── colors.bash
-│   ├── functions.bash
-│   └── gitconfig.bash
-├── bash_profile
-├── bashrc
 ├── benknoble.terminal
 ├── bin
 │   ├── checkdistnoted
@@ -60,15 +51,34 @@
 │       ├── git-overwritten
 │       └── git-weekly
 ├── gitconfig
-├── gitignore_global
-├── gitshrc
 ├── hooks
 │   ├── multihooks.py
 │   ├── pre-commit -> multihooks.py
 │   └── pre-commit.d
 │       ├── 01-tree
 │       └── 02-brew
-├── inputrc
+├── links
+│   ├── ackrc
+│   ├── bash
+│   │   ├── PS1.bash
+│   │   ├── aliases.bash
+│   │   ├── colors.bash
+│   │   ├── functions.bash
+│   │   └── gitconfig.bash
+│   ├── bash_profile
+│   ├── bashrc
+│   ├── gitignore_global
+│   ├── gitshrc
+│   ├── inputrc
+│   ├── tmux
+│   │   └── plugins
+│   ├── tmux.conf
+│   └── vim
+│       ├── after
+│       ├── pack
+│       ├── plugin
+│       ├── spell
+│       └── vimrc
 ├── setup
 │   ├── git-setup.sh
 │   ├── install-all.sh
@@ -83,26 +93,5 @@
 │       ├── tmux-battery
 │       ├── tmux-cpu
 │       └── tpm
-├── tmux.conf
-├── update.sh
-└── vim
-    ├── after
-    │   ├── ftplugin
-    │   └── syntax
-    ├── pack
-    │   ├── benknoble
-    │   ├── colors
-    │   ├── games
-    │   ├── interface
-    │   ├── languages
-    │   └── utility
-    ├── plugin
-    │   └── grep-operator.vim
-    ├── spell
-    │   ├── en.utf-8.add
-    │   ├── en.utf-8.add.spl
-    │   ├── fr.utf-8.add
-    │   ├── fr.utf-8.add.spl
-    │   └── fr.utf-8.spl
-    └── vimrc
+└── update.sh
 ```

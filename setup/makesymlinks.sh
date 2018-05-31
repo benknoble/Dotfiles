@@ -46,13 +46,13 @@ verify_directory() {
 }
 
 backup_file() {
-  if [[ -e ~/"${files[$1]}" ]]; then
+  if [[ -e ~/"${files[$1]}" || -h ~/"${files[$1]}" ]]; then
     mv ~/"${files[$1]}" "$olddir"/"${files[$1]}"
   fi
 }
 
 symlink_file() {
-  ln -s "$dotfiles_dir"/"$1" ~/"${files[$1]}"
+  ln -s "$dotfiles_dir"/links/"$1" ~/"${files[$1]}"
 }
 
 # handle the file by moving it to backup and symlinking
