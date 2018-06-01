@@ -50,7 +50,6 @@
 │       ├── git-new
 │       ├── git-overwritten
 │       └── git-weekly
-├── gitconfig
 ├── hooks
 │   ├── multihooks.py
 │   ├── pre-commit -> multihooks.py
@@ -67,6 +66,7 @@
 │   │   └── gitconfig.bash
 │   ├── bash_profile
 │   ├── bashrc
+│   ├── gitconfig
 │   ├── gitignore_global
 │   ├── gitshrc
 │   ├── inputrc
