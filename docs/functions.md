@@ -48,13 +48,6 @@ albums.
 
 1 argument: `dir` to make.
 
-**`editall`**
-
-*Opens all files provided in Vim tabs.* But really, try using buffers and
-windows. It works better.
-
-Variadic: `file[s...]` to open.
-
 **`extract`**
 
 *Inflate an archive.* Guesses based on the file extension the correct extraction
@@ -99,3 +92,9 @@ Variadic: `delim` `string[s...]` to join
 *Touch a file whose path doesn't exist.*
 
 1 argument: `/path/to/file`
+
+**`frequency`**
+
+*Report frequency of items on stdin*
+
+0 arguments: reads stdin

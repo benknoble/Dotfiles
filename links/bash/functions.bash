@@ -73,3 +73,8 @@ mktouch() {
     touch -- "$f"
   done
 }
+
+# report frequency of items on stdin
+frequency() {
+  sort | uniq -c | sort -g
+}
