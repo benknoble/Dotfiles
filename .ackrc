@@ -1,7 +1,7 @@
 # Dotfiles ack config
 
 # ignore pack directory
---ignore-dir=vim/pack/
+--ignore-dir=links/vim/pack/
 
 # ignore tmux plugins too
 --ignore-dir=tmux
