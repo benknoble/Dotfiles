@@ -18,4 +18,4 @@ setlocal path+=/usr/local/include,/usr/include
 nnoremap <buffer> <LocalLeader>tr :!ctags --extra=+f -R *<CR><CR>
 
 let b:undo_ftplugin .= 'setlocal tags< path<'
-let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>tr'
+let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>tr'"

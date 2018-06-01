@@ -43,7 +43,7 @@ let g:go_highlight_extra_types = 1
 let g:go_auto_type_info = 1
 
 let b:undo_ftplugin .= 'setlocal keywordprg< shiftwidth< softtabstop<'
-let b:undo_ftplugin .= ' | nunmap <buffer> <localleader>b'
-let b:undo_ftplugin .= ' | nunmap <buffer> <localleader>r'
-let b:undo_ftplugin .= ' | nunmap <buffer> <localleader>t'
-let b:undo_ftplugin .= ' | nunmap <buffer> <localleader>c'
+let b:undo_ftplugin .= " | exe 'nunmap <buffer> <localleader>b'"
+let b:undo_ftplugin .= " | exe 'nunmap <buffer> <localleader>r'"
+let b:undo_ftplugin .= " | exe 'nunmap <buffer> <localleader>t'"
+let b:undo_ftplugin .= " | exe 'nunmap <buffer> <localleader>c'"
