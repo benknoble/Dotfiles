@@ -98,3 +98,9 @@ Variadic: `delim` `string[s...]` to join
 *Report frequency of items on stdin*
 
 0 arguments: reads stdin
+
+**`recent`**
+
+*Report 10 most recently used commands by frequency*
+
+0 arguments.
