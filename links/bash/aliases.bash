@@ -30,3 +30,4 @@ alias battery='pmset -g batt'               # Display battery info
 alias lvim='vim -c ''"normal '"'0"'"'       # Start vim with it's last cursor position
 alias screensaver='open -a ScreenSaverEngine'       # Start the screensaver
 alias uhtop='htop -u $USER'                 # Run htop for the current user's processes
+alias r='fc -s'                             # Rerun last command [with prefix]
