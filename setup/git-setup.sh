@@ -62,7 +62,7 @@ backup_gitconfig() {
 
 symlink_gitconfig() {
   display_message "Symlinking gitconfig..."
-  ln -s "$gitconfig" ~/.gitconfig
+  ln -Fivs "$gitconfig" ~/.gitconfig
   display_message "...done with gitconfig"
 }
 
