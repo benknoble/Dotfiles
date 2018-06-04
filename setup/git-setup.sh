@@ -7,6 +7,8 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 dotfiles_dir="$(dirname "$dir")"
 dotfiles_old="${dotfiles_dir}_old"
 
+gitconfig="$dotfiles_dir/links/gitconfig"
+
 source "$dotfiles_dir/dotfiles-support"
 
 # config function
@@ -60,13 +62,13 @@ backup_gitconfig() {
 
 symlink_gitconfig() {
   display_message "Symlinking gitconfig..."
-  ln -s "$dotfiles_dir/gitconfig" ~/.gitconfig
+  ln -s "$gitconfig" ~/.gitconfig
   display_message "...done with gitconfig"
 }
 
 copy_gitconfig() {
   display_message "Copying gitconfig..."
-  cp "$dotfiles_dir/gitconfig" ~/.gitconfig
+  cp "$gitconfig" ~/.gitconfig
   display_message "...done with gitconfig"
 }
 

@@ -40,11 +40,11 @@ onoremap <buffer> i#2 :<C-u>execute "normal! ?^##\\s.?e\r:nohlsearch\rvg_"<CR>
 onoremap <buffer> i#3 :<C-u>execute "normal! ?^###\\s.?e\r:nohlsearch\rvg_"<CR>
 
 let b:undo_ftplugin .= 'setlocal textwidth< spell< spelllang< iskeyword<'
-let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>u1'
-let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>u2'
-let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>u3'
-let b:undo_ftplugin .= ' | ounmap <buffer> ih='
-let b:undo_ftplugin .= ' | ounmap <buffer> ih-'
-let b:undo_ftplugin .= ' | ounmap <buffer> i#1'
-let b:undo_ftplugin .= ' | ounmap <buffer> i#2'
-let b:undo_ftplugin .= ' | ounmap <buffer> i#3'
+let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>u1'"
+let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>u2'"
+let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>u3'"
+let b:undo_ftplugin .= " | exe 'ounmap <buffer> ih='"
+let b:undo_ftplugin .= " | exe 'ounmap <buffer> ih-'"
+let b:undo_ftplugin .= " | exe 'ounmap <buffer> i#1'"
+let b:undo_ftplugin .= " | exe 'ounmap <buffer> i#2'"
+let b:undo_ftplugin .= " | exe 'ounmap <buffer> i#3'"

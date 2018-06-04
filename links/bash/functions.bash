@@ -3,12 +3,11 @@
 
 cdls () { cd "$@" && ls ; }                  # cd and ls
 trash () { mv "$@" ~/.Trash ; }              # Move a file to Trash
-aliases () { cat ~/Dotfiles/bash/aliases.bash | tail -n +4 | less ; }                 # List all aliases found in this file
-functions () { cat ~/Dotfiles/bash/functions.bash | tail -n +4 | less ; }             # List all functions found in this file
+aliases () { tail -n +4 ~/.bash/aliases.bash | less ; }                 # List all aliases found in this file
+functions () { tail -n +4 ~/.bash/functions.bash | less ; }             # List all functions found in this file
 findPid () { lsof -t -c "$@" ; }             # Find Pid of specified process
 displayPath () { echo "${PATH//:/$'\n'}" ; } # Print path separated by newlines
 mkcd () { mkdir "$@" && cd "$@" ; }          # mkdir and cd
-editall () { vim -p "$@" ; }                 # edit all files provided as arguments in vim tabs
 extract () {                                 # attempt to extract file with correct extraction method
   for file in "$@"; do
     if [ -f "$file" ]; then
@@ -73,4 +72,14 @@ mktouch() {
     mkdir -p -- "$(dirname -- "$f")"
     touch -- "$f"
   done
+}
+
+# report frequency of items on stdin
+frequency() {
+  sort | uniq -c | sort -g
+}
+
+# most-often used commands, sorted by frequency
+recent() {
+  history | cut -c8- | cut -d" " -f1 | frequency | sort -rn | head
 }

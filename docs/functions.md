@@ -1,6 +1,6 @@
 # Functions
 
-Defined in [functions.bash](/bash/functions.bash)
+Defined in [functions.bash](/links/bash/functions.bash)
 
 **`cdls`**
 
@@ -48,13 +48,6 @@ albums.
 
 1 argument: `dir` to make.
 
-**`editall`**
-
-*Opens all files provided in Vim tabs.* But really, try using buffers and
-windows. It works better.
-
-Variadic: `file[s...]` to open.
-
 **`extract`**
 
 *Inflate an archive.* Guesses based on the file extension the correct extraction
@@ -90,7 +83,7 @@ in. 'Cause you're free, free writin'.
 **`join_by`**
 
 *Join values with a delimiter*. Used by completion not found handle, found
-in [bashrc](/bashrc).
+in [bashrc](/links/bashrc).
 
 Variadic: `delim` `string[s...]` to join
 
@@ -99,3 +92,15 @@ Variadic: `delim` `string[s...]` to join
 *Touch a file whose path doesn't exist.*
 
 1 argument: `/path/to/file`
+
+**`frequency`**
+
+*Report frequency of items on stdin*
+
+0 arguments: reads stdin
+
+**`recent`**
+
+*Report 10 most recently used commands by frequency*
+
+0 arguments.

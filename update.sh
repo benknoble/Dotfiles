@@ -7,6 +7,12 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 source "$dir/dotfiles-support"
 
+if [[ -e ~/.Brewfile ]]; then
+  BREWFILE=~/.Brewfile
+else
+  BREWFILE="$dir/brew/Brewfile"
+fi
+
 pull_master() {
   cd "$dir" \
     && git checkout master \
@@ -26,11 +32,11 @@ has_brew() {
 bundle_check() {
   # the "or true" is necessary to prevent a bundle issue from stopping the rest
   # of the rest update
-  brew bundle check || true
+  brew bundle check --file="$BREWFILE" || true
 }
 
 tmux_plugin_update() {
-  local tpm=tmux/plugins/tpm/bin
+  local tpm=~/.tmux/plugins/tpm/bin
   "$tpm"/clean_plugins
   "$tpm"/update_plugins all
 }

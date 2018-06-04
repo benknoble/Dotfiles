@@ -63,7 +63,7 @@ bash_profile, which simply sources the bashrc), giving you access to a whole
 host of new command-line fu. If you don't want to wait, try
 
 ```bash
-$ source ./bashrc           # Or ~/.bashrc, which points here
+$ source ~/.bashrc
 $ reload
 ```
 
@@ -109,9 +109,8 @@ application; it is a settings file ready for import.
 The following files depend on the structure `~/Dotfiles` and must be edited to
 use a different directory:
 
-- [/bashrc](/bashrc)
-- [/bash/aliases.bash](/bash/aliases.bash)
-- [/bash/functions.bash](/bash/functions.bash)
+- [/bashrc](/links/bashrc)
+- [/bash/aliases.bash](/links/bash/aliases.bash)
 
 ### Built With
 

@@ -21,4 +21,4 @@ nnoremap <buffer> <LocalLeader>r :make %<CR>
 
 let b:undo_ftplugin .= 'setlocal textwidth< shiftwidth< softtabstop<'
 let b:undo_ftplugin .= ' | setlocal errorformat< makeprg<'
-let b:undo_ftplugin .= ' | nunmap <buffer> <LocalLeader>r'
+let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>r'"

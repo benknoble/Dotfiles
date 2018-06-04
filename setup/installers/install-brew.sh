@@ -6,6 +6,7 @@ set -euo pipefail
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 setup_dir="$( dirname "$dir" )"
 dotfiles_dir="$( dirname "$setup_dir")"
+BREWFILE="$dotfiles_dir/brew/Brewfile"
 
 source "$dotfiles_dir/dotfiles-support"
 
@@ -19,7 +20,7 @@ install_brew() {
 
 bundle() {
   brew tap Homebrew/bundle
-  brew bundle install
+  brew bundle install --file="$BREWFILE"
 }
 
 set_shell() {

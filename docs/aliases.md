@@ -1,6 +1,6 @@
 # Aliases
 
-Defined in [aliases.bash](/bash/aliases.bash)
+Defined in [aliases.bash](/links/bash/aliases.bash)
 
 **`quit`**
 
@@ -113,3 +113,8 @@ accessed with `<F1>`.
 **`uhtop`**
 
 *Your personalized htop.* No, it's not a car.
+
+**`r`**
+
+*Re-execute.* Alone, equivalent to `!!`. With a command name, last invocation of
+`command`. May be preceded by a `pat=rep` substitution similar to `^pat^rep`.

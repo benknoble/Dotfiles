@@ -1,100 +1,100 @@
 [submodule "vim/bundle/vim-airline"]
-	path = vim/pack/interface/start/airline
+	path = links/vim/pack/interface/start/airline
 	url = https://github.com/vim-airline/vim-airline
 [submodule "vim/bundle/vim-airline-themes"]
-	path = vim/pack/interface/start/airline-themes
+	path = links/vim/pack/interface/start/airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
 [submodule "vim/bundle/vim-fugitive"]
-	path = vim/pack/utility/start/fugitive
+	path = links/vim/pack/utility/start/fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vim/bundle/vim-invader"]
-	path = vim/pack/benknoble/start/invader
+	path = links/vim/pack/benknoble/start/invader
 	url = https://github.com/benknoble/invader-vim.git
 [submodule "vim/bundle/vim-winresizer"]
-	path = vim/pack/interface/start/winresizer
+	path = links/vim/pack/interface/start/winresizer
 	url = https://github.com/simeji/winresizer.git
 [submodule "vim/bundle/vim-undotree"]
-	path = vim/pack/utility/start/undotree
+	path = links/vim/pack/utility/start/undotree
 	url = https://github.com/mbbill/undotree
 [submodule "vim/bundle/vim-markology"]
-	path = vim/pack/interface/start/markology
+	path = links/vim/pack/interface/start/markology
 	url = https://github.com/jeetsukumaran/vim-markology
 [submodule "vim/bundle/vim-surround"]
-	path = vim/pack/utility/start/surround
+	path = links/vim/pack/utility/start/surround
 	url = https://github.com/tpope/vim-surround
 [submodule "vim/bundle/vim-commentary"]
-	path = vim/pack/utility/start/commentary
+	path = links/vim/pack/utility/start/commentary
 	url = https://github.com/tpope/vim-commentary
 [submodule "vim/bundle/vim-clam"]
-	path = vim/pack/benknoble/start/clam
+	path = links/vim/pack/benknoble/start/clam
 	url = https://github.com/benknoble/clam.vim.git
 [submodule "vim/bundle/vim-auto-origami"]
-	path = vim/pack/benknoble/start/auto-origami
+	path = links/vim/pack/benknoble/start/auto-origami
 	url = https://github.com/benknoble/vim-auto-origami
 [submodule "vim/bundle/vim-go"]
-	path = vim/pack/languages/start/go
+	path = links/vim/pack/languages/start/go
 	url = https://github.com/fatih/vim-go.git
 [submodule "vim/bundle/vim-javascript"]
-	path = vim/pack/languages/start/javascript
+	path = links/vim/pack/languages/start/javascript
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/vim-node"]
-	path = vim/pack/languages/start/node
+	path = links/vim/pack/languages/start/node
 	url = https://github.com/moll/vim-node.git
 [submodule "Dracula/terminal-app"]
 	path = Dracula/terminal-app
 	url = https://github.com/dracula/terminal.app.git
 	branch = benknoble-tweaks
 [submodule "vim/bundle/vim-dracula"]
-	path = vim/pack/colors/start/dracula
+	path = links/vim/pack/colors/start/dracula
 	url = git://github.com/dracula/vim.git
 [submodule "vim/bundle/vim-unimpaired"]
-	path = vim/pack/utility/start/unimpaired
+	path = links/vim/pack/utility/start/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vim/bundle/vim-pydoc"]
-	path = vim/pack/languages/start/pydoc
+	path = links/vim/pack/languages/start/pydoc
 	url = git://github.com/fs111/pydoc.vim.git
 [submodule "vim/bundle/vim-game-code-break"]
-	path = vim/pack/games/start/code-break
+	path = links/vim/pack/games/start/code-break
 	url = git://github.com/johngrib/vim-game-code-break.git
 [submodule "vim/bundle/vim-indent-object"]
-	path = vim/pack/utility/start/indent-object
+	path = links/vim/pack/utility/start/indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
 [submodule "vim/bundle/ack-vim"]
-	path = vim/pack/utility/start/ack
+	path = links/vim/pack/utility/start/ack
 	url = git://github.com/mileszs/ack.vim.git
-[submodule "tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
-	url = git://github.com/tmux-plugins/tpm.git
 [submodule "vim/bundle/vim-tmux"]
-	path = vim/pack/languages/start/tmux
+	path = links/vim/pack/languages/start/tmux
 	url = git://github.com/tmux-plugins/vim-tmux.git
 [submodule "vim/bundle/colorizer"]
-	path = vim/pack/interface/start/colorizer
+	path = links/vim/pack/interface/start/colorizer
 	url = https://github.com/chrisbra/Colorizer.git
 [submodule "vim/bundle/splitjoin"]
-	path = vim/pack/utility/start/splitjoin
+	path = links/vim/pack/utility/start/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim.git
 [submodule "vim/bundle/zelda"]
-	path = vim/pack/benknoble/opt/zelda
+	path = links/vim/pack/benknoble/opt/zelda
 	url = https://github.com/benknoble/zelda-vim.git
 [submodule "vim/bundle/ale"]
-	path = vim/pack/utility/start/ale
+	path = links/vim/pack/utility/start/ale
 	url = git://github.com/w0rp/ale.git
 [submodule "vim/bundle/liquid"]
-	path = vim/pack/languages/start/liquid
+	path = links/vim/pack/languages/start/liquid
 	url = git://github.com/tpope/vim-liquid.git
 [submodule "vim/bundle/rhubarb"]
-	path = vim/pack/utility/start/rhubarb
+	path = links/vim/pack/utility/start/rhubarb
 	url = git://github.com/tpope/vim-rhubarb.git
 [submodule "vim/bundle/startify"]
-	path = vim/pack/interface/start/startify
+	path = links/vim/pack/interface/start/startify
 	url = git://github.com/mhinz/vim-startify.git
 [submodule "Dracula/gitk"]
 	path = Dracula/gitk
 	url = git://github.com/dracula/gitk.git
 [submodule "vim/bundle/synstax"]
-	path = vim/pack/benknoble/start/synstax
+	path = links/vim/pack/benknoble/start/synstax
 	url = git://github.com/benknoble/vim-synstax.git
 [submodule "vim/bundle/vader"]
-	path = vim/pack/utility/start/vader
+	path = links/vim/pack/utility/start/vader
 	url = https://github.com/junegunn/vader.vim.git
+[submodule "links/tmux/plugins/tpm"]
+	path = links/tmux/plugins/tpm
+	url = git://github.com/tmux-plugins/tpm.git
