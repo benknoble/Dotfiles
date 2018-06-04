@@ -35,7 +35,7 @@ remove_old_hooks() {
 
 link_hooks() {
   display_message "Linking in hooks..."
-  ln -Fivs "$dotfiles_dir"/hooks/ .git/
+  ln -Fivs "$dotfiles_dir"/git/hooks/ .git/
   display_message "...done linking in hooks"
 }
 

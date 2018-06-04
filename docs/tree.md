@@ -45,17 +45,15 @@
 │   └── tree.md
 ├── dotfiles-support
 ├── git
-│   └── ext
-│       ├── git-churn
-│       ├── git-new
-│       ├── git-overwritten
-│       └── git-weekly
-├── hooks
-│   ├── multihooks.py
-│   ├── pre-commit -> multihooks.py
-│   └── pre-commit.d
-│       ├── 01-tree
-│       └── 02-brew
+│   ├── ext
+│   │   ├── git-churn
+│   │   ├── git-new
+│   │   ├── git-overwritten
+│   │   └── git-weekly
+│   └── hooks
+│       ├── multihooks.py
+│       ├── pre-commit -> multihooks.py
+│       └── pre-commit.d
 ├── links
 │   ├── ackrc
 │   ├── bash
