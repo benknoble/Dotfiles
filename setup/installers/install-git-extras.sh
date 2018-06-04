@@ -8,6 +8,7 @@ setup_dir="$( dirname "$dir" )"
 dotfiles_dir="$( dirname "$setup_dir")"
 
 path_to_gitk_config="${dotfiles_dir}/Dracula/gitk/gitk"
+user_gitk_config="${XDG_CONFIG_HOME:-$HOME/.config}/git/gitk"
 
 source "$dotfiles_dir/dotfiles-support"
 
@@ -46,8 +47,8 @@ gitk_submodule_exists() {
 copy_gitk() {
   display_message "Copying gitk dracula theme..."
   if gitk_submodule_exists ; then
-    cp -iv -- "$path_to_gitk_config" \
-      "${XDG_CONFIG_HOME:-$HOME/.config}/git/gitk"
+    mkdir -p "$( dirname "$user_gitk_config" )"
+    cp -iv -- "$path_to_gitk_config" "$user_gitk_config"
     display_message "...Done copying gitk dracula theme"
   else
     display_message "...no gitk dracula theme found at $path_to_gitk_config"

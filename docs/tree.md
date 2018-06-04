@@ -86,8 +86,5 @@
 │   │   ├── install-tmux.sh
 │   │   └── install-vim-custom.sh
 │   └── makesymlinks.sh
-├── tmux
-│   └── plugins
-│       └── tpm
 └── update.sh
 ```
