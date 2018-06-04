@@ -1,6 +1,6 @@
 # Functions
 
-Defined in [functions.bash](/bash/functions.bash)
+Defined in [functions.bash](/links/bash/functions.bash)
 
 **`cdls`**
 
@@ -83,7 +83,7 @@ in. 'Cause you're free, free writin'.
 **`join_by`**
 
 *Join values with a delimiter*. Used by completion not found handle, found
-in [bashrc](/bashrc).
+in [bashrc](/links/bashrc).
 
 Variadic: `delim` `string[s...]` to join
 

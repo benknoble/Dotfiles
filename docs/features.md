@@ -26,7 +26,7 @@ remain constant no matter what.
 - Message of the Day control
 - Setting PS2 and PS3
 - The `reload` alias
-- Sourcing all the `bash/` files (see [bash files](#bash-files))
+- Sourcing all the provided `~/.bash/` files (see [bash files](#bash-files))
 - Nullglob
 - Noclobber, to prevent accidentally overwriting files
 - Magic-space, which makes space expand history commands on the command line

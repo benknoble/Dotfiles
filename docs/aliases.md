@@ -1,6 +1,6 @@
 # Aliases
 
-Defined in [aliases.bash](/bash/aliases.bash)
+Defined in [aliases.bash](/links/bash/aliases.bash)
 
 **`quit`**
 
