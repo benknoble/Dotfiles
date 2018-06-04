@@ -11,7 +11,7 @@ source "$dotfiles_dir/dotfiles-support"
 
 run_tmux_installer() {
   display_message "Install tmux plugins..."
-  tmux/plugins/tpm/bin/install_plugins
+  ~/.tmux/plugins/tpm/bin/install_plugins
   display_message "...done with tmux plugins"
 }
 
