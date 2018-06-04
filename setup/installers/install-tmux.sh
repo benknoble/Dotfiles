@@ -7,11 +7,13 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 setup_dir="$( dirname "$dir" )"
 dotfiles_dir="$( dirname "$setup_dir")"
 
+tmux_install=~/.tmux/plugins/tpm/bin/install_plugins
+
 source "$dotfiles_dir/dotfiles-support"
 
 run_tmux_installer() {
   display_message "Install tmux plugins..."
-  ~/.tmux/plugins/tpm/bin/install_plugins
+  [[ -e "$tmux_install" ]] && "$tmux_install"
   display_message "...done with tmux plugins"
 }
 
