@@ -4,10 +4,11 @@
 set -euo pipefail
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
+BREWFILE="$PWD/brew/Brewfile"
 
 update_brewfile() {
-  brew bundle dump --force
-  git add Brewfile
+  brew bundle dump --force --file="$BREWFILE"
+  git add "$BREWFILE"
 }
 
 update_brewfile

@@ -1,6 +1,5 @@
 ```
 .
-├── Brewfile
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
 ├── Dracula
@@ -30,6 +29,7 @@
 │   └── msgtest
 ├── bootstrap.sh
 ├── brew
+│   ├── Brewfile
 │   ├── README.md
 │   ├── brewutils.sh
 │   └── ext
