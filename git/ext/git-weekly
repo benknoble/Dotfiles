@@ -20,32 +20,35 @@ weekly_git_log() {
 }
 
 weekly_git_stats() {
-  weekly_git_log \
-    | tail -n 1 \
+  tail -n 1 <( weekly_git_log ) \
     | awk '{ print $1 }' \
     | xargs git diff --shortstat
 }
 
 features_merged() {
-  weekly_git_log \
-    | grep -E "Merge (pull|branch) "
+  {
+    weekly_git_log | grep -E "Merge (pull|branch) "
+  } || echo "None"
 }
 
 count_features() {
-  echo "${1:?}" \
-    | sed '/^\s*$/d' \
-    | wc -l \
-    | awk '{ print $1 }'
+  if [[ "$1" == "None" ]]; then
+    echo 0
+  else
+      sed '/^\s*$/d' <<<"$1" \
+      | wc -l \
+      | awk '{ print $1 }'
+  fi
 }
 
 display_weekly_stats() {
-  echo "Stats (${1:?} - Today)"
+  echo "Stats ($1 - Today)"
   echo "---------------------"
   echo "${2:-No stats available}"
   echo
-  echo "Features (${3:?})"
+  echo "Features ($3)"
   echo "-------------"
-  echo "${4:?}"
+  echo "$4"
 }
 
 weekly() {
