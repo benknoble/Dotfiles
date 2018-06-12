@@ -107,3 +107,6 @@
 [submodule "links/vim/pack/languages/start/bundler"]
 	path = links/vim/pack/languages/start/bundler
 	url = git://github.com/tpope/vim-bundler.git
+[submodule "links/vim/pack/utility/start/repeat"]
+	path = links/vim/pack/utility/start/repeat
+	url = git://github.com/tpope/vim-repeat.git
