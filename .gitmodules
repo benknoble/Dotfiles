@@ -113,3 +113,6 @@
 [submodule "links/vim/pack/utility/start/tbone"]
 	path = links/vim/pack/utility/start/tbone
 	url = git://github.com/tpope/vim-tbone.git
+[submodule "links/vim/pack/utility/projectionist"]
+	path = links/vim/pack/utility/start/projectionist
+	url = git://github.com/tpope/vim-projectionist.git
