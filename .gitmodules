@@ -110,3 +110,6 @@
 [submodule "links/vim/pack/utility/start/repeat"]
 	path = links/vim/pack/utility/start/repeat
 	url = git://github.com/tpope/vim-repeat.git
+[submodule "links/vim/pack/utility/start/tbone"]
+	path = links/vim/pack/utility/start/tbone
+	url = git://github.com/tpope/vim-tbone.git
