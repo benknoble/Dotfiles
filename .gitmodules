@@ -104,3 +104,6 @@
 [submodule "links/vim/pack/utility/start/dispatch"]
 	path = links/vim/pack/utility/start/dispatch
 	url = git://github.com/tpope/vim-dispatch.git
+[submodule "links/vim/pack/languages/start/bundler"]
+	path = links/vim/pack/languages/start/bundler
+	url = git://github.com/tpope/vim-bundler.git
