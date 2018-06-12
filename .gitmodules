@@ -101,3 +101,6 @@
 [submodule "links/vim/pack/utility/start/endwise"]
 	path = links/vim/pack/utility/start/endwise
 	url = git://github.com/tpope/vim-endwise.git
+[submodule "links/vim/pack/utility/start/dispatch"]
+	path = links/vim/pack/utility/start/dispatch
+	url = git://github.com/tpope/vim-dispatch.git
