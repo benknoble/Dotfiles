@@ -751,6 +751,10 @@ hi link StartifyFooter SpecialKey
 nnoremap <Leader><Leader>s :echo synstax#UnderCursor()<CR>
 " End Synstax }}}
 
+" Markology {{{
+let g:markology_disable_mappings = 1
+" End Markology }}}
+
 " End plugin customization }}}
 
 " Abbreviations {{{
