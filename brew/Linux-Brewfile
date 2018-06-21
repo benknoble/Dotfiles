@@ -1,6 +1,5 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
-tap "homebrew/science"
 tap "thoughtbot/formulae"
 brew "ack"
 brew "autoconf"
