@@ -5,3 +5,6 @@
 
 # ignore tmux plugins too
 --ignore-dir=tmux
+
+# ignore Dracula directory
+--ignore-dir=Dracula
