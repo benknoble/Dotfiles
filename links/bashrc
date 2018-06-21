@@ -117,6 +117,9 @@ for file in "$completion_dir"/*; do
   fi
 done
 
+# heroku completion
+which heroku &> /dev/null && eval "$(heroku autocomplete:script bash)"
+
 # add brew ext commands to path
 pathadd "$brewscripts"
 
