@@ -2,7 +2,7 @@
 # git config
 
 # add git branch to prompt when available and colorize
-gitprompt=/usr/local/etc/bash_completion.d/git-prompt.sh
+gitprompt="$comp_prefix"/etc/bash_completion.d/git-prompt.sh
 if [[ -r "$gitprompt" ]]; then
   . "$gitprompt"
   GIT_PS1_SHOWDIRTYSTATE='true'

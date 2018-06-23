@@ -37,8 +37,10 @@ PS3="$PS2"
 # file to hold private keys
 private=~/.private
 # completion paths
-bashcomp=/usr/local/share/bash-completion/bash_completion
-completion_dir=/usr/local/etc/bash_completion.d
+brew_prefix="$(brew --prefix)"
+comp_prefix="${brew_prefix:-/usr/local/}"
+bashcomp="$comp_prefix"/share/bash-completion/bash_completion
+completion_dir="$comp_prefix"/etc/bash_completion.d
 
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
