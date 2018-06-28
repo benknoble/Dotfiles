@@ -95,9 +95,6 @@
 [submodule "vim/bundle/vader"]
 	path = links/vim/pack/utility/start/vader
 	url = https://github.com/junegunn/vader.vim.git
-[submodule "links/tmux/plugins/tpm"]
-	path = links/tmux/plugins/tpm
-	url = git://github.com/tmux-plugins/tpm.git
 [submodule "links/vim/pack/utility/start/endwise"]
 	path = links/vim/pack/utility/start/endwise
 	url = git://github.com/tpope/vim-endwise.git

@@ -256,6 +256,4 @@ Run `brew help <command>` for more help.
 
 ## Tmux
 
-Uses `tpm` for plugin management.
-
 See `tmux.conf` for configuration of keybindings and statusline.

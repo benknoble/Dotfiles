@@ -1,6 +1,2 @@
 # ignore vim's swp files
 *.swp
-
-# ignore tmux plugins (but not tpm, obviously)
-links/tmux/plugins/*
-!links/tmux/plugins/tpm/
