@@ -38,7 +38,10 @@ bundle_check() {
 tmux_plugin_update() {
   local tpm=~/.tmux/plugins/tpm/bin
   "$tpm"/clean_plugins
-  "$tpm"/update_plugins all
+  read -n 1 -p "Update tmux plugins? [y/n]> " tmux && echo
+  if input_matches_yY "$tmux" ; then
+    "$tpm"/update_plugins all
+  fi
 }
 
 update() {
