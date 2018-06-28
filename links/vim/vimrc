@@ -2,6 +2,12 @@ if &compatible
   set nocompatible
 endif
 
+" Personal config
+let s:personal=expand('~/.personal/vimrc')
+if filereadable(s:personal)
+  exec "source" s:personal
+endif
+
 " Options {{{
 
 " Leader {{{
@@ -636,8 +642,8 @@ let g:netrw_banner=0
 
 " Dracula {{{
 if ! exists('g:colors_name')
-  let g:dracula_italic = 0
-  let g:dracula_colorterm = 0
+  let g:dracula_italic = get(g:, 'dracula_italic', 0)
+  let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
   colorscheme dracula
 endif
 " End Dracula }}}
