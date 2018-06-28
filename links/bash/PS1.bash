@@ -155,7 +155,7 @@ _time_prompt() {
 
 _dir_prompt() {
   if [[ "$_show_dir" = "$_value_on" ]]; then
-    echo '∈\w '
+    echo '∈ \w '
   fi
 }
 
