@@ -12,9 +12,11 @@ brewscripts="$HOME/Dotfiles/brew/ext"
 # dir for git scripts
 gitscripts="$HOME/Dotfiles/git/ext"
 
-# set default editor to vim
-export VISUAL="$(command -v vim)"
-export EDITOR="$VISUAL"
+reset_editor() {
+  # set default editor to vim
+  export VISUAL="$(command -v vim)"
+  export EDITOR="$VISUAL"
+}
 
 # use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
@@ -127,6 +129,8 @@ pathadd "$brewscripts"
 
 # add git ext commands to path
 pathadd "$gitscripts"
+
+reset_editor
 
 # Handle commands not found
 if [[ "$(type -t command_not_found_handle)" != function ]]; then
