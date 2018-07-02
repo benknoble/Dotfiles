@@ -68,8 +68,6 @@
 │   ├── gitignore_global
 │   ├── gitshrc
 │   ├── inputrc
-│   ├── tmux
-│   │   └── plugins
 │   ├── tmux.conf
 │   └── vim
 │       ├── after
