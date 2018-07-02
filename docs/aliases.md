@@ -44,11 +44,6 @@ wasn't short, and yes, hopefully you've caught on by now.
 
 *Verbose; create intermediate directories.* Can't build without a foundation.
 
-**`rm`**
-
-*Interactive (confirm deletes).* Don't delete the wrong things without the
-Force.
-
 **`hidden`**
 
 *Show only hidden files.* They're usually hidden for a reason.

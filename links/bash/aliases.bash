@@ -11,7 +11,6 @@ alias lha='lh -a'                           # Human readable sizes with hidden
 alias cp='cp -iv'                           # Preferred 'cp' implementation
 alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
-alias rm='rm -i'                            # Preferred 'rm' implementation
 alias hidden='ls -a | grep "^\."'           # List all hidden files
 alias cd..='cd ../'                         # Go back one directory level
 alias ..='cd ../'                           # Shorter version of cd..
