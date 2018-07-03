@@ -1,5 +1,19 @@
 ```
 .
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── Dracula
+│   ├── gitk
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── backlinks.txt
+│   │   └── gitk
+│   └── terminal-app
+│       ├── Dracula.terminal
+│       ├── LICENSE
+│       └── README.md
+├── LICENSE
+├── README.md
 ├── benknoble.terminal
 ├── bin
 │   ├── checkdistnoted
@@ -16,33 +30,21 @@
 ├── bootstrap.sh
 ├── brew
 │   ├── Brewfile
-│   ├── brewutils.sh
-│   ├── ext
-│   │   ├── brew-superclean
-│   │   └── brew-superupdate
 │   ├── Linux-Brewfile
-│   └── README.md
-├── CODE_OF_CONDUCT.md
-├── CONTRIBUTING.md
+│   ├── README.md
+│   ├── brewutils.sh
+│   └── ext
+│       ├── brew-superclean
+│       └── brew-superupdate
 ├── docs
+│   ├── README.md
 │   ├── aliases.md
 │   ├── features.md
 │   ├── functions.md
 │   ├── humans.txt
 │   ├── installed.md
-│   ├── README.md
 │   └── tree.md
 ├── dotfiles-support
-├── Dracula
-│   ├── gitk
-│   │   ├── backlinks.txt
-│   │   ├── gitk
-│   │   ├── LICENSE
-│   │   └── README.md
-│   └── terminal-app
-│       ├── Dracula.terminal
-│       ├── LICENSE
-│       └── README.md
 ├── git
 │   ├── ext
 │   │   ├── git-churn
@@ -53,15 +55,14 @@
 │       ├── multihooks.py
 │       ├── pre-commit -> multihooks.py
 │       └── pre-commit.d
-├── LICENSE
 ├── links
 │   ├── ackrc
 │   ├── bash
+│   │   ├── PS1.bash
 │   │   ├── aliases.bash
 │   │   ├── colors.bash
 │   │   ├── functions.bash
-│   │   ├── gitconfig.bash
-│   │   └── PS1.bash
+│   │   └── gitconfig.bash
 │   ├── bash_profile
 │   ├── bashrc
 │   ├── gitconfig
@@ -76,7 +77,6 @@
 │       ├── plugin
 │       ├── spell
 │       └── vimrc
-├── README.md
 ├── setup
 │   ├── git-setup.sh
 │   ├── install-all.sh
