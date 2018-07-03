@@ -57,3 +57,5 @@
 	trustExitCode = true
 [fetch]
 	recurseSubmodules = on-demand
+[rerere]
+	enabled = true
