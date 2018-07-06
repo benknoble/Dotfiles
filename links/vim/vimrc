@@ -523,6 +523,9 @@ vnoremap <Leader>' <esc>`<i'<esc>`>a'<esc>
 
 " Quit quickly
 nnoremap <silent> <Leader>q :q<CR>
+
+" Suspended (by Matt Nathanson)
+nnoremap <silent> <Leader>z :suspend<CR>
 " End Leader shortcuts }}}
 
 " Window mappings {{{
