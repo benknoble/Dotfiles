@@ -22,7 +22,8 @@ reset_editor() {
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
 # use less on any system
-export PAGER="less -R"
+export LESS="R"
+export PAGER="less"
 
 # Message of the Day control
 # COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
