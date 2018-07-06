@@ -25,8 +25,6 @@
 [merge]
 	tool = fugitive
 	conflictstyle = diff3
-[color]
-	ui = always
 [core]
 	excludesfile = ~/.gitignore_global
 [diff]
