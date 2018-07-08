@@ -685,6 +685,11 @@ let g:airline_symbols.whitespace = 'Ξ'
 " Enable windowswap
 let g:airline#extensions#windowswap#enabled = 1
 let g:airline#extensions#windowswap#indicator_text = 'WS'
+
+" Word Count: Add liquid to defaults
+" see airline/autoload/airline/extensions/wordcount.vim
+let g:airline#extensions#wordcount#filetypes =
+      \ '\vhelp|markdown|rst|org|text|asciidoc|tex|mail|liquid'
 " End Airline }}}
 
 " ALE {{{
