@@ -5,6 +5,7 @@
 	cc = commit
 	cd = checkout
 	cm = commit -m
+	d = diff
 	grall = !git graph --all
 	graph = !git graph-long --oneline
 	graph-long = log --graph
@@ -16,6 +17,7 @@
 	merc = merge --no-ff
 	newb = checkout -b
 	patch = add --patch
+	s = status -sb
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
 	stat = status
