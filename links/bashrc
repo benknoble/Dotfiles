@@ -22,7 +22,7 @@ reset_editor() {
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
 # use less on any system
-export LESS="FXRWi"
+export LESS="RWi"
 export PAGER="less"
 
 # Message of the Day control

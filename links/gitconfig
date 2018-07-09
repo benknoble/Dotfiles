@@ -27,6 +27,7 @@
 	conflictstyle = diff3
 [core]
 	excludesfile = ~/.gitignore_global
+	pager = less -FRX
 [diff]
 	submodule = log
 	tool = vimdiff
