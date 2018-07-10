@@ -151,6 +151,8 @@ Here's the quick list:
 
 - **cm** for commit with message passed as options.
 
+- **d** for diff.
+
 - **grall** to graph with all references shown.
 
 - **graph** for seeing a graph (oneline messages)
@@ -168,6 +170,10 @@ Here's the quick list:
 - **merc** creates a merge commit.
 
 - **newb** creates a new branch.
+
+- **patch** for the interactive patching.
+
+- **s** for short status.
 
 - **sdiff** for collecting diffs from submodules.
 
