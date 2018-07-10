@@ -4,6 +4,5 @@ if exists("did_load_filetypes")
 endif
 
 augroup filetypedetect
-  au! BufRead,BufNewFile gitconfig setfiletype gitconfig
-  au! BufRead,BufNewFile gitconfig.local setfiletype gitconfig
+  au BufRead,BufNewFile gitconfig,.gitconfig.local setfiletype gitconfig
 augroup END
