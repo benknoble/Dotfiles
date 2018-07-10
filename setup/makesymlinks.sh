@@ -8,17 +8,17 @@ dotfiles_dir="$(dirname "$dir")"
 olddir="${dotfiles_dir}_old"
 # list of files/folders to symlink in homedir
 declare -A files=(
+  [ackrc]=.ackrc
+  [bash]=.bash
   [bash_profile]=.bash_profile
   [bashrc]=.bashrc
-  [bash]=.bash
-  [vim]=.vim
-  [inputrc]=.inputrc
-  [gitignore_global]=.gitignore_global
   [gitconfig]=.gitconfig
+  [gitignore_global]=.gitignore_global
   [gitshrc]=.gitshrc
+  [inputrc]=.inputrc
   [tmux.conf]=.tmux.conf
   [tmux]=.tmux
-  [ackrc]=.ackrc
+  [vim]=.vim
 )
 
 source "$dotfiles_dir/dotfiles-support"
