@@ -133,9 +133,11 @@ theme.
 
 ### Gitconfig
 
-*Contains important git aliases.* The caveat is that it also contains my user
-info, so if you value your identity follow the installation prompts closely. You
-may also want to run `setup/git-setup.sh` every now and then just in case.
+*Contains important git aliases.* Also has some configuration values for
+commands and `gitsh`.
+
+Includes ~/.gitconfig.local, so you can set e.g. a default user.{name,email}
+there without keeping it in this repo.
 
 Here's the quick list:
 
@@ -148,6 +150,8 @@ Here's the quick list:
 - **cd** for checking out branches.
 
 - **cm** for commit with message passed as options.
+
+- **d** for diff.
 
 - **grall** to graph with all references shown.
 
@@ -166,6 +170,10 @@ Here's the quick list:
 - **merc** creates a merge commit.
 
 - **newb** creates a new branch.
+
+- **patch** for the interactive patching.
+
+- **s** for short status.
 
 - **sdiff** for collecting diffs from submodules.
 

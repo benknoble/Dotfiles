@@ -38,9 +38,8 @@
 	submodulesummary = 1
 [push]
 	recurseSubmodules = check
-[user]
-	name = David Ben Knoble
-	email = ben.knoble@gmail.com
+[include]
+	path = ~/.gitconfig.local
 [commit]
 	verbose = true
 [difftool]
