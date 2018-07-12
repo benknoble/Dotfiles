@@ -113,3 +113,6 @@
 [submodule "links/vim/pack/utility/projectionist"]
 	path = links/vim/pack/utility/start/projectionist
 	url = git@github.com:tpope/vim-projectionist.git
+[submodule "links/vim/pack/utility/start/eunuch"]
+	path = links/vim/pack/utility/start/eunuch
+	url = git@github.com:tpope/vim-eunuch.git
