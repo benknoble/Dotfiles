@@ -25,6 +25,8 @@ export LSCOLORS="gxfxcxdxbxegedabagacad"
 export LESS="RWi"
 export PAGER="less"
 
+export PYTHONSTARTUP=~/.pythonrc
+
 # Message of the Day control
 # COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
 # COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
