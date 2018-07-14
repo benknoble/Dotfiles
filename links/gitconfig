@@ -59,3 +59,5 @@
 	recurseSubmodules = on-demand
 [rerere]
 	enabled = true
+[rebase]
+	autoSquash = true
