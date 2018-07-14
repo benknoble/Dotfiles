@@ -6,7 +6,7 @@ import readline
 import rlcompleter
 import os
 
-historyFile = os.path.expanduser("~/.pyhistory")
+historyFile = os.path.join(os.path.expanduser("~"), ".pyhistory")
 
 
 def install_tab_completion():
