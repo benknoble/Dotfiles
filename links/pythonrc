@@ -29,9 +29,14 @@ def python2():
     install_history()
 
 
+def python3():
+    pass
+
+
 if sys.version_info <= (3,):
     python2()
 else:
+    python3()
     del historyFile
     del save_history
 
@@ -43,3 +48,4 @@ del rlcompleter
 del install_tab_completion
 del install_history
 del python2
+del python3
