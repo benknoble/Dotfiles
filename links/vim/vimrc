@@ -814,7 +814,13 @@ let g:projectionist_heuristics = {
       \   "*_test.go": {
       \     "type": "test",
       \     "alternate": "{}.go",
-      \     "dispatch": "go test ./..."
+      \     "dispatch": "go test ./...",
+      \   },
+      \ },
+      \ "*.py": {
+      \   "*.py": {
+      \     "console": "python",
+      \     "path": [ ".env" ],
       \   },
       \ },
       \ }
