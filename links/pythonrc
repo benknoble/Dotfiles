@@ -1,0 +1,51 @@
+# vim: filetype=python
+
+import sys
+import atexit
+import readline
+import rlcompleter
+import os
+
+historyFile = os.path.join(os.path.expanduser("~"), ".pyhistory")
+
+
+def install_tab_completion():
+    readline.parse_and_bind('tab: complete')
+
+
+def install_history():
+    if os.path.exists(historyFile):
+        readline.read_history_file(historyFile)
+    atexit.register(save_history)
+
+
+def save_history():
+    import readline
+    readline.write_history_file(historyFile)
+
+
+def python2():
+    install_tab_completion()
+    install_history()
+
+
+def python3():
+    pass
+
+
+if sys.version_info <= (3,):
+    python2()
+else:
+    python3()
+    del historyFile
+    del save_history
+
+del sys
+del atexit
+del os
+del readline
+del rlcompleter
+del install_tab_completion
+del install_history
+del python2
+del python3
