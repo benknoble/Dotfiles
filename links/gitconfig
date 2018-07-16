@@ -18,6 +18,7 @@
 	newb = checkout -b
 	patch = add --patch
 	s = status -sb
+	sb = show-branch
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
 	stat = status

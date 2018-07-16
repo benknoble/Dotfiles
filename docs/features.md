@@ -175,6 +175,8 @@ Here's the quick list:
 
 - **s** for short status.
 
+- **sb** for `show-branch`
+
 - **sdiff** for collecting diffs from submodules.
 
 - **spush** for pushing with automatic submodule pushing.
