@@ -14,3 +14,8 @@ tags
 
 # project ackrc's
 .ackrc
+
+# python
+*.pyc
+.venv
+.env
