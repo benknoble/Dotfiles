@@ -159,6 +159,8 @@ Here's the quick list:
 
 - **graph-long** for seeing a graph with long commits
 
+- **intend** for `add --intent-to-add`
+
 - **last** for logging the last commit.
 
 - **logp** for a pretty (verbose) log graph.
