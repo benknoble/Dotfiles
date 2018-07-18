@@ -19,7 +19,7 @@ games=(
 )
 
 tmux_exists() {
-  which -s tmux
+  command -v tmux &> /dev/null
 }
 
 tmux_running() {
@@ -43,7 +43,7 @@ launch_tmux() {
 }
 
 screen_exists() {
-  which -s screen
+  command -v screen &> /dev/null
 }
 
 screen_running() {
