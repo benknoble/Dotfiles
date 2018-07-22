@@ -69,6 +69,7 @@
 │   ├── gitignore_global
 │   ├── gitshrc
 │   ├── inputrc
+│   ├── pythonrc
 │   ├── tmux.conf
 │   └── vim
 │       ├── after
