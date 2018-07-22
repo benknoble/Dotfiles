@@ -143,6 +143,9 @@ pathadd "$brewscripts"
 # add git ext commands to path
 pathadd "$gitscripts"
 
+# go
+[[ -d ~/go/bin ]] && pathadd ~/go/bin
+
 # paths }}}
 
 # completion {{{
@@ -168,6 +171,9 @@ done
 
 # heroku completion
 which heroku &> /dev/null && eval "$(heroku autocomplete:script bash)"
+
+# travis completion
+[[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
 
 # completion }}}
 
