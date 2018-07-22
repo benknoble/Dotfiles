@@ -43,6 +43,8 @@ remain constant no matter what.
 *PS1, aliases, colors, functions, and gitconfig.* These files give more
 fine-tuned control over the bash setup without bloating the bashrc.
 
+You may put os specific things into either `mac` or `linux` to get sourced.
+
 - **PS1** provides my fancy prompt, complete with functions to toggle it's pieces.
 Try typing `_toggle` at a command line and using tab-completion to see what's
 available. Experiment, and find a setup that works for you. `_dirtrim` is also
@@ -76,7 +78,8 @@ place to tweak env variables unique to your machine, like COW, a completion
 path, or a PATH. This is different from the **.private** above--this is meant to
 be potentially version-controlled, so you get my setup, your tweaks, and no
 conflicts. Particularly relevant if you work on multiple types of machines, and
-some things need tweaks (`ls` flags, e.g.).
+some things need tweaks (`ls` flags, e.g.). You may use `mac` and `linux`
+directories here too.
 
 - **~/.personal/bin** is a directory of executables that gets added to your PATH
 if it exists.
@@ -246,6 +249,8 @@ them all.
 - Use the `Man` plugin! Finally, browse man pages from Vim.
 
 - Serious plugin customization.
+
+- Includes `~/.personal/vimrc`
 
 ## Brew
 
