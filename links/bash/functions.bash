@@ -2,7 +2,6 @@
 # function definitions
 
 cdls () { cd "$@" && ls ; }                  # cd and ls
-trash () { mv "$@" ~/.Trash ; }              # Move a file to Trash
 aliases () { tail -n +4 ~/.bash/aliases.bash | less ; }                 # List all aliases found in this file
 functions () { tail -n +4 ~/.bash/functions.bash | less ; }             # List all functions found in this file
 findPid () { lsof -t -c "$@" ; }             # Find Pid of specified process
@@ -41,10 +40,6 @@ freewrite() {
   local file="$(date -j +"%e-%B-%Y" | tr -d '[:space:]')".md
   echo -e "Free-write $date\n\n" > "$file"
   vim +3 "$file"
-}
-
-getip() {
-  ipconfig getifaddr en0
 }
 
 quote() {
