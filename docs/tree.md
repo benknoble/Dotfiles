@@ -62,7 +62,9 @@
 │   │   ├── aliases.bash
 │   │   ├── colors.bash
 │   │   ├── functions.bash
-│   │   └── gitconfig.bash
+│   │   ├── gitconfig.bash
+│   │   ├── linux
+│   │   └── mac
 │   ├── bash_profile
 │   ├── bashrc
 │   ├── gitconfig

@@ -1,0 +1,12 @@
+alias ls='ls -GF'                           # Preferred 'ls' implementation
+alias lsa='ls -aGF'                         # Preferred 'ls -a' alias
+alias ll='ls -lGF'                          # Long ls listing
+alias lla='ll -a'                           # Long ls hidden listing
+alias lh='ls -lhGF'                         # Human readable sizes
+alias lha='lh -a'                           # Human readable sizes with hidden
+alias finder='open -a Finder ./'            # Open current directory in Finder
+alias app='open -a'                         # Open an application
+alias battery='pmset -g batt'               # Display battery info
+alias screensaver='open -a ScreenSaverEngine'       # Start the screensaver
+alias copy='pbcopy'
+alias paste='pbpaste'
