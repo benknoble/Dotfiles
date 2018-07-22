@@ -61,6 +61,12 @@ stty -ixon -ixoff
 
 # personal {{{
 
+# OS test
+case "$OSTYPE" in
+  darwin* ) OS=mac ;;
+  linux* ) OS=linux ;;
+esac
+
 # dir for brew scripts
 brewscripts="$HOME/Dotfiles/brew/ext"
 
@@ -92,6 +98,9 @@ COLOR=0
 for file in ~/.bash/*.bash ; do
   source "$file"
 done
+for file in ~/.bash/"$OS"/*.bash ; do
+  source "$file"
+done
 
 # source .private for meant to never be seen
 [[ -r "$private" ]] && source "$private"
@@ -103,7 +112,11 @@ if [[ -d ~/.personal ]]; then
       source "$file"
     fi
   done
-  unset file
+  for file in ~/.personal/"$OS"/*.sh ; do
+    if [[ -r "$file" ]]; then
+      source "$file"
+    fi
+  done
   # add ~/.personal/bin to path
   if [[ -d ~/.personal/bin ]]; then
     pathadd "$HOME/.personal/bin"
@@ -194,3 +207,16 @@ if [[ -x "$(command -v cowsay)" && -x "$(command -v fortune)" ]]; then
     echo "$message"
   fi
 fi
+
+unset message
+unset COW
+unset COLOR
+unset file
+unset bashcomp
+unset gitscripts
+unset brewscripts
+unset private
+unset completion_dir
+unset comp_prefix
+unset brew_prefix
+unset OS
