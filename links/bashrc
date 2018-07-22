@@ -1,16 +1,16 @@
+# vim: foldmethod=marker
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
   *) return ;;
 esac
 
-# VARS
+# reload profile
+alias reload='. ~/.bashrc >/dev/null && echo "reloaded"'
 
-# dir for brew scripts
-brewscripts="$HOME/Dotfiles/brew/ext"
+# VARS {{{
 
-# dir for git scripts
-gitscripts="$HOME/Dotfiles/git/ext"
+# env {{{
 
 reset_editor() {
   # set default editor to vim
@@ -27,25 +27,15 @@ export PAGER="less"
 
 export PYTHONSTARTUP=~/.pythonrc
 
-# Message of the Day control
-# COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
-# COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
-COW=small
-COLOR=0
+# env }}}
+
+# shell {{{
 
 # set PS2
 # PS2="λ "
 PS2="» "
 # set PS3
 PS3="$PS2"
-
-# file to hold private keys
-private=~/.private
-# completion paths
-brew_prefix="$(brew --prefix)"
-comp_prefix="${brew_prefix:-/usr/local/}"
-bashcomp="$comp_prefix"/share/bash-completion/bash_completion
-completion_dir="$comp_prefix"/etc/bash_completion.d
 
 # use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
 shopt -s nullglob
@@ -64,8 +54,39 @@ HISTSIZE=100000
 HISTFILESIZE="$HISTSIZE"
 shopt -s histappend
 
-# reload profile
-alias reload='. ~/.bashrc >/dev/null && echo "reloaded"'
+# disable flow control
+stty -ixon -ixoff
+
+# shell }}}
+
+# personal {{{
+
+# dir for brew scripts
+brewscripts="$HOME/Dotfiles/brew/ext"
+
+# dir for git scripts
+gitscripts="$HOME/Dotfiles/git/ext"
+
+# file to hold private keys
+private=~/.private
+
+# completion paths
+brew_prefix="$(brew --prefix)"
+comp_prefix="${brew_prefix:-/usr/local/}"
+bashcomp="$comp_prefix"/share/bash-completion/bash_completion
+completion_dir="$comp_prefix"/etc/bash_completion.d
+
+# Message of the Day control
+# COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
+# COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
+COW=small
+COLOR=0
+
+# personal }}}
+
+# VARS }}}
+
+# sourcing {{{
 
 # ~/.bash files
 for file in ~/.bash/*.bash ; do
@@ -89,8 +110,42 @@ if [[ -d ~/.personal ]]; then
   fi
 fi
 
+# sourcing }}}
+
+# custom {{{
+# this is the stuff that is affected by sourcing, such as changing variables
+
+# Handle commands not found
+if [[ "$(type -t command_not_found_handle)" != function ]]; then
+  command_not_found_handle() {
+    {
+      echo -e "$BRed"Command not found: "$NC$BYellow$1$NC"
+      shift
+      if [[ $# -gt 0 ]]; then
+        echo "$#" args: "$(join_by ', ' "${@@Q}")"
+      fi
+      echo -e Try "$BGreen"'`displayPath`'"$NC" to see the path
+    } >&2
+    return 127
+  }
+fi
+
+reset_editor
+
+# paths {{{
+
 # Add bin folder for scripts to path
 pathadd "$HOME/Dotfiles/bin"
+
+# add brew ext commands to path
+pathadd "$brewscripts"
+
+# add git ext commands to path
+pathadd "$gitscripts"
+
+# paths }}}
+
+# completion {{{
 
 # pip bash completion start
 _pip_completion()
@@ -114,31 +169,9 @@ done
 # heroku completion
 which heroku &> /dev/null && eval "$(heroku autocomplete:script bash)"
 
-# add brew ext commands to path
-pathadd "$brewscripts"
+# completion }}}
 
-# add git ext commands to path
-pathadd "$gitscripts"
-
-reset_editor
-
-# Handle commands not found
-if [[ "$(type -t command_not_found_handle)" != function ]]; then
-  command_not_found_handle() {
-    {
-      echo -e "$BRed"Command not found: "$NC$BYellow$1$NC"
-      shift
-      if [[ $# -gt 0 ]]; then
-        echo "$#" args: "$(join_by ', ' "${@@Q}")"
-      fi
-      echo -e Try "$BGreen"'`displayPath`'"$NC" to see the path
-    } >&2
-    return 127
-  }
-fi
-
-# disable flow control
-stty -ixon -ixoff
+# custom }}}
 
 # Message of the Day
 # COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
