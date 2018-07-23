@@ -17,6 +17,12 @@
 # Ignore tags files
 --ignore-file=match:/tag(s)?$/
 
+# Ignore python virtual environments
+--ignore-dir=.env
+--ignore-dir=env
+--ignore-dir=.venv
+--ignore-dir=venv
+
 ### File Types
 
 # Markdown
