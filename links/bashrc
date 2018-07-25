@@ -156,7 +156,7 @@ pathadd "$brewscripts"
 # add git ext commands to path
 pathadd "$gitscripts"
 
-pathadd "$brew_prefix/bin"
+pathadd_front "$brew_prefix/bin"
 
 brew_fix() {
   local type="$1"

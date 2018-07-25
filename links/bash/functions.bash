@@ -35,6 +35,12 @@ pathadd() {                                 # add to path
   fi
 }
 
+pathadd_front() {
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="$1:$PATH"
+  fi
+}
+
 freewrite() {
   local date="$(date -j +"%e-%B-%Y" | tr -d '[:space:]' | tr '-' ' ')"
   local file="$(date -j +"%e-%B-%Y" | tr -d '[:space:]')".md
