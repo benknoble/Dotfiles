@@ -18,7 +18,6 @@ declare -A files=(
   [inputrc]=.inputrc
   [pythonrc]=.pythonrc
   [tmux.conf]=.tmux.conf
-  [tmux]=.tmux
   [vim]=.vim
 )
 
