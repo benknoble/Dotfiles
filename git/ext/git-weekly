@@ -42,25 +42,23 @@ count_features() {
 }
 
 display_weekly_stats() {
-  echo "Stats ($1 - Today)"
+  echo "Stats (Last week - Today)"
   echo "---------------------"
-  echo "${2:-No stats available}"
+  echo "${1:-No stats available}"
   echo
-  echo "Features ($3)"
+  echo "Features ($2)"
   echo "-------------"
-  echo "$4"
+  echo "$3"
 }
 
 weekly() {
-  local last_week
-  last_week=$(date -v-7d +%m/%d)
   local stats
   stats="$(weekly_git_stats)"
   local features
   features="$(features_merged)"
   local features_count
   features_count="$(count_features "$features")"
-  display_weekly_stats "$last_week" "$stats" "$features_count" "$features"
+  display_weekly_stats "$stats" "$features_count" "$features"
 }
 
 if [[ $# -gt 0 ]]; then
