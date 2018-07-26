@@ -37,18 +37,10 @@ install_software() {
   display_message "...done with installers"
 }
 
-setup_git() {
-  display_message "Setting up git..."
-  bash "$setup_dir/git-setup.sh"
-  display_message "...done with git"
-}
-
-
 bootstrap() {
   display_message "Bootstrapping Dotfiles..."
   symlink_dotfiles
   install_software
-  setup_git
   display_message "...done bootstrapping"
 }
 
