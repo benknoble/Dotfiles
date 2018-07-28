@@ -116,3 +116,6 @@
 [submodule "links/vim/pack/utility/start/eunuch"]
 	path = links/vim/pack/utility/start/eunuch
 	url = git@github.com:tpope/vim-eunuch.git
+[submodule "links/vim/pack/utility/start/presenting"]
+	path = links/vim/pack/utility/start/presenting
+	url = git@github.com:sotte/presenting.vim
