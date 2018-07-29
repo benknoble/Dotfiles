@@ -16,9 +16,6 @@
 [submodule "vim/bundle/vim-undotree"]
 	path = links/vim/pack/utility/start/undotree
 	url = git@github.com:mbbill/undotree
-[submodule "vim/bundle/vim-markology"]
-	path = links/vim/pack/interface/start/markology
-	url = git@github.com:jeetsukumaran/vim-markology
 [submodule "vim/bundle/vim-surround"]
 	path = links/vim/pack/utility/start/surround
 	url = git@github.com:tpope/vim-surround

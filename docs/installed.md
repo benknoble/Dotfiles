@@ -37,7 +37,6 @@ Quick list:
 - Invader
 - Liquid
 - Javascript
-- Markology
 - Node
 - Pydoc
 - Rhubarb

@@ -196,7 +196,7 @@ Here's the quick list:
 
 ### Gitignore Global
 
-*Ignores stupid backup files, .DS_Store on macOS, and .netrwhist from `Vim`.*
+*Ignores backup files, .DS_Store on macOS, and .netrwhist from `Vim`.*
 
 Also tags and .ackrc files.
 
@@ -232,11 +232,9 @@ them all.
 
 - `Q` for formatting.
 
-- Center results of common jumps (`n`, `G`, mouse click)
+- Center results of common jumps (`n`, `G`)
 
-- Escape insert mode with all variations of `jj` and `jk`
-
-- `gb` to fly through buffers! (Though unimpaired mappings work better.)
+- `<Leader>b` to fly through buffers! (Though unimpaired mappings work better.)
 
 - Save with `<Leader>s`.
 
