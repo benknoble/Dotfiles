@@ -37,9 +37,6 @@ PS2="» "
 # set PS3
 PS3="$PS2"
 
-# use nullglob (if glob doesn't expand into anything, it is not preserved as literal text)
-shopt -s nullglob
-
 # don't accidentally overwrite files with '>' (use '>|' to force overwriting)
 set -o noclobber
 
