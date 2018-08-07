@@ -15,6 +15,6 @@ alias updateDotfiles='~/Dotfiles/update.sh' # Update dotfiles
 alias starwars='telnet towel.blinkenlights.nl'      # Watch Star Wars
 alias beep="echo -n $'\a'"                  # Do a beep
 alias today='date -j +"%e %B %Y"'           # A format of the date
-alias lvim='vim -c ''"normal '"'0"'"'       # Start vim with it's last cursor position
+alias lvim='vim -c "normal '"'0"'"'         # Start vim with it's last cursor position
 alias uhtop='htop -u $USER'                 # Run htop for the current user's processes
 alias r='fc -s'                             # Rerun last command [with prefix]
