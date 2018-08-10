@@ -13,4 +13,12 @@ setlocal noexpandtab
 " And of the right length
 setlocal tabstop=8 shiftwidth=8
 
-let b:undo_ftplugin .= 'setlocal expandtab< tabstop< shiftwidth<'
+if !exists("*MyGitconfFtpluginUndo")
+  function MyGitconfFtpluginUndo()
+    setlocal noexpandtab<
+    setlocal shiftwidth<
+    setlocal tabstop<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyGitconfFtpluginUndo()'

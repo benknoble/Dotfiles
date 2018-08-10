@@ -38,4 +38,10 @@ endfunction
 " setlocal foldexpr=MarkdownFolds()
 setlocal foldtext=MarkdownFoldText()
 
-let b:undo_ftplugin .= 'setlocal foldtext<'
+if !exists("*MyMarkdownFoldFtpluginUndo")
+  function MyMarkdownFoldFtpluginUndo()
+    setlocal foldtext<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyMarkdownFoldFtpluginUndo()'

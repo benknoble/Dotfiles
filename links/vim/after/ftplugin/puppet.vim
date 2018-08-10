@@ -10,4 +10,10 @@ endif
 
 setlocal commentstring=#%s
 
-let b:undo_ftplugin .= 'setlocal commentstring<'
+if !exists("*MyPuppetFtpluginUndo")
+  function MyPuppetFtpluginUndo()
+    setlocal commentstring<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyPuppetFtpluginUndo()'

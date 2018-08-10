@@ -42,8 +42,25 @@ let g:go_highlight_extra_types = 1
 
 let g:go_auto_type_info = 1
 
-let b:undo_ftplugin .= 'setlocal keywordprg< shiftwidth< softtabstop<'
-let b:undo_ftplugin .= " | exe 'nunmap <buffer> <localleader>b'"
-let b:undo_ftplugin .= " | exe 'nunmap <buffer> <localleader>r'"
-let b:undo_ftplugin .= " | exe 'nunmap <buffer> <localleader>t'"
-let b:undo_ftplugin .= " | exe 'nunmap <buffer> <localleader>c'"
+if !exists("*MyGoFtpluginUndo")
+  function MyGoFtpluginUndo()
+    setlocal shiftwidth<
+    setlocal softtabstop<
+    setlocal keywordprg<
+
+    silent! nunmap <buffer> <localleader>b
+    silent! nunmap <buffer> <localleader>r
+    silent! nunmap <buffer> <localleader>t
+    silent! nunmap <buffer> <localleader>c
+
+    unlet! g:go_highlight_types
+    unlet! g:go_highlight_fields
+    unlet! g:go_highlight_functions
+    unlet! g:go_highlight_methods
+    unlet! g:go_highlight_extra_types
+    unlet! g:go_auto_type_info
+
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyGoFtpluginUndo()'

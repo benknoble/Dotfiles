@@ -14,4 +14,11 @@ setlocal nospell
 " Use :help for K in help docs
 setlocal keywordprg=:help
 
-let b:undo_ftplugin .= 'setlocal spell< keywordprg<'
+if !exists("*MyHelpFtpluginUndo")
+  function MyHelpFtpluginUndo()
+    setlocal spell<
+    setlocal keywordprg<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyHelpFtpluginUndo()'

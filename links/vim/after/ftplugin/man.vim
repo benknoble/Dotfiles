@@ -11,4 +11,10 @@ endif
 " Don't show fancy whitespace
 setlocal nolist
 
-let b:undo_ftplugin .= 'setlocal list<'
+if !exists("*MyManFtpluginUndo")
+  function MyManFtpluginUndo()
+    setlocal list<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyManFtpluginUndo()'
