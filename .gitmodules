@@ -116,3 +116,6 @@
 [submodule "links/vim/pack/utility/start/presenting"]
 	path = links/vim/pack/utility/start/presenting
 	url = git@github.com:sotte/presenting.vim
+[submodule "links/vim/pack/languages/start/puppet"]
+	path = links/vim/pack/languages/start/puppet
+	url = git@github.com:puppetlabs/puppet-syntax-vim
