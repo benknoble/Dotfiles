@@ -14,4 +14,12 @@ setlocal spell spelllang=en_us
 " Make sure we don't use autoformatting
 setlocal formatoptions-=a
 
-let b:undo_ftplugin .= 'setlocal spell< spelllang< formatoptions<'
+if !exists("*MyGitcommitFtpluginUndo")
+  function MyGitcommitFtpluginUndo()
+    setlocal spell<
+    setlocal spelllang<
+    setlocal formatoptions<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyGitcommitFtpluginUndo()'

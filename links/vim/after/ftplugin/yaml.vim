@@ -11,4 +11,11 @@ endif
 " Indent two spaces
 setlocal shiftwidth=2 softtabstop=2
 
-let b:undo_ftplugin .= 'setlocal shiftwidth< softtabstop<'
+if !exists("*MyYamlFtpluginUndo")
+  function MyYamlFtpluginUndo()
+    setlocal shiftwidth<
+    setlocal softtabstop<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyYamlFtpluginUndo()'

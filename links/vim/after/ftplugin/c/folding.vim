@@ -10,4 +10,10 @@ endif
 
 setlocal foldmethod=syntax
 
-let b:undo_ftplugin .= 'setlocal foldmethod<'
+if !exists("*MyCFoldFtpluginUndo")
+  function MyCFoldFtpluginUndo()
+    setlocal foldmethod<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyCFoldFtpluginUndo()'

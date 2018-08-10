@@ -39,12 +39,26 @@ onoremap <buffer> i#1 :<C-u>execute "normal! ?^#\\s.?e\r:nohlsearch\rvg_"<CR>
 onoremap <buffer> i#2 :<C-u>execute "normal! ?^##\\s.?e\r:nohlsearch\rvg_"<CR>
 onoremap <buffer> i#3 :<C-u>execute "normal! ?^###\\s.?e\r:nohlsearch\rvg_"<CR>
 
-let b:undo_ftplugin .= 'setlocal textwidth< spell< spelllang< iskeyword<'
-let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>u1'"
-let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>u2'"
-let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>u3'"
-let b:undo_ftplugin .= " | exe 'ounmap <buffer> ih='"
-let b:undo_ftplugin .= " | exe 'ounmap <buffer> ih-'"
-let b:undo_ftplugin .= " | exe 'ounmap <buffer> i#1'"
-let b:undo_ftplugin .= " | exe 'ounmap <buffer> i#2'"
-let b:undo_ftplugin .= " | exe 'ounmap <buffer> i#3'"
+if !exists("*MyMarkdownFtpluginUndo")
+  function MyMarkdownFtpluginUndo()
+    setlocal textwidth<
+    setlocal spell<
+    setlocal spelllang<
+    setlocal iskeyword<
+
+    unlet! g:markdown_folding
+
+
+    silent! ounmap <buffer> i#3
+    silent! ounmap <buffer> i#2
+    silent! ounmap <buffer> i#1
+    silent! ounmap <buffer> ih-
+    silent! ounmap <buffer> ih=
+    silent! nunmap <buffer> <LocalLeader>u3
+    silent! nunmap <buffer> <LocalLeader>u2
+    silent! nunmap <buffer> <LocalLeader>u1
+
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyMarkdownFtpluginUndo()'

@@ -19,6 +19,16 @@ compiler ruby
 
 nnoremap <buffer> <LocalLeader>r :make %<CR>
 
-let b:undo_ftplugin .= 'setlocal textwidth< shiftwidth< softtabstop<'
-let b:undo_ftplugin .= ' | setlocal errorformat< makeprg<'
-let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>r'"
+if !exists("*MyRubyFtpluginUndo")
+  function MyRubyFtpluginUndo()
+    setlocal textwidth<
+    setlocal shiftwidth<
+    setlocal softtabstop<
+    setlocal errorformat<
+    setlocal makeprg<
+
+    silent! nunmap <buffer> <LocalLeader>r
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyRubyFtpluginUndo()'

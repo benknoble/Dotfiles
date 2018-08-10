@@ -13,4 +13,12 @@ setlocal textwidth=80
 " Indent two spaces
 setlocal shiftwidth=2 softtabstop=2
 
-let b:undo_ftplugin .= 'setlocal textwidth< shiftwidth< softtabstop<'
+if !exists("*MyShFtpluginUndo")
+  function MyShFtpluginUndo()
+    setlocal textwidth<
+    setlocal shiftwidth<
+    setlocal softtabstop<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyShFtpluginUndo()'

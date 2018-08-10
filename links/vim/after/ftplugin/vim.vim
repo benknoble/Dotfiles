@@ -14,4 +14,12 @@ setlocal shiftwidth=2 softtabstop=2
 " Use :help for K in vimscript
 setlocal keywordprg=:help
 
-let b:undo_ftplugin .= 'setlocal shiftwidth< softtabstop< keywordprg<'
+if !exists("*MyVimFtpluginUndo")
+  function MyVimFtpluginUndo()
+    setlocal shiftwidth<
+    setlocal softtabstop<
+    setlocal keywordprg<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyVimFtpluginUndo()'

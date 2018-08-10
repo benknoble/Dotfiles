@@ -10,4 +10,10 @@ endif
 
 let ruby_fold = 1
 
-let b:undo_ftplugin .= 'unlet ruby_fold'
+if !exists("*MyRubyFoldFtpluginUndo")
+  function MyRubyFoldFtpluginUndo()
+    unlet! ruby_fold
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyRubyFoldFtpluginUndo()'

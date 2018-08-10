@@ -17,5 +17,12 @@ setlocal path+=/usr/local/include,/usr/include
 " Rebuild tags
 nnoremap <buffer> <LocalLeader>tr :!ctags --extra=+f -R *<CR><CR>
 
-let b:undo_ftplugin .= 'setlocal tags< path<'
-let b:undo_ftplugin .= " | exe 'nunmap <buffer> <LocalLeader>tr'"
+if !exists("*MyCFtpluginUndo")
+  function MyCFtpluginUndo()
+    setlocal tags<
+    setlocal path<
+    silent! nunmap <buffer> <LocalLeader>tr
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyCFtpluginUndo()'

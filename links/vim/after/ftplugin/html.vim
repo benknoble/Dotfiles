@@ -11,4 +11,11 @@ endif
 " Tab settings
 setlocal shiftwidth=2 softtabstop=2
 
-let b:undo_ftplugin .= 'setlocal shiftwidth< softtabstop<'
+if !exists("*MyHTMLFtpluginUndo")
+  function MyHTMLFtpluginUndo()
+    setlocal shiftwidth<
+    setlocal softtabstop<
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyHTMLFtpluginUndo()'
