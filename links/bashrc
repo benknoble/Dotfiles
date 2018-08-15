@@ -140,8 +140,6 @@ if [[ "$(type -t command_not_found_handle)" != function ]]; then
   }
 fi
 
-reset_editor
-
 # paths {{{
 
 # Add bin folder for scripts to path
@@ -169,6 +167,8 @@ brew_fix INFOPATH "$brew_prefix/info/man"
 
 # go
 [[ -d ~/go/bin ]] && pathadd ~/go/bin
+
+reset_editor
 
 # paths }}}
 
