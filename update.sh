@@ -16,7 +16,7 @@ fi
 pull_master() {
   cd "$dir" \
     && git checkout master \
-    && git pull origin master
+    && git pull --recurse-submodules=on-demand origin master
 }
 
 update_submodules() {
