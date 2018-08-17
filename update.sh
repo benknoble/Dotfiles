@@ -31,7 +31,7 @@ has_brew() {
 
 bundle_check() {
   # the "or true" is necessary to prevent a bundle issue from stopping the rest
-  # of the rest update
+  # of the update
   brew bundle check --file="$BREWFILE" || true
 }
 
