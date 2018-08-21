@@ -71,6 +71,9 @@
 │   ├── gitignore_global
 │   ├── gitshrc
 │   ├── inputrc
+│   ├── jupyter
+│   │   ├── migrated
+│   │   └── nbconfig
 │   ├── pythonrc
 │   ├── tmux.conf
 │   └── vim
