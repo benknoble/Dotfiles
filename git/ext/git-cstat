@@ -1,0 +1,58 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+USAGE='[-h]
+Display a summary of commit length statistics'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+size() {
+  local commit="$1"
+  git log "$commit" -1 --format=%B | wc -w
+}
+
+commits_list() {
+  git rev-list --all
+}
+
+main() {
+  local commits=()
+  local max=0
+  local max_c
+  local min=99999999999
+  local min_c
+  local sum=0
+  local n=0
+  mapfile -t commits < <(commits_list)
+  for commit in "${commits[@]}" ; do
+    c_size="$(size "$commit")"
+    ((sum+=$c_size))
+    ((n+=1))
+    if ((c_size > max)) ; then
+      max="$c_size"
+      max_c="$commit"
+    fi
+    if ((c_size < min)) ; then
+      min="$c_size"
+      min_c="$commit"
+    fi
+  done
+
+  cat <<-DOG
+Commits: $n
+Min_length: $min ${min_c:-}
+Max_length: $max ${max_c:-}
+Average: $((sum/n))
+DOG
+}
+
+if [[ $# -gt 0 ]]; then
+  usage
+else
+  main
+fi

@@ -14,6 +14,7 @@ setlocal textwidth=79
 
 nnoremap <buffer> <LocalLeader>P :term python<CR>
 nnoremap <buffer> <LocalLeader>p :term ++close python<CR>
+nnoremap <buffer> <LocalLeader>t :term python setup.py test -q<CR>
 
 if !exists("*MyPythonFtpluginUndo")
   function MyPythonFtpluginUndo()
@@ -23,6 +24,7 @@ if !exists("*MyPythonFtpluginUndo")
 
     silent! nunmap <buffer> <LocalLeader>P
     silent! nunmap <buffer> <LocalLeader>p
+    silent! nunmap <buffer> <LocalLeader>t
   endfunction
 endif
 
