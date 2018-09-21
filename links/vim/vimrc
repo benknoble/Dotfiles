@@ -354,6 +354,7 @@ if has("autocmd")
     autocmd VimEnter * helptags ALL
 
   augroup END
+  " End helptags }}}
 
 else
   set autoindent
