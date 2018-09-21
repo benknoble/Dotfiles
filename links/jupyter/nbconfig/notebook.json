@@ -10,5 +10,13 @@
   "Notebook": {
     "Toolbar": false,
     "Header": false
+  },
+  "keys": {
+    "command": {
+      "bind": {
+        "cmd-space": "vim-binding:show-keyboard-shortcuts",
+        "cmd-?": "vim-binding:show-keyboard-shortcuts"
+      }
+    }
   }
 }
