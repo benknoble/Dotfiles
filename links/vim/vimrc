@@ -773,7 +773,7 @@ let g:startify_custom_footer = [
 " Highlighting
 hi link StartifyFile DraculaLink
 hi link StartifyHeader Normal
-hi link StartifyFooter SpecialKey
+hi link StartifyFooter Normal
 " End Startify }}}
 
 " Synstax {{{
