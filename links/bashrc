@@ -120,6 +120,11 @@ if [[ -d ~/.personal ]]; then
   fi
 fi
 
+# activate a virtualenv if present (helpful for tmux)
+if [[ -r "$PWD"/.env/bin/activate ]]; then
+  source "$PWD"/.env/bin/activate
+fi
+
 # sourcing }}}
 
 # custom {{{
