@@ -524,6 +524,7 @@ vnoremap <Leader>' <esc>`<i'<esc>`>a'<esc>
 
 " Quit quickly
 nnoremap <silent> <Leader>q :q<CR>
+nnoremap <silent> <Leader>Q :qa<CR>
 
 " Suspended (by Matt Nathanson)
 nnoremap <silent> <Leader>z :suspend<CR>
