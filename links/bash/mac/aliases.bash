@@ -8,5 +8,3 @@ alias finder='open -a Finder ./'            # Open current directory in Finder
 alias app='open -a'                         # Open an application
 alias battery='pmset -g batt'               # Display battery info
 alias screensaver='open -a ScreenSaverEngine'       # Start the screensaver
-alias copy='pbcopy'
-alias paste='pbpaste'
