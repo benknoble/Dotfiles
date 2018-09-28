@@ -17,11 +17,14 @@
 # Ignore tags files
 --ignore-file=match:/tag(s)?$/
 
-# Ignore python virtual environments
+# Ignore python stuff
 --ignore-dir=.env
 --ignore-dir=env
 --ignore-dir=.venv
 --ignore-dir=venv
+--ignore-dir=.venv-python
+--ignore-dir=.tox
+--ignore-dir=ext:egg-info
 
 ### File Types
 
