@@ -118,7 +118,7 @@ set whichwrap=b,s,<,>,[,]
 " End Wrap }}}
 
 " Display certain whitespace characters
-set list listchars=tab:»\ ,trail:·,nbsp:⎵
+set list listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:<,extends:>
 
 " Set dark background because I like my terminal dark
 if ! exists('g:colors_name')
