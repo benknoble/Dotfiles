@@ -119,3 +119,6 @@
 [submodule "links/vim/pack/languages/start/puppet"]
 	path = links/vim/pack/languages/start/puppet
 	url = git@github.com:puppetlabs/puppet-syntax-vim
+[submodule "links/vim/pack/languages/start/docker"]
+	path = links/vim/pack/languages/start/docker
+	url = git@github.com:ekalinin/Dockerfile.vim.git
