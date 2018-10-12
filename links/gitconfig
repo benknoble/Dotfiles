@@ -59,6 +59,7 @@
 	trustExitCode = true
 [fetch]
 	recurseSubmodules = on-demand
+	prune = true
 [rerere]
 	enabled = true
 [rebase]
