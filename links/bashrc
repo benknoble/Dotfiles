@@ -199,7 +199,7 @@ for file in "$completion_dir"/*; do
 done
 
 # heroku completion
-which heroku &> /dev/null && eval "$(heroku autocomplete:script bash)"
+command -v heroku &> /dev/null && eval "$(heroku autocomplete:script bash)"
 
 # travis completion
 [[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
