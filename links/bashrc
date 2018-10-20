@@ -50,6 +50,9 @@ HISTSIZE=100000
 HISTFILESIZE="$HISTSIZE"
 shopt -s histappend
 
+shopt -s autocd
+shopt -s globstar
+
 # shopt }}}
 
 # keys {{{
