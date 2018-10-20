@@ -37,8 +37,22 @@ PS2="» "
 # set PS3
 PS3="$PS2"
 
+# set {{{
+
 # don't accidentally overwrite files with '>' (use '>|' to force overwriting)
 set -o noclobber
+
+# set }}}
+
+# shopt {{{
+
+HISTSIZE=100000
+HISTFILESIZE="$HISTSIZE"
+shopt -s histappend
+
+# shopt }}}
+
+# keys {{{
 
 # let 'space' magically expand history command-line fu
 # use M-C-e to expand *all* command-line fu
@@ -47,12 +61,14 @@ bind "SPACE: magic-space"
 # use vi readline bindings
 set -o vi
 
-HISTSIZE=100000
-HISTFILESIZE="$HISTSIZE"
-shopt -s histappend
+# keys }}}
+
+# term {{{
 
 # disable flow control
 stty -ixon -ixoff
+
+# term }}}
 
 # shell }}}
 
