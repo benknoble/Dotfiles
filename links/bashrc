@@ -163,7 +163,7 @@ brew_fix() {
   local path="${!type}"
   local prepend="$2"
   case "$path" in
-    *"$prepend"* ) true ;;
+    "$prepend"* ) true ;;
     * ) eval export "$type=$prepend:$path" ;;
   esac
 }
