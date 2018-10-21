@@ -84,3 +84,16 @@ frequency() {
 recent() {
   history | cut -c8- | cut -d" " -f1 | frequency | sort -rn | head
 }
+
+# go up
+up() {
+  local count="${1:-1}"
+  local path=../
+  (( count-- ))
+  while (( count > 0 )) ; do
+    path="$path"../
+    (( count-- ))
+  done
+  echo "cd -- $path"
+  cd -- "$path"
+}
