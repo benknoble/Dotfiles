@@ -16,3 +16,6 @@ alias today='date -j +"%e %B %Y"'           # A format of the date
 alias lvim='vim -c "normal '"'0"'"'         # Start vim with it's last cursor position
 alias uhtop='htop -u $USER'                 # Run htop for the current user's processes
 alias r='fc -s'                             # Rerun last command [with prefix]
+alias j='jobs -l'                           # Jobs
+alias ducks='du -cks * | sort -rn | head'   # Ducks!
+alias nocomment='grep -Ev "^(#|$)"'         # No comment...
