@@ -282,7 +282,7 @@ splice () {
                     ;;
                 esac
             fi
-            while [ ${n} -gt 0 ] do
+            while [ ${n} -gt 0 ]; do
                 # Remember here that path has a ':' prepended and appended while working.
                 case ${path} in
                 :*:*:)
@@ -318,7 +318,7 @@ splice () {
                     ;;
                 esac
             fi
-            while [ ${n} -gt 0 ] do
+            while [ ${n} -gt 0 ]; do
                 # Remember here that path has a ':' appended and prepended while working.
                 case ${path} in
                 :*:*:)
@@ -688,7 +688,7 @@ pathmunge () {
             fi
             splice_debug "pathmunge: shift: start while loop"
             splice_debug "pathmunge: shift: path = ${path}"
-            while [ ${n} -gt 0 ] do
+            while [ ${n} -gt 0 ]; do
                 # Remember here that path has a ':' prepended and appended while working.
                 case ${path} in
                 :*:*:)
@@ -730,7 +730,7 @@ pathmunge () {
                 esac
             fi
             splice_debug "pathmunge: pop: start while loop"
-            while [ ${n} -gt 0 ] do
+            while [ ${n} -gt 0 ]; do
                 # Remember here that path has a ':' appended and prepended while working.
                 case ${path} in
                 :*:*:)
