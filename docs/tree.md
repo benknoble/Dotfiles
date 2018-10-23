@@ -65,7 +65,8 @@
 │   │   ├── functions.bash
 │   │   ├── gitconfig.bash
 │   │   ├── linux
-│   │   └── mac
+│   │   ├── mac
+│   │   └── pathmunge.bash
 │   ├── bash_profile
 │   ├── bashrc
 │   ├── gitconfig
