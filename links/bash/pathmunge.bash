@@ -96,7 +96,7 @@ splice () {
     local path="${PATH}" newpath location
     local setpath="yes"
     # These next three are used in a swap.
-    local first= middle= last=
+    local first middle last
     # n is used for shift, pop
     local n=1
 
@@ -293,7 +293,7 @@ splice () {
                     path=${path:+:}${path#*:}
                     ;;
                 *)
-                    path=
+                    path=''
                     ;;
                 esac
                 n=$[n - 1]
@@ -329,7 +329,7 @@ splice () {
                     path=${path%:*}${path:+:}
                     ;;
                 *)
-                    path=
+                    path=''
                     ;;
                 esac
                 n=$[n - 1]
@@ -494,11 +494,11 @@ splice () {
 # the presence of the elements being inserted before
 # or after.
 pathmunge () {
-    local path="${PATH}" newpath=
-    local verb= pe=
+    local path="${PATH}" newpath
+    local verb pe
     local setpath="yes"
     # These next three are used in a swap
-    local first= middle= last=
+    local first middle last
     # N is used by shift and pop
     local n=1
 
@@ -700,7 +700,7 @@ pathmunge () {
                     ;;
                 *)
                     splice_debug "pathmunge: shift: remove last element from path: ${path}"
-                    path=
+                    path=''
                     ;;
                 esac
                 n=$[n - 1]
@@ -742,7 +742,7 @@ pathmunge () {
                     ;;
                 *)
                     splice_debug "pathmunge: pop: remove last element from path:"
-                    path=
+                    path=''
                     ;;
                 esac
                 n=$[n - 1]
@@ -919,7 +919,7 @@ esac
 
 case "$@" in
     *path\ *)
-        p=
+        p=''
         ;;
     *)
         p="path ${PATH}"
