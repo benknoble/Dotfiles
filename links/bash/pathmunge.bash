@@ -1,21 +1,9 @@
-#!/bin/bash
-#
-# splice.sh
-#
-# There is a return statement at the end that may short-circuit what
-# you are trying to do.
-#
+#! /usr/bin/env bash
+
 # This shell script contains two different major path munging functions:
 # splice
 # pathmunge
-#
-# NOTE: 2010 May 11 - There is a difference in semantics between splice
-# and pathmunge related to how they deal with elements that are not
-# already present in your PATH. I don't remember the exact difference,
-# and I believe the semantics of splice were intended for superuser
-# and situations where one does not wish to accidentally introduce new
-# and insecure elements into the PATH. MFA
-#
+
 # These two functions take the following verbs
 # path - to supply an initial path, otherwise use PATH
 # usage, help - print out a help message on how to use them.
@@ -28,7 +16,7 @@
 # unshift - add new elements to the start of the path
 # pop - remove last item from path
 # push - add new elements to the end of the path.
-#
+
 splice_debug=0;
 
 splice_debug () {
@@ -38,12 +26,10 @@ splice_debug () {
 remove_superfluous_colons () {
     local path="$1";
 
-    #
     # Remove superfluous : characters from path.
     # First remove the ones from the beginning.
     # Second remove ones from the end.
     # Third remove double colons from the middle.
-    #
     while true;
     do
         case "${path}" in
@@ -83,10 +69,8 @@ remove_superfluous_colons () {
     echo "${path}";
 }
 
-#
 # verbs in this script can zero, one or two
 # leading dashes.
-#
 verbify () {
     local verb="$1";
 
@@ -105,16 +89,13 @@ verbify () {
     echo "${verb}";
 }
 
-#
 # splice
-#
 # splice the path with a set of atomic operations including
 # prepend and append for adding new elements to the path.
 # before and after for moving existing elements around in the path.
 # print, show, list all echo the current path.
 # remove, delete remove the existing elements from the path.
 # usage, help print out a usage message.
-#
 splice () {
     local path="${PATH}" newpath location;
     local setpath="yes";
@@ -132,9 +113,7 @@ splice () {
             ;;
     esac;
 
-    #
     # Does the user wish to build a different path?
-    # 
     case $(verbify "$1") in
         path|-path|--path)
             path="$2";
@@ -148,24 +127,18 @@ splice () {
     # Unload path
 
     path=$(remove_superfluous_colons "${path}");
-    
-    #
+
     # Now make sure that we have one leading and trailing :
-    #
     path=:${path}:;
     splice_debug "splice: path is now ${path}";
 
-    #
     # The location is next and is specified with or without --
-    # 
     verb=$(verbify "$1");
     shift;
 
-    #
     # Check the verb's validity.
     # In the case of before and after ensure that the element before or after which
     # the given elements are placed actually exists in the path.
-    #
     case ${verb} in
         usage|help)
             echo "Usage: splice ():" >&2;
@@ -179,9 +152,9 @@ splice () {
             echo "splice [ verbose ] [ path initial ] [ before | after ] [ element ] [ element+ ]" >&2;
             echo "splice [ verbose ] [ path initial ] [ start | end ]" >&2;
             echo "splice [ verbose ] [ path initial ] [ swap ] [ element1 ] [ element2 ]" >&2;
-	    echo "splice [ verbose ] [ path initial ] [ shift ] [ n ]" >&2;
+            echo "splice [ verbose ] [ path initial ] [ shift ] [ n ]" >&2;
             echo "splice [ verbose ] [ path initial ] [ pop ] [ n ]" >&2;
-	    echo "splice [ verbose ] [ path initial ] [ usempi ] [ MPI-variant | list ]" >&2;
+            echo "splice [ verbose ] [ path initial ] [ usempi ] [ MPI-variant | list ]" >&2;
             echo >&2;
             echo "verbose - turn on debugging messages about what is happening inside function" >&2;
             echo "path - set the starting path to initial. New path is echoed to stdout" >&2;
@@ -197,9 +170,9 @@ splice () {
             echo "swap - swap the locations of the two elements given in the path." >&2;
             echo "shift - remove 'n' items from start of path. n defaults to 1." >&2;
             echo "pop - remove 'n' items from end of path. n defaults to 1." >&2;
-	    echo "usempi - from a list of MPI variants registered with mpi-selector" >&2;
-	    echo "         use the requested one by prepending its paths." >&2;
-	    echo "         If list is given, it lists the variants known to mpi-selector." >&2;
+            echo "usempi - from a list of MPI variants registered with mpi-selector" >&2;
+            echo "         use the requested one by prepending its paths." >&2;
+            echo "         If list is given, it lists the variants known to mpi-selector." >&2;
             echo >&2;
             echo "All path elements must be one path element. Elements with a ':'" >&2;
             echo "are ignored." >&2;
@@ -235,96 +208,94 @@ splice () {
             splice_debug=0;
             return 0;
             ;;
-	usempi)
-	    #
-	    # This is a special case to allow quick PATH switches.
-	    #
-	    local mpiselect= mpidatadir= mpivariant= result=;
-	    mpiselect=$(type -path mpi-selector);
-	    mpidatadir=$(/bin/grep 'my \$data_dir = ' ${mpiselect});
-	    if [ ! -n "${mpidatadir}" ];
-	    then
-		echo "Unable to find MPI selector data directory." >&2;
-		return 2;
-	    fi;
-	    
-	    mpidatadir=${mpidatadir##* \"};
-	    mpidatadir="${mpidatadir%\";}";
-	    # echo "We think that the mpi-selector data directory is: ${mpidatadir}";
-	    if cd ${mpidatadir} &> /dev/null;
-	    then
-		    :
-	    else
-	        echo "Unable to cd to mpi-selector data directory." >&2;
-	        return 1;
-	    fi;
+        usempi)
+            # This is a special case to allow quick PATH switches.
+            local mpiselect= mpidatadir= mpivariant= result=;
+            mpiselect=$(type -path mpi-selector);
+            mpidatadir=$(/bin/grep 'my \$data_dir = ' ${mpiselect});
+            if [ ! -n "${mpidatadir}" ];
+            then
+                echo "Unable to find MPI selector data directory." >&2;
+                return 2;
+            fi;
 
-	    if [ "${1}" = "list" ];
-	    then
-	        /bin/ls -C *.sh | /bin/sed -e 's@\.sh$@@g' -e 's@\.sh[[:space:]]@ @g'
-	        cd - &> /dev/null;
-	        return 0;
-	    fi
-		
-	    mpivariant="${1}";
-	    if [ -z "${mpivariant}" ];
-	    then
-		echo "No MPI variant requested" >&2;
-		cd - &> /dev/null;
-		return 1;
-	    fi;
-		
-	    case ${mpivariant} in
-		*/*)
-	            echo "No directories allowed in MPI variant" >&2;
-		    cd - &> /dev/null;
-		    return 1;
-		    ;;
-		*)
-		;;
+            mpidatadir=${mpidatadir##* \"};
+            mpidatadir="${mpidatadir%\";}";
+            # echo "We think that the mpi-selector data directory is: ${mpidatadir}";
+            if cd ${mpidatadir} &> /dev/null;
+            then
+                    :
+            else
+                echo "Unable to cd to mpi-selector data directory." >&2;
+                return 1;
+            fi;
+
+            if [ "${1}" = "list" ];
+            then
+                /bin/ls -C *.sh | /bin/sed -e 's@\.sh$@@g' -e 's@\.sh[[:space:]]@ @g'
+                cd - &> /dev/null;
+                return 0;
+            fi
+
+            mpivariant="${1}";
+            if [ -z "${mpivariant}" ];
+            then
+                echo "No MPI variant requested" >&2;
+                cd - &> /dev/null;
+                return 1;
+            fi;
+
+            case ${mpivariant} in
+                */*)
+                    echo "No directories allowed in MPI variant" >&2;
+                    cd - &> /dev/null;
+                    return 1;
+                    ;;
+                *)
+                ;;
             esac;
 
             if [ -f "./${mpivariant}.sh" ];
-	    then
-		echo "Use MPI variant ${mpivariant}" >&2;
-		. ./${mpivariant}.sh;
-		result=0;
-	    elif [ -f "./${mpivariant}" ];
-	    then
-		echo "Use MPI variant ${mpivariant%.sh}" >&2;
-		. ./${mpivariant};
-		result=0;
-	    else
-		echo "Unable to find requested MPI variant: ${mpivariant}" >&2;
-	    fi;
-	    cd - &> /dev/null;
-	    return ${result};
-	    ;;
+            then
+                echo "Use MPI variant ${mpivariant}" >&2;
+                . ./${mpivariant}.sh;
+                result=0;
+            elif [ -f "./${mpivariant}" ];
+            then
+                echo "Use MPI variant ${mpivariant%.sh}" >&2;
+                . ./${mpivariant};
+                result=0;
+            else
+                echo "Unable to find requested MPI variant: ${mpivariant}" >&2;
+            fi;
+            cd - &> /dev/null;
+            return ${result};
+            ;;
         start|end|remove|delete|prepend|append|unshift|push)
             ;;
         shift)
-	    if [ $# -gt 1 ];
-	    then
-	        echo "splice shift takes at most one argument, n, the number of elements to remove." >&2;
-	        return 1;
-	    elif [ $# -eq 0 ];
-	    then
-	        :
-	    else
-	        case "${1}" in
-	        [0-9]|[0-9][0-9]|[0-9][0-9][0-9])
-	            n="${1}";
-	            shift;
-	            ;;
-	        *)
-	            echo "splice shift takes a non-negative numerical argument." >&2;
+            if [ $# -gt 1 ];
+            then
+                echo "splice shift takes at most one argument, n, the number of elements to remove." >&2;
+                return 1;
+            elif [ $# -eq 0 ];
+            then
+                :
+            else
+                case "${1}" in
+                [0-9]|[0-9][0-9]|[0-9][0-9][0-9])
+                    n="${1}";
                     shift;
-	            return 2;
-	            ;;
-	        esac;
-	    fi;
-	    while [ ${n} -gt 0 ];
-	    do
+                    ;;
+                *)
+                    echo "splice shift takes a non-negative numerical argument." >&2;
+                    shift;
+                    return 2;
+                    ;;
+                esac;
+            fi;
+            while [ ${n} -gt 0 ];
+            do
                 # Remember here that path has a ':' prepended and appended while working.
                 case ${path} in
                 :*:*:)
@@ -338,8 +309,8 @@ splice () {
                     path=;
                     ;;
                 esac;
-	        n=$[n - 1];
-	    done;
+                n=$[n - 1];
+            done;
             ;;
         pop)
             if [ $# -gt 1 ];
@@ -362,9 +333,9 @@ splice () {
                     ;;
                 esac;
             fi;
-	    while [ ${n} -gt 0 ];
-	    do
-	        # Remember here that path has a ':' appended and prepended while working.
+            while [ ${n} -gt 0 ];
+            do
+                # Remember here that path has a ':' appended and prepended while working.
                 case ${path} in
                 :*:*:)
                     # Strip the trailing ':' off, so we can pattern match off the last element.
@@ -373,13 +344,13 @@ splice () {
                     # Pull off the last element, then append a ':' again.
                     path=${path%:*}${path:+:};
                     ;;
-	        *)
-	            path=;
-	            ;;
-	        esac;
-	        n=$[n - 1];
+                *)
+                    path=;
+                    ;;
+                esac;
+                n=$[n - 1];
             done;
-	    ;;
+            ;;
         swap)
             # This one is peculiar, because it only takes two elements.
             if [ $# -ne 2 ];
@@ -454,9 +425,7 @@ splice () {
     for element in "$@";
     do
         splice_debug "splice: element is: ${element}";
-        #
         # First make sure that the thing we want to move is in the path
-        #
         if [ "${verb}" = "prepend" -o "${verb}" = "append" -o "${verb}" = "unshift" -o "${verb}" = "push" ];
         then
             :
@@ -491,7 +460,7 @@ splice () {
                     ;;
             esac;
         fi;
-   
+
         # For all operations other than removal, make sure the thing being spliced into
         # the path actually exists.
         # If we are removing elements, then we are done.
@@ -511,10 +480,8 @@ splice () {
                 fi;
                 ;;
         esac;
-   
-        #
+
         # Now put the item into the path at the desired location.
-        # 
         case ${verb} in
             start|prepend|unshift)
                 path=:${element}${path};
@@ -531,9 +498,7 @@ splice () {
         esac;
     done;
 
-    #
     # Now clean up the path and either set PATH or echo the path.
-    #
     splice_debug "At end of loop: path is ${path}";
 
     path=$(remove_superfluous_colons "${path}");
@@ -547,13 +512,10 @@ splice () {
     esac;
 }
 
-#
 # pathmunge -
-#
 # A different form of splice. This does not presume
 # the presence of the elements being inserted before
 # or after.
-#
 pathmunge () {
     local path="${PATH}" newpath=;
     local verb= pe=;
@@ -571,10 +533,8 @@ pathmunge () {
         *)
             ;;
     esac;
-   
-    #
+
     # Does the user wish to build a different path?
-    # 
     case "$1" in
         path|-path|--path)
             path="$2";
@@ -587,24 +547,18 @@ pathmunge () {
 
     path=$(remove_superfluous_colons "${path}");
 
-    #
     # Now add a : to the beginning and end of path for use in pattern
     # matching.
-    #
     path=":${path}:";
 
     # Where did we start out.
     splice_debug "pathmunge: path starts as ${path}";
 
-    #
     # What's our verb for action on the path?
-    #
     verb=$(verbify "$1");
     shift;
 
-    #
     # Validate the verb
-    #
     case ${verb:-""} in
         usage|help)
             echo "Usage: pathmunge ():" >&2;
@@ -618,9 +572,9 @@ pathmunge () {
             echo "pathmunge [ verbose ] [ path initial ] [ before | after ] [ element ] [ element+ ]" >&2;
             echo "pathmunge [ verbose ] [ path initial ] [ start | end ] [ element+ ]" >&2;
             echo "pathmunge [ verbose ] [ path initial ] [ swap ] [ element ] [ element ]" >&2;
-	    echo "pathmunge [ verbose ] [ path initial ] [ shift ] [ n ]" >&2;
-	    echo "pathmunge [ verbose ] [ path initial ] [ pop ] [ n ]" >&2;
-	    echo "pathmunge [ verbose ] [ path initial ] [ usempi ] [ MPI-variant | list ]" >&2;
+            echo "pathmunge [ verbose ] [ path initial ] [ shift ] [ n ]" >&2;
+            echo "pathmunge [ verbose ] [ path initial ] [ pop ] [ n ]" >&2;
+            echo "pathmunge [ verbose ] [ path initial ] [ usempi ] [ MPI-variant | list ]" >&2;
             echo >&2;
             echo "verbose - turn on debugging messages about what is happening in function" >&2;
             echo "path - set the starting path to initial. New path is echoed to stdout" >&2;
@@ -634,11 +588,11 @@ pathmunge () {
             echo "start - synonym for prepend." >&2;
             echo "end - synonym for append." >&2;
             echo "swap - exchange positions of two elements in path." >&2;
-	    echo "shift - remove n items from start of path. n defaults to 1." >&2;
-	    echo "pop - remove n items from end of path. n defaults to 1." >&2;
-	    echo "usempi - from a list of MPI variants registered with mpi-selector" >&2;
-	    echo "         use the requested one by prepending its paths." >&2;
-	    echo "         If list is given, it lists the variants known to mpi-selector." >&2;
+            echo "shift - remove n items from start of path. n defaults to 1." >&2;
+            echo "pop - remove n items from end of path. n defaults to 1." >&2;
+            echo "usempi - from a list of MPI variants registered with mpi-selector" >&2;
+            echo "         use the requested one by prepending its paths." >&2;
+            echo "         If list is given, it lists the variants known to mpi-selector." >&2;
             echo >&2;
             echo "All path elements must be one path element. Elements with a ':'" >&2;
             echo "are ignored." >&2;
@@ -651,72 +605,70 @@ pathmunge () {
             ;;
         prepend|append|start|end|remove|delete|unshift|push)
             ;;
-	usempi)
-	    #
-	    # This is a special case to allow quick PATH switches.
-	    #
-	    local mpiselect= mpidatadir= mpivariant= result=;
-	    mpiselect=$(type -path mpi-selector);
-	    mpidatadir=$(/bin/grep 'my \$data_dir = ' ${mpiselect});
-	    if [ ! -n "${mpidatadir}" ];
-	    then
-		echo "Unable to find MPI selector data directory." >&2;
-		return 2;
-	    fi;
-	    
-	    mpidatadir=${mpidatadir##* \"};
-	    mpidatadir="${mpidatadir%\";}";
-	    splice_debug "mpi-selector data directory is: ${mpidatadir}";
-	    if cd ${mpidatadir} &> /dev/null;
-	    then
-		    :
-	    else
-	        echo "Unable to cd to mpi-selector data directory." >&2;
-	        return 1;
-	    fi;
+        usempi)
+            # This is a special case to allow quick PATH switches.
+            local mpiselect= mpidatadir= mpivariant= result=;
+            mpiselect=$(type -path mpi-selector);
+            mpidatadir=$(/bin/grep 'my \$data_dir = ' ${mpiselect});
+            if [ ! -n "${mpidatadir}" ];
+            then
+                echo "Unable to find MPI selector data directory." >&2;
+                return 2;
+            fi;
 
-	    if [ "${1}" = "list" ];
-	    then
-	        /bin/ls -C *.sh | /bin/sed -e 's@\.sh$@@g' -e 's@\.sh[[:space:]]@ @g'
-	        cd - &> /dev/null;
-	        return 0;
-	    fi
-		
-	    mpivariant="${1}";
-	    if [ -z "${mpivariant}" ];
-	    then
-		echo "No MPI variant requested" >&2;
-		cd - &> /dev/null;
-		return 1;
-	    fi;
-	    splice_debug "Use requested MPI variant: ${mpivariant}";
-		
-	    case ${mpivariant} in
-		*/*)
-	            echo "No directories allowed in MPI variant" >&2;
-		    cd - &> /dev/null;
-		    return 1;
-		    ;;
-		*)
-		;;
+            mpidatadir=${mpidatadir##* \"};
+            mpidatadir="${mpidatadir%\";}";
+            splice_debug "mpi-selector data directory is: ${mpidatadir}";
+            if cd ${mpidatadir} &> /dev/null;
+            then
+                    :
+            else
+                echo "Unable to cd to mpi-selector data directory." >&2;
+                return 1;
+            fi;
+
+            if [ "${1}" = "list" ];
+            then
+                /bin/ls -C *.sh | /bin/sed -e 's@\.sh$@@g' -e 's@\.sh[[:space:]]@ @g'
+                cd - &> /dev/null;
+                return 0;
+            fi
+
+            mpivariant="${1}";
+            if [ -z "${mpivariant}" ];
+            then
+                echo "No MPI variant requested" >&2;
+                cd - &> /dev/null;
+                return 1;
+            fi;
+            splice_debug "Use requested MPI variant: ${mpivariant}";
+
+            case ${mpivariant} in
+                */*)
+                    echo "No directories allowed in MPI variant" >&2;
+                    cd - &> /dev/null;
+                    return 1;
+                    ;;
+                *)
+                ;;
             esac;
 
             if [ -f "./${mpivariant}.sh" ];
-	    then
-		splice_debug "Use MPI variant ${mpivariant}" >&2;
-		. ./${mpivariant}.sh;
-		result=0;
-	    elif [ -f "./${mpivariant}" ];
-	    then
-		splice_debug "Use MPI variant ${mpivariant%.sh}" >&2;
-		. ./${mpivariant};
-		result=0;
-	    else
-		echo "Unable to find requested MPI variant: ${mpivariant}" >&2;
-	    fi;
-	    cd - &> /dev/null;
-	    return ${result};
-	    ;;
+            then
+                splice_debug "Use MPI variant ${mpivariant}" >&2;
+                . ./${mpivariant}.sh;
+                result=0;
+            elif [ -f "./${mpivariant}" ];
+            then
+                splice_debug "Use MPI variant ${mpivariant%.sh}" >&2;
+                . ./${mpivariant};
+                result=0;
+            else
+                echo "Unable to find requested MPI variant: ${mpivariant}" >&2;
+            fi;
+            cd - &> /dev/null;
+            return ${result};
+            ;;
         before|after)
             if [ -z "$1" ];
             then
@@ -743,19 +695,19 @@ pathmunge () {
             return 0;
             ;;
         shift)
-	    splice_debug "pathmunge: start shift. check for n argument";
+            splice_debug "pathmunge: start shift. check for n argument";
             if [ $# -gt 1 ];
             then
                 echo "pathmunge shift takes at most one argument, n, the number of elements to remove." >&2;
                 return 1;
             elif [ $# -eq 0 ];
             then
-	        splice_debug "pathmunge: shift, no n supplied";
+                splice_debug "pathmunge: shift, no n supplied";
                 :
             else
                 case "${1}" in
                 [0-9]|[0-9][0-9]|[0-9][0-9][0-9])
-	            splice_debug "pathmunge: shift: set n to ${1}";
+                    splice_debug "pathmunge: shift: set n to ${1}";
                     n="${1}";
                     shift;
                     ;;
@@ -766,42 +718,42 @@ pathmunge () {
                     ;;
                 esac;
             fi;
-	    splice_debug "pathmunge: shift: start while loop";
-	    splice_debug "pathmunge: shift: path = ${path}";
+            splice_debug "pathmunge: shift: start while loop";
+            splice_debug "pathmunge: shift: path = ${path}";
             while [ ${n} -gt 0 ];
             do
-	        # Remember here that path has a ':' prepended and appended while working.
+                # Remember here that path has a ':' prepended and appended while working.
                 case ${path} in
                 :*:*:)
-	            # Strip the leading ':' off, so we can pattern-match off the first element.
-	            path=${path#:};
-	            splice_debug "pathmunge: shift: remove first element from path: ${path%%:*}";
-	            # Pull out the first element, then prepend a ':'.
+                    # Strip the leading ':' off, so we can pattern-match off the first element.
+                    path=${path#:};
+                    splice_debug "pathmunge: shift: remove first element from path: ${path%%:*}";
+                    # Pull out the first element, then prepend a ':'.
                     path=${path:+:}${path#*:};
                     ;;
                 *)
-	            splice_debug "pathmunge: shift: remove last element from path: ${path}";
+                    splice_debug "pathmunge: shift: remove last element from path: ${path}";
                     path=;
                     ;;
                 esac;
                 n=$[n - 1];
             done;
-	    splice_debug "pathmunge: shift: end with path: ${path}";
+            splice_debug "pathmunge: shift: end with path: ${path}";
             ;;
         pop)
-	    splice_debug "pathmunge: start pop. check for n argument.";
+            splice_debug "pathmunge: start pop. check for n argument.";
             if [ $# -gt 1 ];
             then
                 echo "pathmunge pop takes at most one argument, n, the number of elements to remove." >&2;
                 return 1;
             elif [ $# -eq 0 ];
             then
-	        splice_debug "pathmunge: pop, no n supplied";
+                splice_debug "pathmunge: pop, no n supplied";
                 :
             else
                 case "${1}" in
                 [0-9]|[0-9][0-9]|[0-9][0-9][0-9])
-	            splice_debug "pathmunge: pop: set n to ${1}";
+                    splice_debug "pathmunge: pop: set n to ${1}";
                     n="${1}";
                     shift;
                     ;;
@@ -812,26 +764,26 @@ pathmunge () {
                     ;;
                 esac;
             fi;
-	    splice_debug "pathmunge: pop: start while loop";
+            splice_debug "pathmunge: pop: start while loop";
             while [ ${n} -gt 0 ];
             do
-	        # Remember here that path has a ':' appended and prepended while working.
+                # Remember here that path has a ':' appended and prepended while working.
                 case ${path} in
                 :*:*:)
-	            # Strip the trailing ':' off, so we can pattern match off the last element.
-	            path=${path%:};
-	            splice_debug "pathmunge: pop:  prune last element from path: ${path##*:}";
-	            # Pull off the last element, then append a ':' again.
+                    # Strip the trailing ':' off, so we can pattern match off the last element.
+                    path=${path%:};
+                    splice_debug "pathmunge: pop:  prune last element from path: ${path##*:}";
+                    # Pull off the last element, then append a ':' again.
                     path=${path%:*}${path:+:};
                     ;;
                 *)
-	            splice_debug "pathmunge: pop: remove last element from path:";
+                    splice_debug "pathmunge: pop: remove last element from path:";
                     path=;
                     ;;
                 esac;
                 n=$[n - 1];
             done;
-	    splice_debug "pathmunge: end pop with path: ${path}";
+            splice_debug "pathmunge: end pop with path: ${path}";
             ;;
         swap)
             # This one is peculiar, because it only takes two elements.
@@ -902,17 +854,13 @@ pathmunge () {
     esac;
 
     splice_debug "pathmunge: start into path elements";
-    #
     # For each element to be acted upon:
     #   - Remove it from the path.
     #   - Reinsert it, if necessary, at the desired location.
-    #
     for pe in "$@";
     do
         splice_debug "pathmunge: process pe = >${pe}<";
-        #
         # Check that the user hasn't given a chunk of path...
-        #
         case "${pe}" in
             *:*)
                 echo "${pe} contains a separator :, ignoring it";
@@ -939,7 +887,7 @@ pathmunge () {
         done;
         splice_debug "pathmunge: done removing ${pe} from path";
 
-        # If we are removing elements, then we are done with this 
+        # If we are removing elements, then we are done with this
         # pass through the loop.
         case ${verb} in
             remove|delete)
@@ -959,27 +907,25 @@ pathmunge () {
         # Put the path element into the path in the correct place.
         case ${verb} in
             start|prepend|unshift)
-		splice_debug "pathmunge: prepend ${pe} onto ${path}";
+                splice_debug "pathmunge: prepend ${pe} onto ${path}";
                 path=":${pe}${path}";
                 ;;
             end|append|push)
-		splice_debug "pathmunge: append ${pe} onto ${path}";
+                splice_debug "pathmunge: append ${pe} onto ${path}";
                 path="${path}${pe}:";
                 ;;
             before)
-		splice_path "pathmunge: insert ${pe} before ${location} in ${path}";
+                splice_path "pathmunge: insert ${pe} before ${location} in ${path}";
                 path="${path%%:${location}:*}:${pe}:${location}${path#*:${location}}";
                 ;;
             after)
-		splice_path "pathmunge: insert ${pe} after ${location} in ${path}";
+                splice_path "pathmunge: insert ${pe} after ${location} in ${path}";
                 path="${path%%:${location}:*}:${location}:${pe}${path#*:${location}}";
                 ;;
         esac;
     done;
 
-    #
     # Cleanup and either echo the new path or set PATH.
-    #
     path=$(remove_superfluous_colons "${path}");
 
     case "${setpath}" in
@@ -992,17 +938,14 @@ pathmunge () {
     esac;
 }
 
-#
+
 # This is a short-circuit for when we are sourcing this file.
 # Remove this to run it as an executable.
-#
 splice_debug=0;
 return 0 &> /dev/null;
 
-#
 # Check to see how we got here.
 # Were we sourced or exec'd?
-#
 PROG="${0##*/}";
 PROG="${0%.new}";
 PROG="${0%.sh}";
@@ -1038,8 +981,3 @@ case ${0} in
         # echo ${PATH}
         ;;
 esac;
-
-# Local Variables:
-# vim: set filetype=sh:
-# mode: ksh
-# End:
