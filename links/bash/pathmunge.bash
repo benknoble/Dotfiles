@@ -150,7 +150,6 @@ splice () {
             echo "splice [ verbose ] [ path initial ] [ swap ] [ element1 ] [ element2 ]" >&2
             echo "splice [ verbose ] [ path initial ] [ shift ] [ n ]" >&2
             echo "splice [ verbose ] [ path initial ] [ pop ] [ n ]" >&2
-            echo "splice [ verbose ] [ path initial ] [ usempi ] [ MPI-variant | list ]" >&2
             echo >&2
             echo "verbose - turn on debugging messages about what is happening inside function" >&2
             echo "path - set the starting path to initial. New path is echoed to stdout" >&2
@@ -166,15 +165,12 @@ splice () {
             echo "swap - swap the locations of the two elements given in the path." >&2
             echo "shift - remove 'n' items from start of path. n defaults to 1." >&2
             echo "pop - remove 'n' items from end of path. n defaults to 1." >&2
-            echo "usempi - from a list of MPI variants registered with mpi-selector" >&2
-            echo "         use the requested one by prepending its paths." >&2
-            echo "         If list is given, it lists the variants known to mpi-selector." >&2;
             echo >&2
             echo "All path elements must be one path element. Elements with a ':'" >&2
             echo "are ignored." >&2
             echo >&2
             echo "The current path is set to:" >&2
-            path=$(remove_superfluous_colons ${path})
+            path="$(remove_superfluous_colons "${path}")"
             echo "${path}" >&2
             splice_debug=0
             return 0
@@ -203,63 +199,6 @@ splice () {
             echo "${path}"
             splice_debug=0
             return 0
-            ;;
-        usempi)
-            # This is a special case to allow quick PATH switches.
-            local mpiselect= mpidatadir= mpivariant= result=
-            mpiselect=$(type -path mpi-selector)
-            mpidatadir=$(/bin/grep 'my \$data_dir = ' ${mpiselect})
-            if [ ! -n "${mpidatadir}" ]; then
-                echo "Unable to find MPI selector data directory." >&2
-                return 2
-            fi
-
-            mpidatadir=${mpidatadir##* \"}
-            mpidatadir="${mpidatadir%\"}"
-            # echo "We think that the mpi-selector data directory is: ${mpidatadir}"
-            if cd ${mpidatadir} &> /dev/null; then
-                    :
-            else
-                echo "Unable to cd to mpi-selector data directory." >&2
-                return 1
-            fi
-
-            if [ "${1}" = "list" ]; then
-                /bin/ls -C *.sh | /bin/sed -e 's@\.sh$@@g' -e 's@\.sh[[:space:]]@ @g'
-                cd - &> /dev/null
-                return 0
-            fi
-
-            mpivariant="${1}"
-            if [ -z "${mpivariant}" ]; then
-                echo "No MPI variant requested" >&2
-                cd - &> /dev/null
-                return 1
-            fi
-
-            case ${mpivariant} in
-                */*)
-                    echo "No directories allowed in MPI variant" >&2
-                    cd - &> /dev/null
-                    return 1
-                    ;;
-                *)
-                ;;
-            esac
-
-            if [ -f "./${mpivariant}.sh" ]; then
-                echo "Use MPI variant ${mpivariant}" >&2
-                . ./${mpivariant}.sh
-                result=0
-            elif [ -f "./${mpivariant}" ]; then
-                echo "Use MPI variant ${mpivariant%.sh}" >&2
-                . ./${mpivariant}
-                result=0
-            else
-                echo "Unable to find requested MPI variant: ${mpivariant}" >&2
-            fi
-            cd - &> /dev/null
-            return ${result}
             ;;
         start|end|remove|delete|prepend|append|unshift|push)
             ;;
@@ -551,7 +490,6 @@ pathmunge () {
             echo "pathmunge [ verbose ] [ path initial ] [ swap ] [ element ] [ element ]" >&2
             echo "pathmunge [ verbose ] [ path initial ] [ shift ] [ n ]" >&2
             echo "pathmunge [ verbose ] [ path initial ] [ pop ] [ n ]" >&2
-            echo "pathmunge [ verbose ] [ path initial ] [ usempi ] [ MPI-variant | list ]" >&2
             echo >&2
             echo "verbose - turn on debugging messages about what is happening in function" >&2
             echo "path - set the starting path to initial. New path is echoed to stdout" >&2
@@ -567,9 +505,6 @@ pathmunge () {
             echo "swap - exchange positions of two elements in path." >&2
             echo "shift - remove n items from start of path. n defaults to 1." >&2
             echo "pop - remove n items from end of path. n defaults to 1." >&2
-            echo "usempi - from a list of MPI variants registered with mpi-selector" >&2
-            echo "         use the requested one by prepending its paths." >&2
-            echo "         If list is given, it lists the variants known to mpi-selector." >&2;
             echo >&2
             echo "All path elements must be one path element. Elements with a ':'" >&2
             echo "are ignored." >&2
@@ -581,64 +516,6 @@ pathmunge () {
             return 0
             ;;
         prepend|append|start|end|remove|delete|unshift|push)
-            ;;
-        usempi)
-            # This is a special case to allow quick PATH switches.
-            local mpiselect= mpidatadir= mpivariant= result=
-            mpiselect=$(type -path mpi-selector)
-            mpidatadir=$(/bin/grep 'my \$data_dir = ' ${mpiselect})
-            if [ ! -n "${mpidatadir}" ]; then
-                echo "Unable to find MPI selector data directory." >&2
-                return 2
-            fi
-
-            mpidatadir=${mpidatadir##* \"}
-            mpidatadir="${mpidatadir%\"}"
-            splice_debug "mpi-selector data directory is: ${mpidatadir}"
-            if cd ${mpidatadir} &> /dev/null; then
-                    :
-            else
-                echo "Unable to cd to mpi-selector data directory." >&2
-                return 1
-            fi
-
-            if [ "${1}" = "list" ]; then
-                /bin/ls -C *.sh | /bin/sed -e 's@\.sh$@@g' -e 's@\.sh[[:space:]]@ @g'
-                cd - &> /dev/null
-                return 0
-            fi
-
-            mpivariant="${1}"
-            if [ -z "${mpivariant}" ]; then
-                echo "No MPI variant requested" >&2
-                cd - &> /dev/null
-                return 1
-            fi
-            splice_debug "Use requested MPI variant: ${mpivariant}"
-
-            case ${mpivariant} in
-                */*)
-                    echo "No directories allowed in MPI variant" >&2
-                    cd - &> /dev/null
-                    return 1
-                    ;;
-                *)
-                ;;
-            esac
-
-            if [ -f "./${mpivariant}.sh" ]; then
-                splice_debug "Use MPI variant ${mpivariant}" >&2
-                . ./${mpivariant}.sh
-                result=0
-            elif [ -f "./${mpivariant}" ]; then
-                splice_debug "Use MPI variant ${mpivariant%.sh}" >&2
-                . ./${mpivariant}
-                result=0
-            else
-                echo "Unable to find requested MPI variant: ${mpivariant}" >&2
-            fi
-            cd - &> /dev/null
-            return ${result}
             ;;
         before|after)
             if [ -z "$1" ]; then
