@@ -37,10 +37,10 @@ pathmunge () {
     # First remove the ones from the beginning.
     # Second remove ones from the end.
     # Third remove double colons from the middle.
-    if [[ $path =~ :*(.*) ]]; then
+    if [[ $path =~ :+(.*) ]]; then
       path="${BASH_REMATCH[1]}"
     fi
-    if [[ $path =~ (.*):* ]]; then
+    if [[ $path =~ (.*):+ ]]; then
       path="${BASH_REMATCH[1]}"
     fi
 
