@@ -20,9 +20,13 @@
 # before or after.
 pathmunge () {
 
+  log() {
+    printf '%s\n' "$@" >&2
+  }
+
   splice_debug() {
     if (( splice_debug != 0 )) ; then
-      printf '%s\n' "$@" >&2
+      log "$@"
     fi
   }
 
@@ -64,38 +68,37 @@ pathmunge () {
   }
 
   usage () {
-    echo "Usage: pathmunge ():" >&2
-    echo >&2
-    echo "pathmunge adds, deletes and moves elements around in a colon-delimited path" >&2
-    echo "pathmunge will insert a missing element with a move command, if it makes" >&2;
-    echo "sense to be able to do so." >&2
-    echo >&2
-    echo "pathmunge [ verbose ] [ path initial ] [ prepend | unshift | append | push | remove | delete ] [ element+ ]" >&2
-    echo "pathmunge [ verbose ] [ path initial ] [ print | show | list ]" >&2
-    echo "pathmunge [ verbose ] [ path initial ] [ before | after ] [ element ] [ element+ ]" >&2
-    echo "pathmunge [ verbose ] [ path initial ] [ start | end ] [ element+ ]" >&2
-    echo "pathmunge [ verbose ] [ path initial ] [ swap ] [ element ] [ element ]" >&2
-    echo "pathmunge [ verbose ] [ path initial ] [ shift ] [ n ]" >&2
-    echo "pathmunge [ verbose ] [ path initial ] [ pop ] [ n ]" >&2
-    echo >&2
-    echo "verbose - turn on debugging messages about what is happening in function" >&2
-    echo "path - set the starting path to initial. New path is echoed to stdout" >&2
-    echo "       otherwise, start with PATH and set PATH to new value." >&2
-    echo "prepend,unshift - add elements one at a time to the beginning of path" >&2
-    echo "append,push - add elements one at a time to the end of path" >&2
-    echo "print, show, list - echo path to stdout" >&2
-    echo "remove, delete - remove the elements from path" >&2
-    echo "before - insert elements one at a time before the element given." >&2
-    echo "after - insert elements one at a time after the element given." >&2
-    echo "start - synonym for prepend." >&2;
-    echo "end - synonym for append." >&2;
-    echo "swap - exchange positions of two elements in path." >&2
-    echo "shift - remove n items from start of path. n defaults to 1." >&2
-    echo "pop - remove n items from end of path. n defaults to 1." >&2
-    echo >&2
-    echo "All path elements must be one path element. Elements with a ':'" >&2
-    echo "are ignored." >&2
-    echo >&2
+    log "Usage: pathmunge
+
+pathmunge adds, deletes and moves elements around in a colon-delimited path
+pathmunge will insert a missing element with a move command, if it makes;
+sense to be able to do so.
+
+pathmunge [ verbose ] [ path initial ] [ prepend | unshift | append | push | remove | delete ] [ element+ ]
+pathmunge [ verbose ] [ path initial ] [ print | show | list ]
+pathmunge [ verbose ] [ path initial ] [ before | after ] [ element ] [ element+ ]
+pathmunge [ verbose ] [ path initial ] [ start | end ] [ element+ ]
+pathmunge [ verbose ] [ path initial ] [ swap ] [ element ] [ element ]
+pathmunge [ verbose ] [ path initial ] [ shift ] [ n ]
+pathmunge [ verbose ] [ path initial ] [ pop ] [ n ]
+
+verbose - turn on debugging messages about what is happening in function
+path - set the starting path to initial. New path is echoed to stdout
+        otherwise, start with PATH and set PATH to new value.
+prepend,unshift - add elements one at a time to the beginning of path
+append,push - add elements one at a time to the end of path
+print, show, list - echo path to stdout
+remove, delete - remove the elements from path
+before - insert elements one at a time before the element given.
+after - insert elements one at a time after the element given.
+start - synonym for prepend.;
+end - synonym for append.;
+swap - exchange positions of two elements in path.
+shift - remove n items from start of path. n defaults to 1.
+pop - remove n items from end of path. n defaults to 1.
+
+All path elements must be one path element. Elements with a ':'
+are ignored."
   }
 
   local splice_debug=0
