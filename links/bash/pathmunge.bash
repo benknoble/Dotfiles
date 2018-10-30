@@ -20,10 +20,10 @@
 # before or after.
 pathmunge () {
 
-  splice_debug=0
-
   splice_debug() {
-    [[ ${splice_debug} -ne 0 ]] && echo "$@" >&2
+    if (( splice_debug != 0 )) ; then
+      printf '%s\n' "$@" >&2
+    fi
   }
 
   remove_superfluous_colons () {
@@ -33,27 +33,12 @@ pathmunge () {
     # First remove the ones from the beginning.
     # Second remove ones from the end.
     # Third remove double colons from the middle.
-    while true; do
-      case "${path}" in
-        :*)
-          path="${path#:}"
-          ;;
-        *)
-          break
-          ;;
-      esac
-    done
-
-    while true; do
-      case "${path}" in
-        *:)
-          path="${path%:}"
-          ;;
-        *)
-          break
-          ;;
-      esac
-    done
+    if [[ $path =~ :*(.*) ]]; then
+      path="${BASH_REMATCH[1]}"
+    fi
+    if [[ $path =~ (.*):* ]]; then
+      path="${BASH_REMATCH[1]}"
+    fi
 
     while true; do
       case "${path}" in
@@ -66,28 +51,19 @@ pathmunge () {
       esac
     done
 
-    echo "${path}"
+    printf '%s\n' "${path}"
   }
 
-  # verbs in this script can zero, one or two
-  # leading dashes.
+  # verbs in this script can take zero, one or two leading dashes.
   verbify () {
     local verb="$1"
-
-    while true; do
-      case "${verb}" in
-        -*)
-          verb="${verb#-}"
-          ;;
-        *)
-          break
-          ;;
-      esac
-    done
-
-    echo "${verb}"
+    if [[ $verb =~ -{0,2}(.*) ]]; then
+      verb="${BASH_REMATCH[1]}"
+    fi
+    printf '%s\n' "${verb}"
   }
 
+  local splice_debug=0
   local path="${PATH}"
   local verb pe
   local setpath="yes"
@@ -97,7 +73,7 @@ pathmunge () {
   local n=1
 
   case "$(verbify "$1")" in
-    verbose|-verbose|--verbose|debug|-debug|--debug)
+    verbose|debug)
       splice_debug=1
       shift
       ;;
@@ -105,19 +81,17 @@ pathmunge () {
       ;;
   esac
 
-  # Does the user wish to build a different path?
   case "$1" in
-    path|-path|--path)
+    path)
       path="$2"
       setpath="no"
-      shift shift
+      shift 2
       ;;
     *)
       ;;
   esac
 
   path="$(remove_superfluous_colons "${path}")"
-
   # Now add a : to the beginning and end of path for use in pattern
   # matching.
   path=":${path}:"
