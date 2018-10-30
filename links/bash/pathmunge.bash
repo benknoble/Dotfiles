@@ -1,10 +1,9 @@
 #! /usr/bin/env bash
 
 # This shell script contains two different major path munging functions:
-# splice
 # pathmunge
 
-# These two functions take the following verbs
+# This function take the following verbs
 # path - to supply an initial path, otherwise use PATH
 # usage, help - print out a help message on how to use them.
 # print, show, list - print out the current path.
@@ -17,79 +16,78 @@
 # pop - remove last item from path
 # push - add new elements to the end of the path.
 
-set -euo pipefail
-
-splice_debug () {
-  [[ ${splice_debug} -ne 0 ]] && echo "$@" >&2
-}
-
-remove_superfluous_colons () {
-  local path="$1"
-
-  # Remove superfluous : characters from path.
-  # First remove the ones from the beginning.
-  # Second remove ones from the end.
-  # Third remove double colons from the middle.
-  while true; do
-    case "${path}" in
-      :*)
-        path="${path#:}"
-        ;;
-      *)
-        break
-        ;;
-    esac
-  done
-
-  while true; do
-    case "${path}" in
-      *:)
-        path="${path%:}"
-        ;;
-      *)
-        break
-        ;;
-    esac
-  done
-
-  while true; do
-    case "${path}" in
-      *::*)
-        path="${path//::/:}"
-        ;;
-      *)
-        break
-        ;;
-    esac
-  done
-
-  echo "${path}"
-}
-
-# verbs in this script can zero, one or two
-# leading dashes.
-verbify () {
-  local verb="$1"
-
-  while true; do
-    case "${verb}" in
-      -*)
-        verb="${verb#-}"
-        ;;
-      *)
-        break
-        ;;
-    esac
-  done
-
-  echo "${verb}"
-}
-
-# pathmunge -
-# A different form of splice. This does not presume
-# the presence of the elements being inserted before
-# or after.
+# pathmunge - This does not presume the presence of the elements being inserted
+# before or after.
 pathmunge () {
+
+  splice_debug=0
+
+  splice_debug() {
+    [[ ${splice_debug} -ne 0 ]] && echo "$@" >&2
+  }
+
+  remove_superfluous_colons () {
+    local path="$1"
+
+    # Remove superfluous : characters from path.
+    # First remove the ones from the beginning.
+    # Second remove ones from the end.
+    # Third remove double colons from the middle.
+    while true; do
+      case "${path}" in
+        :*)
+          path="${path#:}"
+          ;;
+        *)
+          break
+          ;;
+      esac
+    done
+
+    while true; do
+      case "${path}" in
+        *:)
+          path="${path%:}"
+          ;;
+        *)
+          break
+          ;;
+      esac
+    done
+
+    while true; do
+      case "${path}" in
+        *::*)
+          path="${path//::/:}"
+          ;;
+        *)
+          break
+          ;;
+      esac
+    done
+
+    echo "${path}"
+  }
+
+  # verbs in this script can zero, one or two
+  # leading dashes.
+  verbify () {
+    local verb="$1"
+
+    while true; do
+      case "${verb}" in
+        -*)
+          verb="${verb#-}"
+          ;;
+        *)
+          break
+          ;;
+      esac
+    done
+
+    echo "${verb}"
+  }
+
   local path="${PATH}"
   local verb pe
   local setpath="yes"
@@ -429,26 +427,3 @@ pathmunge () {
       ;;
   esac
 }
-
-splice_debug=0
-func=pathmunge
-
-case "$@" in
-  *path\ *)
-    p=''
-    ;;
-  *)
-    p="path ${PATH}"
-    ;;
-esac
-
-case "${0}" in
-  *.bash|*.sh)
-    "${func}" "${p}${p:+ }" "$@"
-    ;;
-  *bash)
-    ;;
-  *)
-    "${func}" "${p}${p:+ }" "$@"
-    ;;
-esac
