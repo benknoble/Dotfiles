@@ -63,6 +63,41 @@ pathmunge () {
     printf '%s\n' "${verb}"
   }
 
+  usage () {
+    echo "Usage: pathmunge ():" >&2
+    echo >&2
+    echo "pathmunge adds, deletes and moves elements around in a colon-delimited path" >&2
+    echo "pathmunge will insert a missing element with a move command, if it makes" >&2;
+    echo "sense to be able to do so." >&2
+    echo >&2
+    echo "pathmunge [ verbose ] [ path initial ] [ prepend | unshift | append | push | remove | delete ] [ element+ ]" >&2
+    echo "pathmunge [ verbose ] [ path initial ] [ print | show | list ]" >&2
+    echo "pathmunge [ verbose ] [ path initial ] [ before | after ] [ element ] [ element+ ]" >&2
+    echo "pathmunge [ verbose ] [ path initial ] [ start | end ] [ element+ ]" >&2
+    echo "pathmunge [ verbose ] [ path initial ] [ swap ] [ element ] [ element ]" >&2
+    echo "pathmunge [ verbose ] [ path initial ] [ shift ] [ n ]" >&2
+    echo "pathmunge [ verbose ] [ path initial ] [ pop ] [ n ]" >&2
+    echo >&2
+    echo "verbose - turn on debugging messages about what is happening in function" >&2
+    echo "path - set the starting path to initial. New path is echoed to stdout" >&2
+    echo "       otherwise, start with PATH and set PATH to new value." >&2
+    echo "prepend,unshift - add elements one at a time to the beginning of path" >&2
+    echo "append,push - add elements one at a time to the end of path" >&2
+    echo "print, show, list - echo path to stdout" >&2
+    echo "remove, delete - remove the elements from path" >&2
+    echo "before - insert elements one at a time before the element given." >&2
+    echo "after - insert elements one at a time after the element given." >&2
+    echo "start - synonym for prepend." >&2;
+    echo "end - synonym for append." >&2;
+    echo "swap - exchange positions of two elements in path." >&2
+    echo "shift - remove n items from start of path. n defaults to 1." >&2
+    echo "pop - remove n items from end of path. n defaults to 1." >&2
+    echo >&2
+    echo "All path elements must be one path element. Elements with a ':'" >&2
+    echo "are ignored." >&2
+    echo >&2
+  }
+
   local splice_debug=0
   local path="${PATH}"
   local verb pe
@@ -106,38 +141,7 @@ pathmunge () {
   # Validate the verb
   case "${verb:-''}" in
     usage|help)
-      echo "Usage: pathmunge ():" >&2
-      echo >&2
-      echo "pathmunge adds, deletes and moves elements around in a colon-delimited path" >&2
-      echo "pathmunge will insert a missing element with a move command, if it makes" >&2;
-      echo "sense to be able to do so." >&2
-      echo >&2
-      echo "pathmunge [ verbose ] [ path initial ] [ prepend | unshift | append | push | remove | delete ] [ element+ ]" >&2
-      echo "pathmunge [ verbose ] [ path initial ] [ print | show | list ]" >&2
-      echo "pathmunge [ verbose ] [ path initial ] [ before | after ] [ element ] [ element+ ]" >&2
-      echo "pathmunge [ verbose ] [ path initial ] [ start | end ] [ element+ ]" >&2
-      echo "pathmunge [ verbose ] [ path initial ] [ swap ] [ element ] [ element ]" >&2
-      echo "pathmunge [ verbose ] [ path initial ] [ shift ] [ n ]" >&2
-      echo "pathmunge [ verbose ] [ path initial ] [ pop ] [ n ]" >&2
-      echo >&2
-      echo "verbose - turn on debugging messages about what is happening in function" >&2
-      echo "path - set the starting path to initial. New path is echoed to stdout" >&2
-      echo "       otherwise, start with PATH and set PATH to new value." >&2
-      echo "prepend,unshift - add elements one at a time to the beginning of path" >&2
-      echo "append,push - add elements one at a time to the end of path" >&2
-      echo "print, show, list - echo path to stdout" >&2
-      echo "remove, delete - remove the elements from path" >&2
-      echo "before - insert elements one at a time before the element given." >&2
-      echo "after - insert elements one at a time after the element given." >&2
-      echo "start - synonym for prepend." >&2;
-      echo "end - synonym for append." >&2;
-      echo "swap - exchange positions of two elements in path." >&2
-      echo "shift - remove n items from start of path. n defaults to 1." >&2
-      echo "pop - remove n items from end of path. n defaults to 1." >&2
-      echo >&2
-      echo "All path elements must be one path element. Elements with a ':'" >&2
-      echo "are ignored." >&2
-      echo >&2
+      usage
       echo "The current path is set to:" >&2
       path="$(remove_superfluous_colons "${path}")"
       echo "${path}" >&2
