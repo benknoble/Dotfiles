@@ -17,6 +17,8 @@
 # pop - remove last item from path
 # push - add new elements to the end of the path.
 
+set -euo pipefail
+
 splice_debug () {
   [[ ${splice_debug} -ne 0 ]] && echo "$@" >&2
 }
@@ -83,355 +85,12 @@ verbify () {
   echo "${verb}"
 }
 
-# splice
-# splice the path with a set of atomic operations including
-# prepend and append for adding new elements to the path.
-# before and after for moving existing elements around in the path.
-# print, show, list all echo the current path.
-# remove, delete remove the existing elements from the path.
-# usage, help print out a usage message.
-splice () {
-  local path="${PATH}" newpath location
-  local setpath="yes"
-  # These next three are used in a swap.
-  local first middle last
-  # n is used for shift, pop
-  local n=1
-
-  case "$(verbify "$1")" in
-    verbose|-verbose|--verbose|debug|-debug|--debug)
-      splice_debug=1
-      shift
-      ;;
-    *)
-      ;;
-  esac
-
-  # Does the user wish to build a different path?
-  case "$(verbify "$1")" in
-    path|-path|--path)
-      path="$2"
-      setpath="no"
-      shift shift
-      ;;
-    *)
-      ;;
-  esac
-
-  # Unload path
-
-  path="$(remove_superfluous_colons "${path}")"
-
-  # Now make sure that we have one leading and trailing :
-  path=:"${path}":
-  splice_debug "splice: path is now ${path}"
-
-  # The location is next and is specified with or without --
-  verb="$(verbify "$1")"
-  shift
-
-  # Check the verb's validity.
-  # In the case of before and after ensure that the element before or after which
-  # the given elements are placed actually exists in the path.
-  case "${verb}" in
-    usage|help)
-      echo "Usage: splice ():" >&2
-      echo >&2
-      echo "splice adds, deletes and moves elements around in a colon-delimited path" >&2
-      echo "splice will not insert a missing element with a move command." >&2
-      echo "New elements must be added with prepend or append before being moved." >&2
-      echo >&2
-      echo "splice [ verbose ] [ path initial ] [ prepend | unshift | append | push | remove | delete ] [ element+ ]" >&2
-      echo "splice [ verbose ] [ path initial ] [ print | show | list ]" >&2
-      echo "splice [ verbose ] [ path initial ] [ before | after ] [ element ] [ element+ ]" >&2
-      echo "splice [ verbose ] [ path initial ] [ start | end ]" >&2
-      echo "splice [ verbose ] [ path initial ] [ swap ] [ element1 ] [ element2 ]" >&2
-      echo "splice [ verbose ] [ path initial ] [ shift ] [ n ]" >&2
-      echo "splice [ verbose ] [ path initial ] [ pop ] [ n ]" >&2
-      echo >&2
-      echo "verbose - turn on debugging messages about what is happening inside function" >&2
-      echo "path - set the starting path to initial. New path is echoed to stdout" >&2
-      echo "       otherwise, start with PATH and set PATH to new value." >&2
-      echo "prepend,unshift - add elements one at a time to the beginning of path" >&2
-      echo "append,push - add elements one at a time to the end of path" >&2
-      echo "print, show, list - echo path to stdout" >&2
-      echo "remove, delete - remove the elements from path" >&2
-      echo "before - insert elements one at a time before the element given." >&2
-      echo "after - insert elements one at a time after the element given." >&2
-      echo "start - move the given element to the start of the path." >&2
-      echo "end - move the given element to the end of the path." >&2
-      echo "swap - swap the locations of the two elements given in the path." >&2
-      echo "shift - remove 'n' items from start of path. n defaults to 1." >&2
-      echo "pop - remove 'n' items from end of path. n defaults to 1." >&2
-      echo >&2
-      echo "All path elements must be one path element. Elements with a ':'" >&2
-      echo "are ignored." >&2
-      echo >&2
-      echo "The current path is set to:" >&2
-      path="$(remove_superfluous_colons "${path}")"
-      echo "${path}" >&2
-      splice_debug=0
-      return 0
-      ;;
-    before|after)
-      another="$1"
-      splice_debug "splice: another is: ${another}"
-      shift
-      case :"${path}": in
-        *:"${another}":*)
-          splice_debug "splice: Found ${another} in path"
-          ;;
-        *)
-          [[ -t 2 ]] && echo "Warning: Unable to find ${another} in path." >&2
-          path="${path%:}"
-          path="${path#:}"
-          echo "${path}"
-          splice_debug=0
-          return 1
-          ;;
-      esac
-      ;;
-    print|show|list)
-      path="${path#:}"
-      path="${path%:}"
-      echo "${path}"
-      splice_debug=0
-      return 0
-      ;;
-    start|end|remove|delete|prepend|append|unshift|push)
-      ;;
-    shift)
-      if [[ $# -gt 1 ]]; then
-        echo "splice shift takes at most one argument, n, the number of elements to remove." >&2
-        return 1
-      elif [[ $# -eq 0 ]]; then
-        :
-      else
-        case "${1}" in
-          [0-9]|[0-9][0-9]|[0-9][0-9][0-9])
-            n="${1}"
-            shift
-            ;;
-          *)
-            echo "splice shift takes a non-negative numerical argument." >&2
-            shift
-            return 2
-            ;;
-        esac
-      fi
-      while (( n > 0 )); do
-        # Remember here that path has a ':' prepended and appended while working.
-        case "${path}" in
-          :*:*:)
-            # Strip the leading ':' off, so we can pattern-match off the first element.
-            path="${path#:}"
-            splice_debug "splice: shift: remove first element from path: ${path%%:*}"
-            # Pull out the first element, then prepend a ':'.
-            path="${path:+:}${path#*:}"
-            ;;
-          *)
-            path=''
-            ;;
-        esac
-        (( n-- ))
-      done
-      ;;
-    pop)
-      if [[ $# -gt 1 ]]; then
-        echo "splice pop takes at most one argument, n, the number of elements to remove." >&2
-        return 1
-      elif [[ $# -eq 0 ]]; then
-        :
-      else
-        case "${1}" in
-          [0-9]|[0-9][0-9]|[0-9][0-9][0-9])
-            n="${1}"
-            shift
-            ;;
-          *)
-            echo "splice pop takes a non-negative numerical argument." >&2
-            shift
-            return 2
-            ;;
-        esac
-      fi
-      while (( n > 0 )); do
-        # Remember here that path has a ':' appended and prepended while working.
-        case "${path}" in
-          :*:*:)
-            # Strip the trailing ':' off, so we can pattern match off the last element.
-            path="${path%:}"
-            splice_debug "splice: pop:  prune last element from path: ${path##*:}"
-            # Pull off the last element, then append a ':' again.
-            path="${path%:*}${path:+:}"
-            ;;
-          *)
-            path=''
-            ;;
-        esac
-        (( n-- ))
-      done
-      ;;
-    swap)
-      # This one is peculiar, because it only takes two elements.
-      if [[ $# -ne 2 ]]; then
-        echo "splice: swap verb takes exactly two path elements as arguments" >&2
-        echo "${path}"
-        splice_debug=0
-        return 4
-      fi
-
-      if [[ ! -d "${1}"/. ]]; then
-        echo "splice: first path element for swap does not exist as a directory." >&2;
-        echo "${path}"
-        splice_debug=0
-        return 5
-      fi
-
-      if [[ ! -d "${2}"/. ]]; then
-        echo "splice: second path element for swap does not exist as a directory." >&2;
-        echo "${path}"
-        splice_debug=0
-        return 6
-      fi
-
-      splice_debug "splice: swap two existing elements in path"
-      case "${path}" in
-        *:"${1}":"${2}":*|*:"${1}":*:"${2}":*)
-          splice_debug "splice: Case #1"
-          first="${path%%:${1}:*}"
-          middle=":${path#*:${1}:}"
-          splice_debug "splice: middle starts as ${middle}"
-          middle="${middle%:${2}:*}"
-          last="${path##*:${2}:}"
-          splice_debug "splice: first = ${first}"
-          splice_debug "splice: middle = ${middle}"
-          splice_debug "splice: last = ${last}"
-          path="${first}:${2}${middle}:${1}:${last}"
-          ;;
-        *:"${2}":"${1}":*|*:"${2}":*:"${1}":*)
-          splice_debug "splice: Case #2"
-          first="${path%%:${2}:*}"
-          middle=":${path#*:${2}:}"
-          splice_debug "splice: middle starts as ${middle}"
-          middle="${middle%:${1}:*}"
-          last="${path##*:${1}:}"
-          splice_debug "splice: first = ${first}"
-          splice_debug "splice: middle = ${middle}"
-          splice_debug "splice: last = ${last}"
-          path="${first}:${1}${middle}:${2}:${last}"
-          ;;
-        *)
-          echo "Unable to find one or both path elements already in path." >&2
-          echo "${path}"
-          splice_debug=0
-          return 7
-          ;;
-      esac
-      shift shift
-      ;;
-    *)
-      [[ -t 2 ]] && echo "Error: Bad verb ${verb} given for element location" >&2;
-      echo "${path}"
-      splice_debug=0
-      return 1
-      ;;
-  esac
-
-  # Run through each element in the list.
-  # This should be skipped during a swap.
-  for element in "$@"; do
-    splice_debug "splice: element is: ${element}"
-    # First make sure that the thing we want to move is in the path
-    if [[ "${verb}" = "prepend" || "${verb}" = "append" || "${verb}" = "unshift" || "${verb}" = "push" ]]; then
-      :
-    else
-      # For all verbs besides prepend and append we remove the element from the path.
-      splice_debug "splice: remove ${element} from path"
-      case "${path}" in
-        *:"${element}":*)
-          while true; do
-            case "${path}" in
-              *:"${element}":*)
-                splice_debug "splice: remove one occurrence of ${element} from ${path}"
-                splice_debug "   PATH=${path}"
-                path="${path%%:${element}:*}:${path#*:${element}:}"
-                splice_debug "NEWPATH=${path}"
-                ;;
-              *)
-                splice_debug "splice: done removing ${element} from ${path}"
-                break
-                ;;
-            esac
-          done
-          ;;
-        *)
-          [[ -t 2 ]] && echo "Warning: Unable to find ${element} in path." >&2
-          path="${path%:}"
-          path="${path#:}"
-          echo "${path}"
-          splice_debug=0
-          return 1
-          ;;
-      esac
-    fi
-
-    # For all operations other than removal, make sure the thing being spliced into
-    # the path actually exists.
-    # If we are removing elements, then we are done.
-    case "${verb}" in
-      remove|delete)
-        continue
-        ;;
-      *)
-        if [[ ! -d "${element}"/. ]]; then
-          [[ -t 2 ]] && echo "Warning: ${element} is not a directory. Ignored." >&2
-          path="${path%:}"
-          path="${path#:}"
-          echo "${path}"
-          splice_debug=0
-          return 2
-        fi
-        ;;
-    esac
-
-    # Now put the item into the path at the desired location.
-    case "${verb}" in
-      start|prepend|unshift)
-        path=:"${element}${path}"
-        ;;
-      end|append|push)
-        path="${path}${element}":
-        ;;
-      before)
-        path="${path%%:${another}:*}:${element}:${another}:${path#*:${another}:}"
-        ;;
-      after)
-        path="${path%%:${another}:*}:${another}:${element}:${path#*:${another}:}"
-        ;;
-    esac
-  done
-
-  # Now clean up the path and either set PATH or echo the path.
-  splice_debug "At end of loop: path is ${path}"
-
-  path="$(remove_superfluous_colons "${path}")"
-  case "${setpath}" in
-    yes)
-      PATH="${path}"
-      ;;
-    no)
-      echo "${path}"
-      ;;
-  esac
-}
-
 # pathmunge -
 # A different form of splice. This does not presume
 # the presence of the elements being inserted before
 # or after.
 pathmunge () {
-  local path="${PATH}" newpath
+  local path="${PATH}"
   local verb pe
   local setpath="yes"
   # These next three are used in a swap
@@ -508,7 +167,7 @@ pathmunge () {
       echo "are ignored." >&2
       echo >&2
       echo "The current path is set to:" >&2
-      path="$(remove_superfluous_colons ${path})"
+      path="$(remove_superfluous_colons "${path}")"
       echo "${path}" >&2
       splice_debug=0
       return 0
@@ -772,21 +431,7 @@ pathmunge () {
 }
 
 splice_debug=0
-
-# Check to see how we got here.
-# Were we sourced or exec'd?
-PROG="${0##*/}"
-PROG="${0%.new}"
-PROG="${0%.sh}"
-PROG="${0%.bash}"
-case "${PROG}" in
-  *splice*)
-    func=splice
-    ;;
-  *)
-    func=pathmunge
-    ;;
-esac
+func=pathmunge
 
 case "$@" in
   *path\ *)
@@ -797,14 +442,13 @@ case "$@" in
     ;;
 esac
 
-# echo "\$0 is $0"
 case "${0}" in
   *.bash|*.sh)
-    "${func}" "${p}${p:+ }$@"
+    "${func}" "${p}${p:+ }" "$@"
     ;;
   *bash)
     ;;
   *)
-    "${func}" "${p}${p:+ }$@"
+    "${func}" "${p}${p:+ }" "$@"
     ;;
 esac
