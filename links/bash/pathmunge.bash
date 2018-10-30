@@ -17,8 +17,6 @@
 # pop - remove last item from path
 # push - add new elements to the end of the path.
 
-splice_debug=0
-
 splice_debug () {
   [[ ${splice_debug} -ne 0 ]] && echo "$@" >&2
 }
