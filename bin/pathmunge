@@ -771,11 +771,7 @@ pathmunge () {
   esac
 }
 
-
-# This is a short-circuit for when we are sourcing this file.
-# Remove this to run it as an executable.
 splice_debug=0
-return 0 &> /dev/null
 
 # Check to see how we got here.
 # Were we sourced or exec'd?
