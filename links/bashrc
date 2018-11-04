@@ -208,6 +208,12 @@ _pip_completion()
 complete -o default -F _pip_completion pip
 # pip bash completion end
 
+# vault completion
+vault_path="$(command -v vault)"
+if [[ -n "$vault_path" ]] ; then
+  complete -C "$vault_path" vault
+fi
+
 # bash completion
 [[ -r "$bashcomp" ]] && source "$bashcomp"
 # source files in completion_dir
@@ -256,3 +262,4 @@ unset comp_prefix
 unset brew_prefix
 unset OS
 unset brew_fix
+unset vault_path
