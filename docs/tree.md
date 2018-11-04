@@ -26,8 +26,7 @@
 │   ├── itunes
 │   ├── listcmds
 │   ├── loading
-│   ├── msgtest
-│   └── pathmunge
+│   └── msgtest
 ├── bootstrap.sh
 ├── brew
 │   ├── Brewfile
@@ -66,7 +65,8 @@
 │   │   ├── functions.bash
 │   │   ├── gitconfig.bash
 │   │   ├── linux
-│   │   └── mac
+│   │   ├── mac
+│   │   └── pathmunge.bash
 │   ├── bash_profile
 │   ├── bashrc
 │   ├── gitconfig

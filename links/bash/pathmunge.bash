@@ -145,59 +145,49 @@ are ignored."
   case "${verb:-''}" in
     usage|help)
       usage
-      echo "The current path is set to:" >&2
+      log "The current path is set to:"
       path="$(remove_superfluous_colons "${path}")"
-      echo "${path}" >&2
-      splice_debug=0
+      log "${path}"
       return 0
       ;;
     prepend|append|start|end|remove|delete|unshift|push)
       ;;
     before|after)
-      if [ -z "$1" ]; then
-        echo "pathmunge: before and after require a location" >&2
-        splice_debug=0
+      if [[ -z "$1" ]]; then
+        log "pathmunge: before and after require a location"
         return 2
       fi
       location="$1"
       shift
-      case ":${path}:" in
+      case "${path}" in
         *:"${location}":*)
           ;;
         *)
-          echo "pathmunge: before and after location must be in path" >&2
-          splice_debug=0
+          log "pathmunge: before and after location must be in path"
           return 3
           ;;
       esac
       ;;
     print|list|show)
       path="$(remove_superfluous_colons "${path}")"
-      echo "${path}"
-      splice_debug=0
+      log "${path}"
       return 0
       ;;
     shift)
       splice_debug "pathmunge: start shift. check for n argument";
-      if [[ $# -gt 1 ]]; then
-        echo "pathmunge shift takes at most one argument, n, the number of elements to remove." >&2
+      if (( $# > 1 )); then
+        log "pathmunge shift takes at most one argument, n, the number of elements to remove."
         return 1
-      elif [[ $# -eq 0 ]]; then
+      elif (( $# == 0 )); then
         splice_debug "pathmunge: shift, no n supplied"
-        :
       else
-        case "${1}" in
-          [0-9]|[0-9][0-9]|[0-9][0-9][0-9])
-            splice_debug "pathmunge: shift: set n to ${1}"
-            n="${1}"
-            shift
-            ;;
-          *)
-            echo "pathmunge shift takes a non-negative numerical argument." >&2
-            shift
-            return 2
-            ;;
-        esac
+        if [[ $1 =~ ([0-9]*) ]]; then
+          n="${BASH_REMATCH[1]}"
+          shift
+        else
+          log "pathmunge shift takes a non-negative numerical argument."
+          return 2
+        fi
       fi
       splice_debug "pathmunge: shift: start while loop"
       splice_debug "pathmunge: shift: path = ${path}"
