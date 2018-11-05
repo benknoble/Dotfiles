@@ -37,8 +37,6 @@ endif
 " Status display {{{
 " Show the cursor position all the time
 set ruler
-" And highlight the line it's on
-set cursorline
 " Display incomplete commands
 set showcmd
 " Always display status line
@@ -277,23 +275,6 @@ if has("autocmd")
 
   augroup END
   " End vimrc_completion }}}
-
-  " vimrc_toggle_cursorline {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_toggle_cursorline | au! | augroup END"
-  augroup vimrc_toggle_cursorline
-    au!
-
-    " Don't use cursorline in Insert mode
-    au InsertEnter * setlocal nocursorline
-    au InsertLeave * setlocal cursorline
-
-    " Turn it off for windows not in use
-    au WinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-
-  augroup END
-  " End vimrc_toggle_cursorline }}}
 
   " vimrc_plugins {{{
   " Put these in an autocmd group, so that you can revert them with:
