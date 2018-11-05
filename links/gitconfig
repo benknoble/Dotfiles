@@ -48,6 +48,7 @@
 	prompt = no
 [mergetool]
 	prompt = no
+	keepBackup = false
 [gitsh "color"]
 	default = cyan
 [gitsh]
