@@ -441,7 +441,7 @@ nnoremap <Leader>s :write<CR>
 nnoremap <Leader>cl 0D
 
 " Quickly edit vimrc
-nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <Leader>v :vsplit $MYVIMRC<CR>
 
 " Quit quickly
 nnoremap <silent> <Leader>q :q<CR>
@@ -449,6 +449,13 @@ nnoremap <silent> <Leader>Q :qa<CR>
 
 " Suspended (by Matt Nathanson)
 nnoremap <silent> <Leader>z :suspend<CR>
+
+" Explore
+nnoremap <silent> <Leader>e :Explore<CR>
+"
+" Search
+nnoremap <Leader>a :Ack!<space>
+nnoremap <silent> <Leader>A :Ack! <cword><CR>
 " End Leader shortcuts }}}
 
 " Window mappings {{{
