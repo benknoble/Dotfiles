@@ -493,10 +493,15 @@ nnoremap <silent> <Leader>z :suspend<CR>
 
 " Explore
 nnoremap <silent> <Leader>e :Explore<CR>
-"
+
 " Search
 nnoremap <Leader>a :Ack!<space>
 nnoremap <silent> <Leader>A :Ack! <cword><CR>
+
+" Switch to windows
+for nr in range(1,9)
+  execute printf('nnoremap <Leader>%d :%dwincmd w<CR>', nr, nr)
+endfor
 " End Leader shortcuts }}}
 
 " Window mappings {{{
