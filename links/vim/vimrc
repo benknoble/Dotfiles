@@ -664,6 +664,7 @@ let g:splitjoin_join_mapping = ""
 
 " Startify {{{
 " Options
+let g:startify_disable_at_vimenter = 1
 let g:startify_session_dir = '~/.vimsessions'
 let g:startify_files_number = 5
 let g:startify_change_to_dir = 0
