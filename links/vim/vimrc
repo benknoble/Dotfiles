@@ -326,8 +326,8 @@ if has("autocmd")
   augroup vimrc_plugins
     au!
 
-    au User Startified setlocal signcolumn=no
-    au User Startified setlocal cursorline
+    au User StartifyReady setlocal signcolumn=no
+    au User StartifyReady setlocal cursorline
 
   augroup END
   "End vimrc_plugins }}}
