@@ -39,6 +39,50 @@ endif
 set ruler
 " Display incomplete commands
 set showcmd
+" Show what mode we're in
+set showmode
+
+" Status line {{{
+
+function! Head() abort
+  let l:head = expand('%:h')
+  if l:head != ''
+    let l:head .= '/'
+  endif
+  return l:head
+endfunction
+
+function! WindowNumber() abort
+  let l:winnr = tabpagewinnr(tabpagenr())
+  return printf('Win: %s', l:winnr)
+endfunction
+
+function! AleCountTotal() abort
+  if exists(':ALELint')
+    let l:bufnr = bufnr('%')
+    let l:ale_count = ale#statusline#Count(l:bufnr)
+    let l:total = ale_count['total']
+    if l:total > 0
+      return printf('Lint: %d', l:total)
+    endif
+  endif
+  return ''
+endfunction
+
+set statusline=
+set statusline+=%{Head()}
+set statusline+=%1*%t%*
+set statusline+=%2*\ %{exists('*FugitiveHead')?FugitiveHead():''}%*
+set statusline+=%5*%(\ %m%r%w%)%*
+set statusline+=%=%<
+set statusline+=%2*%(%y%)%*
+set statusline+=\ %L\ lines
+set statusline+=%3*\ %{WindowNumber()}%*
+set statusline+=\ %a
+set statusline+=%4*\ %{AleCountTotal()}%*
+
+" End status line }}}
+
 " Always display status line
 set laststatus=2
 " End status display }}}
@@ -561,6 +605,25 @@ if ! exists('g:colors_name')
   let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
   colorscheme dracula
 endif
+
+" Override statusline
+hi clear StatusLine
+hi clear StatusLineNc
+hi StatusLine term=bold cterm=bold ctermfg=61 ctermbg=236
+hi StatusLineNC ctermfg=61 ctermbg=236
+
+" Dracula colors
+" Green
+hi User1 cterm=bold ctermfg=84 ctermbg=236
+" Purple
+hi User2 cterm=bold ctermfg=141 ctermbg=236
+" Cyan
+hi User3 cterm=bold ctermfg=117 ctermbg=236
+" Red
+hi User4 cterm=bold ctermfg=203 ctermbg=236
+" Orange
+hi User5 cterm=bold ctermfg=215 ctermbg=236
+
 " End Dracula }}}
 
 " ALE {{{
