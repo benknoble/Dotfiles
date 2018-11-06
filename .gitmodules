@@ -1,9 +1,3 @@
-[submodule "vim/bundle/vim-airline"]
-	path = links/vim/pack/interface/start/airline
-	url = git@github.com:vim-airline/vim-airline
-[submodule "vim/bundle/vim-airline-themes"]
-	path = links/vim/pack/interface/start/airline-themes
-	url = git@github.com:vim-airline/vim-airline-themes
 [submodule "vim/bundle/vim-fugitive"]
 	path = links/vim/pack/utility/start/fugitive
 	url = git@github.com:tpope/vim-fugitive
