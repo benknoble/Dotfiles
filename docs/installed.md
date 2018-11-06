@@ -22,8 +22,6 @@ recently switched to vim8's package system.
 Quick list:
 
 - Ack
-- Airline
-  - Airline themes
 - ALE
 - Auto Origami
 - Clam
