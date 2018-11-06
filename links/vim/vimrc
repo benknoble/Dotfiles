@@ -37,10 +37,52 @@ endif
 " Status display {{{
 " Show the cursor position all the time
 set ruler
-" And highlight the line it's on
-set cursorline
 " Display incomplete commands
 set showcmd
+" Show what mode we're in
+set showmode
+
+" Status line {{{
+
+function! Head() abort
+  let l:head = expand('%:h')
+  if l:head != ''
+    let l:head .= '/'
+  endif
+  return l:head
+endfunction
+
+function! WindowNumber() abort
+  let l:winnr = tabpagewinnr(tabpagenr())
+  return printf('Win: %s', l:winnr)
+endfunction
+
+function! AleCountTotal() abort
+  if exists(':ALELint')
+    let l:bufnr = bufnr('%')
+    let l:ale_count = ale#statusline#Count(l:bufnr)
+    let l:total = ale_count['total']
+    if l:total > 0
+      return printf('Lint: %d', l:total)
+    endif
+  endif
+  return ''
+endfunction
+
+set statusline=
+set statusline+=%{Head()}
+set statusline+=%1*%t%*
+set statusline+=%2*\ %{exists('*FugitiveHead')?FugitiveHead():''}%*
+set statusline+=%5*%(\ %m%r%w%)%*
+set statusline+=%=%<
+set statusline+=%2*%(%y%)%*
+set statusline+=\ %L\ lines
+set statusline+=%3*\ %{WindowNumber()}%*
+set statusline+=\ %a
+set statusline+=%4*\ %{AleCountTotal()}%*
+
+" End status line }}}
+
 " Always display status line
 set laststatus=2
 " End status display }}}
@@ -278,30 +320,11 @@ if has("autocmd")
   augroup END
   " End vimrc_completion }}}
 
-  " vimrc_toggle_cursorline {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_toggle_cursorline | au! | augroup END"
-  augroup vimrc_toggle_cursorline
-    au!
-
-    " Don't use cursorline in Insert mode
-    au InsertEnter * setlocal nocursorline
-    au InsertLeave * setlocal cursorline
-
-    " Turn it off for windows not in use
-    au WinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-
-  augroup END
-  " End vimrc_toggle_cursorline }}}
-
   " vimrc_plugins {{{
   " Put these in an autocmd group, so that you can revert them with:
   " ":augroup vimrc_plugins | au! | augroup END"
   augroup vimrc_plugins
     au!
-
-    autocmd User AirlineAfterInit call AirlineInit()
 
     au User Startified setlocal signcolumn=no
     au User Startified setlocal cursorline
@@ -344,17 +367,17 @@ if has("autocmd")
   augroup END
   " End dracula_fix }}}
 
-  " helptags {{{
+  " helpvert {{{
   " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_helptags | au! | augroup END"
-  augroup vimrc_helptags
+  " ":augroup vimrc_helpvert | au! | augroup END"
+  augroup vimrc_helpvert
     au!
 
-    " Generate all helptags
-    autocmd VimEnter * helptags ALL
+    " make help open on the left (like :Man)
+    autocmd FileType help wincmd H
 
   augroup END
-  " End helptags }}}
+  " End helpvert }}}
 
 else
   set autoindent
@@ -413,30 +436,12 @@ cnoremap <expr> <CR> getcmdtype() =~ '[/?]' ? '<CR>zz' : '<CR>'
 nnoremap G Gzz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
-" Center cursor on click
-" nnoremap <LeftMouse> <LeftMouse>zz
 " End Center }}}
-
-" Buffers {{{
-" Make buffers like a jetpack: you can fly
-nnoremap <Leader>b :ls<CR>:b<Space>
-" End Buffers }}}
 
 " gi goes to end of last insert (`^)
 " gI goes to last change
 nnoremap gI `.
 
-" Remap x to delete into the blackhole buffer to make p work better
-" noremap x "_x
-" Use "0p if x clobbered your yank
-" or "1,2... if it clobbered your delete
-" or use named registers
-
-" Line numbers {{{
-" Toggle linenumbers
-nnoremap <silent> <Leader>n :setlocal number!<CR>
-nnoremap <silent> <Leader>N :setlocal relativenumber!<CR>
-" End Line numbers }}}
 
 " Unhighlight last search
 nnoremap <silent> <Leader>h :nohlsearch<CR>
@@ -446,12 +451,7 @@ nnoremap <silent> <Leader>h :nohlsearch<CR>
 nnoremap <F5> :Reload<CR>
 " Or <Leader>[rR]
 nnoremap <Leader>r :Reload<CR>
-nnoremap <Leader>R :ReloadAir<CR>
 " End Reload }}}
-
-" Quit with Q too, so you can hold shift
-" Note that it displays ':q' even if you type ':Q'
-cnoremap <expr> Q getcmdtype() == ':' ? 'q' : 'Q'
 
 " Quickly input the directory of the current file on the command line
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
@@ -459,26 +459,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 " Function Keys {{{
 " <F1> is help
 
-" <F2> is edit file
-nnoremap <F2> :call EditFile()<CR>
-function! EditFile()
-    call inputsave()
-    let l:file = input("File: ", "", "file")
-    call inputrestore()
-    execute "edit" file
-endfunction
-
-" <[S-]F3> for normal searches
-nnoremap <F3> /
-nnoremap <S-F3> ?
-
-" <F4> for insta quit
-nnoremap <F4> qall!
-
 " <F5> reloads (see "Reload")
-
-" <F6> to cycle through tabs
-nnoremap <F6> gt
 
 " Not technically a mapping, but acts like one
 " Toggle paste mode during an insert with <F7>
@@ -489,15 +470,6 @@ nnoremap <F8> :terminal<CR>
 
 " Panic button
 nnoremap <F9> mzggg?G`z
-
-" <F10> to compile
-nnoremap <F10> :make<CR>
-
-" <F11> to full screen a window
-nnoremap <F11> :only<CR>
-
-" <F12> to print
-nnoremap <F12> :hardcopy<CR>
 
 " End Function Keys }}}
 
@@ -510,17 +482,7 @@ nnoremap <Leader>s :write<CR>
 nnoremap <Leader>cl 0D
 
 " Quickly edit vimrc
-nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
-
-" Surround word with "
-nnoremap <Leader>" viw<esc>a"<esc>bi"<esc>lel
-" Surround word with '
-nnoremap <Leader>' viw<esc>a'<esc>bi'<esc>lel
-
-" Surround visual selection with "
-vnoremap <Leader>" <esc>`<i"<esc>`>a"<esc>
-" Surround visual selection with '
-vnoremap <Leader>' <esc>`<i'<esc>`>a'<esc>
+nnoremap <Leader>v :vsplit $MYVIMRC<CR>
 
 " Quit quickly
 nnoremap <silent> <Leader>q :q<CR>
@@ -528,12 +490,22 @@ nnoremap <silent> <Leader>Q :qa<CR>
 
 " Suspended (by Matt Nathanson)
 nnoremap <silent> <Leader>z :suspend<CR>
+
+" Explore
+nnoremap <silent> <Leader>e :Explore<CR>
+
+" Search
+nnoremap <Leader>a :Ack!<space>
+nnoremap <silent> <Leader>A :Ack! <cword><CR>
+
+" Switch to windows
+for nr in range(1,9)
+  execute printf('nnoremap <Leader>%d :%dwincmd w<CR>', nr, nr)
+endfor
 " End Leader shortcuts }}}
 
 " Window mappings {{{
 
-" Don't even let me use <C-w>
-nnoremap <C-w>     <nop>
 " Because I can use <Leader>w for everything
 nnoremap <Leader>w <C-w>
 nnoremap <Up> <C-w>k
@@ -600,23 +572,10 @@ endif
 
 " Reload {{{
 " Reload vimrc
-" If airline gets weird, try ":ReloadAir"
 if !exists(":Reload")
   command -bar Reload source $MYVIMRC
 endif
-
-" Reload vimrc and refresh airline
-if !exists(":ReloadAir")
-  command -bar ReloadAir :Reload | AirlineRefresh
-endif
 " End Reload }}}
-
-" AirlineInit {{{
-" Customize airline (call in autocmd AirlineAfterInit)
-function! AirlineInit()
-  " Noop
-endfunction
-" End AirlineInit }}}
 
 " End Commands }}}
 
@@ -651,54 +610,30 @@ if ! exists('g:colors_name')
   let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
   colorscheme dracula
 endif
+
+" Override statusline
+hi clear StatusLine
+hi clear StatusLineNc
+hi StatusLine term=bold cterm=bold ctermfg=61 ctermbg=236
+hi StatusLineNC ctermfg=61 ctermbg=236
+
+" Dracula colors
+" Green
+hi User1 cterm=bold ctermfg=84 ctermbg=236
+" Purple
+hi User2 cterm=bold ctermfg=141 ctermbg=236
+" Cyan
+hi User3 cterm=bold ctermfg=117 ctermbg=236
+" Red
+hi User4 cterm=bold ctermfg=203 ctermbg=236
+" Orange
+hi User5 cterm=bold ctermfg=215 ctermbg=236
+
 " End Dracula }}}
-
-" Airline theme {{{
-" set airline-theme if installed
-let g:airline_theme='dracula'
-" End Airline theme }}}
-
-" Airline {{{
-" customize airline if installed
-" check if dictionary exists
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-" unicode symbols
-let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
-let g:airline_symbols.crypt = '🔒'
-let g:airline_symbols.linenr = '␊'
-"let g:airline_symbols.linenr = '␤'
-"let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.maxlinenr = '☰'
-"let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-"let g:airline_symbols.paste = 'Þ'
-"let g:airline_symbols.paste = '∥'
-let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = '∄'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" Enable windowswap
-let g:airline#extensions#windowswap#enabled = 1
-let g:airline#extensions#windowswap#indicator_text = 'WS'
-
-" Word Count: Add liquid to defaults
-" see airline/autoload/airline/extensions/wordcount.vim
-let g:airline#extensions#wordcount#filetypes =
-      \ '\vhelp|markdown|rst|org|text|asciidoc|tex|mail|liquid'
-" End Airline }}}
 
 " ALE {{{
 
-let g:ale_lint_on_enter = 0
 let g:ale_set_signs = 0
-let g:airline#extensions#ale#enabled = 1
 
 let g:ale_linters = {
       \ 'python': 'all'
@@ -729,6 +664,7 @@ let g:splitjoin_join_mapping = ""
 
 " Startify {{{
 " Options
+let g:startify_disable_at_vimenter = 1
 let g:startify_session_dir = '~/.vimsessions'
 let g:startify_files_number = 5
 let g:startify_change_to_dir = 0

@@ -234,8 +234,6 @@ them all.
 
 - Center results of common jumps (`n`, `G`)
 
-- `<Leader>b` to fly through buffers! (Though unimpaired mappings work better.)
-
 - Save with `<Leader>s`.
 
 - Quit with `<Leader>q`.

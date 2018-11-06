@@ -1,4 +1,4 @@
-for char in [ '_', '.', '/' ]
+for char in [ '_', '.', '/', '-' ]
   if ! hasmapto(printf('i%s', char), 'vo')
     execute printf('xnoremap i%s :<C-u>normal! T%svt%s<CR>', char, char, char)
     execute printf('onoremap i%s :<C-u>normal vi%s<CR>', char, char)
