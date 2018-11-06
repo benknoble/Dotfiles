@@ -19,3 +19,5 @@ alias r='fc -s'                             # Rerun last command [with prefix]
 alias j='jobs -l'                           # Jobs
 alias ducks='du -cks * | sort -rn | head'   # Ducks!
 alias nocomment='grep -Ev "^(#|$)"'         # No comment...
+alias g='git'
+alias v='vim'
