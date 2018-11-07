@@ -367,18 +367,6 @@ if has("autocmd")
   augroup END
   " End dracula_fix }}}
 
-  " helpvert {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_helpvert | au! | augroup END"
-  augroup vimrc_helpvert
-    au!
-
-    " make help open on the left (like :Man)
-    autocmd FileType help wincmd H
-
-  augroup END
-  " End helpvert }}}
-
 else
   set autoindent
 endif " has("autocmd")
