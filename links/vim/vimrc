@@ -488,7 +488,7 @@ nnoremap <silent> <Leader>A :Ack! <cword><CR>
 
 " Switch to windows
 for nr in range(1,9)
-  execute printf('nnoremap <Leader>%d :%dwincmd w<CR>', nr, nr)
+  execute printf('nnoremap <silent> <Leader>%d :%dwincmd w<CR>', nr, nr)
 endfor
 " End Leader shortcuts }}}
 
