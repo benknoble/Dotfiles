@@ -101,3 +101,7 @@ up() {
   echo "cd -- $path"
   cd -- "$path"
 }
+
+ed() {
+  command ed -p: "$@"
+}
