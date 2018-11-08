@@ -25,6 +25,8 @@ set skip-completed-text on
 # Show the common prefix highlighted
 set colored-completion-prefix on
 
+set show-all-if-ambiguous on
+
 # Highlight the completion suggestions based on filetype
 set colored-stats on
 
