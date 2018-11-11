@@ -1,0 +1,31 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+USAGE='[-h]
+Edit files that have diffs'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+main() {
+  local files=()
+  mapfile -t files < <(git diff --name-only)
+  if [[ ${#files[@]} -gt 0 ]]; then
+    # file names are relative to repository root
+    cd_to_toplevel && git_editor "${files[@]}"
+    exit $?
+  else
+    echo '# No changed files'
+    exit 1
+  fi
+}
+
+if [[ $# -gt 0 ]]; then
+  usage
+else
+  main
+fi

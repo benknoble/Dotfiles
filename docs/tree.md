@@ -49,6 +49,7 @@
 │   ├── ext
 │   │   ├── git-churn
 │   │   ├── git-cstat
+│   │   ├── git-ed
 │   │   ├── git-new
 │   │   ├── git-overwritten
 │   │   └── git-weekly
