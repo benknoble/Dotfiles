@@ -492,6 +492,11 @@ endfor
 
 " Trigger the command line window
 nnoremap <silent> <Leader>; q:i
+
+" Terms and interpreters
+" set b:interpreter for filetypes to affect the term
+nnoremap <silent> <Leader>t :call benknoble#terminal('++close')<CR>
+nnoremap <silent> <Leader>T :call benknoble#terminal()<CR>
 " End Leader shortcuts }}}
 
 " Window mappings {{{
