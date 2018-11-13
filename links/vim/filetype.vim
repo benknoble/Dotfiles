@@ -5,5 +5,5 @@ endif
 
 augroup filetypedetect
   au BufRead,BufNewFile gitconfig,.gitconfig.local setfiletype gitconfig
-  au BufRead,BufNewFile Jenkinsfile setfiletype groovy
+  au BufRead,BufNewFile Jenkinsfile* setfiletype groovy
 augroup END
