@@ -430,10 +430,6 @@ nnoremap <C-d> <C-d>zz
 " gI goes to last change
 nnoremap gI `.
 
-
-" Unhighlight last search
-nnoremap <silent> <Leader>h :nohlsearch<CR>
-
 " Reload {{{
 " Reload with F5
 nnoremap <F5> :Reload<CR>
@@ -485,6 +481,9 @@ nnoremap <silent> <Leader>e :Explore<CR>
 " Search
 nnoremap <Leader>a :Ack!<space>
 nnoremap <silent> <Leader>A :Ack! <cword><CR>
+
+" Unhighlight last search
+nnoremap <silent> <Leader>h :nohlsearch<CR>
 
 " Switch to windows
 for nr in range(1,9)
