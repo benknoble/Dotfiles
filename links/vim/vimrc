@@ -489,6 +489,9 @@ nnoremap <silent> <Leader>h :nohlsearch<CR>
 for nr in range(1,9)
   execute printf('nnoremap <silent> <Leader>%d :%dwincmd w<CR>', nr, nr)
 endfor
+
+" Trigger the command line window
+nnoremap <silent> <Leader>; q:i
 " End Leader shortcuts }}}
 
 " Window mappings {{{
