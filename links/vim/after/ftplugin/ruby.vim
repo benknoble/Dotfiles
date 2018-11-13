@@ -8,6 +8,8 @@ else
   let b:undo_ftplugin = ''
 endif
 
+let b:interpreter = 'irb'
+
 " Wrap at 80 characters
 setlocal textwidth=80
 " Indent two spaces
