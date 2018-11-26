@@ -24,4 +24,9 @@ install:
 update:
 	./update.sh
 
+# vimtags: regenerate tags for vim helpfiles
+.PHONY: vimtags
+vimtags:
+	vim +':helptags ALL' +'q'
+
 # }}}
