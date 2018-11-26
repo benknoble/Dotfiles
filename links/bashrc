@@ -187,7 +187,7 @@ brew_fix() {
   esac
 }
 brew_fix MANPATH "$brew_prefix/share/man"
-brew_fix INFOPATH "$brew_prefix/info/man"
+brew_fix INFOPATH "$brew_prefix/share/info"
 
 # go
 [[ -d ~/go/bin ]] && pathadd ~/go/bin
