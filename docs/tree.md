@@ -13,6 +13,7 @@
 │       ├── LICENSE
 │       └── README.md
 ├── LICENSE
+├── Makefile
 ├── README.md
 ├── benknoble.terminal
 ├── bin
