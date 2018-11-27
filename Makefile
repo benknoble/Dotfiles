@@ -2,10 +2,10 @@
 
 # Customize for installation {{{
 
-DOTFILES := ~/Dotfiles
-BACKUP := $(DOTFILES)_old
+DOTFILES ?= ~/Dotfiles
+BACKUP ?= $(DOTFILES)_old
 SETUP := $(DOTFILES)/setup
-BREWFILE := $(if $(shell [ -e ~/.Brewfile ] && echo true),~/.Brewfile,$(DOTFILES)/brew/Brewfile)
+BREWFILE ?= $(if $(shell [ -e ~/.Brewfile ] && echo true),~/.Brewfile,$(DOTFILES)/brew/Brewfile)
 
 # }}}
 
