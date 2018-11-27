@@ -1,9 +1,29 @@
 # Vars {{{
 
+# Customize for installation {{{
+
+# }}}
+
+# Make conventions {{{
+
 # ensure sh
 SHELL := /bin/sh
 # clear out suffixes
 .SUFFIXES:
+
+# }}}
+
+# }}}
+
+# Macros (Functions & Canned Recipes) {{{
+
+define yes_or_no
+read -n 1 -p "[y/n]> " input && echo && [[ "$$input" =~ ^(y|Y) ]]
+endef
+
+define msg
+@printf '%s\n'
+endef
 
 # }}}
 
