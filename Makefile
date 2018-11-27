@@ -2,6 +2,10 @@
 
 # Customize for installation {{{
 
+DOTFILES := ~/Dotfiles
+BACKUP := $(DOTFILES)_old
+SETUP := $(DOTFILES)/setup
+
 # }}}
 
 # Make conventions {{{
@@ -22,7 +26,7 @@ read -n 1 -p "[y/n]> " input && echo && [[ "$$input" =~ ^(y|Y) ]]
 endef
 
 define msg
-@printf '%s\n'
+printf '%s\n'
 endef
 
 # }}}
@@ -36,8 +40,10 @@ default:
 
 # install: bootstrap the dotfiles
 .PHONY: install
+.PHONY: all
+all: install
 install:
-	./bootstrap.sh
+	@$(MAKE) bootstrap
 
 # update: update the dotfiles
 .PHONY: update
@@ -48,5 +54,38 @@ update:
 .PHONY: vimtags
 vimtags:
 	vim +':helptags ALL' +'q'
+
+# Helper targets {{{
+
+.PHONY: bootstrap
+bootstrap:
+	@$(msg) 'WARNING: Backups in the old directory ($(BACKUP))'
+	@$(msg) 'will be DELETED and OVERWRITTEN!'
+	@$(msg) 'If you want to keep them, abort and move them!'
+	@$(msg) 'Are you sure you want to continue bootstrapping Dotfiles?'
+	@if $(yes_or_no) ; then\
+		$(MAKE) bootstrap_full;\
+	else\
+		$(msg) 'Aborting';\
+	fi
+
+.PHONY: bootstrap_full
+bootstrap_full:
+	@$(MAKE) symlink
+	@$(MAKE) installers
+
+.PHONY: symlink
+symlink:
+	@$(msg) 'Symlinking dotfiles...'
+	@$(SETUP)/makesymlinks.sh
+	@$(msg) '...done with symlinks'
+
+.PHONY: installers
+installers:
+	@$(msg) 'Running installers...'
+	@$(SETUP)/install-all.sh
+	@$(msg) '...done with installers'
+
+# }}}
 
 # }}}
