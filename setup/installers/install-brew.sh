@@ -8,7 +8,7 @@ setup_dir="$( dirname "$dir" )"
 dotfiles_dir="$( dirname "$setup_dir")"
 BREWFILE="$dotfiles_dir/brew/Brewfile"
 
-source "$dotfiles_dir/dotfiles-support"
+source "$setup_dir/support"
 
 install_brew() {
   if ! /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ; then

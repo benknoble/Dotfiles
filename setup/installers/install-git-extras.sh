@@ -10,7 +10,7 @@ dotfiles_dir="$( dirname "$setup_dir")"
 path_to_gitk_config="${dotfiles_dir}/Dracula/gitk/gitk"
 user_gitk_config="${XDG_CONFIG_HOME:-$HOME/.config}/git/gitk"
 
-source "$dotfiles_dir/dotfiles-support"
+source "$setup_dir/support"
 
 install_git_prompt_completion() {
   display_message "Previous git extras (git prompt and git completion) are now

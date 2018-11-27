@@ -7,7 +7,7 @@ dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 setup_dir="$( dirname "$dir" )"
 dotfiles_dir="$( dirname "$setup_dir")"
 
-source "$dotfiles_dir/dotfiles-support"
+source "$setup_dir/support"
 
 install_vim_plugins() {
   display_message 'Previous vim plugins are now included as submodules. If you

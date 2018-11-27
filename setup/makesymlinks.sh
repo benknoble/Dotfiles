@@ -22,7 +22,7 @@ declare -A files=(
   [vim]=.vim
 )
 
-source "$dotfiles_dir/dotfiles-support"
+source "$dir/support"
 
 create_backup_dir() {
   display_message "Creating $olddir for backup of any existing files in $HOME..."

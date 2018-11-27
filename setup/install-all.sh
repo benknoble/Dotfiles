@@ -6,7 +6,7 @@
 set -euo pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source "$(dirname "$DIR")/dotfiles-support"
+source "$DIR/support"
 
 execute_installer() {
   display_message "Execute ${1##*setup/}?"
