@@ -76,14 +76,12 @@ handle_files() {
 }
 
 makesymlinks() {
-  display_message "Making symlinks..."
   if ! verify_directory ; then
     exit
   fi
   create_backup_dir
   clean_backup_dir
   handle_files
-  display_message "...done making symlinks"
 }
 
 makesymlinks
