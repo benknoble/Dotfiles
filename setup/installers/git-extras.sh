@@ -12,28 +12,6 @@ user_gitk_config="${XDG_CONFIG_HOME:-$HOME/.config}/git/gitk"
 
 source "$setup_dir/support"
 
-install_dotfile_hooks() {
-  display_message "Setting up dotfile hooks..."
-  remove_old_hooks
-  link_hooks
-  display_message "...done with dotfile hooks"
-}
-
-remove_old_hooks() {
-  display_message "Removing hooks in .git/hooks..."
-  [[ -e .git/hooks ]] && {
-    [[ -L .git/hooks ]] && { rm -fv .git/hooks; }
-    [[ -d .git/hooks ]] && { rm -fv .git/hooks/*; rmdir .git/hooks; }
-  }
-  display_message "...done removing hooks"
-}
-
-link_hooks() {
-  display_message "Linking in hooks..."
-  ln -Fivs "$dotfiles_dir"/git/hooks/ .git/
-  display_message "...done linking in hooks"
-}
-
 gitk_submodule_exists() {
   [[ -r "$path_to_gitk_config" ]]
 }
@@ -51,7 +29,6 @@ copy_gitk() {
 
 install_git_extras() {
   display_message "Install git extras..."
-  install_dotfile_hooks
   copy_gitk
   display_message "...done with git extras"
 }
