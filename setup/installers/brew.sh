@@ -4,11 +4,9 @@
 set -euo pipefail
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
-setup_dir="$( dirname "$dir" )"
-dotfiles_dir="$( dirname "$setup_dir")"
-BREWFILE="$dotfiles_dir/brew/Brewfile"
+BREWFILE="$BREWFILE"
 
-source "$setup_dir/support"
+source "$SUPPORT"
 
 install_brew() {
   if ! /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" ; then

@@ -8,6 +8,7 @@ SETUP := $(DOTFILES)/setup
 SUPPORT := $(SETUP)/support
 BREWFILE ?= $(if $(shell [ -e ~/.Brewfile ] && echo true),~/.Brewfile,$(DOTFILES)/brew/Brewfile)
 INSTALLERS ?= $(wildcard $(SETUP)/installers/*.sh)
+XDG_CONFIG_HOME ?= ~/.config
 
 # }}}
 
@@ -114,7 +115,6 @@ $(INSTALLERS):
 
 # Git extras {{{
 
-XDG_CONFIG_HOME ?= ~/.config
 USER_GITK := $(XDG_CONFIG_HOME)/git/gitk
 DRACULA_GITK := $(DOTFILES)/Dracula/gitk/gitk
 
@@ -134,6 +134,26 @@ _gitk:
 	else\
 		$(msg) '...no dracula gitk found';\
 	fi
+
+# }}}
+
+# Brew {{{
+
+BREW_URL := https://raw.githubusercontent.com/Homebrew/install/master/install
+
+.PHONY: _brew
+_brew:
+	@$(msg) 'Installing brew...'
+	@/usr/bin/ruby -e "$$(curl -fsSL $(BREW_URL) )"
+	@$(MAKE) _bundle
+	sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells"\
+		&& chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
+	@$(msg) '...done with brew'
+
+.PHONY: _bundle
+_bundle:
+	brew tap Homebrew/bundle
+	brew bundle install --file="$(BREWFILE)"
 
 # }}}
 
