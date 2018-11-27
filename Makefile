@@ -6,6 +6,7 @@ DOTFILES ?= ~/Dotfiles
 BACKUP ?= $(DOTFILES)_old
 SETUP := $(DOTFILES)/setup
 BREWFILE ?= $(if $(shell [ -e ~/.Brewfile ] && echo true),~/.Brewfile,$(DOTFILES)/brew/Brewfile)
+INSTALLERS ?= $(wildcard $(SETUP)/installers/*.sh)
 
 # }}}
 
@@ -16,6 +17,8 @@ SHELL := /bin/sh
 # clear out suffixes
 .SUFFIXES:
 
+# export vars
+export
 # }}}
 
 # }}}
@@ -28,6 +31,15 @@ endef
 
 define msg
 printf '%s\n'
+endef
+
+define run_installer
+$(msg) 'Install $(notdir $(@F))?'
+if $(yes_or_no) ; then\
+	[ -x "$@" ] && "$@";\
+else\
+	$(msg) "Skipping $(notdir $(@F))";\
+fi
 endef
 
 # }}}
@@ -90,8 +102,16 @@ _symlink:
 .PHONY: _installers
 _installers:
 	@$(msg) 'Running installers...'
-	@$(SETUP)/install-all.sh
+	@$(MAKE) $(INSTALLERS)
 	@$(msg) '...done with installers'
+
+# Features {{{
+
+.PHONY: $(INSTALLERS)
+$(INSTALLERS):
+	@$(run_installer)
+
+# }}}
 
 # }}}
 

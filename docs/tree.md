@@ -86,7 +86,6 @@
 │       ├── spell
 │       └── vimrc
 └── setup
-    ├── install-all.sh
     ├── installers
     │   ├── install-brew.sh
     │   ├── install-git-extras.sh
