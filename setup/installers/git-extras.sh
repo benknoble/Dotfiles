@@ -4,13 +4,12 @@
 set -euo pipefail
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
-setup_dir="$( dirname "$dir" )"
-dotfiles_dir="$( dirname "$setup_dir")"
+dotfiles_dir="$DOTFILES"
 
 path_to_gitk_config="${dotfiles_dir}/Dracula/gitk/gitk"
 user_gitk_config="${XDG_CONFIG_HOME:-$HOME/.config}/git/gitk"
 
-source "$setup_dir/support"
+source "$SUPPORT"
 
 gitk_submodule_exists() {
   [[ -r "$path_to_gitk_config" ]]

@@ -5,6 +5,7 @@
 DOTFILES ?= ~/Dotfiles
 BACKUP ?= $(DOTFILES)_old
 SETUP := $(DOTFILES)/setup
+SUPPORT := $(SETUP)/support
 BREWFILE ?= $(if $(shell [ -e ~/.Brewfile ] && echo true),~/.Brewfile,$(DOTFILES)/brew/Brewfile)
 INSTALLERS ?= $(wildcard $(SETUP)/installers/*.sh)
 
@@ -110,6 +111,31 @@ _installers:
 .PHONY: $(INSTALLERS)
 $(INSTALLERS):
 	@$(run_installer)
+
+# Git extras {{{
+
+XDG_CONFIG_HOME ?= ~/.config
+USER_GITK := $(XDG_CONFIG_HOME)/git/gitk
+DRACULA_GITK := $(DOTFILES)/Dracula/gitk/gitk
+
+.PHONY: _git_extras
+_git_extras:
+	@$(msg) 'Install git extras...'
+	@$(MAKE) _gitk
+	@$(msg) '...done with git extras'
+
+.PHONY: _gitk
+_gitk:
+	@$(msg) 'Copying gitk dracula theme...'
+	@if [ -r "$(DRACULA_GITK)" ]; then\
+		mkdir -p "$(dir USER_GITK)";\
+		cp -iv -- "$(DRACULA_GITK)" "$(USER_GITK)";\
+		$(msg) '...done with gitk dracula theme';\
+	else\
+		$(msg) '...no dracula gitk found';\
+	fi
+
+# }}}
 
 # }}}
 
