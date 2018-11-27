@@ -28,7 +28,6 @@
 │   ├── listcmds
 │   ├── loading
 │   └── msgtest
-├── bootstrap.sh
 ├── brew
 │   ├── Brewfile
 │   ├── Linux-Brewfile
@@ -45,7 +44,6 @@
 │   ├── humans.txt
 │   ├── installed.md
 │   └── tree.md
-├── dotfiles-support
 ├── git
 │   ├── ext
 │   │   ├── git-churn
@@ -87,12 +85,12 @@
 │       ├── plugin
 │       ├── spell
 │       └── vimrc
-├── setup
-│   ├── install-all.sh
-│   ├── installers
-│   │   ├── install-brew.sh
-│   │   ├── install-git-extras.sh
-│   │   └── install-vim-custom.sh
-│   └── makesymlinks.sh
-└── update.sh
+└── setup
+    ├── install-all.sh
+    ├── installers
+    │   ├── install-brew.sh
+    │   ├── install-git-extras.sh
+    │   └── install-vim-custom.sh
+    ├── makesymlinks.sh
+    └── support
 ```
