@@ -12,12 +12,6 @@ user_gitk_config="${XDG_CONFIG_HOME:-$HOME/.config}/git/gitk"
 
 source "$setup_dir/support"
 
-install_git_prompt_completion() {
-  display_message "Previous git extras (git prompt and git completion) are now
-  included by installing git via brew and will be sourced if installed;
-  otherwise, they will not be used."
-}
-
 install_dotfile_hooks() {
   display_message "Setting up dotfile hooks..."
   remove_old_hooks
@@ -57,7 +51,6 @@ copy_gitk() {
 
 install_git_extras() {
   display_message "Install git extras..."
-  install_git_prompt_completion
   install_dotfile_hooks
   copy_gitk
   display_message "...done with git extras"
