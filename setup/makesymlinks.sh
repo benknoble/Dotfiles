@@ -4,8 +4,8 @@
 set -euo pipefail
 
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
-dotfiles_dir="$(dirname "$dir")"
-olddir="${dotfiles_dir}_old"
+dotfiles_dir="$DOTFILES"
+olddir="$BACKUP"
 # list of files/folders to symlink in homedir
 declare -A files=(
   [ackrc]=.ackrc
@@ -22,7 +22,7 @@ declare -A files=(
   [vim]=.vim
 )
 
-source "$dir/support"
+source "$SUPPORT"
 
 create_backup_dir() {
   display_message "Creating $olddir for backup of any existing files in $HOME..."
@@ -66,12 +66,12 @@ handle_file() {
   display_message "Creating symlink to ${files[$1]} in $HOME"
   symlink_file "$1"
   display_message "...Finished ${files[$1]}"
-  sleep 1
 }
 
 handle_files() {
   for file in "${!files[@]}"; do
     handle_file "$file"
+    sleep 1
   done
 }
 
