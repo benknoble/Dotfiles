@@ -65,6 +65,10 @@ all: install
 install:
 	@$(MAKE) _bootstrap
 
+# symlink: re-create the symlinks
+.PHONY: symlink
+symlink: _symlink
+
 # update: update the dotfiles
 .PHONY: update
 update:
