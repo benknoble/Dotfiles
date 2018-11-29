@@ -86,10 +86,6 @@
 │       ├── spell
 │       └── vimrc
 └── setup
-    ├── installers
-    │   ├── install-brew.sh
-    │   ├── install-git-extras.sh
-    │   └── install-vim-custom.sh
     ├── makesymlinks.sh
     └── support
 ```

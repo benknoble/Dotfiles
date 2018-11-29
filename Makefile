@@ -7,8 +7,11 @@ BACKUP ?= $(DOTFILES)_old
 SETUP := $(DOTFILES)/setup
 SUPPORT := $(SETUP)/support
 BREWFILE ?= $(if $(shell [ -e ~/.Brewfile ] && echo true),~/.Brewfile,$(DOTFILES)/brew/Brewfile)
-INSTALLERS ?= $(wildcard $(SETUP)/installers/*.sh)
 XDG_CONFIG_HOME ?= ~/.config
+# supported features:
+# git_extras
+# brew
+FEATURES ?= git_extras brew
 
 # }}}
 
@@ -36,11 +39,11 @@ printf '%s\n'
 endef
 
 define run_installer
-$(msg) 'Install $(notdir $(@F))?'
+$(msg) 'Install $@?'
 if $(yes_or_no) ; then\
-	[ -x "$@" ] && "$@";\
+	@$(MAKE) _$@;\
 else\
-	$(msg) "Skipping $(notdir $(@F))";\
+	$(msg) "Skipping $@";\
 fi
 endef
 
@@ -93,7 +96,7 @@ _bootstrap:
 .PHONY: _bootstrap_full
 _bootstrap_full:
 	@$(MAKE) _symlink
-	@$(MAKE) _installers
+	@$(MAKE) _features
 
 .PHONY: _symlink
 _symlink:
@@ -101,16 +104,16 @@ _symlink:
 	@$(SETUP)/makesymlinks.sh
 	@$(msg) '...done with symlinks'
 
-.PHONY: _installers
-_installers:
-	@$(msg) 'Running installers...'
-	@$(MAKE) $(INSTALLERS)
-	@$(msg) '...done with installers'
+.PHONY: _features
+_features:
+	@$(msg) 'Running features...'
+	@$(MAKE) $(FEATURES)
+	@$(msg) '...done with features'
 
 # Features {{{
 
-.PHONY: $(INSTALLERS)
-$(INSTALLERS):
+.PHONY: $(FEATURES)
+$(FEATURES):
 	@$(run_installer)
 
 # Git extras {{{
@@ -144,7 +147,7 @@ BREW_URL := https://raw.githubusercontent.com/Homebrew/install/master/install
 .PHONY: _brew
 _brew:
 	@$(msg) 'Installing brew...'
-	@/usr/bin/ruby -e "$$(curl -fsSL $(BREW_URL) )"
+	@/usr/bin/ruby -e "$$( curl -fsSL $(BREW_URL) )"
 	@$(MAKE) _bundle
 	sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells"\
 		&& chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
