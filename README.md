@@ -2,9 +2,10 @@
 
 My Dotfiles for configuration of different software and command-line programs
 
-**WARNING** Dotfiles are _not_ meant to be forked: they are personal castles
-that you should construct yourself. That said, feel free to peruse mine and
-steal whatever you like. Attribute me if you want, or don't. I don't care.
+:warning:**WARNING**:warning: Dotfiles are _not_ meant to be forked: they are
+personal castles that you should construct yourself. That said, feel free to
+peruse mine and steal whatever you like. Attribute me if you want, or don't. I
+don't care.
 
 In spite of the above warning, I have tried to make this repo easy-ish to fork
 and play with. Sourcing local files, such as `~/.gitconfig.local`, is a large
@@ -85,7 +86,7 @@ use a different directory:
 
 * [bash](https://www.gnu.org/software/bash/)
 * [Mac OS X](https://en.wikipedia.org/wiki/OS_X_El_Capitan)
-* [Terminal](https://en.wikipedia.org/wiki/Terminal_(macOS)
+* [Terminal](https://en.wikipedia.org/wiki/Terminal_(macOS))
 * [Vim](https://github.com/vim/vim)
 * [Git](https://git-scm.com)
 * [Homebrew/brew](https://brew.sh)
