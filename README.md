@@ -2,29 +2,19 @@
 
 My Dotfiles for configuration of different software and command-line programs
 
-You can find the [directory structure here](/docs/tree.md) [generated with `tree
--L 3 --noreport`].
+**WARNING** Dotfiles are _not_ meant to be forked: they are personal castles
+that you should construct yourself. That said, feel free to peruse mine and
+steal whatever you like. Attribute me if you want, or don't. I don't care.
 
-Find us on Gitter!
-
-[![Gitter chat](https://badges.gitter.im/benknoble-Dotfiles/Lobby.png)](https://gitter.im/benknoble-Dotfiles/Lobby)
-
-## Features
-
-- bashrc/inputrc for making bash more fun
-- (controversial) vimrc/vim for starting arguments about vim settings
-- git config/ignore files for git settings and aliases
-- brew and cask formulae
-- lots of useful scripts
-
-See [Full Feature List](#documentation--full-feature-list)
+In spite of the above warning, I have tried to make this repo easy-ish to fork
+and play with. Sourcing local files, such as `~/.gitconfig.local`, is a large
+part of that.
 
 ## Installing
 
-First, clone the repo into your dotfiles directory. This directory needs to be
-named Dotfiles, otherwise many of the scripts and aliases will fail. I'm looking
-into solving this problem, but for now see [Name
-Dependencies](#name-dependencies) (see also #31).
+First, clone the repo into your dotfiles directory. You can name it anything,
+but make sure to override the variable `DOTFILES` when invoking `make`. (_Note:_
+[Name Dependencies](#name-dependencies).)
 
 ```bash
 $ mkdir ~/Dotfiles
@@ -34,33 +24,23 @@ $ git clone --recurse-submodules https://github.com/benknoble/Dotfiles.git ~/Dot
 $ cd ~/Dotfiles
 ```
 
-Next, run the `bootstrap` script to kick things off:
+Next, run `make` to kick things off:
 
 ```bash
-$ ./bootstrap.sh            # or bash bootstrap.sh
+$ DOTFILES=/path/to/cloned/project make install
 ```
 
-This will do several things; if you want to do them individually, you need to
-execute the scripts in the setup directory yourself. `bootstrap` is pretty
-verbose though, and works best.
+This will do several things:
 
-1. Executes `./setup/makesymlinks.sh`, which backs up old conf files and symlinks
+1. Executes `make symlink`, which backs up old conf files and symlinks
    the files here
-2. (Optional) Executes `./setup/install-all.sh`, which in turn executes any
-   scripts in `./installers`. Understandably, this is brittle. You may wish to
-   inspect the scripts yourself to verify nothing malicious is happening, but
-   the scripts are supposed to install *brew* (+utils), *vim* plugins, and *git*
-   extras. They are organized by dependency (e.g., skipping brew skips anything
-   installed by brew), and they will prompt for confirmation at each step. You
-   can execute them yourself if you want to deal with it later, or to reinstall
-   something removed. See [what's installed](/docs/installed.md).
-3. Executes `./setup/git-setup.sh`, which has two tasks. It confirms the git
-   user name and email, allowing you to set your own, and wires up the global
-   gitignore file to point to the right spot.
+2. (Optional) Executes `make _features`, which in turn executes `make` for each
+   of the features in the override-able `FEATURES` variable. See the
+   [Makefile](/Makefile) for supported options and the defaults.
 
-The next time you start a Terminal session, your new bashrc will load (or
-bash_profile, which simply sources the bashrc), giving you access to a whole
-host of new command-line fu. If you don't want to wait, try
+The next time you start a shell (usually `bash`), your new `bashrc` will load
+(or `bash_profile`, which simply sources the `bashrc`), giving you access to a
+whole host of new command-line fu. If you don't want to wait, try
 
 ```bash
 $ source ~/.bashrc
@@ -68,34 +48,23 @@ $ reload
 ```
 
 `reload` is a helpful alias for when changes have been made to dotfiles: it
-essentially loads those changes into the environment. (See
-[aliases](/docs/aliases.md))
+essentially loads those changes into the environment.
 
-## Keeping Up-to-date
+### Keeping Up-to-date
 
-Since this repo is constantly in development, you may find you want to pull in
-changes from the origin (or upstream remote if you forked this on GitHub).
+`make update` should be all you need.
 
-I have provided a simple (and thus imperfect) mechanism for doing so:
-`update.sh`. Aliased to execute with `updateDotfiles`, the script will checkout
-the master branch and pull in changes. This really only works if you just cloned
-the repo using the GitHub link, or if you forked and then cloned your fork.
+### Other `make` things
 
-If you want to pull updates from this repo for a fork, you'll need to add this
-as upstream.
+The Makefile is _only_ guaranteed to work if run from the top-level of this
+repo.
 
-If you want a different update setup, you should learn git. Make sure that this
-repository is an upstream remote, and that your fork (you did fork, right?) is
-origin. This way you can diverge from the original project some, but still send
-PRs fairly easily. Of course, you can always `git fetch --all` or `git pull
-upstream master` to fetch updates.
+- provides useful targets (`make` prints a list)
+- customizable (`grep '?=' Makefile`)
 
 ## Documentation & Full Feature List
 
-See the [docs](/docs) folder. You thought I was just gonna leave all that info
-here.
-
-Also try [features](/docs/features.md).
+Eliminated. Can be found in the git history.
 
 ## Misc
 
@@ -114,12 +83,11 @@ use a different directory:
 
 ### Built With
 
-* [bash 4.x.x](https://www.gnu.org/software/bash/)
-* [Mac OS X 10.11.6](https://en.wikipedia.org/wiki/OS_X_El_Capitan) (I'm slow to
-  upgrade usually) and
-  [Terminal](https://en.wikipedia.org/wiki/Terminal_(macOS))
-* [Vim 8.0.x](https://vim.sourceforge.io), because *duh*.
-* [Git 2.13.x](https://git-scm.com)
+* [bash](https://www.gnu.org/software/bash/)
+* [Mac OS X](https://en.wikipedia.org/wiki/OS_X_El_Capitan)
+* [Terminal](https://en.wikipedia.org/wiki/Terminal_(macOS)
+* [Vim](https://github.com/vim/vim)
+* [Git](https://git-scm.com)
 * [Homebrew/brew](https://brew.sh)
 
 And of course, a host of plugins, scripts, aliases, and some serious TLC :heart:.
@@ -156,10 +124,8 @@ I've also grabbed code from a number of places over the development of the
 project. I've tried to attribute you in the code where possible, but I can't hit
 everybody.
 
-Thanks to [steve losh](http://stevelosh.com/blog/2010/09/coming-home-to-vim/)
+Thanks to [Steve Losh](http://stevelosh.com/blog/2010/09/coming-home-to-vim/)
 for some Vim help and [teaching](http://learnvimscriptthehardway.stevelosh.com).
 
 Thanks further to the kind Internet for providing a wealth of resources when
 things go wonky.
-
-See our [contributors list](/docs/humans.txt)!

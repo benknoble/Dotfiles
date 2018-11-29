@@ -65,20 +65,25 @@ all: install
 install:
 	@$(MAKE) _bootstrap
 
-# symlink: re-create the symlinks
-.PHONY: symlink
-symlink: _symlink
-
 # update: update the dotfiles
 .PHONY: update
 update:
 	@$(MAKE) _update
+	@$(MAKE) vimtags
+
+# symlink: re-create the symlinks
+.PHONY: symlink
+symlink: _symlink
 
 # vimtags: regenerate tags for vim helpfiles
 .PHONY: vimtags
 vimtags:
 	vim +':helptags ALL' +'q'
 
+# brewfile: update the appropriate brewfile
+.PHONY: brewfile
+brewfile:
+	brew bundle dump --force --file="$(BREWFILE)"
 # }}}
 
 # Helper targets {{{
