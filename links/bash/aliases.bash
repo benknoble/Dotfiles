@@ -9,7 +9,6 @@ alias hidden='ls -a | grep "^\."'           # List all hidden files
 alias ~='cd ~'                              # Shortcut to cd ~
 alias edit='$EDITOR'                        # Open a file
 alias explore='vim +Explore'                # Open vim's Explore mode in current directory
-alias updateDotfiles='~/Dotfiles/update.sh' # Update dotfiles
 alias starwars='telnet towel.blinkenlights.nl'      # Watch Star Wars
 alias beep="echo -n $'\a'"                  # Do a beep
 alias today='date -j +"%e %B %Y"'           # A format of the date

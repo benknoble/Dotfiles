@@ -80,7 +80,6 @@ The following files depend on the structure `~/Dotfiles` and must be edited to
 use a different directory:
 
 - [/bashrc](/links/bashrc)
-- [/bash/aliases.bash](/links/bash/aliases.bash)
 
 ### Built With
 
