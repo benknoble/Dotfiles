@@ -2,12 +2,12 @@
 
 # Customize for installation {{{
 
-DOTFILES ?= ~/Dotfiles
+DOTFILES ?= $(HOME)/Dotfiles
 BACKUP ?= $(DOTFILES)_old
 SETUP := $(DOTFILES)/setup
 SUPPORT := $(SETUP)/support
-BREWFILE ?= $(if $(shell [ -e ~/.Brewfile ] && echo true),~/.Brewfile,$(DOTFILES)/brew/Brewfile)
-XDG_CONFIG_HOME ?= ~/.config
+BREWFILE ?= $(if $(shell [ -e $(HOME)/.Brewfile ] && echo true),$(HOME)/.Brewfile,$(DOTFILES)/brew/Brewfile)
+XDG_CONFIG_HOME ?= $(HOME)/.config
 # supported features:
 # git_extras
 # brew
