@@ -1,0 +1,43 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+ftplugin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
+
+log() {
+  printf '%s\n' "$@"
+}
+
+die() {
+  log "$@"
+  exit 1
+}
+
+edit_new_ftplugin() {
+  local filetype="$1"
+  local language="${filetype^}"
+  local fname="$ftplugin_dir/$filetype.vim"
+  vim \
+    -c "silent read $ftplugin_dir/skeleton" \
+    -c 'silent 0d' \
+    -c 'silent $d' \
+    -c "silent %s/LANG/$language/g" \
+    -c 'silent keeppatterns /!exists/-1' \
+    "$fname"
+}
+
+usage() {
+  cat <<DOG
+$0 {filetype}: edit a new filetype plugin, based on skeleton
+DOG
+}
+
+main() {
+  if (( $# != 1 )) || [[ -e "$1.vim" ]]; then
+    usage
+  else
+    edit_new_ftplugin "$1"
+  fi
+}
+
+main "$@"
