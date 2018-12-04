@@ -70,6 +70,9 @@ desired! So too are blogging about the project, submitting bug reports and
 feature request, and *discussing* the project on GitHub or elsewhere. Don't
 hesitate to get involved!
 
+Note that as the primary user, I (@benknoble) have veto privilege on any new
+features.
+
 ### UNDesired Contributions
 
 Please don't use the Issue tracker for support questions! Use
@@ -87,7 +90,7 @@ Think carefully about the code you want to add:
    * Consider starting your own open source project! (Maybe it'll get added!)
  * Is it an application, script, executable, &c., already easily to install via
    Brew (i.e., is it a formula)?
-   * Add to the Brewfile! (Requires Version 1.1, and Issue #32)
+   * Add to the Brewfile!
  * Does it overwrite settings already discussed/set by one program?
  * Does it change or break the way a current feature works?
    * Discuss it in an issue first!
@@ -170,9 +173,9 @@ make sense.
 
 ### Security
 
-If you find a security vulnerability, do NOT open an issue. Email
-ben.knoble@gmail.com instead. In order to determine whether you are dealing with
-a security issue, ask yourself these two questions:
+If you find a security vulnerability, do NOT open an issue. Email @benknoble
+instead. In order to determine whether you are dealing with a security issue,
+ask yourself these two questions:
 
  * Can I access something that's not mine, or something I shouldn't have access
    to?
@@ -181,7 +184,7 @@ a security issue, ask yourself these two questions:
 If the answer to either of those two questions are "yes", then you're probably
 dealing with a security issue. Note that even if you answer "no" to both
 questions, you may still be dealing with a security issue, so if you're unsure,
-just email ben.knoble@gmail.com.
+just email @benknoble.
 
 ### Bug Reports
 
@@ -292,11 +295,6 @@ wontfix:                  the bug/feature is by design and won't be changed
 
 Thank you for deciding to contribute to Dotfiles! Your support of this community
 is appreciated.
-
-Should your contribution prove to be merged in, your name and github info, along with any
-relevant changes, fixes, and work, will be added to
-[docs/humans.txt](/docs/humans.txt). Make my life easier consider including that
-in your PR.
 
 Thanks,
 
