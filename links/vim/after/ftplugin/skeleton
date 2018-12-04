@@ -1,0 +1,17 @@
+" vim: ft=vim
+" Vim filetype plugin
+" Language:              LANG
+" Maintainer:            Ben Knoble <ben.knoble@gmail.com>
+
+if exists('b:undo_ftplugin')
+  let b:undo_ftplugin .= ' | '
+else
+  let b:undo_ftplugin = ''
+endif
+
+if !exists("*MyLANGFtpluginUndo")
+  function MyLANGFtpluginUndo()
+  endfunction
+endif
+
+let b:undo_ftplugin .= 'call MyLANGFtpluginUndo()'
