@@ -19,9 +19,7 @@ but make sure to override the variable `DOTFILES` when invoking `make`. (_Note:_
 
 ```bash
 $ mkdir ~/Dotfiles
-
 $ git clone --recurse-submodules https://github.com/benknoble/Dotfiles.git ~/Dotfiles
-
 $ cd ~/Dotfiles
 ```
 
