@@ -41,7 +41,7 @@ endef
 define run_installer
 $(msg) 'Install $@?'
 if $(yes_or_no) ; then\
-	@$(MAKE) _$@;\
+	$(MAKE) _$@;\
 else\
 	$(msg) "Skipping $@";\
 fi
