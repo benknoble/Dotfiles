@@ -83,12 +83,6 @@ case "$OSTYPE" in
   linux* ) OS=linux ;;
 esac
 
-# dir for brew scripts
-brewscripts="$HOME/Dotfiles/brew/ext"
-
-# dir for git scripts
-gitscripts="$HOME/Dotfiles/git/ext"
-
 # file to hold private keys
 private=~/.private
 
@@ -167,13 +161,7 @@ fi
 # paths {{{
 
 # Add bin folder for scripts to path
-pathadd "$HOME/Dotfiles/bin"
-
-# add brew ext commands to path
-pathadd "$brewscripts"
-
-# add git ext commands to path
-pathadd "$gitscripts"
+pathadd "$HOME/.bin"
 
 pathadd_front "$brew_prefix/bin"
 
@@ -259,8 +247,6 @@ unset COW
 unset COLOR
 unset file
 unset bashcomp
-unset gitscripts
-unset brewscripts
 unset private
 unset completion_dir
 unset comp_prefix

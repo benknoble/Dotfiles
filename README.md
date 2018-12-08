@@ -14,8 +14,7 @@ part of that.
 ## Installing
 
 First, clone the repo into your dotfiles directory. You can name it anything,
-but make sure to override the variable `DOTFILES` when invoking `make`. (_Note:_
-[Name Dependencies](#name-dependencies).)
+but make sure to override the variable `DOTFILES` when invoking `make`.
 
 ```bash
 $ mkdir ~/Dotfiles
@@ -71,13 +70,6 @@ Eliminated. Can be found in the git history.
 
 The file benknoble.terminal is an XML file for use with Apple's *Terminal*
 application; it is a settings file ready for import.
-
-### Name Dependencies
-
-The following files depend on the structure `~/Dotfiles` and must be edited to
-use a different directory:
-
-- [/bashrc](/links/bashrc)
 
 ### Built With
 

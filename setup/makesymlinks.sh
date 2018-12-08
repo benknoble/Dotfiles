@@ -12,6 +12,7 @@ declare -A files=(
   [bash]=.bash
   [bash_profile]=.bash_profile
   [bashrc]=.bashrc
+  [bin]=.bin
   [gitconfig]=.gitconfig
   [gitignore_global]=.gitignore_global
   [gitshrc]=.gitshrc
