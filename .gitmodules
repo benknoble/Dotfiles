@@ -113,3 +113,6 @@
 [submodule "links/vim/pack/utility/start/heroku"]
 	path = links/vim/pack/utility/start/heroku
 	url = git@github.com:tpope/vim-heroku.git
+[submodule "links/vim/pack/utility/start/obsession"]
+	path = links/vim/pack/utility/start/obsession
+	url = git@github.com:tpope/vim-obsession.git

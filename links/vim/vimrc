@@ -80,6 +80,7 @@ set statusline+=\ %L\ lines
 set statusline+=%3*\ %{WindowNumber()}%*
 set statusline+=\ %a
 set statusline+=%4*\ %{AleCountTotal()}%*
+set statusline+=\ %{ObsessionStatus()}
 
 " End status line }}}
 
@@ -498,6 +499,9 @@ nnoremap <silent> <Leader>; q:i
 " set b:interpreter for filetypes to affect the term
 nnoremap <silent> <Leader>t :call benknoble#terminal('++close')<CR>
 nnoremap <silent> <Leader>T :call benknoble#terminal()<CR>
+
+" Obsession
+nnoremap <Leader>o :Obsession
 " End Leader shortcuts }}}
 
 " Window mappings {{{
