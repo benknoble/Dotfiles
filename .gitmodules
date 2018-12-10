@@ -74,9 +74,6 @@
 [submodule "vim/bundle/rhubarb"]
 	path = links/vim/pack/utility/start/rhubarb
 	url = git@github.com:tpope/vim-rhubarb.git
-[submodule "vim/bundle/startify"]
-	path = links/vim/pack/interface/start/startify
-	url = git@github.com:mhinz/vim-startify.git
 [submodule "Dracula/gitk"]
 	path = Dracula/gitk
 	url = git@github.com:dracula/gitk.git
