@@ -493,7 +493,7 @@ for nr in range(1,9)
 endfor
 
 " Trigger the command line window
-nnoremap <silent> <Leader>; q:i
+nnoremap <silent> <Leader>; q:
 
 " Terms and interpreters
 " set b:interpreter for filetypes to affect the term
