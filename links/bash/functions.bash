@@ -105,3 +105,15 @@ up() {
 ed() {
   command ed -p: "$@"
 }
+
+G() {
+  grep "$@"
+}
+
+EG() {
+  grep -E "$@"
+}
+
+L() {
+  less "$@"
+}
