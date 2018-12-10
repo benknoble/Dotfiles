@@ -447,7 +447,13 @@ nnoremap <silent> <Leader>Q :qa<CR>
 nnoremap <silent> <Leader>z :suspend<CR>
 
 " Explore
-nnoremap <silent> <Leader>e :Explore<CR>
+nnoremap <silent> <Leader>ed :Explore<CR>
+" Need 'recursive' mapping here for %%
+nmap <Leader>ew :e %%
+nmap <Leader>ev :vs %%
+nmap <Leader>es :sp %%
+nmap <Leader>et :tabe %%
+nmap <Leader>ef :find %%
 
 " Search
 nnoremap <Leader>a :Ack!<space>
