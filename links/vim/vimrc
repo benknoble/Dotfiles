@@ -13,6 +13,7 @@ endif
 " Leader {{{
 " Set <Leader> used for mappings
 let mapleader=" "
+nnoremap <Leader> <Nop>
 " And <LocalLeader> for buffer mappings
 let maplocalleader="\\"
 " End Leader }}}
