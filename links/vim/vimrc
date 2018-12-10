@@ -715,51 +715,6 @@ hi link StartifyFooter Normal
 nnoremap <Leader><Leader>s :echo synstax#UnderCursor()<CR>
 " End Synstax }}}
 
-" Projectionist {{{
-let g:projectionist_heuristics = {
-      \ "_config.yml": {
-      \   "*": {
-      \     "console": &shell,
-      \     "start": "bundle exec jekyll serve --watch --livereload",
-      \     "dispatch": "bundle exec jekyll build",
-      \   },
-      \   "README.md": { "type": "doc" },
-      \   "_config.yml": { "type": "config" },
-      \   "_plugins/*.rb": { "type": "plugin" },
-      \   "_layouts/*": { "type": "layout" },
-      \   "_includes/*": { "type": "include" },
-      \   "_posts/*": { "type": "post" },
-      \   "_drafts/*": { "type": "draft" },
-      \   "_data/*": { "type": "data" },
-      \   "_sass/*": { "type": "partial" },
-      \   "pages/*": { "type": "page" },
-      \   "index.*": { "type": "page" },
-      \   "assets/css/*": { "type": "css" },
-      \   "assets/js/*": { "type": "js" },
-      \   "assets/img/*": { "type": "img" },
-      \ },
-      \ "*.go": {
-      \   "*.go": {
-      \     "type": "source",
-      \     "alternate": "{}_test.go",
-      \     "dispatch": "go build",
-      \     "make": "go"
-      \   },
-      \   "*_test.go": {
-      \     "type": "test",
-      \     "alternate": "{}.go",
-      \     "dispatch": "go test ./...",
-      \   },
-      \ },
-      \ "*.py": {
-      \   "*.py": {
-      \     "console": "python",
-      \     "path": [ ".env" ],
-      \   },
-      \ },
-      \ }
-" End Projectionist }}}
-
 " Presenting.vim {{{
 
 let g:presenting_top_margin = 2
