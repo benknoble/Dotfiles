@@ -116,3 +116,6 @@
 [submodule "links/vim/pack/utility/start/obsession"]
 	path = links/vim/pack/utility/start/obsession
 	url = git@github.com:tpope/vim-obsession.git
+[submodule "links/vim/pack/utility/start/apathy"]
+	path = links/vim/pack/utility/start/apathy
+	url = git@github.com:tpope/vim-apathy.git
