@@ -325,26 +325,6 @@ if has("autocmd")
   augroup END
   " End vimrc_completion }}}
 
-  " vimrc_plugins {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_plugins | au! | augroup END"
-  augroup vimrc_plugins
-    au!
-
-  augroup END
-  "End vimrc_plugins }}}
-
-  " vimrc_gitcommit {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_gitcommit | au! | augroup END"
-  augroup vimrc_gitcommit
-    au!
-
-    autocmd FileType gitcommit :normal! gg
-
-  augroup END
-  "End vimrc_gitcommit }}}
-
   " vimrc_CRfix {{{
   " Put these in an autocmd group, so that you can revert them with:
   " ":augroup vimrc_CRfix | au! | augroup END"
@@ -357,17 +337,6 @@ if has("autocmd")
 
   augroup END
   "End vimrc_CRfix }}}
-
-  " dracula_fix {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup dracula_fix | au! | augroup END"
-  augroup dracula_fix
-    au!
-
-    " Purpose:  A fix for dracula's cursorline
-    autocmd ColorScheme dracula hi CursorLine cterm=underline
-  augroup END
-  " End dracula_fix }}}
 
 else
   set autoindent
