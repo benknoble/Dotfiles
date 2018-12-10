@@ -74,9 +74,6 @@
 [submodule "vim/bundle/rhubarb"]
 	path = links/vim/pack/utility/start/rhubarb
 	url = git@github.com:tpope/vim-rhubarb.git
-[submodule "vim/bundle/startify"]
-	path = links/vim/pack/interface/start/startify
-	url = git@github.com:mhinz/vim-startify.git
 [submodule "Dracula/gitk"]
 	path = Dracula/gitk
 	url = git@github.com:dracula/gitk.git
@@ -101,9 +98,6 @@
 [submodule "links/vim/pack/utility/start/tbone"]
 	path = links/vim/pack/utility/start/tbone
 	url = git@github.com:tpope/vim-tbone.git
-[submodule "links/vim/pack/utility/projectionist"]
-	path = links/vim/pack/utility/start/projectionist
-	url = git@github.com:tpope/vim-projectionist.git
 [submodule "links/vim/pack/utility/start/eunuch"]
 	path = links/vim/pack/utility/start/eunuch
 	url = git@github.com:tpope/vim-eunuch.git
@@ -119,3 +113,9 @@
 [submodule "links/vim/pack/utility/start/heroku"]
 	path = links/vim/pack/utility/start/heroku
 	url = git@github.com:tpope/vim-heroku.git
+[submodule "links/vim/pack/utility/start/obsession"]
+	path = links/vim/pack/utility/start/obsession
+	url = git@github.com:tpope/vim-obsession.git
+[submodule "links/vim/pack/utility/start/apathy"]
+	path = links/vim/pack/utility/start/apathy
+	url = git@github.com:tpope/vim-apathy.git

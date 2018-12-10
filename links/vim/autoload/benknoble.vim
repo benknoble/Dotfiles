@@ -1,7 +1,7 @@
-" Global function for calling terminal with the appropriate interpreter
 " Maintainer:       D. Ben Knoble <ben.knoble@gmail.com>
-" b:interpreter controls the program run
 
+" Global function for calling terminal with the appropriate interpreter
+" b:interpreter controls the program run
 function! benknoble#terminal(...)
   let l:interpreter = get(b:, 'interpreter', &shell)
   let l:command = 'term'
@@ -12,4 +12,19 @@ function! benknoble#terminal(...)
   endif
   let l:command .= printf(' %s', l:interpreter)
   execute l:command
+endfunction
+
+" Makes [I nicer to navigate
+function! benknoble#findword()
+  normal! [I
+  call inputsave()
+  let l:nr = str2nr(input("Number: "))
+  call inputrestore()
+  " [I starts with the number 1
+  " and a blank string (<CR> or <Esc>) is 0
+  if l:nr <=# 0
+    return
+  else
+    exec printf("normal! %d[\t", l:nr)
+  endif
 endfunction

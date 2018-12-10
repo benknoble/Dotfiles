@@ -80,6 +80,7 @@ set statusline+=\ %L\ lines
 set statusline+=%3*\ %{WindowNumber()}%*
 set statusline+=\ %a
 set statusline+=%4*\ %{AleCountTotal()}%*
+set statusline+=\ %{ObsessionStatus()}
 
 " End status line }}}
 
@@ -324,29 +325,6 @@ if has("autocmd")
   augroup END
   " End vimrc_completion }}}
 
-  " vimrc_plugins {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_plugins | au! | augroup END"
-  augroup vimrc_plugins
-    au!
-
-    au User StartifyReady setlocal signcolumn=no
-    au User StartifyReady setlocal cursorline
-
-  augroup END
-  "End vimrc_plugins }}}
-
-  " vimrc_gitcommit {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_gitcommit | au! | augroup END"
-  augroup vimrc_gitcommit
-    au!
-
-    autocmd FileType gitcommit :normal! gg
-
-  augroup END
-  "End vimrc_gitcommit }}}
-
   " vimrc_CRfix {{{
   " Put these in an autocmd group, so that you can revert them with:
   " ":augroup vimrc_CRfix | au! | augroup END"
@@ -359,17 +337,6 @@ if has("autocmd")
 
   augroup END
   "End vimrc_CRfix }}}
-
-  " dracula_fix {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup dracula_fix | au! | augroup END"
-  augroup dracula_fix
-    au!
-
-    " Purpose:  A fix for dracula's cursorline
-    autocmd ColorScheme dracula hi CursorLine cterm=underline
-  augroup END
-  " End dracula_fix }}}
 
 else
   set autoindent
@@ -409,7 +376,7 @@ nnoremap / /\v
 nnoremap ? ?\v
 
 " Jump to lines with word
-nnoremap <Leader>f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+nnoremap <Leader>f :call benknoble#findword()<CR>
 " End Search }}}
 
 " Substitute {{{
@@ -495,12 +462,15 @@ for nr in range(1,9)
 endfor
 
 " Trigger the command line window
-nnoremap <silent> <Leader>; q:i
+nnoremap <silent> <Leader>; q:
 
 " Terms and interpreters
 " set b:interpreter for filetypes to affect the term
 nnoremap <silent> <Leader>t :call benknoble#terminal('++close')<CR>
 nnoremap <silent> <Leader>T :call benknoble#terminal()<CR>
+
+" Obsession
+nnoremap <Leader>o :Obsession
 " End Leader shortcuts }}}
 
 " Window mappings {{{
@@ -598,6 +568,8 @@ set keywordprg=:Man
 let g:netrw_liststyle=1
 " Don't display baner
 let g:netrw_banner=0
+" Use my cursorline/column settings
+let g:netrw_cursor=0
 " Hide things not tracked by gitignore
 " let g:netrw_list_hide=netrw_gitignore#Hide()
 " Something is going screwy here^
@@ -661,104 +633,9 @@ let g:splitjoin_split_mapping = ""
 let g:splitjoin_join_mapping = ""
 " End SplitJoin }}}
 
-" Startify {{{
-" Options
-let g:startify_disable_at_vimenter = 1
-let g:startify_session_dir = '~/.vimsessions'
-let g:startify_files_number = 5
-let g:startify_change_to_dir = 0
-let g:startify_change_to_vcs_root = 1
-let g:startify_enable_special = 0
-let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
-
-" Lists
-let g:startify_lists = [
-            \ { 'type': 'bookmarks', 'header': [ 'Bookmarks' ] },
-            \ { 'type': 'dir', 'header': [ getcwd() ] },
-            \ { 'type': 'files', 'header': [ 'Files' ] },
-            \ { 'type': 'commands', 'header': [ 'Commands' ] },
-            \ { 'type': 'sessions', 'header': [ 'Sessions' ] },
-            \ ]
-
-let g:startify_bookmarks = [
-            \ { 'c': '$MYVIMRC'},
-            \ ]
-
-let g:startify_commands = [
-            \ { 'E': 'Explore' },
-            \ { 'p': 'e ~/thinkpad.txt' },
-            \ { 'r': 'help reference' },
-            \ { 'I': 'intro' },
-            \ ]
-
-" Header/Footer
-if executable('fortune') && executable('cowsay')
-    let g:startify_custom_header =
-                \ "split(system('fortune -s | cowsay'), '\n')"
-else
-    let g:startify_custom_header = 'startify#fortune#cowsay()'
-endif
-let g:startify_custom_footer = [
-            \ ' ',
-            \ '[b]uffer [s]plit [v]ertical [t]ab',
-            \ ' ',
-            \ '[e]new   [q]uit',
-            \ ]
-
-" Highlighting
-hi link StartifyFile DraculaLink
-hi link StartifyHeader Normal
-hi link StartifyFooter Normal
-" End Startify }}}
-
 " Synstax {{{
 nnoremap <Leader><Leader>s :echo synstax#UnderCursor()<CR>
 " End Synstax }}}
-
-" Projectionist {{{
-let g:projectionist_heuristics = {
-      \ "_config.yml": {
-      \   "*": {
-      \     "console": &shell,
-      \     "start": "bundle exec jekyll serve --watch --livereload",
-      \     "dispatch": "bundle exec jekyll build",
-      \   },
-      \   "README.md": { "type": "doc" },
-      \   "_config.yml": { "type": "config" },
-      \   "_plugins/*.rb": { "type": "plugin" },
-      \   "_layouts/*": { "type": "layout" },
-      \   "_includes/*": { "type": "include" },
-      \   "_posts/*": { "type": "post" },
-      \   "_drafts/*": { "type": "draft" },
-      \   "_data/*": { "type": "data" },
-      \   "_sass/*": { "type": "partial" },
-      \   "pages/*": { "type": "page" },
-      \   "index.*": { "type": "page" },
-      \   "assets/css/*": { "type": "css" },
-      \   "assets/js/*": { "type": "js" },
-      \   "assets/img/*": { "type": "img" },
-      \ },
-      \ "*.go": {
-      \   "*.go": {
-      \     "type": "source",
-      \     "alternate": "{}_test.go",
-      \     "dispatch": "go build",
-      \     "make": "go"
-      \   },
-      \   "*_test.go": {
-      \     "type": "test",
-      \     "alternate": "{}.go",
-      \     "dispatch": "go test ./...",
-      \   },
-      \ },
-      \ "*.py": {
-      \   "*.py": {
-      \     "console": "python",
-      \     "path": [ ".env" ],
-      \   },
-      \ },
-      \ }
-" End Projectionist }}}
 
 " Presenting.vim {{{
 
