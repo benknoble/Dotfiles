@@ -376,7 +376,7 @@ nnoremap / /\v
 nnoremap ? ?\v
 
 " Jump to lines with word
-nnoremap <Leader>f [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+nnoremap <Leader>f :call benknoble#findword()<CR>
 " End Search }}}
 
 " Substitute {{{
