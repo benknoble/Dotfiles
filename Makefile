@@ -84,6 +84,13 @@ vimtags:
 .PHONY: brewfile
 brewfile:
 	brew bundle dump --force --file="$(BREWFILE)"
+
+# submodules: fixup any issues with submodules
+.PHONY: submodules
+submodules:
+	git submodule update --init
+	git clean -fd links/vim/pack/
+
 # }}}
 
 # Helper targets {{{
