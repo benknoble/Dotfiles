@@ -14,13 +14,7 @@ setlocal spell spelllang=en_us
 " Make sure we don't use autoformatting
 setlocal formatoptions-=a
 
-function! s:find_diff()
-  " find the diff cut line, wrapping
-  call search('^#.*>8.*', 'w')
-  " move 3 lines down
-  +3
-endfunction
-nnoremap <buffer> <LocalLeader>d :call <SID>find_diff()<CR>
+nnoremap <buffer> <LocalLeader>d :DiffGitCached<CR>
 
 if !exists("*MyGitcommitFtpluginUndo")
   function MyGitcommitFtpluginUndo()
@@ -28,7 +22,6 @@ if !exists("*MyGitcommitFtpluginUndo")
     setlocal spelllang<
     setlocal formatoptions<
     silent! nunmap <buffer> <LocalLeader>d
-    delfunction s:find_diff
   endfunction
 endif
 
