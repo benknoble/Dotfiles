@@ -46,7 +46,7 @@ set showmode
 " Status line {{{
 
 function! Head() abort
-  let l:head = expand('%:h')
+  let l:head = substitute(expand('%:h'), $HOME, '~', '')
   if l:head != ''
     let l:head .= '/'
   endif
