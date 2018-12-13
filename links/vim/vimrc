@@ -46,7 +46,7 @@ set showmode
 " Status line {{{
 
 function! Head() abort
-  let l:head = expand('%:h')
+  let l:head = substitute(expand('%:h'), $HOME, '~', '')
   if l:head != ''
     let l:head .= '/'
   endif
@@ -299,10 +299,9 @@ if has("autocmd")
     au!
 
     " Automatically add foldcolumn if folds present
-    " Needs Auto Origami plugin
-    " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
-    "       \ auto_origami#Foldcolumn()
-    au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
+    au CursorHold,BufWinEnter,WinEnter * if exists(':AutoOrigamiFoldColumn') |
+          \ execute 'AutoOrigamiFoldColumn' |
+          \ endif
 
   augroup END
   " End vimrc_autofoldcolumn }}}
@@ -375,9 +374,6 @@ inoremap <C-U> <C-G>u<C-U>
 " Seriously who doesn't want this
 nnoremap / /\v
 nnoremap ? ?\v
-
-" Jump to lines with word
-nnoremap <Leader>f :call benknoble#findword()<CR>
 " End Search }}}
 
 " Substitute {{{
@@ -386,17 +382,6 @@ nnoremap & :&&<CR>
 " Visual mode
 xnoremap & :&&<CR>
 " End Substitute }}}
-
-" Center {{{
-" Center search results
-nnoremap n nzz
-nnoremap N Nzz
-cnoremap <expr> <CR> getcmdtype() =~ '[/?]' ? '<CR>zz' : '<CR>'
-" And other motions
-nnoremap G Gzz
-nnoremap <C-u> <C-u>zz
-nnoremap <C-d> <C-d>zz
-" End Center }}}
 
 " gi goes to end of last insert (`^)
 " gI goes to last change
@@ -408,9 +393,6 @@ nnoremap <F5> :Reload<CR>
 " Or <Leader>[rR]
 nnoremap <Leader>r :Reload<CR>
 " End Reload }}}
-
-" Quickly input the directory of the current file on the command line
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
 " Function Keys {{{
 " <F1> is help
@@ -430,36 +412,39 @@ nnoremap <F9> mzggg?G`z
 " End Function Keys }}}
 
 " Leader shortcuts {{{
-" Edit alternate file
-nnoremap <Leader>` <C-^>
-" Save
-nnoremap <Leader>s :write<CR>
 " Clear lines
 nnoremap <Leader>cl 0D
 
-" Quickly edit vimrc
-nnoremap <Leader>v :vsplit $MYVIMRC<CR>
-
+" Save
+nnoremap <silent> <Leader>s :write<CR>
 " Quit quickly
 nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Leader>Q :qa<CR>
-
 " Suspended (by Matt Nathanson)
 nnoremap <silent> <Leader>z :suspend<CR>
 
 " Explore
 nnoremap <silent> <Leader>ed :Explore<CR>
+" Quickly input the directory of the current file on the command line
+cnoremap <expr> %% filename#command_dir('%%')
 " Need 'recursive' mapping here for %%
 nmap <Leader>ew :e %%
 nmap <Leader>ev :vs %%
 nmap <Leader>es :sp %%
 nmap <Leader>et :tabe %%
 nmap <Leader>ef :find %%
+" Edit alternate file
+nnoremap <Leader>` <C-^>
+" Quickly edit vimrc
+nnoremap <Leader>v :vsplit $MYVIMRC<CR>
 
 " Search
 nnoremap <Leader>a :Ack!<space>
 nnoremap <silent> <Leader>A :Ack! <cword><CR>
-
+nnoremap <silent> <Leader>g :set operatorfunc=grep#operator<CR>g@
+xnoremap <silent> <Leader>g :<C-u>call grep#operator(visualmode())<CR>
+" Jump to lines with word
+nnoremap <Leader>f :call find#included_word()<CR>
 " Unhighlight last search
 nnoremap <silent> <Leader>h :nohlsearch<CR>
 
@@ -473,12 +458,11 @@ nnoremap <silent> <Leader>; q:
 
 " Terms and interpreters
 " set b:interpreter for filetypes to affect the term
-nnoremap <silent> <Leader>t :call benknoble#terminal('++close')<CR>
-nnoremap <silent> <Leader>T :call benknoble#terminal()<CR>
+nnoremap <silent> <Leader>t :call terminal#run('++close')<CR>
+nnoremap <silent> <Leader>T :call terminal#run()<CR>
 
 " Obsession
 nnoremap <Leader>o :Obsession
-" End Leader shortcuts }}}
 
 " Window mappings {{{
 
@@ -494,6 +478,8 @@ nnoremap <Right> <C-w>l
 nnoremap <S-Right> <C-w>L
 
 " End Window mappings }}}
+
+" End Leader shortcuts }}}
 
 " Lines {{{
 " Bubble single lines up and down
@@ -555,7 +541,7 @@ endif
 
 " End Commands }}}
 
-" Plugin customization {{{
+" Plugin loading {{{
 
 " Matchit {{{
 if has('packages') && has('syntax') && has('eval')
@@ -569,18 +555,6 @@ runtime ftplugin/man.vim
 let g:ft_man_open_mode='vert'
 set keywordprg=:Man
 " End Man }}}
-
-" Netrw {{{
-" Make netrw use a long listing
-let g:netrw_liststyle=1
-" Don't display baner
-let g:netrw_banner=0
-" Use my cursorline/column settings
-let g:netrw_cursor=0
-" Hide things not tracked by gitignore
-" let g:netrw_list_hide=netrw_gitignore#Hide()
-" Something is going screwy here^
-" End netrw }}}
 
 " Dracula {{{
 if ! exists('g:colors_name')
@@ -609,60 +583,4 @@ hi User5 cterm=bold ctermfg=215 ctermbg=236
 
 " End Dracula }}}
 
-" ALE {{{
-
-let g:ale_set_signs = 0
-
-let g:ale_linters = {
-      \ 'python': 'all'
-      \}
-
-" End ALE }}}
-
-" Undotree {{{
-" Customize undotree
-nnoremap <silent> <Leader>u :UndotreeToggle<CR>
-let g:undotree_SetFocusWhenToggle=1
-" End Undotree }}}
-
-" Pydoc {{{
-" let g:pydoc_perform_mappings = 0
-let g:pydoc_cmd = 'python -m pydoc'
-" End Pydoc }}}
-
-" Colorizer {{{
-let g:colorizer_auto_filetype='css,html'
-" End Colorizer }}}
-
-" SplitJoin {{{
-" Turn off mapings, because I couldn't make them work with <Leader>
-let g:splitjoin_split_mapping = ""
-let g:splitjoin_join_mapping = ""
-" End SplitJoin }}}
-
-" Synstax {{{
-nnoremap <Leader><Leader>s :echo synstax#UnderCursor()<CR>
-" End Synstax }}}
-
-" Presenting.vim {{{
-
-let g:presenting_top_margin = 2
-let g:presenting_statusline =
-      \ '%{b:presenting_page_current}/%{b:presenting_page_total} (%l/%L, %c) %y'
-
-" End Presenting.vim }}}
-
-" End plugin customization }}}
-
-" Abbreviations {{{
-
-iabbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
-iabbrev llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi
-iabbrev lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
-
-iabbrev eemail ben.knoble@gmail.com
-iabbrev wweb benknoble.github.io
-iabbrev ssig --<CR>David Ben Knoble<CR>ben.knoble@gmail.com
-iabbrev ccopy © Copyright David Ben Knoble 2018, all rights reserved.
-
-" End abbreviations }}}
+" End plugin loading }}}

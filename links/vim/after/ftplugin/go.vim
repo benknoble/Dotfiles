@@ -8,17 +8,8 @@ else
   let b:undo_ftplugin = ''
 endif
 
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    :GoTestCompile
-  elseif l:file =~# '^\f\+\.go$'
-    :GoBuild
-  endif
-endfunction
-
 " Build Go files
-nmap <buffer> <localleader>b :<C-u>call <SID>build_go_files()<CR>
+nnoremap <buffer> <localleader>b :<C-u>call go#build_go_files()<CR>
 " Run them
 nmap <buffer> <localleader>r <Plug>(go-run)
 " And test them
