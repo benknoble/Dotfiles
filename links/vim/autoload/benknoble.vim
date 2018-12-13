@@ -28,3 +28,16 @@ function! benknoble#findword()
     exec printf("normal! %d[\t", l:nr)
   endif
 endfunction
+
+" Get the directory of a file on the command line
+function! benknoble#current_file_directory(keymap) abort
+  let l:command_type = getcmdtype()
+  if l:command_type isnot# ':'
+    return a:keymap
+  endif
+  let l:dir = expand('%:h')
+  if empty(l:dir)
+    let l:dir = '.'
+  endif
+  return l:dir . '/'
+endfunction
