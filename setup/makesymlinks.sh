@@ -14,6 +14,7 @@ declare -A files=(
   [bashrc]=.bashrc
   [bin]=.bin
   [ctags.d]=.ctags.d
+  [git_template]=.git_template
   [gitconfig]=.gitconfig
   [gitignore_global]=.gitignore_global
   [gitshrc]=.gitshrc
