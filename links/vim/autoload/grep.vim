@@ -1,7 +1,4 @@
-nnoremap <Leader>g :set operatorfunc=<SID>GrepOperator<CR>g@
-vnoremap <Leader>g :<C-u>call <SID>GrepOperator(visualmode())<CR>
-
-function! s:GrepOperator(type)
+function! grep#operator(type) abort
   let s:saved_unnamed_register = @@
 
   if a:type ==# 'v'
@@ -12,7 +9,7 @@ function! s:GrepOperator(type)
     return
   endif
 
-  silent execute "grep! -R " . shellescape(@@) . " ."
+  silent execute printf("grep! -R %s .", shellescape(@@))
   redraw!
   copen
 

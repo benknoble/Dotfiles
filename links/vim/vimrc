@@ -448,6 +448,8 @@ nmap <Leader>ef :find %%
 " Search
 nnoremap <Leader>a :Ack!<space>
 nnoremap <silent> <Leader>A :Ack! <cword><CR>
+nnoremap <silent> <Leader>g :set operatorfunc=grep#operator<CR>g@
+xnoremap <silent> <Leader>g :<C-u>call grep#operator(visualmode())<CR>
 
 " Unhighlight last search
 nnoremap <silent> <Leader>h :nohlsearch<CR>
