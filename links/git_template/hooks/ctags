@@ -1,0 +1,45 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+GIT_DIR="$(git rev-parse --git-dir)"
+TEMP="$GIT_DIR/$$.tags"
+FINAL="$GIT_DIR/tags"
+
+trap 'rm -f "$TEMP"' EXIT
+
+files() {
+  git ls-files
+}
+
+# expects files on stdin
+run_ctags() {
+  local -a args=(
+    # tags are relative to here
+    --tag-relative=yes
+    # where to get files
+    -L -
+    # output files
+    -f "$TEMP"
+    # dont tag these languages
+    --languages=-javascript,sql
+  )
+  ctags "${args[@]}"
+}
+
+finalize() {
+  mv "$TEMP" "$FINAL"
+}
+
+main() {
+  if files | run_ctags ; then
+    finalize
+  fi
+}
+
+main

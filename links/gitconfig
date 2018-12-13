@@ -6,6 +6,7 @@
 	cc = commit
 	cd = checkout
 	cm = commit -m
+	ctags = !.git/hooks/ctags
 	d = diff
 	grall = !git graph --all
 	graph = !git graph-long --oneline
@@ -66,3 +67,5 @@
 	enabled = true
 [rebase]
 	autoSquash = true
+[init]
+	templateDir = ~/.git_template
