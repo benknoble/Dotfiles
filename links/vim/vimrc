@@ -541,7 +541,7 @@ endif
 
 " End Commands }}}
 
-" Plugin customization {{{
+" Plugin loading {{{
 
 " Matchit {{{
 if has('packages') && has('syntax') && has('eval')
@@ -555,18 +555,6 @@ runtime ftplugin/man.vim
 let g:ft_man_open_mode='vert'
 set keywordprg=:Man
 " End Man }}}
-
-" Netrw {{{
-" Make netrw use a long listing
-let g:netrw_liststyle=1
-" Don't display baner
-let g:netrw_banner=0
-" Use my cursorline/column settings
-let g:netrw_cursor=0
-" Hide things not tracked by gitignore
-" let g:netrw_list_hide=netrw_gitignore#Hide()
-" Something is going screwy here^
-" End netrw }}}
 
 " Dracula {{{
 if ! exists('g:colors_name')
@@ -595,47 +583,4 @@ hi User5 cterm=bold ctermfg=215 ctermbg=236
 
 " End Dracula }}}
 
-" ALE {{{
-
-let g:ale_set_signs = 0
-
-let g:ale_linters = {
-      \ 'python': 'all'
-      \}
-
-" End ALE }}}
-
-" Undotree {{{
-" Customize undotree
-nnoremap <silent> <Leader>u :UndotreeToggle<CR>
-let g:undotree_SetFocusWhenToggle=1
-" End Undotree }}}
-
-" Pydoc {{{
-" let g:pydoc_perform_mappings = 0
-let g:pydoc_cmd = 'python -m pydoc'
-" End Pydoc }}}
-
-" Colorizer {{{
-let g:colorizer_auto_filetype='css,html'
-" End Colorizer }}}
-
-" SplitJoin {{{
-" Turn off mapings, because I couldn't make them work with <Leader>
-let g:splitjoin_split_mapping = ""
-let g:splitjoin_join_mapping = ""
-" End SplitJoin }}}
-
-" Synstax {{{
-nnoremap <Leader><Leader>s :echo synstax#UnderCursor()<CR>
-" End Synstax }}}
-
-" Presenting.vim {{{
-
-let g:presenting_top_margin = 2
-let g:presenting_statusline =
-      \ '%{b:presenting_page_current}/%{b:presenting_page_total} (%l/%L, %c) %y'
-
-" End Presenting.vim }}}
-
-" End plugin customization }}}
+" End plugin loading }}}
