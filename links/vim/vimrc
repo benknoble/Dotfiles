@@ -299,10 +299,9 @@ if has("autocmd")
     au!
 
     " Automatically add foldcolumn if folds present
-    " Needs Auto Origami plugin
-    " au CursorHold,BufWinEnter,WinEnter * let &foldcolumn =
-    "       \ auto_origami#Foldcolumn()
-    au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
+    au CursorHold,BufWinEnter,WinEnter * if exists(':AutoOrigamiFoldColumn') |
+          \ execute 'AutoOrigamiFoldColumn' |
+          \ endif
 
   augroup END
   " End vimrc_autofoldcolumn }}}
@@ -375,9 +374,6 @@ inoremap <C-U> <C-G>u<C-U>
 " Seriously who doesn't want this
 nnoremap / /\v
 nnoremap ? ?\v
-
-" Jump to lines with word
-nnoremap <Leader>f :call find#included_word()<CR>
 " End Search }}}
 
 " Substitute {{{
@@ -398,9 +394,6 @@ nnoremap <F5> :Reload<CR>
 nnoremap <Leader>r :Reload<CR>
 " End Reload }}}
 
-" Quickly input the directory of the current file on the command line
-cnoremap <expr> %% filename#command_dir('%%')
-
 " Function Keys {{{
 " <F1> is help
 
@@ -419,38 +412,39 @@ nnoremap <F9> mzggg?G`z
 " End Function Keys }}}
 
 " Leader shortcuts {{{
-" Edit alternate file
-nnoremap <Leader>` <C-^>
-" Save
-nnoremap <Leader>s :write<CR>
 " Clear lines
 nnoremap <Leader>cl 0D
 
-" Quickly edit vimrc
-nnoremap <Leader>v :vsplit $MYVIMRC<CR>
-
+" Save
+nnoremap <silent> <Leader>s :write<CR>
 " Quit quickly
 nnoremap <silent> <Leader>q :q<CR>
 nnoremap <silent> <Leader>Q :qa<CR>
-
 " Suspended (by Matt Nathanson)
 nnoremap <silent> <Leader>z :suspend<CR>
 
 " Explore
 nnoremap <silent> <Leader>ed :Explore<CR>
+" Quickly input the directory of the current file on the command line
+cnoremap <expr> %% filename#command_dir('%%')
 " Need 'recursive' mapping here for %%
 nmap <Leader>ew :e %%
 nmap <Leader>ev :vs %%
 nmap <Leader>es :sp %%
 nmap <Leader>et :tabe %%
 nmap <Leader>ef :find %%
+" Edit alternate file
+nnoremap <Leader>` <C-^>
+" Quickly edit vimrc
+nnoremap <Leader>v :vsplit $MYVIMRC<CR>
 
 " Search
 nnoremap <Leader>a :Ack!<space>
 nnoremap <silent> <Leader>A :Ack! <cword><CR>
 nnoremap <silent> <Leader>g :set operatorfunc=grep#operator<CR>g@
 xnoremap <silent> <Leader>g :<C-u>call grep#operator(visualmode())<CR>
-
+" Jump to lines with word
+nnoremap <Leader>f :call find#included_word()<CR>
 " Unhighlight last search
 nnoremap <silent> <Leader>h :nohlsearch<CR>
 
@@ -469,7 +463,6 @@ nnoremap <silent> <Leader>T :call terminal#run()<CR>
 
 " Obsession
 nnoremap <Leader>o :Obsession
-" End Leader shortcuts }}}
 
 " Window mappings {{{
 
@@ -485,6 +478,8 @@ nnoremap <Right> <C-w>l
 nnoremap <S-Right> <C-w>L
 
 " End Window mappings }}}
+
+" End Leader shortcuts }}}
 
 " Lines {{{
 " Bubble single lines up and down
@@ -644,16 +639,3 @@ let g:presenting_statusline =
 " End Presenting.vim }}}
 
 " End plugin customization }}}
-
-" Abbreviations {{{
-
-iabbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
-iabbrev llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi
-iabbrev lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
-
-iabbrev eemail ben.knoble@gmail.com
-iabbrev wweb benknoble.github.io
-iabbrev ssig --<CR>David Ben Knoble<CR>ben.knoble@gmail.com
-iabbrev ccopy © Copyright David Ben Knoble 2018, all rights reserved.
-
-" End abbreviations }}}
