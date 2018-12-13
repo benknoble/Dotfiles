@@ -377,7 +377,7 @@ nnoremap / /\v
 nnoremap ? ?\v
 
 " Jump to lines with word
-nnoremap <Leader>f :call benknoble#findword()<CR>
+nnoremap <Leader>f :call find#included_word()<CR>
 " End Search }}}
 
 " Substitute {{{
@@ -399,7 +399,7 @@ nnoremap <Leader>r :Reload<CR>
 " End Reload }}}
 
 " Quickly input the directory of the current file on the command line
-cnoremap <expr> %% benknoble#current_file_directory('%%')
+cnoremap <expr> %% filename#command_dir('%%')
 
 " Function Keys {{{
 " <F1> is help
@@ -464,8 +464,8 @@ nnoremap <silent> <Leader>; q:
 
 " Terms and interpreters
 " set b:interpreter for filetypes to affect the term
-nnoremap <silent> <Leader>t :call benknoble#terminal('++close')<CR>
-nnoremap <silent> <Leader>T :call benknoble#terminal()<CR>
+nnoremap <silent> <Leader>t :call terminal#run('++close')<CR>
+nnoremap <silent> <Leader>T :call terminal#run()<CR>
 
 " Obsession
 nnoremap <Leader>o :Obsession
