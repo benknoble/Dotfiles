@@ -2,7 +2,7 @@
 
 " Global function for calling terminal with the appropriate interpreter
 " b:interpreter controls the program run
-function! benknoble#terminal(...)
+function! benknoble#terminal(...) abort
   let l:interpreter = get(b:, 'interpreter', &shell)
   let l:command = 'term'
   if a:0
@@ -15,7 +15,7 @@ function! benknoble#terminal(...)
 endfunction
 
 " Makes [I nicer to navigate
-function! benknoble#findword()
+function! benknoble#findword() abort
   normal! [I
   call inputsave()
   let l:nr = str2nr(input("Number: "))
