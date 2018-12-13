@@ -27,6 +27,8 @@ export PAGER="less"
 
 export PYTHONSTARTUP=~/.pythonrc
 
+export HOMEBREW_NO_AUTO_UPDATE=true
+
 # env }}}
 
 # shell {{{
