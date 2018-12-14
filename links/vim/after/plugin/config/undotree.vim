@@ -1,4 +1,4 @@
-if ! exists('UndotreeToggle')
+if ! exists(':UndotreeToggle')
   finish
 endif
 

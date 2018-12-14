@@ -1,4 +1,4 @@
-if ! exists('*synstax#UnderCursor')
+if ! &rtp =~# 'synstax'
   finish
 endif
 
