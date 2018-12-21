@@ -14,10 +14,13 @@ setlocal nospell
 " Use :help for K in help docs
 setlocal keywordprg=:help
 
+nnoremap <silent> <buffer>q :q<CR>
+
 if !exists("*MyHelpFtpluginUndo")
   function MyHelpFtpluginUndo()
     setlocal spell<
     setlocal keywordprg<
+    silent! nunmap <buffer> q
   endfunction
 endif
 
