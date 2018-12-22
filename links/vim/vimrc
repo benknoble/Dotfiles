@@ -338,6 +338,15 @@ if has("autocmd")
   augroup END
   "End vimrc_CRfix }}}
 
+  " vimrc_cmdwin_num {{{
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup vimrc_cmdwin_num | au! | augroup END"
+  augroup vimrc_cmdwin_num
+    au!
+    autocmd CmdwinEnter * setlocal nonumber norelativenumber
+  augroup END
+  " vimrc_cmdwin_num }}}
+
 else
   set autoindent
 endif " has("autocmd")
