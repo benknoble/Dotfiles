@@ -12,8 +12,6 @@ endif
 setlocal textwidth=80
 " Indent two spaces
 setlocal shiftwidth=2 softtabstop=2
-" Fix keywords
-setlocal iskeyword+=$
 
 if !exists("*MyShFtpluginUndo")
   function MyShFtpluginUndo()
