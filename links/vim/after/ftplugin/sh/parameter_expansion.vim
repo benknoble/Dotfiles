@@ -11,11 +11,14 @@ endif
 xnoremap <buffer> <silent> iv :<C-u>call sh#in_parameter_expansion()<CR>
 onoremap <buffer> <silent> iv :<C-u>call sh#in_parameter_expansion()<CR>
 
+" Relies on surround.vim and custom text object above
+nmap <buffer> <silent> <LocalLeader>qv ysiv"
 
 if !exists("*MyShPEFtpluginUndo")
   function MyShPEFtpluginUndo()
     silent! xunmap <buffer> iv
     silent! ounmap <buffer> iv
+    silent! ounmap <buffer> <LocalLeader>qv
   endfunction
 endif
 
