@@ -75,7 +75,7 @@ let s:special_pattern .= s:branchify_atoms(
 let s:parameter_pattern = '\m' " magic
 let s:parameter_pattern .= s:branchify_atoms(
       \ s:group_atoms(
-      \   [s:name_pattern, s:positional_pattern, s:special_pattern],
+      \   [s:name_pattern, s:positional_pattern, s:special_pattern]
       \   )
       \ )
 
@@ -91,7 +91,7 @@ let s:expansion_pattern .= '\$' " literal '$'
 let s:expansion_pattern .= s:group_atoms(
       \ [s:branchify_atoms(
       \   s:group_atoms(
-      \     [s:parameter_pattern, s:brace_pattern],
+      \     [s:parameter_pattern, s:brace_pattern]
       \     )
       \   )]
       \ )[0] " extract the one and only element
