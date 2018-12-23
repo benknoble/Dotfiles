@@ -49,8 +49,12 @@ endfunction
 
 " matches a name (no braces)
 let s:name_pattern = '\m' " magic mode
-let s:name_pattern .= '\(\a\|_\)' " begins with alpha or underscore
-let s:name_pattern .= '\(\a\|\d\|_\)*' " letters, numbers, underscores
+let s:name_pattern .= s:group_atoms(
+      \ [s:branchify_atoms([ '\a', '_' ])]
+      \ )[0] " begins with alpha or underscore
+let s:name_pattern .= s:group_atoms(
+      \ [s:branchify_atoms([ '\a', '\d', '_' ])]
+      \ )[0] . '*' " letters, numbers, underscores
 
 " matches a positional parameter (no braces)
 let s:positional_pattern = '\m' " magic
