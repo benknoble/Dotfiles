@@ -39,22 +39,26 @@
 "  have to match exactly the definition of a parameter. We construct a regex for
 "  this purpose.
 
-function! s:branchify_atoms(atoms)
+function! s:branchify_atoms(atoms) abort
   return join(a:atoms, '\|')
 endfunction
 
-function! s:group_atoms(atoms)
+function! s:group_atoms(atoms) abort
   return map(copy(a:atoms), 'printf("\\(%s\\)", v:val)')
+endfunction
+
+function! s:group_atom(atom) abort
+  return s:group_atoms([a:atom])[0]
 endfunction
 
 " matches a name (no braces)
 let s:name_pattern = '\m' " magic mode
-let s:name_pattern .= s:group_atoms(
-      \ [s:branchify_atoms([ '\a', '_' ])]
-      \ )[0] " begins with alpha or underscore
-let s:name_pattern .= s:group_atoms(
-      \ [s:branchify_atoms([ '\a', '\d', '_' ])]
-      \ )[0] . '*' " letters, numbers, underscores
+let s:name_pattern .= s:group_atom(
+      \ s:branchify_atoms([ '\a', '_' ])
+      \ ) " begins with alpha or underscore
+let s:name_pattern .= s:group_atom(
+      \ s:branchify_atoms([ '\a', '\d', '_' ])
+      \ ) . '*' " letters, numbers, underscores
 
 " matches a positional parameter (no braces)
 let s:positional_pattern = '\m' " magic
