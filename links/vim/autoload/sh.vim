@@ -1,6 +1,7 @@
-" Based on https://vimways.org/2018/transactions-pending/
+" sh functions
 
 " Text object for shell parameter expansions
+" Based on https://vimways.org/2018/transactions-pending/
 " Definitions:
 "   Parameter: An entity that stores values. It can be a name, a number, or one
 "   of the special characters listed below. A variable is a parameter denoted by
