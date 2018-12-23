@@ -63,11 +63,12 @@ endfunction
 let s:name_pattern = s:concat_atoms(
       \ ['\m',
       \  s:group_atom(
-      \    s:branchify_atoms([ '\a', '_' ])
-      \  ),
+      \    s:branchify_atoms([ '\a',
+      \                        '_' ])),
       \  s:group_atom(
-      \    s:branchify_atoms([ '\a', '\d', '_' ])
-      \  ),
+      \    s:branchify_atoms([ '\a',
+      \                        '\d',
+      \                        '_' ])),
       \  '*'])
 
 " matches a positional parameter (no braces)
