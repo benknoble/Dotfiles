@@ -13,12 +13,21 @@ setlocal textwidth=80
 " Indent two spaces
 setlocal shiftwidth=2 softtabstop=2
 
+xnoremap <buffer> <silent> iv :<C-u>call sh#in_parameter_expansion()<CR>
+onoremap <buffer> <silent> iv :<C-u>call sh#in_parameter_expansion()<CR>
+
+" Relies on surround.vim and custom text object above
+nmap <buffer> <silent> <LocalLeader>qv ysiv"
+
 if !exists("*MyShFtpluginUndo")
   function MyShFtpluginUndo()
     setlocal textwidth<
     setlocal shiftwidth<
     setlocal softtabstop<
     setlocal iskeyword<
+    silent! xunmap <buffer> iv
+    silent! ounmap <buffer> iv
+    silent! ounmap <buffer> <LocalLeader>qv
   endfunction
 endif
 
