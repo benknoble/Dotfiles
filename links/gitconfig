@@ -16,6 +16,7 @@
 	logp = log --graph --abbrev-commit \
 		--pretty=format:'%C(yellow)%h%Creset%C(bold green)%d%Creset %s %C(magenta)(%cr)%Creset %C(ul bold cyan)<%an>%Creset'
 	logpall = !git logp --all
+	lol = log --oneline
 	ls = branch --list
 	merc = merge --no-ff
 	newb = checkout -b
