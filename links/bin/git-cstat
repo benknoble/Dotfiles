@@ -27,12 +27,10 @@ main() {
   local min=99999999999
   local min_c
   local sum=0
-  local n=0
   mapfile -t commits < <(commits_list)
   for commit in "${commits[@]}" ; do
     c_size="$(size "$commit")"
-    ((sum+=$c_size))
-    ((n+=1))
+    ((sum+=c_size))
     if ((c_size > max)) ; then
       max="$c_size"
       max_c="$commit"
@@ -44,10 +42,10 @@ main() {
   done
 
   cat <<-DOG
-Commits: $n
+Commits: ${#commits[@]}
 Min_length: $min ${min_c:-}
 Max_length: $max ${max_c:-}
-Average: $((sum/n))
+Average: $((sum/${#commits[@]}))
 DOG
 }
 
