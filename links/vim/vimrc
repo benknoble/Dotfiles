@@ -434,7 +434,7 @@ nmap <Leader>ew :e %%
 nmap <Leader>ev :vs %%
 nmap <Leader>es :sp %%
 nmap <Leader>et :tabe %%
-nmap <Leader>ef :find **/*
+nnoremap <Leader>ef :find **/*
 " Edit alternate file
 nnoremap <Leader>` <C-^>
 " Quickly edit vimrc
