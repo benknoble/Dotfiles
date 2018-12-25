@@ -378,13 +378,6 @@ nnoremap QQ gqgq
 " Revert with ":iunmap <C-U>".
 inoremap <C-U> <C-G>u<C-U>
 
-" Search {{{
-" Search very magically
-" Seriously who doesn't want this
-nnoremap / /\v
-nnoremap ? ?\v
-" End Search }}}
-
 " Substitute {{{
 " Make & substitute with previous flags as well
 nnoremap & :&&<CR>
@@ -487,6 +480,12 @@ nnoremap <Right> <C-w>l
 nnoremap <S-Right> <C-w>L
 
 " End Window mappings }}}
+
+" Search {{{
+" Search very magically
+nnoremap <Leader>/ /\v
+nnoremap <Leader>? ?\v
+" End Search }}}
 
 " End Leader shortcuts }}}
 
