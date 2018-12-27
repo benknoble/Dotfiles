@@ -135,3 +135,25 @@ function! sh#in_parameter_expansion() abort
   normal! v
   call search(s:expansion_pattern, 'cb', l:line)
 endfunction
+
+" Text object for subshell stuff: $( ... )
+" magic
+" literal '$'
+" open paren
+" anything (doesn't handle nesting well)
+" closing paren
+let s:subshell_begin_pattern = s:concat_atoms(
+      \ ['\m',
+      \  '\$',
+      \  '('])
+
+function! sh#in_subshell() abort
+  let l:line = line('.')
+  if !search(s:subshell_begin_pattern, 'cb', l:line)
+    return
+  endif
+  " start visual mode on the '$'
+  " find the opening paren
+  " find its closing paren
+  normal! vf(%
+endfunction
