@@ -142,18 +142,18 @@ endfunction
 " open paren
 " anything (doesn't handle nesting well)
 " closing paren
-let s:subshell_pattern = s:concat_atoms(
+let s:subshell_begin_pattern = s:concat_atoms(
       \ ['\m',
       \  '\$',
-      \  '(',
-      \  '.*',
-      \  ')'])
+      \  '('])
 
 function! sh#in_subshell() abort
   let l:line = line('.')
-  if !search(s:subshell_pattern, 'ce', l:line)
+  if !search(s:subshell_begin_pattern, 'cb', l:line)
     return
   endif
-  normal! v
-  call search(s:subshell_pattern, 'cb', l:line)
+  " start visual mode on the '$'
+  " find the opening paren
+  " find its closing paren
+  normal! vf(%
 endfunction
