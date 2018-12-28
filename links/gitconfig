@@ -4,8 +4,8 @@
 	b = branch
 	ca = commit --all
 	cc = commit
-	cd = checkout
 	cm = commit -m
+	co = checkout
 	ctags = !.git/hooks/ctags
 	d = diff
 	grall = !git graph --all
@@ -17,7 +17,6 @@
 		--pretty=format:'%C(yellow)%h%Creset%C(bold green)%d%Creset %s %C(magenta)(%cr)%Creset %C(ul bold cyan)<%an>%Creset'
 	logpall = !git logp --all
 	lol = log --oneline
-	ls = branch --list
 	merc = merge --no-ff
 	newb = checkout -b
 	patch = add --patch
