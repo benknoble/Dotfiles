@@ -2,8 +2,10 @@
 
 set -euo pipefail
 
-USAGE='[-h]
-Display a summary of commit length statistics'
+USAGE='[-h] [rev-list options]
+
+Display a summary of commit length statistics
+Filter commits based on [rev-list options]'
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
@@ -17,7 +19,16 @@ size() {
 }
 
 commits_list() {
-  git rev-list --all
+  command=(
+    git
+    rev-list
+    # start somewhere
+    --all
+  )
+  if (($# > 0)) ; then
+    command+=("$@")
+  fi
+  "${command[@]}" 2>/dev/null
 }
 
 main() {
@@ -27,7 +38,11 @@ main() {
   local min=99999999999
   local min_c
   local sum=0
-  mapfile -t commits < <(commits_list)
+  mapfile -t commits < <(commits_list "$@")
+  if ((${#commits[@]} == 0)); then
+    # provided by git-sh-setup
+    die 'No commits!'
+  fi
   for commit in "${commits[@]}" ; do
     c_size="$(size "$commit")"
     ((sum+=c_size))
@@ -49,8 +64,10 @@ Average: $((sum/${#commits[@]}))
 DOG
 }
 
-if [[ $# -gt 0 ]]; then
-  usage
-else
-  main
-fi
+case "${1:-}" in
+  '-h')
+    usage
+    ;;
+  *)
+    main "$@"
+esac
