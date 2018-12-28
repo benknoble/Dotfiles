@@ -38,11 +38,14 @@ main() {
   local min=99999999999
   local min_c
   local sum=0
+  local avg=0
   mapfile -t commits < <(commits_list "$@")
+
   if ((${#commits[@]} == 0)); then
     # provided by git-sh-setup
     die 'No commits!'
   fi
+
   for commit in "${commits[@]}" ; do
     c_size="$(size "$commit")"
     ((sum+=c_size))
@@ -56,11 +59,13 @@ main() {
     fi
   done
 
+  avg="$( printf '%s\n' '5k' "$sum" "${#commits[@]}" '/p' | dc )"
+
   cat <<-DOG
 Commits: ${#commits[@]}
 Min_length: $min ${min_c:-}
 Max_length: $max ${max_c:-}
-Average: $((sum/${#commits[@]}))
+Average: $avg
 DOG
 }
 
