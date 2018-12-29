@@ -177,9 +177,6 @@ endif
 " Like quitting without writing
 set confirm
 
-" Show matching ()[]{} braces
-set showmatch
-
 " Search {{{
 " Ignore case in /? searches
 set ignorecase
