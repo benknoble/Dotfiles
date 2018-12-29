@@ -158,7 +158,7 @@ set textwidth=80
 " Wrap lines that are too long (off by default)
 set nowrap
 " Show wrapped lines with a marker in front
-let &showbreak='» '
+let &showbreak='└>'
 " Break at word boundaries
 set linebreak
 " Allow movements Left and Right to move over wrapped lines
