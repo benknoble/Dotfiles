@@ -81,7 +81,9 @@ set statusline+=\ %L\ lines
 set statusline+=%3*\ %{WindowNumber()}%*
 set statusline+=\ %a
 set statusline+=%4*\ %{AleCountTotal()}%*
-set statusline+=\ %{ObsessionStatus()}
+if exists('*ObsessionStatus')
+  set statusline+=\ %{ObsessionStatus()}
+endif
 
 " End status line }}}
 
@@ -565,7 +567,11 @@ set keywordprg=:Man
 if ! exists('g:colors_name')
   let g:dracula_italic = get(g:, 'dracula_italic', 0)
   let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
-  colorscheme dracula
+  try
+    colorscheme dracula
+  catch /^Vim\%((\a\+)\)\=:E185/
+    set background=dark
+  endtry
 endif
 
 " Override statusline
