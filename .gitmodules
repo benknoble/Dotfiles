@@ -25,12 +25,6 @@
 [submodule "vim/bundle/vim-go"]
 	path = links/vim/pack/languages/start/go
 	url = git@github.com:fatih/vim-go.git
-[submodule "vim/bundle/vim-javascript"]
-	path = links/vim/pack/languages/start/javascript
-	url = git@github.com:pangloss/vim-javascript.git
-[submodule "vim/bundle/vim-node"]
-	path = links/vim/pack/languages/start/node
-	url = git@github.com:moll/vim-node.git
 [submodule "Dracula/terminal-app"]
 	path = Dracula/terminal-app
 	url = git@github.com:dracula/terminal.app.git
@@ -89,9 +83,6 @@
 [submodule "links/vim/pack/utility/start/dispatch"]
 	path = links/vim/pack/utility/start/dispatch
 	url = git@github.com:tpope/vim-dispatch.git
-[submodule "links/vim/pack/languages/start/bundler"]
-	path = links/vim/pack/languages/start/bundler
-	url = git@github.com:tpope/vim-bundler.git
 [submodule "links/vim/pack/utility/start/repeat"]
 	path = links/vim/pack/utility/start/repeat
 	url = git@github.com:tpope/vim-repeat.git
