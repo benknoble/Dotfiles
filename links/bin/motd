@@ -1,0 +1,41 @@
+#! /usr/bin/env bash
+
+# Message of the Day control
+# COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
+# COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
+# e.g.,
+# COW=small
+# COLOR=0
+
+set_defaults() {
+  if [[ -z "$COW" ]]; then
+    COW=default
+  fi
+  if [[ -z "$COLOR" ]]; then
+    COLOR=0
+  fi
+}
+
+# Message of the Day
+motd() {
+  if command -v cowsay 1>/dev/null && command -v fortune 1>/dev/null ; then
+    message="$(fortune -a)"
+    message="$(printf '%s\n' "$message" | cowsay -f "$COW" -n)"
+    if command -v lolcat 1>/dev/null && (( COLOR == 0 )); then
+      lolcat <<<"$message"
+    else
+      printf '%s\n' "$message"
+    fi
+  else
+    cat <<DOG
+This is your computer speaking. I have no bullish fortune cookies for you today.
+DOG
+  fi
+}
+
+main() {
+  set_defaults
+  motd
+}
+
+main

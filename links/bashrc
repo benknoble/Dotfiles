@@ -95,12 +95,6 @@ comp_prefix="${brew_prefix:-/usr/local/}"
 bashcomp="$comp_prefix"/share/bash-completion/bash_completion
 completion_dir="$comp_prefix"/etc/bash_completion.d
 
-# Message of the Day control
-# COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
-# COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
-COW=small
-COLOR=0
-
 # personal }}}
 
 # VARS }}}
@@ -229,25 +223,7 @@ command -v heroku &> /dev/null && eval "$(heroku autocomplete:script bash)"
 
 # custom }}}
 
-# Message of the Day
-# COW controls which cow to use (use `cowsay -l` or `cowvis` for options)
-# COLOR controls whether or not to use lolcat for color (0=yes, 1+=no)
-if [[ -x "$(command -v cowsay)" && -x "$(command -v fortune)" ]]; then
-  message="$(fortune -a)"
-  if [[ -z "$COW" ]]; then
-    COW=default
-  fi
-  message="$(echo "$message" | cowsay -f "$COW" -n)"
-  if [[ -x "$(command -v lolcat)" && "$COLOR" = "0" ]]; then
-    lolcat <<<"$message"
-  else
-    echo "$message"
-  fi
-fi
-
 unset message
-unset COW
-unset COLOR
 unset file
 unset bashcomp
 unset private
