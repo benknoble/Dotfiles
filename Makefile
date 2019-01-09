@@ -89,7 +89,7 @@ brewfile:
 .PHONY: submodules
 submodules:
 	git submodule update --init
-	git clean -fd links/vim/pack/
+	git clean -ffd links/vim/pack/
 
 # }}}
 
