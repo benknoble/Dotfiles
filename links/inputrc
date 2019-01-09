@@ -27,6 +27,9 @@ set colored-completion-prefix on
 
 set show-all-if-ambiguous on
 
+# never ask to display completions
+set completion-query-items -1
+
 # Highlight the completion suggestions based on filetype
 set colored-stats on
 
