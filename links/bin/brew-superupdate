@@ -6,4 +6,8 @@
 #:    information
 
 brew update
-brew upgrade --cleanup
+if ! [[ -v HOMEBREW_NO_INSTALL_CLEANUP ]]; then
+  HOMEBREW_INSTALL_CLEANUP=true
+  export HOMEBREW_INSTALL_CLEANUP
+fi
+brew upgrade
