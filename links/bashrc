@@ -213,12 +213,6 @@ if [[ "$(type -t __git_complete)" == function ]] && alias | grep -q "g='git'" ; 
   __git_complete g _git
 fi
 
-# heroku completion
-command -v heroku &> /dev/null && eval "$(heroku autocomplete:script bash)"
-
-# travis completion
-[[ -f ~/.travis/travis.sh ]] && source ~/.travis/travis.sh
-
 # completion }}}
 
 # custom }}}
