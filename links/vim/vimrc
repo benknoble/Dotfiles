@@ -76,9 +76,7 @@ set statusline+=%2*%(%y%)%*
 set statusline+=\ (%3*%l,%c%*)/%L\ lines
 set statusline+=\ %a
 set statusline+=%4*\ %{AleCountTotal()}%*
-if exists('*ObsessionStatus')
-  set statusline+=\ %{ObsessionStatus()}
-endif
+set statusline+=\ %{exists('*ObsessionStatus')?ObsessionStatus():''}
 
 " End status line }}}
 
