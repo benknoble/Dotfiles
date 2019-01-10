@@ -37,7 +37,8 @@ endif
 
 " Status display {{{
 " Show the cursor position all the time
-set ruler
+" Effect (esp. in <C-g>) overridden by statusline
+set noruler
 " Display incomplete commands
 set showcmd
 " Show what mode we're in
@@ -72,7 +73,7 @@ set statusline+=%2*\ %{exists('*FugitiveHead')?FugitiveHead():''}%*
 set statusline+=%5*%(\ %m%r%w%)%*
 set statusline+=%=%<
 set statusline+=%2*%(%y%)%*
-set statusline+=\ %L\ lines
+set statusline+=\ (%3*%l,%c%*)/%L\ lines
 set statusline+=\ %a
 set statusline+=%4*\ %{AleCountTotal()}%*
 if exists('*ObsessionStatus')
