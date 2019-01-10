@@ -37,7 +37,8 @@ endif
 
 " Status display {{{
 " Show the cursor position all the time
-set ruler
+" Effect (esp. in <C-g>) overridden by statusline
+set noruler
 " Display incomplete commands
 set showcmd
 " Show what mode we're in
@@ -51,11 +52,6 @@ function! Head() abort
     let l:head .= '/'
   endif
   return l:head
-endfunction
-
-function! WindowNumber() abort
-  let l:winnr = tabpagewinnr(tabpagenr())
-  return printf('Win: %s', l:winnr)
 endfunction
 
 function! AleCountTotal() abort
@@ -77,13 +73,10 @@ set statusline+=%2*\ %{exists('*FugitiveHead')?FugitiveHead():''}%*
 set statusline+=%5*%(\ %m%r%w%)%*
 set statusline+=%=%<
 set statusline+=%2*%(%y%)%*
-set statusline+=\ %L\ lines
-set statusline+=%3*\ %{WindowNumber()}%*
+set statusline+=\ (%3*%l,%c%*)/%L\ lines
 set statusline+=\ %a
 set statusline+=%4*\ %{AleCountTotal()}%*
-if exists('*ObsessionStatus')
-  set statusline+=\ %{ObsessionStatus()}
-endif
+set statusline+=\ %{exists('*ObsessionStatus')?ObsessionStatus():''}
 
 " End status line }}}
 
@@ -449,11 +442,6 @@ xnoremap <silent> <Leader>g :<C-u>call grep#operator(visualmode())<CR>
 nnoremap <Leader>f :call find#included_word()<CR>
 " Unhighlight last search
 nnoremap <silent> <Leader>h :nohlsearch<CR>
-
-" Switch to windows
-for nr in range(1,9)
-  execute printf('nnoremap <silent> <Leader>%d :%dwincmd w<CR>', nr, nr)
-endfor
 
 " Trigger the command line window
 nnoremap <silent> <Leader>; q:
