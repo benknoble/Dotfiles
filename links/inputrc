@@ -22,6 +22,9 @@ set completion-ignore-case on
 # Readline used by Bash 4.)
 set skip-completed-text on
 
+# Try to keep the cursor in the same spot
+set history-preserve-point on
+
 # Show the common prefix highlighted
 set colored-completion-prefix on
 
