@@ -54,7 +54,7 @@
 [gitsh "color"]
 	default = cyan
 [gitsh]
-	prompt = "%D (%c%b %#%w) git>"
+	prompt = "%D (%c%b %#%w) %G>"
 	noGreeting = true
 	defaultCommand = status -sb && :echo
 [mergetool "fugitive"]
