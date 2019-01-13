@@ -250,6 +250,12 @@ if &t_Co > 2 || has("gui_running")
 
   " Use bash as default shell highlighter (cf :h ft-sh-syntax)
   let g:is_bash = 1
+
+  " Langs for markdown blocks
+  let g:markdown_fenced_languages = [
+        \ 'bash=sh',
+        \ 'python',
+        \ ]
 endif
 " End Syntax Highlighting }}}
 
