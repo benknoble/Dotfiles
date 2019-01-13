@@ -13,9 +13,6 @@ setlocal textwidth=80
 " Spell check on
 setlocal spell spelllang=en_us
 
-" Enable folds
-let g:markdown_folding = 1
-
 " Remove underscore from iskeyword
 setlocal iskeyword-=_
 

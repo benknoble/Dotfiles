@@ -200,6 +200,10 @@ set foldmethod=marker
 " Start with no folds
 " Toggle with `zi`
 set nofoldenable
+
+" Enable folds in markdown from ftplugin
+let g:markdown_folding = 1
+
 " End Folds }}}
 
 " Complex options {{{
