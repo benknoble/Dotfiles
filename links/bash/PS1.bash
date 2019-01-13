@@ -198,7 +198,7 @@ _build_PS1() {
   p="$(_venv_prompt)$(_time_prompt)$(_date_prompt)$(_jobs_prompt)$(_history_prompt)$exit_sym $(_tty_prompt)$(_shell_name_prompt)$(_user_prompt)$(_dir_prompt)\$("$__gps1")"'\$ '
   qp="${p@P}"
   len="${#qp}"
-  if [[ "$len" -gt $(($cols / 2)) ]]; then
+  if (( len > cols / 2 )); then
     newline=$'\n'
   fi
 
