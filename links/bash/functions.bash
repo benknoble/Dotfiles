@@ -107,11 +107,11 @@ ed() {
 }
 
 G() {
-  grep "$@"
+  grep --color=auto "$@"
 }
 
 EG() {
-  grep -E "$@"
+  grep -E --color=auto "$@"
 }
 
 L() {
