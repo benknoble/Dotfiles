@@ -150,7 +150,7 @@ set autoindent
 
 " Wrap {{{
 set textwidth=80
-let &colorcolumn=&textwidth
+set colorcolumn=+0
 " Wrap lines that are too long (off by default)
 set nowrap
 " Show wrapped lines with a marker in front
