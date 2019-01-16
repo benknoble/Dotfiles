@@ -21,3 +21,4 @@ alias nocomment='grep -Ev "^(#|$)"'         # No comment...
 alias g='git'
 alias v='vim'
 alias vs='vim -S'
+alias vv="vim +'edit \$MYVIMRC'"
