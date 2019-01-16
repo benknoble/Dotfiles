@@ -376,10 +376,16 @@ nnoremap Q gq
 nnoremap QQ gqgq
 " End Formatting }}}
 
+" Insert mode {{{
+
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 " Revert with ":iunmap <C-U>".
 inoremap <C-U> <C-G>u<C-U>
+
+inoremap <silent> <C-d> <C-o>:call digraphs#activate()<CR>
+
+" End Insert mode }}}
 
 " Substitute {{{
 " Make & substitute with previous flags as well
