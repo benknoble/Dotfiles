@@ -8,7 +8,7 @@ else
   let b:undo_ftplugin = ''
 endif
 
-let b:interpreter = 'jdb'
+let b:interpreter = 'bash -c "make jdb || jdb"'
 
 if !exists("*MyJavaFtpluginUndo")
   function MyJavaFtpluginUndo()
