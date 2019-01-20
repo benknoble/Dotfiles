@@ -130,3 +130,11 @@ complete_travis() {
     && [[ -f ~/.travis/travis.sh ]] \
     && source ~/.travis/travis.sh
 }
+
+vq() {
+  if (($# > 0)); then
+    vim -q <("$@")
+  else
+    printf '%s\n' 'Usage: vq cmd' '' 'Use {cmd} output as quickfix list'
+  fi
+}
