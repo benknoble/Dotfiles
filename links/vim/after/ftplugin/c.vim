@@ -8,9 +8,6 @@ else
   let b:undo_ftplugin = ''
 endif
 
-" Add system tags
-setlocal tags+=~/.sys_c_tags
-
 " Find headers *when we want them*!
 setlocal path+=/usr/local/include,/usr/include
 
@@ -19,7 +16,6 @@ nnoremap <buffer> <LocalLeader>tr :!ctags --extra=+f -R *<CR><CR>
 
 if !exists("*MyCFtpluginUndo")
   function MyCFtpluginUndo()
-    setlocal tags<
     setlocal path<
     silent! nunmap <buffer> <LocalLeader>tr
   endfunction
