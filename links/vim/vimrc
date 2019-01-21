@@ -78,6 +78,26 @@ set statusline+=\ %a
 set statusline+=%4*\ %{AleCountTotal()}%*
 set statusline+=\ %{exists('*ObsessionStatus')?ObsessionStatus():''}
 
+function s:set_statusline_colors_to_dracula() abort
+  " Override statusline
+  hi clear StatusLine
+  hi clear StatusLineNc
+  hi StatusLine term=bold cterm=bold ctermfg=61 ctermbg=236
+  hi StatusLineNC ctermfg=61 ctermbg=236
+
+  " Dracula colors
+  " Green
+  hi User1 cterm=bold ctermfg=84 ctermbg=236
+  " Purple
+  hi User2 cterm=bold ctermfg=141 ctermbg=236
+  " Cyan
+  hi User3 cterm=bold ctermfg=117 ctermbg=236
+  " Red
+  hi User4 cterm=bold ctermfg=203 ctermbg=236
+  " Orange
+  hi User5 cterm=bold ctermfg=215 ctermbg=236
+endfunction
+
 " End status line }}}
 
 " Always display status line
@@ -350,6 +370,15 @@ if has("autocmd")
   augroup END
   " vimrc_cmdwin_num }}}
 
+  " vimrc_dracula {{{
+  " Put these in an autocmd group, so that you can revert them with:
+  " ":augroup vimrc_dracula | au! | augroup END"
+  augroup vimrc_dracula
+    au!
+    autocmd ColorScheme dracula call s:set_statusline_colors_to_dracula()
+  augroup END
+  " vimrc_dracula }}}
+
 else
   set autoindent
 endif " has("autocmd")
@@ -578,24 +607,6 @@ if ! exists('g:colors_name')
     set background=dark
   endtry
 endif
-
-" Override statusline
-hi clear StatusLine
-hi clear StatusLineNc
-hi StatusLine term=bold cterm=bold ctermfg=61 ctermbg=236
-hi StatusLineNC ctermfg=61 ctermbg=236
-
-" Dracula colors
-" Green
-hi User1 cterm=bold ctermfg=84 ctermbg=236
-" Purple
-hi User2 cterm=bold ctermfg=141 ctermbg=236
-" Cyan
-hi User3 cterm=bold ctermfg=117 ctermbg=236
-" Red
-hi User4 cterm=bold ctermfg=203 ctermbg=236
-" Orange
-hi User5 cterm=bold ctermfg=215 ctermbg=236
 
 " End Dracula }}}
 
