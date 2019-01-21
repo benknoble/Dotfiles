@@ -68,7 +68,7 @@ join_by() {
 
 # mktouch path/to/file ...
 mktouch() {
-  if [ $# -lt 1 ]; then 
+  if (( $# < 1 )); then
     echo "Missing argument" >&2
     return 1
   fi
