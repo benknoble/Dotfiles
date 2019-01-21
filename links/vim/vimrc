@@ -78,7 +78,7 @@ set statusline+=\ %a
 set statusline+=%4*\ %{AleCountTotal()}%*
 set statusline+=\ %{exists('*ObsessionStatus')?ObsessionStatus():''}
 
-function s:set_statusline_colors_to_dracula() abort
+function! s:set_statusline_colors_to_dracula() abort
   " Override statusline
   hi clear StatusLine
   hi clear StatusLineNc
@@ -604,6 +604,7 @@ if ! exists('g:colors_name')
   try
     colorscheme dracula
   catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme default
     set background=dark
   endtry
 endif
