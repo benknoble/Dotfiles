@@ -1,0 +1,106 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+TEMP=".$$Makefile"
+ORIGINAL='Makefile'
+FINAL="$ORIGINAL"
+trap 'rm -f "$TEMP"' EXIT
+
+MAIN=
+JAR=
+PERMS=
+
+URL='https://raw.githubusercontent.com/benknoble/java_on_nix/master/Makefile'
+
+declare -n PROG
+CURL=(
+  curl
+  -L
+  -S
+  -o -
+)
+WGET=(
+  wget
+  -O -
+)
+
+die() {
+  local code="${1:-1}"
+  (($# > 1)) && shift
+  printf '%s\n' "${@:-"Error in $0"}"
+  exit "$code"
+}
+
+has_curl() {
+  command -v curl &>/dev/null
+}
+
+has_wget() {
+  command -v wget &>/dev/null
+}
+
+set_prog() {
+  if has_curl ; then
+    PROG=CURL
+  elif has_wget ; then
+    PROG=WGET
+  else
+    die 1 'Neither curl nor wget is available!'
+  fi
+}
+
+save_main_and_jar() {
+  local line
+  line="$( grep 'JAR_FILE ?=' "$ORIGINAL" )"
+  if [[ "$line" =~ 'JAR_FILE'[[:space:]]*'?='[[:space:]]*(.*) ]] ; then
+    JAR="${BASH_REMATCH[1]}"
+  else
+    die 2 'No match for JAR_FILE in old Makefile'
+  fi
+  line="$( grep 'MAIN ?=' "$ORIGINAL" )"
+  if [[ "$line" =~ 'MAIN'[[:space:]]*'?='[[:space:]]*(.*) ]] ; then
+    MAIN="${BASH_REMATCH[1]}"
+  else
+    die 2 'No match for MAIN in old Makefile'
+  fi
+  PERMS="$( stat -f%p "$ORIGINAL" )"
+}
+
+restore_main_and_jar() {
+  if [[ -z "$JAR" || -z "$MAIN" || -z "$PERMS" ]] ; then
+    return
+  fi
+  local sed=(
+    sed
+    -E
+    -i .tmp
+    -e 's@(JAR_FILE[[:space:]]*\?=[[:space:]]*)(.*)@\1'"$JAR"'@'
+    -e 's@(MAIN[[:space:]]*\?=[[:space:]]*)(.*)@\1'"$MAIN"'@'
+    "$TEMP"
+  )
+  "${sed[@]}"
+  trap 'rm -f "$TEMP".tmp' EXIT
+  chmod "$PERMS" "$TEMP"
+}
+
+download() {
+  "${PROG[@]}" "$URL" > "$TEMP"
+}
+
+finalize() {
+  mv "$TEMP" "$FINAL"
+}
+
+main() {
+  if [[ -n "${1:-}" ]] ; then
+    FINAL="$1"
+  fi
+  set_prog
+  [[ -e "$ORIGINAL" ]] && save_main_and_jar
+  if download && restore_main_and_jar ; then
+    finalize
+  fi
+}
+
+main "$@"
