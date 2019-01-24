@@ -80,6 +80,12 @@ stty -ixon -ixoff
 
 # personal {{{
 
+if command -v brew &>/dev/null ; then
+  has_brew=true
+else
+  has_brew=false
+fi
+
 # OS test
 case "$OSTYPE" in
   darwin* ) OS=mac ;;
@@ -90,7 +96,9 @@ esac
 private=~/.private
 
 # completion paths
-brew_prefix="$(brew --prefix)"
+if "$has_brew" ; then
+  brew_prefix="$(brew --prefix)"
+fi
 comp_prefix="${brew_prefix:-/usr/local/}"
 bashcomp="$comp_prefix"/share/bash-completion/bash_completion
 completion_dir="$comp_prefix"/etc/bash_completion.d
@@ -160,23 +168,27 @@ fi
 # Add bin folder for scripts to path
 pathadd "$HOME/.bin"
 
-pathadd_front "$brew_prefix/bin"
+if "$has_brew" ; then
 
-brew_fix() {
-  local type="$1"
-  local path="${!type}"
-  local prepend="$2"
-  case "$path" in
-    "$prepend"* ) true ;;
-    * ) eval export "$type=$prepend:$path" ;;
+  pathadd_front "$brew_prefix/bin"
+
+  brew_fix() {
+    local type="$1"
+    local path="${!type}"
+    local prepend="$2"
+    case "$path" in
+      "$prepend"* ) true ;;
+      * ) eval export "$type=$prepend:$path" ;;
+    esac
+  }
+  # first clear manpath on macs
+  case "$OS" in
+    mac ) export MANPATH=
   esac
-}
-# first clear manpath on macs
-case "$OS" in
-  mac ) export MANPATH=
-esac
-brew_fix MANPATH "$brew_prefix/share/man"
-brew_fix INFOPATH "$brew_prefix/share/info"
+  brew_fix MANPATH "$brew_prefix/share/man"
+  brew_fix INFOPATH "$brew_prefix/share/info"
+
+fi
 
 # go
 [[ -d ~/go/bin ]] && pathadd ~/go/bin
@@ -221,13 +233,15 @@ fi
 
 # custom }}}
 
-unset message
-unset file
 unset bashcomp
-unset private
+if "$has_brew" ; then
+  unset brew_fix
+  unset brew_prefix
+fi
 unset completion_dir
 unset comp_prefix
-unset brew_prefix
+unset file
+unset message
 unset OS
-unset brew_fix
+unset private
 unset vault_path
