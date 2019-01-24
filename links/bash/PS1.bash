@@ -182,10 +182,7 @@ _build_PS1() {
   _exit="$?"
   local highlight
   local exit_sym
-  local cols=$(tput cols)
-  local p=""
-  local len=0
-  local newline=""
+  local newline=$'\n'
 
   if [[ "$_exit" = "0" ]]; then
     highlight="$BGreen"
@@ -193,13 +190,6 @@ _build_PS1() {
   else
     highlight="$BRed"
     exit_sym="✗ $_exit"
-  fi
-
-  p="$(_venv_prompt)$(_time_prompt)$(_date_prompt)$(_jobs_prompt)$(_history_prompt)$exit_sym $(_tty_prompt)$(_shell_name_prompt)$(_user_prompt)$(_dir_prompt)\$("$__gps1")"'\$ '
-  qp="${p@P}"
-  len="${#qp}"
-  if (( len > cols / 2 )); then
-    newline=$'\n'
   fi
 
   PS1="$(_venv_prompt)$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline"'\$ '
