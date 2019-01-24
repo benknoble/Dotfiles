@@ -1,0 +1,26 @@
+#! /usr/bin/env bash
+
+usage() {
+  cat <<DOG
+usage: $0 doi
+DOG
+}
+
+get_citation() {
+  local doi="$1"
+  curl -LSs "http://api.crossref.org/works/$doi/transform/application/x-bibtex" -w '\n'
+}
+
+delete_tabs() {
+  tr -d '\t'
+}
+
+main() {
+  if (($# != 1)) ; then
+    usage
+  fi
+  local doi="$1"
+  get_citation "$doi" | delete_tabs
+}
+
+main "$@"
