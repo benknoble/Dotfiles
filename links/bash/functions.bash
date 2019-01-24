@@ -5,11 +5,7 @@ cdls () { cd "$@" && ls ; }                  # cd and ls
 aliases () { tail -n +4 ~/.bash/aliases.bash | less ; }                 # List all aliases found in this file
 functions () { tail -n +4 ~/.bash/functions.bash | less ; }             # List all functions found in this file
 findPid () { lsof -t -c "$@" ; }             # Find Pid of specified process
-# Print path separated by newlines
-displayPath () {
-  echo "${PATH//:/'
-'}"
-}
+displayPath () { echo "${PATH//:/$'\n'}" ; } # Print path separated by newlines
 mkcd () { mkdir "$@" && cd "$@" ; }          # mkdir and cd
 extract () {                                 # attempt to extract file with correct extraction method
   for file in "$@"; do
