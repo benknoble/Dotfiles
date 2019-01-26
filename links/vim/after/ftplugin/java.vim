@@ -8,10 +8,14 @@ else
   let b:undo_ftplugin = ''
 endif
 
+" Indent two spaces
+setlocal shiftwidth=2 softtabstop=2
+
 let b:interpreter = 'bash -c "make jdb || jdb"'
 
 if !exists("*MyJavaFtpluginUndo")
   function MyJavaFtpluginUndo()
+    setlocal shiftwidth< softtabstop<
     unlet! b:interpreter
   endfunction
 endif
