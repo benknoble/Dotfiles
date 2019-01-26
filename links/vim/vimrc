@@ -481,6 +481,7 @@ nnoremap <Leader>v :vsplit $MYVIMRC<CR>
 " Search
 nnoremap <Leader>a :Ack!<space>
 nnoremap <silent> <Leader>A :Ack! <cword><CR>
+nnoremap <silent> <Leader><C-a> :Ack! --nosmart-case <cword><CR>
 nnoremap <silent> <Leader>g :set operatorfunc=grep#operator<CR>g@
 xnoremap <silent> <Leader>g :<C-u>call grep#operator(visualmode())<CR>
 " Jump to lines with word
