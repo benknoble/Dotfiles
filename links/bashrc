@@ -122,12 +122,12 @@ done
 
 # source anything in ~/.personal
 if [[ -d ~/.personal ]]; then
-  for file in ~/.personal/*.sh; do
+  for file in ~/.personal/*.bash; do
     if [[ -r "$file" ]]; then
       source "$file"
     fi
   done
-  for file in ~/.personal/"$OS"/*.sh ; do
+  for file in ~/.personal/"$OS"/*.bash ; do
     if [[ -r "$file" ]]; then
       source "$file"
     fi
