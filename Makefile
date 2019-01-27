@@ -62,14 +62,11 @@ default:
 .PHONY: install
 .PHONY: all
 all: install
-install:
-	@$(MAKE) _bootstrap
+install: _bootstrap
 
 # update: update the dotfiles
 .PHONY: update
-update:
-	@$(MAKE) _update
-	@$(MAKE) vimtags
+update: _update vimtags
 
 # symlink: re-create the symlinks
 .PHONY: symlink
@@ -110,9 +107,7 @@ _bootstrap:
 	fi
 
 .PHONY: _bootstrap_full
-_bootstrap_full:
-	@$(MAKE) _symlink
-	@$(MAKE) _features
+_bootstrap_full: _symlink _features
 
 .PHONY: _symlink
 _symlink:
