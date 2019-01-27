@@ -11,6 +11,7 @@ XDG_CONFIG_HOME ?= $(HOME)/.config
 # supported features:
 # git_extras
 # brew
+# none
 FEATURES ?= git_extras brew
 
 # }}}
@@ -168,6 +169,13 @@ _brew:
 _bundle:
 	brew tap Homebrew/bundle
 	brew bundle install --file="$(BREWFILE)"
+
+# }}}
+
+# None {{{
+
+.PHONY: _none
+_none: ;
 
 # }}}
 
