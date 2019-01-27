@@ -134,3 +134,12 @@ vq() {
     printf '%s\n' 'Usage: vq cmd' '' 'Use {cmd} output as quickfix list'
   fi
 }
+
+vf() {
+  if (($# > 0)); then
+    vim $("$@")
+  else
+    printf '%s\n' 'Usage: vf cmd' '' 'Use {cmd} output as filenames' \
+      'Brittle: {cmd} output will be word-split'
+  fi
+}
