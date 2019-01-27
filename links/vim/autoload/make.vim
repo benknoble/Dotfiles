@@ -11,5 +11,5 @@ function! make#silence_execution() abort
 endfunction
 
 function! make#remove_quotes() abort
-  keeppatterns substitute/\m^\s*\zs[-@]//
+  silent! keeppatterns substitute/\m^\s*\zs[-@]//
 endfunction
