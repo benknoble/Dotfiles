@@ -118,9 +118,21 @@ _symlink:
 
 .PHONY: _features
 _features:
+ifneq ($(and $(strip $(FEATURES)),$(subst none,,$(FEATURES))),)
+# If FEATURES is not empty or the string none...
+# This works because and returns the empty string iff any values provided to it
+# are empty. The strip condition checks if FEATURES is empty, and the subst
+# condition if it is exactly none. If that whole thing is the empty string, we
+# jump to else. Basically, it's
+#   if !(empty && none) <=> (!empty || !none), run FEATURES
+# We couldn't use the simpler condition^^^^^^ because we don't know what the
+# result would be (see the trailing comma in ifneq).
 	@$(msg) 'Running features...'
 	@$(MAKE) $(FEATURES)
 	@$(msg) '...done with features'
+else
+	@:
+endif
 
 # Features {{{
 
@@ -169,13 +181,6 @@ _brew:
 _bundle:
 	brew tap Homebrew/bundle
 	brew bundle install --file="$(BREWFILE)"
-
-# }}}
-
-# None {{{
-
-.PHONY: _none
-_none: ;
 
 # }}}
 
