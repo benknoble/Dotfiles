@@ -19,6 +19,8 @@ nnoremap <silent> <buffer> <LocalLeader>@ :call make#silence_execution()<CR>
 xnoremap <silent> <buffer> <LocalLeader>@ :call make#silence_execution()<CR>
 nnoremap <silent> <buffer> <LocalLeader><Space> :call make#remove_quotes()<CR>
 xnoremap <silent> <buffer> <LocalLeader><Space> :call make#remove_quotes()<CR>
+nnoremap <silent> <buffer> <LocalLeader>+ :call make#quote_line('+')<CR>
+xnoremap <silent> <buffer> <LocalLeader>+ :call make#quote_line('+')<CR>
 
 if !exists("*MyMakeFtpluginUndo")
   function MyMakeFtpluginUndo()
@@ -31,6 +33,8 @@ if !exists("*MyMakeFtpluginUndo")
     silent! xunmap <buffer> <LocalLeader>@
     silent! nunmap <buffer> <LocalLeader><Space>
     silent! xunmap <buffer> <LocalLeader><Space>
+    silent! nunmap <buffer> <LocalLeader>+
+    silent! xunmap <buffer> <LocalLeader>+
   endfunction
 endif
 
