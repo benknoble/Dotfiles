@@ -129,7 +129,7 @@ complete_travis() {
 
 vq() {
   if (($# > 0)); then
-    vim -q <("$@")
+    vim -q <("$@" 2>&1)
   else
     printf '%s\n' 'Usage: vq cmd' '' 'Use {cmd} output as quickfix list'
   fi
