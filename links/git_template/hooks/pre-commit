@@ -1,0 +1,50 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+log() { printf '%s\n' "$@" >&2 ; }
+die() { exit 1 ; }
+succeed() { exit 0 ; }
+
+is_staged() {
+  git diff --cached --name-only | grep -Fq "$1"
+}
+
+is_modified() {
+  git diff --name-only | grep -Fq "$1"
+}
+
+gemfile_and_lock() {
+  if ! [[ -e Gemfile ]] ; then
+    return
+  fi
+  if is_staged Gemfile ; then
+    if ! is_staged Gemfile.lock ; then
+      log 'Gemfile staged but not Gemfile.lock'
+      return 1
+    fi
+  fi
+}
+
+whitespace() {
+  if git rev-parse --verify HEAD >/dev/null 2>&1 ; then
+    against=HEAD
+  else
+    # Initial commit: diff against an empty tree object
+    against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+  fi
+  git diff-index --check --cached "$against" -- >&2
+}
+
+checks=(
+  gemfile_and_lock
+  whitespace
+)
+
+do_checks() {
+  for check in "${checks[@]}" ; do
+    "$check" || die
+  done
+}
+
+do_checks && succeed
