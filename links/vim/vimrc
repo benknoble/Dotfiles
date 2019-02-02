@@ -381,8 +381,6 @@ if has("autocmd")
   augroup END
   " vimrc_dracula }}}
 
-else
-  set autoindent
 endif " has("autocmd")
 " End autocmd }}}
 
