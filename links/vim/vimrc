@@ -20,8 +20,8 @@ let maplocalleader="\\"
 " Allow backspacking over everything in insert mode
 set backspace=indent,eol,start
 
-" Keep 200 lines of command history
-set history=200
+" Keep 10000 lines of command history
+set history=10000
 
 " Update faster
 set updatetime=250
