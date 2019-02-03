@@ -18,7 +18,7 @@
 	url = git@github.com:tpope/vim-commentary
 [submodule "vim/bundle/vim-clam"]
 	path = links/vim/pack/benknoble/start/clam
-	url = git@github.com:benknoble/clam.vim.git
+	url = git@github.com:sjl/clam.vim.git
 [submodule "vim/bundle/vim-auto-origami"]
 	path = links/vim/pack/benknoble/start/auto-origami
 	url = git@github.com:benknoble/vim-auto-origami
