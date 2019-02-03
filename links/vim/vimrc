@@ -581,6 +581,16 @@ if !exists(":Reload")
 endif
 " End Reload }}}
 
+" SynToggle {{{
+
+command! SynToggle :if exists("g:syntax_on") <Bar>
+      \   syntax off <Bar>
+      \ else <Bar>
+      \   syntax enable <Bar>
+      \ endif
+
+" End SynToggle }}}
+
 " End Commands }}}
 
 " Plugin loading {{{
