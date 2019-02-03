@@ -4,6 +4,7 @@
 	b = branch
 	ca = commit --all
 	cc = commit
+	ce = config --edit
 	cm = commit -m
 	co = checkout
 	ctags = !.git/hooks/ctags
