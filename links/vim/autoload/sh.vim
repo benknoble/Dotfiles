@@ -40,33 +40,17 @@
 "  have to match exactly the definition of a parameter. We construct a regex for
 "  this purpose.
 
-function! s:branchify_atoms(atoms) abort
-  return join(a:atoms, '\|')
-endfunction
-
-function! s:group_atoms(atoms) abort
-  return map(copy(a:atoms), 'printf("\\(%s\\)", v:val)')
-endfunction
-
-function! s:group_atom(atom) abort
-  return s:group_atoms([a:atom])[0]
-endfunction
-
-function! s:concat_atoms(atoms) abort
-  return join(a:atoms, '')
-endfunction
-
 " matches a name (no braces)
 " magic mode
 " begins with alpha or underscore
 " letters, numbers, underscores
-let s:name_pattern = s:concat_atoms(
+let s:name_pattern = pattern#join(
       \ ['\m',
-      \  s:group_atom(
-      \    s:branchify_atoms([ '\a',
+      \  pattern#group(
+      \    pattern#branchify([ '\a',
       \                        '_' ])),
-      \  s:group_atom(
-      \    s:branchify_atoms([ '\a',
+      \  pattern#group(
+      \    pattern#branchify([ '\a',
       \                        '\d',
       \                        '_' ])),
       \  '*'])
@@ -74,16 +58,16 @@ let s:name_pattern = s:concat_atoms(
 " matches a positional parameter (no braces)
 " magic
 " a single digit
-let s:positional_pattern = s:concat_atoms(
+let s:positional_pattern = pattern#join(
       \ ['\m',
       \ '[1-9]'])
 
 " matches any of the special parameters (no braces)
 " magic
 " special params as branches
-let s:special_pattern = s:concat_atoms(
+let s:special_pattern = pattern#join(
       \ ['\m',
-      \  s:branchify_atoms(
+      \  pattern#branchify(
       \    ['\*',
       \     '@',
       \     '#',
@@ -98,10 +82,10 @@ let s:special_pattern = s:concat_atoms(
 " matches a parameter (non-brace)
 " magic
 " name or positional or special
-let s:parameter_pattern = s:concat_atoms(
+let s:parameter_pattern = pattern#join(
       \ ['\m',
-      \  s:branchify_atoms(
-      \    s:group_atoms(
+      \  pattern#branchify(
+      \    pattern#group_many(
       \      [s:name_pattern, s:positional_pattern, s:special_pattern]))])
 
 " matches anything in braces
@@ -109,7 +93,7 @@ let s:parameter_pattern = s:concat_atoms(
 " opening brace
 " anything, but non-greedy: there may be two braces in one line
 " closing brace
-let s:brace_pattern = s:concat_atoms(
+let s:brace_pattern = pattern#join(
       \ ['\m',
       \  '{',
       \  '.\{-}',
@@ -119,12 +103,12 @@ let s:brace_pattern = s:concat_atoms(
 " magic
 " literal '$'
 " parameter or brace
-let s:expansion_pattern = s:concat_atoms(
+let s:expansion_pattern = pattern#join(
       \ ['\m',
       \  '\$',
-      \  s:group_atom(
-      \    s:branchify_atoms(
-      \      s:group_atoms(
+      \  pattern#group(
+      \    pattern#branchify(
+      \      pattern#group_many(
       \        [s:parameter_pattern, s:brace_pattern])))])
 
 function! sh#in_parameter_expansion() abort
@@ -140,9 +124,7 @@ endfunction
 " magic
 " literal '$'
 " open paren
-" anything (doesn't handle nesting well)
-" closing paren
-let s:subshell_begin_pattern = s:concat_atoms(
+let s:subshell_begin_pattern = pattern#join(
       \ ['\m',
       \  '\$',
       \  '('])
