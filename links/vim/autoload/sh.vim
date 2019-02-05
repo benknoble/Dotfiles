@@ -91,12 +91,12 @@ let s:parameter_pattern = pattern#join(
 " matches anything in braces
 " magic
 " opening brace
-" anything, but non-greedy: there may be two braces in one line
+" anything but a closing brace
 " closing brace
 let s:brace_pattern = pattern#join(
       \ ['\m',
       \  '{',
-      \  '.\{-}',
+      \  '[^}]*',
       \  '}'])
 
 " matches a $ followed by a parameter or a brace construction
