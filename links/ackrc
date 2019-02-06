@@ -52,3 +52,6 @@
 
 # Tmux
 --type-set=tmux:match:/(\.)?tmux.conf/
+
+# Python
+--type-add=python:match:/(\.)?pythonrc/
