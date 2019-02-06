@@ -143,3 +143,11 @@ vf() {
       'Brittle: {cmd} output will be word-split'
   fi
 }
+
+vc() (
+  if (($# > 0)); then
+    cd "$1" && shift && vim "$@"
+  else
+    printf '%s\n' 'Usage: vc dir [args]' '' 'Execute vim in {dir}'
+  fi
+)
