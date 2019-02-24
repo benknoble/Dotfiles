@@ -218,8 +218,7 @@ _update_submodules:
 .PHONY: _brew_update
 _brew_update:
 	@$(msg) 'Brewfile: $(BREWFILE)'
-	@command -v brew >/dev/null 2>&1 \
-		&& { brew bundle check --file="$(BREWFILE)" || true; }
+	-brew bundle check --file="$(BREWFILE)"
 
 # }}}
 
