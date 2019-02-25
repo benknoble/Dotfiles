@@ -10,10 +10,13 @@ endif
 
 " Don't show fancy whitespace
 setlocal nolist
+" No colorcolumn
+set colorcolumn=
 
 if !exists("*MyManFtpluginUndo")
   function MyManFtpluginUndo()
     setlocal list<
+    setlocal colorcolumn<
   endfunction
 endif
 
