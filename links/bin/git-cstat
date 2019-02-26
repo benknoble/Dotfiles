@@ -13,9 +13,15 @@ set +u
 source "$(git --exec-path)"/git-sh-setup
 set -u
 
+SIZER=(
+  wc
+  # count words
+  -w
+)
+
 size() {
   local commit="$1"
-  git log "$commit" -1 --format=%B | wc -w
+  git log "$commit" -1 --format=%B | "${SIZER[@]}"
 }
 
 commits_list() {
