@@ -2,6 +2,8 @@
 [alias]
 	amend = commit --amend
 	b = branch
+	bd = branch --delete
+	bD = branch --delete --force
 	ca = commit --all
 	cc = commit
 	ce = config --edit
