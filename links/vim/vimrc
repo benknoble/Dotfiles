@@ -68,10 +68,10 @@ endfunction
 set statusline=
 set statusline+=%{Head()}
 set statusline+=%1*%t%*
-set statusline+=%2*\ %{exists('*FugitiveHead')?FugitiveHead():''}%*
 set statusline+=%5*%(\ %m%r%w%)%*
+set statusline+=%2*%(\ %y%)%*
+set statusline+=%2*\ %{exists('*FugitiveHead')?FugitiveHead():''}%*
 set statusline+=%=%<
-set statusline+=%2*%(%y%)%*
 set statusline+=\ (%3*%l,%c%*)/%L\ lines
 set statusline+=\ %{exists('*wordcount')?wordcount().words.'\ words':''}
 set statusline+=\ %a
