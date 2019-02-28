@@ -73,6 +73,7 @@ set statusline+=%5*%(\ %m%r%w%)%*
 set statusline+=%=%<
 set statusline+=%2*%(%y%)%*
 set statusline+=\ (%3*%l,%c%*)/%L\ lines
+set statusline+=\ %{exists('*wordcount')?wordcount().words.'\ words':''}
 set statusline+=\ %a
 set statusline+=%4*\ %{AleCountTotal()}%*
 set statusline+=\ %{exists('*ObsessionStatus')?ObsessionStatus():''}
