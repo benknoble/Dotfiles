@@ -279,6 +279,10 @@ if &t_Co > 2 || has("gui_running")
         \ 'bash=sh',
         \ 'python',
         \ ]
+
+  " Do NOT highlight javadoc specially: it is distracting
+  let java_ignore_javadoc = 1
+
 endif
 " End Syntax Highlighting }}}
 
