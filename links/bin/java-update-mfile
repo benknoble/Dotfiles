@@ -8,6 +8,7 @@ FINAL="$ORIGINAL"
 trap 'rm -f "$TEMP"' EXIT
 
 MAIN=
+TEST=
 JAR=
 PERMS=
 
@@ -50,7 +51,7 @@ set_prog() {
   fi
 }
 
-save_main_and_jar() {
+save_user_vars() {
   local line
   line="$( grep 'JAR_FILE ?=' "$ORIGINAL" )"
   if [[ "$line" =~ 'JAR_FILE'[[:space:]]*'?='[[:space:]]*(.*) ]] ; then
@@ -64,11 +65,17 @@ save_main_and_jar() {
   else
     die 2 'No match for MAIN in old Makefile'
   fi
+  line="$( grep 'TEST ?=' "$ORIGINAL" )"
+  if [[ "$line" =~ 'TEST'[[:space:]]*'?='[[:space:]]*(.*) ]] ; then
+    TEST="${BASH_REMATCH[1]}"
+  else
+    die 2 'No match for TEST in old Makefile'
+  fi
   PERMS="$( stat -f%p "$ORIGINAL" )"
 }
 
-restore_main_and_jar() {
-  if [[ -z "$JAR" || -z "$MAIN" || -z "$PERMS" ]] ; then
+restore_user_vars() {
+  if [[ -z "$JAR" || -z "$MAIN" || -z "$PERMS" || -z "$TEST" ]] ; then
     return
   fi
   local sed=(
@@ -77,6 +84,7 @@ restore_main_and_jar() {
     -i .tmp
     -e 's@(JAR_FILE[[:space:]]*\?=[[:space:]]*)(.*)@\1'"$JAR"'@'
     -e 's@(MAIN[[:space:]]*\?=[[:space:]]*)(.*)@\1'"$MAIN"'@'
+    -e 's@(TEST[[:space:]]*\?=[[:space:]]*)(.*)@\1'"$TEST"'@'
     "$TEMP"
   )
   "${sed[@]}"
@@ -97,8 +105,8 @@ main() {
     FINAL="$1"
   fi
   set_prog
-  [[ -e "$ORIGINAL" ]] && save_main_and_jar
-  if download && restore_main_and_jar ; then
+  [[ -e "$ORIGINAL" ]] && save_user_vars
+  if download && restore_user_vars ; then
     finalize
   fi
 }
