@@ -40,3 +40,8 @@ vc() {
 vs() {
   vim "$@" -S
 }
+
+# Start vim with its last cursor position
+lvim() {
+  vim +'normal '"'"'0' "$@"
+}
