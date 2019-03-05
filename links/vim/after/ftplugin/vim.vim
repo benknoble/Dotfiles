@@ -16,6 +16,8 @@ setlocal keywordprg=:help
 
 " Execute the current line
 nnoremap <silent> <buffer> <LocalLeader>el :execute getline('.')<CR>
+" Execute file
+nnoremap <silent> <buffer> <LocalLeader>ef :source %<CR>
 
 if !exists("*MyVimFtpluginUndo")
   function MyVimFtpluginUndo()
@@ -23,6 +25,7 @@ if !exists("*MyVimFtpluginUndo")
     setlocal softtabstop<
     setlocal keywordprg<
     silent! nunmap <buffer> <LocalLeader>el
+    silent! nunmap <buffer> <LocalLeader>ef
   endfunction
 endif
 
