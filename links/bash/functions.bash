@@ -127,6 +127,14 @@ complete_travis() {
     && source ~/.travis/travis.sh
 }
 
+v() {
+  vim
+}
+
+vv() {
+  vim +'edit $MYVIMRC' "$@"
+}
+
 vq() {
   if (($# > 0)); then
     vim -q <("$@" 2>&1)
@@ -144,10 +152,14 @@ vf() {
   fi
 }
 
-vc() (
+vc() {
   if (($# > 0)); then
-    cd "$1" && shift && vim "$@"
+    ( cd "$1" && shift && vim "$@" )
   else
     printf '%s\n' 'Usage: vc dir [args]' '' 'Execute vim in {dir}'
   fi
-)
+}
+
+vs() {
+  vim "$@" -S
+}

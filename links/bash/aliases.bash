@@ -19,6 +19,3 @@ alias j='jobs -l'                           # Jobs
 alias ducks='du -cks * | sort -rn | head'   # Ducks!
 alias nocomment='grep -Ev "^(#|$)"'         # No comment...
 alias g='git'
-alias v='vim'
-alias vs='vim -S'
-alias vv="vim +'edit \$MYVIMRC'"
