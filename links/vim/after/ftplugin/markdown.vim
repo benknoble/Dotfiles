@@ -2,12 +2,6 @@
 " Language:              Markdown
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-if exists('b:undo_ftplugin')
-  let b:undo_ftplugin .= ' | '
-else
-  let b:undo_ftplugin = ''
-endif
-
 " Wrap at 80 characters
 setlocal textwidth=80
 " Spell check on
@@ -36,26 +30,27 @@ onoremap <buffer> i#1 :<C-u>execute "normal! ?^#\\s.?e\r:nohlsearch\rvg_"<CR>
 onoremap <buffer> i#2 :<C-u>execute "normal! ?^##\\s.?e\r:nohlsearch\rvg_"<CR>
 onoremap <buffer> i#3 :<C-u>execute "normal! ?^###\\s.?e\r:nohlsearch\rvg_"<CR>
 
-if !exists("*MyMarkdownFtpluginUndo")
-  function MyMarkdownFtpluginUndo()
-    setlocal textwidth<
-    setlocal spell<
-    setlocal spelllang<
-    setlocal iskeyword<
-
-    unlet! g:markdown_folding
-
-
-    silent! ounmap <buffer> i#3
-    silent! ounmap <buffer> i#2
-    silent! ounmap <buffer> i#1
-    silent! ounmap <buffer> ih-
-    silent! ounmap <buffer> ih=
-    silent! nunmap <buffer> <LocalLeader>u3
-    silent! nunmap <buffer> <LocalLeader>u2
-    silent! nunmap <buffer> <LocalLeader>u1
-
-  endfunction
-endif
-
-let b:undo_ftplugin .= 'call MyMarkdownFtpluginUndo()'
+let b:undo_ftplugin = ftplugin#undo({
+      \ 'opts': [
+      \   'textwidth',
+      \   'spell',
+      \   'spelllang',
+      \   'iskeyword',
+      \ ],
+      \ 'maps': [
+      \   [ 'n', '<LocalLeader>u1' ],
+      \   [ 'n', '<LocalLeader>u2' ],
+      \   [ 'n', '<LocalLeader>u3' ],
+      \   [ 'o', 'ih=' ],
+      \   [ 'o', 'ih-' ],
+      \   [ 'o', 'i#1' ],
+      \   [ 'o', 'i#2' ],
+      \   [ 'o', 'i#3' ],
+      \ ],
+      \ 'vars': [
+      \   'g:markdown_folding',
+      \ ],
+      \ 'funcs': [
+      \   'UnderlineHeading',
+      \ ],
+      \ })

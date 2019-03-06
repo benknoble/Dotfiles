@@ -2,12 +2,6 @@
 " Language:              Vim script
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-if exists('b:undo_ftplugin')
-  let b:undo_ftplugin .= ' | '
-else
-  let b:undo_ftplugin = ''
-endif
-
 " Indent two spaces
 setlocal shiftwidth=2 softtabstop=2
 
@@ -19,14 +13,14 @@ nnoremap <silent> <buffer> <LocalLeader>el :execute getline('.')<CR>
 " Execute file
 nnoremap <silent> <buffer> <LocalLeader>ef :source %<CR>
 
-if !exists("*MyVimFtpluginUndo")
-  function MyVimFtpluginUndo()
-    setlocal shiftwidth<
-    setlocal softtabstop<
-    setlocal keywordprg<
-    silent! nunmap <buffer> <LocalLeader>el
-    silent! nunmap <buffer> <LocalLeader>ef
-  endfunction
-endif
-
-let b:undo_ftplugin .= 'call MyVimFtpluginUndo()'
+let b:undo_ftplugin = ftplugin#undo({
+      \ 'opts': [
+      \   'shiftwidth',
+      \   'softtabstop',
+      \   'keywordprg',
+      \ ],
+      \ 'maps': [
+      \   [ 'n', '<LocalLeader>el' ],
+      \   [ 'n', '<LocalLeader>ef' ],
+      \ ],
+      \ })

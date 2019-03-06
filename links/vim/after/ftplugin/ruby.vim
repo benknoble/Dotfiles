@@ -2,12 +2,6 @@
 " Language:              Ruby
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-if exists('b:undo_ftplugin')
-  let b:undo_ftplugin .= ' | '
-else
-  let b:undo_ftplugin = ''
-endif
-
 let b:interpreter = 'irb'
 
 " Wrap at 80 characters
@@ -21,16 +15,18 @@ compiler ruby
 
 nnoremap <buffer> <LocalLeader>r :make %<CR>
 
-if !exists("*MyRubyFtpluginUndo")
-  function MyRubyFtpluginUndo()
-    setlocal textwidth<
-    setlocal shiftwidth<
-    setlocal softtabstop<
-    setlocal errorformat<
-    setlocal makeprg<
-
-    silent! nunmap <buffer> <LocalLeader>r
-  endfunction
-endif
-
-let b:undo_ftplugin .= 'call MyRubyFtpluginUndo()'
+let b:undo_ftplugin = ftplugin#undo({
+      \ 'opts': [
+      \   'textwidth',
+      \   'shiftwidth',
+      \   'softtabstop',
+      \   'makeprg',
+      \   'errorformat',
+      \ ],
+      \ 'maps': [
+      \   [ 'n', '<LocalLeader>r' ],
+      \ ],
+      \ 'vars': [
+      \   'b:interpreter',
+      \ ],
+      \ })

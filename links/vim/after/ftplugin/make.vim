@@ -2,12 +2,6 @@
 " Language:              Makefile
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-if exists('b:undo_ftplugin')
-  let b:undo_ftplugin .= ' | '
-else
-  let b:undo_ftplugin = ''
-endif
-
 " Tabs are 8 wide
 setlocal shiftwidth=8
 
@@ -22,20 +16,20 @@ xnoremap <silent> <buffer> <LocalLeader><Space> :call make#remove_quotes()<CR>
 nnoremap <silent> <buffer> <LocalLeader>+ :call make#quote_line('+')<CR>
 xnoremap <silent> <buffer> <LocalLeader>+ :call make#quote_line('+')<CR>
 
-if !exists("*MyMakeFtpluginUndo")
-  function MyMakeFtpluginUndo()
-    setlocal shiftwidth<
-    silent! nunmap <buffer> <LocalLeader>-
-    silent! xunmap <buffer> <LocalLeader>-
-    silent! nunmap <buffer> <LocalLeader>2
-    silent! xunmap <buffer> <LocalLeader>2
-    silent! nunmap <buffer> <LocalLeader>@
-    silent! xunmap <buffer> <LocalLeader>@
-    silent! nunmap <buffer> <LocalLeader><Space>
-    silent! xunmap <buffer> <LocalLeader><Space>
-    silent! nunmap <buffer> <LocalLeader>+
-    silent! xunmap <buffer> <LocalLeader>+
-  endfunction
-endif
-
-let b:undo_ftplugin .= 'call MyMakeFtpluginUndo()'
+let b:undo_ftplugin = ftplugin#undo({
+      \ 'opts': [
+      \   'shiftwidth',
+      \ ],
+      \ 'maps': [
+      \   [ 'n', '<LocalLeader>-' ],
+      \   [ 'x', '<LocalLeader>-' ],
+      \   [ 'n', '<LocalLeader>2' ],
+      \   [ 'x', '<LocalLeader>2' ],
+      \   [ 'n', '<LocalLeader>@' ],
+      \   [ 'x', '<LocalLeader>@' ],
+      \   [ 'n', '<LocalLeader><Space>' ],
+      \   [ 'x', '<LocalLeader><Space>' ],
+      \   [ 'n', '<LocalLeader>+' ],
+      \   [ 'x', '<LocalLeader>+' ],
+      \ ],
+      \ })
