@@ -2,12 +2,6 @@
 " Language:              Go
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-if exists('b:undo_ftplugin')
-  let b:undo_ftplugin .= ' | '
-else
-  let b:undo_ftplugin = ''
-endif
-
 " Build Go files
 nnoremap <buffer> <localleader>b :<C-u>call go#build_go_files()<CR>
 " Run them
@@ -33,25 +27,24 @@ let g:go_highlight_extra_types = 1
 
 let g:go_auto_type_info = 1
 
-if !exists("*MyGoFtpluginUndo")
-  function MyGoFtpluginUndo()
-    setlocal shiftwidth<
-    setlocal softtabstop<
-    setlocal keywordprg<
-
-    silent! nunmap <buffer> <localleader>b
-    silent! nunmap <buffer> <localleader>r
-    silent! nunmap <buffer> <localleader>t
-    silent! nunmap <buffer> <localleader>c
-
-    unlet! g:go_highlight_types
-    unlet! g:go_highlight_fields
-    unlet! g:go_highlight_functions
-    unlet! g:go_highlight_methods
-    unlet! g:go_highlight_extra_types
-    unlet! g:go_auto_type_info
-
-  endfunction
-endif
-
-let b:undo_ftplugin .= 'call MyGoFtpluginUndo()'
+let b:undo_ftplugin = ftplugin#undo({
+      \ 'opts': [
+      \   'keywordprg',
+      \   'shiftwidth',
+      \   'softtabstop',
+      \ ],
+      \ 'maps': [
+      \   [ 'n', '<LocalLeader>b' ],
+      \   [ 'n', '<LocalLeader>r' ],
+      \   [ 'n', '<LocalLeader>t' ],
+      \   [ 'n', '<LocalLeader>c' ],
+      \ ],
+      \ 'vars': [
+      \   'g:go_highlight_types',
+      \   'g:go_highlight_fields',
+      \   'g:go_highlight_functions',
+      \   'g:go_highlight_methods',
+      \   'g:go_highlight_extra_types',
+      \   'g:go_auto_type_info',
+      \ ],
+      \ })
