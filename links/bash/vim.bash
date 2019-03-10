@@ -38,7 +38,13 @@ vc() {
 }
 
 vs() {
-  vim "$@" -S
+  if (($# > 0)); then
+    local session="$1"
+    shift
+    vim "$@" -S "$session"
+  else
+    vim -S
+  fi
 }
 
 # Start vim with its last cursor position
