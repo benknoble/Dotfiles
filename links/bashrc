@@ -16,6 +16,7 @@ reset_editor() {
   # set default editor to vim
   export VISUAL="$(command -v vim)"
   export EDITOR="$VISUAL"
+  export MANPAGER='vim -M +MANPAGER -'
 }
 
 # use my color scheme for ls
