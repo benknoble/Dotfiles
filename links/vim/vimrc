@@ -460,6 +460,10 @@ nnoremap <F9> mzggg?G`z
 " Clear lines
 nnoremap <Leader>cl 0D
 
+" Refactor a word
+" Courtesy of github@habamax/.vim/vimrc
+nnoremap <Leader>cw :let @/=expand('<cword>')<CR>cgn
+
 " Save
 nnoremap <silent> <Leader>s :write<CR>
 " Quit quickly
