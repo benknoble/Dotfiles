@@ -72,3 +72,5 @@
 	autoSquash = true
 [init]
 	templateDir = ~/.git_template
+[log]
+	date = auto:human
