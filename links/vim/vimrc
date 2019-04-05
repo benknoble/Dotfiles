@@ -258,7 +258,7 @@ if has('title')
 endif
 " End Window title }}}
 
-" Syntax Highlighting {{{
+" Syntax {{{
 " Switch syntax highlighting on when the terminal has colors or when using the
 " GUI (which always has colors).
 if &t_Co > 2 || has("gui_running")
@@ -284,7 +284,7 @@ if &t_Co > 2 || has("gui_running")
   let java_ignore_javadoc = 1
 
 endif
-" End Syntax Highlighting }}}
+" End Syntax }}}
 
 " Undo {{{
 set undofile undodir=~/.undo
