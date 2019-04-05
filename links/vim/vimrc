@@ -283,6 +283,11 @@ if &t_Co > 2 || has("gui_running")
   " Do NOT highlight javadoc specially: it is distracting
   let java_ignore_javadoc = 1
 
+  " Use proper scaladoc indentation
+  " Found in (uncomment "gcc" and type "<LocalLeader>el")
+  " vsplit +/scala_scaladoc_indent $VIMRUNTIME/indent/scala.vim
+  let g:scala_scaladoc_indent = 1
+
 endif
 " End Syntax }}}
 
