@@ -17,7 +17,7 @@ if exists('b:liquid_subtype')
 
   let b:undo_ftplugin = ftplugin#undo({
         \ 'custom': [
-        \   'call MyLiquidFtpluginUndo',
+        \   'call MyLiquidFtpluginUndo()',
         \ ],
         \ })
 endif
