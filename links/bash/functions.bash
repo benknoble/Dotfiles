@@ -126,3 +126,16 @@ complete_travis() {
     && [[ -f ~/.travis/travis.sh ]] \
     && source ~/.travis/travis.sh
 }
+
+markdownify() {
+  # reads from stdin
+  command=(
+    curl
+    --silent
+    https://api.github.com/markdown/raw
+    -X "POST"
+    -H "Content-Type: text/x-markdown"
+    --data-binary @-
+  )
+  "${command[@]}"
+}
