@@ -29,6 +29,16 @@ vf() {
   fi
 }
 
+vff() {
+  if (($# == 1)) ; then
+    # equivalent to vf ack -g "$1"
+    vim $(ack -g "$1")
+  else
+    printf '%s\n' 'Usage: vff filename' '' 'Find {filename} to edit' \
+      'Relies on ack(1)'
+  fi
+}
+
 vc() {
   if (($# > 0)); then
     ( cd "$1" && shift && vim "$@" )
