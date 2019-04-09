@@ -41,7 +41,14 @@ vff() {
 
 vc() {
   if (($# > 0)); then
-    ( cd "$1" && shift && vim "$@" )
+    if pushd "$1" >/dev/null ; then
+      # ${@[0]} = $0 = name
+      # ${@[1]} = $1 = directory
+      # ${@:2}  = remaining args
+      vim "${@:2}"
+      # this must work because pushd succeeded
+      popd >/dev/null
+    fi
   else
     printf '%s\n' 'Usage: vc dir [args]' '' 'Execute vim in {dir}'
   fi
