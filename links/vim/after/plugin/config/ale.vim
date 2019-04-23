@@ -6,6 +6,6 @@ let g:ale_set_signs = 0
 
 let g:ale_linters = {
       \ 'python': 'all',
-      \ 'scala' [],
+      \ 'scala': [],
       \ 'java': [],
       \ }
