@@ -110,3 +110,6 @@
 [submodule "links/vim/pack/utility/start/apathy"]
 	path = links/vim/pack/utility/start/apathy
 	url = git@github.com:tpope/vim-apathy.git
+[submodule "links/vim/pack/languages/start/js"]
+	path = links/vim/pack/languages/start/js
+	url = git://github.com/pangloss/vim-javascript.git
