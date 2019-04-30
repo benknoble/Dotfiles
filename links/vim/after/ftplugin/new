@@ -24,7 +24,7 @@ edit_new_ftplugin() {
     -c 'silent 0d' \
     -c 'silent $d' \
     -c "silent %s/LANG/$language/g" \
-    -c 'silent keeppatterns /!exists/-1' \
+    -c 'silent keeppatterns /^$/' \
     "$fname"
 }
 
