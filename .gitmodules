@@ -113,3 +113,6 @@
 [submodule "links/vim/pack/languages/start/js"]
 	path = links/vim/pack/languages/start/js
 	url = git://github.com/pangloss/vim-javascript.git
+[submodule "links/vim/pack/languages/start/scala"]
+	path = links/vim/pack/languages/start/scala
+	url = git@github.com:benknoble/vim-scala.git
