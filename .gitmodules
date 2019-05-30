@@ -116,3 +116,6 @@
 [submodule "links/vim/pack/languages/start/scala"]
 	path = links/vim/pack/languages/start/scala
 	url = git@github.com:benknoble/vim-scala.git
+[submodule "links/vim/pack/languages/start/requirements"]
+	path = links/vim/pack/languages/start/requirements
+	url = git@github.com:benknoble/requirements.txt.vim.git
