@@ -19,3 +19,5 @@ if [[ -d "$texpath" ]]; then
   unset tex_path_fix
 
 fi
+
+unset texpath
