@@ -119,3 +119,6 @@
 [submodule "links/vim/pack/languages/start/requirements"]
 	path = links/vim/pack/languages/start/requirements
 	url = git@github.com:benknoble/requirements.txt.vim.git
+[submodule "links/vim/pack/utility/start/scriptease"]
+	path = links/vim/pack/utility/start/scriptease
+	url = git@github.com:tpope/vim-scriptease.git
