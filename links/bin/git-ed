@@ -2,8 +2,13 @@
 
 set -euo pipefail
 
-USAGE='[-h]
-Edit files that have diffs'
+USAGE='[-h] | [commitish] [commitish]?
+Edit changed files
+
+Given:
+  - 0 commits: edit "dirty" files
+  - 1 commit:  edit files changed by that commit
+  - 2 commits: edit files changed between those commits'
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
@@ -11,10 +16,45 @@ set +u
 source "$(git --exec-path)"/git-sh-setup
 set -u
 
+edit_current() {
+  git diff --name-only
+}
+
+edit_commit() {
+  local commit="$1"
+  git show --format='' --name-only "$commit"
+}
+
+edit_diff() {
+  local first="$1"
+  local second="$2"
+  git diff --name-only "$first" "$second"
+}
+
 main() {
+  local func
+  case $# in
+    0)
+      func=edit_current
+      ;;
+    1)
+      # note == is pattern matching
+      if [[ "$1" == -h ]]; then
+        usage
+      else
+        func=edit_commit
+      fi
+      ;;
+    2)
+      func=edit_diff
+      ;;
+    *)
+      usage
+      ;;
+  esac
   local files=()
-  mapfile -t files < <(git diff --name-only)
-  if [[ ${#files[@]} -gt 0 ]]; then
+  mapfile -t files < <("$func" "$@")
+  if (( ${#files[@]} > 0 )); then
     # file names are relative to repository root
     cd_to_toplevel && git_editor "${files[@]}"
     exit $?
@@ -24,8 +64,4 @@ main() {
   fi
 }
 
-if [[ $# -gt 0 ]]; then
-  usage
-else
-  main
-fi
+main "$@"
