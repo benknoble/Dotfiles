@@ -1,0 +1,43 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+USAGE='[-hv]
+List git aliases'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+list_aliases_verbose() {
+  git config --get-regexp 'alias.*' | sed -e 's/alias.//g' -e $'s/ /\t=\t/'
+}
+
+list_aliases() {
+  list_aliases_verbose | awk '{print $1}'
+}
+
+main() {
+  case $# in
+    0)
+      list_aliases
+      ;;
+    1)
+      case "$1" in
+        -h)
+          usage
+          ;;
+        -v|--verbose)
+          list_aliases_verbose
+          ;;
+      esac
+      ;;
+    *)
+      usage
+      ;;
+  esac
+}
+
+main "$@"
