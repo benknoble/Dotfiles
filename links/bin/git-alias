@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-USAGE='[-hv]
+USAGE='[-hq] [search_pattern]
 List git aliases'
 SUBDIRECTORY_OK=true
 
@@ -22,16 +22,18 @@ list_aliases() {
 main() {
   case $# in
     0)
-      list_aliases
+      list_aliases_verbose
       ;;
     1)
       case "$1" in
         -h)
           usage
           ;;
-        -v|--verbose)
-          list_aliases_verbose
+        -q|--quiet)
+          list_aliases
           ;;
+        *)
+          list_aliases_verbose | grep -E "$1"
       esac
       ;;
     *)
