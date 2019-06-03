@@ -492,17 +492,6 @@ nnoremap <Leader>` <C-^>
 " Quickly edit vimrc
 nnoremap <Leader>v :vsplit $MYVIMRC<CR>
 
-" Search
-nnoremap <Leader>a :Ack!<space>
-nnoremap <silent> <Leader>A :Ack! <cword><CR>
-nnoremap <silent> <Leader><C-a> :Ack! --nosmart-case <cword><CR>
-nnoremap <silent> <Leader>g :set operatorfunc=grep#operator<CR>g@
-xnoremap <silent> <Leader>g :<C-u>call grep#operator(visualmode())<CR>
-" Jump to lines with word
-nnoremap <Leader>f :call find#included_word()<CR>
-" Unhighlight last search
-nnoremap <silent> <Leader>h :nohlsearch<CR>
-
 " Trigger the command line window
 nnoremap <silent> <Leader>; q:
 
@@ -533,6 +522,16 @@ nnoremap <S-Right> <C-w>L
 " Search very magically
 nnoremap <Leader>/ /\v
 nnoremap <Leader>? ?\v
+
+nnoremap <Leader>a :Ack!<space>
+nnoremap <silent> <Leader>A :Ack! <cword><CR>
+nnoremap <silent> <Leader><C-a> :Ack! --nosmart-case <cword><CR>
+nnoremap <silent> <Leader>g :set operatorfunc=grep#operator<CR>g@
+xnoremap <silent> <Leader>g :<C-u>call grep#operator(visualmode())<CR>
+" Jump to lines with word
+nnoremap <Leader>f :call find#included_word()<CR>
+" Unhighlight last search
+nnoremap <silent> <Leader>h :nohlsearch<CR>
 " End Search }}}
 
 " End Leader shortcuts }}}
