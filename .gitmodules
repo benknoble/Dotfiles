@@ -114,10 +114,10 @@
 	path = links/vim/pack/languages/start/js
 	url = git://github.com/pangloss/vim-javascript.git
 [submodule "links/vim/pack/languages/start/scala"]
-	path = links/vim/pack/languages/start/scala
+	path = links/vim/pack/benknoble/start/scala
 	url = git@github.com:benknoble/vim-scala.git
 [submodule "links/vim/pack/languages/start/requirements"]
-	path = links/vim/pack/languages/start/requirements
+	path = links/vim/pack/benknoble/start/requirements
 	url = git@github.com:benknoble/requirements.txt.vim.git
 [submodule "links/vim/pack/utility/start/scriptease"]
 	path = links/vim/pack/utility/start/scriptease
