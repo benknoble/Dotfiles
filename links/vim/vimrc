@@ -288,6 +288,8 @@ if &t_Co > 2 || has("gui_running")
   " vsplit +/scala_scaladoc_indent $VIMRUNTIME/indent/scala.vim
   let g:scala_scaladoc_indent = 1
 
+  let g:applescript_default_indent = 0
+
 endif
 " End Syntax }}}
 

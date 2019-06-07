@@ -52,17 +52,17 @@ set NoteTitle to report_Title & " | " & the date_stamp
 
 -- get tabs from safari
 tell application "Safari"
-    activate
-    set windowCount to number of windows
-    repeat with win_n from 1 to windowCount
-        set tabcount to number of tabs in window win_n
-        repeat with tab_n from 1 to tabcount
-            set TabTitle to name of tab tab_n of window win_n
-            set TabURL to URL of tab tab_n of window win_n
-            set TabInfo to ("" & TabTitle & return & TabURL & return & return)
-            copy TabInfo to the end of url_list
-        end repeat
+  activate
+  set windowCount to number of windows
+  repeat with win_n from 1 to windowCount
+    set tabcount to number of tabs in window win_n
+    repeat with tab_n from 1 to tabcount
+      set TabTitle to name of tab tab_n of window win_n
+      set TabURL to URL of tab tab_n of window win_n
+      set TabInfo to ("" & TabTitle & return & TabURL & return & return)
+      copy TabInfo to the end of url_list
     end repeat
+  end repeat
 end tell
 
 -- convert url_list to text
@@ -74,15 +74,15 @@ set AppleScript's text item delimiters to old_delim
 -- choose file name for export
 -- (wrapping in a finder function so the dialog works in alfred, km, etc.)
 tell application "Finder"
-    activate
-    set save_File to choose file name with prompt "Name this file:" default name report_Title default location (path to desktop folder)
+  activate
+  set save_File to choose file name with prompt "Name this file:" default name report_Title default location (path to desktop folder)
 end tell
 
 -- write the file
 tell application "System Events"
-    set save_File to open for access (save_File as string) with write permission
-    try
-        write url_list to save_File
-    end try
-    close access save_File
+  set save_File to open for access (save_File as string) with write permission
+  try
+    write url_list to save_File
+  end try
+  close access save_File
 end tell

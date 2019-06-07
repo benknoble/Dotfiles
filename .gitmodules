@@ -122,3 +122,6 @@
 [submodule "links/vim/pack/utility/start/scriptease"]
 	path = links/vim/pack/utility/start/scriptease
 	url = git@github.com:tpope/vim-scriptease.git
+[submodule "links/vim/pack/languages/start/applescript"]
+	path = links/vim/pack/languages/start/applescript
+	url = git@github.com:RobertAudi/applescript.vim.git
