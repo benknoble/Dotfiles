@@ -290,6 +290,8 @@ if &t_Co > 2 || has("gui_running")
 
   let g:applescript_default_indent = 0
 
+  let g:tex_flavor = "latex"
+
 endif
 " End Syntax }}}
 
