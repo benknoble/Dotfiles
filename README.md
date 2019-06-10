@@ -4,12 +4,11 @@ My Dotfiles for configuration of different software and command-line programs
 
 :warning:**WARNING**:warning: Dotfiles are _not_ meant to be forked: they are
 personal castles that you should construct yourself. That said, feel free to
-peruse mine and steal whatever you like. Attribute me if you want, or don't. I
-don't care.
+peruse mine and steal whatever you like.
 
-In spite of the above warning, I have tried to make this repo easy-ish to fork
-and play with. Sourcing local files, such as `~/.gitconfig.local`, is a large
-part of that.
+In spite of the above warning, I have tried to make this repo relatively easy to
+fork and play with. Sourcing local files, such as `~/.gitconfig.local`, is a
+large part of that.
 
 ## Installing
 
@@ -17,15 +16,15 @@ First, clone the repo into your dotfiles directory. You can name it anything,
 but make sure to override the variable `DOTFILES` when invoking `make`.
 
 ```bash
-$ mkdir ~/Dotfiles
-$ git clone --recurse-submodules https://github.com/benknoble/Dotfiles.git ~/Dotfiles
-$ cd ~/Dotfiles
+mkdir ~/Dotfiles
+git clone --recurse-submodules https://github.com/benknoble/Dotfiles.git ~/Dotfiles
+cd ~/Dotfiles
 ```
 
 Next, run `make` to kick things off:
 
 ```bash
-$ DOTFILES=/path/to/cloned/project make install
+DOTFILES=/path/to/cloned/project make install
 ```
 
 This will do several things:
@@ -41,8 +40,8 @@ The next time you start a shell (usually `bash`), your new `bashrc` will load
 whole host of new command-line fu. If you don't want to wait, try
 
 ```bash
-$ source ~/.bashrc
-$ reload
+source ~/.bashrc
+reload
 ```
 
 `reload` is a helpful alias for when changes have been made to dotfiles: it
@@ -62,14 +61,18 @@ repo.
 
 ## Documentation & Full Feature List
 
-Eliminated. Can be found in the git history.
+Check the code—this is where you should probably *not* use something until you
+understand what it is doing. Feel free to ask me questions.
+
+The old docs have been eliminated. They can be found in the git history.
 
 ## Misc
 
 ### Terminal
 
-The file benknoble.terminal is an XML file for use with Apple's *Terminal*
-application; it is a settings file ready for import.
+I am now using and maintaining the [dracula theme][drac-term] full time for
+Terminal.app. You can find it under the Dracula directory, along with a
+`gitk(1)` theme.
 
 ### Built With
 
@@ -119,3 +122,5 @@ for some Vim help and [teaching](http://learnvimscriptthehardway.stevelosh.com).
 
 Thanks further to the kind Internet for providing a wealth of resources when
 things go wonky.
+
+[drac-term]: https://github.com/dracula/terminal-app
