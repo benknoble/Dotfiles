@@ -14,6 +14,8 @@
 	grall = !git graph --all
 	graph = !git graph-long --oneline
 	graph-long = log --graph
+	ig = check-ignore
+	igv = !git ig -v
 	intend = add --intent-to-add
 	last = log -1 HEAD
 	logp = log --graph --abbrev-commit \
