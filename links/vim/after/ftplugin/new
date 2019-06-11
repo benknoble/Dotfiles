@@ -6,7 +6,7 @@ ftplugin_dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
 
 log() {
   printf '%s\n' "$@"
-}
+} >&2
 
 die() {
   if (( $# )) ; then
@@ -32,7 +32,7 @@ usage() {
   cat <<DOG
 $0 {filetype}: edit a new filetype plugin, based on skeleton
 DOG
-}
+} >&2
 
 main() {
   if (( $# != 1 )) || [[ -e "$1.vim" ]]; then
