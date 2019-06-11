@@ -415,6 +415,7 @@ endif
 " Don't use Ex mode, use Q for formatting
 " Revert with ":unmap Q"
 nnoremap Q gq
+xnoremap Q gq
 " Format the whole line
 nnoremap QQ gqgq
 " End Formatting }}}
