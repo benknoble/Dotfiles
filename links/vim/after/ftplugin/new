@@ -19,7 +19,7 @@ edit_new_ftplugin() {
   local filetype="$1"
   local language="${filetype^}"
   local fname="$ftplugin_dir/$filetype.vim"
-  vim \
+  exec vim \
     -c "silent read $ftplugin_dir/skeleton" \
     -c 'silent 0d' \
     -c 'silent $d' \
