@@ -7,12 +7,14 @@ BACKUP ?= $(DOTFILES)_old
 SETUP := $(DOTFILES)/setup
 SUPPORT := $(SETUP)/support
 BREWFILE ?= $(if $(shell [ -e $(HOME)/.Brewfile ] && echo true),$(HOME)/.Brewfile,$(DOTFILES)/brew/Brewfile)
+REQUIREMENTS ?= $(DOTFILES)/requirements.txt
 XDG_CONFIG_HOME ?= $(HOME)/.config
 # supported features:
 # git_extras
 # brew
+# pip
 # none
-FEATURES ?= git_extras brew
+FEATURES ?= git_extras brew pip
 
 # }}}
 
@@ -184,6 +186,14 @@ _bundle:
 	brew bundle install --file="$(BREWFILE)"
 
 # }}}
+
+#  Pip {{{
+.PHONY: _pip
+_pip:
+	@$(msg) 'Installing pip packages...'
+	python3 -m pip install --user --requirement $(REQUIREMENTS)
+	@$(msg) '...done with pip packages'
+#  Pip }}}
 
 # }}}
 
