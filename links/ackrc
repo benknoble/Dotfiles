@@ -25,6 +25,8 @@
 --ignore-dir=.venv-python
 --ignore-dir=.tox
 --ignore-dir=ext:egg-info
+--ignore-dir=build
+--ignore-dir=dist
 
 ### File Types
 
