@@ -1,0 +1,10 @@
+###
+# delim : %%
+# output : ~/benknoble.github.io/_drafts/{fname}.md
+# help : draft a blog post
+###
+---
+title: '%%TITLE'
+tags: [ tags ]
+category: [ Blog, Code ]
+---

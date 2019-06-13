@@ -1,6 +1,11 @@
-" vim: ft=vim
+"""
+" delim : $
+" output : ~/.vim/after/ftplugin/{fname}.vim
+" help : personal vim ftplugin
+" vim : ft=vim
+"""
 " Vim filetype plugin
-" Language:              LANG
+" Language:              $LANG
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 let b:undo_ftplugin = ftplugin#undo({

@@ -1,0 +1,21 @@
+###
+# delim : %%
+# output : ~/.personal/bin/tmux-{fname}
+# help : tmux project script ; don't forget to chmod u+x
+###
+#! /usr/bin/env bash
+
+set -euo pipefail
+current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+source "$current_dir/tmux-utils.sh"
+
+set_session "%%SESSION"
+set_dir ~/%%DIR/
+
+create_session() {
+  new_session dev
+  new_window server
+}
+
+main

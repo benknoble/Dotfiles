@@ -21,6 +21,7 @@ declare -A files=(
   [inputrc]=.inputrc
   [jupyter]=.jupyter
   [pythonrc]=.pythonrc
+  [tmplr]=.tmplr
   [tmux.conf]=.tmux.conf
   [vim]=.vim
 )
