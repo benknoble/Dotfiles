@@ -1,5 +1,7 @@
 # dotfiles
 
+[![This project is personal](https://img.shields.io/badge/status-personal-important.svg)](https://benknoble.github.io/status/personal/)
+
 My Dotfiles for configuration of different software and command-line programs
 
 :warning:**WARNING**:warning: Dotfiles are _not_ meant to be forked: they are
