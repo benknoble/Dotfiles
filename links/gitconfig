@@ -27,6 +27,7 @@
 	patch = add --patch
 	s = status -sb
 	sb = show-branch
+	sbu = !git sb @ @{u}
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
 	stat = status
