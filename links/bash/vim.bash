@@ -68,3 +68,7 @@ vs() {
 lvim() {
   vim +'normal '"'"'0' "$@"
 }
+
+vh() {
+  vim +"help $@"
+}
