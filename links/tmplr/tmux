@@ -1,6 +1,6 @@
 ###
 # delim : %%
-# output : ~/.personal/bin/tmux-{fname}
+# output : ~/.personal/bin/{fname}-tmux
 # help : tmux project script ; don't forget to chmod u+x
 ###
 #! /usr/bin/env bash
