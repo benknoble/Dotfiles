@@ -2,7 +2,7 @@
 " delim : $
 " output : ~/.vim/after/ftplugin/{fname}.vim
 " help : personal vim ftplugin
-" vim : ft=vim
+" vim: ft=vim
 """
 " Vim filetype plugin
 " Language:              $LANG

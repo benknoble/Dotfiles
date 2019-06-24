@@ -2,6 +2,7 @@
 # delim : %%
 # output : ~/.personal/bin/{fname}-tmux
 # help : tmux project script ; don't forget to chmod u+x
+# vim: ft=bash
 ###
 #! /usr/bin/env bash
 
