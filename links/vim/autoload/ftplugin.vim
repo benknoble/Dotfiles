@@ -9,45 +9,56 @@
 "   - 'custom' (expression that will be concatenated literally)
 function! ftplugin#undo(settings)
   let l:undo = get(b:, 'undo_ftplugin', '')
-  let l:suffix = ''
+  let l:suffix = []
 
   " options
-  for option in get(a:settings, 'opts', [])
-    let l:suffix .= printf('setlocal %s< | ', option)
-  endfor
+  call extend(
+        \ l:suffix,
+        \ map(
+        \   get(a:settings, 'opts', []),
+        \   {_,opt -> printf('setlocal %s<', opt)}))
 
   " variables
-  for var in get(a:settings, 'vars', [])
-    let l:suffix .= printf('unlet! %s | ', var)
-  endfor
+  call extend(
+        \ l:suffix,
+        \ map(
+        \   get(a:settings, 'vars', []),
+        \   {_,var -> printf('unlet! %s', var)}))
 
   " commands
-  for command in get(a:settings, 'commands', [])
-    let l:suffix .= printf('silent! delcommand %s | ', command)
-  endfor
+  call extend(
+        \ l:suffix,
+        \ map(
+        \   get(a:settings, 'commands', []),
+        \   {_,command -> printf('silent! delcommand %s', command)}))
 
   " mappings [mode, key]
-  for [mode, key] in get(a:settings, 'maps', [])
-    let l:suffix .= printf("execute 'silent! %sunmap <buffer> %s' | ", mode, key)
-  endfor
+  call extend(
+        \ l:suffix,
+        \ map(
+        \   get(a:settings, 'maps', []),
+        \   {_,map -> printf("execute 'silent! %sunmap <buffer> %s'",
+        \                                     map[0],          map[1])}))
 
   " functions
-  for func in get(a:settings, 'funcs', [])
-    let l:suffix .= printf('delfunction! %s | ', func)
-  endfor
+  call extend(
+        \ l:suffix,
+        \ map(
+        \   get(a:settings, 'funcs', []),
+        \   {_,func -> printf('delfunction! %s', func)}))
 
-  for code in get(a:settings, 'custom', [])
-    let l:suffix .= printf('%s | ', code)
-  endfor
+  " custom code
+  call extend(
+        \ l:suffix,
+        \ get(a:settings, 'custom', []))
 
-  " eliminate trailing spaces and <Bar>s
-  let l:suffix = trim(l:suffix, ' |')
+  let l:to_append = join(l:suffix, ' | ')
 
-  if ! empty(l:suffix)
+  if ! empty(l:to_append)
     if ! empty(l:undo)
-      let l:undo .= ' | ' . l:suffix
+      let l:undo .= ' | ' . l:to_append
     else
-      let l:undo = l:suffix
+      let l:undo = l:to_append
     endif
   endif
 
@@ -74,3 +85,7 @@ endfunction
 "       \ 'funcs': [ 'b:MySpecialFunc', ],
 "       \ 'custom': [ 'call MyUndoFunc()' ],
 "       \ })
+
+" expected output
+"""""""""""""""""
+" call VimFtpluginUndo() | setlocal shiftwidth< | setlocal softtabstop< | setlocal keywordprg< | execute 'silent! nunmap <buffer> <LocalLeader>el' | execute 'silent! nunmap <buffer> <LocalLeader>ef'|setlocal path= suffixesadd= includeexpr= include= define= keywordprg=|sil! delcommand Breakadd|sil! delcommand Breakdel|sil! exe "nunmap <buffer> K" | setlocal tw< | setlocal sw< | setlocal sts< | unlet! b:interpreter | silent! delcommand USER | execute 'silent! ounmap <buffer> keys' | execute 'silent! xunmap <buffer> keys' | execute 'silent! iunmap <buffer> keys' | execute 'silent! cunmap <buffer> keys' | execute 'silent! vunmap <buffer> keys' | execute 'silent! tunmap <buffer> keys' | execute 'silent! lunmap <buffer> keys' | execute 'silent! sunmap <buffer> keys' | execute 'silent! unmap <buffer> keys' | execute 'silent! nunmap <buffer> <LocalLeader>keys' | delfunction! b:MySpecialFunc | call MyUndoFunc()
