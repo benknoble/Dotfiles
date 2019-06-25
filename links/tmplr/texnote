@@ -8,7 +8,7 @@
 
 \begin{document}
 % front matter {{{
-\title{Math 521--Day #DAY}
+\title{Math 521---Day #DAY}
 \author{D. Ben Knoble}
 \date{#DATE}
 \maketitle
