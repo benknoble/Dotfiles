@@ -32,24 +32,6 @@ export
 # }}}
 
 # Macros (Functions & Canned Recipes) {{{
-
-define yes_or_no
-read -n 1 -p "[y/n]> " input && echo && [[ "$$input" =~ ^(y|Y) ]]
-endef
-
-define msg
-printf '%s\n'
-endef
-
-define run_installer
-$(msg) 'Install $@?'
-if $(yes_or_no) ; then\
-	$(MAKE) _$@;\
-else\
-	$(msg) "Skipping $@";\
-fi
-endef
-
 # }}}
 
 # Targets (Rules & Recipes) {{{
@@ -65,15 +47,16 @@ default:
 .PHONY: install
 .PHONY: all
 all: install
-install: _bootstrap
+install: symlink $(patsubst %,_%,$(FEATURES))
 
 # update: update the dotfiles
 .PHONY: update
-update: _update vimtags
+update: _pull_master _update_submodules _brew_update vimtags
 
 # symlink: re-create the symlinks
 .PHONY: symlink
-symlink: _symlink
+symlink:
+	$(SETUP)/makesymlinks.sh
 
 # vimtags: regenerate tags for vim helpfiles
 .PHONY: vimtags
@@ -96,52 +79,8 @@ submodules:
 
 # Helper targets {{{
 
-# Bootstrap {{{
-
-.PHONY: _bootstrap
-_bootstrap:
-	@$(msg) 'WARNING: Backups in the old directory ($(BACKUP))'
-	@$(msg) 'will be DELETED and OVERWRITTEN!'
-	@$(msg) 'If you want to keep them, abort and move them!'
-	@$(msg) 'Are you sure you want to continue bootstrapping Dotfiles?'
-	@if $(yes_or_no) ; then\
-		$(MAKE) _bootstrap_full;\
-	else\
-		$(msg) 'Aborting';\
-	fi
-
-.PHONY: _bootstrap_full
-_bootstrap_full: _symlink _features
-
-.PHONY: _symlink
-_symlink:
-	@$(msg) 'Symlinking dotfiles...'
-	@$(SETUP)/makesymlinks.sh
-	@$(msg) '...done with symlinks'
-
-.PHONY: _features
-_features:
-ifneq ($(and $(strip $(FEATURES)),$(subst none,,$(FEATURES))),)
-# If FEATURES is not empty or the string none...
-# This works because and returns the empty string iff any values provided to it
-# are empty. The strip condition checks if FEATURES is empty, and the subst
-# condition if it is exactly none. If that whole thing is the empty string, we
-# jump to else. Basically, it's
-#   if !(empty && none) <=> (!empty || !none), run FEATURES
-# We couldn't use the simpler condition^^^^^^ because we don't know what the
-# result would be (see the trailing comma in ifneq).
-	@$(msg) 'Running features...'
-	@$(MAKE) $(FEATURES)
-	@$(msg) '...done with features'
-else
+_none:
 	@:
-endif
-
-# Features {{{
-
-.PHONY: $(FEATURES)
-$(FEATURES):
-	@$(run_installer)
 
 # Git extras {{{
 
@@ -149,21 +88,13 @@ USER_GITK := $(XDG_CONFIG_HOME)/git/gitk
 DRACULA_GITK := $(DOTFILES)/Dracula/gitk/gitk
 
 .PHONY: _git_extras
-_git_extras:
-	@$(msg) 'Install git extras...'
-	@$(MAKE) _gitk
-	@$(msg) '...done with git extras'
+_git_extras: _gitk
 
 .PHONY: _gitk
 _gitk:
-	@$(msg) 'Copying gitk dracula theme...'
-	@if [ -r "$(DRACULA_GITK)" ]; then\
-		mkdir -p "$(dir USER_GITK)";\
-		cp -iv -- "$(DRACULA_GITK)" "$(USER_GITK)";\
-		$(msg) '...done with gitk dracula theme';\
-	else\
-		$(msg) '...no dracula gitk found';\
-	fi
+	[ -r "$(DRACULA_GITK)" ]
+	mkdir -p "$(dir $(USER_GITK))"
+	cp -iv -- "$(DRACULA_GITK)" "$(USER_GITK)"
 
 # }}}
 
@@ -173,61 +104,34 @@ BREW_URL := https://raw.githubusercontent.com/Homebrew/install/master/install
 
 .PHONY: _brew
 _brew:
-	@$(msg) 'Installing brew...'
-	@/usr/bin/ruby -e "$$( curl -fsSL $(BREW_URL) )"
-	@$(MAKE) _bundle
-	sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells"\
-		&& chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
-	@$(msg) '...done with brew'
-
-.PHONY: _bundle
-_bundle:
+	/usr/bin/ruby -e "$$( curl -fsSL $(BREW_URL) )"
 	brew tap Homebrew/bundle
 	brew bundle install --file="$(BREWFILE)"
+	sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells"
+	chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
 
 # }}}
 
 #  Pip {{{
 .PHONY: _pip
 _pip:
-	@$(msg) 'Installing pip packages...'
 	python3 -m pip install --user --requirement $(REQUIREMENTS)
-	@$(msg) '...done with pip packages'
 #  Pip }}}
-
-# }}}
-
-# }}}
 
 # Update {{{
 
-.PHONY: _update
-_update:
-	@if $(MAKE) _pull_master && $(MAKE) _update_submodules ; then\
-		$(MAKE) _brew_update;\
-		$(msg) 'Updated';\
-		$(msg) "Type 'reload' to reload updates";\
-		$(msg) 'You may need to logout of the terminal and login for';\
-		$(msg) 'changes to take full effect';\
-	else\
-		$(msg) 'Update failed';\
-	fi
-
 .PHONY: _pull_master
 _pull_master:
-	@cd $(DOTFILES) \
-		&& git checkout master \
-		&& git pull --recurse-submodules=on-demand origin master
+	git -C $(DOTFILES) checkout master
+	git -C $(DOTFILES) pull --recurse-submodules=on-demand origin master
 
 .PHONY: _update_submodules
 _update_submodules:
-	@cd $(DOTFILES) \
-		&& git submodule sync \
-		&& git submodule update
+	git -C $(DOTFILES) submodule sync
+	git -C $(DOTFILES) submodule update
 
 .PHONY: _brew_update
 _brew_update:
-	@$(msg) 'Brewfile: $(BREWFILE)'
 	-brew bundle check --file="$(BREWFILE)"
 
 # }}}
