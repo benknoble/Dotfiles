@@ -10,11 +10,9 @@ function s:keeponly(bang) abort
     endif
   endfor
   if ! empty(a:bang)
-    for l:buf in map(copy(getbufinfo({'buflisted':1})), {k,v -> v.name})
-      if l:buf != @%
-        execute 'bdelete' l:buf
-      endif
-    endfor
+    %bdelete
+    edit #
+    bdelete #
   endif
 endfunction
 
