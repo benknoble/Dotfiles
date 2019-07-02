@@ -597,7 +597,7 @@ endif
 
 " SynToggle {{{
 
-command! SynToggle :if exists("g:syntax_on") <Bar>
+command! SynToggle if exists("g:syntax_on") <Bar>
       \   syntax off <Bar>
       \ else <Bar>
       \   syntax enable <Bar>
