@@ -31,14 +31,10 @@ let s:badges = {
       \   ]
       \ }
 
-function! s:markdown_img_link(text, img, link)
-  return printf('[![%s](%s)](%s)', a:text, a:img, a:link)
-endfunction
-
 function! s:make_badge(badge) abort
   " this will fail if badge not in badges
   let [l:text, l:img, l:link] = s:badges[a:badge]
-  return s:markdown_img_link(l:text, l:img, l:link)
+  return markdown#img_link(l:text, l:img, l:link)
 endfunction
 
 command -bar StatusExperimental put =s:make_badge('experimental')

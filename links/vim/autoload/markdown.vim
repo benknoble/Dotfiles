@@ -23,3 +23,7 @@ function! s:IsFenced(lnum) abort
   let syntaxgroup = map(synstack(a:lnum,1), 'synIDattr(v:val, "name")')
   return index(syntaxgroup, 'markdownCode') >= 0
 endfunction
+
+function! markdown#img_link(text, img, link) abort
+  return printf('[![%s](%s)](%s)', a:text, a:img, a:link)
+endfunction
