@@ -25,6 +25,7 @@
 	merc = merge --no-ff
 	newb = checkout -b
 	patch = add --patch
+	riu = rebase -i @{u}
 	s = status -sb
 	sb = show-branch
 	sbu = !git sb @ @{u}
