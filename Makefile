@@ -53,6 +53,7 @@ install: symlink $(patsubst %,_%,$(FEATURES))
 # update: update the dotfiles
 .PHONY: update
 update: _pull_master _update_submodules _brew_update vimtags
+	@echo 'make _pip to update from requirements.txt'
 
 # symlink: re-create the symlinks
 .PHONY: symlink
