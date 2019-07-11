@@ -8,7 +8,6 @@ SHELL = /bin/sh
 
 # Customize for installation {{{
 
-DOTFILES = .
 BACKUP = $(HOME)/Dotfiles.bak
 SETUP = setup
 SUPPORT = $(SETUP)/support
@@ -60,7 +59,7 @@ none:
 	@:
 
 USER_GITK = $(XDG_CONFIG_HOME)/git/gitk
-DRACULA_GITK = $(DOTFILES)/Dracula/gitk/gitk
+DRACULA_GITK = Dracula/gitk/gitk
 
 git_extras: gitk
 
