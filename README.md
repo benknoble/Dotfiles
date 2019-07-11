@@ -14,8 +14,8 @@ large part of that.
 
 ## Installing
 
-First, clone the repo into your dotfiles directory. You can name it anything,
-but make sure to override the variable `DOTFILES` when invoking `make`.
+First, clone the repo into your dotfiles directory (the name of the directory
+doesn't matter).
 
 ```bash
 mkdir ~/Dotfiles
@@ -26,16 +26,17 @@ cd ~/Dotfiles
 Next, run `make` to kick things off:
 
 ```bash
-DOTFILES=/path/to/cloned/project make install
+make install
 ```
 
 This will do several things:
 
-1. Executes `make symlink`, which backs up old conf files and symlinks
-   the files here
-2. (Optional) Executes `make _features`, which in turn executes `make` for each
-   of the features in the override-able `FEATURES` variable. See the
-   [Makefile](/Makefile) for supported options and the defaults.
+1. Executes `make symlink`, which removes old files and creates the symlinks
+   :warning:**No backups are made. Create your own prior to installing if you
+   wish.**:warning:
+2. (Optional) Executes `make $(FEATURES)`. See the [Makefile](/Makefile) for
+   supported options and the defaults. `make FEATURES=none` can be used to skip
+   this.
 
 The next time you start a shell (usually `bash`), your new `bashrc` will load
 (or `bash_profile`, which simply sources the `bashrc`), giving you access to a
@@ -59,7 +60,7 @@ The Makefile is _only_ guaranteed to work if run from the top-level of this
 repo.
 
 - provides useful targets (`make` prints a list)
-- customizable (`grep '?=' Makefile`)
+- customizable (see the top section of Makefile)
 
 ## Documentation & Full Feature List
 
