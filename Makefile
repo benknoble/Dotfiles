@@ -100,12 +100,12 @@ none:
 USER_GITK = $(XDG_CONFIG_HOME)/git/gitk
 DRACULA_GITK = Dracula/gitk/gitk
 
-git_extras: gitk
+git_extras: $(USER_GITK)
 
-gitk:
-	[ -r "$(DRACULA_GITK)" ]
-	mkdir -p "$$(dirname $(USER_GITK))"
-	cp -iv -- "$(DRACULA_GITK)" "$(USER_GITK)"
+$(USER_GITK): $(DRACULA_GITK)
+	[ -r "$?" ]
+	mkdir -p "$$(dirname $@)"
+	cp -iv -- "$?" "$@"
 
 BREW_URL = https://raw.githubusercontent.com/Homebrew/install/master/install
 
