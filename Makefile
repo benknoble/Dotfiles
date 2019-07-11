@@ -100,6 +100,7 @@ none:
 USER_GITK = $(XDG_CONFIG_HOME)/git/gitk
 DRACULA_GITK = Dracula/gitk/gitk
 
+# git_extras: install git extras
 git_extras: $(USER_GITK)
 
 $(USER_GITK): $(DRACULA_GITK)
@@ -109,6 +110,7 @@ $(USER_GITK): $(DRACULA_GITK)
 
 BREW_URL = https://raw.githubusercontent.com/Homebrew/install/master/install
 
+# brew_install: install brew
 brew_install:
 	/usr/bin/ruby -e "$$( curl -fsSL $(BREW_URL) )"
 	brew tap Homebrew/bundle
@@ -116,6 +118,7 @@ brew_install:
 	sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells"
 	chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
 
+# pip: install from requirements
 pip: $(REQUIREMENTS)
 	python3 -m pip install --user --requirement $(REQUIREMENTS)
 
@@ -127,6 +130,7 @@ update_submodules:
 	git submodule sync
 	git submodule update
 
+# brew_check: check Brewfile with bundle
 brew_check: $(BREWFILE)
 	-brew bundle check --file="$(BREWFILE)"
 
