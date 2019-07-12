@@ -509,8 +509,6 @@ nnoremap <silent> <Leader>T :call terminal#run()<CR>
 
 " Window mappings {{{
 
-" Because I can use <Leader>w for everything
-nnoremap <Leader>w <C-w>
 nnoremap <Up> <C-w>k
 nnoremap <S-Up> <C-w>K
 nnoremap <Down> <C-w>j
