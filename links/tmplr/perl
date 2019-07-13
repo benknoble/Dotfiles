@@ -1,0 +1,12 @@
+###
+# delim : ^^
+# help : perl script (chmod u+x)
+# output : {fname}
+# vim: ft=perl
+###
+#! /usr/bin/env perl
+
+use 5.10;
+use strict;
+use warnings;
+use autodie;
