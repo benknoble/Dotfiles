@@ -26,11 +26,13 @@ cd ~/Dotfiles
 Next, run `make` to kick things off:
 
 ```bash
+./dotfiles.plink
 make install
 ```
 
 This will do several things:
 
+1. Use [Plink](https://github.com/benknoble/plink) to generate the makefile.
 1. Executes `make symlink`, which removes old files and creates the symlinks
    :warning:**No backups are made. Create your own prior to installing if you
    wish.**:warning:
@@ -56,11 +58,14 @@ essentially loads those changes into the environment.
 
 ### Other `make` things
 
+Controlled via Plink and dotfiles.plink.
+
 The Makefile is _only_ guaranteed to work if run from the top-level of this
 repo.
 
 - provides useful targets (`make` prints a list)
 - customizable (see the top section of Makefile)
+- updates as needed
 
 ## Documentation & Full Feature List
 
