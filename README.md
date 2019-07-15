@@ -36,9 +36,9 @@ This will do several things:
 1. Executes `make symlink`, which removes old files and creates the symlinks
    :warning:**No backups are made. Create your own prior to installing if you
    wish.**:warning:
-2. (Optional) Executes `make $(FEATURES)`. See the [Makefile](/Makefile) for
-   supported options and the defaults. `make FEATURES=none` can be used to skip
-   this.
+2. (Optional) Executes `make $(FEATURES)`. See the [Makefile](/dotfiles.plink)
+   for supported options and the defaults. `make FEATURES=none` can be used to
+   skip this.
 
 The next time you start a shell (usually `bash`), your new `bashrc` will load
 (or `bash_profile`, which simply sources the `bashrc`), giving you access to a
