@@ -72,3 +72,15 @@ lvim() {
 vh() {
   vim +"help $@"
 }
+
+vgrep() {
+  local pattern="${1////\\/}"
+  for f in "${@:2}" ; do
+    if [[ -f "$f" ]]; then
+      ex -N -i NONE -n -- "$f" <<<"argdo global/$pattern/print" \
+        | sed "s/^/${f////\\/}:/"
+    # else
+    #   printf '%s\n' "${FUNCNAME[0]}: $f: Is a directory" >&2
+    fi
+  done
+}
