@@ -1,0 +1,7 @@
+# vim: ft=conf
+# URLS [tag ...]
+http://luchermitte.github.io/atom.xml
+https://nullprogram.com/feed/
+
+# Queries
+"query:Unread Articles:unread = \"yes\""

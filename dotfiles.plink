@@ -86,6 +86,7 @@ LINKS = links/
 .gitshrc <= gitshrc
 .inputrc <= inputrc
 .jupyter <= jupyter
+.newsboat <= newsboat
 .pythonrc <= pythonrc
 .tmplr <= tmplr
 .tmux.conf <= tmux.conf
