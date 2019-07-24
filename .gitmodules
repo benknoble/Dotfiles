@@ -134,3 +134,6 @@
 [submodule "links/vim/pack/languages/start/plink"]
 	path = links/vim/pack/benknoble/start/plink
 	url = git://github.com/benknoble/vim-plink.git
+[submodule "links/vim/pack/benknoble/start/gitignore"]
+	path = links/vim/pack/benknoble/start/gitignore
+	url = git://github.com/benknoble/gitignore-vim.git
