@@ -75,7 +75,6 @@ brew_check [ $(BREWFILE) ] ! -brew bundle check --file="$(BREWFILE)"
 LINKS = links/
 
 .ackrc <= ackrc
-.tmplr <= tmplr
 .bash <= bash
 .bash_profile <= bash_profile
 .bashrc <= bashrc
@@ -88,5 +87,6 @@ LINKS = links/
 .inputrc <= inputrc
 .jupyter <= jupyter
 .pythonrc <= pythonrc
+.tmplr <= tmplr
 .tmux.conf <= tmux.conf
 .vim <= vim
