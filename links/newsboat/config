@@ -25,6 +25,11 @@ bind-key G end
 macro n next-unread ; open
 
 bind-key ! sort
+bind-key ~ rev-sort
+
+# swap o and O
+bind-key o open-in-browser-and-mark-read
+bind-key O open-in-browser
 
 # Filters
 # define-filter "all feeds with 'fun' tag" "tags # \"fun\""
