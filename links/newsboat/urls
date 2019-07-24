@@ -1,26 +1,27 @@
 # vim: ft=conf
 # URLS [tag ...]
-http://luchermitte.github.io/atom.xml
-https://nullprogram.com/feed/
-https://github.blog/feed/
-http://www.aaronsw.com/2002/feeds/pgessays.rss
-http://journal.stuffwithstuff.com/rss.xml "~Bob Nystrom"
-http://owen.cymru/rss/
-https://sanctum.geek.nz/arabesque/feed/
-https://blog.tplus1.com/feed/
-https://blog.extracheese.org/index.xml
-http://trevorjim.com/feed.xml
-http://www.dorktower.com/feed/
-https://www.destroyallsoftware.com/screencasts/feed
-https://bravenewgeek.com/feed/
-https://ploum.net/feed/
-http://www.linusakesson.net/rssfeed.php
-https://codewithoutrules.com/atom.xml
-https://dmerej.info/blog/fr/index.xml "~dmerej FR"
-https://dmerej.info/blog/index.xml
-http://feeds.feedburner.com/codinghorror?format=xml
+http://luchermitte.github.io/atom.xml "french" "tech"
+https://nullprogram.com/feed/ "tech"
+https://github.blog/feed/ "tech"
+http://www.aaronsw.com/2002/feeds/pgessays.rss "tech"
+http://journal.stuffwithstuff.com/rss.xml "~Bob Nystrom" "tech"
+http://owen.cymru/rss/ "tech"
+https://sanctum.geek.nz/arabesque/feed/ "tech"
+https://blog.tplus1.com/feed/ "tech"
+https://blog.extracheese.org/index.xml "tech"
+http://trevorjim.com/feed.xml "tech"
+http://www.dorktower.com/feed/ "comics"
+https://www.destroyallsoftware.com/screencasts/feed "tech" "videos"
+https://bravenewgeek.com/feed/ "tech"
+https://ploum.net/feed/ "french" "tech"
+http://www.linusakesson.net/rssfeed.php "tech"
+https://codewithoutrules.com/atom.xml "tech"
+https://dmerej.info/blog/fr/index.xml "~dmerej FR" "french" "tech"
+https://dmerej.info/blog/index.xml "tech"
+http://feeds.feedburner.com/codinghorror?format=xml "tech"
+https://xkcd.com/atom.xml "comics"
 
-https://benknoble.github.io/feed.xml
+https://benknoble.github.io/feed.xml "benknoble" "tech"
 
 # Queries
-"query:Unread Articles:unread = \"yes\""
+# "query:Unread Articles:unread = \"yes\""
