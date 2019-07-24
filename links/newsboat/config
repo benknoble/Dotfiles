@@ -4,6 +4,7 @@ browser "open -a Safari %u"
 refresh-on-startup yes
 save-path ~/articles/
 text-width 80
+reload-threads 4
 
 include ~/.newsboat/colorschemes/inkpot
 
@@ -24,5 +25,6 @@ bind-key G end
 macro n next-unread ; open
 
 bind-key ! sort
+
 # Filters
 # define-filter "all feeds with 'fun' tag" "tags # \"fun\""
