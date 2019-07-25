@@ -1,4 +1,3 @@
-#! /usr/bin/env bash
 # git config
 
 # add git branch to prompt when available and colorize
