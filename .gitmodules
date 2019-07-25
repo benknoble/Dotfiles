@@ -112,7 +112,7 @@
 	url = git@github.com:tpope/vim-apathy.git
 [submodule "links/vim/pack/languages/start/js"]
 	path = links/vim/pack/languages/start/js
-	url = git://github.com/pangloss/vim-javascript.git
+	url = git@github.com:pangloss/vim-javascript.git
 [submodule "links/vim/pack/languages/start/scala"]
 	path = links/vim/pack/benknoble/start/scala
 	url = git@github.com:benknoble/vim-scala.git
@@ -127,13 +127,13 @@
 	url = git@github.com:RobertAudi/applescript.vim.git
 [submodule "links/vim/pack/utility/start/goyo"]
 	path = links/vim/pack/utility/start/goyo
-	url = git://github.com/junegunn/goyo.vim.git
+	url = git@github.com:junegunn/goyo.vim.git
 [submodule "benknoble/plink"]
 	path = plink
-	url = git://github.com/benknoble/plink.git
+	url = git@github.com:benknoble/plink.git
 [submodule "links/vim/pack/languages/start/plink"]
 	path = links/vim/pack/benknoble/start/plink
-	url = git://github.com/benknoble/vim-plink.git
+	url = git@github.com:benknoble/vim-plink.git
 [submodule "links/vim/pack/benknoble/start/gitignore"]
 	path = links/vim/pack/benknoble/start/gitignore
-	url = git://github.com/benknoble/gitignore-vim.git
+	url = git@github.com:benknoble/gitignore-vim.git
