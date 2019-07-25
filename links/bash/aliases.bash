@@ -18,3 +18,4 @@ alias j='jobs -l'                           # Jobs
 alias ducks='du -cks * | sort -rn | head'   # Ducks!
 alias nocomment='grep -Ev "^(#|$)"'         # No comment...
 alias g='git'
+alias news='newsboat'
