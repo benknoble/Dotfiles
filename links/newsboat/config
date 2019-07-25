@@ -33,3 +33,5 @@ bind-key O open-in-browser
 
 # Filters
 # define-filter "all feeds with 'fun' tag" "tags # \"fun\""
+define-filter "unread feeds" "unread_count > 0"
+define-filter "unread articles" "unread = \"yes\""
