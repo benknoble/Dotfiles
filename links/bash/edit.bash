@@ -10,9 +10,7 @@ ed() {
 
 # edit notes
 vnotes() {
-  local notes=./notes.md
-  if git status >/dev/null 2>/dev/null ; then
-    notes="$(git rev-parse --absolute-git-dir)/notes.md"
-  fi
+  local dir="$(git rev-parse --absolute-git-dir 2>/dev/null)"
+  local notes="${dir:-.}"/notes.md
   "$EDITOR" "$notes"
 }
