@@ -144,6 +144,17 @@ if [[ -r "$PWD"/.env/bin/activate ]]; then
   source "$PWD"/.env/bin/activate
 fi
 
+# bash completion
+[[ -r "$bashcomp" ]] && source "$bashcomp"
+# source files in completion_dir
+for file in "$completion_dir"/*; do
+  if [[ -r "$file" ]]; then
+    source "$file"
+  fi
+done
+
+reset_editor
+
 # sourcing }}}
 
 # custom {{{
@@ -164,74 +175,10 @@ if [[ "$(type -t command_not_found_handle)" != function ]]; then
   }
 fi
 
-# paths {{{
-
-# Add bin folder for scripts to path
-pathadd "$HOME/.bin"
-
-if "$has_brew" ; then
-
-  pathadd_front "$brew_prefix/bin"
-
-  brew_fix() {
-    local type="$1"
-    local path="${!type}"
-    local prepend="$2"
-    case "$path" in
-      "$prepend"* ) true ;;
-      * ) eval export "$type=$prepend:$path" ;;
-    esac
-  }
-  # first clear manpath on macs
-  case "$OS" in
-    mac ) export MANPATH=
-  esac
-  brew_fix MANPATH "$brew_prefix/share/man"
-  brew_fix INFOPATH "$brew_prefix/share/info"
-
-fi
-
-# go
-[[ -d ~/go/bin ]] && pathadd ~/go/bin
-
-reset_editor
-
-# paths }}}
-
-# completion {{{
-
-# pip bash completion start
-_pip_completion()
-{
-  COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-    COMP_CWORD=$COMP_CWORD \
-    PIP_AUTO_COMPLETE=1 $1 ) )
-}
-complete -o default -F _pip_completion pip
-# pip bash completion end
-
-# vault completion
-vault_path="$(command -v vault)"
-if [[ -n "$vault_path" ]] ; then
-  complete -C "$vault_path" vault
-fi
-
-# bash completion
-[[ -r "$bashcomp" ]] && source "$bashcomp"
-# source files in completion_dir
-for file in "$completion_dir"/*; do
-  if [[ -r "$file" ]]; then
-    source "$file"
-  fi
-done
-
-# alias completion
+# we need everything loaded here
 if [[ "$(type -t __git_complete)" == function ]] && alias | grep -q "g='git'" ; then
   __git_complete g _git
 fi
-
-# completion }}}
-
 # custom }}}
 
 unset bashcomp
@@ -242,7 +189,5 @@ fi
 unset completion_dir
 unset comp_prefix
 unset file
-unset message
 unset OS
 unset private
-unset vault_path
