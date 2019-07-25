@@ -15,6 +15,3 @@ alias ll='ls -l'
 alias lla='ll -a'
 alias lh='ll -h'
 alias lha='lla -h'
-
-alias pbcopy='xsel -bi'
-alias pbpaste='xsel -bo'
