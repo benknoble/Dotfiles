@@ -32,6 +32,7 @@ https://git.github.io/feed.xml "tech" "newsletter" "git"
 http://www.vimweekly.com/issues.xml "tech" "newsletter" "vim"
 
 https://benknoble.github.io/feed.xml "benknoble" "tech"
+https://benknoble.github.io/feed/writings.xml "benknoble" "fiction" "essay"
 
 # Queries
 # "query:Unread Articles:unread = \"yes\""
