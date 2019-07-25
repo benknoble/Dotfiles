@@ -1,3 +1,4 @@
 cache.db
+cache.db.lock
 history.cmdline
 history.search
