@@ -2,48 +2,160 @@ if &compatible
   set nocompatible
 endif
 
-" Personal config
+" Personal config {{{
 let s:personal=expand('~/.personal/vimrc')
 if filereadable(s:personal)
   exec "source" s:personal
 endif
+" }}}
 
-" Options {{{
+" Mouse {{{
+if has('mouse')
+  set mouse=a
+endif
+" }}}
 
-" Leader {{{
-" Set <Leader> used for mappings
-let mapleader=" "
-" And <LocalLeader> for buffer mappings
-let maplocalleader="\\"
-" End Leader }}}
+" Updates {{{
+" Update faster (CursorHold event)
+set updatetime=250
+" Don't update while running macros
+set lazyredraw
+" }}}
 
+" Backspace {{{
 " Allow backspacking over everything in insert mode
 set backspace=indent,eol,start
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+" Revert with ":iunmap <C-U>".
+inoremap <C-U> <C-G>u<C-U>
+" }}}
 
+" Search options {{{
+" Ignore case in /? searches
+set ignorecase
+" Unless capitals are present
+set smartcase
+" Highlight searches
+set hlsearch
+" Do incremental searching when it's possible to timeout
+if has('reltime')
+  set incsearch
+endif
+" }}}
+
+" Time out for key codes {{{
+set ttimeout
+" Wait up to 100ms after <Esc> for special key
+set ttimeoutlen=100
+" But 3000ms (3s) for mappings
+set timeoutlen=3000
+" }}}
+
+" Persistence {{{
 " Keep 10000 lines of command history
 set history=10000
-
-" Update faster
-set updatetime=250
-
-" Viminfo {{{
 " Keep marks
 set viminfo+=f1
 if exists("&viminfofile")
   set viminfofile=$HOME/.viminfo
 endif
-" End Viminfo }}}
+set undofile undodir=~/.undo
+if !isdirectory(expand(&undodir))
+  call mkdir(expand(&undodir), "p")
+endif
+" }}}
 
-" Status display {{{
-" Show the cursor position all the time
-" Effect (esp. in <C-g>) overridden by statusline
-set noruler
+" Completion {{{
+" Complete from dictionary if spell on
+set complete+=kspell
+" Automatically insert longest common prefix
+set completeopt+=longest
+" Make matching handle case better
+set infercase
+if has('autocmd')
+  augroup vimrc_completion
+    au!
+    " Add omnicompletion using syntax if a file doesn't already have it
+    au FileType * if &omnifunc == "" |
+          \ setlocal omnifunc=syntaxcomplete#Complete |
+          \ endif
+    " Close the preview window after Insert-mode completion.
+    if exists('##CompleteDone')
+      autocmd CompleteDone * silent! pclose
+    endif
+  augroup END
+endif
+" Display completion matches in the status line
+set wildmenu
+set wildmode=longest,full
+set wildignore+=*.a,*.o
+set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
+set wildignore+=.DS_Store,.git,.hg,.svn
+set wildignore+=*~,*.swp,*.tmp
+set wildignore+=*.aux,*.bbl,*.blg,*.dvi,*.log,*.pdf,*.out,*.bcf,*.run.xml
+" }}}
+
+" Text wrapping and width {{{
+set textwidth=80
+set colorcolumn=+0
+" Wrap lines that are too long (off by default)
+set nowrap
+" Show wrapped lines with a marker in front
+let &showbreak='└>'
+" Break at word boundaries
+set linebreak
+" Allow movements Left and Right to move over wrapped lines
+set whichwrap=b,s,<,>,[,]
+" }}}
+
+" Indent settings: 4 spaces (unless overriden by ftplugin) {{{
+" A Tab character has length 8 (always)
+set tabstop=8
+" Use spaces when pressing Tab in insert
+set expandtab
+" Used for indent-features ('<<' and the like)
+set shiftwidth=4
+" Round < and the like to nearest shiftwidth
+set shiftround
+" Backspace over 4 spaces if possible
+set softtabstop=4
+" Use 'autoindent', which mostly does what you want and stays out of your way
+set autoindent
+" }}}
+
+" Line numbers {{{
+" Display line/rel numbers by default
+set number relativenumber
+if has('autocmd')
+  augroup vimrc_cmdwin_num
+    au!
+    autocmd CmdwinEnter * setlocal nonumber norelativenumber
+  augroup END
+endif
+" }}}
+
+" Display context {{{
+if has("patch-7.4.2109")
+  " Show @@@ in the last line if it is truncated
+  set display=truncate
+else
+  set display=lastline
+endif
+" Show a few lines of context around the cursor. Note that this makes the text
+" scroll if you mouse-click near the start or end of the window
+set scrolloff=5
+" Display certain whitespace characters
+set list listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:<,extends:>
+" }}}
+
+" Status {{{
 " Display incomplete commands
 set showcmd
 " Show what mode we're in
 set showmode
-
-" Status line {{{
+" Always display status line
+set laststatus=2
 
 function! Head() abort
   let l:head = substitute(expand('%:h'), $HOME, '~', '')
@@ -98,541 +210,47 @@ function! s:set_statusline_colors_to_dracula() abort
   hi User5 cterm=bold ctermfg=215 ctermbg=236
 endfunction
 
-" End status line }}}
-
-" Always display status line
-set laststatus=2
-" End status display }}}
-
-" Command-line quickly {{{
-" Display completion matches in the status line
-set wildmenu
-set wildmode=longest,full
-set wildignore+=*.a,*.o
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
-set wildignore+=.DS_Store,.git,.hg,.svn
-set wildignore+=*~,*.swp,*.tmp
-set wildignore+=*.aux,*.bbl,*.blg,*.dvi,*.log,*.pdf,*.out,*.bcf,*.run.xml
-" Stop, for the love of god, 'finding' headers!
-set path-=/usr/include
-" End Command-line quickly }}}
-
-" Timeout {{{
-" Time out for key codes
-set ttimeout
-" Wait up to 100ms after <Esc> for special key
-set ttimeoutlen=100
-" But 3000ms (3s) for mappings
-set timeoutlen=3000
-" End Timeout }}}
-
-" Window Display {{{
-if has("patch-7.4.2109")
-  " Show @@@ in the last line if it is truncated
-  set display=truncate
-else
-  set display=lastline
+if has('autocmd')
+  augroup status_colors_dracula
+    au!
+    autocmd ColorScheme dracula call s:set_statusline_colors_to_dracula()
+  augroup END
 endif
-" Show a few lines of context around the cursor. Note that this makes the text
-" scroll if you mouse-click near the start or end of the window
-set scrolloff=5
-" Diff vertically
-set diffopt+=vertical
-" Open help files at height lines - 10
-let &helpheight=(&lines - 10)
-" Don't equalize window sizes automatically
-set noequalalways
+" }}}
 
-" Display line/rel numbers by default
-set number relativenumber
-
-" Don't update while running macros
-set lazyredraw
-" End Window Display }}}
-
-" Do not recognize octal number for Ctrl-A and Ctrl-K
-set nrformats-=octal
-
-" Tabs {{{
-" Tab settings: 4 spaces (unless overriden by ftplugin)
-" A Tab character has length 8
-set tabstop=8
-" Use spaces when pressing Tab in insert
-set expandtab
-" Used for indent-features ('<<' and the like)
-set shiftwidth=4
-" Round < and the like to nearest shiftwidth
-set shiftround
-" Backspace over 4 spaces if possible
-set softtabstop=4
-" Use 'autoindent', which mostly does what you want and stays out of your way
-set autoindent
-" End Tabs }}}
-
-" Wrap {{{
-set textwidth=80
-set colorcolumn=+0
-" Wrap lines that are too long (off by default)
-set nowrap
-" Show wrapped lines with a marker in front
-let &showbreak='└>'
-" Break at word boundaries
-set linebreak
-" Allow movements Left and Right to move over wrapped lines
-set whichwrap=b,s,<,>,[,]
-" End Wrap }}}
-
-" Display certain whitespace characters
-set list listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:<,extends:>
-
-" Set dark background because I like my terminal dark
-if ! exists('g:colors_name')
-  set background=dark
-endif
-
-" Confirm potentially problematic operations
-" Like quitting without writing
-set confirm
-
-" Search {{{
-" Ignore case in /? searches
-set ignorecase
-" Unless capitals are present
-set smartcase
-" Highlight searches
-set hlsearch
-" End Search }}}
-
-" Completion {{{
-" Complete from dictionary if spell on
-set complete+=kspell
-
-" Automatically insert longest common prefix
-set completeopt+=longest
-
-" Make matching handle case better
-set infercase
-" End Completion }}}
-
-" Make buffers hidden when unloaded, just in case you want them back
-set hidden
-
-" Folds {{{
-" Use {{{,}}} for marking folds
-set foldmethod=marker
-
-" Start with no folds
-" Toggle with `zi`
-set nofoldenable
-
-" Enable folds in markdown from ftplugin
-let g:markdown_folding = 1
-
-" End Folds }}}
-
-" Complex options {{{
-
-" Win32 Gui {{{
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-if has('win32')
-  set guioptions-=t
-endif
-" End Win32 GUI }}}
-
-" Incremental Search {{{
-" Do incremental searching when it's possible to timeout
-if has('reltime')
-  set incsearch
-endif
-" End Incremental Search }}}
-
-" +mouse {{{
-if has('mouse')
-  set mouse=a
-endif
-" End +mouse }}}
-
-" Window title {{{
-" DONT set window title if possible (for Terminal applications)--plays weird
-if has('title')
-  set notitle
-endif
-" End Window title }}}
-
-" Syntax {{{
+" Syntax specific {{{
 " Switch syntax highlighting on when the terminal has colors or when using the
 " GUI (which always has colors).
 if &t_Co > 2 || has("gui_running")
-  " Revert with ":syntax off".
   if ! exists("g:syntax_on")
     syntax enable
   endif
-
   " I like highlighting strings inside C comments.
-  " Revert with ":unlet c_comment_strings".
   let c_comment_strings=1
-
   " Use bash as default shell highlighter (cf :h ft-sh-syntax)
   let g:is_bash = 1
-
   " Langs for markdown blocks
   let g:markdown_fenced_languages = [
         \ 'bash=sh',
         \ 'python',
         \ ]
-
   " Do NOT highlight javadoc specially: it is distracting
   let java_ignore_javadoc = 1
+  " default tex flavor
+  let g:tex_flavor = 'latex'
+  " don't spell check
+  let g:tex_comment_nospell = 1
+endif
+" }}}
 
+" Filetype {{{
+if has('autocmd')
+  filetype plugin indent on
   " Use proper scaladoc indentation
   " Found in (uncomment "gcc" and type "<LocalLeader>el")
-  " vsplit +/scala_scaladoc_indent $VIMRUNTIME/indent/scala.vim
+  " split +/scala_scaladoc_indent $VIMRUNTIME/indent/scala.vim
   let g:scala_scaladoc_indent = 1
-
+  " no indent for applescripts that don't need it
   let g:applescript_default_indent = 0
-
-  let g:tex_flavor = 'latex'
-  let g:tex_comment_nospell = 1
-
 endif
-" End Syntax }}}
-
-" Undo {{{
-set undofile undodir=~/.undo
-
-if !isdirectory(expand(&undodir))
-  call mkdir(expand(&undodir), "p")
-endif
-" End Undo }}}
-
-" Autocmd {{{
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  " Revert with ":filetype off".
-  filetype plugin indent on
-
-  " vimrc_last_cursor_position {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_last_cursor_position | au! | augroup END"
-  augroup vimrc_last_cursor_position
-    au!
-
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    autocmd BufReadPost *
-          \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'gitcommit' |
-          \   exe "normal! g`\"" |
-          \ endif
-
-  augroup END
-  " End vimrc_last_cursor_position }}}
-
-  " vimrc_autofoldcolumn {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup autofoldcolumn | au! | augroup END"
-  augroup vimrc_autofoldcolumn
-    au!
-
-    " Automatically add foldcolumn if folds present
-    au CursorHold,BufWinEnter,WinEnter * if exists(':AutoOrigamiFoldColumn') |
-          \ execute 'AutoOrigamiFoldColumn' |
-          \ endif
-
-  augroup END
-  " End vimrc_autofoldcolumn }}}
-
-  " vimrc_completion {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup completion | au! | augroup END"
-  augroup vimrc_completion
-    au!
-
-    " Add omnicompletion using syntax if a file doesn't already have it
-    au FileType * if &omnifunc == "" |
-          \ setlocal omnifunc=syntaxcomplete#Complete |
-          \ endif
-
-    " Close the preview window after Insert-mode completion.
-    if exists('##CompleteDone')
-      autocmd CompleteDone * silent! pclose
-    endif
-
-  augroup END
-  " End vimrc_completion }}}
-
-  " vimrc_CRfix {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_CRfix | au! | augroup END"
-  augroup vimrc_CRfix
-    au!
-
-    " Quickfix, Location list, &c. remap <CR> to work as expected
-    autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
-    autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
-
-  augroup END
-  "End vimrc_CRfix }}}
-
-  " vimrc_cmdwin_num {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_cmdwin_num | au! | augroup END"
-  augroup vimrc_cmdwin_num
-    au!
-    autocmd CmdwinEnter * setlocal nonumber norelativenumber
-  augroup END
-  " vimrc_cmdwin_num }}}
-
-  " vimrc_dracula {{{
-  " Put these in an autocmd group, so that you can revert them with:
-  " ":augroup vimrc_dracula | au! | augroup END"
-  augroup vimrc_dracula
-    au!
-    autocmd ColorScheme dracula call s:set_statusline_colors_to_dracula()
-  augroup END
-  " vimrc_dracula }}}
-
-endif " has("autocmd")
-" End autocmd }}}
-
-if has('langmap') && exists('+langremap')
-  " Prevent that the langmap option applies to characters that result from a
-  " mapping.  If set (default), this may break plugins (but it's backward
-  " compatible).
-  set nolangremap
-endif
-
-" End complex options }}}
-
-" End options }}}
-
-" Mappings {{{
-
-" Formatting {{{
-" Don't use Ex mode, use Q for formatting
-" Revert with ":unmap Q"
-nnoremap Q gq
-xnoremap Q gq
-" Format the whole line
-nnoremap QQ gqgq
-" End Formatting }}}
-
-" Insert mode {{{
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-" Revert with ":iunmap <C-U>".
-inoremap <C-U> <C-G>u<C-U>
-
-inoremap <silent> <C-d> <C-o>:call digraphs#activate()<CR>
-
-" End Insert mode }}}
-
-" Substitute {{{
-" Make & substitute with previous flags as well
-nnoremap & :&&<CR>
-" Visual mode
-xnoremap & :&&<CR>
-" End Substitute }}}
-
-" gi goes to end of last insert (`^)
-" gI goes to last change
-nnoremap gI `.
-
-" Reload {{{
-" Reload with F5
-nnoremap <F5> :Reload<CR>
-" Or <Leader>[rR]
-nnoremap <Leader>r :Reload<CR>
-" End Reload }}}
-
-" Function Keys {{{
-" <F1> is help
-
-" <F5> reloads (see "Reload")
-
-" Not technically a mapping, but acts like one
-" Toggle paste mode during an insert with <F7>
-set pastetoggle=<F7>
-
-" <F8> to spawn a terminal
-nnoremap <F8> :terminal<CR>
-
-" Panic button
-nnoremap <F9> mzggg?G`z
-
-" End Function Keys }}}
-
-" Leader shortcuts {{{
-" Clear lines
-nnoremap <Leader>cl 0D
-
-" Refactor a word
-" Courtesy of github@habamax/.vim/vimrc
-nnoremap <Leader>cw :let @/=expand('<cword>')<CR>cgn
-
-" Save
-nnoremap <silent> <Leader>s :write<CR>
-" Quit quickly
-nnoremap <silent> <Leader>q :q<CR>
-nnoremap <silent> <Leader>Q :qa<CR>
-" Suspended (by Matt Nathanson)
-nnoremap <silent> <Leader>z :suspend<CR>
-
-" Explore
-nnoremap <silent> <Leader>ed :Explore<CR>
-" Quickly input the directory of the current file on the command line
-cnoremap <expr> %% filename#command_dir('%%')
-" Need 'recursive' mapping here for %%
-nmap <Leader>ew :e %%
-nmap <Leader>ev :vs %%
-nmap <Leader>es :sp %%
-nmap <Leader>et :tabe %%
-nnoremap <Leader>ef :find **/*
-" Edit alternate file
-nnoremap <Leader>` <C-^>
-" Quickly edit vimrc
-nnoremap <Leader>v :vsplit $MYVIMRC<CR>
-
-" Trigger the command line window
-nnoremap <silent> <Leader>; q:
-
-" Terms and interpreters
-" set b:interpreter for filetypes to affect the term
-nnoremap <silent> <Leader>t :call terminal#run('++close')<CR>
-nnoremap <silent> <Leader>T :call terminal#run()<CR>
-
-" Window mappings {{{
-
-nnoremap <Up> <C-w>k
-nnoremap <S-Up> <C-w>K
-nnoremap <Down> <C-w>j
-nnoremap <S-Down> <C-w>J
-nnoremap <Left> <C-w>h
-nnoremap <S-Left> <C-w>H
-nnoremap <Right> <C-w>l
-nnoremap <S-Right> <C-w>L
-
-" End Window mappings }}}
-
-" Search {{{
-" Search very magically
-nnoremap <Leader>/ /\v
-nnoremap <Leader>? ?\v
-
-nnoremap <silent> <Leader>g :set operatorfunc=grep#operator<CR>g@
-xnoremap <silent> <Leader>g :<C-u>call grep#operator(visualmode())<CR>
-" Jump to lines with word
-nnoremap <Leader>f :call find#included_word()<CR>
-" Unhighlight last search
-nnoremap <silent> <Leader>h :nohlsearch<CR>
-" End Search }}}
-
-" End Leader shortcuts }}}
-
-" Lines {{{
-" Bubble single lines up and down
-nnoremap - :.move +1<CR>
-nnoremap _ :.move -2<CR>
-" Bubble lines up and down in visual mode
-vnoremap - :'<,'>move '>+1 \| normal! gv<CR>
-vnoremap _ :'<,'>move '<-2 \| normal! gv<CR>
-
-" Insert blank lines with <CR>
-" See also augroup vimrc_CRfix
-nnoremap <CR> o<esc>
-" Yank to end rather than full line
-" Like c/C and d/D
-nnoremap Y y$
-" End Lines }}}
-
-" Operator motions {{{
-" Operator motion for In Next ( in line
-onoremap <silent> in( :<C-u>normal! f(vi(<CR>
-" Operator motion for In Last ( in line
-onoremap <silent> il( :<C-u>normal! F)vi(<CR>
-" Operator motion for Around Next ( in line
-onoremap <silent> an( :<C-u>normal! f(va(<CR>
-" Operator motion for Around Last ( in line
-onoremap <silent> al( :<C-u>normal! F)va(<CR>
-" Operator motion for In Next { in line
-onoremap <silent> in{ :<C-u>normal! f{vi{<CR>
-" Operator motion for In Last { in line
-onoremap <silent> il{ :<C-u>normal! F}vi{<CR>
-" Operator motion for Around Next { in line
-onoremap <silent> an{ :<C-u>normal! f{va{<CR>
-" Operator motion for Around Last { in line
-onoremap <silent> al{ :<C-u>normal! F}va{<CR>
-" End Operator motions }}}
-
-" End Mappings }}}
-
-" Commands, Functions, that jazz {{{
-
-" Diff {{{
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-" Revert with: ":delcommand DiffOrig".
-" Undo with ":set nodiff foldmethod=marker"
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-        \ | wincmd p | diffthis
-endif
-" End Diff }}}
-
-" Reload {{{
-" Reload vimrc
-if !exists(":Reload")
-  command -bar Reload source $MYVIMRC
-endif
-" End Reload }}}
-
-" SynToggle {{{
-
-command! SynToggle if exists("g:syntax_on") <Bar>
-      \   syntax off <Bar>
-      \ else <Bar>
-      \   syntax enable <Bar>
-      \ endif
-
-" End SynToggle }}}
-
-" End Commands }}}
-
-" Plugin loading {{{
-
-" Matchit {{{
-if has('packages') && has('syntax') && has('eval')
-  packadd! matchit
-endif
-" End Matchit }}}
-
-" Man {{{
-" Load Man plugin (see `:help Man` for more info)
-runtime ftplugin/man.vim
-let g:ft_man_open_mode='vert'
-set keywordprg=:Man
-" End Man }}}
-
-" Dracula {{{
-if ! exists('g:colors_name')
-  let g:dracula_italic = get(g:, 'dracula_italic', 0)
-  let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
-  try
-    packadd! dracula
-    colorscheme dracula
-  catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme default
-    set background=dark
-  endtry
-endif
-
-" End Dracula }}}
-
-" End plugin loading }}}
+" }}}
