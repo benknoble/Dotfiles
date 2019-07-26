@@ -8,3 +8,6 @@
 
 # ignore Dracula directory
 --ignore-dir=Dracula
+
+# ignore plink
+--ignore-dir=plink/
