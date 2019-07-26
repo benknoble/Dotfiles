@@ -51,8 +51,6 @@
 	recurseSubmodules = check
 [include]
 	path = ~/.gitconfig.local
-[commit]
-	verbose = true
 [difftool]
 	prompt = no
 [mergetool]
