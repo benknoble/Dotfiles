@@ -3,7 +3,12 @@ if exists('g:punctuation_textobjects')
 endif
 let g:punctuation_textobjects = 1
 
-let s:default_punct = [ '_', '.', '/', '-' ]
+let s:default_punct = [
+      \ '_',
+      \ '.',
+      \ '/',
+      \ '-',
+      \ ]
 
 function! s:create_i_map(char) abort
   if ! hasmapto(printf('i%s', a:char), 'vo')
