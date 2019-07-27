@@ -8,6 +8,15 @@ let s:default_punct = [
       \ '.',
       \ '/',
       \ '-',
+      \ '*',
+      \ '\|',
+      \ '~',
+      \ '!',
+      \ '@',
+      \ '#',
+      \ '$',
+      \ '^',
+      \ '&',
       \ ]
 
 function! s:create_i_map(char) abort
