@@ -14,4 +14,4 @@ if has('autocmd')
           \   exe "normal! g`\"" |
           \ endif
   augroup END
-end
+endif
