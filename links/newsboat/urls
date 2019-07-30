@@ -30,6 +30,8 @@ https://www.discoverdev.io/rss.xml "tech" "newsletter"
 http://feeds.feedburner.com/PerlWeekly "tech" "newsletter" "perl"
 https://git.github.io/feed.xml "tech" "newsletter" "git"
 http://www.vimweekly.com/issues.xml "tech" "newsletter" "vim"
+https://mikegerwitz.com/rss "tech" "security"
+https://git-blame.blogspot.com/feeds/posts/default "tech" "vim"
 
 https://benknoble.github.io/feed.xml "benknoble" "tech"
 https://benknoble.github.io/feed/writings.xml "benknoble" "fiction" "essay"
