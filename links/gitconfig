@@ -35,6 +35,7 @@
 	supdate = submodule update --remote --checkout
 	unstage = reset HEAD --
 	visual = !gitk --all &
+	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --stdin;}; f"
 [merge]
 	tool = fugitive
 	conflictstyle = diff3
