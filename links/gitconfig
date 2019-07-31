@@ -38,6 +38,7 @@
 [merge]
 	tool = fugitive
 	conflictstyle = diff3
+	log = true
 [core]
 	excludesfile = ~/.gitignore_global
 	pager = less -FRX
