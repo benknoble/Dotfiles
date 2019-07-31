@@ -28,6 +28,7 @@ brew "lolcat"
 brew "make"
 brew "moreutils"
 brew "nethack"
+brew "newsboat"
 brew "node"
 brew "pandoc"
 brew "parallel", link: false
