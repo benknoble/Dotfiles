@@ -1,6 +1,6 @@
 ###
 # delim : ^^
-# help : perl script (chmod u+x)
+# help : perl script
 # output : {fname}.pm
 # vim: ft=perl
 ###
