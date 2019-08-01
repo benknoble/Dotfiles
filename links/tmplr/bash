@@ -1,0 +1,32 @@
+###
+# delim : %%
+# help : bash script
+# output : {fname}
+# vim: ft=bash
+###
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+usage() {
+  cat <<DOG
+usage: $0
+DOG
+}
+
+die() {
+  local ex="${1:-1}"
+  exit "$ex"
+}
+
+usage_and_die() { usage && die; }
+
+main() {
+  :
+}
+
+main "$@"
