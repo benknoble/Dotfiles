@@ -42,21 +42,8 @@ churn() {
     | sort -g
 }
 
-contains_help_flag() {
-  for parameter in "$@"; do
-    case "$parameter"  in
-      -h|--help) return 0 ;; # true
-    esac
-  done
-  return 1 # false
-}
-
 main() {
-  if contains_help_flag "$@"; then
-    usage
-  else
-    churn "$@"
-  fi
+  churn "$@"
 }
 
 main "$@"

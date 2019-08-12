@@ -33,7 +33,7 @@ valid_ref() {
 }
 
 ref=${1:-HEAD}
-if [[ "${1:-}" = "-h" ]] || ! valid_ref ; then
+if ! valid_ref ; then
   usage
 else
   [[ $# -ge 1 ]] && shift # because shift fails when there are no args

@@ -26,9 +26,6 @@ main() {
       ;;
     1)
       case "$1" in
-        -h)
-          usage
-          ;;
         -q|--quiet)
           list_aliases
           ;;

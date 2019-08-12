@@ -75,10 +75,4 @@ Average: $avg
 DOG
 }
 
-case "${1:-}" in
-  '-h')
-    usage
-    ;;
-  *)
-    main "$@"
-esac
+main "$@"

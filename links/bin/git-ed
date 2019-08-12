@@ -38,12 +38,7 @@ main() {
       func=edit_current
       ;;
     1)
-      # note == is pattern matching
-      if [[ "$1" == -h ]]; then
-        usage
-      else
-        func=edit_commit
-      fi
+      func=edit_commit
       ;;
     2)
       func=edit_diff
