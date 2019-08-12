@@ -14,3 +14,16 @@ if [[ -r "$gitprompt" ]]; then
 else
   __gps1="git branch --no-color 2>/dev/null | grep '^*' | colrm 1 2"
 fi
+
+git="$(command -v git)"
+prefix=${git//bin*/}
+contrib=${prefix}/share/git-core/contrib
+gitjump=${contrib}/git-jump
+if [[ -d "$gitjump" ]] && [[ -x "$gitjump"/git-jump ]]; then
+  pathadd "$gitjump"
+fi
+
+unset git
+unset prefix
+unset contrib
+unset gitjump
