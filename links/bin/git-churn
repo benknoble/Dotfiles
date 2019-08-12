@@ -38,7 +38,7 @@ churn() {
     | grep -v '^$' \
     | uniq -c \
     | sort \
-    | awk 'BEGIN {print "count\tfile"} {print $1 "\t" $2}' \
+    | awk '{print $1 "\t" $2}' \
     | sort -g
 }
 
