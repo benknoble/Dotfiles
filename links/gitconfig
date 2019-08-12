@@ -49,6 +49,7 @@
 	colorMoved = default
 [status]
 	submodulesummary = 1
+	showstash = true
 [push]
 	recurseSubmodules = check
 [include]
