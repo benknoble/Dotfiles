@@ -19,7 +19,7 @@
 	igv = !git ig -v
 	intend = add --intent-to-add
 	last = log -1 HEAD
-	logp = log --graph --abbrev-commit --pretty=format:'%C(yellow)%h%Creset%C(bold green)%d%Creset %s %C(magenta)(%cr)%Creset %C(ul bold cyan)<%an>%Creset'
+	logp = log --graph --abbrev-commit --pretty=mine
 	logpall = !git logp --all
 	lol = log --oneline
 	merc = merge --no-ff
@@ -81,3 +81,5 @@
 	date = auto:human
 [advice]
 	waitingForEditor = false
+[pretty]
+	mine = %C(yellow)%h%Creset%C(bold green)%d%Creset %s %C(magenta)(%cr)%Creset %C(ul bold cyan)<%an>%Creset
