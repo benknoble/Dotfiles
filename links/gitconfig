@@ -90,3 +90,5 @@
 	multiedit = true
 	annotate = true
 	confirm = auto
+[user]
+	useConfigOnly = true
