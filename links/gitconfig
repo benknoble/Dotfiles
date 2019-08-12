@@ -12,6 +12,8 @@
 	conflict = log --oneline --left-right --merge
 	ctags = !.git/hooks/ctags
 	d = diff
+	g = !exec git
+	git = !exec git
 	grall = !git graph --all
 	graph = !git graph-long --oneline
 	graph-long = log --graph
