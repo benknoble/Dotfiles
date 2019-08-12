@@ -43,3 +43,17 @@ fi
 
 # go
 [[ -d ~/go/bin ]] && pathadd ~/go/bin
+
+# git
+git="$(command -v git)"
+prefix=${git//bin*/}
+contrib=${prefix}/share/git-core/contrib
+gitjump=${contrib}/git-jump
+if [[ -d "$gitjump" ]] && [[ -x "$gitjump"/git-jump ]]; then
+  pathadd "$gitjump"
+fi
+
+unset git
+unset prefix
+unset contrib
+unset gitjump
