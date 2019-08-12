@@ -5,6 +5,8 @@ refresh-on-startup yes
 save-path ~/articles/
 text-width 80
 reload-threads 4
+# datetime-format "%b %d"
+datetime-format "%d %b %Y"
 
 include ~/.newsboat/colorschemes/inkpot
 
