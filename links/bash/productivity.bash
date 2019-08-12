@@ -48,3 +48,8 @@ up() {
   echo "cd -- $path"
   cd -- "$path"
 }
+
+# git home
+gh() {
+  cd "$(git rev-parse --show-toplevel || printf .)"
+}
