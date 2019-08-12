@@ -32,6 +32,7 @@
 	sbu = !git sb @ @{u}
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
+	standup = !git log --author=$USER --since=yesterday --all --format=%s
 	stat = status
 	supdate = submodule update --remote --checkout
 	unstage = reset HEAD --
