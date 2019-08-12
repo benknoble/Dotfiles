@@ -9,6 +9,7 @@
 	ce = config --edit
 	cm = commit -m
 	co = checkout
+	conflict = log --oneline --left-right --merge
 	ctags = !.git/hooks/ctags
 	d = diff
 	grall = !git graph --all
