@@ -23,6 +23,7 @@
 	logpall = !git logp --all
 	lol = log --oneline
 	merc = merge --no-ff
+	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --stdin;}; f"
 	newb = checkout -b
 	patch = add --patch
 	riu = rebase -i @{u}
@@ -35,7 +36,6 @@
 	supdate = submodule update --remote --checkout
 	unstage = reset HEAD --
 	visual = !gitk --all &
-	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --stdin;}; f"
 [merge]
 	tool = fugitive
 	conflictstyle = diff3
