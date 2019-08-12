@@ -86,3 +86,7 @@
 	waitingForEditor = false
 [pretty]
 	mine = %C(yellow)%h%Creset%C(bold green)%d%Creset %s %C(magenta)(%cr)%Creset %C(ul bold cyan)<%an>%Creset
+[sendemail]
+	multiedit = true
+	annotate = true
+	confirm = auto
