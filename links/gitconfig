@@ -78,3 +78,5 @@
 	templateDir = ~/.git_template
 [log]
 	date = auto:human
+[advice]
+	waitingForEditor = false
