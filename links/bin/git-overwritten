@@ -18,7 +18,7 @@
 
 set -euo pipefail
 
-unset colorize
+colorize=
 unset head
 unset base
 
@@ -49,7 +49,7 @@ done
 head="${head:-HEAD}"
 base="${base:-origin}"
 
-[ -t 1 ] && colorize="${colorize-1}"
+[ -t 1 ] && colorize="${colorize:-1}"
 
 color() {
   if [ -n "$colorize" ]; then
