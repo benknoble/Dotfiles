@@ -10,7 +10,7 @@ jobs:
         os: [ubuntu-16.04, ubuntu-18.04, macos-latest]
 
     steps:
-    - uses: actions/checkout@v1
-    - run: |
-      ./dotfiles.plink
-      make install
+      - uses: actions/checkout@v1
+      - run: |
+          ./dotfiles.plink
+          make install
