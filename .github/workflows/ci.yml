@@ -13,7 +13,9 @@ jobs:
       - name: Setup ssh
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: echo $PRIVATE_KEY > ~/.ssh/id_rsa
+        run: |
+          mkdir ~/.ssh
+          echo $PRIVATE_KEY > ~/.ssh/id_rsa
       - uses: actions/checkout@v1
         with:
           submodules: true
