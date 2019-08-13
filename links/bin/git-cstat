@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-USAGE='[-h] (count | len (min|max|avg)) [rev-list options]
+USAGE='[-h] (count | len [min|max|avg]) [rev-list options]
 
 Display commit statistics
 Filter commits based on [rev-list options]'
@@ -41,22 +41,22 @@ commit_count() {
   commits_list "$@" | wc -l | tr -d ' '
 }
 
-commit_len_min() {
+commit_len() {
   commits_list "$@" |
     while read c ; do
       size "$c" | tr -d '[:space:]'
       printf ' %s\n' "$c"
-    done |
+    done
+}
+
+commit_len_min() {
+  commit_len "$@" |
     sort -n |
     head -n 1
 }
 
 commit_len_max() {
-  commits_list "$@" |
-    while read c ; do
-      size "$c" | tr -d '[:space:]'
-      printf ' %s\n' "$c"
-    done |
+  commit_len "$@" |
     sort -rn |
     head -n 1
 }
@@ -79,8 +79,14 @@ main() {
   case "$1" in
     count) commit_count "${@:2}" ;;
     len)
-      (($# >= 2)) || usage
-      commit_len_"$2" "${@:3}"
+      if (($# >= 2)); then
+        case "$2" in
+          max|min|avg) commit_len_"$2" "${@:3}" ;;
+          *) commit_len "${@:2}" ;;
+        esac
+      else
+        commit_len "${@:2}"
+      fi
       ;;
     *) usage ;;
   esac
