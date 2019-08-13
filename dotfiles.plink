@@ -39,7 +39,7 @@ DRACULA_GITK = Dracula/gitk/gitk
 # git_extras: install git extras
 git_extras [ $(USER_GITK) ]
 
-$(USER_GITK) [ $(DRACULA_GITK) ] !!
+$(USER_GITK): $(DRACULA_GITK) !!
 [ -r "$?" ]
 mkdir -p "$$(dirname $@)"
 cp -iv -- "$?" "$@"
