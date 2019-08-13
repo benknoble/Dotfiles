@@ -13,6 +13,9 @@
 #
 # The commits are listed in the reverse chronological order.
 #
+# A handy trick is
+# # git show $(git overwritten | awk '{print $3}')
+#
 # Author: Mislav Marohnić
 # Modified by David B. Knoble (and still needs some serious work)
 
