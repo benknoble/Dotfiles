@@ -139,4 +139,4 @@
 	url = git@github.com:benknoble/gitignore-vim.git
 [submodule "links/vim/pack/benknoble/start/tmplr"]
 	path = links/vim/pack/benknoble/start/tmplr
-	url = git://github.com/benknoble/vim-tmplr.git
+	url = git@github.com/benknoble:vim-tmplr.git
