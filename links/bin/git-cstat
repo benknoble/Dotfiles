@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-USAGE='[-h] [rev-list options]
+USAGE='[-h] (count | len [min|max|avg]) [rev-list options]
 
-Display a summary of commit length statistics
+Display commit statistics
 Filter commits based on [rev-list options]'
 SUBDIRECTORY_OK=true
 
@@ -21,7 +21,7 @@ SIZER=(
 
 size() {
   local commit="$1"
-  git log "$commit" -1 --format=%B | "${SIZER[@]}"
+  git log "$commit" -1 --format=%B | "${SIZER[@]}" | tr -d ' '
 }
 
 commits_list() {
@@ -37,42 +37,59 @@ commits_list() {
   "${command[@]}" 2>/dev/null
 }
 
+commit_count() {
+  commits_list "$@" | wc -l | tr -d ' '
+}
+
+commit_len() {
+  commits_list "$@" |
+    while read c ; do
+      size "$c" | tr -d '[:space:]'
+      printf ' %s\n' "$c"
+    done
+}
+
+commit_len_min() {
+  commit_len "$@" |
+    sort -n |
+    head -n 1
+}
+
+commit_len_max() {
+  commit_len "$@" |
+    sort -rn |
+    head -n 1
+}
+
+commit_len_avg() {
+  local num=0
+  {
+    printf '%s\n' '5k'
+    while read c ; do
+      ((++num))
+      size "$c"
+      ((num >= 2)) && printf '%s\n' '+'
+    done < <(commits_list "$@")
+    printf '%s\n' "$num" '/p'
+  } | dc
+}
+
 main() {
-  local commits=()
-  local max=0
-  local max_c
-  local min=99999999999
-  local min_c
-  local sum=0
-  local avg=0
-  mapfile -t commits < <(commits_list "$@")
-
-  if ((${#commits[@]} == 0)); then
-    # provided by git-sh-setup
-    die 'No commits!'
-  fi
-
-  for commit in "${commits[@]}" ; do
-    c_size="$(size "$commit")"
-    ((sum+=c_size))
-    if ((c_size > max)) ; then
-      max="$c_size"
-      max_c="$commit"
-    fi
-    if ((c_size < min)) ; then
-      min="$c_size"
-      min_c="$commit"
-    fi
-  done
-
-  avg="$( printf '%s\n' '5k' "$sum" "${#commits[@]}" '/p' | dc )"
-
-  cat <<-DOG
-Commits: ${#commits[@]}
-Min_length: $min ${min_c:-}
-Max_length: $max ${max_c:-}
-Average: $avg
-DOG
+  (($# >= 1)) || usage
+  case "$1" in
+    count) commit_count "${@:2}" ;;
+    len)
+      if (($# >= 2)); then
+        case "$2" in
+          max|min|avg) commit_len_"$2" "${@:3}" ;;
+          *) commit_len "${@:2}" ;;
+        esac
+      else
+        commit_len "${@:2}"
+      fi
+      ;;
+    *) usage ;;
+  esac
 }
 
 main "$@"

@@ -13,12 +13,15 @@
 #
 # The commits are listed in the reverse chronological order.
 #
+# A handy trick is
+# # git show $(git overwritten | awk '{print $3}')
+#
 # Author: Mislav Marohnić
 # Modified by David B. Knoble (and still needs some serious work)
 
 set -euo pipefail
 
-unset colorize
+colorize=
 unset head
 unset base
 
@@ -49,7 +52,7 @@ done
 head="${head:-HEAD}"
 base="${base:-origin}"
 
-[ -t 1 ] && colorize="${colorize-1}"
+[ -t 1 ] && colorize="${colorize:-1}"
 
 color() {
   if [ -n "$colorize" ]; then

@@ -1,0 +1,42 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+USAGE='[-h] sizes | parents
+Display merge sizes or number of parents'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+merge_sizes () {
+  local parents=()
+  git log --merges --format="%h" |
+    while read x; do
+      mapfile -t parents < <(git log -1 --format=%P "$x" | tr '[:space:]' '\n')
+      git diff "${parents[@]}" | wc -l | tr -d '[:space:]'
+      printf ' %s\n' "$x"
+    done |
+    sort -rn
+}
+
+merge_parents () {
+  git log --all --min-parents=2 --format='%h %P' |
+    ruby -ne '/^(\w+) (.*)$/ =~ $_; puts "#{$2.split.count} #{$1}"' |
+    sort -rn
+}
+
+main() {
+  case $# in
+    1) merge_"$1" ;;
+    *) usage ;;
+  esac
+}
+
+main "$@"
