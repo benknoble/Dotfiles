@@ -49,7 +49,7 @@ BREW_URL = https://raw.githubusercontent.com/Homebrew/install/master/install
 
 # brew_install: install brew
 brew_install !!
-/usr/bin/ruby -e "$$( curl -fsSL $(BREW_URL) )"
+ruby -e "$$( curl -fsSL $(BREW_URL) )"
 brew tap Homebrew/bundle
 brew bundle install --file="$(BREWFILE)"
 sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells"
