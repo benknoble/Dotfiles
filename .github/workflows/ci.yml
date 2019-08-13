@@ -10,6 +10,10 @@ jobs:
         os: [ubuntu-16.04, ubuntu-18.04, macos-latest]
 
     steps:
+      - name: Setup ssh
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+        run: echo $PRIVATE_KEY > ~/.ssh/id_rsa
       - uses: actions/checkout@v1
         with:
           submodules: true
