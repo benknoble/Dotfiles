@@ -10,21 +10,24 @@ jobs:
         os: [ubuntu-16.04, ubuntu-18.04, macos-latest]
 
     steps:
-      - run: |
-          set +e
-          command -v ruby
-          command -v ruby2.3.7
-          command -v ruby2.4.6
-          command -v ruby2.5.5
-          command -v ruby2.6.2
-          echo $PATH
-          IFS=':'
-          for d in $PATH ; do
-            ls -R "$d"
-          done
+      # - run: |
+      #     set +e
+      #     command -v ruby
+      #     command -v ruby2.3.7
+      #     command -v ruby2.4.6
+      #     command -v ruby2.5.5
+      #     command -v ruby2.6.2
+      #     echo $PATH
+      #     IFS=':'
+      #     for d in $PATH ; do
+      #       ls -R "$d"
+      #     done
       - uses: actions/checkout@v1
         with:
           submodules: true
+      - uses: actions/setup-ruby@v1
+        with:
+          version: 2.6.x
       - run: |
           ./dotfiles.plink
           make install
