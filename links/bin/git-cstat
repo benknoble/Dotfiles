@@ -32,7 +32,7 @@ commits_list() {
 }
 
 commit_count() {
-  commits_list "$@" | wc -l | tr -d ' '
+  commits_list "$@" --count
 }
 
 commit_len() {
