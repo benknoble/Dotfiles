@@ -46,10 +46,15 @@ cp -iv -- "$?" "$@"
 !!
 
 BREW_URL = https://raw.githubusercontent.com/Homebrew/install/master/install
+LINUXBREW_URL = https://raw.githubusercontent.com/Linuxbrew/install/master/install
 
 # brew_install: install brew
 brew_install !!
-ruby -e "$$( curl -fsSL $(BREW_URL) )"
+if test $$(uname) -eq Darwin ; then \
+  ruby -e "$$( curl -fsSL $(BREW_URL) )" \
+else \
+  ruby -e "$$( curl -fsSL $(LINUXBREW_URL) )" \
+fi
 brew tap Homebrew/bundle
 brew bundle install --file="$(BREWFILE)"
 sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells"
