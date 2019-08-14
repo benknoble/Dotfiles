@@ -34,7 +34,7 @@ commits_list() {
   if (($# > 0)) ; then
     command+=("$@")
   fi
-  "${command[@]}" 2>/dev/null
+  "${command[@]}"
 }
 
 commit_count() {
