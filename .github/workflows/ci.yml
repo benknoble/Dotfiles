@@ -15,7 +15,7 @@ jobs:
           submodules: true
       - uses: actions/setup-ruby@v1
         with:
-          version: 2.6.x
+          ruby-version: 2.6.x
       - run: |
           ./dotfiles.plink
           make install
