@@ -13,40 +13,32 @@ set +u
 source "$(git --exec-path)"/git-sh-setup
 set -u
 
-SIZER=(
-  wc
-  # count words
-  -w
-)
-
-size() {
-  local commit="$1"
-  git log "$commit" -1 --format=%B | "${SIZER[@]}" | tr -d ' '
-}
-
 commits_list() {
   command=(
     git
-    rev-list
+    log
+    --pretty'='format:$'\a%n%H\t%s %b'
     # start somewhere
     --all
   )
   if (($# > 0)) ; then
     command+=("$@")
   fi
-  "${command[@]}"
+  "${command[@]}" |
+    awk '
+      /'$'\a''/ && NR != 1 { printf "\n"; next }
+      { printf "%s ", $0 }
+      END { printf "\n" }
+      '
 }
 
 commit_count() {
-  commits_list "$@" | wc -l | tr -d ' '
+  git rev-list --all --count "$@"
 }
 
 commit_len() {
   commits_list "$@" |
-    while read c ; do
-      size "$c" | tr -d '[:space:]'
-      printf ' %s\n' "$c"
-    done
+    awk -F$'\t' '{ print split($2,_," "), $1 }'
 }
 
 commit_len_min() {
@@ -62,16 +54,11 @@ commit_len_max() {
 }
 
 commit_len_avg() {
-  local num=0
-  {
-    printf '%s\n' '5k'
-    while read c ; do
-      ((++num))
-      size "$c"
-      ((num >= 2)) && printf '%s\n' '+'
-    done < <(commits_list "$@")
-    printf '%s\n' "$num" '/p'
-  } | dc
+  commit_len "$@" |
+    awk '
+      { sum += $1 }
+      END { print sum/NR }
+    '
 }
 
 main() {
