@@ -13,11 +13,6 @@ set +u
 source "$(git --exec-path)"/git-sh-setup
 set -u
 
-size() {
-  local commit="$1"
-  git log "$commit" -1 --format=%B | wc -w | tr -d ' '
-}
-
 commits_list() {
   command=(
     git
