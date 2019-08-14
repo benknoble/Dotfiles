@@ -56,16 +56,17 @@ commit_len_max() {
 }
 
 commit_len_avg() {
-  local num=0
-  {
-    printf '%s\n' '5k'
-    while read c ; do
-      ((++num))
-      size "$c"
-      ((num >= 2)) && printf '%s\n' '+'
-    done < <(commits_list "$@")
-    printf '%s\n' "$num" '/p'
-  } | dc
+  commit_len "$@" |
+    awk '
+      # set precision
+      BEGIN { print "5k" }
+      # print size
+      { print $1 }
+      # add on the stack
+      NR >= 2 { print "+" }
+      # print the size for division
+      END { print NR "/p" }
+    ' | dc
 }
 
 main() {
