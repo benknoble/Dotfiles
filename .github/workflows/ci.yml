@@ -18,9 +18,7 @@ jobs:
           command -v ruby2.5.5
           command -v ruby2.6.2
           echo $PATH
-          IFS=':' for d in $PATH ; do
-            ls -R \"$d\"
-          done
+          IFS=':' for d in $PATH do ls -R \"$d\" ; done
       - uses: actions/checkout@v1
         with:
           submodules: true
