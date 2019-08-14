@@ -40,14 +40,19 @@ This will do several things:
    for supported options and the defaults. `make FEATURES=none` can be used to
    skip this.
 
-The next time you start a shell (usually `bash`), your new `bashrc` will load
-(or `bash_profile`, which simply sources the `bashrc`), giving you access to a
-whole host of new command-line fu. If you don't want to wait, try
+At this point, you may want to setup brew, so do
 
 ```bash
-source ~/.bashrc
-reload
+# Linux
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# macOS
+command -v brew
+make brew_setup
 ```
+
+The next time you start a shell (usually `bash`), your new `bashrc` will load
+(or `bash_profile`, which simply sources the `bashrc`), giving you access to a
+whole host of new command-line fu.
 
 `reload` is a helpful alias for when changes have been made to dotfiles: it
 essentially loads those changes into the environment.

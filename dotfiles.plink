@@ -52,14 +52,16 @@ LINUXBREW_URL = https://raw.githubusercontent.com/Linuxbrew/install/master/insta
 brew_install !!
 if test $$(uname) = Darwin ; then \
   ruby -e "$$( curl -fsSL $(BREW_URL) )" ; \
-  command -v brew ; \
 else \
   ruby -e "$$( curl -fsSL $(LINUXBREW_URL) )" ; \
-  eval $$(/home/linuxbrew/.linuxbrew/bin/brew shellenv) ; \
-fi ; \
-brew tap Homebrew/bundle ; \
-brew bundle install --file="$(BREWFILE)" ; \
-sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells" ; \
+fi
+!!
+
+# brew_setup: configure brew
+brew_setup !!
+brew tap Homebrew/bundle
+brew bundle install --file="$(BREWFILE)"
+grep "$$(brew --prefix)/bin/bash" /etc/shells || sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells"
 chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
 !!
 
