@@ -58,15 +58,9 @@ commit_len_max() {
 commit_len_avg() {
   commit_len "$@" |
     awk '
-      # set precision
-      BEGIN { print "5k" }
-      # print size
-      { print $1 }
-      # add on the stack
-      NR >= 2 { print "+" }
-      # print the size for division
-      END { print NR "/p" }
-    ' | dc
+      { sum += $1 }
+      END { print sum/NR }
+    '
 }
 
 main() {
