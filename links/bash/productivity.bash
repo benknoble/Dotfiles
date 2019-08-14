@@ -13,6 +13,14 @@ L() {
   less "$@"
 }
 
+S() {
+  sed "$@"
+}
+
+A() {
+  awk "$@"
+}
+
 # attempt to extract file with correct extraction method
 extract () {
   for file in "$@"; do
