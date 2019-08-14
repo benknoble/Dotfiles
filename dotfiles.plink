@@ -50,6 +50,7 @@ LINUXBREW_URL = https://raw.githubusercontent.com/Linuxbrew/install/master/insta
 
 # brew_install: install brew
 brew_install !!
+command -v brew || \
 if test $$(uname) = Darwin ; then \
   ruby -e "$$( curl -fsSL $(BREW_URL) )" ; \
 else \
