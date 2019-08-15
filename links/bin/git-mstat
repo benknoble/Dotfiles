@@ -16,13 +16,16 @@ log() {
 } >&2
 
 merge_sizes () {
-  local parents=()
-  git log --merges --format="%h" |
-    while read x; do
-      mapfile -t parents < <(git log -1 --format=%P "$x" | tr '[:space:]' '\n')
-      git diff "${parents[@]}" | wc -l | tr -d '[:space:]'
-      printf ' %s\n' "$x"
-    done |
+  git log --merges --format=$'%h\t%P' |
+    awk -F$'\t' '
+      {
+        print $2 | "xargs -J% git diff % | wc -l"
+        print $1
+        close("xargs -J% git diff % | wc -l")
+      }
+    ' |
+    paste - - |
+    awk '{ print $1, $2 }' |
     sort -rn
 }
 
