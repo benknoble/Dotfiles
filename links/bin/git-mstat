@@ -28,7 +28,7 @@ merge_sizes () {
 
 merge_parents () {
   git log --all --min-parents=2 --format='%h %P' |
-    ruby -ne '/^(\w+) (.*)$/ =~ $_; puts "#{$2.split.count} #{$1}"' |
+    awk '{ print NF-1, $1 }' |
     sort -rn
 }
 
