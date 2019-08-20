@@ -1,0 +1,11 @@
+###
+# delim : %%
+# help : notes and things
+# output : {fname}.md
+# vim: ft=markdown
+###
+# %%CLASS
+
+*Week %%WK*
+
+---
