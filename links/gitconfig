@@ -67,7 +67,7 @@
 [gitsh]
 	prompt = "%D (%c%b %#%w) %G>"
 	noGreeting = true
-	defaultCommand = status -sb && :echo
+	defaultCommand = status -sb
 [mergetool "fugitive"]
 	cmd = vim --nofork -c \"Gvdiffsplit!\" \"$MERGED\"
 	trustExitCode = true
