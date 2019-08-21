@@ -4,6 +4,8 @@
 
 My Dotfiles for configuration of different software and command-line programs
 
+[See also: my workflow](https://gist.github.com/07052655c9b6ef75071a285102c61c93)
+
 :warning:**WARNING**:warning: Dotfiles are _not_ meant to be forked: they are
 personal castles that you should construct yourself. That said, feel free to
 peruse mine and steal whatever you like.
