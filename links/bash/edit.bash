@@ -9,7 +9,7 @@ ed() {
 }
 
 # edit notes
-vnotes() {
+enotes() {
   local dir="$(git rev-parse --absolute-git-dir 2>/dev/null)"
   local notes="${dir:-.}"/notes.md
   "$EDITOR" "$notes"
