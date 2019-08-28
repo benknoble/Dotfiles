@@ -17,6 +17,7 @@
 	grall = !git graph --all
 	graph = !git graph-long --oneline
 	graph-long = log --graph
+	h = help
 	ig = check-ignore
 	igv = !git ig -v
 	intend = add --intent-to-add
