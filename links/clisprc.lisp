@@ -1,0 +1,1 @@
+(setq *print-case* :downcase)
