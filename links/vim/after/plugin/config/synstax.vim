@@ -1,4 +1,4 @@
-if ! &rtp =~# 'synstax'
+if ! (&rtp =~# 'synstax')
   finish
 endif
 
