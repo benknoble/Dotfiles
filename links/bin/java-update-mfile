@@ -7,7 +7,7 @@ ORIGINAL='Makefile'
 FINAL="$ORIGINAL"
 trap 'rm -f "$TEMP"' EXIT
 
-declare -A saved
+declare -A saved=()
 
 URL='https://raw.githubusercontent.com/benknoble/java_on_nix/master/Makefile'
 
