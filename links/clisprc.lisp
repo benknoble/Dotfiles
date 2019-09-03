@@ -1,1 +1,2 @@
-(setq *print-case* :downcase)
+(setf *print-case* :downcase)
+(setf *print-pretty* t)
