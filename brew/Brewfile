@@ -10,6 +10,7 @@ brew "autoconf"
 brew "automake"
 brew "bash"
 brew "bash-completion@2"
+brew "clisp"
 brew "cmake", link: false
 brew "coreutils"
 brew "cowsay"
