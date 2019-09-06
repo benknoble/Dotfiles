@@ -1,3 +1,2 @@
 # base universal ctags configuration
---extras=*
 --fields=*
