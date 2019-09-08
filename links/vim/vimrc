@@ -2,6 +2,8 @@ if &compatible
   set nocompatible
 endif
 
+set encoding=utf-8
+
 " Personal config {{{
 let s:personal=expand('~/.personal/vimrc')
 if filereadable(s:personal)
@@ -146,7 +148,7 @@ endif
 " scroll if you mouse-click near the start or end of the window
 set scrolloff=5
 " Display certain whitespace characters
-set list listchars=tab:»\ ,trail:·,nbsp:⎵,precedes:<,extends:>
+set list listchars=tab:»\ ,trail:·,nbsp:\|,precedes:<,extends:>
 " }}}
 
 " Status {{{
