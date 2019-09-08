@@ -1,5 +1,8 @@
 set completion-ignore-case on
 
+# woot for security: https://cirw.in/blog/bracketed-paste
+set enable-bracketed-paste on
+
 # opt+left, opt+right outside tmux
 "\e[1;9D": backward-word
 "\e[1;9C": forward-word
