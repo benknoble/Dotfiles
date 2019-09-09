@@ -7,4 +7,4 @@ iabbrev eemail ben.knoble@gmail.com
 iabbrev wweb benknoble.github.io
 iabbrev ssig --<CR>D. Ben Knoble<CR>ben.knoble@gmail.com
 iabbrev ccopy © Copyright D. Ben Knoble 2018, all rights reserved.
-iabbrev <expr> nname printf(&commentstring, ' d. ben knoble '.strftime('%Y.%m.%d'))
+iabbrev <expr> nname printf(&commentstring, 'd. ben knoble '.strftime('%Y.%m.%d'))
