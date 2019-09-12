@@ -39,6 +39,7 @@ venv.bak/
 
 # java class files
 *.class
+*.jar
 
 # object files
 *.o
