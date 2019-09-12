@@ -1,0 +1,41 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+usage() {
+  cat <<DOG
+usage: $0 field...
+DOG
+}
+
+die() {
+  local ex="${1:-1}"
+  exit "$ex"
+}
+
+usage_and_die() { usage && die; }
+
+generate_awk_code() {
+  local fields=("$@")
+  case $# in
+    0) return ;;
+  esac
+  printf "'{ print "
+  # from the beginning to the second to last
+  for field in "${fields[@]:0:${#fields[@]}-1}"; do
+    printf '$%d, ' "$field"
+  done
+  # last
+  printf '$%d' "${fields[${#fields[@]}-1]}"
+  printf " }'"
+}
+
+main() {
+  eval awk "$(generate_awk_code "$@")"
+}
+
+main "$@"
