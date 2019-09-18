@@ -67,7 +67,7 @@ chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
 !!
 
 # pip: install from requirements
-pip [ $(REQUIREMENTS) ] ! python3 -m pip install --user --requirement $(REQUIREMENTS)
+pip [ $(REQUIREMENTS) ] ! -python3 -m pip install --user --requirement $(REQUIREMENTS)
 
 pull_master !!
 git checkout master
