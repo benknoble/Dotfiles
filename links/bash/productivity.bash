@@ -61,3 +61,8 @@ up() {
 gh() {
   cd "$(git rev-parse --show-toplevel || printf .)"
 }
+
+HH() {
+  builtin help "$@"
+}
+complete -A helptopic HH
