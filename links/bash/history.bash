@@ -5,3 +5,7 @@ alias r='fc -s'
 recent() {
   history | cut -c8- | cut -d" " -f1 | frequency | sort -rn | head
 }
+
+H() {
+  history "$@"
+}
