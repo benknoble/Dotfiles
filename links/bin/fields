@@ -21,9 +21,6 @@ usage_and_die() { usage && die; }
 
 generate_awk_code() {
   local fields=("$@")
-  case $# in
-    0) return ;;
-  esac
   printf "'{ print "
   # from the beginning to the second to last
   for field in "${fields[@]:0:${#fields[@]}-1}"; do
@@ -35,6 +32,9 @@ generate_awk_code() {
 }
 
 main() {
+  case $# in
+    0) usage_and_die ;;
+  esac
   eval awk "$(generate_awk_code "$@")"
 }
 
