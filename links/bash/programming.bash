@@ -16,3 +16,23 @@ join_by() {
 frequency() {
   sort | uniq -c | sort -g
 }
+
+# input: data count
+histogram() {
+  awk '{
+    printf "%d\t", $1
+    for(i = 0; i < int($2); i++)
+        printf "*"
+    printf "\n"
+  }'
+}
+
+# for use after frequency
+histogram_f() {
+  fields 2 1 | sort -g | histogram
+}
+
+nearest_ten() {
+  # 0-9 actually don't change
+  awk '{ printf "%d\n", sprintf("%1.0e", $0) }'
+}
