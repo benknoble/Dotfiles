@@ -6,6 +6,7 @@ let g:loaded_plugin_load = 1
 " Matchit {{{
 if has('packages') && has('syntax') && has('eval')
   packadd matchit
+  packadd cfilter
 endif
 " End Matchit }}}
 
