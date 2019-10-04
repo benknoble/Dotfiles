@@ -16,3 +16,7 @@ set nrformats-=octal
 " Confirm potentially problematic operations
 " Like quitting without writing
 set confirm
+
+" Add .git/tags to path (since fugitive won't do it anymore)
+" Searaches upwards until ~ (because of ;) in case we are in a subdirectory
+set tags^=.git/tags;~
