@@ -36,3 +36,8 @@ nearest_ten() {
   # 0-9 actually don't change
   awk '{ printf "%d\n", sprintf("%1.0e", $0) }'
 }
+
+# combine my most used histogram technique into one
+bucket10 () {
+  nearest_ten | frequency | histogram_f
+}
