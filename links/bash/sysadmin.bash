@@ -9,3 +9,11 @@ findPid () { lsof -t -c "$@" ; }
 pj() {
   ps $(jobs -l | fields 2)
 }
+
+# Run htop for the current user's processes
+uhtop() {
+  htop -u "$USER" "$@"
+}
+
+# Jobs
+alias j='jobs -l'
