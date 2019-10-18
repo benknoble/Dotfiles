@@ -14,3 +14,7 @@ enotes() {
   local notes="${dir:-.}"/notes.md
   "$EDITOR" "$notes"
 }
+
+pbed() {
+  pbpaste | vipe | pbcopy
+}
