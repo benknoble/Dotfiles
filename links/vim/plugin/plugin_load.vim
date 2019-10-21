@@ -24,7 +24,7 @@ if ! exists('g:colors_name')
   try
     packadd! dracula
     colorscheme dracula
-  catch /^Vim\%((\a\+)\)\=:E185/
+  catch /^Vim\%((\a\+)\)\=:E\(185\|492\)/
     colorscheme default
     set background=dark
   endtry
