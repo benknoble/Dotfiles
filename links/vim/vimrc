@@ -227,8 +227,6 @@ if &t_Co > 2 || has("gui_running")
   if ! exists("g:syntax_on")
     syntax enable
   endif
-  " I like highlighting strings inside C comments.
-  let c_comment_strings=1
   " Use bash as default shell highlighter (cf :h ft-sh-syntax)
   let g:is_bash = 1
   " Langs for markdown blocks
