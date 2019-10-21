@@ -44,60 +44,61 @@
 " magic mode
 " begins with alpha or underscore
 " letters, numbers, underscores
-let s:name_pattern = pattern#join(
-      \ ['\m',
-      \  pattern#group(
-      \    pattern#branchify([ '\a',
-      \                        '_' ])),
-      \  pattern#group(
-      \    pattern#branchify([ '\a',
-      \                        '\d',
-      \                        '_' ])),
-      \  '*'])
+let s:name_pattern = pattern#join([
+      \ '\m',
+      \ pattern#group(
+      \   pattern#branchify([
+      \     '\a',
+      \     '_' ])),
+      \ pattern#group(
+      \   pattern#branchify([
+      \     '\a',
+      \     '\d',
+      \     '_' ])),
+      \ '*'])
 
 " matches a positional parameter (no braces)
 " magic
 " a single digit
-let s:positional_pattern = pattern#join(
-      \ ['\m',
+let s:positional_pattern = pattern#join([
+      \ '\m',
       \ '[1-9]'])
 
 " matches any of the special parameters (no braces)
 " magic
 " special params as branches
-let s:special_pattern = pattern#join(
-      \ ['\m',
-      \  pattern#branchify(
-      \    ['\*',
-      \     '@',
-      \     '#',
-      \     '?',
-      \     '-',
-      \     '\$',
-      \     '!',
-      \     '0',
-      \     '_'])])
-
+let s:special_pattern = pattern#join([
+      \ '\m',
+      \ pattern#branchify([
+      \   '\*',
+      \   '@',
+      \   '#',
+      \   '?',
+      \   '-',
+      \   '\$',
+      \   '!',
+      \   '0',
+      \   '_'])])
 
 " matches a parameter (non-brace)
 " magic
 " name or positional or special
-let s:parameter_pattern = pattern#join(
-      \ ['\m',
-      \  pattern#branchify(
-      \    pattern#group_many(
-      \      [s:name_pattern, s:positional_pattern, s:special_pattern]))])
+let s:parameter_pattern = pattern#join([
+      \ '\m',
+      \ pattern#branchify(
+      \   pattern#group_many(
+      \     [s:name_pattern, s:positional_pattern, s:special_pattern]))])
 
 " matches anything in braces
 " magic
 " opening brace
 " anything but a closing brace
 " closing brace
-let s:brace_pattern = pattern#join(
-      \ ['\m',
-      \  '{',
-      \  '[^}]*',
-      \  '}'])
+let s:brace_pattern = pattern#join([
+      \ '\m',
+      \ '{',
+      \ '[^}]*',
+      \ '}'])
 
 " matches a $ followed by a parameter or a brace construction
 " magic
@@ -124,10 +125,10 @@ endfunction
 " magic
 " literal '$'
 " open paren
-let s:subshell_begin_pattern = pattern#join(
-      \ ['\m',
-      \  '\$',
-      \  '('])
+let s:subshell_begin_pattern = pattern#join([
+      \ '\m',
+      \ '\$',
+      \ '('])
 
 function! sh#in_subshell() abort
   let l:line = line('.')
