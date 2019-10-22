@@ -4,7 +4,7 @@ endif
 
 " Make netrw use a long listing
 let g:netrw_liststyle=1
-" Don't display baner
+" Don't display banner
 let g:netrw_banner=0
 " Use my cursorline/column settings
 let g:netrw_cursor=0
