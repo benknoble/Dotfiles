@@ -5,6 +5,7 @@
 "   - 'maps' (list of lists: [mode, mapped keys])
 "      NOTE: mapped keys will be exec'd in double quotes, so <LocalLeader> may
 "            need to be inserted literally
+"   - 'abbrevs' (like maps, but for abbreviations)
 "   - 'funcs' (list of functions to delete)
 "   - 'custom' (expression that will be concatenated literally)
 function! ftplugin#undo(settings)
@@ -39,6 +40,14 @@ function! ftplugin#undo(settings)
         \   get(a:settings, 'maps', []),
         \   {_,map -> printf("execute 'silent! %sunmap <buffer> %s'",
         \                                     map[0],          map[1])}))
+
+  " abbreviations [mode, key]
+  call extend(
+        \ l:suffix,
+        \ map(
+        \   get(a:settings, 'abbrevs', []),
+        \   {_,map -> printf("execute 'silent! %sunabbrev <buffer> %s'",
+        \                                     map[0],             map[1])}))
 
   " functions
   call extend(
@@ -82,6 +91,7 @@ endfunction
 "       \           ['s', 'keys'],
 "       \           ['', 'keys'],
 "       \           ['n', '<LocalLeader>keys'], ],
+"       \ 'abbrevs': [ ['i', '#i'] ],
 "       \ 'funcs': [ 'b:MySpecialFunc', ],
 "       \ 'custom': [ 'call MyUndoFunc()' ],
 "       \ })
