@@ -3,8 +3,9 @@ if exists('g:loaded_syntoggle')
 endif
 let g:loaded_syntoggle = 1
 
-command! SynToggle if exists("g:syntax_on") <Bar>
-      \   syntax off <Bar>
-      \ else <Bar>
-      \   syntax enable <Bar>
+command SynToggle
+      \ if exists("g:syntax_on") |
+      \   syntax off |
+      \ else |
+      \   syntax enable |
       \ endif
