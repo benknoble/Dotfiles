@@ -1,7 +1,12 @@
+function! s:update_hex_changedtick() abort
+  let b:hex_changedtick = b:changedtick
+endfunction
+
 function hex#setup() abort
   setlocal binary
   call hex#dump()
   setlocal nomodified
+  call s:update_hex_changedtick()
 
   augroup ftplugin_xxd
     au! * <buffer>
@@ -24,20 +29,20 @@ endfunction
 
 function hex#dump() abort
   silent %!xxd -g 1
-  call hex#strip_trailing_CR()
+  call s:hex_strip_trailing_CR()
 endfunction
 
 function hex#rev() abort
   silent %!xxd -r
 endfunction
 
-function hex#strip_trailing_CR() abort
+function s:hex_strip_trailing_CR() abort
   %substitute/\r$//e
 endfunction
 
 " before writing, translate back to original
 function hex#write_pre() abort
-  call hex#save_cursor()
+  call s:hex_save_cursor()
   call hex#rev()
 endfunction
 
@@ -45,21 +50,30 @@ endfunction
 function hex#write_post() abort
   call hex#dump()
   setlocal nomodified
-  call hex#restore_cursor()
+  call s:hex_restore_cursor()
+  call s:update_hex_changedtick()
+endfunction
+
+function! s:hex_changed() abort
+  return b:changedtick > get(b:, 'hex_changedtick', 0)
 endfunction
 
 " update text column after changing hex values
 function hex#update() abort
-  call hex#save_cursor()
+  let l:changed = s:hex_changed()
+  call s:hex_save_cursor()
   call hex#rev()
   call hex#dump()
-  call hex#restore_cursor()
+  call s:hex_restore_cursor()
+  if !l:changed
+    setlocal nomodified
+  endif
 endfunction
 
-function hex#save_cursor() abort
+function s:hex_save_cursor() abort
   let b:xxd_cursor = getpos('.')
 endfunction
 
-function hex#restore_cursor() abort
+function s:hex_restore_cursor() abort
   call setpos('.', b:xxd_cursor)
 endfunction
