@@ -10,6 +10,7 @@ function! lisp#load(file) abort
   endif
 
   let l:term = l:terms[0]
+  " double-quotes necessary for \n expansion
   call term_sendkeys(l:term, printf("(load #P\"%s\")\n", a:file))
   let l:win = bufwinnr(l:term)
   exec l:win 'wincmd w'
