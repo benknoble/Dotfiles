@@ -17,44 +17,42 @@ function! ftplugin#undo(settings)
         \ l:suffix,
         \ map(
         \   get(a:settings, 'opts', []),
-        \   {_,opt -> printf('setlocal %s<', opt)}))
+        \   "printf('setlocal %s<', v:val)"))
 
   " variables
   call extend(
         \ l:suffix,
         \ map(
         \   get(a:settings, 'vars', []),
-        \   {_,var -> printf('unlet! %s', var)}))
+        \   "printf('unlet! %s', v:val)"))
 
   " commands
   call extend(
         \ l:suffix,
         \ map(
         \   get(a:settings, 'commands', []),
-        \   {_,command -> printf('silent! delcommand %s', command)}))
+        \   "printf('silent! delcommand %s', v:val)"))
 
   " mappings [mode, key]
   call extend(
         \ l:suffix,
         \ map(
         \   get(a:settings, 'maps', []),
-        \   {_,map -> printf("execute 'silent! %sunmap <buffer> %s'",
-        \                                     map[0],          map[1])}))
+        \   "printf(\"execute 'silent! %sunmap <buffer> %s'\", v:val[0], v:val[1])"))
 
   " abbreviations [mode, key]
   call extend(
         \ l:suffix,
         \ map(
         \   get(a:settings, 'abbrevs', []),
-        \   {_,map -> printf("execute 'silent! %sunabbrev <buffer> %s'",
-        \                                     map[0],             map[1])}))
+        \   "printf(\"execute 'silent! %sunabbrev <buffer> %s'\", v:val[0], v:val[1])"))
 
   " functions
   call extend(
         \ l:suffix,
         \ map(
         \   get(a:settings, 'funcs', []),
-        \   {_,func -> printf('delfunction! %s', func)}))
+        \   "printf('delfunction! %s', v:val)"))
 
   " custom code
   call extend(
