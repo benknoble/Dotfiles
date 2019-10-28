@@ -5,7 +5,7 @@
 let b:interpreter = 'clisp'
 
 nnoremap <buffer> <Localleader>l :call lisp#load(expand('%'))<CR>
-nnoremap <buffer> <Localleader>L :call lisp#load(input('file.lisp> ', expand('%'), 'file'))<CR>
+nnoremap <buffer> <Localleader>L :call lisp#load(input('(load) ', expand('%'), 'file'))<CR>
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
