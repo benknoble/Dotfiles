@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# Usage: git overwritten [--[no-]color] [<head=HEAD>] [<base=origin>]
+# Usage: git overwritten [--[no-]color] [<base=master>] [<head=HEAD>]
 #
 # Aggregates git blame information about original owners of lines changed or
 # removed in the '<base>...<head>' diff.
@@ -40,8 +40,8 @@ while [ "$#" -gt 0 ]; do
     ;;
   -* | "") abort ;;
   * )
-    if [ -z "${head:-}" ]; then head="$1"
-    elif [ -z "${base:-}" ]; then base="$1"
+    if [ -z "${base:-}" ]; then base="$1"
+    elif [ -z "${head:-}" ]; then head="$1"
     else abort
     fi
     ;;
@@ -49,8 +49,8 @@ while [ "$#" -gt 0 ]; do
   shift 1
 done
 
+base="${base:-master}"
 head="${head:-HEAD}"
-base="${base:-origin}"
 
 [ -t 1 ] && colorize="${colorize:-1}"
 
