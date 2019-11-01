@@ -5,6 +5,8 @@
 " Tab settings
 setlocal shiftwidth=2 softtabstop=2
 
+nnoremap <LocalLeader>o :silent !open %<CR>:redraw!<CR>
+
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'shiftwidth',
