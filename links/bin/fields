@@ -8,7 +8,7 @@ log() {
 
 usage() {
   cat <<DOG
-usage: $0 field...
+usage: $0 [-f FS] [-v awk_var=value] field...
 DOG
 }
 
@@ -21,21 +21,46 @@ usage_and_die() { usage && die; }
 
 generate_awk_code() {
   local fields=("$@")
-  printf "'{ print "
+  printf '{ print '
   # from the beginning to the second to last
   for field in "${fields[@]:0:${#fields[@]}-1}"; do
     printf '$%d, ' "$field"
   done
   # last
   printf '$%d' "${fields[${#fields[@]}-1]}"
-  printf " }'"
+  printf ' }'
 }
 
 main() {
+  AWK=(awk)
+
+  while getopts 'hf:v:' opt; do
+    case "$opt" in
+      h)
+        usage_and_die
+        ;;
+      f)
+        AWK+=(-F"$OPTARG")
+        ;;
+      v)
+        AWK+=(-v "$OPTARG")
+        ;;
+      ?)
+        usage_and_die
+        ;;
+      *)
+        log "Unsupported option"
+        usage_and_die
+        ;;
+    esac
+  done
+  shift $((OPTIND-1))
+
   case $# in
     0) usage_and_die ;;
   esac
-  eval awk "$(generate_awk_code "$@")"
+
+  exec "${AWK[@]}" "$(generate_awk_code "$@")"
 }
 
 main "$@"
