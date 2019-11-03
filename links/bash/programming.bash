@@ -41,3 +41,7 @@ nearest_ten() {
 bucket10 () {
   nearest_ten | frequency | histogram_f
 }
+
+sum() {
+  sed '2,$s/$/+/' | awk '1 END{print "f"}' | dc
+}
