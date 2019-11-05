@@ -43,7 +43,7 @@ bucket10 () {
 }
 
 fold() {
-  sed '2,$s,$,'"$1"',' | awk '1 END{print "f"}' | dc
+  sed '2,$s,$,'"$1"',' | awk "BEGIN{print \"${2:-10}k\"} 1 END{print \"f\"}" | dc
 }
 
 sum() {
