@@ -3,12 +3,12 @@
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 " Commands defined in $VIMRUNTIME/ftplugin/gitrebase.vim
-nnoremap <buffer> <silent> <LocalLeader>p :Pick<CR>
-nnoremap <buffer> <silent> <LocalLeader>s :Squash<CR>
-nnoremap <buffer> <silent> <LocalLeader>e :Edit<CR>
-nnoremap <buffer> <silent> <LocalLeader>r :Reword<CR>
-nnoremap <buffer> <silent> <LocalLeader>f :Fixup<CR>
-nnoremap <buffer> <silent> <LocalLeader>c :Cycle<CR>
+nnoremap <buffer> <LocalLeader>p :Pick<CR>
+nnoremap <buffer> <LocalLeader>s :Squash<CR>
+nnoremap <buffer> <LocalLeader>e :Edit<CR>
+nnoremap <buffer> <LocalLeader>r :Reword<CR>
+nnoremap <buffer> <LocalLeader>f :Fixup<CR>
+nnoremap <buffer> <LocalLeader>c :Cycle<CR>
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'maps': [

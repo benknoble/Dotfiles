@@ -9,9 +9,9 @@ setlocal shiftwidth=2 softtabstop=2
 setlocal keywordprg=:help
 
 " Execute the current line
-nnoremap <silent> <buffer> <LocalLeader>el :execute getline('.')<CR>
+nnoremap <buffer> <LocalLeader>el :execute getline('.')<CR>
 " Execute file
-nnoremap <silent> <buffer> <LocalLeader>ef :source %<CR>
+nnoremap <buffer> <LocalLeader>ef :source %<CR>
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [

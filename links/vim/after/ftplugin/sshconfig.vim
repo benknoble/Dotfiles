@@ -2,7 +2,7 @@
 " Language:              ssh_config
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-nnoremap <silent> <buffer> K :call ssh#man(expand('<cword>'))<CR>
+nnoremap <buffer> K :call ssh#man(expand('<cword>'))<CR>
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'maps': [

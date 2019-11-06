@@ -7,17 +7,17 @@ setlocal textwidth=80
 " Indent two spaces
 setlocal shiftwidth=2 softtabstop=2
 
-xnoremap <buffer> <silent> iv :<C-u>call sh#in_parameter_expansion()<CR>
-onoremap <buffer> <silent> iv :<C-u>call sh#in_parameter_expansion()<CR>
+xnoremap <buffer> iv :<C-u>call sh#in_parameter_expansion()<CR>
+onoremap <buffer> iv :<C-u>call sh#in_parameter_expansion()<CR>
 
 " technically we're overriding the "in-sentence" motion here, but I can live
 " with that
-xnoremap <buffer> <silent> is :<C-u>call sh#in_subshell()<CR>
-onoremap <buffer> <silent> is :<C-u>call sh#in_subshell()<CR>
+xnoremap <buffer> is :<C-u>call sh#in_subshell()<CR>
+onoremap <buffer> is :<C-u>call sh#in_subshell()<CR>
 
 " Relies on surround.vim and custom text object above
-nmap <buffer> <silent> <LocalLeader>qv ysiv"
-nmap <buffer> <silent> <LocalLeader>qs ysis"
+nmap <buffer> <LocalLeader>qv ysiv"
+nmap <buffer> <LocalLeader>qs ysis"
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [

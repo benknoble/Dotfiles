@@ -3,5 +3,5 @@ if ! exists(':Ack')
 endif
 
 nnoremap <Leader>a :Ack!<space>
-nnoremap <silent> <Leader>A :Ack! <cword><CR>
-nnoremap <silent> <Leader><C-a> :Ack! --nosmart-case <cword><CR>
+nnoremap <Leader>A :Ack! <cword><CR>
+nnoremap <Leader><C-a> :Ack! --nosmart-case <cword><CR>
