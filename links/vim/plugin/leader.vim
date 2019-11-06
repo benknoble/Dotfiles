@@ -54,3 +54,5 @@ nnoremap <Leader>? ?\v
 nnoremap <Leader>f :call find#included_word()<CR>
 " Unhighlight last search
 nnoremap <silent> <Leader>h :nohlsearch<CR>
+
+nnoremap <expr> <Leader>r exists(':Reload') ? ':Reload<CR>' : ''
