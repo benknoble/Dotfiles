@@ -27,3 +27,11 @@ endfunction
 function! markdown#img_link(text, img, link) abort
   return printf('[![%s](%s)](%s)', a:text, a:img, a:link)
 endfunction
+
+"Convert GitHub-Flavored Markdown syntax-highlighting to Liquid
+"syntax-highlighting.
+function! markdown#to_liquid() range
+  let l:range = printf("%s,%s", a:firstline, a:lastline)
+  silent! execute l:range.'s/^```\([a-z]\+\)$/{% highlight \1 %}/g'
+  silent! execute l:range.'s/^```$/{% endhighlight %}/g'
+endfunction
