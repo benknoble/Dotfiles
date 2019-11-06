@@ -1,3 +1,5 @@
+shopt -s histverify histreedit
+
 # Rerun last command [with prefix]
 alias r='fc -s'
 
