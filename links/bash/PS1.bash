@@ -183,6 +183,8 @@ _build_PS1() {
   local highlight
   local exit_sym
   local newline=$'\n'
+  # local prompt='\$ '
+  local prompt='λ '
 
   if [[ "$_exit" = "0" ]]; then
     highlight="$BGreen"
@@ -192,5 +194,7 @@ _build_PS1() {
     exit_sym="✗ $_exit"
   fi
 
-  PS1="$(_venv_prompt)$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline"'\$ '
+  PS1="$(_venv_prompt)$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline$prompt"
 }
+
+# vim: tw=0
