@@ -1,6 +1,6 @@
 g() {
   case $# in
-    0) git status -sb ;;
+    0) git status -s ;;
     *) git "$@" ;;
   esac
 }

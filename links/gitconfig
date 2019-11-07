@@ -31,11 +31,12 @@
 	patch = add --patch
 	rems = for-each-ref --sort=-committerdate --format=\"%(refname:short)\t%(color:red)%(authorname)\t%(color:blue)%(authordate:relative)%(color:reset)\" refs/remotes
 	riu = rebase -i @{u}
-	s = status -sb
+	s = status -s
 	sb = show-branch
 	sbu = !git sb @ @{u}
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
+	sr = status -sb
 	standup = !git log --author=$USER --since=yesterday --all --format=%s
 	stat = status
 	supdate = submodule update --remote --checkout
@@ -69,7 +70,7 @@
 [gitsh]
 	prompt = "%D (%c%b %#%w) %G>"
 	noGreeting = true
-	defaultCommand = status -sb
+	defaultCommand = status -s
 [mergetool "fugitive"]
 	cmd = vim --nofork -c \"Gvdiffsplit!\" \"$MERGED\"
 	trustExitCode = true
