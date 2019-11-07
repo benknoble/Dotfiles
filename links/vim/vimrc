@@ -179,18 +179,35 @@ function! AleCountTotal() abort
   return ''
 endfunction
 
-set statusline=
-set statusline+=%{Head()}
-set statusline+=%1*%t%*
-set statusline+=%5*%(\ %m%r%w%)%*
-set statusline+=%2*%(\ %y%)%*
-set statusline+=%2*\ %{exists('*FugitiveHead')?FugitiveHead():''}%*
-set statusline+=%=%<
-set statusline+=\ (%3*%l,%c%*)/%L\ lines
-set statusline+=\ %{exists('*wordcount')?wordcount().words.'\ words':''}
-set statusline+=\ %a
-set statusline+=%4*\ %{AleCountTotal()}%*
-set statusline+=\ %{exists('*ObsessionStatus')?ObsessionStatus():''}
+function! s:status_line(verbosity) abort
+  set statusline=
+  if a:verbosity ==# 'long'
+    set statusline+=%(%{Head()}%1*%t%*\ %)
+  elseif a:verbosity ==# 'short'
+    set statusline+=%(%1*%t%*\ %)
+  endif
+  if a:verbosity ==# 'long'
+    set statusline+=%5*%(%m%r%w%h%)%*
+  endif
+  set statusline+=%2*%(%y%)%*
+  set statusline+=%2*%(%{exists('*FugitiveHead')?'\ '.FugitiveHead():''}%)%*
+  set statusline+=%=%<
+  if a:verbosity ==# 'long'
+    set statusline+=%([%3*%l%*/%LL,%3*%c%*,%p%%]%)
+    set statusline+=%([%{exists('*wordcount')?wordcount().words.'W':''}]%)
+    set statusline+=%([%{&ff}\|%{(&fenc==''?&enc:&fenc).((exists('+bomb')&&&bomb)?'\|bom':'')}]%)
+  elseif a:verbosity ==# 'short'
+    set statusline+=%([%3*%l,%c%*]%)
+  endif
+  set statusline+=%(%a%)
+  set statusline+=%4*%([%{AleCountTotal()}]%)%*
+  set statusline+=%(%{exists('*ObsessionStatus')?ObsessionStatus():''}%)
+endfunction
+
+command SLLong call s:status_line('long')
+command SLShort call s:status_line('short')
+
+SLLong
 
 function! s:set_statusline_colors_to_dracula() abort
   " Override statusline
