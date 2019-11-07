@@ -176,7 +176,7 @@ if [[ "$(type -t command_not_found_handle)" != function ]]; then
 fi
 
 # we need everything loaded here
-if [[ "$(type -t __git_complete)" == function ]] && alias | grep -q "g='git'" ; then
+if [[ "$(type -t __git_complete)" == function ]] && [[ "$(type -t g)" == function ]]; then
   __git_complete g _git
 fi
 # custom }}}

@@ -1,5 +1,9 @@
-# git alias
-alias g='git'
+g() {
+  case $# in
+    0) git status -sb ;;
+    *) git "$@" ;;
+  esac
+}
 
 G() {
   grep --color=auto "$@"
