@@ -1,0 +1,32 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+USAGE='
+Trust bin in a git repo'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+usage_and_die() { usage; }
+
+main() {
+  if (($# > 0)) ; then
+    usage_and_die
+  fi
+
+  cd_to_toplevel
+  if [[ ! -d .git ]]; then
+    die '.git not present in top-level'
+  fi
+  mkdir .git/safe
+}
+
+main "$@"
