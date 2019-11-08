@@ -49,3 +49,7 @@ fold() {
 sum() {
   fold +
 }
+
+avg() {
+  awk '{ sum += $0 } END{ print sum/NF }'
+}
