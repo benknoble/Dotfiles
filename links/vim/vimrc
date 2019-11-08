@@ -127,8 +127,8 @@ set autoindent
 " }}}
 
 " Line numbers {{{
-" Display line/rel numbers by default
-set number relativenumber
+" Display rel numbers by default
+set relativenumber
 if has('autocmd')
   augroup vimrc_cmdwin_num
     au!
