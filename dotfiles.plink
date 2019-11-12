@@ -76,7 +76,7 @@ git pull --recurse-submodules=on-demand origin master
 
 update_submodules !!
 git submodule sync
-git submodule update
+git submodule update --recursive
 !!
 
 # brew_check: check Brewfile with bundle
