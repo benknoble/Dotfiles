@@ -1,9 +1,6 @@
 [submodule "vim/bundle/vim-fugitive"]
 	path = links/vim/pack/utility/start/fugitive
 	url = https://github.com/tpope/vim-fugitive
-[submodule "vim/bundle/vim-invader"]
-	path = links/vim/pack/benknoble/start/invader
-	url = https://github.com/benknoble/invader-vim.git
 [submodule "vim/bundle/vim-winresizer"]
 	path = links/vim/pack/interface/start/winresizer
 	url = https://github.com/simeji/winresizer.git
@@ -19,9 +16,6 @@
 [submodule "vim/bundle/vim-clam"]
 	path = links/vim/pack/utility/start/clam
 	url = https://github.com/sjl/clam.vim.git
-[submodule "vim/bundle/vim-auto-origami"]
-	path = links/vim/pack/benknoble/start/auto-origami
-	url = https://github.com/benknoble/vim-auto-origami
 [submodule "vim/bundle/vim-go"]
 	path = links/vim/pack/languages/start/go
 	url = https://github.com/fatih/vim-go.git
@@ -56,9 +50,6 @@
 [submodule "vim/bundle/splitjoin"]
 	path = links/vim/pack/utility/start/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim.git
-[submodule "vim/bundle/zelda"]
-	path = links/vim/pack/benknoble/opt/zelda
-	url = https://github.com/benknoble/zelda-vim.git
 [submodule "vim/bundle/ale"]
 	path = links/vim/pack/utility/start/ale
 	url = https://github.com/w0rp/ale.git
@@ -71,9 +62,6 @@
 [submodule "Dracula/gitk"]
 	path = Dracula/gitk
 	url = https://github.com/dracula/gitk.git
-[submodule "vim/bundle/synstax"]
-	path = links/vim/pack/benknoble/start/synstax
-	url = https://github.com/benknoble/vim-synstax.git
 [submodule "vim/bundle/vader"]
 	path = links/vim/pack/utility/start/vader
 	url = https://github.com/junegunn/vader.vim.git
@@ -113,12 +101,6 @@
 [submodule "links/vim/pack/languages/start/js"]
 	path = links/vim/pack/languages/start/js
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule "links/vim/pack/languages/start/scala"]
-	path = links/vim/pack/benknoble/start/scala
-	url = https://github.com/benknoble/vim-scala.git
-[submodule "links/vim/pack/languages/start/requirements"]
-	path = links/vim/pack/benknoble/start/requirements
-	url = https://github.com/benknoble/requirements.txt.vim.git
 [submodule "links/vim/pack/utility/start/scriptease"]
 	path = links/vim/pack/utility/start/scriptease
 	url = https://github.com/tpope/vim-scriptease.git
@@ -131,12 +113,3 @@
 [submodule "benknoble/plink"]
 	path = plink
 	url = https://github.com/benknoble/plink.git
-[submodule "links/vim/pack/languages/start/plink"]
-	path = links/vim/pack/benknoble/start/plink
-	url = https://github.com/benknoble/vim-plink.git
-[submodule "links/vim/pack/benknoble/start/gitignore"]
-	path = links/vim/pack/benknoble/start/gitignore
-	url = https://github.com/benknoble/gitignore-vim.git
-[submodule "links/vim/pack/benknoble/start/tmplr"]
-	path = links/vim/pack/benknoble/start/tmplr
-	url = https://github.com/benknoble/vim-tmplr.git
