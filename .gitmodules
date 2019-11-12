@@ -113,3 +113,6 @@
 [submodule "benknoble/plink"]
 	path = plink
 	url = https://github.com/benknoble/plink.git
+[submodule "vimben"]
+	path = links/vim/pack/benknoble
+	url = https://github.com/benknoble/vimben.git
