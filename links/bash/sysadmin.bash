@@ -17,3 +17,15 @@ uhtop() {
 
 # Jobs
 alias j='jobs -l'
+
+ports() {
+  if (($# == 0)) ; then
+    {
+      echo 'usage: ports port...'
+      echo
+      echo 'describe services on port...'
+    } >&2
+  else
+    lsof ${@/#/-i :}
+  fi
+}
