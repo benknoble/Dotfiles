@@ -11,3 +11,9 @@ let g:ale_linters = {
       \ 'scala': [],
       \ 'java': [],
       \ }
+
+if has('osx') || has('mac')
+  let g:ale_linters_ignore = {
+        \ 'c': [ 'gcc' ],
+        \ }
+endif
