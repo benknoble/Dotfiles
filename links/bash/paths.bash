@@ -65,3 +65,16 @@ pathadd_front_dne() {
 }
 pathadd_front_dne ".git/safe/../../bin"
 
+local_perl_bin=~/perl5/bin
+if [[ -d "$local_perl_bin" ]]; then
+  pathadd "$local_perl_bin"
+  PERL5LIB="/Users/Knoble/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+  export PERL5LIB
+  PERL_LOCAL_LIB_ROOT="/Users/Knoble/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+  export PERL_LOCAL_LIB_ROOT
+  PERL_MB_OPT='--install_base /Users/Knoble/perl5'
+  export PERL_MB_OPT
+  PERL_MM_OPT="INSTALL_BASE=/Users/Knoble/perl5"
+  export PERL_MM_OPT
+fi
+unset local_perl_bin
