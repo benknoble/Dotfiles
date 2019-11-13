@@ -53,6 +53,11 @@ if [[ -d "$gitjump" ]] && [[ -x "$gitjump"/git-jump ]]; then
   pathadd "$gitjump"
 fi
 
+unset git
+unset prefix
+unset contrib
+unset gitjump
+
 pathadd_front_dne() {
   if [[ ":$PATH:" != *":$1:"* ]]; then
     PATH="$1:$PATH"
@@ -60,7 +65,3 @@ pathadd_front_dne() {
 }
 pathadd_front_dne ".git/safe/../../bin"
 
-unset git
-unset prefix
-unset contrib
-unset gitjump
