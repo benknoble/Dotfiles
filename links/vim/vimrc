@@ -11,6 +11,11 @@ if filereadable(s:personal)
 endif
 " }}}
 
+if !has('packages')
+  runtime bundle/pathogen/autoload/pathogen.vim
+  execute pathogen#infect()
+endif
+
 " Mouse {{{
 if has('mouse')
   set mouse=a

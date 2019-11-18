@@ -122,3 +122,6 @@
 [submodule "links/vim/pack/languages/start/sexp-map"]
 	path = links/vim/pack/languages/start/sexp-map
 	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people
+[submodule "links/vim/bundle/pathogen"]
+	path = links/vim/bundle/pathogen
+	url = https://github.com/tpope/vim-pathogen
