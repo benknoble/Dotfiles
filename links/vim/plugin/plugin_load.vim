@@ -22,9 +22,8 @@ if ! exists('g:colors_name')
   let g:dracula_italic = get(g:, 'dracula_italic', 0)
   let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
   try
-    packadd! dracula
     colorscheme dracula
-  catch /^Vim\%((\a\+)\)\=:E\(185\|492\)/
+  catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme default
     set background=dark
   endtry
