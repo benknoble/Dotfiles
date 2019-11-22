@@ -39,6 +39,9 @@ set completion-query-items -1
 # Highlight the completion suggestions based on filetype
 set colored-stats on
 
+# Add trailing slashes for symlinks
+set mark-symlinked-directories on
+
 # vi editing mode-strings
 set vi-ins-mode-string +
 set vi-cmd-mode-string :
