@@ -12,3 +12,8 @@ manpdf() {
   local manargs=( "$@" )
   man -t "${manargs[@]}" "$manpage" | open -f -a Preview
 }
+
+# cd into whatever is the forefront Finder window.
+cdf() {
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+}
