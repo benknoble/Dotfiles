@@ -22,7 +22,7 @@ let b:undo_ftplugin = ftplugin#undo({
       \   [ 'n', '<Localleader>l' ],
       \   [ 'n', '<Localleader>L' ],
       \   [ 'n', '<Localleader>qe' ],
-      \   [ 'n', '<Localleader>qe' ],
+      \   [ 'n', '<Localleader>qf' ],
       \ ],
       \ 'funcs': [
       \ ],
