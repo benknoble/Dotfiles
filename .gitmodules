@@ -116,9 +116,6 @@
 [submodule "vimben"]
 	path = links/vim/pack/benknoble
 	url = https://github.com/benknoble/vimben.git
-[submodule "links/vim/pack/languages/start/sexp"]
-	path = links/vim/pack/languages/start/sexp
-	url = https://github.com/guns/vim-sexp.git
 [submodule "links/vim/pack/languages/start/sexp-map"]
 	path = links/vim/pack/languages/start/sexp-map
 	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people
