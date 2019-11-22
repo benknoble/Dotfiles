@@ -38,14 +38,14 @@ function! ftplugin#undo(settings)
         \ l:suffix,
         \ map(
         \   get(a:settings, 'maps', []),
-        \   "printf(\"execute 'silent! %sunmap <buffer> %s'\", v:val[0], v:val[1])"))
+        \   "printf('execute \"silent! %sunmap <buffer> %s\"', v:val[0], escape(v:val[1], \"'\"))"))
 
   " abbreviations [mode, key]
   call extend(
         \ l:suffix,
         \ map(
         \   get(a:settings, 'abbrevs', []),
-        \   "printf(\"execute 'silent! %sunabbrev <buffer> %s'\", v:val[0], v:val[1])"))
+        \   "printf('execute \"silent! %sunabbrev <buffer> %s\"', v:val[0], escape(v:val[1], \"'\"))"))
 
   " functions
   call extend(
@@ -93,7 +93,3 @@ endfunction
 "       \ 'funcs': [ 'b:MySpecialFunc', ],
 "       \ 'custom': [ 'call MyUndoFunc()' ],
 "       \ })
-
-" expected output
-"""""""""""""""""
-" call VimFtpluginUndo() | setlocal shiftwidth< | setlocal softtabstop< | setlocal keywordprg< | execute 'silent! nunmap <buffer> <LocalLeader>el' | execute 'silent! nunmap <buffer> <LocalLeader>ef'|setlocal path= suffixesadd= includeexpr= include= define= keywordprg=|sil! delcommand Breakadd|sil! delcommand Breakdel|sil! exe "nunmap <buffer> K" | setlocal tw< | setlocal sw< | setlocal sts< | unlet! b:interpreter | silent! delcommand USER | execute 'silent! ounmap <buffer> keys' | execute 'silent! xunmap <buffer> keys' | execute 'silent! iunmap <buffer> keys' | execute 'silent! cunmap <buffer> keys' | execute 'silent! vunmap <buffer> keys' | execute 'silent! tunmap <buffer> keys' | execute 'silent! lunmap <buffer> keys' | execute 'silent! sunmap <buffer> keys' | execute 'silent! unmap <buffer> keys' | execute 'silent! nunmap <buffer> <LocalLeader>keys' | delfunction! b:MySpecialFunc | call MyUndoFunc()
