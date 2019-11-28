@@ -39,7 +39,7 @@
 	sr = status -sb
 	standup = !git log --author=$USER --since=yesterday --all --format=%s
 	stat = status
-	supdate = submodule update --remote --checkout
+	supdate = submodule update --recursive --remote --checkout
 	unstage = reset HEAD --
 	visual = !gitk --all &
 [merge]
