@@ -31,7 +31,12 @@ set history-preserve-point on
 # Show the common prefix highlighted
 set colored-completion-prefix on
 
-set show-all-if-ambiguous on
+set show-all-if-ambiguous off
+set show-all-if-unmodified on
+
+Control-a: complete
+TAB: menu-complete
+"\e[Z": menu-complete-backward
 
 # never ask to display completions
 set completion-query-items -1
