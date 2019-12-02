@@ -19,7 +19,15 @@ set keywordprg=:Man
 
 " Dracula {{{
 if ! exists('g:colors_name')
-  let g:dracula_italic = get(g:, 'dracula_italic', 0)
+  let s:italic_default = 0
+  if has('osx')
+    if $TERM ==# 'xterm-256color'
+      let &t_ZH = "\e[3m"
+      let &t_ZR = "\e[23m"
+    endif
+    let s:italic_default = 1
+  endif
+  let g:dracula_italic = get(g:, 'dracula_italic', s:italic_default)
   let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
   try
     colorscheme dracula
