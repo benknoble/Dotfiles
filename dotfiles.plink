@@ -13,7 +13,7 @@ FEATURES = git_extras brew_install pip
 default ! @grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
 
 # install: bootstrap the dotfiles
-install [ symlink $(FEATURES) ]
+install [ symlink compile-terminfo $(FEATURES) ]
 
 # update: update the dotfiles
 update [ pull_master update_submodules symlink brew_check vimtags pip ]
@@ -23,6 +23,9 @@ vimtags ! vim +':helptags ALL' +'q'
 
 # brewfile: update the brewfile
 brewfile ! brew bundle dump --force --file="$(BREWFILE)"
+
+# compile-terminfo: compile terminfo files
+compile-terminfo  !  for t in terminfo/*.terminfo ; do tic -x "$$t" ; done
 
 # submodules: fixup any issues with submodules
 submodules !!
