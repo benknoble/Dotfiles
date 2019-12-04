@@ -1,3 +1,9 @@
+# vi editing mode-strings
+set vi-ins-mode-string +
+set vi-cmd-mode-string :
+set show-mode-in-prompt on
+set editing-mode vi
+
 set completion-ignore-case on
 
 # woot for security: https://cirw.in/blog/bracketed-paste
@@ -46,12 +52,6 @@ set colored-stats on
 
 # Add trailing slashes for symlinks
 set mark-symlinked-directories on
-
-# vi editing mode-strings
-set vi-ins-mode-string +
-set vi-cmd-mode-string :
-set show-mode-in-prompt on
-set editing-mode vi
 
 # reload init file with C-x C-r
 "\C-x\C-r": re-read-init-file
