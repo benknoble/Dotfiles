@@ -57,3 +57,6 @@
 
 # Python
 --type-add=python:match:/(\.)?pythonrc/
+
+# SML
+--type-set=sml:ext:sml
