@@ -70,7 +70,7 @@ lvim() {
 }
 
 vh() {
-  vim +"help $@"
+  vim +"help $*" +only
 }
 
 vgrep() {
