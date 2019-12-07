@@ -42,7 +42,7 @@ if "$has_brew" ; then
 fi
 
 # go
-[[ -d ~/go/bin ]] && pathadd ~/go/bin
+pathadd ~/go/bin
 
 # git
 git="$(command -v git)"
@@ -66,8 +66,8 @@ pathadd_front_dne() {
 pathadd_front_dne ".git/safe/../../bin"
 
 local_perl_bin=~/perl5/bin
+pathadd "$local_perl_bin"
 if [[ -d "$local_perl_bin" ]]; then
-  pathadd "$local_perl_bin"
   PERL5LIB="/Users/Knoble/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
   export PERL5LIB
   PERL_LOCAL_LIB_ROOT="/Users/Knoble/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"

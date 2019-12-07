@@ -5,9 +5,7 @@ pathadd_front /usr/local/lib/ruby/gems/2.6.0/bin
 pathadd_front /usr/local/opt/ruby/bin
 
 SMLNJ=/usr/local/smlnj/bin
-if [[ -d "$SMLNJ" ]]; then
-  pathadd "$SMLNJ"
-fi
+pathadd "$SMLNJ"
 unset SMLNJ
 
 texpath=/usr/local/texlive/2019

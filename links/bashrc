@@ -134,9 +134,7 @@ if [[ -d ~/.personal ]]; then
     fi
   done
   # add ~/.personal/bin to path
-  if [[ -d ~/.personal/bin ]]; then
-    pathadd "$HOME/.personal/bin"
-  fi
+  pathadd "$HOME/.personal/bin"
 fi
 
 # activate a virtualenv if present (helpful for tmux)
