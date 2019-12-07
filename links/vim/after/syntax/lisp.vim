@@ -9,6 +9,8 @@ if ! has("patch-8.1.1715")
   endif
 endif
 
+syn keyword lispFunc lambda conceal cchar=λ
+
 if ! dracula#should_abort('lisp')
   hi link lispParen DraculaSubtle
 endif
