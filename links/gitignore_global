@@ -44,3 +44,6 @@ venv.bak/
 
 # object files
 *.o
+
+# JS package lock
+package-lock.json
