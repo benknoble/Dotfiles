@@ -34,3 +34,5 @@ augroup Badword
   au!
   au Syntax * for word in get(g:, 'badwords', []) + s:badwords | call s:mark_bad(word) | endfor
 augroup END
+
+command Badsearch call feedkeys('/'.join(get(g:, 'badwords', []) + s:badwords, '\|').'<CR>', 'n')
