@@ -11,6 +11,8 @@ if filereadable(s:personal)
 endif
 " }}}
 
+set guioptions=egM
+
 if !has('packages')
   runtime bundle/pathogen/autoload/pathogen.vim
   execute pathogen#infect()
