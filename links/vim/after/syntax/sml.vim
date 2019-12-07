@@ -28,8 +28,15 @@ if !exists('g:sml_greek_tyvar_show_tick')
     let g:sml_greek_tyvar_show_tick = 0
 endif
 
-" Fix wonky highlighting for => operator
-syn match smlOperator  "=>"
+" these go at the top so they don't mess with the greek type vars
+syn match smlPrime /'/ conceal cchar=′ containedin=smlLCIdentifier
+syn match smlPrime /''/ conceal cchar=″ containedin=smlLCIdentifier
+syn match smlPrime /'''/ conceal cchar=‴ containedin=smlLCIdentifier
+
+syn match smlArrow /=>/ conceal cchar=⇒
+hi def link smlArrow smlOperator
+syn match smlTypeArrow /->/ conceal cchar=→
+hi def link smlTypeArrow smlType
 
 " Highlight type variables (i.e., tokens that look like 'xyz).
 syn match smlType "\<''\?\w\+\>" contains=smlGreekTyvar
@@ -62,20 +69,18 @@ call s:ConcealTyvar('d', 'δ')
 call s:ConcealTyvar('delta', 'δ')
 call s:ConcealTyvar('e', 'ε')
 call s:ConcealTyvar('epsilon', 'ε')
-
+call s:ConcealTyvar('i', 'ι')
+call s:ConcealTyvar('iota', 'ι')
 call s:ConcealTyvar('zeta', 'ζ')
 call s:ConcealTyvar('eta', 'η')
 call s:ConcealTyvar('theta', 'θ')
 call s:ConcealTyvar('kappa', 'κ')
 call s:ConcealTyvar('lambda', 'λ')
-
 call s:ConcealTyvar('m', 'μ')
 call s:ConcealTyvar('mu', 'μ')
 call s:ConcealTyvar('n', 'ν')
 call s:ConcealTyvar('nu', 'ν')
-
 call s:ConcealTyvar('xi', 'ξ')
-
 call s:ConcealTyvar('p', 'π')
 call s:ConcealTyvar('pi', 'π')
 call s:ConcealTyvar('r', 'ρ')
@@ -84,14 +89,11 @@ call s:ConcealTyvar('s', 'σ')
 call s:ConcealTyvar('sigma', 'σ')
 call s:ConcealTyvar('t', 'τ')
 call s:ConcealTyvar('tau', 'τ')
-
 call s:ConcealTyvar('upsilon', 'υ')
 call s:ConcealTyvar('phi', 'ϕ')
 call s:ConcealTyvar('x', 'χ')
 call s:ConcealTyvar('chi', 'χ')
-
 call s:ConcealTyvar('psi', 'ψ')
-
 call s:ConcealTyvar('w', 'ω')
 call s:ConcealTyvar('omega', 'ω')
 
@@ -102,7 +104,8 @@ syn keyword  smlKeyword  do
 
 " Highlight '#' projections (like '#1' or '#foo') as functions
 syn match smlKeyword "\<#\w\+\>"
-
 syn keyword smlKeyword fn conceal cchar=λ
-
 syn match smlLCIdentifier /\<o\>/ conceal cchar=←
+syn keyword smlEmptyList nil conceal cchar=∅
+syn match smlEmptyList /\[\]/ conceal cchar=∅
+hi def link smlEmptyList smlConstructor
