@@ -20,7 +20,7 @@ set keywordprg=:Man
 " Dracula {{{
 if ! exists('g:colors_name')
   let s:italic_default = 0
-  if $TERM ==# 'xterm-256color'
+  if $TERM =~# '\v(xterm|tmux)-256color'
     if has('osx')
       let &t_ZH = "\e[3m"
       let &t_ZR = "\e[23m"
