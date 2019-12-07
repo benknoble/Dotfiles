@@ -24,8 +24,6 @@ let s:badwords = [
       \ 'easy',
       \ ]
 
-let g:badwords = get(g:, 'badwords', []) + s:badwords
-
 hi def link Badword ErrorMsg
 function s:mark_bad(word) abort
   let l:pattern = printf('/\c%s/', a:word)
@@ -34,5 +32,5 @@ endfunction
 
 augroup Badword
   au!
-  au Syntax * for word in g:badwords | call s:mark_bad(word) | endfor
+  au Syntax * for word in get(g:, 'badwords', []) + s:badwords | call s:mark_bad(word) | endfor
 augroup END
