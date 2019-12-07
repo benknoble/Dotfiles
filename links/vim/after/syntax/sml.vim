@@ -104,3 +104,5 @@ syn keyword  smlKeyword  do
 syn match smlKeyword "\<#\w\+\>"
 
 syn keyword smlKeyword fn conceal cchar=λ
+
+syn match smlLCIdentifier /\<o\>/ conceal cchar=←
