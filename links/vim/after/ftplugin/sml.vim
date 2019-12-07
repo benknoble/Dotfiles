@@ -6,6 +6,7 @@ let b:interpreter = 'sml'
 
 setlocal commentstring=(*\ %s\ *)
 setlocal shiftwidth=2 softtabstop=2
+setlocal iskeyword+=',$,#
 
 nnoremap <buffer> <Localleader>l :call sml#load(expand('%'))<CR>
 nnoremap <buffer> <Localleader>L :call sml#load(input('use ', expand('%'), 'file'))<CR>
@@ -15,6 +16,7 @@ let b:undo_ftplugin = ftplugin#undo({
       \   'shiftwidth',
       \   'softtabstop',
       \   'commentstring',
+      \   'iskeyword',
       \ ],
       \ 'vars': [
       \   'b:interpreter',
