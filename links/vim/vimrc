@@ -219,20 +219,14 @@ function! s:set_statusline_colors_to_dracula() abort
   " Override statusline
   hi clear StatusLine
   hi clear StatusLineNc
-  hi StatusLine term=bold cterm=bold ctermfg=61 ctermbg=236
-  hi StatusLineNC ctermfg=61 ctermbg=236
+  hi link StatusLine DraculaComment
+  hi link StatusLineNC DraculaSubtle
 
-  " Dracula colors
-  " Green
-  hi User1 cterm=bold ctermfg=84 ctermbg=236
-  " Purple
-  hi User2 cterm=bold ctermfg=141 ctermbg=236
-  " Cyan
-  hi User3 cterm=bold ctermfg=117 ctermbg=236
-  " Red
-  hi User4 cterm=bold ctermfg=203 ctermbg=236
-  " Orange
-  hi User5 cterm=bold ctermfg=215 ctermbg=236
+  hi link User1 DraculaGreen
+  hi link User2 DraculaPurple
+  hi link User3 DraculaCyan
+  hi link User4 DraculaRed
+  hi link User5 DraculaOrange
 endfunction
 
 if has('autocmd')
