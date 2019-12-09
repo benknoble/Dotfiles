@@ -40,6 +40,8 @@ set colored-completion-prefix on
 set show-all-if-ambiguous off
 set show-all-if-unmodified on
 
+set menu-complete-display-prefix on
+
 Control-a: complete
 TAB: menu-complete
 "\e[Z": menu-complete-backward
