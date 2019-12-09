@@ -47,3 +47,6 @@ venv.bak/
 
 # JS package lock
 package-lock.json
+
+# SML CM cache
+.cm/
