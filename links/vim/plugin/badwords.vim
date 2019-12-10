@@ -13,15 +13,15 @@ let g:loaded_badwords = 1
 " However,
 " easy
 let s:badwords = [
-      \ 'obvious\(ly\)\?',
-      \ 'basic\(ally\)\?',
-      \ 'simpl\(e\|y\)',
-      \ 'of course',
-      \ 'clear\(ly\)\?',
-      \ 'just',
-      \ 'everyone knows',
-      \ 'However,',
-      \ 'easy',
+      \ '\<obvious\(ly\)\?\>',
+      \ '\<basic\(ally\)\?\>',
+      \ '\<simpl\(e\|y\)\>',
+      \ '\<of course\>',
+      \ '\<clear\(ly\)\?\>',
+      \ '\<just\>',
+      \ '\<everyone knows\>',
+      \ '\<However\>,',
+      \ '\<easy\>',
       \ ]
 
 hi def link Badword ErrorMsg
