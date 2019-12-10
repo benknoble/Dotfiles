@@ -12,6 +12,7 @@ let g:loaded_badwords = 1
 " everyone knows
 " However,
 " easy
+" utilize utilized utilization utilizes
 let s:badwords = [
       \ '\<obvious\(ly\)\?\>',
       \ '\<basic\(ally\)\?\>',
@@ -22,6 +23,7 @@ let s:badwords = [
       \ '\<everyone knows\>',
       \ '\<However\>,',
       \ '\<easy\>',
+      \ '\<utiliz\(e\w\?\|ation\)\>',
       \ ]
 
 hi def link Badword ErrorMsg
