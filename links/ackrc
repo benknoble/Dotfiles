@@ -60,3 +60,4 @@
 
 # SML
 --type-set=sml:ext:sml
+--ignore-dir=.cm
