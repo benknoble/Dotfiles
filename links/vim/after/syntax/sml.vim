@@ -103,7 +103,7 @@ syn keyword  smlKeyword  rec lazy as
 syn keyword  smlKeyword  do
 
 " Highlight '#' projections (like '#1' or '#foo') as functions
-syn match smlKeyword "\<#\w\+\>"
+syn match smlKeyword "\<#\k\+\>"
 syn keyword smlKeyword fn conceal cchar=λ
 syn match smlLCIdentifier /\<o\>/ conceal cchar=←
 syn keyword smlEmptyList nil conceal cchar=∅
