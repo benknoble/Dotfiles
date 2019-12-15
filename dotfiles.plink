@@ -103,6 +103,7 @@ LINKS = links/
 .jupyter <= jupyter
 .newsboat <= newsboat
 .pythonrc <= pythonrc
+.swiplrc <= swiplrc
 .tmplr <= tmplr
 .tmux.conf <= tmux.conf
 .vim <= vim
