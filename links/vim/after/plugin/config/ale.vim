@@ -17,3 +17,8 @@ if has('osx') || has('mac')
         \ 'c': [ 'gcc' ],
         \ }
 endif
+
+" lengthen prolog timeout
+let g:ale_prolog_swipl_timeout = 10
+" no sandboxing
+let g:ale_prolog_swipl_load = 'current_prolog_flag(argv, [File]), load_files(File, [sandboxed(false)]), halt.'
