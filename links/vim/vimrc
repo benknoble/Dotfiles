@@ -275,5 +275,15 @@ if has('autocmd')
   let g:scala_scaladoc_indent = 1
   " no indent for applescripts that don't need it
   let g:applescript_default_indent = 0
+  augroup vimrc_bash_fc
+    au!
+    " bash's edit-and-execute-command (which probably leans on the fc mechanism)
+    " produces lots of temp files that we don't need undo files for; they are
+    " clutter
+    "
+    " see the following link for filename specifics
+    " http://git.savannah.gnu.org/cgit/bash.git/tree/builtins/fc.def?h=bash-4.4-rc2#n394
+    au BufNewFile,BufReadPre *bash-fc* setlocal noundofile
+  augroup END
 endif
 " }}}
