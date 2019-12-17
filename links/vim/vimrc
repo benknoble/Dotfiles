@@ -3,6 +3,7 @@ if &compatible
 endif
 
 set encoding=utf-8
+scriptencoding utf-8
 
 " Personal config {{{
 let s:personal=expand('~/.personal/vimrc')
