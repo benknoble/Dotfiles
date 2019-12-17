@@ -1,7 +1,11 @@
 " TODO consider a range instead?
 function! fold#Fold(text, bang) abort
   let l:comment_format =
-        \ substitute(&commentstring, '\zs[^\s]\ze%s', '\=submatch(0)." "', '')
+        \ substitute(
+        \ substitute(&commentstring, '\zs[^\s]\ze%s', '\=submatch(0)." "', ''),
+        \ '%\ze[^s]',
+        \ '%%',
+        \ '')
   let l:commented_text = printf(l:comment_format, a:text)
   let l:open_fold = commented_text . ' {{{'
   let l:close_fold = commented_text . ' }}}'
