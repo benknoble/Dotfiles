@@ -26,4 +26,4 @@ if [[ -d "$texpath" ]]; then
 fi
 unset texpath
 
-pathadd_front /Applications/MacVim.app/Contents/bin
+pathadd /Applications/MacVim.app/Contents/bin
