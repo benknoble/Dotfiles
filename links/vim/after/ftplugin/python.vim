@@ -3,7 +3,7 @@
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 let python_highlight_all = 1
-let b:interpreter = 'python'
+let b:interpreter = 'python3'
 
 setlocal textwidth=79
 
