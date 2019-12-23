@@ -20,7 +20,7 @@ frequency() {
 # input: data count
 histogram() {
   awk '{
-    printf "%d\t", $1
+    printf "%s\t", $1
     for(i = 0; i < int($2); i++)
         printf "*"
     printf "\n"
