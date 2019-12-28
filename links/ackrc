@@ -27,6 +27,7 @@
 --ignore-dir=ext:egg-info
 --ignore-dir=build
 --ignore-dir=dist
+--ignore-dir=.mypy_cache
 
 ### File Types
 
