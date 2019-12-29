@@ -173,7 +173,7 @@ set showmode
 set laststatus=2
 
 function! Head() abort
-  let l:head = substitute(expand('%:h'), $HOME, '~', '')
+  let l:head = substitute(simplify(expand('%:h')), $HOME, '~', '')
   if l:head != ''
     let l:head .= '/'
   endif
