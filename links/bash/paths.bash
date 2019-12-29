@@ -1,5 +1,16 @@
 # Print path separated by newlines
-displayPath () { echo "${PATH//:/$'\n'}" ; }
+pathprint () {
+  if (($# == 0)); then
+    set -- PATH
+  fi
+  for path; do
+    if [[ "$path" != PATH ]]; then
+      path+=PATH
+    fi
+    echo "$path"
+    echo "${!path//:/$'\n'}"
+  done
+}
 
 _pathdebug() {
   if [[ -n "$pathdebug" ]]; then
