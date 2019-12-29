@@ -16,7 +16,12 @@ if [[ -d "$texpath" ]]; then
     local prepend="$2"
     case "$path" in
       *"$prepend"* ) true ;;
-      * ) eval export "$type=$prepend:$path" ;;
+      * )
+        if [[ "$type" = PATH ]]; then
+          _pathdebug "$prepend"
+        fi
+        eval export "$type=$prepend:$path"
+        ;;
     esac
   }
   tex_path_fix MANPATH "$texpath"/texmf-dist/doc/man

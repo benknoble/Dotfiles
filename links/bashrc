@@ -104,6 +104,9 @@ comp_prefix="${brew_prefix:-/usr/local/}"
 bashcomp="$comp_prefix"/share/bash-completion/bash_completion
 completion_dir="$comp_prefix"/etc/bash_completion.d
 
+# debugging paths added via pathadd
+pathdebug=
+
 # personal }}}
 
 # VARS }}}

@@ -1,16 +1,30 @@
 # Print path separated by newlines
 displayPath () { echo "${PATH//:/$'\n'}" ; }
 
+_pathdebug() {
+  if [[ -n "$pathdebug" ]]; then
+    # find the file which is our caller's caller
+    local source="${BASH_SOURCE[2]}"
+    if [[ -z "$source" ]]; then
+      # we were called from interactive
+      source=interactive
+    fi
+    printf 'PATH DEBUG:\t%s\t(%s)\n' "$source" "$1" >&2
+  fi
+}
+
 # add to path
 pathadd() {
   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
     PATH="${PATH:+"$PATH:"}$1"
+    _pathdebug "$1"
   fi
 }
 
 pathadd_front() {
   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
     PATH="$1:$PATH"
+    _pathdebug "$1"
   fi
 }
 
@@ -38,7 +52,12 @@ if "$has_brew" ; then
     local prepend="$2"
     case "$path" in
       "$prepend"* ) true ;;
-      * ) eval export "$type=$prepend:$path" ;;
+      * )
+        eval export "$type=$prepend:$path"
+        if [[ "$type" = PATH ]]; then
+          _pathdebug "$prepend"
+        fi
+        ;;
     esac
   }
   # first clear manpath on macs
@@ -57,7 +76,7 @@ git="$(command -v git)"
 prefix=${git//bin*/}
 contrib=${prefix}/share/git-core/contrib
 gitjump=${contrib}/git-jump
-if [[ -d "$gitjump" ]] && [[ -x "$gitjump"/git-jump ]]; then
+if [[ -x "$gitjump"/git-jump ]]; then
   pathadd "$gitjump"
 fi
 
@@ -69,6 +88,7 @@ unset gitjump
 pathadd_front_dne() {
   if [[ ":$PATH:" != *":$1:"* ]]; then
     PATH="$1:$PATH"
+    _pathdebug "$1"
   fi
 }
 pathadd_front_dne ".git/safe/../../bin"
