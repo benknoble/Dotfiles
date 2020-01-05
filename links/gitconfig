@@ -7,7 +7,7 @@
 	ca = commit --all
 	cc = commit
 	ce = config --edit
-	cm = commit -m
+	cm = commit --message
 	co = checkout
 	conflict = log --oneline --left-right --merge
 	ctags = !.git/hooks/ctags
@@ -19,7 +19,7 @@
 	graph-long = log --graph
 	h = help
 	ig = check-ignore
-	igv = !git ig -v
+	igv = !git ig --verbose
 	intend = add --intent-to-add
 	last = log -1 HEAD
 	logp = log --graph --abbrev-commit --pretty=mine
@@ -30,13 +30,13 @@
 	newb = checkout -b
 	patch = add --patch
 	rems = for-each-ref --sort=-committerdate --format=\"%(refname:short)\t%(color:red)%(authorname)\t%(color:blue)%(authordate:relative)%(color:reset)\" refs/remotes
-	riu = rebase -i @{u}
-	s = status -s
+	riu = rebase --interactive HEAD@{upstream}
+	s = status --short
 	sb = show-branch
-	sbu = !git sb @ @{u}
+	sbu = !git sb HEAD HEAD@{upstream}
 	sdiff = !git diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
-	sr = status -sb
+	sr = status --short --branch
 	standup = !git log --author=$USER --since=yesterday --all --format=%s
 	stat = status
 	supdate = submodule update --remote --checkout
