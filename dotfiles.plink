@@ -25,7 +25,7 @@ vimtags ! vim +':helptags ALL' +'q'
 brewfile ! brew bundle dump --force --file="$(BREWFILE)"
 
 # compile-terminfo: compile terminfo files
-compile-terminfo  !  for t in terminfo/*.terminfo ; do tic -x "$$t" ; done
+compile-terminfo ! for t in terminfo/*.terminfo ; do tic -x "$$t" ; done
 
 # submodules: fixup any issues with submodules
 submodules !!
