@@ -40,6 +40,8 @@
 	standup = !git log --author=$USER --since=yesterday --all --format=%s
 	stat = status
 	supdate = submodule update --remote --checkout
+	tags = tag --list
+	tagss = "!f() { git tags \"$@\" | xargs git show; }; f"
 	unstage = reset HEAD --
 	visual = !gitk --all &
 [merge]
