@@ -52,7 +52,5 @@ nnoremap <Leader>? ?\v
 
 " Jump to lines with word
 nnoremap <Leader>f :call find#included_word()<CR>
-" Unhighlight last search
-nnoremap <Leader>h :nohlsearch<CR>
 
 nnoremap <expr> <Leader>r exists(':Reload') ? ':Reload<CR>' : ''
