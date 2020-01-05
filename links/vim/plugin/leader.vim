@@ -53,4 +53,8 @@ nnoremap <Leader>? ?\v
 " Jump to lines with word
 nnoremap <Leader>f :call find#included_word()<CR>
 
+" Search with global
+" Part of me wants to map / and ? to this
+nnoremap <Leader>g :global //#<Left><Left>
+
 nnoremap <expr> <Leader>r exists(':Reload') ? ':Reload<CR>' : ''
