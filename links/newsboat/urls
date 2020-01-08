@@ -40,5 +40,6 @@ https://blog.benjojo.co.uk/rss.xml "tech"
 https://benknoble.github.io/feed.xml "benknoble" "tech"
 https://benknoble.github.io/feed/writings.xml "benknoble" "fiction" "essay"
 
+https://comp580sp20.cs.unc.edu/feeds/all.atom.xml "unc" "class"
 # Queries
 # "query:Unread Articles:unread = \"yes\""
