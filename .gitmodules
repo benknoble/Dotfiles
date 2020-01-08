@@ -125,3 +125,6 @@
 [submodule "links/vim/pack/interface/start/cool-hlsearch"]
 	path = links/vim/pack/interface/start/cool-hlsearch
 	url = https://github.com/romainl/vim-cool.git
+[submodule "links/vim/pack/languages/start/classpath"]
+	path = links/vim/pack/languages/start/classpath
+	url = https://github.com/tpope/vim-classpath
