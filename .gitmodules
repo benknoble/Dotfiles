@@ -124,4 +124,4 @@
 	url = https://github.com/tpope/vim-pathogen
 [submodule "links/vim/pack/interface/start/cool-hlsearch"]
 	path = links/vim/pack/interface/start/cool-hlsearch
-	url = git://github.com/romainl/vim-cool.git
+	url = https://github.com/romainl/vim-cool.git
