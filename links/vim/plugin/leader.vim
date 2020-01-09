@@ -41,11 +41,6 @@ nnoremap <Leader>v :vsplit $MYVIMRC<CR>
 " Trigger the command line window
 nnoremap <Leader>; q:
 
-" Terms and interpreters
-" set b:interpreter for filetypes to affect the term
-nnoremap <Leader>t :call terminal#run('++close')<CR>
-nnoremap <Leader>T :call terminal#run()<CR>
-
 " Search very magically
 nnoremap <Leader>/ /\v
 nnoremap <Leader>? ?\v

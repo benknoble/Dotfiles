@@ -10,9 +10,6 @@ setlocal iskeyword+=',$,#
 
 let b:match_words = '\<let\>:\<in\>:\<end\>'
 
-nnoremap <buffer> <Localleader>l :call sml#load(expand('%'))<CR>
-nnoremap <buffer> <Localleader>L :call sml#load(input('use ', expand('%'), 'file'))<CR>
-
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'shiftwidth',
@@ -22,9 +19,5 @@ let b:undo_ftplugin = ftplugin#undo({
       \ ],
       \ 'vars': [
       \   'b:interpreter',
-      \ ],
-      \ 'maps': [
-      \   [ 'n', '<Localleader>l' ],
-      \   [ 'n', '<Localleader>L' ],
       \ ],
       \ })
