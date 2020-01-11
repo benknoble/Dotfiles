@@ -50,3 +50,6 @@ package-lock.json
 
 # SML CM cache
 .cm/
+
+# Clojure classpath cache
+.cpcache/
