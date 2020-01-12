@@ -52,10 +52,8 @@ extract () {
 up() {
   local count="${1:-1}"
   local path=../
-  (( count-- ))
-  while (( count > 0 )) ; do
+  while (( --count > 0 )) ; do
     path="$path"../
-    (( count-- ))
   done
   echo "cd -- $path"
   cd -- "$path"
