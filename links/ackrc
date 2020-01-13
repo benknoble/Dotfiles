@@ -31,9 +31,6 @@
 
 ### File Types
 
-# Markdown
---type-set=md:ext:md,markdown,mkd
-
 # Vim
 --type-add=vim:match:/(\.|g)?vimrc/
 
