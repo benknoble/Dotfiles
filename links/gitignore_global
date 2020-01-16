@@ -53,3 +53,5 @@ package-lock.json
 
 # Clojure classpath cache
 .cpcache/
+# clj-kondo (linter) stuff
+.clj-kondo/
