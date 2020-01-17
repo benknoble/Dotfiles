@@ -1,5 +1,9 @@
 " taken from https://gist.github.com/george-b/2f842efaf2141cb935a81f6174b6401f
 
+if !exists('#CmdlineLeave')
+  finish
+endif
+
 let s:has_replied = v:false
 
 function s:feedkeys(str) abort
