@@ -195,15 +195,15 @@ endfunction
 function! s:status_line(verbosity) abort
   set statusline=
   if a:verbosity ==# 'long'
-    set statusline+=%(%{Head()}%1*%t%*\ %)
+    set statusline+=%([%{Head()}%1*%t%*]%)
   elseif a:verbosity ==# 'short'
-    set statusline+=%(%1*%t%*\ %)
+    set statusline+=%([%1*%t%*]%)
   endif
   if a:verbosity ==# 'long'
     set statusline+=%5*%(%m%r%w%h%)%*
   endif
   set statusline+=%2*%(%y%)%*
-  set statusline+=%2*%(%{exists('*FugitiveHead')?'\ '.FugitiveHead():''}%)%*
+  set statusline+=%2*%([%{exists('*FugitiveHead')?FugitiveHead():''}]%)%*
   set statusline+=%=%<
   if a:verbosity ==# 'long'
     set statusline+=%([%3*%l%*/%LL,%3*%c%*,%p%%]%)
