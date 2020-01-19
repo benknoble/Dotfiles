@@ -1,0 +1,38 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+USAGE='[-h]
+
+Show commits touched by the current diffs
+(does not include deleted lines)'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+changed_lines() {
+  while read -r -d '' file ; do
+    git blame "$file" \
+      | awk '$1 ~ /^0*$/ {printf "%d %s\n", NR,'" \"$file\"}"
+  done < <(git diff --name-only -z)
+}
+
+touched_commits() {
+  changed_lines \
+    | awk '{printf "log -1 -L%d,+1:%s --pretty=format:%%H%%n --no-patch\n", $1, $2}' \
+    | 2>/dev/null xargs -L1 git \
+    | sort | uniq
+}
+
+main() {
+  touched_commits
+}
+
+main "$@"
