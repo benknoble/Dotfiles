@@ -7,6 +7,7 @@
 	ca = commit --all
 	cc = commit
 	ce = config --edit
+	changed = diff --name-only
 	cm = commit --message
 	co = checkout
 	conflict = log --oneline --left-right --merge
