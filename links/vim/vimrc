@@ -259,6 +259,7 @@ if &t_Co > 2 || has("gui_running")
         \ 'python',
         \ 'c',
         \ 'vim',
+        \ 'clojure',
         \ ]
   " Do NOT highlight javadoc specially: it is distracting
   let java_ignore_javadoc = 1
