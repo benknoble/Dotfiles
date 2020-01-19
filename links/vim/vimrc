@@ -202,8 +202,8 @@ function! s:status_line(verbosity) abort
   if a:verbosity ==# 'long'
     set statusline+=%5*%(%m%r%w%h%)%*
   endif
-  set statusline+=%2*%(%y%)%*
-  set statusline+=%2*%([%{exists('*FugitiveHead')?FugitiveHead():''}]%)%*
+  set statusline+=%(%y%)
+  set statusline+=%([%{exists('*FugitiveHead')?FugitiveHead():''}]%)
   set statusline+=%=%<
   if a:verbosity ==# 'long'
     set statusline+=%([%3*%l%*/%LL,%3*%c%*,%p%%]%)
