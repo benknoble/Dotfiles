@@ -7,8 +7,12 @@ let b:interpreter = 'clj'
 nmap <buffer> <Localleader>qe ysiebaquote <Esc>:silent! call repeat#set("\<Localleader>qe", -1)<CR>
 nmap <buffer> <Localleader>qf ysafbaquote <Esc>:silent! call repeat#set("\<Localleader>qf", -1)<CR>
 
+setlocal lispwords+=->
+setlocal lispwords+=->>
+
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
+      \   'lispwords',
       \ ],
       \ 'vars': [
       \   'b:interpreter',
