@@ -199,9 +199,7 @@ function! s:status_line(verbosity) abort
   elseif a:verbosity ==# 'short'
     set statusline+=%([%1*%t%*]%)
   endif
-  if a:verbosity ==# 'long'
-    set statusline+=%5*%(%m%r%w%h%)%*
-  endif
+  set statusline+=%5*%(%m%r%w%h%)%*
   set statusline+=%(%y%)
   set statusline+=%([%{exists('*FugitiveHead')?FugitiveHead():''}]%)
   set statusline+=%=%<
@@ -220,7 +218,7 @@ endfunction
 command SLLong call s:status_line('long')
 command SLShort call s:status_line('short')
 
-SLLong
+SLShort
 
 function! s:set_statusline_colors_to_dracula() abort
   " Override statusline
