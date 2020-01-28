@@ -93,6 +93,7 @@ LINKS = links/
 .bashrc <= bashrc
 .bin <= bin
 .clisprc.lisp <= clisprc.lisp
+.clojure <= clojure
 .ctags.d <= ctags.d
 .gdbinit <= gdbinit
 .git_template <= git_template

@@ -128,3 +128,6 @@
 [submodule "links/vim/pack/languages/start/classpath"]
 	path = links/vim/pack/languages/start/classpath
 	url = https://github.com/tpope/vim-classpath
+[submodule "links/vim/pack/languages/start/clojure-fireplace"]
+	path = links/vim/pack/languages/start/clojure-fireplace
+	url = https://github.com/tpope/vim-fireplace

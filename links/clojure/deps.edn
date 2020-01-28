@@ -1,0 +1,31 @@
+{:aliases
+ {:runner
+  {:extra-paths ["test"]
+   :extra-deps {com.cognitect/test-runner
+                {:git/url "https://github.com/cognitect-labs/test-runner.git"
+                 :sha "209b64504cb3bd3b99ecfec7937b358a879f55c1"}}
+   :main-opts ["-m" "cognitect.test-runner"]}
+
+  :srepl
+  {:jvm-opts ["-Dclojure.server.repl={:port,5555,:accept,clojure.core.server/repl}"]}
+
+  :prepl
+  {:jvm-opts ["-Dclojure.server.repl={:port,5555,:accept,clojure.core.server/io-prepl}"]}
+
+  :rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "RELEASE"}}
+          :main-opts ["-m" "rebel-readline.main"]}
+
+  :nrepl {:extra-deps {nrepl {:mvn/version "RELEASE"}}
+          :main-opts ["-m" "nrepl.cmdline"]}
+
+  :cider
+  {:extra-deps {cider/cider-nrepl {:mvn/version "RELEASE"}}
+   :main-opts ["-m" "nrepl.cmdline"
+               "--middleware" "[cider.nrepl/cider-middleware]"]}
+
+  :ciders
+  {:extra-deps {org.clojure/clojurescript {:mvn/version "RELEASE"}
+                cider/cider-nrepl {:mvn/version "RELEASE"}
+                cider/piggieback {:mvn/version "RELEASE"}}
+   :main-opts ["-m" "nrepl.cmdline"
+               "--middleware" "[cider.nrepl/cider-middleware,cider.piggieback/wrap-cljs-repl]"]}}}
