@@ -1,0 +1,62 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+usage() {
+  cat <<DOG
+usage: $0 [-l localport] [-p remoteport] server [host]
+
+Establish a tunnel from localport (8080) to remoteport (80) on server. Connect
+to host (server).
+DOG
+}
+
+die() {
+  local ex="${1:-1}"
+  exit "$ex"
+}
+
+usage_and_die() { usage && die; }
+
+
+main() {
+  if (($# == 0)); then
+    usage_and_die
+  fi
+
+  local lport=8080
+  local rport=80
+  local server
+  local host
+
+  while getopts 'l:p:' opt ; do
+    case "$opt" in
+      l) lport="$OPTARG" ;;
+      p) rport="$OPTARG" ;;
+      ?) usage_and_die ;;
+    esac
+  done
+
+  shift $((OPTIND - 1))
+
+  case $# in
+    1) server="$1" ; host="$server" ;;
+    2) server="$1" ; host="$2" ;;
+    *) usage_and_die ;;
+  esac
+
+  local cmd=(
+    ssh
+    -L
+    "$lport:$server:$rport"
+    "$host"
+  )
+  echo "${cmd[@]}" >&2
+  "${cmd[@]}"
+}
+
+main "$@"
