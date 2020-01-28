@@ -1,2 +1,5 @@
 {:key-map :viins
+ :key-bindings
+ {:viins
+  [["^J" :clojure-force-accept-line]]}
  :color-theme :dark-screen-theme}
