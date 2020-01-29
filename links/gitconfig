@@ -11,6 +11,7 @@
 	cm = commit --message
 	co = checkout
 	conflict = log --oneline --left-right --merge
+	cp = cherry-pick
 	ctags = !.git/hooks/ctags
 	d = diff
 	g = !exec git
