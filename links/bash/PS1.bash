@@ -108,7 +108,7 @@ _show_tty="$_value_off"
 _show_shell_name="$_value_off"
 _show_time="$_value_off"
 _show_dir="$_value_on"
-_show_history="$_value_on"
+_show_history="$_value_off"
 _show_venv="$_value_on"
 
 # display functions
