@@ -182,21 +182,17 @@ _venv_prompt() {
 
 _build_PS1() {
   _exit="$?"
-  local highlight
-  local exit_sym
+  local highlight="$BGreen"
   local newline=$'\n'
-  # local prompt='\$ '
-  local prompt='λ '
+  local pchar='λ'
 
-  if [[ "$_exit" = "0" ]]; then
-    highlight="$BGreen"
-    exit_sym='✓'
-  else
+  if (( _exit != 0 )); then
     highlight="$BRed"
-    exit_sym="✗ $_exit"
+    pchar="✗ $_exit $pchar"
   fi
+  local prompt="$CS$highlight$CE$pchar $CS$NC$CE"
 
-  PS1="$(_venv_prompt)$CS$BBlue$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BYellow$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline$prompt"
+  PS1="$(_venv_prompt)$CS$BBlue$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BYellow$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline$prompt"
 }
 
 # vim: tw=0
