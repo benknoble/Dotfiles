@@ -94,6 +94,7 @@ LINKS = links/
 .bin <= bin
 .clisprc.lisp <= clisprc.lisp
 .clojure <= clojure
+.config/pycodestyle <= config/pycodestyle
 .ctags.d <= ctags.d
 .gdbinit <= gdbinit
 .git_template <= git_template

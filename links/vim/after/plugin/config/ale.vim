@@ -30,5 +30,3 @@ let g:ale_prolog_swipl_load = 'current_prolog_flag(argv, [File]), load_files(Fil
 " keep python files limited in line length (88 is too much)
 " see ~/.vim/after/ftplugin/python.vim
 let g:ale_python_black_options = '--line-length 79'
-" E203 is not pep8 compliant anyway
-let g:ale_python_pycodestyle_options = '--ignore=E203'
