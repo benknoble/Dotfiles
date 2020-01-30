@@ -57,6 +57,7 @@
 	submodule = log
 	tool = vimdiff
 	colorMoved = default
+	mnemonicprefix = true
 [status]
 	submodulesummary = 1
 	showstash = true
