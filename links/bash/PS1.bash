@@ -131,7 +131,9 @@ _user_prompt() {
 
 _jobs_prompt() {
   if [[ "$_show_jobs" = "$_value_on" ]]; then
-    echo '{\jj} '
+    if (($(jobs | wc -l) > 0)); then
+      echo '\j& '
+    fi
   fi
 }
 
@@ -194,7 +196,7 @@ _build_PS1() {
     exit_sym="✗ $_exit"
   fi
 
-  PS1="$(_venv_prompt)$CS$Yellow$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BGreen$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline$prompt"
+  PS1="$(_venv_prompt)$CS$BBlue$CE$(_time_prompt)$(_date_prompt)$CS$NC$CE$CS$BYellow$CE$(_jobs_prompt)$CS$NC$CE$CS$BMagenta$CE$(_history_prompt)$CS$NC$CE$CS$highlight$CE$exit_sym$CS$NC$CE $CS$Green$CE$(_tty_prompt)$(_shell_name_prompt)$CS$NC$CE$(_user_prompt)$CS$BCyan$CE$(_dir_prompt)$CS$NC$CE$CS$BYellow$CE\$("$__gps1")$CS$NC$CE$newline$prompt"
 }
 
 # vim: tw=0
