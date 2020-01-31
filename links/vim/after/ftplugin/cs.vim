@@ -17,7 +17,8 @@ nnoremap <buffer> <localleader>* :OmniSharpFindUsages<CR>
 nnoremap <buffer> <localleader>m :OmniSharpFindMembers<CR>
 
 setlocal keywordprg=:OmniSharpDocumentation
-setlocal equalprg=:OmniSharpCodeFormat
+
+nnoremap <buffer> = :OmniSharpCodeFormat<CR>
 
 nnoremap <buffer> <localleader>t :OmniSharpRunTestsInFile<CR>
 nnoremap <buffer> <localleader>a :OmniSharpGetCodeActions<CR>
@@ -27,13 +28,13 @@ let b:interpreter = 'csharp'
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'keywordprg',
-      \   'equalprg',
       \ ],
       \ 'maps': [
       \   '<localleader>*',
       \   '<localleader>a',
       \   '<localleader>m',
       \   '<localleader>t',
+      \   '=',
       \   '[<C-d>',
       \   '[<C-i>',
       \   '[d',
