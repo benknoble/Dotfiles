@@ -49,6 +49,8 @@ let b:undo_ftplugin = ftplugin#undo({
       \   [ 'o', 'i#1' ],
       \   [ 'o', 'i#2' ],
       \   [ 'o', 'i#3' ],
+      \   [ 'x', '<LocalLeader>h'],
+      \   [ 'n', '<LocalLeader>h'],
       \ ],
       \ 'vars': [
       \   'g:markdown_folding',
