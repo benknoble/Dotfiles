@@ -18,7 +18,7 @@ nnoremap <buffer> <localleader>m :OmniSharpFindMembers<CR>
 
 setlocal keywordprg=:OmniSharpDocumentation
 
-nnoremap <buffer> = :OmniSharpCodeFormat<CR>
+nnoremap <buffer> == :OmniSharpCodeFormat<CR>
 
 nnoremap <buffer> <localleader>t :OmniSharpRunTestsInFile<CR>
 nnoremap <buffer> <localleader>a :OmniSharpGetCodeActions<CR>
@@ -34,7 +34,7 @@ let b:undo_ftplugin = ftplugin#undo({
       \   '<localleader>a',
       \   '<localleader>m',
       \   '<localleader>t',
-      \   '=',
+      \   '==',
       \   '[<C-d>',
       \   '[<C-i>',
       \   '[d',
