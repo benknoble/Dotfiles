@@ -12,10 +12,12 @@ inoremap <buffer> <expr> o lisp#at_start_of_form() ? 'comp' : 'o'
 
 setlocal lispwords+=->
 setlocal lispwords+=->>
+setlocal foldmethod=syntax
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'lispwords',
+      \   'foldmethod',
       \ ],
       \ 'vars': [
       \   'b:interpreter',
