@@ -5,5 +5,5 @@ let g:loaded_reload = 1
 
 " Reload vimrc
 if !exists(":Reload")
-  command -bar Reload source $MYVIMRC
+  command -bar Reload source $MYVIMRC <Bar> nohlsearch
 endif
