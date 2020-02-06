@@ -59,3 +59,6 @@
 # SML
 --type-set=sml:ext:sml
 --ignore-dir=.cm
+
+# Clojure
+--ignore-dir=.cpcache
