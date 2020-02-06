@@ -13,7 +13,8 @@
   {:jvm-opts ["-Dclojure.server.repl={:port,5555,:accept,clojure.core.server/io-prepl}"]}
 
   :rebel {:extra-deps {com.bhauman/rebel-readline {:mvn/version "RELEASE"}}
-          :main-opts ["-m" "rebel-readline.main"]}
+          :main-opts ["-e" "(use,'clojure.repl)"
+                      "-m" "rebel-readline.main"]}
 
   :nrepl {:extra-deps {nrepl {:mvn/version "RELEASE"}}
           :main-opts ["-m" "nrepl.cmdline"]}
