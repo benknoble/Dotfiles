@@ -106,3 +106,5 @@
 [grep]
 	lineNumber = true
 	column = true
+[submodule]
+	fetchJobs = 4
