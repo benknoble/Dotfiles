@@ -102,6 +102,7 @@ LINKS = links/
 .gitignore_global <= gitignore_global
 .gitshrc <= gitshrc
 .inputrc <= inputrc
+.irbrc <= irbrc
 .jupyter <= jupyter
 .newsboat <= newsboat
 .pythonrc <= pythonrc
