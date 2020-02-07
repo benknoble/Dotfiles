@@ -3,6 +3,9 @@
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 let b:interpreter = 'irb'
+if executable('pry')
+  let b:interpreter = 'pry'
+endif
 
 " Wrap at 80 characters
 setlocal textwidth=80
