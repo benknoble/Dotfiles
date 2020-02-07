@@ -17,6 +17,16 @@ let g:ft_man_open_mode='vert'
 set keywordprg=:Man
 " End Man }}}
 
+" Executables {{{
+if executable('tmplr')
+  packadd tmplr
+endif
+
+if executable('scala')
+  packadd scala
+endif
+" Executables }}}
+
 " Dracula {{{
 if ! exists('g:colors_name')
   let s:italic_default = 0
