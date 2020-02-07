@@ -18,5 +18,6 @@ jobs:
         with:
           ruby-version: 2.6.x
       - run: |
+          test -d ~/.config || mkdir ~/.config
           ./dotfiles.plink
           make install
