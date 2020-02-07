@@ -17,7 +17,7 @@
 	path = links/vim/pack/utility/start/clam
 	url = https://github.com/sjl/clam.vim.git
 [submodule "vim/bundle/vim-go"]
-	path = links/vim/pack/languages/start/go
+	path = links/vim/pack/languages/opt/go
 	url = https://github.com/fatih/vim-go.git
 [submodule "Dracula/terminal-app"]
 	path = Dracula/terminal-app
@@ -39,10 +39,10 @@
 	path = links/vim/pack/utility/start/indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
 [submodule "vim/bundle/ack-vim"]
-	path = links/vim/pack/utility/start/ack
+	path = links/vim/pack/utility/opt/ack
 	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/bundle/vim-tmux"]
-	path = links/vim/pack/languages/start/tmux
+	path = links/vim/pack/languages/opt/tmux
 	url = https://github.com/tmux-plugins/vim-tmux.git
 [submodule "vim/bundle/colorizer"]
 	path = links/vim/pack/interface/start/colorizer
@@ -75,7 +75,7 @@
 	path = links/vim/pack/utility/start/repeat
 	url = https://github.com/tpope/vim-repeat.git
 [submodule "links/vim/pack/utility/start/tbone"]
-	path = links/vim/pack/utility/start/tbone
+	path = links/vim/pack/languages/opt/tmux-tbone
 	url = https://github.com/tpope/vim-tbone.git
 [submodule "links/vim/pack/utility/start/eunuch"]
 	path = links/vim/pack/utility/start/eunuch
@@ -84,13 +84,13 @@
 	path = links/vim/pack/utility/start/presenting
 	url = https://github.com/sotte/presenting.vim
 [submodule "links/vim/pack/languages/start/puppet"]
-	path = links/vim/pack/languages/start/puppet
+	path = links/vim/pack/languages/opt/puppet
 	url = https://github.com/puppetlabs/puppet-syntax-vim
 [submodule "links/vim/pack/languages/start/docker"]
-	path = links/vim/pack/languages/start/docker
+	path = links/vim/pack/languages/opt/docker
 	url = https://github.com/ekalinin/Dockerfile.vim.git
 [submodule "links/vim/pack/utility/start/heroku"]
-	path = links/vim/pack/utility/start/heroku
+	path = links/vim/pack/utility/opt/heroku
 	url = https://github.com/tpope/vim-heroku.git
 [submodule "links/vim/pack/utility/start/obsession"]
 	path = links/vim/pack/utility/start/obsession
@@ -102,10 +102,10 @@
 	path = links/vim/pack/languages/start/js
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "links/vim/pack/utility/start/scriptease"]
-	path = links/vim/pack/utility/start/scriptease
+	path = links/vim/pack/languages/start/vim-scriptease
 	url = https://github.com/tpope/vim-scriptease.git
 [submodule "links/vim/pack/languages/start/applescript"]
-	path = links/vim/pack/languages/start/applescript
+	path = links/vim/pack/languages/opt/applescript
 	url = https://github.com/RobertAudi/applescript.vim.git
 [submodule "links/vim/pack/utility/start/goyo"]
 	path = links/vim/pack/utility/start/goyo
@@ -129,8 +129,8 @@
 	path = links/vim/pack/languages/start/classpath
 	url = https://github.com/tpope/vim-classpath
 [submodule "links/vim/pack/languages/start/clojure-fireplace"]
-	path = links/vim/pack/languages/start/clojure-fireplace
+	path = links/vim/pack/languages/opt/clojure-fireplace
 	url = https://github.com/tpope/vim-fireplace
 [submodule "links/vim/pack/languages/start/cs-omnisharp"]
-	path = links/vim/pack/languages/start/cs-omnisharp
+	path = links/vim/pack/languages/opt/cs-omnisharp
 	url = https://github.com/OmniSharp/omnisharp-vim

@@ -27,6 +27,43 @@ endif
 if executable('scala')
   packadd scala
 endif
+
+if executable('clojure')
+  packadd clojure-fireplace
+endif
+
+if executable('csharp')
+  packadd cs-omnisharp
+endif
+
+if executable('docker')
+  packadd docker
+endif
+
+if executable('go')
+  packadd go
+endif
+
+if executable('puppet')
+  packadd puppet
+endif
+
+if executable('tmux')
+  packadd tmux
+  packadd tmux-tbone
+endif
+
+if executable('osascript')
+  packadd applescript
+endif
+
+if executable('ack')
+  packadd ack
+endif
+
+if executable('heroku')
+  packadd heroku
+endif
 " Executables }}}
 
 " Dracula {{{
