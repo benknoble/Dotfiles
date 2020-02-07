@@ -7,7 +7,7 @@ XDG_CONFIG_HOME = $(HOME)/.config
 # brew_install
 # pip
 # none
-FEATURES = git_extras brew_install pip
+FEATURES = git_extras brew_install pip gem
 
 # default: print help about targets
 default ! @grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
@@ -16,7 +16,7 @@ default ! @grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
 install [ symlink compile-terminfo $(FEATURES) ]
 
 # update: update the dotfiles
-update [ pull_master update_submodules symlink brew_check vimtags pip ]
+update [ pull_master update_submodules symlink brew_check vimtags pip gem ]
 
 # vimtags: regenerate tags for vim helpfiles
 vimtags ! vim +':helptags ALL' +'q'
@@ -71,6 +71,12 @@ chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
 
 # pip: install from requirements
 pip [ $(REQUIREMENTS) ] ! -python3 -m pip install --user --requirement $(REQUIREMENTS)
+
+# gem: install from Gemfile
+gem [ $(GEMFILE) ] !!
+-{ command -v bundle || gem install bundler; } && bundle install
+!!
+
 
 pull_master !!
 git checkout master
