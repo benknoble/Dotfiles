@@ -1,0 +1,10 @@
+# vim: ft=ruby
+
+Pry.commands.block_command(/!(\d+)/, "Replay a line of history", :listing => "!hist") do |line|
+  run "history --replay #{line}"
+end
+
+Pry.commands.block_command /s\/(.*?)\/(.*?)/ do |source, dest|
+  eval_string.gsub!(/#{source}/) { dest }
+  run "show-input"
+end
