@@ -117,6 +117,3 @@ LINKS = links/
 .tmplr <= tmplr
 .tmux.conf <= tmux.conf
 .vim <= vim
-
-$(HOME)/.config/pycodestyle: $(HOME)/.config
-$(HOME)/.config ! mkdir ~/.config
