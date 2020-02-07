@@ -1,11 +1,13 @@
 #! /usr/bin/env plink/Plink.pm
 BREWFILE = brew/Brewfile
+GEMFILE = Gemfile
 REQUIREMENTS = requirements.txt
 XDG_CONFIG_HOME = $(HOME)/.config
 # supported features:
 # git_extras
 # brew_install
 # pip
+# gem
 # none
 FEATURES = git_extras brew_install pip gem
 
@@ -76,7 +78,6 @@ pip [ $(REQUIREMENTS) ] ! -python3 -m pip install --user --requirement $(REQUIRE
 gem [ $(GEMFILE) ] !!
 -{ command -v bundle || gem install bundler; } && bundle install
 !!
-
 
 pull_master !!
 git checkout master
