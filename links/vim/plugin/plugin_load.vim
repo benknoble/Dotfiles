@@ -3,19 +3,21 @@ if exists('g:loaded_plugin_load')
 endif
 let g:loaded_plugin_load = 1
 
-" Matchit {{{
+" Distribution {{{
 if has('packages') && has('syntax') && has('eval')
   packadd matchit
   silent! packadd cfilter
 endif
-" End Matchit }}}
 
 " Man {{{
 " Load Man plugin (see `:help Man` for more info)
 runtime ftplugin/man.vim
-let g:ft_man_open_mode='vert'
+let g:ft_man_open_mode='split'
+let g:ft_man_folding_enable = 1
+let g:ft_man_no_sect_fallback = 1
 set keywordprg=:Man
 " End Man }}}
+" End Distribution }}}
 
 " Executables {{{
 if executable('tmplr')
