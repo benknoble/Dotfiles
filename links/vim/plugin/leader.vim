@@ -53,3 +53,6 @@ nnoremap <Leader>f :call find#included_word()<CR>
 nnoremap <Leader>g :global //#<Left><Left>
 
 nnoremap <expr> <Leader>r exists(':Reload') ? ':Reload<CR>' : ''
+
+nnoremap <leader>} dap}p
+nnoremap <leader>{ dap{{p
