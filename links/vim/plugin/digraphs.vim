@@ -3,4 +3,9 @@ if exists('g:loaded_digraphs')
 endif
 let g:loaded_digraphs = 1
 
-inoremap <silent> <C-d> <C-o>:call digraphs#activate()<CR>
+command -bang Digraphs
+      \ if empty('<bang>') |
+      \   call digraphs#activate() |
+      \ else |
+      \   call digraphs#deactivate() |
+      \ endif
