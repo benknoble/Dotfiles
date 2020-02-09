@@ -134,3 +134,6 @@
 [submodule "links/vim/pack/languages/start/cs-omnisharp"]
 	path = links/vim/pack/languages/opt/cs-omnisharp
 	url = https://github.com/OmniSharp/omnisharp-vim
+[submodule "links/vim/pack/languages/opt/vifm"]
+	path = links/vim/pack/languages/opt/vifm
+	url = https://github.com/vifm/vifm.vim

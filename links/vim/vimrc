@@ -291,3 +291,15 @@ if has('autocmd')
   augroup END
 endif
 " }}}
+
+" No netrw if vifm {{{
+" loading order and plugin code mean I have to put this here
+" instead of ~/.vim/after/plugin/config/
+if executable('vifm')
+  let g:loaded_netrw = 1
+  let g:loaded_netrwPlugin = 1
+  let g:vifm_replace_netrw = v:true
+  let g:vifm_embed_term = v:true
+  " let g:vifm_embed_split = v:true
+endif
+" }}}

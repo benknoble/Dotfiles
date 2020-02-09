@@ -117,4 +117,5 @@ LINKS = links/
 .swiplrc <= swiplrc
 .tmplr <= tmplr
 .tmux.conf <= tmux.conf
+.vifm <= vifm
 .vim <= vim
