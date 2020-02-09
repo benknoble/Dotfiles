@@ -10,6 +10,8 @@ setlocal colorcolumn=
 " Line numbers
 setlocal nonumber norelativenumber
 
+setlocal nofoldenable
+
 " Search for options
 " Use very magic to make patterns easy, and case sensitive because -b != -B
 nnoremap <buffer> - /^\C\v\s*-
@@ -21,6 +23,7 @@ let b:undo_ftplugin = ftplugin#undo({
       \   'colorcolumn',
       \   'number',
       \   'relativenumber',
+      \   'foldenable',
       \ ],
       \ 'maps': [
       \   [ 'n', '-' ],
