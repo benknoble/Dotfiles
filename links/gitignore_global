@@ -57,3 +57,5 @@ package-lock.json
 .clj-kondo/
 # clojure rebel history
 .rebel_readline_history
+# nrepl
+.nrepl-port
