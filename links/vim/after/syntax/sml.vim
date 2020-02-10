@@ -33,11 +33,6 @@ syn match smlPrime /'/ conceal cchar=′ containedin=smlLCIdentifier
 syn match smlPrime /''/ conceal cchar=″ containedin=smlLCIdentifier
 syn match smlPrime /'''/ conceal cchar=‴ containedin=smlLCIdentifier
 
-syn match smlArrow /=>/ conceal cchar=⇒
-hi def link smlArrow smlOperator
-syn match smlTypeArrow /->/ conceal cchar=→
-hi def link smlTypeArrow smlType
-
 " Highlight type variables (i.e., tokens that look like 'xyz).
 syn match smlType "\<''\?\w\+\>" contains=smlGreekTyvar
 
