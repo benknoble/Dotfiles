@@ -265,7 +265,6 @@ if &t_Co > 2 || has("gui_running")
   let g:tex_flavor = 'latex'
   " don't spell check
   let g:tex_comment_nospell = 1
-  let g:clojure_align_multiline_strings = 1
   let g:clojure_maxlines = 50
 endif
 " }}}
