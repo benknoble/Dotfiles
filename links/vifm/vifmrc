@@ -82,6 +82,9 @@ mark z ~/.vifm/
 
 " Maps {{{
 
+" emulate netrw's -
+nnoremap - :cd ..<CR>
+
 " Start shell in current directory
 nnoremap s :shell<cr>
 
