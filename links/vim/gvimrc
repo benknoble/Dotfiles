@@ -1,2 +1,6 @@
 set scrolloff=0
-set guifont=SourceCodePro-Regular:h12,Menlo-Regular:h12
+if has('mac')
+  set macligatures
+  set macthinstrokes
+endif
+set guifont=VictorMono-Regular:h11,SourceCodePro-Regular:h12,Menlo-Regular:h12
