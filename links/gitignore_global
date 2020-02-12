@@ -54,7 +54,7 @@ package-lock.json
 # Clojure classpath cache
 .cpcache/
 # clj-kondo (linter) stuff
-.clj-kondo/
+.clj-kondo/.cache/
 # clojure rebel history
 .rebel_readline_history
 # nrepl
