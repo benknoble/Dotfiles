@@ -10,8 +10,7 @@ nmap <buffer> <Localleader>qf ysafbaquote <Esc>:silent! call repeat#set("\<Local
 inoreabbrev <buffer> ($ (partial
 inoreabbrev <buffer> (o (comp
 
-setlocal lispwords+=->
-setlocal lispwords+=->>
+setlocal lispwords+=are
 setlocal foldmethod=syntax
 
 let b:undo_ftplugin = ftplugin#undo({
