@@ -1,0 +1,55 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+usage() {
+  cat <<DOG
+usage: $0 [check|fix]
+
+Run cljfmt on automatically-found source code (defaults to check).
+
+You need the following alias in your deps somewhere:
+
+  :fmt
+  {:extra-deps {cljfmt {:mvn/version "0.6.4"}}
+   :main-opts ["-m" "cljfmt.main"]}
+DOG
+}
+
+die() {
+  local ex="${1:-1}"
+  exit "$ex"
+}
+
+usage_and_die() { usage && die; }
+
+files() {
+  if git rev-parse --git-dir 2>/dev/null >&2 ; then
+    git ls-files -z '*clj' '*cljx' '*cljc' '*cljs'
+  elif command -v ack >/dev/null ; then
+    ack -f --print0 --clojure
+  else
+    find . \( -name '*clj' \
+      -or -name '*cljx' \
+      -or -name '*cljc' \
+      -or -name '*cljs' \) --print0
+  fi
+}
+
+doit() {
+  files | xargs -0 clojure -A:fmt "${1:-check}"
+}
+
+main() {
+  case $# in
+    0) doit ;;
+    1) doit "$1" ;;
+    *) usage_and_die ;;
+  esac
+}
+
+main "$@"
