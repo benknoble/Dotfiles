@@ -1,0 +1,30 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+USAGE='[-h] [diff-opts]
+
+Show the plus/minus stats'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+count_lines () {
+  local pat="$1"
+  (($# > 1)) && shift
+  git diff "$@" | grep -ce "$pat"
+}
+
+main() {
+  printf -- '+ %d\n' "$(count_lines ^+ "$@")"
+  printf -- '- %d\n' "$(count_lines ^- "$@")"
+}
+
+main "$@"
