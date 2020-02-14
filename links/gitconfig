@@ -31,7 +31,9 @@
 	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --stdin;}; f"
 	newb = checkout -b
 	patch = add --patch
+	r = rebase
 	rems = for-each-ref --sort=-committerdate --format=\"%(refname:short)\t%(color:red)%(authorname)\t%(color:blue)%(authordate:relative)%(color:reset)\" refs/remotes
+	ri = rebase --interactive
 	riu = rebase --interactive HEAD@{upstream}
 	s = status --short
 	sb = show-branch
