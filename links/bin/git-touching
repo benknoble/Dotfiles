@@ -32,6 +32,7 @@ touched_commits() {
 }
 
 main() {
+  cd_to_toplevel
   touched_commits
 }
 
