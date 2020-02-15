@@ -263,6 +263,7 @@ if &t_Co > 2 || has("gui_running")
   let java_ignore_javadoc = 1
   " default tex flavor
   let g:tex_flavor = 'latex'
+  let g:tex_conceal = 'abdmg'
   " don't spell check
   let g:tex_comment_nospell = 1
   let g:clojure_maxlines = 50
