@@ -18,8 +18,10 @@ log() {
 
 count_lines () {
   local pat="$1"
-  (($# > 1)) && shift
-  git diff "$@" | grep -ce "$pat"
+  shift
+  local changed_count
+  changed_count="$(git diff "$@" --name-only | wc -l)"
+  git diff "$@" | grep -ce "$pat" | dc -f - -e "$changed_count - p"
 }
 
 main() {
