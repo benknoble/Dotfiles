@@ -14,6 +14,7 @@
 	cp = cherry-pick
 	ctags = !.git/hooks/ctags
 	d = diff
+	ds = diff --stat
 	g = !exec git
 	git = !exec git
 	grall = !git graph --all
