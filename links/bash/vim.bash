@@ -88,6 +88,7 @@ vgrep() {
 vw() {
   if [[ "$(type -t "$@")" != file ]]; then
     printf '%s\n' 'Usage: vw cmd' '' 'edit file defining {cmd}'
+  else
+    vim "$(command -v "$@")"
   fi
-  vim "$(command -v "$@")"
 }
