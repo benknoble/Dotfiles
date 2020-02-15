@@ -16,17 +16,21 @@ log() {
   printf '%s\n' "$@"
 } >&2
 
-count_lines () {
-  local pat="$1"
+fold () {
+  sed '2,$s,$,'"$1"',' | awk '1 END{print "f"}' | dc
+}
+
+sum () { fold + ; }
+
+count() {
+  local col="$1"
   shift
-  local changed_count
-  changed_count="$(git diff "$@" --name-only | wc -l)"
-  git diff "$@" | grep -ce "$pat" | dc -f - -e "$changed_count - p"
+  git diff --numstat "$@" | grep $'\t' | awk -F$'\t' "{print \$$col}" | sum
 }
 
 main() {
-  printf -- '+ %d\n' "$(count_lines ^+ "$@")"
-  printf -- '- %d\n' "$(count_lines ^- "$@")"
+  printf -- '+ %d\n' "$(count 1 "$@")"
+  printf -- '- %d\n' "$(count 2 "$@")"
 }
 
 main "$@"
