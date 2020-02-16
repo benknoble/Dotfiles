@@ -1,4 +1,4 @@
-tmplr==0.3.0
+tmplr==0.3.1
 gdown==3.8.3
 mypy==0.740
 black==19.10b0
