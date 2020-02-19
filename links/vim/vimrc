@@ -295,3 +295,5 @@ endif
 
 " spelling
 inoremap <C-L> <C-g>u<Esc>[s1z=gi<C-g>u
+
+set ttymouse=sgr
