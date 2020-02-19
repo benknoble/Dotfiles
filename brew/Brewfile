@@ -75,6 +75,7 @@ brew "borkdude/brew/clj-kondo"
 brew "heroku/brew/heroku"
 brew "thoughtbot/formulae/gitsh"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
+cask "alacritty"
 cask "cmake"
 cask "daisydisk"
 cask "docker"
