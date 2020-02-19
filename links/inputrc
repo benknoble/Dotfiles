@@ -57,3 +57,5 @@ set mark-symlinked-directories on
 
 # reload init file with C-x C-r
 "\C-x\C-r": re-read-init-file
+
+Control-l: clear-screen
