@@ -172,6 +172,52 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
+colors:
+  # Default colors
+  primary:
+    background: '0x22212C'
+    foreground: '0xf8f8f2'
+
+    # Bright and dim foreground colors
+    #
+    # The dimmed foreground color is calculated automatically if it is not
+    # present.  If the bright foreground color is not set, or
+    # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
+    # color will be used.
+    #
+    # dim_foreground: '0x9a9a9a'
+    # bright_foreground: '0xffffff'
+
+  # Cursor colors
+  #
+  # Colors which should be used to draw the terminal cursor. If these are unset,
+  # the cursor color will be the inverse of the cell color.
+  cursor:
+    text: '0xffffff'
+    cursor: '0xaa99ff'
+
+  # Normal colors
+  normal:
+    black: '0x454158'
+    red: '0xff9580'
+    green: '0x8aff80'
+    yellow: '0xffff80'
+    blue: '0x9580FF'
+    magenta: '0xff80bf'
+    cyan: '0x80ffea'
+    white: '0xf8f8f2'
+
+  # Bright colors
+  bright:
+    black: '0x504c67'
+    red: '0xffaa99'
+    green: '0xa2ff99'
+    yellow: '0xffff99'
+    blue: '0xaa99ff'
+    magenta: '0xff99cc'
+    cyan: '0x99ffee'
+    white: '0xffffff'
+
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
