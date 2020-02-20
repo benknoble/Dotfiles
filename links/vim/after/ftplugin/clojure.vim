@@ -11,6 +11,7 @@ inoreabbrev <buffer> ($ (partial
 inoreabbrev <buffer> (o (comp
 
 setlocal lispwords+=are
+setlocal lispwords+=cond
 setlocal foldmethod=syntax
 
 let b:undo_ftplugin = ftplugin#undo({
