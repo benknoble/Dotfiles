@@ -1,0 +1,4 @@
+# clojure extras for ctags
+
+--kinddef-Clojure=m,macro,macros
+--regex-Clojure=/defmacro ([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/m/
