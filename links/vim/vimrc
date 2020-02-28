@@ -200,7 +200,7 @@ function! s:status_line(verbosity) abort
     set statusline+=%([%1*%t%*]%)
   endif
   set statusline+=%5*%(%m%r%w%h%)%*
-  set statusline+=%(%y%)
+  set statusline+=%(%y[%{&expandtab?'S':'T'}]%)
   set statusline+=%([%{exists('*FugitiveHead')?FugitiveHead():''}]%)
   set statusline+=%=%<
   if a:verbosity ==# 'long'

@@ -56,3 +56,13 @@ nnoremap <expr> <Leader>r exists(':Reload') ? ':Reload<CR>' : ''
 
 nnoremap <leader>} dap}p
 nnoremap <leader>{ dap{{p
+
+function! s:print_tabs_spaces() abort
+  return printf('%s: tabstop=%d softtabstop=%d shiftwidth=%d',
+        \ &expandtab ? 'SPACES' : 'TABS',
+        \ &tabstop,
+        \ &softtabstop,
+        \ &shiftwidth)
+endfunction
+
+nnoremap <Leader><Leader>t :echomsg <SID>print_tabs_spaces()<CR>
