@@ -81,6 +81,8 @@ if ! exists('g:colors_name')
       " these xterm profiles are usually correct
     endif
     let s:italic_default = 1
+  elseif $TERM ==# 'alacritty'
+    let s:italic_default = 1
   endif
   let g:dracula_italic = get(g:, 'dracula_italic', s:italic_default)
   let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
