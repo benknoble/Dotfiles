@@ -115,6 +115,7 @@ LINKS = links/
 .newsboat <= newsboat
 .pryrc <= pryrc
 .pythonrc <= pythonrc
+.ssh/config <= ssh/config
 .swiplrc <= swiplrc
 .tmplr <= tmplr
 .tmux.conf <= tmux.conf

@@ -1,0 +1,9 @@
+# Defaults for all
+Host *
+    PermitLocalCommand yes
+    ControlMaster auto
+    ControlPath ~/.ssh/control:%h:%p:%r
+    UpdateHostKeys ask
+
+# host specific; may be symlinked or machine-specific
+Include host-*
