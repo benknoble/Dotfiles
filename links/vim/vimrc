@@ -297,7 +297,7 @@ endif
 inoremap <C-L> <C-g>u<Esc>[s1z=gi<C-g>u
 
 set ttymouse=sgr
-if $TERM ==# 'tmux-256color'
+if $TERM =~# '\v(tmux-256color)|(alacritty)'
   " so colors work properly in :term, because apparently vim will default to
   " `xterm` for :term when 'term' doesn't start with xterm...
   "
