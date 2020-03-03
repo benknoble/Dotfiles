@@ -304,3 +304,7 @@ if $TERM =~# '\v(tmux-256color)|(alacritty)'
   " Phew. Glad that sentence is terminated.
   set term=xterm-256color
 endif
+
+if $COLORTERM ==# 'truecolor'
+  set termguicolors
+endif
