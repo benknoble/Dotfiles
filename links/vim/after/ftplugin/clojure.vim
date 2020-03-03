@@ -7,6 +7,11 @@ let b:interpreter = 'clojure -Arebel'
 nmap <buffer> <Localleader>qe ysiebaquote <Esc>:silent! call repeat#set("\<Localleader>qe", -1)<CR>
 nmap <buffer> <Localleader>qf ysafbaquote <Esc>:silent! call repeat#set("\<Localleader>qf", -1)<CR>
 
+" commands from fireplace
+nnoremap <buffer> <Localleader><Localleader>t :.RunTests<CR>
+nnoremap <buffer> <Localleader>t :RunTests<CR>
+nnoremap <buffer> <Localleader>T :RunAllTests<CR>
+
 inoreabbrev <buffer> ($ (partial
 inoreabbrev <buffer> (o (comp
 
