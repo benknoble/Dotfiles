@@ -1,0 +1,28 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+usage() {
+  cat <<DOG
+usage: $0
+
+Transforms CSV on stdin to LaTeX table on stdout
+DOG
+}
+
+die() {
+  local ex="${1:-1}"
+  exit "$ex"
+}
+
+usage_and_die() { usage && die; }
+
+main() {
+  sed -e 's/,/ \& /g' -e '$!s/$/ \\\\/'
+}
+
+main "$@"
