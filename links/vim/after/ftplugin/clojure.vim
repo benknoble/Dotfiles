@@ -21,6 +21,12 @@ setlocal lispwords+=do
 setlocal lispwords+=with-out-str
 setlocal foldmethod=syntax
 
+augroup CljRequire
+  " can't use au! here because it would clear the group entirely
+  au! * <buffer>
+  au BufWritePost <buffer> silent! Require!<CR>
+augroup END
+
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'lispwords',
@@ -37,4 +43,7 @@ let b:undo_ftplugin = ftplugin#undo({
       \   [ 'i', '$' ],
       \   [ 'i', 'o' ],
       \ ],
+      \ 'custom': [
+      \   'au! CljRequire * <buffer>',
+      \ ]
       \ })
