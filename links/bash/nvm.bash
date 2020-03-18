@@ -7,6 +7,9 @@ use_nvm() {
   if [[ -s "$NVM_PATH" ]] ; then
     . "$NVM_PATH"
   fi
+  if [[ -s /usr/local/etc/bash_completion.d/nvm ]]; then
+    . /usr/local/etc/bash_completion.d/nvm
+  fi
 }
 
 if [[ -s ./.nvmrc ]] ; then
