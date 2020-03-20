@@ -32,3 +32,6 @@ fi
 unset texpath
 
 pathadd /Applications/MacVim.app/Contents/bin
+
+pathadd /Applications/MATLAB_R2019a.app/bin
+pathadd /Applications/MATLAB_R2019a.app/bin/maci64

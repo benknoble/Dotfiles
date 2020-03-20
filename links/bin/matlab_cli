@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+CMD=(
+  matlab
+  -nodisplay
+  -nojvm
+  -nosplash
+  -nodesktop
+)
+
+if (($# > 0)); then
+  CMD+=(-r "try, run('$@'), catch e, disp(getReport(e)), exit(1), end, exit(0);")
+fi
+
+exec "${CMD[@]}"
