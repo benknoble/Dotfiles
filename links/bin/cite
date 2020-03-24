@@ -15,12 +15,28 @@ delete_tabs() {
   tr -d '\t'
 }
 
+tr_months() {
+  awk "$(cat <<'AWK'
+  function month2num(mo) {
+    return index("  janfebmaraprmayjunjulaugsepoctnovdec", tolower(mo))/3
+  }
+
+  /^month = {...},$/ {
+    month = substr($0,10,3)
+    sub("{" month "}", month2num(month))
+  }
+
+  { print }
+AWK
+)"
+}
+
 main() {
   if (($# != 1)) ; then
     usage
   fi
   local doi="$1"
-  get_citation "$doi" | delete_tabs
+  get_citation "$doi" | delete_tabs | tr_months
 }
 
 main "$@"
