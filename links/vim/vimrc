@@ -311,4 +311,6 @@ if $COLORTERM ==# 'truecolor'
   set termguicolors
 endif
 
+" Like bash's <C-k> delete to end, similar to D in normal mode
+cnoremap <C-x> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
 " Unsorted }}}
