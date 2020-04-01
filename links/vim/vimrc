@@ -293,6 +293,8 @@ if has('autocmd')
 endif
 " }}}
 
+" Unsorted {{{
+
 " spelling
 inoremap <C-L> <C-g>u<Esc>[s1z=gi<C-g>u
 
@@ -308,3 +310,5 @@ endif
 if $COLORTERM ==# 'truecolor'
   set termguicolors
 endif
+
+" Unsorted }}}
