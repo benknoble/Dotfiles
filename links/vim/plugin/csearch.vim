@@ -3,6 +3,6 @@ if exists('g:loaded_csearch')
 endif
 let g:loaded_csearch = 1
 
-command -nargs=+ Csearch
+command -count -nargs=+ Csearch
       \ cexpr [] <Bar>
-      \ execute 'global' printf('/%s/', escape(<q-args>, '/')) 'caddexpr printf("%s:%d:%s", expand("%"), line("."), getline("."))'
+      \ execute printf('%s vimgrep /%s/g %%', <count> > 0 ? <q-count> : '', escape(<q-args>, '/'))
