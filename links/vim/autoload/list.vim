@@ -5,27 +5,16 @@
 " License: This file is placed in the public domain.
 
 "  To use:
-"     nnoremap <SOMEKEY> :call ListSwap()<CR>
-"     xnoremap <SOMEKEY> :call ListSwap('visual')<CR>
+"     nnoremap <SOMEKEY> :call list#swap()<CR>
+"     xnoremap <SOMEKEY> :call list#swap('visual')<CR>
 "
 "  For example:
-"     nnoremap <Leader>l :call ListSwap()<CR>
-"     xnoremap <Leader>l :call ListSwap('visual')<CR>
-
-
-" If already loaded, we're done...
-if exists("loaded_listswap")
-  finish
-endif
-let loaded_listswap = 1
-
-" Preserve external compatibility options, then enable full vim compatibility...
-let s:save_cpo = &cpo
-set cpo&vim
+"     nnoremap <Leader>l :call list#swap()<CR>
+"     xnoremap <Leader>l :call list#swap('visual')<CR>
 
 " Useful constants...
-let g:LT_DEF_LIST_CONJ = 'and'
-let g:LT_CONJUNCTIONS  = [
+let s:LT_DEF_LIST_CONJ = 'and'
+let s:LT_CONJUNCTIONS  = [
       \   'and\s\+not', 'and', 'plus', 'with',
       \   'or\s\+else', 'or\s\+otherwise',
       \   'or', 'nor', 'but\s\+not', 'but',
@@ -33,10 +22,10 @@ let g:LT_CONJUNCTIONS  = [
       \]
 
 " Build the necessary pattern...
-let s:LT_CONJ_PAT = join(g:LT_CONJUNCTIONS, '\|')
+let s:LT_CONJ_PAT = join(s:LT_CONJUNCTIONS, '\|')
 
 " This is the entire interface...
-function! ListSwap(...) range
+function list#swap(...) abort range
   " Extract the target text...
   if a:0
     silent normal! gvy
@@ -111,6 +100,3 @@ function! ListSwap(...) range
   call setreg("", reformatted_text, mode())
   silent normal! gvp
 endfunction
-
-" Restore previous external compatibility options
-let &cpo = s:save_cpo
