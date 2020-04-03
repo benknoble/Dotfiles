@@ -316,4 +316,21 @@ cnoremap <C-x> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
 
 " has to get executed before the quick-scope loads
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+" Conway Experimental {{{
+
+nnoremap <silent> n n:call HLNext(0.2)<cr>
+nnoremap <silent> N N:call HLNext(0.2)<cr>
+
+" blink the line containing the match...
+function! HLNext (blinktime)
+  set cursorline cursorcolumn
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  set nocursorline nocursorcolumn
+  redraw
+endfunction
+
+" }}}
+
 " Unsorted }}}

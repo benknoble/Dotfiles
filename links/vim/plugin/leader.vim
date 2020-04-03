@@ -66,3 +66,6 @@ function! s:print_tabs_spaces() abort
 endfunction
 
 nnoremap <Leader><Leader>t :echomsg <SID>print_tabs_spaces()<CR>
+
+nnoremap <Leader>l :call ListSwap()<CR>
+xnoremap <Leader>l :call ListSwap('visual')<CR>
