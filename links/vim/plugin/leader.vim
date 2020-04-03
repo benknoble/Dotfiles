@@ -69,3 +69,5 @@ nnoremap <Leader><Leader>t :echomsg <SID>print_tabs_spaces()<CR>
 
 nnoremap <Leader>l :call ListSwap()<CR>
 xnoremap <Leader>l :call ListSwap('visual')<CR>
+
+nnoremap <Leader>cc :call cursor#blink(0.2)<CR>
