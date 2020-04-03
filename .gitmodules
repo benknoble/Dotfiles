@@ -137,3 +137,6 @@
 [submodule "links/vim/pack/languages/opt/vifm"]
 	path = links/vim/pack/languages/opt/vifm
 	url = https://github.com/vifm/vifm.vim
+[submodule "links/vim/pack/interface/start/quick-scope"]
+	path = links/vim/pack/interface/start/quick-scope
+	url = git://github.com/unblevable/quick-scope.git

@@ -313,4 +313,7 @@ endif
 
 " Like bash's <C-k> delete to end, similar to D in normal mode
 cnoremap <C-x> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
+
+" has to get executed before the quick-scope loads
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 " Unsorted }}}
