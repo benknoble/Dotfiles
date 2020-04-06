@@ -14,3 +14,11 @@ if [[ -r "$gitprompt" ]]; then
 else
   __gps1="git branch --no-color 2>/dev/null | grep '^*' | colrm 1 2"
 fi
+
+gj () {
+  git jump $(history -p '!!' \
+    | sed -E -e 's/(^git)|(^g)//' \
+    -e 's/^[[:space:]]*//' \
+    -e 's/^d/diff/' \
+    -e 's/^merc/merge/')
+}
