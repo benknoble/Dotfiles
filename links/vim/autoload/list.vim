@@ -47,7 +47,7 @@ function list#swap(...) abort range
     if len(items) >= 2
       " Infer the correct conjunction...
       let has_conj = matchlist(items[-2], '^\(\_.\{-}\)[,;]\?\s*\('.s:LT_CONJ_PAT.'\)\s*$')
-      let [items[-2], conj] = len(has_conj) ? has_conj[1:2] : [items[-2], g:LT_DEF_LIST_CONJ]
+      let [items[-2], conj] = len(has_conj) ? has_conj[1:2] : [items[-2], s:LT_DEF_LIST_CONJ]
 
       " Conjoin the various items (using Oxford rules)...
       if len(items) == 2
