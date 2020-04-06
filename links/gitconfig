@@ -80,7 +80,7 @@
 	noGreeting = true
 	defaultCommand = status -s
 [mergetool "fugitive"]
-	cmd = vim --nofork -c \"Gvdiffsplit!\" \"$MERGED\"
+	cmd = vim --nofork +\"Git mergetool\"
 	trustExitCode = true
 [fetch]
 	recurseSubmodules = on-demand
