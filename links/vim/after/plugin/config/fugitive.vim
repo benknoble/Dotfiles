@@ -1,4 +1,4 @@
 if ! exists('g:loaded_fugitive')
   finish
 endif
-nnoremap <leader>G :Gstatus<CR>
+nnoremap <leader>G :Git<CR>
