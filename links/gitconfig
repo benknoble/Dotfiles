@@ -49,65 +49,81 @@
 	tagss = "!f() { git tags \"$@\" | xargs git show; }; f"
 	unstage = reset HEAD --
 	visual = !gitk --all &
-[merge]
-	tool = fugitive
-	conflictstyle = diff3
-	log = true
+
+# core
 [core]
 	excludesfile = ~/.gitignore_global
 	pager = less -FRX
+[init]
+	templateDir = ~/.git_template
+
+# remotes
+[fetch]
+	recurseSubmodules = on-demand
+	prune = true
+[push]
+	recurseSubmodules = check
+[submodule]
+	fetchJobs = 4
+
+# diffs and merges
 [diff]
 	submodule = log
 	tool = vimdiff
 	colorMoved = default
 	mnemonicprefix = true
-[status]
-	submodulesummary = 1
-	showstash = true
-[push]
-	recurseSubmodules = check
-[include]
-	path = ~/.gitconfig.local
 [difftool]
 	prompt = no
+[merge]
+	tool = fugitive
+	conflictstyle = diff3
+	log = true
 [mergetool]
 	prompt = no
 	keepBackup = false
-[gitsh "color"]
-	default = cyan
-[gitsh]
-	prompt = "%D (%c%b %#%w) %G>"
-	noGreeting = true
-	defaultCommand = status -s
 [mergetool "fugitive"]
 	cmd = vim --nofork +\"Git mergetool\"
 	trustExitCode = true
-[fetch]
-	recurseSubmodules = on-demand
-	prune = true
 [rerere]
 	enabled = true
-[rebase]
-	autoSquash = true
-[init]
-	templateDir = ~/.git_template
+
+# interface
 [advice]
 	waitingForEditor = false
+[grep]
+	lineNumber = true
+	column = true
 [pretty]
 	mine = %C(yellow)%h%Creset%C(bold green)%d%Creset %s %C(magenta)(%cr)%Creset %C(ul bold cyan)<%an>%Creset
+[rebase]
+	autoSquash = true
+[status]
+	submodulesummary = 1
+	showstash = true
 [sendemail]
 	multiedit = true
 	annotate = true
 	confirm = auto
-[user]
-	useConfigOnly = true
+
+# external: lfs
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[grep]
-	lineNumber = true
-	column = true
-[submodule]
-	fetchJobs = 4
+
+# external: gitsh
+[gitsh]
+	prompt = "%D (%c%b %#%w) %G>"
+	noGreeting = true
+	defaultCommand = status -s
+[gitsh "color"]
+	default = cyan
+
+# user config
+[user]
+	useConfigOnly = true
+
+# includes
+[include]
+	path = ~/.gitconfig.local
