@@ -327,4 +327,18 @@ nnoremap <silent> N N:call cursor#blink(0.2)<cr>
 " Update "Last Change" line
 command Changed silent! keeppatterns %substitute/Last [cC]hanged\?:\zs.*/\=strftime(" %Y %b %d")/
 
+" updatetime=250 is too fast for this
+" updatetime=1000+ is too slow for auto-origami
+" augroup InsertNoHold
+"   autocmd!
+"   autocmd CursorHoldI * stopinsert
+" augroup END
+
+" the handler is only executed when vim wants input, so I have to hit a key
+" after the timer has finished to actually trigger it
+" augroup InsertEscOnPause
+"   autocmd!
+"   autocmd CursorHoldI * call timer_start(1000, {-> execute('stopinsert')})
+" augroup END
+
 " Unsorted }}}
