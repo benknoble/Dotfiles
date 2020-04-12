@@ -223,9 +223,13 @@ SLShort
 function! s:set_statusline_colors_to_dracula() abort
   " Override statusline
   hi clear StatusLine
-  hi clear StatusLineNc
+  hi clear StatusLineNC
+  hi clear StatusLineTerm
+  hi clear StatusLineTermNC
   hi link StatusLine DraculaComment
   hi link StatusLineNC DraculaSubtle
+  hi link StatusLineTerm StatusLine
+  hi link StatusLineTermNC StatusLineNC
 
   hi link User1 DraculaGreen
   hi link User2 DraculaPurple
