@@ -102,6 +102,7 @@ LINKS = links/
 .clisprc.lisp <= clisprc.lisp
 .clojure <= clojure
 .config/alacritty <= config/alacritty
+.config/http-prompt <= config/http-prompt
 .config/pycodestyle <= config/pycodestyle
 .ctags.d <= ctags.d
 .gdbinit <= gdbinit
