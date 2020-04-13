@@ -4,3 +4,5 @@ mypy==0.740
 black==19.10b0
 pycodestyle==2.4.0
 python-language-server==0.31.9
+http-prompt==1.0.0
+pipdeptree==0.13.2
