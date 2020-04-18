@@ -22,7 +22,7 @@ setlocal foldmethod=syntax
 augroup CljRequire
   " can't use au! here because it would clear the group entirely
   au! * <buffer>
-  au BufWritePost <buffer> silent! Require!
+  au BufWritePost <buffer> silent! Require
 augroup END
 
 let b:undo_ftplugin = ftplugin#undo({
