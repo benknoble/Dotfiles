@@ -8,9 +8,7 @@ nmap <buffer> <Localleader>qe ysiebaquote <Esc>:silent! call repeat#set("\<Local
 nmap <buffer> <Localleader>qf ysafbaquote <Esc>:silent! call repeat#set("\<Localleader>qf", -1)<CR>
 
 " commands from fireplace
-nnoremap <buffer> <Localleader><Localleader>t :Require! <bar> .RunTests<CR>
 nnoremap <buffer> <Localleader>t :Require! <bar> RunTests<CR>
-nnoremap <buffer> <Localleader>T :Require! <bar> RunAllTests<CR>
 
 inoreabbrev <buffer> ($ (partial
 inoreabbrev <buffer> (o (comp
