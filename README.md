@@ -95,11 +95,6 @@ I usually use the regular variant, though the Van Helsing variant is also nice.
 
 I'm using Victor Mono as a font. Cursive italics have grown on me.
 
-## Contributing
-
-Please see our [Contributing Guidelines](/CONTRIBUTING.md) for information on
-how to get involved.
-
 ### Code of Conduct
 
 Note that we also have a [Code of Conduct](/CODE_OF_CONDUCT.md) that governs the
