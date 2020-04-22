@@ -1,0 +1,41 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+usage() {
+  cat <<DOG
+usage: $0 [width=80]
+
+Turns bytes on standard input into the form 0xHH where HH are hexadecimal
+digits (0-9a-f).
+
+Formats output to width (default 80 columns).
+DOG
+}
+
+die() {
+  local ex="${1:-1}"
+  exit "$ex"
+}
+
+usage_and_die() { usage && die; }
+
+main() {
+  case $# in
+    0) : continue ;;
+    1) if ! [[ "$1" =~ [0-9]+ ]] ; then usage_and_die ; fi ;;
+    *) usage_and_die ;;
+  esac
+
+  hexdump \
+    | colrm 1 8 \
+    | sed 's/[[:xdigit:]][[:xdigit:]]/0x&/g' \
+    | paste -sd' ' - \
+    | fold -w "${1:-80}"
+}
+
+main "$@"
