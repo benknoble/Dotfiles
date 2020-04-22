@@ -8,6 +8,7 @@ nnoremap <buffer> <LocalLeader>s :Squash<CR>
 nnoremap <buffer> <LocalLeader>e :Edit<CR>
 nnoremap <buffer> <LocalLeader>r :Reword<CR>
 nnoremap <buffer> <LocalLeader>f :Fixup<CR>
+nnoremap <buffer> <LocalLeader>d :Drop<CR>
 nnoremap <buffer> <LocalLeader>c :Cycle<CR>
 
 let b:undo_ftplugin = ftplugin#undo({
