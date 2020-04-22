@@ -181,9 +181,6 @@ if [[ "$(type -t __git_complete)" == function ]] && [[ "$(type -t g)" == functio
   __git_complete g _git
 fi
 
-if [[ "$(type -t __start_gh)" == function ]] && [[ "$(type -t ghub)" == file ]]; then
-  complete -o default -F __start_gh ghub
-fi
 # custom }}}
 
 unset bashcomp

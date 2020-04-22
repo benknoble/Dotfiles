@@ -60,7 +60,7 @@ up() {
 }
 
 # git home
-gh() {
+ghome() {
   cd "$(git rev-parse --show-toplevel || printf .)"
 }
 
