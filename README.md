@@ -17,7 +17,10 @@ large part of that.
 ## Installing
 
 First, clone the repo into your dotfiles directory (the name of the directory
-doesn't matter).
+doesn't matter). If your git supports it, `--jobs ...` might be a good idea. You
+can skip the submodules if you choose, but you *must* have the [plink](./plink/)
+submodule or a plink installation to build the makefile used for installation
+and maintenance. The submodule is the easiest route.
 
 ```bash
 mkdir ~/Dotfiles
@@ -39,7 +42,7 @@ This will do several things:
    :warning:**No backups are made. Create your own prior to installing if you
    wish.**:warning:
 2. (Optional) Executes `make $(FEATURES)`. See the [Makefile](/dotfiles.plink)
-   for supported options and the defaults. `make FEATURES=none` can be used to
+   for supported options and the defaults. `FEATURES=none` can be used to
    skip this.
 
 At this point, you may want to setup brew, so do
@@ -83,27 +86,14 @@ The old docs have been eliminated. They can be found in the git history.
 
 ## Misc
 
-### Terminal
+### Theme
 
-I am now using and maintaining the [dracula theme][drac-term] full time for
-Terminal.app. You can find it under the Dracula directory, along with a
-`gitk(1)` theme.
+I am now using the Dracula themes for all my software. You can find some of them
+under the Dracula directory and some in a vim package. Some are hand-coded and
+not official. Additionally, if Dracula Pro is available, I'm using that instead.
+I usually use the regular variant, though the Van Helsing variant is also nice.
 
-### Built With
-
-* [bash](https://www.gnu.org/software/bash/)
-* [Mac OS X](https://en.wikipedia.org/wiki/OS_X_El_Capitan)
-* [Terminal](https://en.wikipedia.org/wiki/Terminal_(macOS))
-* [Vim](https://github.com/vim/vim)
-* [Git](https://git-scm.com)
-* [Homebrew/brew](https://brew.sh)
-
-And of course, a host of plugins, scripts, aliases, and some serious TLC :heart:.
-
-I guess there's a little [python](https://www.python.org) in there... it's
-actually quite good stuff.
-
-(I didn't forget you GitHub! Thanks for generously hosting this repo.)
+I'm using Victor Mono as a font. Cursive italics have grown on me.
 
 ## Contributing
 
