@@ -2,7 +2,7 @@ if ! exists(':ALEInfo')
   finish
 endif
 
-set completefunc=ale#complete#OmniFunc
+set completefunc=ale#completion#OmniFunc
 
 let g:ale_set_signs = 0
 let g:ale_lint_on_enter = 0
