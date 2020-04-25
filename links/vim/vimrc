@@ -226,7 +226,7 @@ function! s:set_statusline_colors_to_dracula() abort
   hi clear StatusLineNC
   hi clear StatusLineTerm
   hi clear StatusLineTermNC
-  hi link StatusLine DraculaComment
+  hi link StatusLine LineNr
   hi link StatusLineNC DraculaSubtle
   hi link StatusLineTerm StatusLine
   hi link StatusLineTermNC StatusLineNC
@@ -344,5 +344,13 @@ command Changed silent! keeppatterns %substitute/Last [cC]hanged\?:\zs.*/\=strft
 "   autocmd!
 "   autocmd CursorHoldI * call timer_start(1000, {-> execute('stopinsert')})
 " augroup END
+
+" italic comments
+if has('autocmd')
+  augroup italic_comments
+    autocmd!
+    autocmd ColorScheme dracula hi DraculaComment cterm=italic gui=italic
+  augroup END
+endif
 
 " Unsorted }}}
