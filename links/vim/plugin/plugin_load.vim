@@ -87,10 +87,14 @@ if ! exists('g:colors_name')
   let g:dracula_italic = get(g:, 'dracula_italic', s:italic_default)
   let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
   try
-    colorscheme dracula
+    colorscheme dracula_pro_van_helsing
   catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme default
-    set background=dark
+    try
+      colorscheme dracula
+    catch /^Vim\%((\a\+)\)\=:E185/
+      colorscheme default
+      set background=dark
+    endtry
   endtry
 endif
 " End Dracula }}}
