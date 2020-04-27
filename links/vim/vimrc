@@ -241,7 +241,7 @@ endfunction
 if has('autocmd')
   augroup status_colors_dracula
     au!
-    autocmd ColorScheme dracula call s:set_statusline_colors_to_dracula()
+    autocmd ColorScheme dracula* call s:set_statusline_colors_to_dracula()
   augroup END
 endif
 " }}}
@@ -349,7 +349,7 @@ command Changed silent! keeppatterns %substitute/Last [cC]hanged\?:\zs.*/\=strft
 if has('autocmd')
   augroup italic_comments
     autocmd!
-    autocmd ColorScheme dracula hi DraculaComment cterm=italic gui=italic
+    autocmd ColorScheme dracula* hi DraculaComment cterm=italic gui=italic
   augroup END
 endif
 
