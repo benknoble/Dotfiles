@@ -8,9 +8,13 @@ v() {
   vim "$@"
 }
 
+complete -F _filedir_xspec v
+
 vv() {
   vim +'edit $MYVIMRC' "$@"
 }
+
+complete -F _filedir_xspec vv
 
 vq() {
   if (($# > 0)); then
@@ -20,6 +24,8 @@ vq() {
   fi
 }
 
+complete -A command vq
+
 vf() {
   if (($# > 0)); then
     vim $("$@")
@@ -28,6 +34,8 @@ vf() {
       'Brittle: {cmd} output will be word-split'
   fi
 }
+
+complete -A command vf
 
 vff() {
   if (($# == 1)) ; then
@@ -54,6 +62,8 @@ vc() {
   fi
 }
 
+complete -A directory vc
+
 vs() {
   if (($# > 0)); then
     local session="$1"
@@ -63,6 +73,8 @@ vs() {
     vim -S
   fi
 }
+
+complete -G '*.vim' vs
 
 # Start vim with its last cursor position
 lvim() {
@@ -92,3 +104,5 @@ vw() {
     vim "$(command -v "$@")"
   fi
 }
+
+complete -A command vw
