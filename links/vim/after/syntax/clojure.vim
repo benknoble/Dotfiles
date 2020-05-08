@@ -1,11 +1,12 @@
-" syn keyword clojureSpecial fn conceal cchar=λ
-" matches have lower priority than keywords, so I have to reset the
-" clojureSpecial keyword list:
-syn clear clojureSpecial
-syn keyword clojureSpecial . clojure.core/let clojure.core/loop def do if let loop monitor-enter monitor-exit new quote recur set! var
-syn match clojureFnConceal /fn\@=/ conceal cchar=λ
-syn match clojureFnConceal /f\@<=n/ conceal cchar=.
-hi link clojureFnConceal clojureSpecial
+syn keyword clojureSpecial fn conceal cchar=λ
+
+" matches have lower priority than keywords, so I have to start the match
+" earlier to get priority
+
+" syn match clojureLambdaConceal /\_.\<fn\>/ containedin=ALL
+" syn match clojureLamConceal /f/ contained containedin=clojureLambdaConceal conceal cchar=λ
+" syn match clojureBdaConceal /n/ contained containedin=clojureLambdaConceal conceal cchar=.
+" hi link clojureFnConceal clojureSpecial
 
 syn keyword clojureFunc partial conceal cchar=$
 syn keyword clojureFunc comp conceal cchar=←
