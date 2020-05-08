@@ -2,7 +2,7 @@
 " Language:              sml
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-let b:interpreter = 'sml'
+let b:interpreter = 'rlwrap sml'
 
 setlocal commentstring=(*\ %s\ *)
 setlocal shiftwidth=2 softtabstop=2

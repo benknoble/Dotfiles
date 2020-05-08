@@ -1,0 +1,1 @@
+alias sml='rlwrap sml'
