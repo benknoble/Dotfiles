@@ -104,3 +104,5 @@ syn match smlLCIdentifier /\<o\>/ conceal cchar=←
 syn keyword smlEmptyList nil conceal cchar=∅
 syn match smlEmptyList /\[\]/ conceal cchar=∅
 hi def link smlEmptyList smlConstructor
+
+syn keyword smlType ref
