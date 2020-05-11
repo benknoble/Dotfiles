@@ -17,16 +17,16 @@
 	ds = diff --stat
 	g = !exec git
 	git = !exec git
-	grall = !git graph --all
-	graph = !git graph-long --oneline
+	grall = graph --all
+	graph = graph-long --oneline
 	graph-long = log --graph
 	h = help
 	ig = check-ignore
-	igv = !git ig --verbose
+	igv = ig --verbose
 	intend = add --intent-to-add
 	last = log -1 HEAD
 	logp = log --graph --abbrev-commit --pretty=mine
-	logpall = !git logp --all
+	logpall = logp --all
 	lol = log --oneline
 	merc = merge --no-ff
 	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --stdin;}; f"
@@ -38,11 +38,11 @@
 	riu = rebase --interactive HEAD@{upstream}
 	s = status --short
 	sb = show-branch
-	sbu = !git sb HEAD HEAD@{upstream}
-	sdiff = !git diff && git submodule foreach 'git diff'
+	sbu = sb HEAD HEAD@{upstream}
+	sdiff = diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
 	sr = status --short --branch
-	standup = !git log --author=$USER --since=yesterday --all --format=%s
+	standup = log --author=$USER --since=yesterday --all --format=%s
 	stat = status
 	supdate = submodule update --remote --checkout
 	tags = tag --list
