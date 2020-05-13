@@ -52,9 +52,6 @@ let b:undo_ftplugin = ftplugin#undo({
       \   [ 'x', '<LocalLeader>h'],
       \   [ 'n', '<LocalLeader>h'],
       \ ],
-      \ 'vars': [
-      \   'g:markdown_folding',
-      \ ],
       \ 'funcs': [
       \   'UnderlineHeading',
       \ ],
