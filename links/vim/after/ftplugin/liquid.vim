@@ -1,8 +1,13 @@
 " Vim filetype plugin
-" Language:              Markdown
+" Language:              Liquid
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 if exists('b:liquid_subtype')
+  if b:liquid_subtype ==# 'markdown'
+    xnoremap <LocalLeader>h :call markdown#to_liquid()<CR>
+    nnoremap <LocalLeader>h :%call markdown#to_liquid()<CR>
+  endif
+
   if ! exists('b:ale_linter_aliases')
     let b:ale_linter_aliases = []
   endif
