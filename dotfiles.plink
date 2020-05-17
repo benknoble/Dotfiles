@@ -122,3 +122,5 @@ LINKS = links/
 .tmux.conf <= tmux.conf
 .vifm <= vifm
 .vim <= vim
+.zshenv <= zshenv
+.zshrc <= zshrc
