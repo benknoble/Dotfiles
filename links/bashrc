@@ -6,7 +6,7 @@ case $- in
 esac
 
 # reload profile
-alias reload='. ~/.bashrc >/dev/null && echo "reloaded"'
+alias reload='. ~/.bashrc && echo "reloaded"'
 
 # VARS {{{
 
