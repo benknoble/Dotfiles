@@ -23,6 +23,11 @@ nmap <buffer> <LocalLeader>qs ysis"
 
 setlocal keywordprg=:Man
 
+" temporary fix for b:match_words
+let b:match_words = '\<if\>:\<elif\>:\<else\>:\<fi\>'
+      \ . ',\<case\>:^\s*([^)]*):\<esac\>'
+      \ . ',\<\%(select\|while\|until\|repeat\|for\%(each\)\=\)\>:\<done\>'
+
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'textwidth',
@@ -38,5 +43,8 @@ let b:undo_ftplugin = ftplugin#undo({
       \   [ 'x', 'is' ],
       \   [ 'o', 'is' ],
       \   [ 'n', '<LocalLeader>qs' ],
+      \ ],
+      \ 'vars': [
+      \   'b:undo_ftplugin',
       \ ],
       \ })
