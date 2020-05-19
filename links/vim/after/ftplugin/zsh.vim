@@ -21,12 +21,15 @@ onoremap <buffer> is :<C-u>call sh#in_subshell()<CR>
 nmap <buffer> <LocalLeader>qv ysiv"
 nmap <buffer> <LocalLeader>qs ysis"
 
+setlocal keywordprg=:Man
+
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'textwidth',
       \   'shiftwidth',
       \   'softtabstop',
       \   'iskeyword',
+      \   'keywordprg',
       \ ],
       \ 'maps': [
       \   [ 'x', 'iv' ],
