@@ -1,0 +1,5 @@
+#! /usr/bin/env zsh
+
+mkcd () { mkdir "$@" && cd "$@" ; }
+
+mkcd "$@"

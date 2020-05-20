@@ -1,0 +1,9 @@
+#! /usr/bin/env zsh
+
+A () {
+  awk "$@"
+}
+
+compdef ${_comps[awk]} A
+
+awk "$@"

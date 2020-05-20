@@ -1,0 +1,9 @@
+#! /usr/bin/env zsh
+
+L () {
+  less "$@"
+}
+
+compdef ${_comps[less]} L
+
+L "$@"

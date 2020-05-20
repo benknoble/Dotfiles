@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+findPid () {
+  lsof -t -c "$@"
+}
+
+findPid "$@"

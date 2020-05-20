@@ -1,0 +1,13 @@
+###
+# delim: %%
+# help: zsh autoload function
+# output: ~/.zshfns/{fname}
+# vim: ft=zsh
+###
+#! /usr/bin/env zsh
+
+%%{fun} () {
+  :
+}
+
+%%{fun} "$@"

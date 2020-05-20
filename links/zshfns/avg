@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+avg () {
+  awk '{ sum += $0 } END{ print sum/NF }'
+}
+
+avg "$@"

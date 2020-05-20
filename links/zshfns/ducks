@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+ducks () {
+  du -cks "$@" | sort -rn | head
+}
+
+ducks "$@"

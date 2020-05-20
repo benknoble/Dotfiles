@@ -1,0 +1,8 @@
+#! /usr/bin/env zsh
+
+complete_heroku () {
+  command -v heroku &> /dev/null \
+    && eval "$(heroku autocomplete:script zsh)"
+}
+
+complete_heroku "$@"

@@ -1,0 +1,125 @@
+# tie them together like PATH/path
+typeset -T INFOPATH infopath
+# enforce unique elements
+typeset -U path manpath mailpath fpath infopath cdpath
+
+reset_editor() {
+  # set default editor to vim
+  export VISUAL="$(command -v vim)"
+  export EDITOR="$VISUAL"
+  export MANPAGER='vim -M +MANPAGER -'
+}
+
+# use my color scheme for ls
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+
+# use less on any system
+export LESS="RWi"
+export PAGER="less"
+
+export PYTHONSTARTUP=~/.pythonrc
+export VIRTUAL_ENV_DISABLE_PROMPT=true
+
+export HOMEBREW_NO_AUTO_UPDATE=true
+export HOMEBREW_INSTALL_CLEANUP=true
+
+# paths {{{
+
+# debugging paths added via pathadd
+pathdebug=
+
+pathprint () {
+  if (($# == 0)); then
+    set -- PATH
+  fi
+  for path_var ; do
+    path_var=${(U)path_var}
+    [[ "$path_var" != *PATH ]] && path_var+=PATH
+    print -lr -- "$path_var" "${(@s<:>)${(P)path_var}}"
+  done
+}
+
+_pathdebug () {
+  if [[ -n "$pathdebug" ]]; then
+    local ptype="${(U)1}"
+    local added="$2"
+    [[ "${ptype}" != *PATH ]] && ptype+=PATH
+    # find the file which is our caller's caller
+    # stack[1] = me
+    # stack[2] = who called me
+    # stack[3] = source of path change
+    local source="${funcstack[3]}"
+    # we were called from interactive
+    [[ -z "$source" ]] && source=interactive
+    printf '%s DEBUG:\t%s\t(%s)\n' "$ptype" "$source" "$added" >&2
+  fi
+}
+
+pathadd () {
+  if (($# == 1)); then
+    set -- path "$1"
+  fi
+  local path_type="$1"
+  local path_var="${(L)path_type}"
+  local addition="$2"
+  [[ "$path_var" != *path ]] && path_var+=path
+  eval "${path_var}+=( $addition )"
+  _pathdebug "$path_type" "$addition"
+}
+
+pathadd_front () {
+  if (($# == 1)); then
+    set -- path "$1"
+  fi
+  local path_type="$1"
+  local path_var="${(L)path_type}"
+  local addition="$2"
+  [[ "$path_var" != *path ]] && path_var+=path
+  eval "${path_var}=( $addition \"\${${path_var}[@]}\" )"
+  _pathdebug "$path_type" "$addition"
+}
+
+pathrm () {
+  if (($# == 1)); then
+    set -- path "$1"
+  fi
+  local path_type="$1"
+  local path_var="${(L)path_type}"
+  local deletion="$2"
+  [[ "$path_var" != *path ]] && path_var+=path
+  eval "${path_var}=(\"\${(@)${path_var}:#${deletion}}\")"
+  _pathdebug "RM $path_type" "$deletion"
+}
+
+if command -v python3 >/dev/null 2>&1 ;  then
+  pathadd "$(python3 -m site --user-base)/bin"
+fi
+
+pathadd ~/.bin
+
+pathadd ~/go/bin
+
+git==git
+gitjump="${git:h:h}/share/git-core/contrib/git-jump"
+[[ -x "$gitjump"/git-jump ]] && pathadd "$gitjump"
+unset git gitjump
+
+pathadd_front .git/safe/../../bin
+
+local_perl_bin=~/perl5/bin
+pathadd "$local_perl_bin"
+if [[ -d "$local_perl_bin" ]]; then
+  local_perl_root="${local_perl_bin:h}"
+  PERL5LIB="${local_perl_root}/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+  export PERL5LIB
+  PERL_LOCAL_LIB_ROOT="${local_perl_root}${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+  export PERL_LOCAL_LIB_ROOT
+  PERL_MB_OPT="--install_base ${local_perl_root}"
+  export PERL_MB_OPT
+  PERL_MM_OPT="INSTALL_BASE=${local_perl_root}"
+  export PERL_MM_OPT
+  unset local_perl_root
+fi
+unset local_perl_bin
+
+# paths }}}

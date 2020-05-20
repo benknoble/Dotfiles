@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+frequency () {
+  sort | uniq -c | sort -g
+}
+
+frequency "$@"

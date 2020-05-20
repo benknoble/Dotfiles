@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+ghome () {
+  cd "$(git rev-parse --show-toplevel || printf .)"
+}
+
+ghome "$@"

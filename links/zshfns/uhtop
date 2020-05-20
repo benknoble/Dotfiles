@@ -1,0 +1,9 @@
+#! /usr/bin/env zsh
+
+uhtop () {
+  htop -u "$USER" "$@"
+}
+
+compdef ${_comps[htop]} uhtop
+
+uhtop "$@"

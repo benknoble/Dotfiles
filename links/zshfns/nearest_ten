@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+nearest_ten () {
+  awk '{ printf "%d\n", sprintf("%1.0e", $0) }'
+}
+
+nearest_ten "$@"

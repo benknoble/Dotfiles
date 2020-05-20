@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+pj () {
+  ps $(jobs -l | fields 2)
+}
+
+pj "$@"

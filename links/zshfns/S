@@ -1,0 +1,9 @@
+#! /usr/bin/env zsh
+
+S () {
+  sed "$@"
+}
+
+compdef ${_comps[sed]} S
+
+S "$@"

@@ -1,0 +1,283 @@
+# vim: foldmethod=marker
+
+# reload
+alias reload='. ~/.zshenv && . ~/.zshrc && print "reloaded"'
+
+# VARS {{{
+
+# shell {{{
+
+pathadd_front f ~/.zshfns
+
+READNULLCMD=$PAGER
+
+PROMPT_DIRTRIM=2
+prompt_date=
+prompt_user=true
+prompt_host=true
+prompt_jobs=true
+prompt_tty=
+prompt_shell_name=
+prompt_time=
+prompt_dir=true
+prompt_history=
+prompt_venv=true
+
+PS1=''
+PS1+='${prompt_time:+"%F{blue}%T⧖ %f"}'
+PS1+='${prompt_date:+"%F{blue}%D{%e %B %Y} %f"}'
+PS1+='${prompt_jobs:+"%(1j.%F{yellow}%j& %f.)"}'
+PS1+='${prompt_history:+"%F{magenta}#%! %f"}'
+PS1+='${prompt_tty:+"%F{green}%l %f"}'
+PS1+='${prompt_shell_name:+"%F{green}$ZSH_PATCHLEVEL %f"}'
+PS1+='${prompt_user:+"%n ${prompt_host:+"@ %m "}"}'
+PS1+='${prompt_dir:+"%F{cyan}∈ %($((PROMPT_DIRTRIM+1))~:%-1~/…/:)%${PROMPT_DIRTRIM}~%f"}'
+PS1+=$'\n'
+PS1+='%(?.%F{green}λ%f.%F{red}✗ %? λ%f) '
+
+RPS1=''
+RPS1+='${prompt_venv:+${VIRTUAL_ENV:+"(${VIRTUAL_ENV:h:t}) "}}'
+
+PS2='» '
+RPS2='%^'
+
+# options {{{
+
+# why this is off by default is beyond me
+setopt interactivecomments
+
+# substitutions in prompts
+setopt promptsubst
+
+# history {{{
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+# append, don't overwrite
+setopt appendhistory
+# append as you go
+setopt incappendhistory
+# share across sessions
+# setopt sharehistory
+# ignore duplicates
+setopt histignoredups
+# don't show duplicates more than once
+setopt histfindnodups
+# prefer to get rid of duplicates when history fills up
+setopt histexpiredupsfirst
+# verification of history expansions
+setopt histverify
+# history }}}
+
+setopt noclobber
+# but save them in history as clobbered, for quick corrections
+setopt histallowclobber
+
+setopt autocd
+setopt extendedglob
+setopt correct
+
+# make some more sense:
+# no multi io redirections
+setopt nomultios
+# exports are not implicitly global
+setopt noglobalexport
+
+# completion {{{
+
+setopt autolist
+setopt automenu
+setopt completeinword
+autoload -U compinit && compinit
+zstyle ':completion:*' menu select=5
+# zstyle ':completion:*:descriptions' format 'Completing %d'
+# zstyle ':completion:*' group-name ''
+
+# this is installed as common-commands by the completion engine,
+# and I DONT LIKE IT
+# visually, sure, the whole
+#   command -- description
+# thing is nice, but most of the commands I *know* already (I'm not learning
+# git), and further it makes it stupid hard to get to aliases in completion
+zstyle ':completion:*:*:git:*' tag-order all-commands
+
+# completion }}}
+
+# options }}}
+
+# keys {{{
+
+# widgets {{{
+
+zle_highlight=(
+  'isearch:fg=green,standout'
+  region:standout
+  'special:fg=red'
+  'suffix:fg=magenta'
+  paste:standout
+)
+
+run-fg-editor() {
+  zle push-input
+  BUFFER="fg %$EDITOR:t"
+  zle accept-line
+}
+zle -N run-fg-editor
+
+autoload -U edit-command-line
+zle -N edit-command-line
+
+autoload -U surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+
+autoload -U insert-files
+zle -N insert-files
+
+[[ "$(type -w run-help)" == 'run-help: alias' ]] && unalias run-help
+fns=( ${^fpath}/run-help*(N:t) )
+(( ${#fns} > 0 )) && autoload -U "${fns[@]}"
+
+autoload -U insert-composed-char
+zle -N insert-composed-char
+
+autoload -U predict-on
+zle -N predict-on
+zle -N predict-off
+
+# widgets }}}
+
+# use vi bindings
+bindkey -v
+# but fix backspace
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^Y' yank
+
+# and set incremental searches
+bindkey -M viins '^R' history-incremental-search-backward
+
+# let 'space' magically expand history command-line fu
+bindkey -M viins ' ' magic-space
+
+bindkey -M viins '^Xq' quote-line
+
+# add my favorite editing trick
+bindkey -M vicmd '^V' edit-command-line
+# and another I picked up
+bindkey -M viins '^Z' run-fg-editor
+# and this!!
+bindkey -a cs change-surround
+bindkey -a ds delete-surround
+bindkey -a ys add-surround
+bindkey -M visual S add-surround
+# better and better
+bindkey -M viins '^Xf' insert-files
+bindkey -M viins '^X^F' insert-files
+
+bindkey -M viins '^N' menu-complete
+bindkey -M viins '^P' reverse-menu-complete
+# shift-tab
+bindkey -M viins '\e[Z' reverse-menu-complete
+
+bindkey -M vicmd 'K' run-help
+
+bindkey -M viins '^K' insert-composed-char
+
+# keys }}}
+
+# term {{{
+
+# disable flow control
+stty -ixon -ixoff
+
+# term }}}
+
+# shell }}}
+
+# personal {{{
+
+if command -v brew &>/dev/null ; then
+  has_brew=true
+else
+  has_brew=false
+fi
+
+# brew paths
+if "$has_brew" ; then
+  brew_prefix="$(brew --prefix)"
+  pathadd_front "$brew_prefix/bin"
+  pathadd_front man "$brew_prefix/share/man"
+  pathadd_front info "$brew_prefix/share/info"
+fi
+
+# OS test
+case "$OSTYPE" in
+  darwin* ) OS=mac ;;
+  linux* ) OS=linux ;;
+esac
+
+# file to hold private keys
+private=~/.private
+
+# personal }}}
+
+# VARS }}}
+
+# sourcing {{{
+
+# probably not many of these...
+for file in ~/.zsh/*.zsh(N) ; do
+  source "$file"
+done
+for file in ~/.zsh/"$OS"/*.zsh(N) ; do
+  source "$file"
+done
+
+[[ -r "$private" ]] && source "$private"
+
+if [[ -d ~/.personal ]]; then
+  for file in ~/.personal/*.zsh(N) ; do
+    source "$file"
+  done
+  for file in ~/.personal/"$OS"/*.zsh(N) ; do
+    source "$file"
+  done
+  pathadd ~/.personal/bin
+fi
+
+if [[ -r ./.env/bin/activate ]]; then
+  source ./.env/bin/activate
+fi
+
+# autoload {{{
+
+# standard distribution
+fns=(
+  zargs
+  zcalc
+  zmv
+)
+(( ${#fns} > 0 )) && autoload -U "${fns[@]}"
+
+# my stuff
+fns=( ~/.zshfns/*(N:t) )
+(( ${#fns} > 0 )) && autoload -U "${fns[@]}"
+
+# autoload }}}
+
+reset_editor
+
+# sourcing }}}
+
+# custom {{{
+
+# custom }}}
+
+unset has_brew
+unset private
+unset OS
+unset fns
