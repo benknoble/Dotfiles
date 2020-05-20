@@ -12,6 +12,7 @@ let g:ale_linters = {
       \ 'python': 'all',
       \ 'scala': [],
       \ 'java': [],
+      \ 'zsh': ['shell'],
       \ }
 
 let g:ale_fixers = {

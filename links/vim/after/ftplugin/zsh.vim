@@ -28,6 +28,8 @@ let b:match_words = '\<if\>:\<elif\>:\<else\>:\<fi\>'
       \ . ',\<case\>:^\s*([^)]*):\<esac\>'
       \ . ',\<\%(select\|while\|until\|repeat\|for\%(each\)\=\)\>:\<done\>'
 
+let b:ale_sh_shell_default_shell = 'zsh'
+
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'textwidth',
