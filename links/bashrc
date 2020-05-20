@@ -27,6 +27,7 @@ export LESS="RWi"
 export PAGER="less"
 
 export PYTHONSTARTUP=~/.pythonrc
+export VIRTUAL_ENV_DISABLE_PROMPT=true
 
 export HOMEBREW_NO_AUTO_UPDATE=true
 export HOMEBREW_INSTALL_CLEANUP=true
