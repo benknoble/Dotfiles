@@ -1,0 +1,21 @@
+#compdef g
+_g () {
+  # ${_compdefs[git]} doesn't work here, because it may not be set yet
+  _git "$@"
+}
+
+# ${_comps[git]} calls __${command}_zsh_main, where we want ${command} to be git
+# for our purposes
+#
+# but it will be g when it gets called automatically, so we setup the
+# appropriate hook via a "redirect" to the right function
+#
+# we cannot use
+#   functions -c __git_zsh_main __g_zsh_main
+# becuase the former hasn't necessarily been loaded yet
+(( $+functions[__g_zsh_main] )) ||
+__g_zsh_main () {
+  __git_zsh_main "$@"
+}
+
+_g "$@"
