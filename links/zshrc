@@ -48,6 +48,7 @@ PS1+='${prompt_dir:+"%F{cyan}∈ %($((PROMPT_DIRTRIM+1))~:%-1~/…/:)%${PROMPT_D
 PS1+='%F{yellow}$(__git_ps1 "%s ")%f'
 PS1+=$'\n'
 PS1+='%(?.%F{green}λ%f.%F{red}✗ %? λ%f) '
+PS1+='%(!.%F{red}! %f.)'
 
 RPS1=''
 RPS1+='${prompt_venv:+${VIRTUAL_ENV:+"(${VIRTUAL_ENV:h:t}) "}}'
