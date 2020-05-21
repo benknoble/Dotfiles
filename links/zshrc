@@ -146,12 +146,12 @@ zle_highlight=(
   paste:standout
 )
 
-run-fg-editor() {
+run-fg () {
   zle push-input
-  BUFFER="fg %$EDITOR:t"
+  BUFFER="fg"
   zle accept-line
 }
-zle -N run-fg-editor
+zle -N run-fg
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -197,7 +197,7 @@ bindkey -M viins '^Xq' quote-line
 # add my favorite editing trick
 bindkey -M vicmd '^V' edit-command-line
 # and another I picked up
-bindkey -M viins '^Z' run-fg-editor
+bindkey -M viins '^Z' run-fg
 # and this!!
 bindkey -a cs change-surround
 bindkey -a ds delete-surround
