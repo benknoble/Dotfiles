@@ -18,8 +18,6 @@ vq() {
   fi
 }
 
-compdef _precommand vq
-
 vf() {
   if (($# > 0)); then
     vim $("$@")
@@ -28,8 +26,6 @@ vf() {
       'Brittle: {cmd} output will be word-split'
   fi
 }
-
-compdef _precommand vq
 
 vff() {
   if (($# == 1)) ; then
