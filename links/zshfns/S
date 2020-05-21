@@ -4,6 +4,4 @@ S () {
   sed "$@"
 }
 
-compdef ${_comps[sed]} S
-
 S "$@"

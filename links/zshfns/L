@@ -4,6 +4,4 @@ L () {
   less "$@"
 }
 
-compdef ${_comps[less]} L
-
 L "$@"

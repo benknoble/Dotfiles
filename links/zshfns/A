@@ -4,6 +4,4 @@ A () {
   awk "$@"
 }
 
-compdef ${_comps[awk]} A
-
 awk "$@"

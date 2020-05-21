@@ -4,6 +4,4 @@ uhtop () {
   htop -u "$USER" "$@"
 }
 
-compdef ${_comps[htop]} uhtop
-
 uhtop "$@"
