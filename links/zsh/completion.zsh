@@ -10,9 +10,10 @@ function _pip_completion {
 compctl -K _pip_completion pip3
 # pip zsh completion end
 
-# vault completion
-vault_path="$(command -v vault)"
-if [[ -n "$vault_path" ]] ; then
-  compdef "$vault_path" vault
-fi
-unset vault_path
+() {
+  # vault completion
+  local vault_path="$(command -v vault)"
+  if [[ -n "$vault_path" ]] ; then
+    compdef "$vault_path" vault
+  fi
+}

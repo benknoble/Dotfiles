@@ -99,27 +99,28 @@ pathadd ~/.bin
 
 pathadd ~/go/bin
 
-git==git
-gitjump="${git:h:h}/share/git-core/contrib/git-jump"
-[[ -x "$gitjump"/git-jump ]] && pathadd "$gitjump"
-unset git gitjump
+() {
+  local git==git
+  local gitjump="${git:h:h}/share/git-core/contrib/git-jump"
+  [[ -x "$gitjump"/git-jump ]] && pathadd "$gitjump"
+}
 
 pathadd_front .git/safe/../../bin
 
-local_perl_bin=~/perl5/bin
-pathadd "$local_perl_bin"
-if [[ -d "$local_perl_bin" ]]; then
-  local_perl_root="${local_perl_bin:h}"
-  PERL5LIB="${local_perl_root}/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
-  export PERL5LIB
-  PERL_LOCAL_LIB_ROOT="${local_perl_root}${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
-  export PERL_LOCAL_LIB_ROOT
-  PERL_MB_OPT="--install_base ${local_perl_root}"
-  export PERL_MB_OPT
-  PERL_MM_OPT="INSTALL_BASE=${local_perl_root}"
-  export PERL_MM_OPT
-  unset local_perl_root
-fi
-unset local_perl_bin
+() {
+  local perl_bin=~/perl5/bin
+  pathadd "$perl_bin"
+  if [[ -d "$perl_bin" ]]; then
+    local perl_root="${perl_bin:h}"
+    PERL5LIB="${perl_root}/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+    export PERL5LIB
+    PERL_LOCAL_LIB_ROOT="${perl_root}${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+    export PERL_LOCAL_LIB_ROOT
+    PERL_MB_OPT="--install_base ${perl_root}"
+    export PERL_MB_OPT
+    PERL_MM_OPT="INSTALL_BASE=${perl_root}"
+    export PERL_MM_OPT
+  fi
+}
 
 # paths }}}
