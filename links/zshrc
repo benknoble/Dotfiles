@@ -210,6 +210,8 @@ bindkey -M vicmd 'K' run-help
 
 bindkey -M viins '^K' insert-composed-char
 
+bindkey -M viins '^S' push-line
+
 # keys }}}
 
 # term {{{
