@@ -67,8 +67,8 @@ fi
 brew_setup !!
 brew tap Homebrew/bundle
 brew bundle install --file="$(BREWFILE)"
-grep "$$(brew --prefix)/bin/bash" /etc/shells || sudo sh -c "echo $$(brew --prefix)/bin/bash >> /etc/shells"
-chsh -s "$$(brew --prefix)/bin/bash" "$$USER"
+grep "$$(brew --prefix)/bin/zsh" /etc/shells || sudo sh -c "echo $$(brew --prefix)/bin/zsh >> /etc/shells"
+chsh -s "$$(brew --prefix)/bin/zsh" "$$USER"
 !!
 
 # pip: install from requirements
