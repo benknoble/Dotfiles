@@ -41,12 +41,8 @@ GIT_PS1_SHOWCOLORHINTS=''
 }
 
 PS1=''
-PS1+='${prompt_time:+"%F{blue}%T⧖ %f"}'
-PS1+='${prompt_date:+"%F{blue}%D{%e %B %Y} %f"}'
 PS1+='${prompt_jobs:+"%(1j.%F{yellow}%j& %f.)"}'
 PS1+='${prompt_history:+"%F{magenta}#%! %f"}'
-PS1+='${prompt_tty:+"%F{green}%l %f"}'
-PS1+='${prompt_shell_name:+"%F{green}$ZSH_PATCHLEVEL %f"}'
 PS1+='${prompt_user:+"%n ${prompt_host:+"@ %m "}"}'
 PS1+='${prompt_dir:+"%F{cyan}∈ %($((PROMPT_DIRTRIM+1))~:%-1~/…/:)%${PROMPT_DIRTRIM}~%f "}'
 PS1+='%F{yellow}$(__git_ps1 "%s ")%f'
@@ -55,6 +51,10 @@ PS1+='%(?.%F{green}λ%f.%F{red}✗ %? λ%f) '
 
 RPS1=''
 RPS1+='${prompt_venv:+${VIRTUAL_ENV:+"(${VIRTUAL_ENV:h:t}) "}}'
+RPS1+='${prompt_time:+"%F{blue}%T⧖ %f"}'
+RPS1+='${prompt_date:+"%F{blue}%D{%e %B %Y} %f"}'
+RPS1+='${prompt_tty:+"%F{green}%l %f"}'
+RPS1+='${prompt_shell_name:+"%F{green}$ZSH_PATCHLEVEL %f"}'
 
 PS2='» '
 RPS2='%^'
