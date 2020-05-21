@@ -60,6 +60,8 @@ RPS1+='${prompt_shell_name:+"%F{green}$ZSH_PATCHLEVEL %f"}'
 PS2='» '
 RPS2='%^'
 
+PS4='+(%e)%N:%i> '
+
 # options {{{
 
 # why this is off by default is beyond me
