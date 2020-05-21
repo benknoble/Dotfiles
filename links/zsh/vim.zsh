@@ -52,8 +52,6 @@ vc() {
   fi
 }
 
-compdef _directories vc
-
 vs() {
   if (($# > 0)); then
     local session="$1"
@@ -63,8 +61,6 @@ vs() {
     vim -S
   fi
 }
-
-compdef '_files -g "*.vim"' vs
 
 # Start vim with its last cursor position
 lvim() {

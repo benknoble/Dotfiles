@@ -1,0 +1,11 @@
+#compdef vc
+
+_vc () {
+  if (( CURRENT > 2 )); then
+    _vim "$@"
+  else
+    _directories "$@"
+  fi
+}
+
+_vc "$@"
