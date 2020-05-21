@@ -6,13 +6,9 @@ v() {
   vim "$@"
 }
 
-compdef ${_comps[vim]} v
-
 vv() {
   vim +'edit $MYVIMRC' "$@"
 }
-
-compdef ${_comps[vim]} v
 
 vq() {
   if (($# > 0)); then
