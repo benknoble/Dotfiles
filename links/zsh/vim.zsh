@@ -90,5 +90,3 @@ vw() {
     fi
   }
 }
-
-compdef _command_names vw
