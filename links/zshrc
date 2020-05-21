@@ -5,6 +5,8 @@ alias reload='. ~/.zshenv && . ~/.zshrc && print "reloaded"'
 
 # VARS {{{
 
+autoload -U add-zsh-hook add-zle-hook-widget
+
 # shell {{{
 
 pathadd_front f ~/.zshfns
