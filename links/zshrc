@@ -13,6 +13,8 @@ pathadd_front f ~/.zshfns
 
 READNULLCMD=$PAGER
 
+# prompts {{{
+
 PROMPT_DIRTRIM=2
 prompt_date=
 prompt_user=true
@@ -61,6 +63,8 @@ PS2='» '
 RPS2='%^'
 
 PS4='+(%e)%N:%i> '
+
+# prompts }}}
 
 # options {{{
 
