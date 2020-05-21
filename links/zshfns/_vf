@@ -1,0 +1,8 @@
+#compdef vf
+
+_vf () {
+  # precommand handles completing afterwards for us
+  _precommand "$@"
+}
+
+_vf "$@"

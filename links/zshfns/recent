@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+recent () {
+  history | cut -c8- | cut -d" " -f1 | frequency | sort -rn | head
+}
+
+recent "$@"

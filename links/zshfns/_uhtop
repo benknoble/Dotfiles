@@ -1,0 +1,7 @@
+#compdef uhtop
+
+_uhtop () {
+  _htop "$@"
+}
+
+_uhtop "$@"

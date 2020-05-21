@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+j () {
+  jobs -l
+}
+
+j "$@"

@@ -1,0 +1,11 @@
+#compdef vs
+
+_vs () {
+  if (( CURRENT > 2 )); then
+    _vim "$@"
+  else
+    _path_files -g "**/*.vim" "$@"
+  fi
+}
+
+_vs "$@"

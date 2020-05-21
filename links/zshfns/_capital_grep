@@ -1,0 +1,7 @@
+#compdef G
+
+_capital_grep () {
+  _grep "$@"
+}
+
+_capital_grep "$@"

@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+news () {
+  newsboat "$@"
+}
+
+news "$@"

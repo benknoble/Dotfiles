@@ -1,0 +1,9 @@
+#! /usr/bin/env zsh
+
+enotes () {
+  local dir="$(git rev-parse --absolute-git-dir 2>/dev/null)"
+  local notes="${dir:-.}"/notes.md
+  "${EDITOR:-vi}" "$notes"
+}
+
+enotes "$@"

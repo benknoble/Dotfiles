@@ -1,0 +1,7 @@
+#compdef vw
+
+_vw () {
+  _command_names "$@"
+}
+
+_vw "$@"

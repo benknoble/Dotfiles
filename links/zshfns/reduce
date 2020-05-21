@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+reduce () {
+  sed '2,$s,$,'"$1"',' | awk "BEGIN{print \"${2:-10}k\"} 1 END{print \"f\"}" | dc
+}
+
+reduce "$@"

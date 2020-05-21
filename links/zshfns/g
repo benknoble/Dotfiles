@@ -1,0 +1,10 @@
+#! /usr/bin/env zsh
+
+g () {
+  case $# in
+    0) git status -s ;;
+    *) git "$@" ;;
+  esac
+}
+
+g "$@"

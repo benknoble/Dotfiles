@@ -1,0 +1,7 @@
+#compdef vv
+
+_vv () {
+  _vim "$@"
+}
+
+_vv "$@"

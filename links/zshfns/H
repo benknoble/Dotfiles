@@ -1,0 +1,8 @@
+#! /usr/bin/env zsh
+
+H () {
+  history "$@"
+}
+
+
+H "$@"
