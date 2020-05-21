@@ -66,6 +66,8 @@ setopt interactivecomments
 
 # substitutions in prompts
 setopt promptsubst
+# and clear the right prompt when done
+setopt transientrprompt
 
 # history {{{
 HISTFILE=~/.zsh_history
