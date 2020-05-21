@@ -7,15 +7,4 @@ g () {
   esac
 }
 
-compdef ${_comps[git]} g
-# ${_comps[git]} calls __${command}_zsh_main, where ${command} is git for our
-# purposes, but will be g for completing the function, so we setup the
-# appropriate hook via a redirect to the right function
-# we cannot use
-#   functions -c __git_zsh_main __g_zsh_main
-# becuase the former hasn't been loaded yet
-__g_zsh_main() {
-  __git_zsh_main "$@"
-}
-
 g "$@"
