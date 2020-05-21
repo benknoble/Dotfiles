@@ -1,0 +1,7 @@
+#compdef EG
+
+_capital_egrep () {
+  _grep "$@"
+}
+
+_capital_egrep "$@"
