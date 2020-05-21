@@ -117,7 +117,7 @@ setopt noglobalexport
 setopt autolist
 setopt automenu
 setopt completeinword
-autoload -U compinit && compinit
+autoload -U compinit
 zstyle ':completion:*' menu select=5
 # zstyle ':completion:*:descriptions' format 'Completing %d'
 # zstyle ':completion:*' group-name ''
@@ -305,6 +305,8 @@ reset_editor
 # sourcing }}}
 
 # custom {{{
+
+compinit
 
 # we cannot autoload these definitions, because they get cleared by compinit?
 compdef ${_comps[git]} g
