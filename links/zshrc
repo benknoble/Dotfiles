@@ -15,6 +15,8 @@ READNULLCMD=$PAGER
 
 # prompts {{{
 
+PROMPT_EOL_MARK='%S%F{red}$%f%s'
+
 PROMPT_DIRTRIM=2
 prompt_date=
 prompt_user=true
