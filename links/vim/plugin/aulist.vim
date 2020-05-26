@@ -1,4 +1,5 @@
 " taken from https://gist.github.com/george-b/2f842efaf2141cb935a81f6174b6401f
+" modified in https://gist.github.com/benknoble/d53208c6f1ad8f2130fd706c9cdbd006
 
 if !exists('##CmdlineLeave')
   finish
@@ -11,14 +12,19 @@ function s:feedkeys(str) abort
 endfunction
 
 function! AutoReply() abort
-  let previous_cmdline  = histget('cmd', -1)
-  let previous_cmd      = split(previous_cmdline)[0]
-  let previous_args     = split(previous_cmdline)[1:]
+  let previous = split(getcmdline())
 
-  let ignorecase    = &ignorecase
-  set noignorecase
-  let previous_cmd  = get(getcompletion(previous_cmd, 'command'), 0)
-  let &ignorecase   = ignorecase
+  if empty(previous)
+    return s:has_replied
+  endif
+
+  let previous_cmd = getcompletion(previous[0], 'command')
+  if &ignorecase
+    " call filter(previous_cmd, { _, v -> !~# previous[0] })
+    call filter(previous_cmd, "v:val !~# previous[0]")
+  endif
+  let previous_cmd  = get(previous_cmd, 0, '')
+  let previous_args = previous[1:]
 
   if empty(previous_cmd)
     return s:has_replied
