@@ -332,7 +332,7 @@ nnoremap <silent> N N:call cursor#blink(0.2)<cr>
 " }}}
 
 " Update "Last Change" line
-command Changed silent! keeppatterns %substitute/Last [cC]hanged\?:\zs.*/\=strftime(" %Y %b %d")/
+command Changed keeppatterns %substitute/Last [cC]hanged\?:\zs.*/\=strftime(" %Y %b %d")/e
 
 " updatetime=250 is too fast for this
 " updatetime=1000+ is too slow for auto-origami
