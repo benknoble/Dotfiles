@@ -37,4 +37,7 @@ augroup Badword
   autocmd Syntax * for word in get(g:, 'badwords', []) + s:badwords | call s:mark_bad(word) | endfor
 augroup END
 
-command Badsearch call feedkeys('/'.join(get(g:, 'badwords', []) + s:badwords, '\|').'<CR>', 'n')
+command -bang -nargs=? -complete=file Badsearch
+      \ execute 'vimgrep'
+      \ '/'.join(get(g:, 'badwords', []) + s:badwords, '\|').'/'.(<bang>0 ? 'g' : '')
+      \ (empty(<q-args>) ? expand('%') : <q-args>)
