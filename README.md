@@ -52,15 +52,18 @@ At this point, you may want to setup brew, so do
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 # macOS
 command -v brew
+
 make brew_setup
 ```
 
-The next time you start a shell (usually `bash`), your new `bashrc` will load
-(or `bash_profile`, which simply sources the `bashrc`), giving you access to a
-whole host of new command-line fu.
+The next time you start a shell (probably homebrewed `zsh`, since that's what
+`make brew_setup` sets it to), your new config files will load , giving you
+access to a whole host of new command-line fu.
 
-`reload` is a helpful alias for when changes have been made to dotfiles: it
-essentially loads those changes into the environment.
+`reload` is a helpful alias (defined for both `bash` and `zsh`) for when changes
+have been made to shell dotfiles: it essentially loads those changes into the
+environment. `:Reload` exists for `vim`, and there are reload bindings for both
+`tmux` and `readline` as well.
 
 ### Keeping Up-to-date
 
