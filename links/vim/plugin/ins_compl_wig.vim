@@ -4,13 +4,13 @@ endif
 let g:loaded_ins_compl_wig = 1
 
 augroup WIG
-  au!
-  au InsertEnter *
+  autocmd!
+  autocmd InsertEnter *
         \ if !exists('b:old_wildignore') |
         \   let b:old_wildignore = &wildignore |
         \   set wildignore& |
         \ endif
-  au InsertLeave *
+  autocmd InsertLeave *
         \ if exists('b:old_wildignore') |
         \   let &wildignore = b:old_wildignore |
         \   unlet b:old_wildignore |

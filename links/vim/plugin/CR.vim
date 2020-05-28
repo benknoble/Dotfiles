@@ -7,7 +7,7 @@ let g:loaded_CR = 1
 nnoremap <CR> o<esc>
 
 augroup CRfix
-  au!
+  autocmd!
   " Quickfix, Location list, &c. remap <CR> to work as expected
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
   autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>

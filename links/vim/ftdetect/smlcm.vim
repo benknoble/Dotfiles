@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.cm set filetype=smlcm
+autocmd BufRead,BufNewFile *.cm set filetype=smlcm

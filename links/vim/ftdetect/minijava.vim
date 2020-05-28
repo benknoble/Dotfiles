@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.minijava setfiletype java
+autocmd BufRead,BufNewFile *.minijava setfiletype java

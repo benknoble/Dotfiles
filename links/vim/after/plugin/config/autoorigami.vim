@@ -4,8 +4,8 @@ endif
 
 if has('autocmd')
   augroup autofoldcolumn
-    au!
+    autocmd!
     " Automatically add foldcolumn if folds present
-    au CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
+    autocmd CursorHold,BufWinEnter,WinEnter * AutoOrigamiFoldColumn
   augroup END
 endif

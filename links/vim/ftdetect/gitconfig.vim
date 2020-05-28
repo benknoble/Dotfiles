@@ -1,1 +1,1 @@
-au BufRead,BufNewFile gitconfig,.gitconfig.local setfiletype gitconfig
+autocmd BufRead,BufNewFile gitconfig,.gitconfig.local setfiletype gitconfig

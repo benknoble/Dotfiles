@@ -1,1 +1,1 @@
-au BufRead,BufNewFile ~/.ssh/host-* setfiletype sshconfig
+autocmd BufRead,BufNewFile ~/.ssh/host-* setfiletype sshconfig

@@ -11,7 +11,7 @@
 " Usage:
 "   To allow Vim to conceal things like 'a -> α in SML, use:
 "
-"       au! FileType sml setlocal conceallevel=2
+"       autocmd! FileType sml setlocal conceallevel=2
 "
 "   To not hide the tick in Greek type variables (i.e., use 'a -> 'α
 "   instead of 'a -> α), add
