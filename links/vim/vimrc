@@ -6,7 +6,7 @@ set encoding=utf-8
 scriptencoding utf-8
 
 " Personal config {{{
-let s:personal=expand('~/.personal/vimrc')
+let s:personal = expand('~/.personal/vimrc')
 let s:personal_dir = expand('~/.personal/vim')
 let s:personal_after_dir = s:personal_dir.'/after'
 if filereadable(s:personal)
@@ -122,7 +122,7 @@ set colorcolumn=+0
 " Wrap lines that are too long (off by default)
 set nowrap
 " Show wrapped lines with a marker in front
-let &showbreak='└>'
+let &showbreak = '└>'
 " Break at word boundaries
 set linebreak
 " Allow movements Left and Right to move over wrapped lines

@@ -3,4 +3,4 @@ if ! exists(':UndotreeToggle')
 endif
 
 nnoremap <unique> <Leader>u :UndotreeToggle<CR>
-let g:undotree_SetFocusWhenToggle=1
+let g:undotree_SetFocusWhenToggle = 1

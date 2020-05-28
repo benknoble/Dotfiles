@@ -12,7 +12,7 @@ endif
 " Man {{{
 " Load Man plugin (see `:help Man` for more info)
 runtime ftplugin/man.vim
-let g:ft_man_open_mode='split'
+let g:ft_man_open_mode = 'split'
 let g:ft_man_folding_enable = 1
 let g:ft_man_no_sect_fallback = 1
 set keywordprg=:Man

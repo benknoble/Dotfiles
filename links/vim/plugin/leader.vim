@@ -4,16 +4,16 @@ endif
 let g:loaded_leader = 1
 
 " Set <Leader> used for mappings
-let mapleader=" "
+let mapleader = " "
 " And <LocalLeader> for buffer mappings
-let maplocalleader='\'
+let maplocalleader = '\'
 
 " Clear lines
 nnoremap <Leader>cl 0D
 
 " Refactor a word
 " Courtesy of github@habamax/.vim/vimrc
-nnoremap <Leader>cw :let @/=expand('<cword>')<CR>cgn
+nnoremap <Leader>cw :let @/ = expand('<cword>')<CR>cgn
 
 " Save
 nnoremap <Leader>s :write<CR>

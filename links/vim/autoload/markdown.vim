@@ -15,7 +15,7 @@ function! markdown#Folds() abort
 endfunction
 
 function! markdown#FoldText() abort
-  let foldsize= (v:foldend-v:foldstart)
+  let foldsize = (v:foldend-v:foldstart)
   return getline(v:foldstart) . ' (' . foldsize . ' lines )'
 endfunction
 

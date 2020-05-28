@@ -13,7 +13,7 @@ nnoremap <Right> <C-w>l
 nnoremap <S-Right> <C-w>L
 
 " Open help files at height lines - 10
-let &helpheight=(&lines - 10)
+let &helpheight = (&lines - 10)
 " Don't equalize window sizes automatically
 set noequalalways
 " Diff vertically
