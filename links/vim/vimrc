@@ -281,8 +281,6 @@ if &t_Co > 2 || has("gui_running")
   let g:tex_conceal = 'abdmg'
   " don't spell check
   let g:tex_comment_nospell = 1
-  let g:clojure_maxlines = 50
-  let g:clojure_align_subforms = 1
 endif
 " }}}
 
@@ -295,6 +293,8 @@ if has('autocmd')
   let g:scala_scaladoc_indent = 1
   " no indent for applescripts that don't need it
   let g:applescript_default_indent = 0
+  let g:clojure_maxlines = 50
+  let g:clojure_align_subforms = 1
   augroup vimrc_bash_fc
     au!
     " bash's edit-and-execute-command (which probably leans on the fc mechanism)
