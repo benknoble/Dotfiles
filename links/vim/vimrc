@@ -7,8 +7,16 @@ scriptencoding utf-8
 
 " Personal config {{{
 let s:personal=expand('~/.personal/vimrc')
+let s:personal_dir = expand('~/.personal/vim')
+let s:personal_after_dir = s:personal_dir.'/after'
 if filereadable(s:personal)
   exec "source" s:personal
+endif
+if isdirectory(s:personal_dir)
+  execute "set runtimepath^=".s:personal_dir
+endif
+if isdirectory(s:personal_after_dir)
+  execute "set runtimepath+=".s:personal_after_dir
 endif
 " }}}
 
