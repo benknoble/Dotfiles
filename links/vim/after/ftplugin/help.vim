@@ -10,7 +10,7 @@ setlocal keywordprg=:help
 
 setlocal colorcolumn=
 
-nnoremap <buffer> q :q<CR>
+nnoremap <buffer> q :quit<CR>
 
 nnoremap <buffer> <CR> <C-]>
 

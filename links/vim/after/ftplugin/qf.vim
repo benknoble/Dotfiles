@@ -2,7 +2,7 @@
 " Language:              Quickfix/Location list windows
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-nnoremap <buffer> q :q<CR>
+nnoremap <buffer> q :quit<CR>
 
 nnoremap <buffer> <C-n> :call qf#NextFile()<CR>
 nnoremap <buffer> <C-p> :call qf#PreviousFile()<CR>

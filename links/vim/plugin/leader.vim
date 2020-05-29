@@ -18,8 +18,8 @@ nnoremap <Leader>cw :let @/ = expand('<cword>')<CR>cgn
 " Save
 nnoremap <Leader>s :write<CR>
 " Quit quickly
-nnoremap <Leader>q :q<CR>
-nnoremap <Leader>Q :qa<CR>
+nnoremap <Leader>q :quit<CR>
+nnoremap <Leader>Q :qall<CR>
 " Suspended (by Matt Nathanson)
 nnoremap <Leader>z :suspend<CR>
 
