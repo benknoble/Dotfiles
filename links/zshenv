@@ -91,6 +91,20 @@ pathrm () {
   _pathdebug "RM $path_type" "$deletion"
 }
 
+if command -v brew &>/dev/null ; then
+  has_brew=true
+else
+  has_brew=false
+fi
+
+# brew paths
+if "$has_brew" ; then
+  brew_prefix="$(brew --prefix)"
+  pathadd_front "$brew_prefix/bin"
+  pathadd_front man "$brew_prefix/share/man"
+  pathadd_front info "$brew_prefix/share/info"
+fi
+
 if command -v python3 >/dev/null 2>&1 ;  then
   pathadd "$(python3 -m site --user-base)/bin"
 fi

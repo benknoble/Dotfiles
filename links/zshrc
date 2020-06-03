@@ -225,20 +225,6 @@ stty -ixon -ixoff
 
 # personal {{{
 
-if command -v brew &>/dev/null ; then
-  has_brew=true
-else
-  has_brew=false
-fi
-
-# brew paths
-if "$has_brew" ; then
-  brew_prefix="$(brew --prefix)"
-  pathadd_front "$brew_prefix/bin"
-  pathadd_front man "$brew_prefix/share/man"
-  pathadd_front info "$brew_prefix/share/info"
-fi
-
 # OS test
 case "$OSTYPE" in
   darwin* ) OS=mac ;;
