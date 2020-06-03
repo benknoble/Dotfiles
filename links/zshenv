@@ -97,7 +97,9 @@ fi
 
 pathadd ~/.bin
 
-pathadd ~/go/bin
+if command -v go >/dev/null 2>&1 ; then
+  pathadd ~/go/bin
+fi
 
 () {
   local git==git
