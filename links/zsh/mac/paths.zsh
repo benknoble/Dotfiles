@@ -1,7 +1,7 @@
-[[ /usr/local/lib/ruby/gems/2.7.0/bin ]] && pathadd_front /usr/local/lib/ruby/gems/2.7.0/bin
-[[ /usr/local/opt/ruby/bin ]] && pathadd_front /usr/local/opt/ruby/bin
+[[ -d /usr/local/lib/ruby/gems/2.7.0/bin ]] && pathadd_front /usr/local/lib/ruby/gems/2.7.0/bin
+[[ -d /usr/local/opt/ruby/bin ]] && pathadd_front /usr/local/opt/ruby/bin
 
-[[ /usr/local/smlnj/bin ]] && pathadd /usr/local/smlnj/bin
+[[ -d /usr/local/smlnj/bin ]] && pathadd /usr/local/smlnj/bin
 
 () {
   local texpath=/usr/local/texlive/2019
@@ -14,7 +14,7 @@
 
 [[ -d /Applications/MacVim.app/ ]] && pathadd /Applications/MacVim.app/Contents/bin
 
-[[ /Applications/MATLAB_R2019a.app/ ]] && {
+[[ -d /Applications/MATLAB_R2019a.app/ ]] && {
   pathadd /Applications/MATLAB_R2019a.app/bin
   pathadd /Applications/MATLAB_R2019a.app/bin/maci64
 }
