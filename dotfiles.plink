@@ -94,9 +94,9 @@ brew_check [ $(BREWFILE) ] ! -brew bundle check --file="$(BREWFILE)"
 
 LINKS = links/
 
-$(HOME)/.config/alacritty $(HOME)/.config/http-prompt $(HOME)/.config/pycodestyle [ $(HOME)/.config ]
-$(HOME)/.ssh/config [ $(HOME)/.ssh ]
-$(HOME)/.config $(HOME)/.ssh ! test -d "$@" || mkdir "$@"
+~/.config/alacritty ~/.config/http-prompt ~/.config/pycodestyle [ ~/.config ]
+~/.ssh/config [ ~/.ssh ]
+~/.config ~/.ssh ! test -d "$@" || mkdir "$@"
 
 .ackrc <= ackrc
 .bash <= bash
