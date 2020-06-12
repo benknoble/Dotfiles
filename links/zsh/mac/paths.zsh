@@ -18,3 +18,8 @@
   pathadd /Applications/MATLAB_R2019a.app/bin
   pathadd /Applications/MATLAB_R2019a.app/bin/maci64
 }
+
+[[ -d /usr/local/opt/openjdk/ ]] && {
+  pathadd_front /usr/local/opt/openjdk/bin
+  pathadd_front man /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home/man
+}
