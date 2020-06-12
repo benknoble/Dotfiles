@@ -7,7 +7,11 @@ setlocal shiftwidth=2 softtabstop=2
 
 setlocal foldmethod=syntax
 
-let b:interpreter = 'bash -c "make jdb || jdb"'
+if findfile('pom.xml', '.;~')
+  let b:interpreter = 'mvn compile com.github.johnpoth:jshell-maven-plugin:1.3:run'
+else
+  let b:interpreter = 'jshell'
+endif
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
