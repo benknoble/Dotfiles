@@ -100,7 +100,7 @@ fi
 export MANPATH
 # set up initial manpath before making changes
 if commmand -v manpath &>/dev/null ; then
-  manpath=( "${(s.:.)$(manpath)}" )
+  manpath=( "${(s<:>)$(manpath)}" )
 fi
 
 if command -v brew &>/dev/null ; then
