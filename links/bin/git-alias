@@ -5,6 +5,7 @@ set -euo pipefail
 USAGE='[-hq] [search_pattern]
 List git aliases'
 SUBDIRECTORY_OK=true
+NONGIT_OK=true
 
 # source git-sh-setup for some helpers
 set +u
