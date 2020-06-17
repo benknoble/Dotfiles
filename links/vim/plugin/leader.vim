@@ -54,6 +54,10 @@ nnoremap <Leader>j :tjump /
 " Search with global
 " Part of me wants to map / and ? to this
 nnoremap <Leader>G :global //#<Left><Left>
+" Search with grep
+nnoremap <leader><leader>g :grep<space>
+" Search with vimgrep
+nnoremap <leader><leader>v :vimgrep<space>
 
 nnoremap <expr> <Leader>r exists(':Reload') ? ':Reload<CR>' : ''
 
