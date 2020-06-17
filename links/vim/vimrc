@@ -93,9 +93,9 @@ set completeopt+=longest
 set infercase
 if has('autocmd')
   augroup vimrc_completion
-    au!
+    autocmd!
     " Add omnicompletion using syntax if a file doesn't already have it
-    au FileType * if &omnifunc == "" |
+    autocmd FileType * if &omnifunc == "" |
           \ setlocal omnifunc=syntaxcomplete#Complete |
           \ endif
     " Close the preview window after Insert-mode completion.
@@ -149,7 +149,7 @@ set autoindent
 set relativenumber
 if has('autocmd')
   augroup vimrc_cmdwin_num
-    au!
+    autocmd!
     autocmd CmdwinEnter * setlocal nonumber norelativenumber
   augroup END
 endif
@@ -248,7 +248,7 @@ endfunction
 
 if has('autocmd')
   augroup status_colors_dracula
-    au!
+    autocmd!
     autocmd ColorScheme dracula* call s:set_statusline_colors_to_dracula()
   augroup END
 endif
@@ -296,14 +296,14 @@ if has('autocmd')
   let g:clojure_maxlines = 50
   let g:clojure_align_subforms = 1
   augroup vimrc_bash_fc
-    au!
+    autocmd!
     " bash's edit-and-execute-command (which probably leans on the fc mechanism)
     " produces lots of temp files that we don't need undo files for; they are
     " clutter
     "
     " see the following link for filename specifics
     " http://git.savannah.gnu.org/cgit/bash.git/tree/builtins/fc.def?h=bash-4.4-rc2#n394
-    au BufNewFile,BufReadPre *bash-fc* setlocal noundofile
+    autocmd BufNewFile,BufReadPre *bash-fc* setlocal noundofile
   augroup END
 endif
 " }}}
