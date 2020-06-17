@@ -38,9 +38,6 @@
 [submodule "vim/bundle/vim-indent-object"]
 	path = links/vim/pack/utility/start/indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
-[submodule "vim/bundle/ack-vim"]
-	path = links/vim/pack/utility/opt/ack
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/bundle/vim-tmux"]
 	path = links/vim/pack/languages/opt/tmux
 	url = https://github.com/tmux-plugins/vim-tmux.git

@@ -57,10 +57,6 @@ if executable('osascript')
   packadd applescript
 endif
 
-if executable('ack')
-  packadd ack
-endif
-
 if executable('heroku')
   packadd heroku
 endif
