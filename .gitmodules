@@ -107,9 +107,6 @@
 [submodule "links/vim/pack/languages/start/applescript"]
 	path = links/vim/pack/languages/opt/applescript
 	url = https://github.com/RobertAudi/applescript.vim.git
-[submodule "links/vim/pack/utility/start/goyo"]
-	path = links/vim/pack/utility/start/goyo
-	url = https://github.com/junegunn/goyo.vim.git
 [submodule "benknoble/plink"]
 	path = plink
 	url = https://github.com/benknoble/plink.git
