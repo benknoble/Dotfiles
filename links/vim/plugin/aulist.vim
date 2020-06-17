@@ -11,8 +11,8 @@ function s:feedkeys(str) abort
   call feedkeys(a:str, 'n')
 endfunction
 
-function! AutoReply() abort
-  let previous = split(getcmdline())
+function! AutoReply(cmdline) abort
+  let previous = split(a:cmdline)
 
   if empty(previous)
     return s:has_replied
@@ -20,8 +20,8 @@ function! AutoReply() abort
 
   let previous_cmd = getcompletion(previous[0], 'command')
   if &ignorecase
-    " call filter(previous_cmd, { _, v -> !~# previous[0] })
-    call filter(previous_cmd, "v:val !~# previous[0]")
+    " call filter(previous_cmd, { _, v -> v =~# previous[0] })
+    call filter(previous_cmd, "v:val =~# previous[0]")
   endif
   let previous_cmd  = get(previous_cmd, 0, '')
   let previous_args = previous[1:]
@@ -76,5 +76,5 @@ endfunction
 
 augroup AutoReply
   autocmd!
-  autocmd CmdlineLeave : call AutoReply()
+  autocmd CmdlineLeave : call AutoReply(getcmdline())
 augroup END
