@@ -45,8 +45,8 @@ nnoremap <Leader>; q:
 nnoremap <Leader>/ /\v
 nnoremap <Leader>? ?\v
 
-" Jump to lines with word
-nnoremap <Leader>f :call find#included_word(expand('<cword>'))<CR>
+" Jump to lines in included files with word
+nnoremap <Leader>i :call find#included_word(expand('<cword>'))<CR>
 
 " Search with global
 " Part of me wants to map / and ? to this
