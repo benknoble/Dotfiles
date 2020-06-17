@@ -48,6 +48,7 @@ nnoremap <Leader>? ?\v
 
 " Jump to lines in included files with word
 nnoremap <Leader>i :call find#included_word(expand('<cword>'))<CR>
+nnoremap <Leader>d :call find#macrod_word(expand('<cword>'))<CR>
 " Quickly search tags
 nnoremap <Leader>j :tjump /
 
