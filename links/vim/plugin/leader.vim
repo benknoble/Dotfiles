@@ -33,6 +33,7 @@ nmap <Leader>ev :vs %%
 nmap <Leader>es :sp %%
 nmap <Leader>et :tabe %%
 nnoremap <Leader>ef :find **/*
+nnoremap <Leader>eb :buffer <C-d>
 " Edit alternate file
 nnoremap <Leader>` <C-^>
 " Quickly edit vimrc
