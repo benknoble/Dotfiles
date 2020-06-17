@@ -65,6 +65,9 @@
 	prune = true
 [push]
 	recurseSubmodules = check
+[pull]
+	ff = only
+	; rebase = merges
 [submodule]
 	fetchJobs = 4
 
