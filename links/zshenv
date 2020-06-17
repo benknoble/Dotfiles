@@ -99,8 +99,8 @@ fi
 # who knows why this isn't exported by default
 export MANPATH
 # set up initial manpath before making changes
-if commmand -v manpath &>/dev/null ; then
-  manpath=( "${(s<:>)$(manpath)}" )
+if command -v manpath &>/dev/null ; then
+  manpath=( "${(s<:>)$(MANPATH= manpath)}" )
 fi
 
 if command -v brew &>/dev/null ; then
