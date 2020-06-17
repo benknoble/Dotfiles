@@ -48,6 +48,8 @@ nnoremap <Leader>? ?\v
 
 " Jump to lines in included files with word
 nnoremap <Leader>i :call find#included_word(expand('<cword>'))<CR>
+" Quickly search tags
+nnoremap <Leader>j :tjump /
 
 " Search with global
 " Part of me wants to map / and ? to this
