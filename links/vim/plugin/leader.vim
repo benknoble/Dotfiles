@@ -28,10 +28,10 @@ nnoremap <Leader>ed :Explore<CR>
 " Quickly input the directory of the current file on the command line
 cnoremap <expr> %% filename#command_dir('%%')
 " Need 'recursive' mapping here for %%
-nmap <Leader>ew :e %%
-nmap <Leader>ev :vs %%
-nmap <Leader>es :sp %%
-nmap <Leader>et :tabe %%
+nmap <Leader>ew :edit %%
+nmap <Leader>ev :vsplit %%
+nmap <Leader>es :split %%
+nmap <Leader>et :tabedit %%
 nnoremap <Leader>ef :find **/*
 nnoremap <Leader>eb :buffer <C-d>
 " Edit alternate file
