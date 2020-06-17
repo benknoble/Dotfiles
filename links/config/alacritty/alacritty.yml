@@ -480,10 +480,10 @@ key_bindings:
   # - {key: Return,   mods: Alt,           action: ToggleFullscreen}
 
   # (macOS only)
-  # - {key: Key0,   mods: Command,         action: ResetFontSize}
-  # - {key: Equals, mods: Command,         action: IncreaseFontSize}
-  # - {key: Add,    mods: Command,         action: IncreaseFontSize}
-  # - {key: Minus,  mods: Command,         action: DecreaseFontSize}
+  - {key: Key0, mods: Command, action: ResetFontSize}
+  - {key: Equals, mods: Command, action: IncreaseFontSize}
+  - {key: Add, mods: Command, action: IncreaseFontSize}
+  - {key: Minus, mods: Command, action: DecreaseFontSize}
   # - {key: K,      mods: Command,         action: ClearHistory}
   # - {key: K,      mods: Command,         chars: "\x0c"}
   # - {key: V,      mods: Command,         action: Paste}
