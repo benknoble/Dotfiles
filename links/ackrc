@@ -8,9 +8,6 @@
 # sort files
 --sort-files
 
-# page resultes
---pager
-
 # Ignore databases
 --ignore-file=ext:db
 
