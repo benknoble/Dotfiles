@@ -16,9 +16,6 @@
 [submodule "vim/bundle/vim-clam"]
 	path = links/vim/pack/utility/start/clam
 	url = https://github.com/sjl/clam.vim.git
-[submodule "vim/bundle/vim-go"]
-	path = links/vim/pack/languages/opt/go
-	url = https://github.com/fatih/vim-go.git
 [submodule "Dracula/terminal-app"]
 	path = Dracula/terminal-app
 	url = https://github.com/dracula/terminal.app.git
@@ -134,3 +131,6 @@
 [submodule "links/vim/pack/interface/start/quick-scope"]
 	path = links/vim/pack/interface/start/quick-scope
 	url = git://github.com/unblevable/quick-scope.git
+[submodule "links/vim/pack/languages/opt/go"]
+	path = links/vim/pack/languages/opt/go
+	url = https://github.com/arp242/gopher.vim
