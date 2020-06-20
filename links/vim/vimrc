@@ -394,4 +394,9 @@ augroup fix_git_path
   autocmd VimEnter * call s:fix_git_path()
 augroup END
 
+augroup fix_formatoptions
+  autocmd!
+  autocmd FileType * setlocal formatoptions=tcrqlnj
+augroup END
+
 " Unsorted }}}
