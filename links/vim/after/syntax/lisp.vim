@@ -11,6 +11,6 @@ endif
 
 syn keyword lispFunc lambda conceal cchar=λ
 
-if ! dracula#should_abort('lisp')
+if ! dracula#should_abort('clojure') || ! dracula_pro#should_abort('clojure')
   hi link lispParen DraculaSubtle
 endif
