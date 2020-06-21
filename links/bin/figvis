@@ -10,7 +10,7 @@ Supply options to get this message.
 EOF
 )"
 
-if [[ $# -gt 0 ]]; then
+if (( $# > 1 )); then
     echo "$USAGE" >&2
     exit 2
 fi
@@ -19,6 +19,6 @@ cols=$(tput cols)
 mapfile -t fonts < <(figlist | awk '/Figlet/{p=!p;next}p')
 
 for font in "${fonts[@]}"; do
-    figlet -w "$cols" -f "$font" "$font"
+    figlet -w "$cols" -f "$font" "${1:-"$font"}"
     echo "$font"
 done | less
