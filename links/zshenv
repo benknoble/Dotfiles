@@ -151,4 +151,9 @@ pathadd_front .git/safe/../../bin
   fi
 }
 
+() {
+  local cargo_bin=~/.cargo/bin
+  [[ -d "$cargo_bin" ]] && pathadd "$cargo_bin"
+}
+
 # paths }}}

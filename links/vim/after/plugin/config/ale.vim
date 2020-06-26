@@ -17,6 +17,7 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
       \ 'python': ['black'],
+      \ 'rust': ['rustfmt'],
       \ }
 
 if has('osx') || has('mac')
