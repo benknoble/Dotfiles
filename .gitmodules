@@ -134,3 +134,6 @@
 [submodule "links/vim/pack/languages/opt/go"]
 	path = links/vim/pack/languages/opt/go
 	url = https://github.com/arp242/gopher.vim
+[submodule "links/vim/pack/languages/start/toml"]
+	path = links/vim/pack/languages/start/toml
+	url = https://github.com/cespare/vim-toml
