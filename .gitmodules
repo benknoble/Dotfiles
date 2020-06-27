@@ -130,7 +130,7 @@
 	url = https://github.com/vifm/vifm.vim
 [submodule "links/vim/pack/interface/start/quick-scope"]
 	path = links/vim/pack/interface/start/quick-scope
-	url = git://github.com/unblevable/quick-scope.git
+	url = https://github.com/unblevable/quick-scope.git
 [submodule "links/vim/pack/languages/opt/go"]
 	path = links/vim/pack/languages/opt/go
 	url = https://github.com/arp242/gopher.vim
