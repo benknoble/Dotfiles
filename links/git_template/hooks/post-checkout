@@ -2,4 +2,4 @@
 
 set -euo pipefail
 
-.git/hooks/ctags >/dev/null 2>&1 &
+.git/hooks/ctags >/dev/null 2>&1
