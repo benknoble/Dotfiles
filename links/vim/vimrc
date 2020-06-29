@@ -360,7 +360,11 @@ command Changed keeppatterns %substitute/Last [cC]hanged\?:\zs.*/\=strftime(" %Y
 if has('autocmd')
   augroup italic_comments
     autocmd!
-    autocmd ColorScheme dracula* hi DraculaComment cterm=italic gui=italic
+    autocmd ColorScheme * if g:colors_name =~# '^dracula*' |
+          \ highlight DraculaComment cterm=italic gui=italic |
+          \ else |
+          \ highlight Comment cterm=italic gui=italic |
+          \ endif
   augroup END
 endif
 
