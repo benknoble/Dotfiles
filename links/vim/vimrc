@@ -399,4 +399,11 @@ augroup fix_formatoptions
   autocmd FileType * setlocal formatoptions=tcrqlnj
 augroup END
 
+" Default plugins {{{
+let g:loaded_getscriptPlugin = 1
+let g:loaded_logiPat = 1
+let g:loaded_2html_plugin = 1
+let g:loaded_vimballPlugin = 1
+" Default plugins }}}
+
 " Unsorted }}}
