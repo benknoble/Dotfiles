@@ -61,9 +61,6 @@ if executable('heroku')
   packadd heroku
 endif
 
-if executable('vifm')
-  packadd vifm
-endif
 " Executables }}}
 
 " Dracula {{{
