@@ -1,0 +1,50 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+usage() {
+  cat <<DOG
+usage: $0 <owner> <repo>
+
+Create a fork of the named <repo> owned by <owner>. Outputs the resulting URL.
+DOG
+}
+
+die() {
+  local ex="${1:-1}"
+  exit "$ex"
+}
+
+usage_and_die() { usage && die; }
+
+require () {
+  local command="$1"
+  if ! command -v "$command" >/dev/null 2>&1; then
+    log "required tool not found: $command"
+    die 2
+  fi
+}
+
+main() {
+  require hub
+  require jq
+  if (( $# != 2 )); then
+    usage_and_die
+  fi
+  local owner="$1"
+  local repo="$2"
+  local endpoint=/repos/"$owner"/"$repo"/forks
+  # work around a hub bug: enterprise hosts use a slightly different convention,
+  # and for some reason the current version of hub doesn't handle this correctly
+  # in the api command
+  if [[ "${GITHUB_HOST:-github.com}" != github.com ]]; then
+    endpoint=/api/v3"$endpoint"
+  fi
+  hub api --method POST "$endpoint" | jq '.html_url'
+}
+
+main "$@"
