@@ -49,7 +49,7 @@ clone() {
 change_to() {
   local repo="$1"
   local directory="$(basename "$1")"
-  pushd "$directory"
+  cd "$directory"
 }
 
 checkout() {
