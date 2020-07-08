@@ -1,0 +1,61 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+usage() {
+  cat <<DOG
+usage: $0 [-b <branch-name>] [-m <message>] [-o <remote-name>] <edit-command> <repo>
+
+Executes the following steps:
+  - If <repo> doesn't exist, clones it
+  - Creates a new branch named <branch-name>
+  - Runs <edit-command> inside the repo
+  - Commits using <message>
+  - Pushes to <branch-name> on <remote-name>
+  - Outputs <repo>
+
+Default values:
+  <branch-name>  mass-edit
+  <message>      mass-edit
+  <remote-name>  origin
+
+Designed to be attached to xargs(1) and an input stream of repos to mass-edit.
+For example, if you have a list of github URLs you want to edit the same way and
+then open up in a browser:
+
+  <URLs xargs -n1 [-P...] git-mass-edit [...] edit-command | xargs open
+DOG
+}
+
+die() {
+  local ex="${1:-1}"
+  exit "$ex"
+}
+
+usage_and_die() { usage && die; }
+
+main() {
+  local branch=mass-edit
+  local message=mass-edit
+  local remote=origin
+  while getopts 'b:m:o:' opt; do
+    case "$opt" in
+      b) branch="$OPTARG" ;;
+      m) message="$OPTARG" ;;
+      o) remote="$OPTARG" ;;
+      *) usage_and_die ;;
+    esac
+  done
+  shift $((OPTIND - 1))
+  if (($# != 2)); then
+    usage_and_die
+  fi
+  local editor="$1"
+  local repo="$2"
+}
+
+main "$@"
