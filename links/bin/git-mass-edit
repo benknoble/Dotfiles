@@ -8,7 +8,7 @@ log() {
 
 usage() {
   cat <<DOG
-usage: $0 [-b <branch-name>] [-m <message>] [-o <remote-name>] <edit-command> <repo>
+usage: $0 [-b <branch-name>] [-m <message>] [-r <remote-name>] <edit-command> <repo>
 
 Executes the following steps:
   - If <repo> doesn't exist, clones it
@@ -73,11 +73,11 @@ main() {
   local branch=mass-edit
   local message=mass-edit
   local remote=origin
-  while getopts 'b:m:o:' opt; do
+  while getopts 'b:m:r:' opt; do
     case "$opt" in
       b) branch="$OPTARG" ;;
       m) message="$OPTARG" ;;
-      o) remote="$OPTARG" ;;
+      r) remote="$OPTARG" ;;
       *) usage_and_die ;;
     esac
   done
