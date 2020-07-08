@@ -91,7 +91,7 @@ main() {
   clone "$repo"
   change_to "$repo"
   checkout "$branch"
-  $editor
+  eval "$editor"
   commit "$message"
   push "$remote" "$branch"
   printf '%s\n' "$repo"
