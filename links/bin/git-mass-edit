@@ -38,6 +38,37 @@ die() {
 
 usage_and_die() { usage && die; }
 
+clone() {
+  local repo="$1"
+  local directory="$(basename "$1")"
+  if ! [[ -d "$directory" ]]; then
+    git clone --quiet "$repo"
+  fi
+}
+
+change_to() {
+  local repo="$1"
+  local directory="$(basename "$1")"
+  pushd "$directory"
+}
+
+checkout() {
+  local branch="$1"
+  git branch --quiet "$branch"
+  git checkout --quiet "$branch"
+}
+
+commit() {
+  local message="$1"
+  git commit --all --quiet --message "$message"
+}
+
+push() {
+  local remote="$1"
+  local branch="$2"
+  git push --set-upstream --quiet "$remote" "$branch"
+}
+
 main() {
   local branch=mass-edit
   local message=mass-edit
@@ -56,6 +87,14 @@ main() {
   fi
   local editor="$1"
   local repo="$2"
+
+  clone "$repo"
+  change_to "$repo"
+  checkout "$branch"
+  $editor
+  commit "$message"
+  push "$remote" "$branch"
+  printf '%s\n' "$repo"
 }
 
 main "$@"
