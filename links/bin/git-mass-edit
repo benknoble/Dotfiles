@@ -89,12 +89,14 @@ main() {
   local editor="$1"
   local repo="$2"
 
-  clone "$repo"
-  change_to "$repo"
-  checkout "$branch"
-  eval "$editor"
-  commit "$message"
-  push "$remote" "$branch"
+  {
+    clone "$repo"
+    change_to "$repo"
+    checkout "$branch"
+    eval "$editor"
+    commit "$message"
+    push "$remote" "$branch"
+  } >/dev/null
   printf '%s\n' "$repo"
 }
 
