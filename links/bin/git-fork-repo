@@ -44,7 +44,7 @@ main() {
   if [[ "${GITHUB_HOST:-github.com}" != github.com ]]; then
     endpoint=/api/v3"$endpoint"
   fi
-  hub api --method POST "$endpoint" | jq '.html_url'
+  hub api --method POST "$endpoint" | jq '.html_url' | tr -d '"'
 }
 
 main "$@"
