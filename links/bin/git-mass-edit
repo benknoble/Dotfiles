@@ -73,8 +73,9 @@ main() {
   local branch=mass-edit
   local message=mass-edit
   local remote=origin
-  while getopts 'b:m:r:' opt; do
+  while getopts 'hb:m:r:' opt; do
     case "$opt" in
+      h) usage_and_die ;;
       b) branch="$OPTARG" ;;
       m) message="$OPTARG" ;;
       r) remote="$OPTARG" ;;
