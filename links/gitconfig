@@ -46,7 +46,7 @@
 	sdiff = diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
 	sr = status --short --branch
-	standup = log --author=$USER --since=yesterday --all --format=%s
+	standup = "!f() { git log --author=$USER --since=yesterday --all --format=%s; }; f"
 	stat = status
 	supdate = submodule update --remote --checkout
 	tags = tag --list
