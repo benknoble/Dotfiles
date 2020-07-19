@@ -6,5 +6,10 @@ endif
 nunmap gS
 nunmap gJ
 
-nnoremap <Leader>J :SplitjoinJoin<CR>
-nnoremap <Leader>S :SplitjoinSplit<CR>
+call popsikey#register('<Leader>j', [
+      \ #{ key: 'j', info: 'join', action: ":SplitjoinJoin\<CR>", },
+      \ #{ key: 's', info: 'split', action: ":SplitjoinSplit\<CR>", },
+      \ ],
+      \ #{
+      \ title: ' Splitjoin ',
+      \ })

@@ -2,4 +2,11 @@ if ! (&rtp =~# 'synstax')
   finish
 endif
 
-nnoremap <unique> <Leader><Leader>s :echo synstax#UnderCursor()<CR>
+call popsikey#extend(g:popsikey_info_id, [
+      \ #{
+      \   key: 's',
+      \   info: 'syntax',
+      \   action: ":echo synstax#UnderCursor()\<CR>",
+      \ },
+      \ ],
+      \ #{})

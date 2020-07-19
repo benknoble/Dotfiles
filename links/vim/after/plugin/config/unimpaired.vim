@@ -2,7 +2,18 @@ if ! exists('g:loaded_unimpaired')
   finish
 endif
 
-nnoremap <Leader>[c :colder<CR>
-nnoremap <Leader>]c :cnewer<CR>
-nnoremap <Leader>[l :lolder<CR>
-nnoremap <Leader>]l :lnewer<CR>
+call popsikey#register('<Leader>[', [
+      \ #{ key: 'c', info: 'colder', action: ":colder\<CR>", },
+      \ #{ key: 'l', info: 'lolder', action: ":lolder\<CR>", },
+      \ ],
+      \ #{
+      \ title: ' Extended unimpaired ',
+      \ })
+
+call popsikey#register('<Leader>]', [
+      \ #{ key: 'c', info: 'cnewer', action: ":cnewer\<CR>", },
+      \ #{ key: 'l', info: 'lnewer', action: ":lnewer\<CR>", },
+      \ ],
+      \ #{
+      \ title: ' Extended unimpaired ',
+      \ })
