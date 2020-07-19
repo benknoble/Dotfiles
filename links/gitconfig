@@ -30,6 +30,8 @@
 	logp = log --graph --abbrev-commit --pretty=mine
 	logpall = logp --all
 	lol = log --oneline
+	lup = log HEAD@{upstream}..
+	lupp = log HEAD@{upstream}.. --patch
 	merc = merge --no-ff
 	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --stdin;}; f"
 	newb = checkout -b
