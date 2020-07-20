@@ -39,6 +39,11 @@ call popsikey#register('<Leader>w', [
       \   info:   'tabedit wiki',
       \   action: ":Twiki\<space>",
       \ },
+      \ #{
+      \   key:    'n',
+      \   info:   'edit notepad',
+      \   action: ":Ewiki notepad\<CR>",
+      \ },
       \ ],
       \ #{
       \   title: ' Wiki ',
