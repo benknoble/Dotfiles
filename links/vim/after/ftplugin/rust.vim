@@ -15,8 +15,8 @@ nnoremap <buffer> <localleader>p Ipub<space><esc>
 nnoremap <buffer> <localleader>t :call <SID>make_test()<CR>
 
 function s:make_test() abort
-  if getline('.') !~# 'fn'
-    normal [[
+  if getline('.') !~# '\<fn\>'
+    ?\<fn\>
   endif
   normal! O#[test]
 endfunction
