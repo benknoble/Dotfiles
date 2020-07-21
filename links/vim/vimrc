@@ -13,7 +13,9 @@ if filereadable(s:personal)
   execute "source" s:personal
 endif
 if isdirectory(s:personal_dir)
-  execute "set runtimepath^=".s:personal_dir
+  const new_rtp = split(&runtimepath, ',')->insert(s:personal_dir, 1)->join(',')
+  execute "set runtimepath=".new_rtp
+  unlet new_rtp
 endif
 if isdirectory(s:personal_after_dir)
   execute "set runtimepath+=".s:personal_after_dir
