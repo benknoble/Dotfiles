@@ -15,6 +15,10 @@ let g:ale_linters = {
       \ 'zsh': ['shell'],
       \ }
 
+if executable('rust-analyzer')
+  let g:ale_linters.rust = ['analyzer']
+endif
+
 let g:ale_fixers = {
       \ 'python': ['black'],
       \ 'rust': ['rustfmt'],
