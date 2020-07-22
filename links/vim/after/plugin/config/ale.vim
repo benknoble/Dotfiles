@@ -13,10 +13,11 @@ let g:ale_linters = {
       \ 'scala': [],
       \ 'java': [],
       \ 'zsh': ['shell'],
+      \ 'rust': ['cargo'],
       \ }
 
 if executable('rust-analyzer')
-  let g:ale_linters.rust = ['analyzer']
+  call extend(g:ale_linters.rust, ['analyzer'])
 endif
 
 let g:ale_fixers = {
