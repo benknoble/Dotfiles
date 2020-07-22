@@ -30,8 +30,8 @@ usage_and_die() { usage && die; }
 files() {
   if git rev-parse --git-dir 2>/dev/null >&2 ; then
     git ls-files -z '*clj' '*cljx' '*cljc' '*cljs'
-  elif command -v ack >/dev/null ; then
-    ack -f --print0 --clojure
+  elif command -v rg >/dev/null ; then
+    rg --files --0 --type clojure
   else
     find . \( -name '*clj' \
       -or -name '*cljx' \

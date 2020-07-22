@@ -1,0 +1,39 @@
+# vim:ft=conf
+
+--smart-case
+
+# things to ignore
+## respectts all gitignore rules everywhere
+--no-require-git
+
+--glob=!*.db
+
+# types
+
+# ack
+--type-add=ack:ackrc
+--type-add=ack:.ackrc
+
+# git
+--type-add=git:.gitignore
+--type-add=git:.gitmodules
+--type-add=git:.gitconfig
+--type-add=git:gitconfig
+--type-add=git:gitignore
+--type-add=git:gitignore_global
+--type-add=git:.gitshrc
+--type-add=git:gitshrc
+
+# tmux
+--type-add=tmux:.tmux.conf
+--type-add=tmux:tmux.conf
+
+# extra python
+--type-add=python:.pythonrc
+--type-add=python:pythonrc
+
+# extra vim
+--type-add=vim:.vimrc
+--type-add=vim:.gvimrc
+--type-add=vim:vimrc
+--type-add=vim:gvimrc

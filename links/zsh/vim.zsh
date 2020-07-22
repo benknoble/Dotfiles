@@ -29,11 +29,10 @@ vf() {
 
 vff() {
   if (($# == 1)) ; then
-    # equivalent to vf ack -g "$1"
-    vim $(ack -g "$1")
+    vim $(rg --files | grep "$1")
   else
     printf '%s\n' 'Usage: vff filename' '' 'Find {filename} to edit' \
-      'Relies on ack(1)'
+      'Relies on rg(1)'
   fi
 }
 

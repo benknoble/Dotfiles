@@ -94,7 +94,6 @@ brew_check [ $(BREWFILE) ] ! -brew bundle check --file="$(BREWFILE)"
 
 LINKS = links/
 
-.ackrc <= ackrc
 .bash <= bash
 .bash_profile <= bash_profile
 .bashrc <= bashrc
@@ -116,6 +115,7 @@ LINKS = links/
 .newsboat <= newsboat
 .pryrc <= pryrc
 .pythonrc <= pythonrc
+.rgrc <= rgrc
 .ssh/config <= ssh/config
 .swiplrc <= swiplrc
 .tmplr <= tmplr
