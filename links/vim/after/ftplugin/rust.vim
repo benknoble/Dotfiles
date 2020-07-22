@@ -2,6 +2,10 @@
 " Language:              rust
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
+if empty(get(b:, 'current_compiler', ''))
+  execute 'compiler' (empty(findfile('Cargo.toml', '.;~')) ? 'rustc' : 'cargo')
+endif
+
 command -nargs=? -buffer RustDoc
       \ if empty(<q-args>) |
       \   execute "!cargo doc --open" |
