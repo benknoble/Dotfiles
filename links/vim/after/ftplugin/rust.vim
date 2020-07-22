@@ -15,19 +15,19 @@ command -nargs=? -buffer RustDoc
 
 setlocal keywordprg=:RustDoc
 
-nnoremap <buffer> <localleader>p Ipub<space><esc>
-nnoremap <buffer> <localleader>t :call <SID>make_test()<CR>
+setlocal includeexpr=rust#includeexpr(v:fname)
+let &l:include='\v^\s*(pub\s+)?use\s+\zs(\f|:)+'
+setlocal suffixesadd=.rs
 
-function s:make_test() abort
-  if getline('.') !~# '\<fn\>'
-    ?\<fn\>
-  endif
-  normal! O#[test]
-endfunction
+nnoremap <buffer> <localleader>p Ipub<space><esc>
+nnoremap <buffer> <localleader>t :call rust#make_test()<CR>
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'keywordprg',
+      \   'include',
+      \   'includeexpr',
+      \   'suffixesadd',
       \ ],
       \ 'commands': [
       \   'RustDoc',
