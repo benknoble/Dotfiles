@@ -32,6 +32,6 @@ endfunction
 "syntax-highlighting.
 function! markdown#to_liquid() range
   let l:range = printf("%s,%s", a:firstline, a:lastline)
-  silent! execute l:range.'s/^```\([a-z]\+\)$/{% highlight \1 %}/g'
-  silent! execute l:range.'s/^```$/{% endhighlight %}/g'
+  silent! execute l:range.'substitute/^```\([a-z]\+\)$/{% highlight \1 %}/g'
+  silent! execute l:range.'substitute/^```$/{% endhighlight %}/g'
 endfunction
