@@ -89,3 +89,7 @@ vw() {
     fi
   }
 }
+
+vn() {
+  vim +'Ewiki notepad' "$@"
+}
