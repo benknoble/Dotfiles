@@ -30,8 +30,8 @@ onoremap <buffer> i#1 :<C-u>execute "normal! ?^#\\s.?e\r\rvg_"<CR>
 onoremap <buffer> i#2 :<C-u>execute "normal! ?^##\\s.?e\r\rvg_"<CR>
 onoremap <buffer> i#3 :<C-u>execute "normal! ?^###\\s.?e\r\rvg_"<CR>
 
-xnoremap <LocalLeader>h :call markdown#to_liquid()<CR>
-nnoremap <LocalLeader>h :%call markdown#to_liquid()<CR>
+xnoremap <buffer> <LocalLeader>h :call markdown#to_liquid()<CR>
+nnoremap <buffer> <LocalLeader>h :%call markdown#to_liquid()<CR>
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
