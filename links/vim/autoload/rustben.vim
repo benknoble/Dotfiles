@@ -1,11 +1,11 @@
-function rust#make_test() abort
+function rustben#make_test() abort
   if getline('.') !~# '\<fn\>'
     ?\<fn\>
   endif
   normal! O#[test]
 endfunction
 
-function rust#includeexpr(fname) abort
+function rustben#includeexpr(fname) abort
   " Remove leading 'crate::' to deal with 2018 edition style 'use' statements
   let l:fname = substitute(a:fname, '^crate::', '', '')
 

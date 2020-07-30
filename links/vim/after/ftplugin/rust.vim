@@ -15,12 +15,12 @@ command -nargs=? -buffer RustDoc
 
 setlocal keywordprg=:RustDoc
 
-setlocal includeexpr=rust#includeexpr(v:fname)
+setlocal includeexpr=rustben#includeexpr(v:fname)
 let &l:include='\v^\s*(pub\s+)?use\s+\zs(\f|:)+'
 setlocal suffixesadd=.rs
 
 nnoremap <buffer> <localleader>p Ipub<space><esc>
-nnoremap <buffer> <localleader>t :call rust#make_test()<CR>
+nnoremap <buffer> <localleader>t :call rustben#make_test()<CR>
 
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
