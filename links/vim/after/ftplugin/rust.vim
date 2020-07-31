@@ -6,14 +6,20 @@ if empty(get(b:, 'current_compiler', ''))
   execute 'compiler' (empty(findfile('Cargo.toml', '.;~')) ? 'rustc' : 'cargo')
 endif
 
-command -nargs=? -buffer RustDoc
-      \ if empty(<q-args>) |
-      \   execute "!cargo doc --open" |
-      \ else |
-      \   execute "!rustup doc" <q-args> " || cargo doc --open" |
-      \ endif
+if !exists(':RustDocFuzzy')
+  command -nargs=? -buffer RustDoc
+        \ if empty(<q-args>) |
+        \   execute "!cargo doc --open" |
+        \ else |
+        \   execute "!rustup doc" <q-args> " || cargo doc --open" |
+        \ endif
+endif
 
-setlocal keywordprg=:RustDoc
+if exists(':RustDocFuzzy')
+  setlocal keywordprg=:RustDocFuzzy
+else
+  setlocal keywordprg=:RustDoc
+endif
 
 setlocal includeexpr=rustben#includeexpr(v:fname)
 let &l:include='\v^\s*(pub\s+)?use\s+\zs(\f|:)+'
@@ -30,8 +36,7 @@ let b:undo_ftplugin = ftplugin#undo({
       \   'suffixesadd',
       \ ],
       \ 'commands': [
-      \   'RustDoc',
-      \ ],
+      \ ] + (exists(':RustDocFuzzy') ? [] : ['RustDoc']),
       \ 'maps': [
       \   [ 'n', '<localleader>p' ],
       \   [ 'n', '<localleader>t' ],
