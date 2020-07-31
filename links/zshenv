@@ -127,6 +127,7 @@ pathadd ~/.bin
 
 if command -v go >/dev/null 2>&1 ; then
   pathadd ~/go/bin
+  pathadd ~/.vim/pack/languages/opt/go/tools/bin
 fi
 
 () {
