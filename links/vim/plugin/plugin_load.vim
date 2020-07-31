@@ -61,6 +61,10 @@ if executable('heroku')
   packadd heroku
 endif
 
+if executable('rustc')
+  packadd rust-doc
+endif
+
 " Executables }}}
 
 " Dracula {{{
