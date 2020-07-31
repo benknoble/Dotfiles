@@ -14,6 +14,7 @@ let g:ale_linters = {
       \ 'java': [],
       \ 'zsh': ['shell'],
       \ 'rust': ['cargo'],
+      \ 'go': ['gofmt', 'govet', 'golint', 'gopls'],
       \ }
 
 if executable('rust-analyzer')
@@ -23,6 +24,7 @@ endif
 let g:ale_fixers = {
       \ 'python': ['black'],
       \ 'rust': ['rustfmt'],
+      \ 'go': ['gofmt'],
       \ }
 
 if has('osx') || has('mac')
