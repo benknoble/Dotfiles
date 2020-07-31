@@ -39,3 +39,48 @@ let g:ale_prolog_swipl_load = 'current_prolog_flag(argv, [File]), load_files(Fil
 " keep python files limited in line length (88 is too much)
 " see ~/.vim/after/ftplugin/python.vim
 let g:ale_python_black_options = '--line-length 79'
+
+call popsikey#register('<leader>a', [
+      \ #{
+      \   key: 'd',
+      \   info: 'Documentation',
+      \   action: ":ALEDocumentation\<CR>",
+      \ },
+      \ #{
+      \   key: 'r',
+      \   info: 'Find References',
+      \   action: ":ALEFindReferences\<CR>",
+      \ },
+      \ #{
+      \   key: 'f',
+      \   info: 'Fix',
+      \   action: ":ALEFix\<CR>",
+      \ },
+      \ #{
+      \   key: 'g',
+      \   info: 'Go to Definition',
+      \   action: ":ALEGoToDefinition\<CR>",
+      \ },
+      \ #{
+      \   key: 'h',
+      \   info: 'Hover',
+      \   action: ":ALEHover\<CR>",
+      \ },
+      \ #{
+      \    key: 'r',
+      \    info: 'Rename',
+      \    action: ":ALERename\<CR>",
+      \ },
+      \ #{
+      \    key: 'l',
+      \    info: 'Lint',
+      \    action: ":ALELint\<CR>",
+      \ },
+      \ #{
+      \    key: 'i',
+      \    info: 'Show info',
+      \    action: ":ALEInfo\<CR>",
+      \ },
+      \ ], #{
+      \   title: ' ALE ',
+      \ })
