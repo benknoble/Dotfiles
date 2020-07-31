@@ -134,3 +134,6 @@
 [submodule "links/vim/pack/languages/start/toml"]
 	path = links/vim/pack/languages/start/toml
 	url = https://github.com/cespare/vim-toml
+[submodule "links/vim/pack/interface/start/FYT"]
+	path = links/vim/pack/interface/start/FYT
+	url = https://github.com/statox/FYT.vim
