@@ -37,13 +37,7 @@ main() {
   fi
   local owner="$1"
   local repo="$2"
-  local endpoint=/repos/"$owner"/"$repo"/forks
-  # work around a hub bug: enterprise hosts use a slightly different convention,
-  # and for some reason the current version of hub doesn't handle this correctly
-  # in the api command
-  if [[ "${GITHUB_HOST:-github.com}" != github.com ]]; then
-    endpoint=/api/v3"$endpoint"
-  fi
+  local endpoint=repos/"$owner"/"$repo"/forks
   hub api --method POST "$endpoint" | jq '.html_url' | tr -d '"'
 }
 
