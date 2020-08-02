@@ -12,7 +12,7 @@ env:
   LC_MONETARY: fr_FR.UTF-8
   LC_NUMERIC: fr_FR.UTF-8
   LC_TIME: fr_FR.UTF-8
-  # LC_ALL:
+  LC_ALL: fr_FR.UTF-8
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
