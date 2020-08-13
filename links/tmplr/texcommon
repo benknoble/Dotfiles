@@ -1,0 +1,71 @@
+%%%
+% delim : @
+% output : common.tex
+% help : my common tex commands
+% vim: ft=tex
+%%%
+\documentclass{amsart}
+% Preamble {{{
+
+% Packages {{{
+% \usepackage{biblatex}
+% \addbibresource{sources.bib}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\hypersetup{%
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+    citecolor=blue
+}
+\usepackage{enumitem}
+\usepackage{mathtools}
+% Packages }}}
+
+% newcommands, DeclareMathOperators, &c. {{{
+\theoremstyle{plain} % default
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Property}
+\newtheorem*{cor}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem*{prob}{Problem}
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+\newtheorem*{note}{Note}
+\newtheorem{case}{Case}
+
+\newcommand{\yields}{\Rightarrow}
+\newcommand{\Yields}{\Rightarrow^{\star}}
+\newcommand{\union}{\cup}
+\newcommand{\intersect}{\cap}
+\newcommand{\Union}{\bigcup}
+\newcommand{\Intersect}{\bigcap}
+
+\newcommand{\bb}[1]{\mathbb{#1}}
+\newcommand{\N}{\bb{N}}
+\newcommand{\Z}{\bb{Z}}
+\newcommand{\Q}{\bb{Q}}
+\newcommand{\R}{\bb{R}}
+\newcommand{\I}{\bb{I}}
+
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\Powerset}[1]{\mc{P}(#1)}
+
+\DeclareMathOperator{\false}{false}
+\DeclareMathOperator{\true}{true}
+
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+% newcommands, DeclareMathOperators, &c. }}}
+
+% Preamble }}}

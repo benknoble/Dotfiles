@@ -1,14 +1,14 @@
 %%%
 % delim : #
-% output : ~/write/uncMath521/{fname}.tex
-% help : 521 math notes
+% output : {fname}.tex
+% help : math note
 % vim: ft=tex
 %%%
 \include{common}
 
 \begin{document}
 % front matter {{{
-\title{Math 521---Day #DAY}
+\title{#TITLE}
 \author{D. Ben Knoble}
 \date{#DATE}
 \maketitle
