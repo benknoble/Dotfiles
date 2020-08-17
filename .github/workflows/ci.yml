@@ -19,6 +19,7 @@ jobs:
           ruby-version: 2.6.x
       - run: |
           test -d ~/.config || mkdir ~/.config
+          test -d ~/.config/swi-prolog || mkdir ~/.config/swi-prolog
           test -d ~/.ssh || mkdir ~/.ssh
           ./dotfiles.plink
           make install
