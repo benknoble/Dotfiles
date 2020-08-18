@@ -4,7 +4,7 @@ pathprint () {
     set -- PATH
   fi
   for path; do
-    if [[ "$path" != PATH ]]; then
+    if [[ "$path" != *PATH ]]; then
       path+=PATH
     fi
     echo "$path"
@@ -71,10 +71,6 @@ if "$has_brew" ; then
         ;;
     esac
   }
-  # first clear manpath on macs
-  case "$OS" in
-    mac ) export MANPATH=
-  esac
   brew_fix MANPATH "$brew_prefix/share/man"
   brew_fix INFOPATH "$brew_prefix/share/info"
 fi
