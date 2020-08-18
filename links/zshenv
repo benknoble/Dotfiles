@@ -53,6 +53,7 @@ _pathdebug () {
     local source="${funcstack[3]}"
     # we were called from interactive
     [[ -z "$source" ]] && source=interactive
+    [[ "$source" == '(anon)' ]] && source="${funcstack[4]}"
     printf '%s DEBUG:\t%s\t(%s)\n' "$ptype" "$source" "$added" >&2
   fi
 }
