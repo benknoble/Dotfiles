@@ -3,15 +3,6 @@
 
 [[ -d /usr/local/smlnj/bin ]] && pathadd /usr/local/smlnj/bin
 
-() {
-  local texpath=/usr/local/texlive/2019
-  [[ -d "$texpath" ]] && {
-    pathadd_front man "$texpath"/texmf-dist/doc/man
-    pathadd_front info "$texpath"/texmf-dist/doc/info
-    pathadd_front "$texpath"/bin/x86_64-darwinlegacy
-  }
-}
-
 [[ -d /Applications/MacVim.app/ ]] && pathadd /Applications/MacVim.app/Contents/bin
 
 [[ -d /Applications/MATLAB_R2019a.app/ ]] && {
