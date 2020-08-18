@@ -10,6 +10,11 @@ alias reload='. ~/.bashrc && echo "reloaded"'
 
 # VARS {{{
 
+if [[ -x /usr/libexec/path_helper ]]; then
+  eval "$(/usr/libexec/path_helper -s)"
+fi
+export MANPATH="$(MANPATH= manpath)"
+
 # env {{{
 
 reset_editor() {
