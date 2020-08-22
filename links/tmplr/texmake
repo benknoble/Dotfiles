@@ -13,7 +13,7 @@ SHELL = /bin/sh
 SRC = $(filter-out common.tex,$(wildcard *.tex))
 PDF = $(SRC:tex=pdf)
 
-LATEX = pdflatex
+LATEX = lualatex
 BIBTEX = biber
 LATEXFLAGS = -halt-on-error
 
