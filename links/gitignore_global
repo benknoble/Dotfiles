@@ -40,6 +40,8 @@ ENV/
 env.bak/
 venv.bak/
 .tox/
+# jupyter crap
+.ipynb_checkpoints/
 
 # java class files
 *.class
