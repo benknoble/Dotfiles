@@ -7,6 +7,7 @@ setlocal spell
 setlocal iskeyword+=:
 
 nnoremap <buffer> <LocalLeader>4 :s/\$/\\(/ <Bar> s/\$/\\)/<CR>
+nnoremap <buffer> <LocalLeader>o :make %:r.pdf <Bar> !open %:r.pdf<CR><CR><CR>
 
 command -nargs=1 -buffer Section put =tex#section('<args>')
 
