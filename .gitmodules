@@ -134,3 +134,6 @@
 [submodule "links/vim/pack/interface/start/FYT"]
 	path = links/vim/pack/interface/start/FYT
 	url = https://github.com/statox/FYT.vim
+[submodule "links/vim/pack/languages/start/antlr"]
+	path = links/vim/pack/languages/start/antlr
+	url = https://github.com/suoto/vim-antlr
