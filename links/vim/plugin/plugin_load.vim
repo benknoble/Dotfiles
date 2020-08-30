@@ -65,6 +65,10 @@ if executable('rustc')
   packadd rust-doc
 endif
 
+if executable('dafny')
+  packadd dafny
+endif
+
 " Executables }}}
 
 " Dracula {{{
