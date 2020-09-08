@@ -23,6 +23,11 @@ call popsikey#register('<Leader>t', [
       \   info: 'load input file',
       \   action: ":call simpl#prompt_and_load()\<CR>",
       \ },
+      \ #{
+      \   key: 's',
+      \   info: 'shell',
+      \   action: ":call simpl#shell('++close')\<CR>",
+      \ },
       \ ],
       \ #{
       \ title: 'terminal',
