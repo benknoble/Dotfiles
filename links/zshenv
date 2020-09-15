@@ -118,6 +118,7 @@ if "$has_brew" ; then
   pathadd_front "$brew_prefix/bin"
   pathadd_front man "$brew_prefix/share/man"
   pathadd_front info "$brew_prefix/share/info"
+  pathadd_front f "$brew_prefix/share/zsh-completions"
 fi
 
 if command -v python3 >/dev/null 2>&1 ;  then
