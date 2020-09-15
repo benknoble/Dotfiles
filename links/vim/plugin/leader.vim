@@ -72,8 +72,6 @@ call popsikey#register('<Leader>ew', [
 
 " Edit alternate file
 nnoremap <Leader>` <C-^>
-" Quickly edit vimrc
-nnoremap <Leader>v :vsplit $MYVIMRC<CR>
 
 " Trigger the command line window
 nnoremap <Leader>; q:
