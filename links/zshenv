@@ -161,4 +161,10 @@ pathadd_front .git/safe/../../bin
   [[ -d "$cargo_bin" ]] && pathadd "$cargo_bin"
 }
 
+if [[ -d "$VIRTUAL_ENV" ]]; then
+  source "$VIRTUAL_ENV"/bin/activate
+elif [[ -r ./.env/bin/activate ]]; then
+  source ./.env/bin/activate
+fi
+
 # paths }}}

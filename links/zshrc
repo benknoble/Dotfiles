@@ -267,10 +267,6 @@ if [[ -d ~/.personal ]]; then
   pathadd ~/.personal/bin
 fi
 
-if [[ -r ./.env/bin/activate ]]; then
-  source ./.env/bin/activate
-fi
-
 # autoload {{{
 
 fns=(
