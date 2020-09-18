@@ -85,8 +85,6 @@ endif
 " }}}
 
 " Completion {{{
-" Complete from dictionary if spell on
-set complete+=kspell
 " Automatically insert longest common prefix
 set completeopt+=longest
 " Make matching handle case better
