@@ -71,8 +71,8 @@ set timeoutlen=3000
 " }}}
 
 " Persistence {{{
-" Keep 10000 lines of command history
-set history=10000
+" Keep 200 lines of command history
+set history=200
 " Keep marks
 set viminfo+=f1
 if exists("&viminfofile")
