@@ -368,9 +368,9 @@ function s:fix_git_path() abort
     return
   endif
   const path_sep = has('win32') ? ';' : ':'
-  const path = split($PATH, path_sep)
-  const path_sans_libexec_git_core = filter(path, {_, d -> d !~# '.*'.git_core_base})
-  const new_path = join(path_sans_libexec_git_core, path_sep)
+  const new_path = split($PATH, path_sep)
+        \ ->filter({_, d -> d !~# '.*'.git_core_base})
+        \ ->join(path_sep)
   let $PATH = new_path
 endfunction
 
