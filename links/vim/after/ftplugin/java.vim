@@ -14,6 +14,8 @@ else
   let b:interpreter = 'jshell'
 endif
 
+inoremap <buffer> <C-r><C-f> <C-r>=java#class()<CR>
+
 let b:undo_ftplugin = ftplugin#undo({
       \ 'opts': [
       \   'shiftwidth',
@@ -21,6 +23,9 @@ let b:undo_ftplugin = ftplugin#undo({
       \   'foldmethod',
       \   'makeprg',
       \   'errorformat',
+      \ ],
+      \ 'maps': [
+      \   ['i', '<C-r><C-f>'],
       \ ],
       \ 'vars': [
       \   'b:interpreter',
