@@ -8,7 +8,7 @@
 "   - 'abbrevs' (like maps, but for abbreviations)
 "   - 'funcs' (list of functions to delete)
 "   - 'custom' (expression that will be concatenated literally)
-function! ftplugin#undo(settings)
+function! bk#ftplugin#undo(settings)
   let l:undo = get(b:, 'undo_ftplugin', '')
   let l:suffix = []
 
@@ -75,7 +75,7 @@ endfunction
 " test
 " execute the file after uncommenting to verify
 
-" echo ftplugin#undo({
+" echo bk#ftplugin#undo({
 "       \ 'opts': [ 'tw', 'sw', 'sts', ],
 "       \ 'vars': [ 'b:interpreter', ],
 "       \ 'commands': [ 'USER', ],

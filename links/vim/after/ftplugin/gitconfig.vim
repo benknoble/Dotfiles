@@ -7,9 +7,9 @@ setlocal noexpandtab
 " And of the right length
 setlocal tabstop=8 shiftwidth=8 softtabstop=8
 
-nnoremap <buffer> K :call gitconfig#man(getline('.'))<CR>
+nnoremap <buffer> K :call bk#gitconfig#man(getline('.'))<CR>
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'tabstop',
       \   'shiftwidth',

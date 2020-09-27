@@ -5,12 +5,12 @@
 " License: This file is placed in the public domain.
 
 "  To use:
-"     nnoremap <SOMEKEY> :call list#swap()<CR>
-"     xnoremap <SOMEKEY> :call list#swap('visual')<CR>
+"     nnoremap <SOMEKEY> :call bk#list#swap()<CR>
+"     xnoremap <SOMEKEY> :call bk#list#swap('visual')<CR>
 "
 "  For example:
-"     nnoremap <Leader>l :call list#swap()<CR>
-"     xnoremap <Leader>l :call list#swap('visual')<CR>
+"     nnoremap <Leader>l :call bk#list#swap()<CR>
+"     xnoremap <Leader>l :call bk#list#swap('visual')<CR>
 
 " Useful constants...
 let s:LT_DEF_LIST_CONJ = 'and'
@@ -25,7 +25,7 @@ let s:LT_CONJUNCTIONS  = [
 let s:LT_CONJ_PAT = join(s:LT_CONJUNCTIONS, '\|')
 
 " This is the entire interface...
-function list#swap(...) abort range
+function bk#list#swap(...) abort range
   " Extract the target text...
   if a:0
     silent normal! gvy

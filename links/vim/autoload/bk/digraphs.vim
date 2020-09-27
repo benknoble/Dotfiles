@@ -63,23 +63,23 @@ function! s:make_maps(letter, accent) abort
   endfor
 endfunction
 
-function! digraphs#map(letter, accent) abort
+function! bk#digraphs#map(letter, accent) abort
   call s:make_maps(a:letter, a:accent)
 endfunction
 
-function! digraphs#activate() abort
+function! bk#digraphs#activate() abort
   for digraph_dict in s:digraphs
-    call digraphs#map(digraph_dict.letter, digraph_dict.accent)
+    call bk#digraphs#map(digraph_dict.letter, digraph_dict.accent)
   endfor
 endfunction
 
-function! digraphs#unmap(letter, accent) abort
+function! bk#digraphs#unmap(letter, accent) abort
   execute printf(s:unmap_template, a:letter, a:accent)
   execute printf(s:unmap_template, a:accent, a:letter)
 endfunction
 
-function! digraphs#deactivate() abort
+function! bk#digraphs#deactivate() abort
   for digraph_dict in s:digraphs
-    silent! call digraphs#unmap(digraph_dict.letter, digraph_dict.accent)
+    silent! call bk#digraphs#unmap(digraph_dict.letter, digraph_dict.accent)
   endfor
 endfunction

@@ -44,14 +44,14 @@
 " magic mode
 " begins with alpha or underscore
 " letters, numbers, underscores
-let s:name_pattern = pattern#join([
+let s:name_pattern = bk#pattern#join([
       \ '\m',
-      \ pattern#group(
-      \   pattern#branchify([
+      \ bk#pattern#group(
+      \   bk#pattern#branchify([
       \     '\a',
       \     '_' ])),
-      \ pattern#group(
-      \   pattern#branchify([
+      \ bk#pattern#group(
+      \   bk#pattern#branchify([
       \     '\a',
       \     '\d',
       \     '_' ])),
@@ -60,16 +60,16 @@ let s:name_pattern = pattern#join([
 " matches a positional parameter (no braces)
 " magic
 " a single digit
-let s:positional_pattern = pattern#join([
+let s:positional_pattern = bk#pattern#join([
       \ '\m',
       \ '[1-9]'])
 
 " matches any of the special parameters (no braces)
 " magic
 " special params as branches
-let s:special_pattern = pattern#join([
+let s:special_pattern = bk#pattern#join([
       \ '\m',
-      \ pattern#branchify([
+      \ bk#pattern#branchify([
       \   '\*',
       \   '@',
       \   '#',
@@ -83,10 +83,10 @@ let s:special_pattern = pattern#join([
 " matches a parameter (non-brace)
 " magic
 " name or positional or special
-let s:parameter_pattern = pattern#join([
+let s:parameter_pattern = bk#pattern#join([
       \ '\m',
-      \ pattern#branchify(
-      \   pattern#group_many(
+      \ bk#pattern#branchify(
+      \   bk#pattern#group_many(
       \     [s:name_pattern, s:positional_pattern, s:special_pattern]))])
 
 " matches anything in braces
@@ -94,7 +94,7 @@ let s:parameter_pattern = pattern#join([
 " opening brace
 " anything but a closing brace
 " closing brace
-let s:brace_pattern = pattern#join([
+let s:brace_pattern = bk#pattern#join([
       \ '\m',
       \ '{',
       \ '[^}]*',
@@ -104,15 +104,15 @@ let s:brace_pattern = pattern#join([
 " magic
 " literal '$'
 " parameter or brace
-let s:expansion_pattern = pattern#join(
+let s:expansion_pattern = bk#pattern#join(
       \ ['\m',
       \  '\$',
-      \  pattern#group(
-      \    pattern#branchify(
-      \      pattern#group_many(
+      \  bk#pattern#group(
+      \    bk#pattern#branchify(
+      \      bk#pattern#group_many(
       \        [s:parameter_pattern, s:brace_pattern])))])
 
-function! sh#in_parameter_expansion() abort
+function! bk#sh#in_parameter_expansion() abort
   let l:line = line('.')
   if !search(s:expansion_pattern, 'ce', l:line)
     return
@@ -125,12 +125,12 @@ endfunction
 " magic
 " literal '$'
 " open paren
-let s:subshell_begin_pattern = pattern#join([
+let s:subshell_begin_pattern = bk#pattern#join([
       \ '\m',
       \ '\$',
       \ '('])
 
-function! sh#in_subshell() abort
+function! bk#sh#in_subshell() abort
   let l:line = line('.')
   if !search(s:subshell_begin_pattern, 'cb', l:line)
     return

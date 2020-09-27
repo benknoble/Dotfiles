@@ -7,7 +7,7 @@ if !empty(findfile('pom.xml', '.;~'))
   compiler maven
 endif
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'makeprg',
       \   'errorformat',

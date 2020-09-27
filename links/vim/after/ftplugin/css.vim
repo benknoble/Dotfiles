@@ -5,7 +5,7 @@
 " Tab settings
 setlocal shiftwidth=2 softtabstop=2
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'shiftwidth',
       \   'softtabstop',

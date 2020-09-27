@@ -1,8 +1,8 @@
-function! qf#PreviousFile() abort
+function! bk#qf#PreviousFile() abort
   call s:JumpFileChunk(0)
 endfunction
 
-function! qf#NextFile() abort
+function! bk#qf#NextFile() abort
   call s:JumpFileChunk(1)
 endfunction
 

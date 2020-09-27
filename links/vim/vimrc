@@ -329,8 +329,8 @@ cnoremap <C-x> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
 
 " Conway Experimental {{{
 
-nnoremap <silent> n n:call cursor#blink(0.2)<cr>
-nnoremap <silent> N N:call cursor#blink(0.2)<cr>
+nnoremap <silent> n n:call bk#cursor#blink(0.2)<cr>
+nnoremap <silent> N N:call bk#cursor#blink(0.2)<cr>
 
 " }}}
 

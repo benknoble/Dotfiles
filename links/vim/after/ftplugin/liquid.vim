@@ -4,8 +4,8 @@
 
 if exists('b:liquid_subtype')
   if b:liquid_subtype ==# 'markdown'
-    xnoremap <LocalLeader>h :call markdown#to_liquid()<CR>
-    nnoremap <LocalLeader>h :%call markdown#to_liquid()<CR>
+    xnoremap <LocalLeader>h :call bk#markdown#to_liquid()<CR>
+    nnoremap <LocalLeader>h :%call bk#markdown#to_liquid()<CR>
   endif
 
   if ! exists('b:ale_linter_aliases')
@@ -20,7 +20,7 @@ if exists('b:liquid_subtype')
     endif
   endfunction
 
-  let b:undo_ftplugin = ftplugin#undo({
+  let b:undo_ftplugin = bk#ftplugin#undo({
         \ 'custom': [
         \   'call MyLiquidFtpluginUndo()',
         \ ],

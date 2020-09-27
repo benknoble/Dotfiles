@@ -13,7 +13,7 @@ setlocal formatoptions-=a
 
 nnoremap <buffer> <LocalLeader>d :DiffGitCached<CR>
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'shiftwidth',
       \   'softtabstop',

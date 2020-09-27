@@ -18,7 +18,7 @@ compiler ruby
 
 nnoremap <buffer> <LocalLeader>r :make %<CR>
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'textwidth',
       \   'shiftwidth',

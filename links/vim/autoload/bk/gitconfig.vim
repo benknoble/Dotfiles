@@ -1,6 +1,6 @@
 let s:header_pattern = '\v\[.*\]'
 
-function! gitconfig#man(line) abort
+function! bk#gitconfig#man(line) abort
   if a:line =~# s:header_pattern
     let @/ = printf('\m^\s*\zs%s\.', trim(a:line, '[]'))
   else

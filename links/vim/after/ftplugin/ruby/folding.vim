@@ -4,7 +4,7 @@
 
 let ruby_fold = 1
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'vars': [
       \   'ruby_fold',
       \ ],

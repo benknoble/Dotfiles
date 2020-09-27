@@ -14,10 +14,10 @@ nnoremap <buffer> q :quit<CR>
 
 nnoremap <buffer> <CR> <C-]>
 
-nnoremap <buffer> <C-n> :call help#goto_link('next')<CR>
-nnoremap <buffer> <C-p> :call help#goto_link('prev')<CR>
+nnoremap <buffer> <C-n> :call bk#help#goto_link('next')<CR>
+nnoremap <buffer> <C-p> :call bk#help#goto_link('prev')<CR>
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'keywordprg',
       \   'colorcolumn',

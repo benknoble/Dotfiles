@@ -21,14 +21,14 @@ else
   setlocal keywordprg=:RustDoc
 endif
 
-setlocal includeexpr=rustben#includeexpr(v:fname)
+setlocal includeexpr=bk#rustben#includeexpr(v:fname)
 let &l:include='\v^\s*(pub\s+)?use\s+\zs(\f|:)+'
 setlocal suffixesadd=.rs
 
 nnoremap <buffer> <localleader>p Ipub<space><esc>
-nnoremap <buffer> <localleader>t :call rustben#make_test()<CR>
+nnoremap <buffer> <localleader>t :call bk#rustben#make_test()<CR>
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'keywordprg',
       \   'include',

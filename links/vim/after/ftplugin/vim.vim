@@ -13,7 +13,7 @@ nnoremap <buffer> <LocalLeader>el :execute getline('.')<CR>
 " Execute file
 nnoremap <buffer> <LocalLeader>ef :source %<CR>
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'shiftwidth',
       \   'softtabstop',

@@ -25,7 +25,7 @@ augroup CljRequire
   autocmd BufWritePost <buffer> silent! Require
 augroup END
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'lispwords',
       \   'foldmethod',

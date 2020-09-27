@@ -5,7 +5,7 @@ let g:loaded_digraphs = 1
 
 command -bang Digraphs
       \ if empty('<bang>') |
-      \   call digraphs#activate() |
+      \   call bk#digraphs#activate() |
       \ else |
-      \   call digraphs#deactivate() |
+      \   call bk#digraphs#deactivate() |
       \ endif

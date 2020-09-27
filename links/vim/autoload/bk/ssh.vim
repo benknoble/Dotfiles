@@ -1,4 +1,4 @@
-function! ssh#man(word) abort
+function! bk#ssh#man(word) abort
   " open the man page
   if !exists(':Man')
     runtime! ftplugin/man.vim

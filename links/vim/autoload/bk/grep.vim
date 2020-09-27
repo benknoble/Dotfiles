@@ -1,4 +1,4 @@
-function! grep#operator(type) abort
+function! bk#grep#operator(type) abort
   let s:saved_unnamed_register = @@
 
   if a:type ==# 'v'

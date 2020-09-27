@@ -6,7 +6,7 @@
 let b:systemverilog_indent_modules = 1
 let b:match_wods = '\<begin\>:\<end\>,\<module\>:\<endmodule\>'
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'vars': [
       \   'b:systemverilog_indent_modules',
       \   'b:match_wods',

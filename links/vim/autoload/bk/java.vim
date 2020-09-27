@@ -1,3 +1,3 @@
-function java#class() abort
+function bk#java#class() abort
   return expand('%:t:r')
 endfunction

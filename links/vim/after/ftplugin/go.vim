@@ -12,7 +12,7 @@ setlocal softtabstop=0
 
 let g:go_auto_type_info = 1
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'tabstop',
       \   'shiftwidth',

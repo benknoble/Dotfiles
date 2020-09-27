@@ -9,13 +9,13 @@ setlocal shiftwidth=2 softtabstop=2
 
 " technically I need a much more complex regex for zsh's parameter expansion,
 " but this is good enough for the simpler parts until I get around to it
-xnoremap <buffer> iv :<C-u>call sh#in_parameter_expansion()<CR>
-onoremap <buffer> iv :<C-u>call sh#in_parameter_expansion()<CR>
+xnoremap <buffer> iv :<C-u>call bk#sh#in_parameter_expansion()<CR>
+onoremap <buffer> iv :<C-u>call bk#sh#in_parameter_expansion()<CR>
 
 " technically we're overriding the "in-sentence" motion here, but I can live
 " with that
-xnoremap <buffer> is :<C-u>call sh#in_subshell()<CR>
-onoremap <buffer> is :<C-u>call sh#in_subshell()<CR>
+xnoremap <buffer> is :<C-u>call bk#sh#in_subshell()<CR>
+onoremap <buffer> is :<C-u>call bk#sh#in_subshell()<CR>
 
 " Relies on surround.vim and custom text object above
 nmap <buffer> <LocalLeader>qv ysiv"
@@ -30,7 +30,7 @@ let b:match_words = '\<if\>:\<elif\>:\<else\>:\<fi\>'
 
 let b:ale_sh_shell_default_shell = 'zsh'
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'textwidth',
       \   'shiftwidth',

@@ -1,4 +1,4 @@
-function! markdown#Folds() abort
+function! bk#markdown#Folds() abort
   if s:IsFenced(v:lnum)
     return "="
   endif
@@ -14,7 +14,7 @@ function! markdown#Folds() abort
   endif
 endfunction
 
-function! markdown#FoldText() abort
+function! bk#markdown#FoldText() abort
   let foldsize = (v:foldend-v:foldstart)
   return getline(v:foldstart) . ' (' . foldsize . ' lines )'
 endfunction
@@ -24,13 +24,13 @@ function! s:IsFenced(lnum) abort
   return index(syntaxgroup, 'markdownCode') >= 0
 endfunction
 
-function! markdown#img_link(text, img, link) abort
+function! bk#markdown#img_link(text, img, link) abort
   return printf('[![%s](%s)](%s)', a:text, a:img, a:link)
 endfunction
 
 "Convert GitHub-Flavored Markdown syntax-highlighting to Liquid
 "syntax-highlighting.
-function! markdown#to_liquid() range
+function! bk#markdown#to_liquid() range
   let l:range = printf("%s,%s", a:firstline, a:lastline)
   silent! execute l:range.'substitute/^```\([a-z]\+\)$/{% highlight \1 %}/g'
   silent! execute l:range.'substitute/^```$/{% endhighlight %}/g'

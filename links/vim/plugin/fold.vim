@@ -3,7 +3,7 @@ if exists('g:loaded_fold')
 endif
 let g:loaded_fold = 1
 
-command -bar -bang -nargs=* Fold call fold#Fold(<q-args>, '<bang>')
+command -bar -bang -nargs=* Fold call bk#fold#Fold(<q-args>, '<bang>')
 
 set foldmethod=marker
 

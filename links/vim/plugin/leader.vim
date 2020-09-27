@@ -59,7 +59,7 @@ call popsikey#register('<Leader>ee', [
       \ })
 
 " Quickly input the directory of the current file on the command line
-cnoremap <expr> %% filename#command_dir('%%')
+cnoremap <expr> %% bk#filename#command_dir('%%')
 call popsikey#register('<Leader>ew', [
       \ #{ key: 'e', info: 'edit file', action: ':edit %%', flags: 'm', },
       \ #{ key: 's', info: 'split file', action: ':split %%', flags: 'm', },
@@ -82,12 +82,12 @@ call popsikey#register('<Leader>/', [
       \ #{
       \   key: 'i',
       \   info: 'included word under cursor',
-      \   action: ":call find#included_word(expand('<cword>'))\<CR>",
+      \   action: ":call bk#find#included_word(expand('<cword>'))\<CR>",
       \ },
       \ #{
       \   key: 'd',
       \   info: 'macro-defined word under cursor',
-      \   action: ":call find#macrod_word(expand('<cword>'))\<CR>",
+      \   action: ":call bk#find#macrod_word(expand('<cword>'))\<CR>",
       \ },
       \ #{ key: 't', info: 'tag', action: ':tjump /', },
       \ #{ key: 'g', info: 'grep', action: ':grep ', },
@@ -125,7 +125,7 @@ let g:popsikey_info_id = popsikey#register('<Leader><Leader>', [
       \ #{
       \   key: 'c',
       \   info: 'cursor',
-      \   action: ":call cursor#blink(0.2)\<CR>",
+      \   action: ":call bk#cursor#blink(0.2)\<CR>",
       \ },
       \ #{
       \   key: 't',
@@ -137,5 +137,5 @@ let g:popsikey_info_id = popsikey#register('<Leader><Leader>', [
       \ title: ' Information ',
       \ })
 
-nnoremap <Leader>l :call list#swap()<CR>
-xnoremap <Leader>l :call list#swap('visual')<CR>
+nnoremap <Leader>l :call bk#list#swap()<CR>
+xnoremap <Leader>l :call bk#list#swap('visual')<CR>

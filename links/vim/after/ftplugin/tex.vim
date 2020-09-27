@@ -13,12 +13,12 @@ else
   nnoremap <buffer> <LocalLeader>o :make %:r.pdf <Bar> !open %:r.pdf<CR><CR><CR>
 endif
 
-command -nargs=1 -buffer Section put =tex#section('<args>')
+command -nargs=1 -buffer Section put =bk#tex#section('<args>')
 
 " $ is so much easier to type than \( and \)
-inoremap <buffer> <expr> $ tex#inline()
+inoremap <buffer> <expr> $ bk#tex#inline()
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'spell',
       \   'iskeyword',

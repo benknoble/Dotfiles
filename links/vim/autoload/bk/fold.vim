@@ -1,5 +1,5 @@
 " TODO consider a range instead?
-function! fold#Fold(text, bang) abort
+function! bk#fold#Fold(text, bang) abort
   let l:comment_format =
         \ substitute(
         \ substitute(&commentstring, '\zs[^\s]\ze%s', '\=submatch(0)." "', ''),

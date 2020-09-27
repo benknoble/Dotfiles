@@ -9,7 +9,7 @@ setlocal textwidth=79
 
 nnoremap <buffer> <LocalLeader>t :term python setup.py test -q<CR>
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'textwidth',
       \ ],

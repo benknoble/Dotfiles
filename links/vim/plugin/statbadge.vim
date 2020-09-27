@@ -34,7 +34,7 @@ let s:badges = {
 function! s:make_badge(badge) abort
   " this will fail if badge not in badges
   let [l:text, l:img, l:link] = s:badges[a:badge]
-  return markdown#img_link(l:text, l:img, l:link)
+  return bk#markdown#img_link(l:text, l:img, l:link)
 endfunction
 
 command -bar StatusExperimental put =s:make_badge('experimental')

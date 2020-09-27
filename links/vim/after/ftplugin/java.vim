@@ -14,9 +14,9 @@ else
   let b:interpreter = 'jshell'
 endif
 
-inoremap <buffer> <C-r><C-f> <C-r>=java#class()<CR>
+inoremap <buffer> <C-r><C-f> <C-r>=bk#java#class()<CR>
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'shiftwidth',
       \   'softtabstop',
