@@ -55,6 +55,7 @@ tell application "Safari"
   activate
   set windowCount to number of windows
   repeat with win_n from 1 to windowCount
+    copy ("Window " & win_n & return & return) to the end of url_list
     set tabcount to number of tabs in window win_n
     repeat with tab_n from 1 to tabcount
       set TabTitle to name of tab tab_n of window win_n
