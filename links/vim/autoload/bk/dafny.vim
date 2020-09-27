@@ -40,7 +40,7 @@ function bk#dafny#assert_forall_to_statement() abort
   " forall x | P(x) ensures Q(x) {
   " }
 
-  if getline('.') =~# '==>'
+  if getline('.') =~# '==>' && getline('.') !~# '::.*==>'
     call bk#dafny#switch_forall_type()
   endif
   substitute/(\(forall.*\));/\1;/e
