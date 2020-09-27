@@ -1,4 +1,4 @@
-function bk#dafnyben#assert_exists_to_statement() abort
+function bk#dafny#assert_exists_to_statement() abort
   " assert exists x :: P(x);
   " into
   " var x :| P(x);
@@ -16,7 +16,7 @@ function bk#dafnyben#assert_exists_to_statement() abort
   substitute/::/:|/
 endfunction
 
-function bk#dafnyben#switch_forall_type() abort
+function bk#dafny#switch_forall_type() abort
   " forall x :: P(x) ==> Q(x)
   " ↕
   " forall x | P(x) :: Q(x)
@@ -29,7 +29,7 @@ function bk#dafnyben#switch_forall_type() abort
   endif
 endfunction
 
-function bk#dafnyben#assert_forall_to_statement() abort
+function bk#dafny#assert_forall_to_statement() abort
   " assert forall x | P(x) :: Q(x);
   " into
   " forall x | P(x) ensures Q(x) {
@@ -41,7 +41,7 @@ function bk#dafnyben#assert_forall_to_statement() abort
   " }
 
   if getline('.') =~# '==>'
-    call bk#dafnyben#switch_forall_type()
+    call bk#dafny#switch_forall_type()
   endif
   substitute/(\(forall.*\));/\1;/e
   substitute/assert\s\?//
@@ -50,10 +50,10 @@ function bk#dafnyben#assert_forall_to_statement() abort
   normal! =%
 endfunction
 
-function bk#dafnyben#assert_to_statement() abort
+function bk#dafny#assert_to_statement() abort
   if getline('.') =~# 'forall'
-    call bk#dafnyben#assert_forall_to_statement()
+    call bk#dafny#assert_forall_to_statement()
   elseif getline('.') =~# 'exists'
-    call bk#dafnyben#assert_exists_to_statement()
+    call bk#dafny#assert_exists_to_statement()
   endif
 endfunction
