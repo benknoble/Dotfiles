@@ -3,7 +3,8 @@ if has('mac')
   set macligatures
   set macthinstrokes
 endif
-set guifont=VictorMono-Regular:h11,SourceCodePro-Regular:h12,Menlo-Regular:h12
+set guifont=VictorMono-Regular:h12,SourceCodePro-Regular:h12,Menlo-Regular:h12
+
 
 function ChangeFontSize(delta) abort
   let l:repl = printf('\=eval(submatch(0)+%d)', a:delta)
