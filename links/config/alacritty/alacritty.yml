@@ -160,19 +160,19 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
+# Colors (Dracula PRO - Van Helsing)
 colors:
   # Default colors
   primary:
-    background: '0x22212C'
+    background: '0x0b0d0f'
     foreground: '0xf8f8f2'
 
     # Bright and dim foreground colors
     #
     # The dimmed foreground color is calculated automatically if it is not
     # present.  If the bright foreground color is not set, or
-    # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
-    # color will be used.
-    #
+    # `draw_bold_text_with_bright_colors`
+    # is `false`, the normal foreground color will be used.
     # dim_foreground: '0x9a9a9a'
     # bright_foreground: '0xffffff'
 
@@ -181,23 +181,32 @@ colors:
   # Colors which should be used to draw the terminal cursor. If these are unset,
   # the cursor color will be the inverse of the cell color.
   cursor:
-    text: '0xffffff'
-    cursor: '0xaa99ff'
+    text: '0xf8f8f2'
+    cursor: '0x708ca9'
+
+  # Selection colors
+  #
+  # Colors which should be used to draw the selection area. If selection
+  # background is unset, selection color will be the inverse of the cell colors.
+  # If only text is unset the cell text color will remain the same.
+  selection:
+    text: '0xf8f8f2'
+    background: '0x414d58'
 
   # Normal colors
   normal:
-    black: '0x454158'
+    black: '0x0b0d0f'
     red: '0xff9580'
     green: '0x8aff80'
     yellow: '0xffff80'
-    blue: '0x9580FF'
+    blue: '0x9580ff'
     magenta: '0xff80bf'
     cyan: '0x80ffea'
     white: '0xf8f8f2'
 
   # Bright colors
   bright:
-    black: '0x504c67'
+    black: '0x0b0d0f'
     red: '0xffaa99'
     green: '0xa2ff99'
     yellow: '0xffff99'
