@@ -10,19 +10,7 @@ setlocal spell spelllang=en_us
 " Remove underscore from iskeyword
 setlocal iskeyword-=_
 
-function! UnderlineHeading(level)
-  if a:level == 1
-    normal! yypVr=
-  elseif a:level == 2
-    normal! yypVr-
-  else
-    execute "normal! I### "
-  endif
-endfunction
-
-nnoremap <buffer> <LocalLeader>u1 :call UnderlineHeading(1)<CR>
-nnoremap <buffer> <LocalLeader>u2 :call UnderlineHeading(2)<CR>
-nnoremap <buffer> <LocalLeader>u3 :call UnderlineHeading(3)<CR>
+nnoremap <buffer> <expr> <LocalLeader>u bk#markdown#heading()
 
 onoremap <buffer> ih= :<C-u>execute "normal! ?^==\\+$\r\rkvg_"<CR>
 onoremap <buffer> ih- :<C-u>execute "normal! ?^--\\+$\r\rkvg_"<CR>
@@ -41,9 +29,7 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   'iskeyword',
       \ ],
       \ 'maps': [
-      \   [ 'n', '<LocalLeader>u1' ],
-      \   [ 'n', '<LocalLeader>u2' ],
-      \   [ 'n', '<LocalLeader>u3' ],
+      \   [ 'n', '<LocalLeader>u' ],
       \   [ 'o', 'ih=' ],
       \   [ 'o', 'ih-' ],
       \   [ 'o', 'i#1' ],
@@ -51,8 +37,5 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   [ 'o', 'i#3' ],
       \   [ 'x', '<LocalLeader>h'],
       \   [ 'n', '<LocalLeader>h'],
-      \ ],
-      \ 'funcs': [
-      \   'UnderlineHeading',
       \ ],
       \ })

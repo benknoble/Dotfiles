@@ -35,3 +35,8 @@ function! bk#markdown#to_liquid() range
   silent! execute l:range.'substitute/^```\([a-z]\+\)$/{% highlight \1 %}/g'
   silent! execute l:range.'substitute/^```$/{% endhighlight %}/g'
 endfunction
+
+function! bk#markdown#heading() abort
+  let level = getchar()->nr2char()->str2nr()
+  return (level is# 0) ? '' : printf("I%s \<esc>", repeat('#', level))
+endfunction
