@@ -15,7 +15,7 @@ FEATURES = git_extras brew_install pip gem
 default ! @grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
 
 # install: bootstrap the dotfiles
-install [ symlink compile-terminfo $(FEATURES) ]
+install [ dirs symlink compile-terminfo $(FEATURES) ]
 
 # update: update the dotfiles
 update [ pull_master update_submodules symlink brew_check vimtags pip gem ]
@@ -34,6 +34,13 @@ submodules !!
 git submodule sync
 git submodule update --init
 git clean -ffd links/vim/pack/
+!!
+
+# dirs: make needed directories
+dirs !!
+test -d ~/.config || mkdir ~/.config
+test -d ~/.config/swi-prolog || mkdir ~/.config/swi-prolog
+test -d ~/.ssh || mkdir ~/.ssh
 !!
 
 none ! @:
