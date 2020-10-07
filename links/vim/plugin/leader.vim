@@ -53,6 +53,7 @@ call popsikey#register('<Leader>ee', [
       \ #{ key: 't', info: 'tabedit file', action: ':tabedit ', },
       \ #{ key: 'f', info: 'find files', action: ':find **/*', },
       \ #{ key: 'b', info: 'buffer', action: ":buffer \<C-d>", },
+      \ #{ key: 'w', info: 'current dir', action: "\<Space>ew", flags: 'm', },
       \ ],
       \ #{
       \ title: ' Edit files ',
