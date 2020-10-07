@@ -60,6 +60,7 @@
 	pager = less -FRX
 [init]
 	templateDir = ~/.git_template
+	defaultBranch = main
 
 # remotes
 [fetch]
