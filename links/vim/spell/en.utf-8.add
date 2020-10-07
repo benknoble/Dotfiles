@@ -104,3 +104,8 @@ performant
 #rolog
 prolog
 arity
+memoize
+arities
+boolean
+useable
+strawman
