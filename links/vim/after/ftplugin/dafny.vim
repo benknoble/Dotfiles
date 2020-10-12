@@ -9,6 +9,11 @@ call popsikey#register('<Localleader>q', [
       \   action: ":call bk#dafny#assert_to_statement()\<CR>",
       \ },
       \ #{
+      \   key: 'e',
+      \   info: 'convert ensures forall to requires ensures',
+      \   action: ":call bk#dafny#ensures_forall_to_requires_ensures()\<CR>",
+      \ },
+      \ #{
       \   key: 'f',
       \   info: 'toggle forall forms',
       \   action: ":call bk#dafny#switch_forall_type()\<CR>",

@@ -57,3 +57,16 @@ function bk#dafny#assert_to_statement() abort
     call bk#dafny#assert_exists_to_statement()
   endif
 endfunction
+
+function bk#dafny#ensures_forall_to_requires_ensures() abort
+  " ensures forall x :: P(x) ==> Q(x)
+  " into
+  " ensures P(x)
+  " requires Q(x)
+  if getline('.') =~# 'forall.*|.*::'
+    call bk#dafny#switch_forall_type()
+  endif
+  substitute/^ensures\s\+forall.*::\s\+//
+  substitute/^\s*\(.\{-}\)\s*==>\s*\(.*\)/requires \1\rensures \2/
+  normal! =k
+endfunction
