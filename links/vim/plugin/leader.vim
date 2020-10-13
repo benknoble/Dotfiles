@@ -40,7 +40,21 @@ call popsikey#register('<Leader>f', [
       \ title: ' General menu ',
       \ })
 
-call popsikey#register('<Leader>ee', [
+" Quickly input the directory of the current file on the command line
+cnoremap <expr> %% bk#filename#command_dir('%%')
+let g:popsikey_cwd_id = popsikey#register('<Leader>ew', [
+      \ #{ key: 'e', info: 'edit file', action: ':edit %%', flags: 'm', },
+      \ #{ key: 's', info: 'split file', action: ':split %%', flags: 'm', },
+      \ #{ key: 'v', info: 'vsplit file', action: ':vsplit %%', flags: 'm', },
+      \ #{ key: 't', info: 'tabedit file', action: ':tabedit %%', flags: 'm', },
+      \ ],
+      \ #{
+      \ title: ' Edit files in current directory ',
+      \ })
+" we don't need that mapping to hang around; it is subsumed below
+silent! nunmap <leader>ew
+
+call popsikey#register('<Leader>e', [
       \ #{
       \   key: 'd',
       \   info: 'directory browser',
@@ -53,21 +67,10 @@ call popsikey#register('<Leader>ee', [
       \ #{ key: 't', info: 'tabedit file', action: ':tabedit ', },
       \ #{ key: 'f', info: 'find files', action: ':find **/*', },
       \ #{ key: 'b', info: 'buffer', action: ":buffer \<C-d>", },
+      \ #{ key: 'w', info: 'current dir', action: g:popsikey_cwd_id, },
       \ ],
       \ #{
       \ title: ' Edit files ',
-      \ })
-
-" Quickly input the directory of the current file on the command line
-cnoremap <expr> %% bk#filename#command_dir('%%')
-call popsikey#register('<Leader>ew', [
-      \ #{ key: 'e', info: 'edit file', action: ':edit %%', flags: 'm', },
-      \ #{ key: 's', info: 'split file', action: ':split %%', flags: 'm', },
-      \ #{ key: 'v', info: 'vsplit file', action: ':vsplit %%', flags: 'm', },
-      \ #{ key: 't', info: 'tabedit file', action: ':tabedit %%', flags: 'm', },
-      \ ],
-      \ #{
-      \ title: ' Edit files in current directory ',
       \ })
 
 " Edit alternate file
