@@ -1,0 +1,65 @@
+#! /usr/bin/env python3
+import sys
+import re
+import argparse
+from collections import defaultdict
+
+
+class Profile:
+    def __init__(self):
+        self.by_max = defaultdict(int)
+        self.by_sum = defaultdict(int)
+        self.by_count = defaultdict(int)
+
+    def parse(self, filehandle):
+        pattern = re.compile(r"\[quantifier_instances\] ([^ ]*) : *(\d+) :")
+        for line in filehandle.readlines():
+            match = pattern.search(line.strip())
+            if match is not None:
+                location, count = match.groups()
+                count = int(count)
+                self.by_max[location] = max(self.by_max[location], count)
+                self.by_sum[location] += count
+                self.by_count[location] += 1
+
+    def display(self, which, label):
+        d = dict(max=self.by_max, sum=self.by_sum, count=self.by_count)[which]
+        print(f"{label:>10}")
+        for (location, val) in sorted(
+            d.items(), key=lambda item: (-item[1], item[0])
+        ):
+            print(f"{val:>10} {location}")
+
+
+def main(args):
+    p = Profile()
+    p.parse(args.input)
+    p.display(args.metric, args.metric)
+
+
+def parser():
+    parser = argparse.ArgumentParser(
+        description="display a report from Z3 quantifier-instantiation profiling output",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument(
+        "--input",
+        type=argparse.FileType(),
+        default=sys.stdin,
+        help="report filename",
+    )
+    # We're not super-confident we know how to interpret the profiler output.
+    # I think it's kinda periodic, so sum and count don't really make sense,
+    # but we've seen some weird behavior where the "max" isn't monotonic.
+    # So we add these modes in case you want to investigate further.
+    parser.add_argument(
+        "--metric",
+        default="max",
+        help="sort by <metric> count",
+        choices=["max", "sum", "count"],
+    )
+    return parser
+
+
+if __name__ == "__main__":
+    main(parser().parse_args())
