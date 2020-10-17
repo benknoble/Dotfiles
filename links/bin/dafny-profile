@@ -1,0 +1,25 @@
+#! /bin/sh
+
+set -eu
+
+usage() {
+  cat <<DOG
+usage: $0 <proc pattern> <time limit> [<dafny args>...]
+DOG
+  exit "$1"
+}
+
+main() {
+  case $# in
+    0|1) usage 1 ;;
+  esac
+  proc="$1"
+  timelimit="$2"
+  shift 2
+  exec dafny \
+    /z3opt:smt.qi.profile=true /z3opt:smt.qi.profile_freq=1000 \
+    /proc:"$proc" /timeLimit:"$timelimit" \
+    "$@"
+}
+
+main "$@"
