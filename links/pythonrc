@@ -10,7 +10,7 @@ historyFile = os.path.join(os.path.expanduser("~"), ".pyhistory")
 
 
 def install_tab_completion():
-    readline.parse_and_bind('tab: complete')
+    readline.parse_and_bind("tab: complete")
 
 
 def install_history():
@@ -21,6 +21,7 @@ def install_history():
 
 def save_history():
     import readline
+
     readline.write_history_file(historyFile)
 
 
@@ -37,17 +38,19 @@ if sys.version_info <= (3,):
     python2()
 else:
     python3()
+
     def import_path(path):
         import os
         import importlib
-        name = os.path.basename(path).replace('-', '_')
+
+        name = os.path.basename(path).replace("-", "_")
         spec = importlib.util.spec_from_loader(
-            name,
-            importlib.machinery.SourceFileLoader(name, path)
+            name, importlib.machinery.SourceFileLoader(name, path)
         )
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         return module
+
     del historyFile
     del save_history
 
