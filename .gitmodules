@@ -137,3 +137,6 @@
 [submodule "links/vim/pack/languages/start/antlr"]
 	path = links/vim/pack/languages/start/antlr
 	url = https://github.com/suoto/vim-antlr
+[submodule "links/vim/pack/utility/start/abolish"]
+	path = links/vim/pack/utility/start/abolish
+	url = https://github.com/tpope/vim-abolish
