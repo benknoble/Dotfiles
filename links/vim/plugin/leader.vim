@@ -8,7 +8,7 @@ let mapleader = " "
 " And <LocalLeader> for buffer mappings
 let maplocalleader = '\'
 
-call popsikey#register('<Leader>c', [
+let g:popsikey_change_id = popsikey#register('<Leader>c', [
       \ #{ key: 'l', info: 'clear line', action: '0D', },
       \ #{
       \   key: 'w',
