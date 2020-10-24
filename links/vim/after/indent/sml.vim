@@ -24,8 +24,8 @@ setlocal shiftwidth=2
 
 " Comment formatting
 if (has("comments"))
-  set comments=sr:(*,mb:*,ex:*)
-  set fo=cqort
+  setlocal comments=sr:(*,mb:*,ex:*)
+  setlocal fo=cqort
 endif
 
 " Only define the function once.
@@ -218,3 +218,20 @@ function! GetSMLIndent() abort
   return ind
 
 endfunction
+
+let b:undo_indent = bk#ftplugin#undo(#{
+      \ opts: [
+      \   'expandtab',
+      \   'indentexpr',
+      \   'indentkeys',
+      \   'lisp',
+      \   'smartindent',
+      \   'textwidth',
+      \   'shiftwidth',
+      \   'comments',
+      \   'formatoptions',
+      \ ],
+      \ funcs: [
+      \   'GetSMLIndent',
+      \ ],
+      \ }, 'undo_indent')
