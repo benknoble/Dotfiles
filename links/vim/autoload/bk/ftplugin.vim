@@ -8,8 +8,9 @@
 "   - 'abbrevs' (like maps, but for abbreviations)
 "   - 'funcs' (list of functions to delete)
 "   - 'custom' (expression that will be concatenated literally)
-function! bk#ftplugin#undo(settings)
-  let l:undo = get(b:, 'undo_ftplugin', '')
+function! bk#ftplugin#undo(settings, ...)
+  const l:name = a:0 > 0 ? a:1 : 'undo_ftplugin'
+  let l:undo = get(b:, l:name, '')
   let l:suffix = []
 
   " options
