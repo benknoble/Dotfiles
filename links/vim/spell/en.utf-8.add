@@ -101,7 +101,6 @@ auditable
 subgoal
 parameterize
 performant
-#rolog
 prolog
 arity
 memoize
@@ -118,3 +117,4 @@ Verilog
 dereference
 stackless
 iteratively
+filetype
