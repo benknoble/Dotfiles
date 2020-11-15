@@ -9,29 +9,15 @@ SHELL = /bin/sh
 .SUFFIXES:
 .SUFFIXES: .pdf .tex
 
-# portable except for these function calls
-SRC = $(filter-out common.tex,$(wildcard *.tex))
-PDF = $(SRC:tex=pdf)
-
 LATEX = lualatex
 BIBTEX = biber
 LATEXFLAGS = -halt-on-error
-
-APP = Preview
-
-all: $(PDF)
 
 .tex.pdf:
 	$(LATEX) $(LATEXFLAGS) $*
 	$(BIBTEX) $(BIBTEXFLAGS) $*
 	$(LATEX) $(LATEXFLAGS) $*
 	$(LATEX) $(LATEXFLAGS) $*
-
-interactive:
-	@while read -r -p 'compile>'; do $(MAKE) preview; done
-
-preview: $(PDF)
-	open -a $(APP) $(PDF)
 
 clean:
 	git clean -fdx -e '*.sw*' -e '*.vim'
