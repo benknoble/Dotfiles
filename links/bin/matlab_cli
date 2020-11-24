@@ -2,8 +2,6 @@
 
 CMD=(
   matlab
-  -nodisplay
-  # -nojvm
   -nosplash
   -nodesktop
 )
