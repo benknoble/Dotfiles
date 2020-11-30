@@ -391,4 +391,28 @@ let g:loaded_2html_plugin = 1
 let g:loaded_vimballPlugin = 1
 " Default plugins }}}
 
+" function s:one_syntax_restore_opts(...) abort
+"   for [dict, var] in a:000
+"     if has_key(dict, var)
+"       execute printf('let &l:%s = "%s"', substitute(var, 'old_', '', ''), get(dict, var)->escape('"\'))
+"     endif
+"   endfor
+" endfunction
+
+" function s:one_syntax(on) abort
+"   let [w:old_spell, b:old_spelllang, b:old_spellcapcheck, b:old_spellfile] = [&l:spell, &l:spelllang, &l:spellcapcheck, &l:spellfile]
+"   if a:on is# 'on' && exists('b:current_syntax')
+"     execute 'ownsyntax' b:current_syntax
+"   else
+"     ownsyntax off
+"   endif
+"   call s:one_syntax_restore_opts([w:, 'old_spell'], [b:, 'old_spelllang'], [b:, 'old_spellcapcheck'], [b:, 'old_spellfile'])
+" endfunction
+
+" augroup one_syntax
+"   autocmd!
+"   autocmd WinEnter * call s:one_syntax('on')
+"   autocmd WinLeave * call s:one_syntax('off')
+" augroup END
+
 " Unsorted }}}
