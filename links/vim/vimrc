@@ -80,7 +80,7 @@ if exists("&viminfofile")
 endif
 set undofile undodir=~/.undo
 if !isdirectory(expand(&undodir))
-  call mkdir(expand(&undodir), "p")
+  call mkdir(expand(&undodir), "p", 0700)
 endif
 " }}}
 
