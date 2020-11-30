@@ -27,12 +27,6 @@ let g:ale_fixers = {
       \ 'go': ['gofmt'],
       \ }
 
-if has('osx') || has('mac')
-  let g:ale_linters_ignore = {
-        \ 'c': [ 'gcc' ],
-        \ }
-endif
-
 " lengthen prolog timeout
 let g:ale_prolog_swipl_timeout = 10
 " no sandboxing
