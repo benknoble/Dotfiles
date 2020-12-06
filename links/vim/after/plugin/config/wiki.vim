@@ -17,7 +17,7 @@ call popsikey#register('<Leader>w', [
       \ #{
       \   key:    '/',
       \   info:   'search wiki',
-      \   action: ":call wiki#search(input('wiki search: '))\<CR>",
+      \   action: ":execute 'grep' input('wiki-grep: ') g:wiki_root\<CR>",
       \ },
       \ #{
       \   key:    'e',
