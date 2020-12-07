@@ -69,6 +69,11 @@ if executable('dafny')
   packadd dafny
 endif
 
+if executable('racket')
+  packadd racket
+  packadd scribble
+endif
+
 " Executables }}}
 
 " Dracula {{{
