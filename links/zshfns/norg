@@ -1,0 +1,7 @@
+#! /usr/bin/env zsh
+
+norg () {
+  gron --ungron "$@"
+}
+
+norg "$@"
