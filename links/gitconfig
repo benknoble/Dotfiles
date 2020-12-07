@@ -57,6 +57,7 @@
 # core
 [core]
 	excludesfile = ~/.gitignore_global
+	attributesFile = ~/.gitattributes
 	pager = less -FRX
 [init]
 	templateDir = ~/.git_template
@@ -80,6 +81,8 @@
 	tool = vimdiff
 	colorMoved = default
 	mnemonicprefix = true
+[diff "json"]
+	textconv = gron
 [difftool]
 	prompt = no
 [merge]

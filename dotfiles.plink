@@ -114,6 +114,7 @@ LINKS = links/
 .ctags.d <= ctags.d
 .gdbinit <= gdbinit
 .git_template <= git_template
+.gitattributes <= gitattributes
 .gitconfig <= gitconfig
 .gitignore_global <= gitignore_global
 .gitshrc <= gitshrc
