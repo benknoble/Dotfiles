@@ -66,7 +66,7 @@ pathadd () {
   local path_var="${(L)path_type}"
   local addition="$2"
   [[ "$path_var" != *path ]] && path_var+=path
-  eval "${path_var}+=( $addition )"
+  eval "${path_var}+=( ${(q)addition} )"
   _pathdebug "$path_type" "$addition"
 }
 
