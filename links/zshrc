@@ -51,6 +51,7 @@ PS1+='${prompt_user:+"%n ${prompt_host:+"@ %m "}"}'
 PS1+='${prompt_dir:+"%F{cyan}∈ %($((PROMPT_DIRTRIM+2))~:%-1~/…/%${PROMPT_DIRTRIM}~:%$((PROMPT_DIRTRIM+1))~)%f "}'
 PS1+='%F{yellow}$(__git_ps1 "%s ")%f'
 PS1+=$'\n'
+PS1+='${_vimode}'
 PS1+='%(?.%F{green}λ%f.%F{red}✗ %? λ%f)'
 PS1+='%(!.%F{red}!%f.)'
 PS1+=' '
@@ -175,6 +176,18 @@ zle -N insert-composed-char
 
 zle -N predict-on
 zle -N predict-off
+
+_vimode='+'
+vi-keymap-select() {
+  emulate zsh
+  if [[ "$KEYMAP" == 'vicmd' ]]; then
+    _vimode=':'
+  else
+    _vimode='+'
+  fi
+  zle && { zle .reset-prompt; zle -R; }
+}
+add-zle-hook-widget keymap-select vi-keymap-select
 
 # widgets }}}
 
