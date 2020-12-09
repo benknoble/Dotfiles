@@ -110,6 +110,7 @@ PS1+='${prompt_dir:+"%F{cyan}∈ %($((PROMPT_DIRTRIM+2))~:%-1~/…/%${PROMPT_DIR
 PS1+='%F{yellow}$(__git_ps1 "%s ")%f'
 PS1+='%(?..%F{red}X %? %f)'
 PS1+=$'\n'
+PS1+='${_vimode}'
 PS1+='%(?.%F{green}λ%f.%F{red}λ%f)'
 PS1+='%(!.%F{red}!%f.)'
 PS1+=' '
@@ -258,6 +259,18 @@ zle -N predict-on
 zle -N predict-off
 
 zle -C all-matches complete-word _generic
+
+_vimode=+
+vi-keymap-select() {
+  emulate -L zsh
+  if [[ "$KEYMAP" == vicmd ]]; then
+    _vimode=:
+  else
+    _vimode=+
+  fi
+  zle && { zle .reset-prompt; zle -R; }
+}
+add-zle-hook-widget keymap-select vi-keymap-select
 
 # widgets }}}
 
