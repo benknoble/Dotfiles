@@ -4,7 +4,11 @@ function bk#notepad#make() abort
   nnoremap <buffer> <localleader>w :call bk#notepad#move_to_weekend()<CR>
   xnoremap <buffer> <localleader>t :call bk#notepad#move_to_tomorrow()<CR>
   xnoremap <buffer> <localleader>w :call bk#notepad#move_to_weekend()<CR>
+  setlocal bufhidden=unload
   let b:undo_ftplugin = bk#ftplugin#undo(#{
+        \ opts: [
+        \   'bufhidden',
+        \ ],
         \ maps: [
         \   ['n', '<localleader>d'],
         \   ['n', '<localleader>t'],
