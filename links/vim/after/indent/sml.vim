@@ -159,7 +159,7 @@ function! GetSMLIndent() abort
 
   " Indent from last matching module if line matches:
   elseif line =~ '^\s*\(fun\|val\|open\|structure\|and\|datatype\|type\|exception\)\>'
-    cursor(lnum,1)
+    " cursor(lnum,1)
     let lastModule = indent(searchpair(s:module, '', '\<end\>', 'bWn', 'synIDattr(synID(line("."), col("."), 0), "name") =~? "string\\|comment"'))
     if lastModule == -1
       return 0
