@@ -35,9 +35,10 @@ set -u
 churn() {
   git log --all -M -C --name-only --format='format:' "$@" \
     | grep -v '^$' \
+    | perl -lne 'print if -e' \
     | sort \
     | uniq -c \
-    | awk '{print $1 "\t" $2}'
+    | sort -rn
 }
 
 main() {
