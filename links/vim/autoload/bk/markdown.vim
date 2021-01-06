@@ -40,3 +40,25 @@ function! bk#markdown#heading() abort
   let level = getchar()->nr2char()->str2nr()
   return (level is# 0) ? '' : printf("I%s \<esc>", repeat('#', level))
 endfunction
+
+function bk#markdown#navigate() abort
+  const cursor = getcurpos()
+  vimgrep /^#/ %
+  call cursor(cursor[1:])
+  const line = getline('.')
+  const line_nr = line('.')
+  if line_nr <= 1
+    " use the first error for the first line, whatever it is
+    cwindow
+  elseif line =~# '^#'
+    " for later lines that are errors, find them exactly
+    cwindow
+    execute printf('/\V|%d \.\*| %s\$', line_nr, line)
+    .cc
+    wincmd p
+  else
+    " otherwise use the previous error
+    cabove
+    cwindow
+  endif
+endfunction

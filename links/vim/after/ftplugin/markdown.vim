@@ -21,6 +21,9 @@ onoremap <buffer> i#3 :<C-u>execute "normal! ?^###\\s.?e\r\rvg_"<CR>
 xnoremap <buffer> <LocalLeader>h :call bk#markdown#to_liquid()<CR>
 nnoremap <buffer> <LocalLeader>h :%call bk#markdown#to_liquid()<CR>
 
+command -buffer -bar Navigate call bk#markdown#navigate()
+nnoremap <buffer> <Localleader>n :Navigate<CR>
+
 let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'textwidth',
@@ -37,5 +40,9 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   [ 'o', 'i#3' ],
       \   [ 'x', '<LocalLeader>h' ],
       \   [ 'n', '<LocalLeader>h' ],
+      \   [ 'n', '<Localleader>n' ],
+      \ ],
+      \ 'commands': [
+      \   'Navigate',
       \ ],
       \ })
