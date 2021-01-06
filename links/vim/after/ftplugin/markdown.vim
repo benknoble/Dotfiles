@@ -35,7 +35,7 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   [ 'o', 'i#1' ],
       \   [ 'o', 'i#2' ],
       \   [ 'o', 'i#3' ],
-      \   [ 'x', '<LocalLeader>h'],
-      \   [ 'n', '<LocalLeader>h'],
+      \   [ 'x', '<LocalLeader>h' ],
+      \   [ 'n', '<LocalLeader>h' ],
       \ ],
       \ })
