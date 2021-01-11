@@ -1,5 +1,5 @@
 syntax keyword racketSyntax lambda conceal cchar=λ
-" syntax keyword clojureFunc partial conceal cchar=$
+syntax keyword racketFunc curry conceal cchar=$
 syntax keyword racketFunc compose conceal cchar=←
 syntax keyword racketFunc compose1 conceal cchar=←
 
