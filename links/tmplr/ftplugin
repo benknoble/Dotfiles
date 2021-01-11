@@ -8,7 +8,7 @@
 " Language:              $LANG
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-let b:undo_ftplugin = ftplugin#undo({
+let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \ ],
       \ 'vars': [
