@@ -4,6 +4,8 @@ Host *
     ControlMaster auto
     ControlPath ~/.ssh/control:%h:%p:%r
     UpdateHostKeys ask
+    AddKeysToAgent yes
+    UseKeychain yes
 
 # host specific; may be symlinked or machine-specific
 Include host-*
