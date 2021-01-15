@@ -415,4 +415,6 @@ let g:loaded_vimballPlugin = 1
 "   autocmd WinLeave * call s:one_syntax('off')
 " augroup END
 
+set maxmempattern=2000
+
 " Unsorted }}}
