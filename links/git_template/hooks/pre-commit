@@ -37,7 +37,7 @@ whitespace() {
 }
 
 checks=(
-  gemfile_and_lock
+  # gemfile_and_lock
   whitespace
 )
 
