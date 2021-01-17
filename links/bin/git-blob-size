@@ -1,0 +1,46 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+USAGE='[-hm]
+
+Display blobs and sizes. Machine-readable with -m.'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+log() {
+  printf '%s\n' "$@"
+} >&2
+
+main() {
+  filter=(cut -c 1-12,41-)
+  format=(
+    $(command -v gnumfmt || echo numfmt)
+    --field=2 --to=iec-i --suffix=B --padding=7 --round=nearest
+  )
+
+  while getopts 'm' opt ; do
+    case "$opt" in
+      m) filter=(cat); format=(cat) ;;
+      ?) usage ;;
+    esac
+  done
+
+  shift $((OPTIND - 1))
+
+  if (( $# > 0 )); then
+    usage
+  fi
+
+  git rev-list --objects --all |
+    git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' |
+    sed -n 's/^blob //p' |
+    sort --reverse --numeric-sort --key=2 |
+    "${filter[@]}" | "${format[@]}"
+}
+
+main "$@"
