@@ -10,8 +10,11 @@ usage() {
   cat <<DOG
 usage: $0 [-l localport] [-p remoteport] server [host]
 
-Establish a tunnel from localport (8080) to remoteport (80) on server. Connect
-to host (server).
+Establish a tunnel from localport (8080) to remoteport (80) on server (as seen
+by host). Connect to host (server).
+
+This script only supports one tunnel; for creating multiple tunnels, see ssh(1)
+with the -L and -R flags.
 DOG
 }
 
