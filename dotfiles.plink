@@ -109,7 +109,6 @@ LINKS = links/
 .clojure <= clojure
 .config/alacritty <= config/alacritty
 .config/http-prompt <= config/http-prompt
-.config/pycodestyle <= config/pycodestyle
 .config/swi-prolog/init.pl <= config/swi-prolog/init.pl
 .ctags.d <= ctags.d
 .gdbinit <= gdbinit
