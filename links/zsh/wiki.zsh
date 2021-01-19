@@ -7,5 +7,8 @@ wiki() {
 }
 
 wikis() {
-  rg "$@" ~/.wiki
+  case $# in
+    0) tree ~/.wiki ;;
+    *) rg "$@" ~/.wiki ;;
+  esac
 }
