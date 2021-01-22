@@ -74,6 +74,10 @@ if executable('racket')
   packadd scribble
 endif
 
+if executable('coqc')
+  packadd coqtail
+endif
+
 " Executables }}}
 
 " Dracula {{{

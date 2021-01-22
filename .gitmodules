@@ -143,3 +143,6 @@
 [submodule "links/vim/pack/languages/start/simpletemplate"]
 	path = links/vim/pack/languages/start/simpletemplate
 	url = https://github.com/gbishop/vim-simpletemplate
+[submodule "links/vim/pack/languages/opt/coqtail"]
+	path = links/vim/pack/languages/opt/coqtail
+	url = https://github.com/whonore/Coqtail
