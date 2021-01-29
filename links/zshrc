@@ -106,7 +106,6 @@ setopt noclobber
 setopt histallowclobber
 
 setopt autocd
-setopt extendedglob
 setopt correct
 
 # make some more sense:
