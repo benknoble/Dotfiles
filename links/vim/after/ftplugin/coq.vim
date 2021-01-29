@@ -5,6 +5,8 @@
 setlocal shiftwidth=2 softtabstop=2
 " indent/coq.vim makes this 2, but I don't work with hard-tabs
 setlocal tabstop<
+" ftplugin/coq.vim adds 'n', which won't work for me
+setlocal comments=sr:(*,mb:*,ex:*)
 
 inoreabbrev <buffer> forall ∀
 inoreabbrev <buffer> exists ∃
