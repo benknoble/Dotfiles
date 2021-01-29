@@ -14,6 +14,7 @@ inoreabbrev <buffer> \/ ∨
 inoreabbrev <buffer> or ∨
 inoreabbrev <buffer> implies →
 inoreabbrev <buffer> <-> ↔
+inoreabbrev <buffer> iff ↔
 inoreabbrev <buffer> ~ ¬
 inoreabbrev <buffer> <> ≠
 inoreabbrev <buffer> fun λ
@@ -93,6 +94,7 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   [ 'i', 'or' ],
       \   [ 'i', 'implies' ],
       \   [ 'i', '<->' ],
+      \   [ 'i', 'iff' ],
       \   [ 'i', '~' ],
       \   [ 'i', '<>' ],
       \   [ 'i', 'fun' ],
