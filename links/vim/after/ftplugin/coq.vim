@@ -24,6 +24,8 @@ inoreabbrev <buffer> le ≤
 inoreabbrev <buffer> ge ≥
 inoreabbrev <buffer> compose ∘
 
+let s:maps = []
+
 if exists('*coqtail#register')
   " The function coqtail#define_mappings gets called all the time in
   " unpredictable ways, meaning I can't
