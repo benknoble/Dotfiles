@@ -44,6 +44,7 @@
 [submodule "vim/bundle/splitjoin"]
 	path = links/vim/pack/utility/start/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim.git
+	branch = main
 [submodule "vim/bundle/ale"]
 	path = links/vim/pack/utility/start/ale
 	url = https://github.com/w0rp/ale.git
