@@ -123,6 +123,8 @@ set colorcolumn=+0
 set nowrap
 " Show wrapped lines with a marker in front
 let &showbreak = '└>'
+" and indent them well
+set breakindent
 " Break at word boundaries
 set linebreak
 " Allow movements Left and Right to move over wrapped lines
