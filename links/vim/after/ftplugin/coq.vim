@@ -8,21 +8,21 @@ setlocal tabstop<
 " ftplugin/coq.vim adds 'n', which won't work for me
 setlocal comments=sr:(*,mb:*,ex:*)
 
-inoreabbrev <buffer> forall ∀
-inoreabbrev <buffer> exists ∃
-inoreabbrev <buffer> /\ ∧
-inoreabbrev <buffer> and ∧
-inoreabbrev <buffer> \/ ∨
-inoreabbrev <buffer> or ∨
-inoreabbrev <buffer> implies →
-inoreabbrev <buffer> <-> ↔
-inoreabbrev <buffer> iff ↔
-inoreabbrev <buffer> ~ ¬
-inoreabbrev <buffer> <> ≠
-inoreabbrev <buffer> fun λ
-inoreabbrev <buffer> le ≤
-inoreabbrev <buffer> ge ≥
-inoreabbrev <buffer> compose ∘
+inoreabbrev <buffer> <expr> forall bk#abbr#not_comment('forall', '∀')
+inoreabbrev <buffer> <expr> exists bk#abbr#not_comment('exists', '∃')
+inoreabbrev <buffer> <expr> /\ bk#abbr#not_comment('/\', '∧')
+inoreabbrev <buffer> <expr> and bk#abbr#not_comment('and', '∧')
+inoreabbrev <buffer> <expr> \/ bk#abbr#not_comment('\/', '∨')
+inoreabbrev <buffer> <expr> or bk#abbr#not_comment('or', '∨')
+inoreabbrev <buffer> <expr> implies bk#abbr#not_comment('implies', '→')
+inoreabbrev <buffer> <expr> <-> bk#abbr#not_comment('<->', '↔')
+inoreabbrev <buffer> <expr> iff bk#abbr#not_comment('iff', '↔')
+inoreabbrev <buffer> <expr> ~ bk#abbr#not_comment('~', '¬')
+inoreabbrev <buffer> <expr> <> bk#abbr#not_comment('<>', '≠')
+inoreabbrev <buffer> <expr> fun bk#abbr#not_comment('fun', 'λ')
+inoreabbrev <buffer> <expr> le bk#abbr#not_comment('le', '≤')
+inoreabbrev <buffer> <expr> ge bk#abbr#not_comment('ge', '≥')
+inoreabbrev <buffer> <expr> compose bk#abbr#not_comment('compose', '∘')
 
 let s:maps = []
 
