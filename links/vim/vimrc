@@ -129,6 +129,8 @@ set breakindent
 set linebreak
 " Allow movements Left and Right to move over wrapped lines
 set whichwrap=b,s,<,>,[,]
+" Only one space between sentences
+set nojoinspaces
 " }}}
 
 " Indent settings: 4 spaces (unless overriden by ftplugin) {{{
