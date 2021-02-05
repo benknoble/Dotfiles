@@ -83,10 +83,8 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \ ],
       \ 'maps': [
       \ ] + map(s:maps, { _, v ->
-      \     split(v[2], '\zs')
-      \       ->map({ _, type -> [ type,
-      \                            v[1][1] is# '!' ? v[1][1:] : s:map_prefix . v[1]
-      \                          ]})
+      \       split(v[2], '\zs')
+      \       ->map({ _, type -> [type, v[1][0] is# '!' ? v[1][1:] : s:map_prefix . v[1]]})
       \       ->flatten(1)}),
       \ 'abbrevs': [
       \   [ 'i', 'forall' ],
