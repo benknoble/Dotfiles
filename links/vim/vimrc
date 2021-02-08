@@ -110,7 +110,7 @@ set wildmode=longest,full
 set wildignore+=*.a,*.o
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
 set wildignore+=.DS_Store,.git,.hg,.svn
-set wildignore+=*~,*.swp,*.tmp
+set wildignore+=*~,*.tmp
 set wildignore+=*.aux,*.bbl,*.blg,*.dvi,*.log,*.pdf,*.out,*.bcf,*.run.xml
 " Coq artifacts
 set wildignore+=*.vo,*.vok,*.vos,*.glob
