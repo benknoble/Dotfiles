@@ -33,6 +33,7 @@
 	lup = log HEAD@{upstream}..
 	lupp = log HEAD@{upstream}.. --patch
 	merc = merge --no-ff
+	merf = merge --ff-only
 	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --stdin;}; f"
 	newb = checkout -b
 	patch = add --patch
