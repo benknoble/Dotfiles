@@ -8,3 +8,5 @@ syntax match coqKwd contained "∧\|∨\|→\|↔\|λ\|∀\|∃"
 syntax match coqProofKwd contained "∧\|∨\|→\|↔\|λ\|∀\|∃"
 syntax match coqLtac contained "λ"
 syntax match coqTactic contained "∃"
+
+runtime! syntax/coq/bk_extras.vim
