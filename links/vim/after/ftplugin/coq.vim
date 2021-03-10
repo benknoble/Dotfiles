@@ -24,6 +24,9 @@ inoreabbrev <buffer> <expr> le bk#abbr#not_comment('le', '≤')
 inoreabbrev <buffer> <expr> ge bk#abbr#not_comment('ge', '≥')
 inoreabbrev <buffer> <expr> compose bk#abbr#not_comment('compose', '∘')
 
+nnoremap <buffer> <localleader>a :call bk#coq#get_def(expand('<cword>'), 'About')<CR>
+nnoremap <buffer> <localleader>p :call bk#coq#get_def(expand('<cword>'), 'Print')<CR>
+
 let s:maps = []
 
 if exists('*coqtail#register')
@@ -82,6 +85,8 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   'softtabstop',
       \ ],
       \ 'maps': [
+      \   [ 'n', '<localleader>a'],
+      \   [ 'n', '<localleader>p'],
       \ ] + map(s:maps, { _, v ->
       \       split(v[2], '\zs')
       \       ->map({ _, type -> [type, v[1][0] is# '!' ? v[1][1:] : s:map_prefix . v[1]]})
