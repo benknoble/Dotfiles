@@ -83,6 +83,8 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [
       \   'shiftwidth',
       \   'softtabstop',
+      \   'tabstop',
+      \   'comments',
       \ ],
       \ 'maps': [
       \   [ 'n', '<localleader>a'],
