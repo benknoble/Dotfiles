@@ -80,13 +80,15 @@
 # diffs and merges
 [diff]
 	submodule = log
-	tool = vimdiff
+	tool = fugitive
 	colorMoved = default
 	mnemonicprefix = true
 [diff "json"]
 	textconv = gron
 [difftool]
 	prompt = no
+[difftool "fugitive"]
+	cmd = vim --nofork +\"Git difftool\"
 [merge]
 	tool = fugitive
 	conflictstyle = diff3
