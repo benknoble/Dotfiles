@@ -300,6 +300,15 @@ reset_editor
 
 compinit
 
+# I use <esc>/ to start a search, but I type fast enough for it to trigger
+# _history-complete-older. Get rid of it
+# It has to be down here, though, because it seems compinit triggers it, at
+# least when
+# /usr/local/Cellar/zsh/5.8_1/share/zsh/functions/_history_complete_word is on
+# the fpath, because its first line is
+# #compdef -K _history-complete-older complete-word \e/ _history-complete-newer complete-word \e,
+bindkey -r '\e/'
+
 # custom }}}
 
 unset has_brew
