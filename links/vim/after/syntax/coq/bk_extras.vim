@@ -11,5 +11,5 @@ syntax match coqSubscriptDigit /8/ contained conceal cchar=₈
 syntax match coqSubscriptDigit /9/ contained conceal cchar=₉
 
 syntax keyword coqType nat containedin=ALLBUT,.*Comment conceal cchar=ℕ
-syntax keyword coqType int containedin=ALLBUT,.*Comment conceal cchar=ℤ
+syntax keyword coqType Z containedin=ALLBUT,.*Comment conceal cchar=ℤ
 " syntax keyword coqType bool containedin=ALLBUT,.*Comment conceal cchar=𝟚
