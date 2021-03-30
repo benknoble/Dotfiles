@@ -135,3 +135,5 @@ executables
 miscompilation
 superoptimization
 bitvector
+combinator
+combinators
