@@ -9,15 +9,25 @@ SHELL = /bin/sh
 .SUFFIXES:
 .SUFFIXES: .pdf .tex
 
-LATEX = lualatex
-BIBTEX = biber
-LATEXFLAGS = -halt-on-error
+LATEX = lua
+
+all:
+	latexmk -pdf$(LATEX)
 
 .tex.pdf:
-	$(LATEX) $(LATEXFLAGS) $*
-	$(BIBTEX) $(BIBTEXFLAGS) $*
-	$(LATEX) $(LATEXFLAGS) $*
-	$(LATEX) $(LATEXFLAGS) $*
+	latexmk $* -pdf$(LATEX)
+
+loop:
+	latexmk -pdf$(LATEX) -pvc
+
+preview:
+	latexmk -pdf$(LATEX) -pv
 
 clean:
+	latexmk -c
+
+distclean:
+	latexmk -C
+
+maintainer-clean: distclean
 	git clean -fdx -e '*.sw*' -e '*.vim'

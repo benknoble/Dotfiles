@@ -1,0 +1,29 @@
+# vim: ft=perl
+
+# glossaries {{{
+# https://www.dickimaw-books.com/latex/buildglossaries/#latexmk
+add_cus_dep('glo', 'gls', 0, 'makeglossary');
+
+sub makeglossary{
+  system( "makeindex -s \"$_[0].ist\" -t \"$_[0].glg\" -o \"$_[0].gls\" \"$_[0].glo\"" );
+}
+
+add_cus_dep('acn', 'acr', 0, 'makeacronym');
+
+sub makeacronym{
+  system( "makeindex -s \"$_[0].ist\" -t \"$_[0].alg\" -o \"$_[0].acr\" \"$_[0].acn\"" );
+}
+
+add_cus_dep('slo', 'sls', 0, 'makesymbols');
+
+sub makesymbols{
+  system( "makeindex -s \"$_[0].ist\" -t \"$_[0].slg\" -o \"$_[0].sls\" \"$_[0].slo\"" );
+}
+
+push @generated_exts, 'glo', 'gls', 'acn', 'acr', 'slo', 'sls', 'ist', 'glg', 'alg', 'slg';
+# }}}
+
+# generate/clean .bbl files iff .bib file available
+$bibtex_use = 1.5;
+# clean .run.xml from biber
+push @generated_exts, 'run.xml';

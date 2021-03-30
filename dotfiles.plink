@@ -120,6 +120,7 @@ LINKS = links/
 .inputrc <= inputrc
 .irbrc <= irbrc
 .jupyter <= jupyter
+.latexmkrc <= latexmkrc
 .newsboat <= newsboat
 .pryrc <= pryrc
 .pythonrc <= pythonrc
