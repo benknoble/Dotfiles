@@ -1,5 +1,3 @@
-# vim: ft=perl
-
 # glossaries {{{
 # https://www.dickimaw-books.com/latex/buildglossaries/#latexmk
 add_cus_dep('glo', 'gls', 0, 'makeglossary');
