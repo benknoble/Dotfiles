@@ -25,3 +25,11 @@ push @generated_exts, 'glo', 'gls', 'acn', 'acr', 'slo', 'sls', 'ist', 'glg', 'a
 $bibtex_use = 1.5;
 # clean .run.xml from biber
 push @generated_exts, 'run.xml';
+
+# coq-tex {{{
+add_cus_dep('tex', 'v_tex', 0, 'coqtex');
+sub coqtex {
+    system("coq-tex -sl \"$_[0].tex\" -o \"$_[0].v_tex\"");
+}
+push @generated_exts, 'v_tex';
+# }}}
