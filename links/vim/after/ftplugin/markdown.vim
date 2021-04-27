@@ -9,6 +9,9 @@ setlocal spell spelllang=en_us
 
 " Remove underscore from iskeyword
 setlocal iskeyword-=_
+" setlocal iskeyword-=-
+" setlocal iskeyword-=<
+" setlocal iskeyword-=>
 
 nnoremap <buffer> <expr> <LocalLeader>u bk#markdown#heading()
 

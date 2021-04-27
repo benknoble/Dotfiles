@@ -275,7 +275,6 @@ if &t_Co > 2 || has("gui_running")
         \ 'vim',
         \ 'clojure',
         \ 'sml',
-        \ 'racket',
         \ ]
   "  causes an error because vim's syntax is sourced 2-3 times for a liquid file
   " let g:liquid_highlight_types = g:markdown_fenced_languages
