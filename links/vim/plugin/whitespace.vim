@@ -8,3 +8,5 @@ function s:trim_trailing_whitespace() abort
 endfunction
 
 command -bar TrimTrailingWhitespace call <SID>trim_trailing_whitespace()
+
+command -bar OnlySpaces keeppatterns %substitute/[‏‎‌‍ ]//ge
