@@ -67,3 +67,6 @@ package-lock.json
 
 # rust + cargo
 Cargo.lock
+
+# jekyll
+.jekyll-cache
