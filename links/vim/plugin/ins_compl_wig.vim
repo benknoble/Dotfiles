@@ -15,4 +15,4 @@ augroup WIG
         \   let &wildignore = b:old_wildignore |
         \   unlet b:old_wildignore |
         \ endif
-augroup END
+augroup end

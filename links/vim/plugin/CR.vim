@@ -11,4 +11,4 @@ augroup CRfix
   " Quickfix, Location list, &c. remap <CR> to work as expected
   autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
   autocmd CmdwinEnter * nnoremap <buffer> <CR> <CR>
-augroup END
+augroup end

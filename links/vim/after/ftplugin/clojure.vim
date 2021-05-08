@@ -23,7 +23,7 @@ augroup CljRequire
   " can't use autocmd! here because it would clear the group entirely
   autocmd! * <buffer>
   autocmd BufWritePost <buffer> silent! Require
-augroup END
+augroup end
 
 let b:undo_ftplugin = bk#ftplugin#undo({
       \ 'opts': [

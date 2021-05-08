@@ -77,4 +77,4 @@ endfunction
 augroup AutoReply
   autocmd!
   autocmd CmdlineLeave : call AutoReply(getcmdline())
-augroup END
+augroup end

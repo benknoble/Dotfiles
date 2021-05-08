@@ -4,4 +4,4 @@ if exists("did_load_filetypes")
 endif
 
 augroup filetypedetect
-augroup END
+augroup end

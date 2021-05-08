@@ -35,7 +35,7 @@ endfunction
 augroup Badword
   autocmd!
   autocmd Syntax * for word in get(g:, 'badwords', []) + s:badwords | call s:mark_bad(word) | endfor
-augroup END
+augroup end
 
 command -bang -nargs=? -complete=file Badsearch
       \ execute 'vimgrep'

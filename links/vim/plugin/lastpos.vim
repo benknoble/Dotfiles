@@ -13,5 +13,5 @@ if has('autocmd')
           \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'gitcommit' |
           \   exe "normal! g`\"" |
           \ endif
-  augroup END
+  augroup end
 endif
