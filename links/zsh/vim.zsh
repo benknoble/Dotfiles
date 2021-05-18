@@ -93,3 +93,19 @@ vw() {
 vn() {
   vim +'Ewiki notepad' "$@"
 }
+
+vimnone() {
+  vim -N -u NONE -U NONE "$@"
+}
+
+vimnorc() {
+  vim -N -u NORC -U  NONE "$@"
+}
+
+vimdefaults() {
+  vim -u DEFAULTS -U NONE "$@"
+}
+
+vimclean() {
+  vim --clean "$@"
+}
