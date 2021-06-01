@@ -123,7 +123,6 @@ function PrintTabsSpaces() abort
         \ &shiftwidth)
 endfunction
 
-" add t later
 let g:popsikey_info_id = popsikey#register('<Leader><Leader>', [
       \ #{
       \   key: 'c',
