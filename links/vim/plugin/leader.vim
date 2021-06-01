@@ -21,10 +21,7 @@ let g:popsikey_change_id = popsikey#register('<Leader>c', [
       \ })
 
 call popsikey#register('<Leader>f', [
-      \ #{ key: 's', info: 'save', action: ":write\<CR>", },
-      \ #{ key: 'q', info: 'quit', action: ":quit\<CR>", },
       \ #{ key: 'Q', info: 'quit all', action: ":qall\<CR>", },
-      \ #{ key: 'z', info: 'suspend', action: ":suspend\<CR>", },
       \ #{
       \   key: 'v',
       \   info: 'edit vimrc',
