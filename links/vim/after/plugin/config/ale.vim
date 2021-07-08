@@ -63,7 +63,7 @@ call popsikey#register('<leader>a', [
       \   action: ":ALEHover\<CR>",
       \ },
       \ #{
-      \    key: 'r',
+      \    key: 'R',
       \    info: 'Rename',
       \    action: ":ALERename\<CR>",
       \ },
