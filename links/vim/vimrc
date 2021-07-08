@@ -87,6 +87,9 @@ endif
 " Completion {{{
 " Automatically insert longest common prefix
 set completeopt+=longest
+" popups instead of preview
+set completeopt+=popup
+set completepopup=align:menu
 " Make matching handle case better
 set infercase
 if has('autocmd')
@@ -96,12 +99,6 @@ if has('autocmd')
     autocmd FileType * if &omnifunc == "" |
           \ setlocal omnifunc=syntaxcomplete#Complete |
           \ endif
-    " Close the preview window after Insert-mode completion.
-    let g:exceptions = ['gitcommit']
-    if exists('##CompleteDone')
-      autocmd CompleteDone *
-            \ if index(g:exceptions, &filetype) < 0 | silent! pclose | endif
-    endif
   augroup end
 endif
 " Display completion matches in the status line
