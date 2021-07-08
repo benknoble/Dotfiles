@@ -428,4 +428,9 @@ let g:loaded_bubble = 1
 
 set maxmempattern=2000
 
+" For inserting a lozenge, digraph LZ
+" :help i_CTRL-L already has a meaning, but only when 'insertmode' is set
+" I don't use that, but let's make sure not to break anything
+inoremap <expr> <C-L> &insertmode ? '<C-L>' : '<C-k>LZ'
+
 " Unsorted }}}
