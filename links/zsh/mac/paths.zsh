@@ -15,6 +15,6 @@
   pathadd_front man /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home/man
 }
 
-[[ -d '/Applications/Racket v7.9/' ]] && {
-  pathadd man '/Applications/Racket v7.9/man'
+[[ -d '/Applications/Racket v8.0/' ]] && {
+  pathadd man '/Applications/Racket v8.0/man'
 }
