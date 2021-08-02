@@ -37,3 +37,7 @@
 --type-add=vim:.gvimrc
 --type-add=vim:vimrc
 --type-add=vim:gvimrc
+
+# racket
+--type-add=racket:*.rkt
+--type-add=scribble:*.scrbl
