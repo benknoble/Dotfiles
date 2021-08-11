@@ -150,3 +150,6 @@
 [submodule "links/vim/pack/utility/opt/batchy"]
 	path = links/vim/pack/utility/opt/batchy
 	url = https://github.com/arp242/batchy.vim
+[submodule "links/vim/pack/utility/opt/jqplay"]
+	path = links/vim/pack/utility/opt/jqplay
+	url = https://github.com/bfrg/vim-jqplay

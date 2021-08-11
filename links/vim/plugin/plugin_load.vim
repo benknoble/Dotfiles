@@ -79,6 +79,10 @@ if executable('coqc')
   packadd coqtail
 endif
 
+if executable('jq')
+  packadd jqplay
+endif
+
 " Executables }}}
 
 " Dracula {{{
