@@ -94,6 +94,10 @@ vn() {
   vim +'Ewiki notepad' "$@"
 }
 
+batchy() {
+  vim +BatchyHere "$@"
+}
+
 vimnone() {
   vim -N -u NONE -U NONE "$@"
 }
