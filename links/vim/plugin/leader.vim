@@ -51,7 +51,7 @@ let g:popsikey_cwd_id = popsikey#register('<Leader>ew', [
 " we don't need that mapping to hang around; it is subsumed below
 silent! nunmap <leader>ew
 
-call popsikey#register('<Leader>e', [
+let g:popsikey_edit_id = popsikey#register('<Leader>e', [
       \ #{ key: 'd', info: 'directory browser', action: ":Explore\<CR>", },
       \ #{ key: 'e', info: 'edit file', action: ':edit ', },
       \ #{ key: 's', info: 'split file', action: ':split ', },

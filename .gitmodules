@@ -153,3 +153,6 @@
 [submodule "links/vim/pack/utility/opt/jqplay"]
 	path = links/vim/pack/utility/opt/jqplay
 	url = https://github.com/bfrg/vim-jqplay
+[submodule "links/vim/pack/utility/start/fileselect"]
+	path = links/vim/pack/utility/start/fileselect
+	url = https://github.com/yegappan/fileselect/
