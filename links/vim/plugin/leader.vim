@@ -52,12 +52,7 @@ let g:popsikey_cwd_id = popsikey#register('<Leader>ew', [
 silent! nunmap <leader>ew
 
 call popsikey#register('<Leader>e', [
-      \ #{
-      \   key: 'd',
-      \   info: 'directory browser',
-      \   action: ":Explore\<CR>",
-      \   flags: '',
-      \ },
+      \ #{ key: 'd', info: 'directory browser', action: ":Explore\<CR>", },
       \ #{ key: 'e', info: 'edit file', action: ':edit ', },
       \ #{ key: 's', info: 'split file', action: ':split ', },
       \ #{ key: 'v', info: 'vsplit file', action: ':vsplit ', },
