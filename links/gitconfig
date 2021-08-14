@@ -26,7 +26,6 @@
 	igv = ig --verbose
 	intend = add --intent-to-add
 	j = jump
-	last = log -1 HEAD
 	logp = log --graph --abbrev-commit --pretty=mine
 	logpall = logp --all
 	lol = log --oneline
