@@ -6,6 +6,6 @@ syntax keyword racketFunc compose1 conceal cchar=←
 syntax keyword racketSyntax and conceal cchar=∧
 syntax keyword racketSyntax or conceal cchar=∨
 
-if ! dracula#should_abort('racket') || ! dracula_pro#should_abort('racket')
+if ! bk#dracula#should_abort('racket')
   highlight link racketParen DraculaSubtle
 endif
