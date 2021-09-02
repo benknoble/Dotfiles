@@ -6,3 +6,4 @@ python-lsp-server==1.1.0
 http-prompt==1.0.0
 pipdeptree==0.13.2
 pylint==2.6.0
+pipenv==2021.5.29

@@ -56,7 +56,7 @@ PS1+='%(!.%F{red}!%f.)'
 PS1+=' '
 
 RPS1=''
-RPS1+='${prompt_venv:+${VIRTUAL_ENV:+"(${VIRTUAL_ENV:h:t}) "}}'
+RPS1+='${prompt_venv:+${VIRTUAL_ENV:+"($(show_venv_name)) "}}'
 RPS1+='${prompt_time:+"%F{blue}%T⧖ %f"}'
 RPS1+='${prompt_date:+"%F{blue}%D{%e %B %Y} %f"}'
 RPS1+='${prompt_tty:+"%F{green}%l %f"}'
@@ -66,6 +66,15 @@ PS2='» '
 RPS2='%^'
 
 PS4='+(%e)%N:%i> '
+
+show_venv_name() {
+  local project_file="$VIRTUAL_ENV"/.project
+  if [[ -e "$project_file" ]]; then
+    <"$project_file" xargs basename
+  else
+    print "${VIRTUAL_ENV:h:t}"
+  fi
+}
 
 # prompts }}}
 
