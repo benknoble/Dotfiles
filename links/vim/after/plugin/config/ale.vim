@@ -2,8 +2,6 @@ if ! exists(':ALEInfo')
   finish
 endif
 
-set completefunc=ale#completion#OmniFunc
-
 let g:ale_set_signs = 0
 let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 0
@@ -40,6 +38,22 @@ let g:ale_prolog_swipl_load = 'current_prolog_flag(argv, [File]), load_files(Fil
 " see ~/.vim/after/ftplugin/python.vim
 let g:ale_python_black_options = '--line-length 79'
 
+function s:ale_lsp_setup() abort
+  setlocal omnifunc=ale#completion#OmniFunc
+
+  nnoremap <buffer> gd :ALEGoToDefinition<CR>
+  nnoremap <buffer> gD :ALEFindReferences<CR>
+  nnoremap <buffer> g* :ALESymbolSearch <C-r><C-w>
+
+  " Currently not actually visible (?)
+  echom 'LSP started'
+endfunction
+
+augroup ale_lsp_config
+  autocmd!
+  autocmd User ALELSPStarted call s:ale_lsp_setup()
+augroup END
+
 call popsikey#register('<leader>a', [
       \ #{
       \   key: 'd',
@@ -47,19 +61,9 @@ call popsikey#register('<leader>a', [
       \   action: ":ALEDocumentation\<CR>",
       \ },
       \ #{
-      \   key: 'r',
-      \   info: 'Find References',
-      \   action: ":ALEFindReferences\<CR>",
-      \ },
-      \ #{
       \   key: 'f',
       \   info: 'Fix',
       \   action: ":ALEFix\<CR>",
-      \ },
-      \ #{
-      \   key: 'g',
-      \   info: 'Go to Definition',
-      \   action: ":ALEGoToDefinition\<CR>",
       \ },
       \ #{
       \   key: 'h',
@@ -67,7 +71,7 @@ call popsikey#register('<leader>a', [
       \   action: ":ALEHover\<CR>",
       \ },
       \ #{
-      \    key: 'R',
+      \    key: 'r',
       \    info: 'Rename',
       \    action: ":ALERename\<CR>",
       \ },
