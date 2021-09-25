@@ -27,7 +27,7 @@ run_ctags() {
     # output files
     -f "$TEMP"
     # dont tag these languages
-    --languages=-javascript,sql
+    --languages=-sql
   )
   ctags "${args[@]}"
 }
