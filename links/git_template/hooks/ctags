@@ -29,7 +29,7 @@ run_ctags() {
     # dont tag these languages
     --languages=-sql
   )
-  ctags "${args[@]}"
+  ctags "${args[@]}" 2>/dev/null
 }
 
 finalize() {
