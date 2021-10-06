@@ -29,10 +29,9 @@ set keywordprg=:Man
 " End Distribution }}}
 
 " Executables {{{
-" TODO: tmplr is very slow to load
-" if executable('tmplr')
-"   packadd tmplr
-" endif
+if executable('tmplr')
+  packadd tmplr
+endif
 
 if executable('scala')
   packadd scala
