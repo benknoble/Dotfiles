@@ -28,6 +28,16 @@ call popsikey#register('<Leader>t', [
       \   info: 'shell',
       \   action: ":call simpl#shell('++close')\<CR>",
       \ },
+      \ #{
+      \   key: 'p',
+      \   info: 'shell popup',
+      \   action: ":call simpl#popup_shell()\<CR>",
+      \ },
+      \ #{
+      \   key: 'P',
+      \   info: 'repl popup',
+      \   action: ":call simpl#popup_repl()\<CR>",
+      \ },
       \ ],
       \ #{
       \ title: 'terminal',
