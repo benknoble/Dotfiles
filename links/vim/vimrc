@@ -264,18 +264,6 @@ if &t_Co > 2 || has("gui_running")
   endif
   " Use bash as default shell highlighter (cf :h ft-sh-syntax)
   let g:is_bash = 1
-  " Langs for markdown blocks
-  let g:markdown_fenced_languages = [
-        \ 'bash=sh',
-        \ 'python',
-        \ 'c',
-        \ 'vim',
-        \ 'clojure',
-        \ 'sml',
-        \ 'racket',
-        \ ]
-  "  causes an error because vim's syntax is sourced 2-3 times for a liquid file
-  " let g:liquid_highlight_types = g:markdown_fenced_languages
   " Do NOT highlight javadoc specially: it is distracting
   let java_ignore_javadoc = 1
   " default tex flavor
