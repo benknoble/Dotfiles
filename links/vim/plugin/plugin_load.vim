@@ -11,7 +11,16 @@ endif
 
 " Man {{{
 " Load Man plugin (see `:help Man` for more info)
-runtime ftplugin/man.vim
+
+" This by itself is VERY slow to load (~100ms):
+" runtime ftplugin/man.vim
+" So let's hotload it the first time we need it, based on the attributes from
+" below (uncomment with "gcc" and run with "<localleader>el" to refresh):
+" +,+2delete | put! =execute('runtime ftplugin/man.vim \| command Man') | '[,'] Commentary | -2delete
+"     Nom               Args Adresse Complet     Définition
+"     Man               +            shellcmd    call s:GetPage(<q-mods>, <f-args>)
+command -nargs=+ -complete=shellcmd Man delcommand Man | runtime ftplugin/man.vim | <mods>Man <args>
+
 let g:ft_man_open_mode = 'split'
 let g:ft_man_folding_enable = 1
 let g:ft_man_no_sect_fallback = 1
