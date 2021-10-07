@@ -419,6 +419,6 @@ set maxmempattern=2000
 inoremap <expr> <C-L> &insertmode ? '<C-L>' : '<C-k>LZ'
 
 " For dealing with vim --startuptime
-command StartupAnalyze /VIM STARTING/,$ sort! n /  [^ ]*  /
+command StartupAnalyze /VIM STARTING/,$ sort! f /  [^ ]*  /
 
 " Unsorted }}}
