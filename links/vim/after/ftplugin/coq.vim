@@ -2,6 +2,8 @@
 " Language:              coq
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
+let b:interpreter = 'rlwrap coqtop'
+
 setlocal shiftwidth=2 softtabstop=2
 " indent/coq.vim makes this 2, but I don't work with hard-tabs
 setlocal tabstop<
@@ -85,6 +87,9 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   'softtabstop',
       \   'tabstop',
       \   'comments',
+      \ ],
+      \ 'vars': [
+      \   'b:interpreter',
       \ ],
       \ 'maps': [
       \   [ 'n', '<localleader>a'],
