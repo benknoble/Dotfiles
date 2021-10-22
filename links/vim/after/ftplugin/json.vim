@@ -10,12 +10,4 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \   'formatexpr',
       \   'textwidth',
       \ ],
-      \ vars: [
-      \ ],
-      \ commands: [
-      \ ],
-      \ maps: [
-      \ ],
-      \ funcs: [
-      \ ],
       \ })
