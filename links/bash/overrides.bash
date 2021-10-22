@@ -4,3 +4,6 @@ alias cp='cp -iv'
 alias mv='mv -iv'
 # Preferred 'mkdir' implementation
 alias mkdir='mkdir -pv'
+
+# wrap coqtop in readline
+alias coqtop='rlwrap coqtop'
