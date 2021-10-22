@@ -5,5 +5,6 @@ alias mv='mv -iv'
 # Preferred 'mkdir' implementation
 alias mkdir='mkdir -pv'
 
-# wrap coqtop in readline
+# rlwrap aliases
 alias coqtop='rlwrap coqtop'
+alias sml='rlwrap sml'
