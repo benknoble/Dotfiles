@@ -9,14 +9,14 @@ setlocal tabstop=8 shiftwidth=8 softtabstop=8
 
 nnoremap <buffer> K :call bk#gitconfig#man(getline('.'))<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'tabstop',
       \   'shiftwidth',
       \   'softtabstop',
       \   'expandtab',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', 'K' ],
       \ ],
       \ })

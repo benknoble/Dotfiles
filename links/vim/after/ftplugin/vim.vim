@@ -13,13 +13,13 @@ nnoremap <buffer> <LocalLeader>el :execute getline('.')<CR>
 " Execute file
 nnoremap <buffer> <LocalLeader>ef :source %<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'shiftwidth',
       \   'softtabstop',
       \   'keywordprg',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<LocalLeader>el' ],
       \   [ 'n', '<LocalLeader>ef' ],
       \ ],

@@ -81,24 +81,24 @@ if exists('*coqtail#register')
   endfor
 endif
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'shiftwidth',
       \   'softtabstop',
       \   'tabstop',
       \   'comments',
       \ ],
-      \ 'vars': [
+      \ vars: [
       \   'b:interpreter',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<localleader>a'],
       \   [ 'n', '<localleader>p'],
       \ ] + map(s:maps, { _, v ->
       \       split(v[2], '\zs')
       \       ->map({ _, type -> [type, v[1][0] is# '!' ? v[1][1:] : s:map_prefix . v[1]]})
       \       ->flatten(1)}),
-      \ 'abbrevs': [
+      \ abbrevs: [
       \   [ 'i', 'forall' ],
       \   [ 'i', 'exists' ],
       "\ some doubling necessary; the slashes will be injected to double-quotes

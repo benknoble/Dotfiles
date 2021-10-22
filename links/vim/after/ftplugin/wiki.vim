@@ -8,8 +8,8 @@ if s:mapped_c_h
   inoremap <buffer> <C-h> <C-r>=wiki#ins_complete_wikis()<CR>
 endif
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'maps': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ maps: [
       \   ['n', 'gf'],
       \   ['n', '<C-w>f'],
       \   ['n', '<C-w><C-f>'],

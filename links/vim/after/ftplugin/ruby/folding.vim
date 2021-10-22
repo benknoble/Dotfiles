@@ -4,8 +4,8 @@
 
 let ruby_fold = 1
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'vars': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ vars: [
       \   'ruby_fold',
       \ ],
       \ })

@@ -4,8 +4,8 @@
 
 nnoremap <buffer> K :call bk#ssh#man(expand('<cword>'))<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'maps': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ maps: [
       \   [ 'n', 'K' ],
       \ ],
       \ })

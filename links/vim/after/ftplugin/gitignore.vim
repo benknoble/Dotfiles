@@ -5,8 +5,8 @@
 nnoremap <buffer> <LocalLeader>! :exec gitignore#negate()<CR>
 nnoremap <buffer> <LocalLeader>1 :exec gitignore#negate()<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'maps': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ maps: [
       \   [ 'n', '<LocalLeader>!' ],
       \   [ 'n', '<LocalLeader>1' ],
       \ ],

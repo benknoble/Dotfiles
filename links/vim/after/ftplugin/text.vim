@@ -7,8 +7,8 @@ setlocal textwidth=78
 " Spell check on, by default
 setlocal spell spelllang=en_us
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'textwidth',
       \   'spell',
       \   'spelllang',

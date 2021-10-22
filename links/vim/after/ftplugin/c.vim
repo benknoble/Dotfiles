@@ -9,11 +9,11 @@ inoreabbrev <buffer> #i #include
 inoreabbrev <buffer> #d #define
 inoreabbrev <buffer> main() int main(int argc, char **argv)
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'path',
       \ ],
-      \ 'abbrevs': [
+      \ abbrevs: [
       \   [ 'i', '#i' ],
       \   [ 'i', '#d' ],
       \   [ 'i', 'main' ],

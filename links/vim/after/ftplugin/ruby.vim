@@ -18,18 +18,18 @@ compiler ruby
 
 nnoremap <buffer> <LocalLeader>r :make %<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'textwidth',
       \   'shiftwidth',
       \   'softtabstop',
       \   'makeprg',
       \   'errorformat',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<LocalLeader>r' ],
       \ ],
-      \ 'vars': [
+      \ vars: [
       \   'b:interpreter',
       \ ],
       \ })

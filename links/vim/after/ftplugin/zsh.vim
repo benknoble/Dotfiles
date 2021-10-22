@@ -30,15 +30,15 @@ let b:match_words = '\<if\>:\<elif\>:\<else\>:\<fi\>'
 
 let b:ale_sh_shell_default_shell = 'zsh'
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'textwidth',
       \   'shiftwidth',
       \   'softtabstop',
       \   'iskeyword',
       \   'keywordprg',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'x', 'iv' ],
       \   [ 'o', 'iv' ],
       \   [ 'n', '<LocalLeader>qv' ],
@@ -46,7 +46,7 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   [ 'o', 'is' ],
       \   [ 'n', '<LocalLeader>qs' ],
       \ ],
-      \ 'vars': [
+      \ vars: [
       \   'b:undo_ftplugin',
       \ ],
       \ })

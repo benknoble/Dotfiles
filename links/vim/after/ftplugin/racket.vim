@@ -14,20 +14,20 @@ nmap <buffer> <Localleader>qf ysafbaquote <Esc>:silent! call repeat#set("\<Local
 
 inoreabbrev <buffer> lambda λ
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'shiftwidth',
       \   'softtabstop',
       \   'commentstring',
       \ ],
-      \ 'vars': [
+      \ vars: [
       \   'b:interpreter',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<Localleader>qe' ],
       \   [ 'n', '<Localleader>qf' ],
       \ ],
-      \ 'abbrevs': [
+      \ abbrevs: [
       \   [ 'i', 'lambda' ],
       \ ],
       \ })

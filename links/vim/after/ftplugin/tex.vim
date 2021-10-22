@@ -18,16 +18,16 @@ command -nargs=1 -buffer Section put =bk#tex#section('<args>')
 " $ is so much easier to type than \( and \)
 inoremap <buffer> <expr> $ bk#tex#inline()
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'spell',
       \   'iskeyword',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<LocalLeader>4' ],
       \   [ 'i', '$' ],
       \ ],
-      \ 'commands': [
+      \ commands: [
       \   'Section',
       \ ],
       \ })

@@ -9,14 +9,14 @@ setlocal textwidth=79
 
 nnoremap <buffer> <LocalLeader>t :term python setup.py test -q<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'textwidth',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<LocalLeader>t' ],
       \ ],
-      \ 'vars': [
+      \ vars: [
       \   'python_highlight_all',
       \   'b:interpreter',
       \ ],

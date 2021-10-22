@@ -20,8 +20,8 @@ call popsikey#register('<Localleader>q', [
       \ },
       \ ], #{})
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'maps': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ maps: [
       \   ['n', '<Localleader>q'],
       \   ['n', '<Localleader>qq'],
       \   ['n', '<Localleader>qe'],

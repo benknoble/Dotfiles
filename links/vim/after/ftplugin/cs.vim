@@ -25,11 +25,11 @@ nnoremap <buffer> <localleader>a :OmniSharpGetCodeActions<CR>
 
 let b:interpreter = 'csharp'
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'keywordprg',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   ['n', '<localleader>*'],
       \   ['n', '<localleader>a'],
       \   ['n', '<localleader>m'],

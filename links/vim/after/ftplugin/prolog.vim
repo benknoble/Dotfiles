@@ -4,8 +4,8 @@
 
 let b:interpreter = 'swipl'
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'vars': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ vars: [
       \   'b:interpreter',
       \ ],
       \ })

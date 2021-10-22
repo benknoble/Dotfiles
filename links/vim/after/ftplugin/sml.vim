@@ -10,14 +10,14 @@ setlocal iskeyword+=',$,#
 
 let b:match_words = '\<let\>:\<in\>:\<end\>'
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'shiftwidth',
       \   'softtabstop',
       \   'commentstring',
       \   'iskeyword',
       \ ],
-      \ 'vars': [
+      \ vars: [
       \   'b:interpreter',
       \ ],
       \ })

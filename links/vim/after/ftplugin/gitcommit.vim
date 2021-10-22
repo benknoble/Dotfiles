@@ -13,15 +13,15 @@ setlocal formatoptions-=a
 
 nnoremap <buffer> <LocalLeader>d :DiffGitCached<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'shiftwidth',
       \   'softtabstop',
       \   'spell',
       \   'spelllang',
       \   'formatoptions',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<LocalLeader>d' ],
       \ ],
       \ })

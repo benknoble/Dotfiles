@@ -24,14 +24,14 @@ nnoremap <buffer> <LocalLeader>h :%call bk#markdown#to_liquid()<CR>
 command -buffer -bar Navigate call bk#markdown#navigate()
 nnoremap <buffer> <Localleader>n :Navigate<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'textwidth',
       \   'spell',
       \   'spelllang',
       \   'iskeyword',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<LocalLeader>u' ],
       \   [ 'o', 'ih=' ],
       \   [ 'o', 'ih-' ],
@@ -42,7 +42,7 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   [ 'n', '<LocalLeader>h' ],
       \   [ 'n', '<Localleader>n' ],
       \ ],
-      \ 'commands': [
+      \ commands: [
       \   'Navigate',
       \ ],
       \ })

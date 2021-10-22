@@ -5,17 +5,17 @@
 setlocal formatexpr=bk#json#format()
 setlocal textwidth=0
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'formatexpr',
       \   'textwidth',
       \ ],
-      \ 'vars': [
+      \ vars: [
       \ ],
-      \ 'commands': [
+      \ commands: [
       \ ],
-      \ 'maps': [
+      \ maps: [
       \ ],
-      \ 'funcs': [
+      \ funcs: [
       \ ],
       \ })

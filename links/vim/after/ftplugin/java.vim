@@ -16,18 +16,18 @@ endif
 
 inoremap <buffer> <C-r><C-f> <C-r>=bk#java#class()<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'shiftwidth',
       \   'softtabstop',
       \   'foldmethod',
       \   'makeprg',
       \   'errorformat',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   ['i', '<C-r><C-f>'],
       \ ],
-      \ 'vars': [
+      \ vars: [
       \   'b:interpreter',
       \ ],
       \ })

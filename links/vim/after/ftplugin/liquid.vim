@@ -20,8 +20,8 @@ if exists('b:liquid_subtype')
     endif
   endfunction
 
-  let b:undo_ftplugin = bk#ftplugin#undo({
-        \ 'custom': [
+  let b:undo_ftplugin = bk#ftplugin#undo(#{
+        \ custom: [
         \   'call MyLiquidFtpluginUndo()',
         \ ],
         \ })

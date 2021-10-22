@@ -28,16 +28,16 @@ setlocal suffixesadd=.rs
 nnoremap <buffer> <localleader>p Ipub<space><esc>
 nnoremap <buffer> <localleader>t :call bk#rust#make_test()<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'keywordprg',
       \   'include',
       \   'includeexpr',
       \   'suffixesadd',
       \ ],
-      \ 'commands': [
+      \ commands: [
       \ ] + (exists(':RustDocFuzzy') ? [] : ['RustDoc']),
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<localleader>p' ],
       \   [ 'n', '<localleader>t' ],
       \ ],

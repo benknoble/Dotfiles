@@ -29,18 +29,18 @@ command -nargs=1 -buffer GoDoc call s:GoDoc(<f-args>)
 
 setlocal keywordprg=:GoDoc
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'tabstop',
       \   'shiftwidth',
       \   'softtabstop',
       \   'keywordprg',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<LocalLeader>t' ],
       \   [ 'n', '<LocalLeader>c' ],
       \ ],
-      \ 'commands': [
+      \ commands: [
       \   'GoDoc',
       \ ],
       \ })

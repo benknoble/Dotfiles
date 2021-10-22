@@ -7,12 +7,12 @@ setlocal shiftwidth=2 softtabstop=2
 
 nnoremap <buffer> <LocalLeader>o :silent !open %<CR>:redraw!<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'shiftwidth',
       \   'softtabstop',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   ['n', '<LocalLeader>o'],
       \ ],
       \ })

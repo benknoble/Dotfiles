@@ -4,8 +4,8 @@
 
 setlocal commentstring=#%s
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'commentstring',
       \ ],
       \ })

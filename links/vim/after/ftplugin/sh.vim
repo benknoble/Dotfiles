@@ -19,14 +19,14 @@ onoremap <buffer> is :<C-u>call bk#sh#in_subshell()<CR>
 nmap <buffer> <LocalLeader>qv ysiv"
 nmap <buffer> <LocalLeader>qs ysis"
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'textwidth',
       \   'shiftwidth',
       \   'softtabstop',
       \   'iskeyword',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'x', 'iv' ],
       \   [ 'o', 'iv' ],
       \   [ 'n', '<LocalLeader>qv' ],

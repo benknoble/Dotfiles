@@ -4,8 +4,8 @@
 
 setlocal foldmethod=syntax
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'foldmethod',
       \ ],
       \ })

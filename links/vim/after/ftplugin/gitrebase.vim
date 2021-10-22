@@ -11,8 +11,8 @@ nnoremap <buffer> <LocalLeader>f :Fixup<CR>
 nnoremap <buffer> <LocalLeader>d :Drop<CR>
 nnoremap <buffer> <LocalLeader>c :Cycle<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'maps': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ maps: [
       \   [ 'n', '<LocalLeader>p' ],
       \   [ 'n', '<LocalLeader>s' ],
       \   [ 'n', '<LocalLeader>e' ],

@@ -16,11 +16,11 @@ xnoremap <buffer> <LocalLeader><Space> :call bk#make#remove_quotes()<CR>
 nnoremap <buffer> <LocalLeader>+ :call bk#make#quote_line('+')<CR>
 xnoremap <buffer> <LocalLeader>+ :call bk#make#quote_line('+')<CR>
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'shiftwidth',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<LocalLeader>-' ],
       \   [ 'x', '<LocalLeader>-' ],
       \   [ 'n', '<LocalLeader>2' ],

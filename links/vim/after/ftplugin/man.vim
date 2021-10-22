@@ -17,15 +17,15 @@ setlocal nofoldenable
 nnoremap <buffer> - /^\C\v\s*-
 nnoremap <buffer> _ /^\C\v\s*--
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'list',
       \   'colorcolumn',
       \   'number',
       \   'relativenumber',
       \   'foldenable',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '-' ],
       \   [ 'n', '_' ],
       \ ],

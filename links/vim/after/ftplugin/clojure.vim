@@ -25,15 +25,15 @@ augroup CljRequire
   autocmd BufWritePost <buffer> silent! Require
 augroup end
 
-let b:undo_ftplugin = bk#ftplugin#undo({
-      \ 'opts': [
+let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
       \   'lispwords',
       \   'foldmethod',
       \ ],
-      \ 'vars': [
+      \ vars: [
       \   'b:interpreter',
       \ ],
-      \ 'maps': [
+      \ maps: [
       \   [ 'n', '<Localleader>l' ],
       \   [ 'n', '<Localleader>L' ],
       \   [ 'n', '<Localleader>qe' ],
@@ -41,7 +41,7 @@ let b:undo_ftplugin = bk#ftplugin#undo({
       \   [ 'i', '$' ],
       \   [ 'i', 'o' ],
       \ ],
-      \ 'custom': [
+      \ custom: [
       \   'autocmd! CljRequire * <buffer>',
       \ ]
       \ })
