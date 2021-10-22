@@ -3,7 +3,7 @@ if exists('g:loaded_syntoggle')
 endif
 let g:loaded_syntoggle = 1
 
-command SynToggle
+command -bar SynToggle
       \ if exists("g:syntax_on") |
       \   syntax off |
       \ else |
