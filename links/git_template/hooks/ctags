@@ -7,7 +7,7 @@ set +u
 source "$(git --exec-path)"/git-sh-setup
 set -u
 
-GIT_DIR="$(git rev-parse --git-dir)"
+GIT_DIR="$(git rev-parse --git-common-dir)"
 TEMP="$GIT_DIR/$$.tags"
 FINAL="$GIT_DIR/tags"
 
