@@ -115,6 +115,7 @@ setopt noclobber
 setopt histallowclobber
 
 setopt autocd
+setopt globstarshort
 setopt correct
 
 # make some more sense:
