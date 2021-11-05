@@ -18,12 +18,7 @@ function! AutoReply(cmdline) abort
     return s:has_replied
   endif
 
-  let previous_cmd = getcompletion(previous[0], 'command')
-  if &ignorecase
-    " call filter(previous_cmd, { _, v -> v =~# previous[0] })
-    call filter(previous_cmd, "v:val =~# previous[0]")
-  endif
-  let previous_cmd  = get(previous_cmd, 0, '')
+  let previous_cmd = fullcommand(a:cmdline)
   let previous_args = previous[1:]
 
   if empty(previous_cmd)
