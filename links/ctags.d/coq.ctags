@@ -1,0 +1,7 @@
+# ctags for coq
+
+--langdef=coq
+--langmap=coq:.v
+
+--regex-coq=/^[[:space:]]*(Axiom|Theorem|Class|Instance|Let|Ltac|Definition|Lemma|Record|Remark|Structure|Fixpoint|Fact|Corollary|Let|Inductive|CoInductive|Proposition)[[:space:]]+([[:alnum:]_']+)/\2/d,definition/
+--regex-coq=/^[[:space:]]*([[:alnum:]_']+)[[:space:]]*:/\1/d,definition/
