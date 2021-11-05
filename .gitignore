@@ -2,3 +2,4 @@
 *.swp
 links/jupyter/migrated
 Makefile
+*.zwc

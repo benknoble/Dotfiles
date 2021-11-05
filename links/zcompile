@@ -1,0 +1,12 @@
+#! /usr/bin/env zsh
+
+emulate zsh
+setopt extendedglob globstarshort nullglob
+set -eu
+autoload -U zargs
+
+scripts=(~/.zshrc ~/.zshenv ~/.zsh/**.zsh ~/.personal/**.zsh)
+autoloads=(~/.zshfns/*~*.zwc(.))
+
+zargs -l 1 -- $scripts -- zcompile -R
+zargs -l 1 -- $autoloads -- zcompile -U

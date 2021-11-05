@@ -15,10 +15,10 @@ FEATURES = git_extras brew_install pip gem
 default ! @grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
 
 # install: bootstrap the dotfiles
-install [ dirs symlink compile-terminfo $(FEATURES) ]
+install [ dirs symlink compile-terminfo zcompile $(FEATURES) ]
 
 # update: update the dotfiles
-update [ pull_master update_submodules symlink brew_check vimtags pip gem ]
+update [ pull_master update_submodules symlink brew_check vimtags pip gem zcompile ]
 
 # vimtags: regenerate tags for vim helpfiles
 vimtags ! vim +':helptags ALL' +'q'
@@ -100,6 +100,9 @@ git submodule update --recursive
 # brew_check: check Brewfile with bundle
 brew_check [ $(BREWFILE) ] ! -brew bundle check --file="$(BREWFILE)"
 
+# zcompile: compile ahead-of-time ZSH files
+zcompile ! ~/.zcompile
+
 LINKS = links/
 
 .bash <= bash
@@ -134,3 +137,4 @@ LINKS = links/
 .zshenv <= zshenv
 .zshfns <= zshfns
 .zshrc <= zshrc
+.zcompile <= zcompile
