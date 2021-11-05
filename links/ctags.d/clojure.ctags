@@ -1,5 +1,7 @@
 # clojure extras for ctags
 
+--kinddef-Clojure=m,macro,macros
+
 # symbol-re
 # [[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*
 
@@ -10,33 +12,31 @@
 # --regex-Clojure=/tag-re/\1/kind
 
 # vim commands
-# g/^#:/+d
-# g/^#:/s~\v^#: (\S+) (.*)$~&\r--regex-Clojure=/\\([ \\t]*\1[ \\t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\\1/\2
+g/^#:/+d
+g/^#:/s~\v^#: (\S+) (.*)$~&\r--regex-Clojure=/\\([ \\t]*\1[ \\t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\\1/\2/
 
 # keyword kind
 #: def d,definition
---regex-Clojure=/\([ \t]*def[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/d,definition
+--regex-Clojure=/\([ \t]*def[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/d,definition/
 #: defn f,function
---regex-Clojure=/\([ \t]*defn[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/f,function
+--regex-Clojure=/\([ \t]*defn[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/f,function/
 #: defn- p,private function
---regex-Clojure=/\([ \t]*defn-[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/p,private function
+--regex-Clojure=/\([ \t]*defn-[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/p,private function/
 #: definline i,inline
---regex-Clojure=/\([ \t]*definline[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/i,inline
+--regex-Clojure=/\([ \t]*definline[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/i,inline/
 #: defmacro m
---regex-Clojure=/\([ \t]*defmacro[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/m
+--regex-Clojure=/\([ \t]*defmacro[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/m/
 #: defmulti a,multimethod definition
---regex-Clojure=/\([ \t]*defmulti[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/a,multimethod definition
+--regex-Clojure=/\([ \t]*defmulti[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/a,multimethod definition/
 #: defmethod b,multimethod instance
---regex-Clojure=/\([ \t]*defmethod[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/b,multimethod instance
+--regex-Clojure=/\([ \t]*defmethod[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/b,multimethod instance/
 #: defonce c,definition (once)
---regex-Clojure=/\([ \t]*defonce[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/c,definition (once)
+--regex-Clojure=/\([ \t]*defonce[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/c,definition (once)/
 #: defstruct s,struct
---regex-Clojure=/\([ \t]*defstruct[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/s,struct
+--regex-Clojure=/\([ \t]*defstruct[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/s,struct/
 #: intern v,intern
---regex-Clojure=/\([ \t]*intern[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/v,intern
+--regex-Clojure=/\([ \t]*intern[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/v,intern/
 #: create-ns n
---regex-Clojure=/\([ \t]*create-ns[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/n
+--regex-Clojure=/\([ \t]*create-ns[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/n/
 #: ns n
---regex-Clojure=/\([ \t]*ns[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/n
-
---kinddef-Clojure=m,macro,macros
+--regex-Clojure=/\([ \t]*ns[ \t]+([[:alpha:]*+!-_'?<>=][[:alnum:]*+!-_'?<>=]*)/\1/n/
