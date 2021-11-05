@@ -13,6 +13,17 @@ pathadd_front f ~/.zshfns
 
 READNULLCMD=$PAGER
 
+# bookmarks {{{
+dot=~/Dotfiles
+ll=~/Dotfiles/links
+v=~/.vim
+c=~/code
+w=~/.wiki
+p=~/.personal/
+
+: ~{dot,ll,v,c,w,p}
+# }}}
+
 # prompts {{{
 
 PROMPT_EOL_MARK='%S%F{red}$%f%s'
