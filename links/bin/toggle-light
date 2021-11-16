@@ -28,6 +28,12 @@ toggle_alacritty() {
   printf '%s\n' "/^colors:/s/\*.*$/*$new/" wq | ed -s "$alacritty"
 }
 
+toggle_vim() {
+  local new="$1"
+  printf '%s\n' "/COLORSCHEME MARKER/+1s/do_.*$/do_$new()/" wq |
+    ed -s ~/.vim/plugin/plugin_load.vim
+}
+
 main() {
   local alacritty current new
   alacritty="$(find_alacritty_config)"
@@ -43,6 +49,7 @@ main() {
       new=dracula ;;
   esac
   toggle_alacritty "$alacritty" "$new"
+  toggle_vim "$new"
 }
 
 main "$@"
