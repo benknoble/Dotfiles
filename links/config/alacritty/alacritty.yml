@@ -218,6 +218,35 @@ schemes:
       cyan: '0x99ffee'
       white: '0xffffff'
 
+  flattened_light: &flattened_light
+    primary:
+      background: '0xfdf6e3'
+      foreground: '0x657b83'
+    cursor:
+      text: '0x657b83'
+      cursor: '0xfdf6e3'
+    selection:
+      text: '0x93a1a1'
+      background: '0x657b83'
+    normal:
+      black: '0x073642'
+      red: '0xdc322f'
+      green: '0x859900'
+      yellow: '0xb58900'
+      blue: '0x268bd2'
+      magenta: '0xd33682'
+      cyan: '0x2aa198'
+      white: '0xeee8d5'
+    bright:
+      brblack: '0x002b36'
+      brred: '0xcb4b16'
+      brgreen: '0x586e75'
+      bryellow: '0x657b83'
+      brblue: '0x839496'
+      brmagenta: '0x6c71c4'
+      brcyan: '0x93a1a1'
+      brwhite: '0xfdf6e3'
+
 colors: *dracula
 
 # Visual Bell
