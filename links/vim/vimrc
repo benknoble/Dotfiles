@@ -247,10 +247,29 @@ function! s:set_statusline_colors_to_dracula() abort
   hi link User5 DraculaOrange
 endfunction
 
+function! s:set_statusline_colors_to_flattened() abort
+  " Override statusline
+  highlight clear StatusLine
+  highlight clear StatusLineNC
+  highlight clear StatusLineTerm
+  highlight clear StatusLineTermNC
+  highlight link StatusLine LineNr
+  highlight link StatusLineNC Comment
+  highlight link StatusLineTerm StatusLine
+  highlight link StatusLineTermNC StatusLineNC
+
+  highlight link User1 DiffAdd
+  " highlight link User2 ???
+  highlight link User3 DiffText
+  highlight link User4 DiffDelete
+  highlight link User5 DiffChange
+endfunction
+
 if has('autocmd')
-  augroup status_colors_dracula
+  augroup status_colors
     autocmd!
     autocmd ColorScheme dracula* call s:set_statusline_colors_to_dracula()
+    autocmd ColorScheme flattened_light call s:set_statusline_colors_to_flattened()
   augroup end
 endif
 " }}}

@@ -94,7 +94,7 @@ endif
 
 " Executables }}}
 
-" Dracula {{{
+" Colorscheme {{{
 if ! exists('g:colors_name')
   let s:italic_default = 0
   if $TERM =~# '\v(xterm|tmux)-256color' || has('gui_running')
@@ -108,17 +108,36 @@ if ! exists('g:colors_name')
   elseif $TERM ==# 'alacritty'
     let s:italic_default = 1
   endif
+
+  " Dracula {{{
   let g:dracula_italic = get(g:, 'dracula_italic', s:italic_default)
   let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
-  try
-    colorscheme dracula_pro_van_helsing
-  catch /^Vim\%((\a\+)\)\=:E185/
+  function s:do_dracula() abort
     try
-      colorscheme dracula
+      colorscheme dracula_pro_van_helsing
+    catch /^Vim\%((\a\+)\)\=:E185/
+      try
+        colorscheme dracula
+      catch /^Vim\%((\a\+)\)\=:E185/
+        colorscheme default
+        set background=dark
+      endtry
+    endtry
+  endfunction
+  " End Dracula }}}
+
+  " Flattened light {{{
+  function s:do_flattened_light() abort
+    try
+      colorscheme flattened_light
     catch /^Vim\%((\a\+)\)\=:E185/
       colorscheme default
-      set background=dark
+      set background=light
     endtry
-  endtry
+  endfunction
+  " End Flattened light }}}
+
+  " COLORSCHEME MARKER
+  call s:do_dracula()
 endif
-" End Dracula }}}
+" End Colorscheme }}}

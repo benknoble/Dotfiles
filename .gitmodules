@@ -156,3 +156,6 @@
 [submodule "links/vim/pack/utility/start/fileselect"]
 	path = links/vim/pack/utility/start/fileselect
 	url = https://github.com/yegappan/fileselect/
+[submodule "links/vim/pack/colors/start/flattened"]
+	path = links/vim/pack/colors/start/flattened
+	url = https://github.com/romainl/flattened
