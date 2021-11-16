@@ -1,0 +1,48 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+find_alacritty_config() {
+  set +u
+  local options=(
+    "$XDG_CONFIG_HOME/alacritty/alacritty.yml"
+    "$XDG_CONFIG_HOME/alacritty.yml"
+    "$HOME/.config/alacritty/alacritty.yml"
+    "$HOME/.alacritty.yml"
+  )
+  set -u
+  for f in "${options[@]}"; do
+    [[ -r "$f" ]] && { printf '%s\n' "$f"; return; }
+  done
+}
+
+current_colors() {
+  local alacritty="$1"
+  grep '^colors: \*' "$alacritty" |
+    cut -d'*' -f2
+}
+
+toggle_alacritty() {
+  local alacritty="$1"
+  local new="$2"
+  printf '%s\n' "/^colors:/s/\*.*$/*$new/" wq | ed -s "$alacritty"
+}
+
+main() {
+  local alacritty current new
+  alacritty="$(find_alacritty_config)"
+  if [[ -z "$alacritty" ]]; then
+    printf '%s\n' "$0: no alacritty config found" >&2
+    exit 1
+  fi
+  current="$(current_colors "$alacritty")"
+  case "$current" in
+    dracula)
+      new=flattened_light ;;
+    flattened_light)
+      new=dracula ;;
+  esac
+  toggle_alacritty "$alacritty" "$new"
+}
+
+main "$@"
