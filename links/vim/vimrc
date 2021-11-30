@@ -291,6 +291,41 @@ if &t_Co > 2 || has("gui_running")
   " don't spell check
   let g:tex_comment_nospell = 1
 endif
+
+let g:do_minimal = v:true
+
+" TODO rewrite with `hlset()` when patch 8.2.3578 is available
+function s:minimal_colors() abort
+  if !g:do_minimal | return | endif
+  for group in ['Identifier', 'Function', 'Statement', 'Conditional', 'Repeat',
+        \ 'Label', 'Operator', 'Keyword', 'Exception', 'PreProc', 'Include',
+        \ 'Define', 'Macro', 'PreCondit', 'StorageClass', 'Structure',
+        \ 'Typedef', 'Tag', 'Debug']
+    execute 'highlight clear' group
+  endfor
+endfunction
+
+function s:toggle_minimal() abort
+  let g:do_minimal = !g:do_minimal
+  execute 'colorscheme' g:colors_name
+  if !&l:modified
+    if &l:readonly
+      view
+    else
+      edit
+    endif
+  endif
+  redraw!
+endfunction
+
+command -bar Minimal call s:toggle_minimal()
+
+if has('autocmd')
+  augroup minimal_syntax
+    autocmd!
+    autocmd ColorScheme * call s:minimal_colors()
+  augroup END
+endif
 " }}}
 
 " Filetype {{{
