@@ -101,7 +101,10 @@ git submodule update --recursive
 brew_check [ $(BREWFILE) ] ! -brew bundle check --file="$(BREWFILE)"
 
 # zcompile: compile ahead-of-time ZSH files
-zcompile [ ~/.zcompile ] ! ~/.zcompile
+zcompile [ ~/.zcompile ] !!
+command -v zsh
+~/.zcompile
+!!
 
 LINKS = links/
 
