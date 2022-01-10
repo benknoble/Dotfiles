@@ -105,6 +105,11 @@ zcompile [ ~/.zcompile ] !!
 -command -v zsh && ~/.zcompile
 !!
 
+# compile-vim: compile vim from source
+compile-vim [ ~/.bin links/bin/compile-vim ] !!
+-bash -c 'type readarray' && ~/.bin/compile-vim
+!!
+
 LINKS = links/
 
 .bash <= bash
