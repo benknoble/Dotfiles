@@ -20,4 +20,5 @@ jobs:
       - run: |
           ./dotfiles.plink
           make install
+          eval "$(brew shellenv)"
           ./links/bin/compile-vim
