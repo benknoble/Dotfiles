@@ -1,0 +1,64 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+: "${VIM_SOURCE:="$HOME"/.vim-source}"
+
+log() {
+  printf '%s: ' "$0"
+  printf '%s\n' "$@"
+} >&2
+
+install_deps() {
+  if ! command -v brew >/dev/null 2>/dev/null; then
+    log 'missing brew'
+    return 1
+  fi
+  local deps
+  readarray -t deps < <(brew deps --1 --include-build --include-optional vim)
+  brew install "${deps[@]}"
+}
+
+clone_vim() {
+  if ! [[ -d "${VIM_SOURCE}" ]]; then
+    git clone --depth=1 --no-tags github:vim/vim "${VIM_SOURCE}"
+  else
+    git -C "${VIM_SOURCE}" fetch --depth=1
+    git -C "${VIM_SOURCE}" reset --hard HEAD@'{upstream}'
+  fi
+}
+
+build_and_install_vim() (
+  pushd "${VIM_SOURCE}"
+  unset SDKROOT PYTHONPATH
+  local python310 lua
+  read -r python310 < <(brew ruby -e 'puts Formulary.factory("python@3.10").opt_libexec/"bin"')
+  read -r lua < <(brew ruby -e 'puts Formulary.factory("lua").opt_prefix')
+  PATH="$python310:$PATH"
+  local configure_args=(
+    --enable-multibyte
+    --with-tlib=ncurses
+    --with-compiledby=benknoble
+    --enable-cscope
+    --enable-terminal
+    --enable-perlinterp
+    --enable-rubyinterp
+    --enable-python3interp
+    --enable-gui=no
+    --without-x
+    --enable-luainterp
+    --with-lua-prefix="$lua"
+  )
+  time ./configure "${configure_args[@]}"
+  time make -j "$(nproc)"
+  time make test
+  time make install STRIP="$(command -v true)"
+)
+
+main() {
+  install_deps
+  clone_vim
+  time build_and_install_vim
+}
+
+main
