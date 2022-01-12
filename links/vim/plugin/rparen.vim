@@ -1,3 +1,8 @@
+if exists('g:loaded_rparen')
+  finish
+endif
+let g:loaded_rparen = 1
+
 " searchpairpos() timeout in milliseconds
 let s:paren_search_timeout = 50
 
