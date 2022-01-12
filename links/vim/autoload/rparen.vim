@@ -13,7 +13,7 @@ function rparen#MatchingParenType()
     let skip = '!empty(filter(map(synstack(line("."), col(".")), ''synIDattr(v:val, "name")''), ' .
           \ '''v:val =~? "string\\|character\\|singlequote\\|escape\\|symbol\\|comment"''))'
     try
-      exec 'if ' . skip . ' | let skip = "0" | endif'
+      execute 'if' skip '| let skip = "0" | endif'
     catch /^Vim\%((\a\+)\)\=:E363/
       " pattern uses more memory than 'maxmempattern'
       return
