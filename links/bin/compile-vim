@@ -21,7 +21,7 @@ install_deps() {
 
 clone_vim() {
   if ! [[ -d "${VIM_SOURCE}" ]]; then
-    git clone --depth=1 --no-tags github:vim/vim "${VIM_SOURCE}"
+    git clone --depth=1 --no-tags https://github.com/vim/vim "${VIM_SOURCE}"
   else
     git -C "${VIM_SOURCE}" fetch --depth=1
     git -C "${VIM_SOURCE}" reset --hard HEAD@'{upstream}'
