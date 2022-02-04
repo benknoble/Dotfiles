@@ -29,6 +29,11 @@ brewfile ! brew bundle dump --force --file="$(BREWFILE)"
 # compile-terminfo: compile terminfo files
 compile-terminfo ! for t in terminfo/*.terminfo ; do tic -x "$$t" ; done
 
+# update alacritty.terminfo
+update-alacritty-terminfo !!
+curl https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info > terminfo/alacritty.terminfo
+!!
+
 # submodules: fixup any issues with submodules
 submodules !!
 git submodule sync
