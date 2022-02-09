@@ -15,6 +15,17 @@
   pathadd_front man /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home/man
 }
 
-[[ -d '/Applications/Racket v8.2/' ]] && {
-  pathadd man '/Applications/Racket v8.2/man'
+command -v racket &>/dev/null && {
+  racket_paths=($(IFS=$'\n' racket -I racket/base -e '
+    (require setup/dirs)
+    (for-each displayln
+      (list (find-user-console-bin-dir)
+            (find-user-gui-bin-dir)
+            (find-user-apps-dir)
+            (find-user-man-dir)))
+  '))
+  pathadd $racket_paths[1]
+  pathadd $racket_paths[2]
+  pathadd $racket_paths[3]
+  pathadd man $racket_paths[4]
 }
