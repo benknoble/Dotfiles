@@ -104,6 +104,9 @@ endif
 " Display completion matches in the status line
 set wildmenu
 set wildmode=longest,full
+if has('patch-8.2.4325')
+  set wildoptions+=pum
+endif
 set wildignore+=*.a,*.o
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
 set wildignore+=.DS_Store,.git,.hg,.svn
