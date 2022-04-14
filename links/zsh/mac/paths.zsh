@@ -20,12 +20,8 @@ command -v racket &>/dev/null && {
     (require setup/dirs)
     (for-each displayln
       (list (find-user-console-bin-dir)
-            (find-user-gui-bin-dir)
-            (find-user-apps-dir)
             (find-user-man-dir)))
   '))
   pathadd $racket_paths[1]
-  pathadd $racket_paths[2]
-  pathadd $racket_paths[3]
-  pathadd man $racket_paths[4]
+  pathadd man $racket_paths[2]
 }
