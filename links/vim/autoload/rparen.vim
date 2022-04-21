@@ -5,7 +5,7 @@ let s:paren_search_timeout = 50
 " set to 1 to search to top of file
 let s:paren_search_top = 1
 
-function rparen#MatchingParenType()
+function rparen#MatchingParenType(map)
   " taken from Bram Moolenaar's `matchparen.vim`
   if !has("syntax") || !exists("g:syntax_on")
     let skip = "0"
@@ -34,5 +34,8 @@ function rparen#MatchingParenType()
   endfor
 
   eval parens->sort({lhs, rhs -> s:parenOfs[rhs] - s:parenOfs[lhs]})
+  if s:parenOfs->values()->filter('v:val >= 0')->empty()
+    return a:map
+  endif
   return parens[0]
 endfunction
