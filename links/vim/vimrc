@@ -445,6 +445,10 @@ let g:loaded_vimballPlugin = 1
 
 " My plugins {{{
 let g:loaded_bubble = 1
+let g:loaded_csearch = 1
+let g:loaded_difforig = 1
+let g:loaded_funkeys = 1
+let g:keeponly = 1
 " }}}
 
 " function s:one_syntax_restore_opts(...) abort
