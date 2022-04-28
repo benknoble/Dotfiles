@@ -29,6 +29,8 @@ command -nargs=1 -buffer GoDoc call s:GoDoc(<f-args>)
 
 setlocal keywordprg=:GoDoc
 
+let b:surround_indent = v:false
+
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ opts: [
       \   'tabstop',
@@ -42,5 +44,8 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ ],
       \ commands: [
       \   'GoDoc',
+      \ ],
+      \ vars: [
+      \   'b:surround_indent',
       \ ],
       \ })
