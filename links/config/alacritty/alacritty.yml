@@ -229,8 +229,8 @@ schemes:
       background: '0xfdf6e3'
       foreground: '0x657b83'
     cursor:
-      text: '0x657b83'
-      cursor: '0xfdf6e3'
+      text: '0xeee8d5'
+      cursor: '0xdc322f'
     selection:
       text: '0x93a1a1'
       background: '0x657b83'
