@@ -45,6 +45,11 @@ function s:ale_lsp_setup() abort
   nnoremap <buffer> gD :ALEFindReferences<CR>
   nnoremap <buffer> g* :ALESymbolSearch <C-r><C-w>
 
+  nnoremap <buffer> [l :ALEPrevious<CR>
+  nnoremap <buffer> [L :ALEFirst<CR>
+  nnoremap <buffer> ]l :ALENext<CR>
+  nnoremap <buffer> ]L :ALELast<CR>
+
   " Currently not actually visible (?)
   echom 'LSP started'
 endfunction
