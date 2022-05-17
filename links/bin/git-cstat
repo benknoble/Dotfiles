@@ -26,7 +26,8 @@ commits_list() {
   fi
   "${command[@]}" |
     awk '
-      /'$'\a''/ && NR != 1 { printf "\n"; next }
+      /'$'\a''/ && NR != 1 { printf "\n" }
+      /'$'\a''/ { next }
       { printf "%s ", $0 }
       END { printf "\n" }
       '
