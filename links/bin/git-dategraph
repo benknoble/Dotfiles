@@ -1,0 +1,34 @@
+#! /usr/bin/env bash
+
+set -euo pipefail
+
+USAGE='[log options]'
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+source "$(git --exec-path)"/git-sh-setup
+set -u
+
+frequency() {
+  sort | uniq -c | sort -g
+}
+
+histogram() {
+  awk '{
+    printf "%s\t", $1
+    for(i = 0; i < int($2); i++)
+        printf "*"
+    printf "\n"
+  }'
+}
+
+histogram_f() {
+  awk '{print $2, $1}' | sort -g | histogram
+}
+
+main() {
+  git log --format=%as "$@" | frequency | histogram_f
+}
+
+main "$@"
