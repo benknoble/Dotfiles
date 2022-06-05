@@ -3,6 +3,9 @@
 set -euo pipefail
 
 USAGE='[log options]'
+LONG_USAGE='Set the DATEGRAPH environment variable to control the "mode".
+Valid values are:
+- additions'
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
@@ -27,8 +30,27 @@ histogram_f() {
   awk '{print $2, $1}' | sort -g | histogram
 }
 
-main() {
+sum_changes() {
+  awk '
+  # date line
+  /^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}$/ { date = $1 }
+  # file line
+  /^[[:digit:]]+[[:space:]]+/ { sums[date] += $1 - $2 }
+  END { for (d in sums) print d, sums[d] }
+  '
+}
+
+
+dategraph_() {
   git log --format=%as "$@" | frequency | histogram_f
+}
+
+dategraph_additions() {
+  git log --format=%as --numstat "$@" | sum_changes | sort -g | histogram
+}
+
+main() {
+  dategraph_"${DATEGRAPH:-}" "$@"
 }
 
 main "$@"
