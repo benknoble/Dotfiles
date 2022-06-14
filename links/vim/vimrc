@@ -174,7 +174,7 @@ endif
 set scrolloff=5
 " Display certain whitespace characters
 set list listchars=tab:»\ ,trail:·,nbsp:\|,precedes:<,extends:>
-set conceallevel=2 concealcursor=nc
+set conceallevel=0 concealcursor=nc
 command Conceal set conceallevel=2
 command Reveal set conceallevel=0
 " }}}
