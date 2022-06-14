@@ -370,6 +370,10 @@ if $TERM =~# '\v(tmux-256color)|(alacritty)'
   "
   " Phew. Glad that sentence is terminated.
   set term=xterm-256color
+
+  " alacritty and tmux both support these (though the term underlying tmux might
+  " not)
+  let [&t_SI, &t_SR, &t_EI] = ["\e[6 q", "\e[4 q", "\e[0 q"]
 endif
 
 if $COLORTERM ==# 'truecolor'
