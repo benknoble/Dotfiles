@@ -25,6 +25,19 @@ export HOMEBREW_INSTALL_CLEANUP=true
 
 export RIPGREP_CONFIG_PATH=~/.rgrc
 
+# personal vars {{{
+
+# OS test
+case "$OSTYPE" in
+  darwin* ) OS=mac ;;
+  linux* ) OS=linux ;;
+esac
+
+# file to hold private keys
+private=~/.private
+
+# personal vars }}}
+
 # paths {{{
 
 # debugging paths added via pathadd
@@ -167,4 +180,63 @@ elif [[ -r ./.env/bin/activate ]]; then
   source ./.env/bin/activate
 fi
 
+# sourcing {{{
+
+# probably not many of these...
+for file in ~/.zsh/*.zsh(N) ; do
+  source "$file"
+done
+for file in ~/.zsh/"$OS"/*.zsh(N) ; do
+  source "$file"
+done
+
+[[ -r "$private" ]] && source "$private"
+
+if [[ -d ~/.personal ]]; then
+  for file in ~/.personal/*.zsh(N) ; do
+    source "$file"
+  done
+  for file in ~/.personal/"$OS"/*.zsh(N) ; do
+    source "$file"
+  done
+  pathadd ~/.personal/bin
+fi
+
+# autoload {{{
+
+pathadd_front f ~/.zshfns
+
+fns=(
+  # standard distribution
+  # completion
+  compinit
+  # widgets
+  edit-command-line
+  surround
+  insert-files
+  insert-composed-char
+  predict-on
+  # help
+  ${^fpath}/run-help*(N:t)
+  # commands
+  zargs
+  zcalc
+  zmv
+
+  # my stuff
+  ~/.zshfns/*(N:t)
+)
+(( ${#fns} > 0 )) && autoload -U "${fns[@]}"
+
+# autoload }}}
+
+reset_editor
+
+# sourcing }}}
+
 # paths }}}
+
+unset has_brew
+unset private
+unset OS
+unset fns
