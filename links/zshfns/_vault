@@ -1,7 +1,0 @@
-#compdef vault
-
-_vault () {
-  vault "$@"
-}
-
-_vault "$@"
