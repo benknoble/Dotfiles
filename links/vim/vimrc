@@ -495,4 +495,7 @@ if has('autocmd')
   augroup end
 endif
 
+" skip scheme checks for apathy to speed up loading
+let g:scheme_load_path = []
+
 " Unsorted }}}
