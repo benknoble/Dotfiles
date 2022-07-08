@@ -489,4 +489,10 @@ inoremap <expr> <C-L> &insertmode ? '<C-L>' : '<C-k>LZ'
 " For dealing with vim --startuptime
 command StartupAnalyze /VIM STARTING/,$ sort! f /  [^ ]*  /
 
+if has('autocmd')
+  augroup fix_dracula_pro_colorcolumn
+    autocmd ColorScheme dracula_pro* highlight! link ColorColumn DraculaBgLighter
+  augroup end
+endif
+
 " Unsorted }}}
