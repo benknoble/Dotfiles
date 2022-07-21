@@ -131,6 +131,7 @@ if ! exists('g:colors_name')
   " End Dracula }}}
 
   " Flattened light {{{
+  " consider reworked peachpuff
   function s:do_flattened_light() abort
     try
       colorscheme flattened_light
