@@ -51,5 +51,5 @@ sum() {
 }
 
 avg() {
-  awk '{ sum += $0 } END{ print sum/NF }'
+  awk '{ sum += $0 } END{ print sum/NR }'
 }
