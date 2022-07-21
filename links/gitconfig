@@ -84,7 +84,7 @@
 	colorMoved = default
 	mnemonicprefix = true
 [diff "json"]
-	textconv = gron
+	textconv = "f(){ gron \"$1\" 2>/dev/null || cat \"$1\"; }; f"
 [difftool]
 	prompt = no
 [difftool "fugitive"]
