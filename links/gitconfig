@@ -58,7 +58,7 @@
 
 # core
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesFile = ~/.gitignore_global
 	attributesFile = ~/.gitattributes
 	pager = less -FRX
 [init]
