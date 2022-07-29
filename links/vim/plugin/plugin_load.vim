@@ -32,6 +32,8 @@ set keywordprg=:Man
 " End Man }}}
 " End Distribution }}}
 
+packadd dwarffortress
+
 " Executables {{{
 if executable('tmplr')
   packadd tmplr
