@@ -1,6 +1,6 @@
 #compdef racket raco
 
-# /Applications/Racket v8.5/share/pkgs/shell-completion/racket-completion.zsh
+# /Applications/Racket v8.6/share/pkgs/shell-completion/racket-completion.zsh
 #
 # This file defines zsh completions for `racket' and `raco'.
 #
