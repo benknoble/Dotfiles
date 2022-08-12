@@ -391,7 +391,11 @@ nnoremap <silent> N N:call bk#cursor#blink(0.2)<cr>
 " }}}
 
 " Update "Last Change" line
-command Changed keeppatterns %substitute/Last [cC]hanged\?:\zs.*/\=strftime(" %Y %b %d")/e
+command Changed let s:old_lang = v:lc_time
+      \ | language time C
+      \ | keeppatterns %substitute/Last [cC]hanged\?:\zs.*/\=strftime(" %Y %b %d")/e
+      \ | execute 'language time' s:old_lang
+      \ | unlet! s:old_lang
 
 " italic comments
 if has('autocmd')
