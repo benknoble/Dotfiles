@@ -2,7 +2,7 @@
 " Language:              bib
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-nnoremap <localleader>d ciw<C-r>=bk#date#month2num('<C-r>"')<CR><Esc>
+nnoremap <buffer> <localleader>d ciw<C-r>=bk#date#month2num('<C-r>"')<CR><Esc>
 
 command -buffer -nargs=1 Cite read !cite <args>
 
