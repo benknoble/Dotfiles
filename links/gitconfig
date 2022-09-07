@@ -69,6 +69,7 @@
 [fetch]
 	recurseSubmodules = on-demand
 	prune = true
+	writeCommitGraph = true
 [push]
 	recurseSubmodules = check
 [pull]
