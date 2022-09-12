@@ -26,17 +26,17 @@ p=~/.personal/
 
 PROMPT_EOL_MARK='%S%F{red}$%f%s'
 
-PROMPT_DIRTRIM=2
-prompt_date=
-prompt_user=true
-prompt_host=true
-prompt_jobs=true
-prompt_tty=
-prompt_shell_name=
-prompt_time=
-prompt_dir=true
-prompt_history=
-prompt_venv=true
+: ${PROMPT_DIRTRIM=2}
+: ${prompt_date=}
+: ${prompt_user=true}
+: ${prompt_host=true}
+: ${prompt_jobs=true}
+: ${prompt_tty=}
+: ${prompt_shell_name=}
+: ${prompt_time=}
+: ${prompt_dir=true}
+: ${prompt_history=}
+: ${prompt_venv=true}
 
 GIT_PS1_SHOWDIRTYSTATE='true'
 GIT_PS1_SHOWSTASHSTATE='true'
