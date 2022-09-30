@@ -108,11 +108,12 @@ nnoremap <leader>} dap}p
 nnoremap <leader>{ dap{{p
 
 function PrintTabsSpaces() abort
-  return printf('%s: tabstop=%d softtabstop=%d shiftwidth=%d',
+  return printf('%s: tabstop=%d softtabstop=%d shiftwidth=%d fileformat=%s',
         \ &expandtab ? 'SPACES' : 'TABS',
         \ &tabstop,
         \ &softtabstop,
-        \ &shiftwidth)
+        \ &shiftwidth,
+        \ &binary ? 'BINARY' : &fileformat)
 endfunction
 
 let g:popsikey_info_id = popsikey#register('<Leader><Leader>', [
