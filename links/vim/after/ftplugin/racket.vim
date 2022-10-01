@@ -2,8 +2,6 @@
 " Language:              racket
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-call sexp#filetype#do_filetype('scheme')
-
 let b:interpreter = 'racket'
 
 setlocal shiftwidth=2 softtabstop=2
