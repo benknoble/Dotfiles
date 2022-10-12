@@ -36,7 +36,6 @@ build_and_install_vim() (
   read -r lua < <(brew ruby -e 'puts Formulary.factory("lua").opt_prefix')
   PATH="$python310:$PATH"
   local configure_args=(
-    --enable-multibyte
     --with-tlib=ncurses
     --with-compiledby=benknoble
     --enable-cscope
