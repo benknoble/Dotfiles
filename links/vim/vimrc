@@ -374,6 +374,9 @@ if $TERM =~# '\v(tmux-256color)|(alacritty)'
   " alacritty and tmux both support these (though the term underlying tmux might
   " not)
   let [&t_SI, &t_SR, &t_EI] = ["\e[6 q", "\e[4 q", "\e[0 q"]
+
+  " alacritty 11.0 added support for most of these (:help underline-codes)
+  let [&t_Cs, &t_Ce, &t_Us, &t_ds, &t_Ds] = mapnew([3, 0, 2, 4, 5], {_,v -> printf("\e[4:%dm", v)})
 endif
 
 if $COLORTERM ==# 'truecolor'
