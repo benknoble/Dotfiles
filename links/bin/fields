@@ -10,7 +10,7 @@ usage() {
   cat <<DOG
 usage: $0 [-f FS] [-v awk_var=value] field...
 DOG
-}
+} >&2
 
 die() {
   local ex="${1:-1}"
