@@ -505,4 +505,10 @@ endif
 " skip scheme checks for apathy to speed up loading
 let g:scheme_load_path = []
 
+let g:winresizer_start_key = '<leader>E'
+let g:winresizer_gui_start_key = '<leader>E'
+
+" TODO: v uses vnoremap, not xnoremap
+let g:vimpbcopy_maps = { 'n': '<leader>y', 'v': '<leader>y' }
+
 " Unsorted }}}
