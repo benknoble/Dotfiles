@@ -18,9 +18,10 @@ large part of that.
 
 First, clone the repo into your dotfiles directory (the name of the directory
 doesn't matter). If your git supports it, `--jobs ...` might be a good idea. You
-can skip the submodules if you choose, but you *must* have the [plink](./plink/)
-submodule or a plink installation to build the makefile used for installation
-and maintenance. The submodule is the easiest route.
+can skip the submodules if you choose, but you *must* have the plink submodule
+or a [plink](https://github.com/benknoble/plink) installation to build the
+makefile used for installation and maintenance. The submodule is the easiest
+route.
 
 ```bash
 mkdir ~/Dotfiles
