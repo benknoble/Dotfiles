@@ -22,22 +22,13 @@ list_aliases() {
 
 main() {
   case $# in
-    0)
-      list_aliases_verbose
-      ;;
+    0) list_aliases_verbose ;;
     1)
       case "$1" in
-        -q|--quiet)
-          list_aliases
-          ;;
-        *)
-          list_aliases_verbose | grep -E "$1"
-          ;;
-      esac
-      ;;
-    *)
-      usage
-      ;;
+        -q|--quiet) list_aliases ;;
+        *) list_aliases_verbose | grep -E "$1" ;;
+      esac ;;
+    *) usage ;;
   esac
 }
 
