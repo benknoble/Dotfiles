@@ -92,7 +92,7 @@
 	cmd = vim --nofork +\"Git difftool\"
 [merge]
 	tool = fugitive
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 	log = true
 [mergetool]
 	prompt = no
