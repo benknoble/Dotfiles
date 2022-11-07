@@ -89,7 +89,7 @@
 [difftool]
 	prompt = no
 [difftool "fugitive"]
-	cmd = vim --nofork +\"Git difftool -- $MERGED\"
+	cmd = vim --nofork +\"Git difftool -- $MERGED\" +cclose
 [merge]
 	tool = fugitive
 	conflictstyle = zdiff3
@@ -98,7 +98,7 @@
 	prompt = no
 	keepBackup = false
 [mergetool "fugitive"]
-	cmd = vim --nofork +\"Git mergetool -- $MERGED\"
+	cmd = vim --nofork +\"Git mergetool -- $MERGED\" +cclose
 	trustExitCode = true
 [rerere]
 	enabled = true
