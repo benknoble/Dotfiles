@@ -94,7 +94,7 @@ gem [ $(GEMFILE) ] !!
 
 pull_master !!
 git checkout master
-git pull --recurse-submodules=on-demand origin master
+git pull --recurse-submodules=on-demand --autostash origin master
 !!
 
 update_submodules !!
