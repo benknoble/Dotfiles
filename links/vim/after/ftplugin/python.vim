@@ -4,10 +4,11 @@
 
 let python_highlight_all = 1
 let b:interpreter = 'python3'
+call bk#python#search_pipfile()
 
 setlocal textwidth=79
 
-nnoremap <buffer> <LocalLeader>t :term python setup.py test -q<CR>
+nnoremap <buffer> <LocalLeader>t :execute 'term' b:interpreter 'setup.py test -q'<CR>
 
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ opts: [
