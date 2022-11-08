@@ -21,3 +21,5 @@
 *.sty diff=tex
 *.dtx diff=tex
 *.ins diff=tex
+*.yaml diff=yq
+*.yml diff=yq
