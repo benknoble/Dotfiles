@@ -87,7 +87,7 @@
 [diff "json"]
 	textconv = "f(){ gron \"$1\" 2>/dev/null || cat \"$1\"; }; f"
 [diff "yq"]
-	textconv = "f(){ yq -P eval 'sorkt_keys(..)' \"$1\" 2>/dev/null || cat \"$1\"; }; f"
+	textconv = "f(){ yq -P eval 'sort_keys(..)' \"$1\" 2>/dev/null || cat \"$1\"; }; f"
 [difftool]
 	prompt = no
 [difftool "fugitive"]
