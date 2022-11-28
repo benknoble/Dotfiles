@@ -1,0 +1,5 @@
+#! /usr/bin/env perl
+use strict;
+undef $/; # -g "gobble" flag
+use Compress::Zlib qw(uncompress);
+print (uncompress(<>) or die "unable to uncompress input");
