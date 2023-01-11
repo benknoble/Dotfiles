@@ -133,6 +133,7 @@ LINKS = links/
 .newsboat <= newsboat
 .pryrc <= pryrc
 .pythonrc <= pythonrc
+.racketrc <= racketrc
 .rgrc <= rgrc
 .ssh/config <= ssh/config
 .tmux.conf <= tmux.conf

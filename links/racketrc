@@ -1,0 +1,13 @@
+;; vim: ft=racket
+;; NO lang line: need each thing to be done "interactively" ?
+
+(define ((show-pict-or handler) v)
+  (local-require pict)
+  (handler
+    (cond
+      [(pict? v) (local-require racket/gui/base)
+                 (show-pict v)]
+      [else v])))
+
+(let ([handler (current-print)])
+  (current-print (show-pict-or handler)))
