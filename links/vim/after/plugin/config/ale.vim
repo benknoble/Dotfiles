@@ -8,7 +8,8 @@ let g:ale_fix_on_save = 0
 
 let g:ale_cursor_detail = 1
 let g:ale_floating_preview = 1
-let g:ale_floating_window_border = repeat([''], 6)
+let g:ale_floating_window_border = repeat([''], 8)
+let g:ale_virtualtext_cursor = 'disabled'
 
 let g:ale_linters = {
       \ 'python': 'all',
