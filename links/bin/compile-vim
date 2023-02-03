@@ -15,7 +15,7 @@ install_deps() {
     return 1
   fi
   local deps
-  readarray -t deps < <(brew deps --1 --include-build --include-optional vim)
+  readarray -t deps < <(brew deps --1 --include-build --include-optional vim | grep -v 'lua\|perl\|ruby')
   brew install "${deps[@]}"
 }
 
@@ -31,22 +31,17 @@ clone_vim() {
 build_and_install_vim() (
   pushd "${VIM_SOURCE}"
   unset SDKROOT PYTHONPATH
-  local python310 lua
+  local python310
   read -r python310 < <(brew ruby -e 'puts Formulary.factory("python@3.10").opt_libexec/"bin"')
-  read -r lua < <(brew ruby -e 'puts Formulary.factory("lua").opt_prefix')
   PATH="$python310:$PATH"
   local configure_args=(
     --with-tlib=ncurses
     --with-compiledby=benknoble
     --enable-cscope
     --enable-terminal
-    --enable-perlinterp
-    --enable-rubyinterp
     --enable-python3interp
     --enable-gui=no
     --without-x
-    --enable-luainterp
-    --with-lua-prefix="$lua"
   )
   time ./configure "${configure_args[@]}"
   time make -j "$(nproc)"
