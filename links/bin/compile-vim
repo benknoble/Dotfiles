@@ -45,7 +45,7 @@ build_and_install_vim() (
   )
   time ./configure "${configure_args[@]}"
   time make -j "$(nproc)"
-  TERM=xterm time make test
+  time make test
   time make install STRIP="$(command -v true)"
 )
 
