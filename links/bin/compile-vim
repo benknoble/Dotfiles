@@ -31,9 +31,10 @@ clone_vim() {
 build_and_install_vim() (
   pushd "${VIM_SOURCE}"
   unset SDKROOT PYTHONPATH
-  local python310
-  read -r python310 < <(brew ruby -e 'puts Formulary.factory("python@3.10").opt_libexec/"bin"')
-  PATH="$python310:$PATH"
+  local python python_path
+  python=$(brew deps --1 --include-build --include-optional vim | grep python | head -n 1)
+  read -r python_path < <(brew ruby -e 'puts Formulary.factory("'"$python"'").opt_libexec/"bin"')
+  PATH="$python_path:$PATH"
   local configure_args=(
     --with-tlib=ncurses
     --with-compiledby=benknoble
