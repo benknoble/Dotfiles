@@ -186,6 +186,8 @@ set showcmd
 set showmode
 " Always display status line
 set laststatus=2
+" disable default qf statusline
+let g:qf_disable_statusline = 1
 
 function! Head() abort
   let l:head = substitute(simplify(expand('%:h')), $HOME, '~', '')
@@ -217,6 +219,7 @@ function! s:status_line(verbosity) abort
   set statusline+=%5*%(%m%r%w%h%)%*
   set statusline+=%(%y[%{&expandtab?'S':'T'}]%)
   set statusline+=%([%{exists('*FugitiveHead')?FugitiveHead():''}]%)
+  set statusline+=%([%{get(w:,'quickfix_title','')}]%)
   set statusline+=%=%<
   if a:verbosity ==# 'long'
     set statusline+=%([%3*%l%*/%LL,%3*%c%*,%p%%]%)
