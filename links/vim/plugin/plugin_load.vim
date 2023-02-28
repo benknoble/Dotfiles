@@ -32,68 +32,25 @@ set keywordprg=:Man
 " End Man }}}
 " End Distribution }}}
 
+" Optional Packages {{{
+" packadd scala
+" packadd clojure-fireplace
+" packadd cs-omnisharp
+packadd docker
+packadd go
+" packadd puppet
+packadd tmux
+packadd tmux-tbone
+" packadd applescript
+" packadd heroku
+packadd rust-doc
+" packadd dafny
+packadd racket
+packadd scribble
+packadd coqtail
+packadd jqplay
 packadd dwarffortress
-
-" Executables {{{
-if executable('scala')
-  packadd scala
-endif
-
-if executable('clojure')
-  packadd clojure-fireplace
-endif
-
-if executable('csharp')
-  packadd cs-omnisharp
-endif
-
-if executable('docker')
-  packadd docker
-endif
-
-if executable('go')
-  packadd go
-endif
-
-if executable('puppet')
-  packadd puppet
-endif
-
-if executable('tmux')
-  packadd tmux
-  packadd tmux-tbone
-endif
-
-if executable('osascript')
-  packadd applescript
-endif
-
-if executable('heroku')
-  packadd heroku
-endif
-
-if executable('rustc')
-  packadd rust-doc
-endif
-
-if executable('dafny')
-  packadd dafny
-endif
-
-if executable('racket')
-  packadd racket
-  packadd scribble
-endif
-
-if executable('coqc')
-  packadd coqtail
-endif
-
-if executable('jq')
-  packadd jqplay
-endif
-
-" Executables }}}
+" Optional Packages }}}
 
 " Colorscheme {{{
 if ! exists('g:colors_name')
