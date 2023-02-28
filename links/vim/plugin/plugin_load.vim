@@ -83,7 +83,6 @@ endif
 if executable('racket')
   packadd racket
   packadd scribble
-  packadd pollen
 endif
 
 if executable('coqc')
