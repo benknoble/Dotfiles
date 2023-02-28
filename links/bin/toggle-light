@@ -31,7 +31,7 @@ toggle_alacritty() {
 toggle_vim() {
   local new="$1"
   printf '%s\n' "/COLORSCHEME MARKER/+1s/do_.*$/do_$new()/" wq |
-    ed -s ~/.vim/plugin/plugin_load.vim
+    ed -s ~/.vim/vimrc
 }
 
 main() {
