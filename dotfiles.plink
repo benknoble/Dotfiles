@@ -142,7 +142,6 @@ LINKS = links/
 .pythonrc <= pythonrc
 .rgrc <= rgrc
 .ssh/config <= ssh/config
-.tmplr <= tmplr
 .tmux.conf <= tmux.conf
 .vim <= vim
 .zcompile <= zcompile

@@ -35,10 +35,6 @@ set keywordprg=:Man
 packadd dwarffortress
 
 " Executables {{{
-if executable('tmplr')
-  packadd tmplr
-endif
-
 if executable('scala')
   packadd scala
 endif

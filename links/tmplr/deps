@@ -1,7 +1,0 @@
-;;;
-; delim : %%
-; help : clojure deps
-; output : deps.edn
-; vim: ft=clojure
-;;;
-{:deps {}}
