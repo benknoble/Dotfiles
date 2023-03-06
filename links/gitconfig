@@ -12,7 +12,7 @@
 	co = checkout
 	conflict = log --oneline --left-right --merge
 	cp = cherry-pick
-	ctags = hooks run ctags
+	ctags = hook run ctags
 	d = diff
 	dc = diff --cached
 	ds = diff --stat
