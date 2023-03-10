@@ -33,7 +33,7 @@ build_and_install_vim() (
   unset SDKROOT PYTHONPATH
   local python python_path
   python=$(brew deps --1 --include-build --include-optional vim | grep python | head -n 1)
-  python_path="$(brew --prefix "$python")/libexec/bin"
+  python_path="$(brew --prefix "$python")/bin"
   PATH="$python_path:$PATH"
   local configure_args=(
     --with-tlib=ncurses
