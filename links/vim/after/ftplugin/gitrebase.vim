@@ -11,7 +11,12 @@ nnoremap <buffer> <LocalLeader>f :Fixup<CR>
 nnoremap <buffer> <LocalLeader>d :Drop<CR>
 nnoremap <buffer> <LocalLeader>c :Cycle<CR>
 
+let &l:keywordprg=':Git show '
+
 let b:undo_ftplugin = bk#ftplugin#undo(#{
+      \ opts: [
+      \   'keywordprg',
+      \ ],
       \ maps: [
       \   [ 'n', '<LocalLeader>p' ],
       \   [ 'n', '<LocalLeader>s' ],
