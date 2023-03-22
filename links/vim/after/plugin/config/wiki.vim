@@ -2,10 +2,10 @@ if !exists('g:wiki_root')
   finish
 endif
 
-command -nargs=1 -complete=customlist,wiki#complete_wikis Ewiki execute 'edit' g:wiki_root.'/<args>'
+command -nargs=1 -complete=customlist,wiki#complete_wikis Ewiki execute '<mods> edit' g:wiki_root.'/<args>'
 command -nargs=1 -complete=customlist,wiki#complete_wikis Swiki execute '<mods> split' g:wiki_root.'/<args>'
-command -nargs=1 -complete=customlist,wiki#complete_wikis Vwiki vertical Swiki <args>
-command -nargs=1 -complete=customlist,wiki#complete_wikis Twiki tab Swiki <args>
+command -nargs=1 -complete=customlist,wiki#complete_wikis Vwiki <mods> vertical Swiki <args>
+command -nargs=1 -complete=customlist,wiki#complete_wikis Twiki <mods> tab Swiki <args>
 
 
 call popsikey#register('<Leader>w', [
