@@ -9,7 +9,7 @@ XDG_CONFIG_HOME = $(HOME)/.config
 # pip
 # gem
 # none
-FEATURES = git_extras brew_install pip gem
+FEATURES = git_extras brew_install pip gem rust
 
 # default: print help about targets
 default ! @grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
@@ -18,7 +18,7 @@ default ! @grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
 install [ dirs symlink compile-terminfo zcompile $(FEATURES) ]
 
 # update: update the dotfiles
-update [ pull_master update_submodules symlink brew_check vimtags pip gem zcompile ]
+update [ pull_master update_submodules symlink brew_check vimtags pip gem rust zcompile ]
 
 # vimtags: regenerate tags for vim helpfiles
 vimtags ! vim +':helptags ALL' +'q'
@@ -90,6 +90,11 @@ pip [ $(REQUIREMENTS) ] ! -python3 -m pip install --user --requirement $(REQUIRE
 # gem: install from Gemfile
 gem [ $(GEMFILE) ] !!
 -{ command -v bundle || gem install bundler; } && bundle install
+!!
+
+# rust: install cargo-based packages
+rust [ rust_packages ] !!
+-command -v cargo && <rust_packages xargs -L1 cargo install
 !!
 
 pull_master !!

@@ -1,7 +1,0 @@
-#! /usr/bin/env zsh
-
-histogram_f () {
-  fields 2 1 | sort -g | histogram
-}
-
-histogram_f "$@"

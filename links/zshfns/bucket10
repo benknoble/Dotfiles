@@ -1,7 +1,7 @@
 #! /usr/bin/env zsh
 
 bucket10 () {
-  nearest_ten | frequency | histogram_f
+  nearest_ten | frequency | sort -k2 | histogram
 }
 
 bucket10 "$@"

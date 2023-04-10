@@ -19,17 +19,7 @@ frequency() {
 
 # input: data count
 histogram() {
-  awk '{
-    printf "%s\t", $1
-    for(i = 0; i < int($2); i++)
-        printf "*"
-    printf "\n"
-  }'
-}
-
-# for use after frequency
-histogram_f() {
-  fields 2 1 | sort -g | histogram
+  barchart "$@"
 }
 
 nearest_ten() {
@@ -39,7 +29,7 @@ nearest_ten() {
 
 # combine my most used histogram technique into one
 bucket10 () {
-  nearest_ten | frequency | histogram_f
+  nearest_ten | frequency | sort -k2 | histogram
 }
 
 fold() {

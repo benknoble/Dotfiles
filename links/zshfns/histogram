@@ -1,12 +1,7 @@
 #! /usr/bin/env zsh
 
 histogram () {
-  awk '{
-    printf "%s\t", $1
-    for(i = 0; i < int($2); i++)
-        printf "*"
-    printf "\n"
-  }'
+  barchart "$@"
 }
 
 histogram "$@"

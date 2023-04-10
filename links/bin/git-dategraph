@@ -18,16 +18,7 @@ frequency() {
 }
 
 histogram() {
-  awk '{
-    printf "%s\t", $1
-    for(i = 0; i < int($2); i++)
-        printf "*"
-    printf "\n"
-  }'
-}
-
-histogram_f() {
-  awk '{print $2, $1}' | sort -g | histogram
+  barchart "$@"
 }
 
 sum_changes() {
@@ -42,7 +33,7 @@ sum_changes() {
 
 
 dategraph_() {
-  git log --format=%as "$@" | frequency | histogram_f
+  git log --format=%as "$@" | frequency | sort -k2 | histogram
 }
 
 dategraph_additions() {
