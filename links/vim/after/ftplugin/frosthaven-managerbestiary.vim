@@ -8,6 +8,9 @@ setlocal syntax=racket
 
 setlocal shiftwidth=2 softtabstop=2
 
+" Retabularize stats; recursive for the `ii` text-object
+nmap <buffer> <localleader>i mz!iicolumn -t<enter>:*s/^/  /<bar>*s/\>\s\+\</ /g<enter>`z
+
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ opts: [
       \   'shiftwidth',
@@ -17,5 +20,8 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ vars: [
       \   'b:interpreter',
       \   'b:ale_linter_aliases',
+      \ ],
+      \ maps: [
+      \   ['n', '<localleader>i'],
       \ ],
       \ })
