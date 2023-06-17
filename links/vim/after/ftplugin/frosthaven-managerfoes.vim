@@ -2,20 +2,6 @@
 " Language:              #lang frosthaven-manager/foes
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-let b:interpreter = 'racket'
-let b:ale_linter_aliases = 'racket'
-setlocal syntax=racket
+runtime! ftplugin/frosthaven-managerbestiary.vim
 
-setlocal shiftwidth=2 softtabstop=2
-
-let b:undo_ftplugin = bk#ftplugin#undo(#{
-      \ opts: [
-      \   'shiftwidth',
-      \   'softtabstop',
-      \   'syntax',
-      \ ],
-      \ vars: [
-      \   'b:interpreter',
-      \   'b:ale_linter_aliases',
-      \ ],
-      \ })
+let &l:define = '\vbegin-(monster|ability-deck|foe)'
