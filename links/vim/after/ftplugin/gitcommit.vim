@@ -13,6 +13,8 @@ setlocal formatoptions-=a
 
 nnoremap <buffer> <LocalLeader>d :DiffGitCached<CR>
 
+command -buffer -bar -nargs=? Ref execute 'read !git show --no-patch --format=reference' empty(<q-args>) ? @* : <q-args> | -join
+
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ opts: [
       \   'shiftwidth',
@@ -23,5 +25,8 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ ],
       \ maps: [
       \   [ 'n', '<LocalLeader>d' ],
+      \ ],
+      \ commands: [
+      \   'Ref',
       \ ],
       \ })
