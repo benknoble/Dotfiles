@@ -3,6 +3,8 @@ if exists('g:loaded_lastpos')
 endif
 let g:loaded_lastpos = 1
 
+vim9 var line_number = -1
+
 if has('autocmd')
   augroup vimrc_last_cursor_position
     autocmd!
@@ -10,7 +12,7 @@ if has('autocmd')
     " Don't do it when the position is invalid or when inside an event handler
     " (happens when dropping a file on gvim).
     autocmd BufReadPost * {
-      const line_number = line('"')
+      line_number = line("'\"")
       if line_number > 1 && line_number <= line('$')
           && &filetype !~# 'commit'
           && index(['xxd', 'gitrebase'], &filetype) < 0
