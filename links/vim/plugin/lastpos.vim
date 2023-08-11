@@ -9,9 +9,13 @@ if has('autocmd')
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
     " (happens when dropping a file on gvim).
-    autocmd BufReadPost *
-          \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'gitcommit' |
-          \   exe "normal! g`\"" |
-          \ endif
+    autocmd BufReadPost * {
+      const line_number = line('"')
+      if line_number > 1 && line_number <= line('$')
+          && &filetype !~# 'commit'
+          && index(['xxd', 'gitrebase'], &filetype) < 0
+        execute 'normal! g`"'
+      endif
+    }
   augroup end
 endif
