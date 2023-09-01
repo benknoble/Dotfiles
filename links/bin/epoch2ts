@@ -1,0 +1,4 @@
+#! /bin/zsh
+
+zmodload zsh/datetime
+strftime %FT%T%z "$(cat)"
