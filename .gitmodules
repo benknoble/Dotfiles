@@ -144,6 +144,7 @@
 [submodule "links/vim/pack/languages/opt/coqtail"]
 	path = links/vim/pack/languages/opt/coqtail
 	url = https://github.com/whonore/Coqtail
+	branch = main
 [submodule "links/vim/pack/utility/opt/batchy"]
 	path = links/vim/pack/utility/opt/batchy
 	url = https://github.com/arp242/batchy.vim

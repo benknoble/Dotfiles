@@ -9,6 +9,4 @@ call popsikey#extend(g:popsikey_change_id, [
       \ #{ key: 'u', info: 'UPPER_CASE', action: 'cru', flags: 'm' },
       \ #{ key: '-', info: 'dash-case', action: 'cr-', flags: 'm' },
       \ #{ key: '.', info: 'dot.case', action: 'cr.', flags: 'm' },
-      \ #{ key: ' ', info: 'space case', action: 'cr ', flags: 'm' },
-      \ #{ key: 't', info: 'Title Case', action: 'crt', flags: 'm' },
       \ ], #{})

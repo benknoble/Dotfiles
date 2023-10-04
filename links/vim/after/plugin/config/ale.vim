@@ -15,14 +15,8 @@ let g:ale_linters = {
       \ 'python': 'all',
       \ 'scala': [],
       \ 'java': [],
-      \ 'zsh': ['shell'],
-      \ 'rust': ['cargo'],
       \ 'go': ['gofmt', 'govet', 'golint', 'gopls'],
       \ }
-
-if executable('rust-analyzer')
-  call extend(g:ale_linters.rust, ['analyzer'])
-endif
 
 let g:ale_fixers = {
       \ 'python': ['black'],
