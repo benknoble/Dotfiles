@@ -191,7 +191,7 @@ schemes:
 
     # Normal colors
     normal:
-      black: '0x0b0d0f'
+      black: '0x708ca9'
       red: '0xff9580'
       green: '0x8aff80'
       yellow: '0xffff80'
@@ -202,7 +202,7 @@ schemes:
 
     # Bright colors
     bright:
-      black: '0x0b0d0f'
+      black: '0x708ca9'
       red: '0xffaa99'
       green: '0xa2ff99'
       yellow: '0xffff99'
