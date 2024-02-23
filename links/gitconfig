@@ -4,6 +4,7 @@
 	b = branch
 	bd = branch --delete
 	bdf = branch --delete --force
+	blame-more = blame -w -CCC -M
 	ca = commit --all
 	cc = commit
 	ce = config --edit
