@@ -514,6 +514,8 @@ let g:winresizer_gui_start_key = '<leader>E'
 " TODO: v uses vnoremap, not xnoremap
 let g:vimpbcopy_maps = { 'n': '<leader>y', 'v': '<leader>y' }
 
+command DateISO read !date -Iseconds
+
 " Unsorted }}}
 
 " Colorscheme {{{
