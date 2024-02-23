@@ -71,6 +71,7 @@
 	recurseSubmodules = on-demand
 	prune = true
 	writeCommitGraph = true
+	parallel = 0
 [push]
 	recurseSubmodules = check
 [pull]
