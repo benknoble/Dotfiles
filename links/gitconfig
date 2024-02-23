@@ -16,6 +16,7 @@
 	d = diff
 	dc = diff --cached
 	ds = diff --stat
+	f = fetch --all
 	g = !exec git
 	git = !exec git
 	grall = graph --all
