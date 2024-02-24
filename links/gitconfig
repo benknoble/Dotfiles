@@ -1,10 +1,11 @@
 # vim: noet:sw=8:sts=8:fdm=indent
 [alias]
 	amend = commit --amend
-	b = branch
+	b = branch -vv
 	bd = branch --delete
 	bdf = branch --delete --force
 	blame-more = blame -w -CCC -M
+	bv = branch -vva
 	ca = commit --all
 	cc = commit
 	ce = config --edit
