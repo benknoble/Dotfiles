@@ -3,12 +3,12 @@
 markdownify () {
   # reads from stdin
   command=(
-    curl
-    --silent
-    https://api.github.com/markdown/raw
-    -X "POST"
-    -H "Content-Type: text/x-markdown"
-    --data-binary @-
+    gh api
+    --method PST
+    -H 'Accept: application/vnd.github+json'
+    -H 'Content-Type: text/plain'
+    --input -
+    /markdown/raw
   )
   "${command[@]}"
 }
