@@ -9,3 +9,5 @@ Host *
 
 # host specific; may be symlinked or machine-specific
 Include host-*
+
+Include ~/.colima/ssh_config
