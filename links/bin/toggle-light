@@ -5,10 +5,10 @@ set -euo pipefail
 find_alacritty_config() {
   set +u
   local options=(
-    "$XDG_CONFIG_HOME/alacritty/alacritty.yml"
-    "$XDG_CONFIG_HOME/alacritty.yml"
-    "$HOME/.config/alacritty/alacritty.yml"
-    "$HOME/.alacritty.yml"
+    "$XDG_CONFIG_HOME/alacritty/alacritty.toml"
+    "$XDG_CONFIG_HOME/alacritty.toml"
+    "$HOME/.config/alacritty/alacritty.toml"
+    "$HOME/.alacritty.toml"
   )
   set -u
   for f in "${options[@]}"; do
@@ -16,16 +16,25 @@ find_alacritty_config() {
   done
 }
 
+current_color_file() {
+  local alacritty="$1"
+  grep colors.toml "$alacritty" | jq -r . | sed "s,~,$HOME,"
+}
+
 current_colors() {
   local alacritty="$1"
-  grep '^colors: \*' "$alacritty" |
-    cut -d'*' -f2
+  readlink -- "$(current_color_file "$alacritty")" | sed 's/\.toml$//'
 }
 
 toggle_alacritty() {
   local alacritty="$1"
-  local new="$2"
-  printf '%s\n' "/^colors:/s/\*.*$/*$new/" wq | ed -s "$alacritty"
+  local new="$2.toml"
+  local color_file
+  color_file="$(current_color_file "$alacritty")"
+  pushd "$(dirname "$color_file")"
+  ln -sfv "$new" "$color_file"
+  touch "$alacritty"
+  popd
 }
 
 toggle_vim() {
