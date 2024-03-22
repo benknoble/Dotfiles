@@ -1,15 +1,13 @@
 #! /usr/bin/env plink/Plink.pm
 BREWFILE = brew/Brewfile
 GEMFILE = Gemfile
-REQUIREMENTS = requirements.txt
 XDG_CONFIG_HOME = $(HOME)/.config
 # supported features:
 # git_extras
 # brew_install
-# pip
 # gem
 # none
-FEATURES = git_extras brew_install pip gem rust
+FEATURES = git_extras brew_install gem rust
 
 # default: print help about targets
 default ! @grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
@@ -18,7 +16,7 @@ default ! @grep -E '^# .+: .+' Makefile | tr -d '#' | tr ':' '\t'
 install [ dirs symlink compile-terminfo zcompile $(FEATURES) ]
 
 # update: update the dotfiles
-update [ pull_master update_submodules symlink brew_check vimtags pip gem rust zcompile ]
+update [ pull_master update_submodules symlink brew_check vimtags gem rust zcompile ]
 
 # vimtags: regenerate tags for vim helpfiles
 vimtags ! vim +':helptags ALL' +'q'
@@ -83,9 +81,6 @@ brew bundle install --file="$(BREWFILE)"
 grep "$$(brew --prefix)/bin/zsh" /etc/shells || sudo sh -c "echo $$(brew --prefix)/bin/zsh >> /etc/shells"
 chsh -s "$$(brew --prefix)/bin/zsh" "$$USER"
 !!
-
-# pip: install from requirements
-pip [ $(REQUIREMENTS) ] ! -python3 -m pip install --user --requirement $(REQUIREMENTS)
 
 # gem: install from Gemfile
 gem [ $(GEMFILE) ] !!
