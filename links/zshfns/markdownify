@@ -4,7 +4,7 @@ markdownify () {
   # reads from stdin
   command=(
     gh api
-    --method PST
+    --method POST
     -H 'Accept: application/vnd.github+json'
     -H 'Content-Type: text/plain'
     --input -
