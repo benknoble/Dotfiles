@@ -18,7 +18,7 @@
 	d = diff
 	dc = diff --cached
 	ds = diff --stat
-	f = fetch --all
+	f = fetch
 	g = !exec git
 	git = !exec git
 	grall = graph --all
@@ -75,6 +75,7 @@
 	prune = true
 	writeCommitGraph = true
 	parallel = 0
+	all = true
 [push]
 	recurseSubmodules = check
 [pull]
