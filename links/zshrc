@@ -141,6 +141,7 @@ setopt automenu
 setopt completeinword
 zmodload zsh/complist
 bindkey -M menuselect ^Xi vi-insert
+bindkey -M menuselect ^E send-break
 zstyle ':completion:*' menu select=5
 zstyle ':completion:*' list-separator '#'
 zstyle ':completion:*:descriptions' format '%F{green}(%d)%f'
