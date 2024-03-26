@@ -1,7 +1,7 @@
 #compdef wiki
 
 _wiki() {
-  compadd ~/.wiki/**/*(.:s,$HOME/.wiki/,)
+  _files -W ~/.wiki/
 }
 
 _wiki "$@"
