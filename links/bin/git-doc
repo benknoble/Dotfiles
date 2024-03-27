@@ -1,0 +1,8 @@
+#! /bin/sh
+
+case $# in
+  (1) : continue ;;
+  (*) printf '%s\n' "usage: $0 <git-html-document>" >&2 && exit 1;;
+esac
+
+exec open "$(git --html-path)/$1"

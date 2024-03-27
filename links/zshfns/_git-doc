@@ -1,0 +1,4 @@
+#compdef git-doc
+
+# for git-doc style invocations
+_files -W $(git --html-path)/
