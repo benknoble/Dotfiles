@@ -101,3 +101,9 @@ vimdefaults() {
 vimclean() {
   vim --clean "$@"
 }
+
+vt() {
+  for file; do
+    printf '\e]51;%s\07' $(jq -cn --arg f "$file" '["drop", $f]')
+  done
+}
