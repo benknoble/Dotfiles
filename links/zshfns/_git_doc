@@ -3,7 +3,7 @@
 emulate -L zsh
 
 # change some options to make this work: _files depends on extendedglob
-setopt extendedglob
+setopt $_comp_options
 
 # for git doc style invocations
 _files -W $(git --html-path)/
