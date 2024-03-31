@@ -53,8 +53,8 @@ main() {
   current="$(current_colors "$alacritty")"
   case "$current" in
     dracula)
-      new=flattened_light ;;
-    flattened_light)
+      new=alucard ;;
+    alucard)
       new=dracula ;;
   esac
   toggle_alacritty "$alacritty" "$new"

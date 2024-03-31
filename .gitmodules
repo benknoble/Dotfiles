@@ -151,6 +151,3 @@
 [submodule "links/vim/pack/utility/opt/jqplay"]
 	path = links/vim/pack/utility/opt/jqplay
 	url = https://github.com/bfrg/vim-jqplay
-[submodule "links/vim/pack/colors/start/flattened"]
-	path = links/vim/pack/colors/start/flattened
-	url = https://github.com/romainl/flattened
