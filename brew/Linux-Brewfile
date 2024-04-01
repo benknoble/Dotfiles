@@ -7,7 +7,6 @@ brew "automake"
 brew "bash"
 brew "bash-completion@2"
 brew "coreutils"
-brew "cowsay"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "figlet"
 brew "findutils"
