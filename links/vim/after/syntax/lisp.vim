@@ -14,7 +14,3 @@ syn keyword lispFunc and conceal cchar=∧
 syn keyword lispFunc or conceal cchar=∨
 syn keyword lispFunc nil conceal cchar=∅
 syn keyword lispFunc cons conceal cchar=.
-
-if ! bk#dracula#should_abort('lisp')
-  hi link lispParen DraculaSubtle
-endif

@@ -238,7 +238,7 @@ command SLShort call s:status_line('short')
 
 SLShort
 
-function! s:set_statusline_colors_to_dracula() abort
+function! s:set_colors_to_dracula() abort
   " Override statusline
   hi clear StatusLine
   hi clear StatusLineNC
@@ -254,9 +254,16 @@ function! s:set_statusline_colors_to_dracula() abort
   hi link User3 DraculaCyan
   hi link User4 DraculaRed
   hi link User5 DraculaOrange
+
+  highlight link racketParen DraculaSubtle
+  highlight link clojureParen DraculaSubtle
+  highlight link lispParen DraculaSubtle
+  highlight link infoParen DraculaSubtle
+  highlight link schemeParentheses DraculaSubtle
+  highlight link scribbleParen DraculaSubtle
 endfunction
 
-function! s:set_statusline_colors_to_flattened() abort
+function! s:set_colors_to_flattened() abort
   " Override statusline
   highlight clear StatusLine
   highlight clear StatusLineNC
@@ -277,8 +284,8 @@ endfunction
 if has('autocmd')
   augroup status_colors
     autocmd!
-    autocmd ColorScheme dracula* call s:set_statusline_colors_to_dracula()
-    autocmd ColorScheme flattened_light call s:set_statusline_colors_to_flattened()
+    autocmd ColorScheme dracula* call s:set_colors_to_dracula()
+    autocmd ColorScheme flattened_light call s:set_colors_to_flattened()
   augroup end
 endif
 " }}}

@@ -5,7 +5,3 @@ syntax keyword racketFunc compose1 conceal cchar=←
 
 syntax keyword racketSyntax and conceal cchar=∧
 syntax keyword racketSyntax or conceal cchar=∨
-
-if ! bk#dracula#should_abort('racket')
-  highlight link racketParen DraculaSubtle
-endif
