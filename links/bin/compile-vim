@@ -46,7 +46,7 @@ build_and_install_vim() (
   )
   time ./configure "${configure_args[@]}"
   time make -j "$(nproc)"
-  time make test
+  time TERMINFO=~/.terminfo make test
   time make install STRIP="$(command -v true)"
 )
 
