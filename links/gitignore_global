@@ -70,3 +70,7 @@ Cargo.lock
 
 # jekyll
 .jekyll-cache
+
+# Zuo
+_zuo.db
+_zuo_tc.db
