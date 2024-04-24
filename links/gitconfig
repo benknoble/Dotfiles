@@ -39,6 +39,7 @@
 	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --stdin;}; f"
 	newb = checkout -b
 	patch = add --patch
+	pf = push --force-with-lease
 	r = rebase
 	rc = rebase --continue
 	ref = show --no-patch --format=reference
