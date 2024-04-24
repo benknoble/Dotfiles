@@ -1,4 +1,5 @@
 *json diff=json
+Pipfile.lock diff=json
 *.sh diff=bash
 *.bib diff=bibtex
 *.[ch] diff=cpp
