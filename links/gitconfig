@@ -66,6 +66,7 @@
 	excludesFile = ~/.gitignore_global
 	attributesFile = ~/.gitattributes
 	pager = less -FRX
+	commentChar = ";"
 [init]
 	templateDir = ~/.git_template
 	defaultBranch = main
