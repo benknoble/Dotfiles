@@ -24,7 +24,6 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \   'textwidth',
       \   'shiftwidth',
       \   'softtabstop',
-      \   'iskeyword',
       \ ],
       \ maps: [
       \   [ 'x', 'iv' ],
