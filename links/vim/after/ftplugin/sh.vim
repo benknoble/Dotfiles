@@ -7,6 +7,8 @@ setlocal textwidth=80
 " Indent two spaces
 setlocal shiftwidth=2 softtabstop=2
 
+setlocal keywordprg=:Man
+
 xnoremap <buffer> iv :<C-u>call bk#sh#in_parameter_expansion()<CR>
 onoremap <buffer> iv :<C-u>call bk#sh#in_parameter_expansion()<CR>
 
@@ -24,6 +26,7 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \   'textwidth',
       \   'shiftwidth',
       \   'softtabstop',
+      \   'keywordprg',
       \ ],
       \ maps: [
       \   [ 'x', 'iv' ],
