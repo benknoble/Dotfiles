@@ -89,7 +89,7 @@
 # diffs and merges
 [diff]
 	submodule = log
-	tool = fugitive
+	tool = vimdiff
 	colorMoved = default
 	mnemonicprefix = true
 [diff "json"]
@@ -98,8 +98,6 @@
 	textconv = "f(){ yq -P eval 'sort_keys(..)' \"$1\" 2>/dev/null || cat \"$1\"; }; f"
 [difftool]
 	prompt = no
-[difftool "fugitive"]
-	cmd = vim --nofork +\"Git difftool -- $MERGED\" +cclose
 [merge]
 	tool = fugitive
 	conflictstyle = zdiff3
