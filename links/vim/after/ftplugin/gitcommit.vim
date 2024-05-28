@@ -11,6 +11,8 @@ setlocal spell spelllang=en_us
 " Make sure we don't use autoformatting
 setlocal formatoptions-=a
 
+setlocal comments+=b:>
+
 nnoremap <buffer> <LocalLeader>d :DiffGitCached<CR>
 
 command -buffer -bar -nargs=? Ref execute 'read !git show --no-patch --format=reference' empty(<q-args>) ? @* : <q-args> | -join
@@ -22,6 +24,7 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \   'spell',
       \   'spelllang',
       \   'formatoptions',
+      \   'comments',
       \ ],
       \ maps: [
       \   [ 'n', '<LocalLeader>d' ],
