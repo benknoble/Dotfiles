@@ -24,6 +24,8 @@ nnoremap <buffer> <LocalLeader>h :%call bk#markdown#to_liquid()<CR>
 command -buffer -bar Navigate call bk#markdown#navigate()
 nnoremap <buffer> <Localleader>n :Navigate<CR>
 
+command -buffer -bar TripleTick :%substitute/^`\([^`].*\)`$/```\r\1\r```/
+
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ opts: [
       \   'textwidth',
@@ -44,5 +46,6 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ ],
       \ commands: [
       \   'Navigate',
+      \   'TripleTick',
       \ ],
       \ })
