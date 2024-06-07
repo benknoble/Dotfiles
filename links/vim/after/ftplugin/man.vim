@@ -17,6 +17,8 @@ setlocal nofoldenable
 nnoremap <buffer> - /^\C\v\s*-
 nnoremap <buffer> _ /^\C\v\s*--
 
+nnoremap <buffer> q :quit<enter>
+
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ opts: [
       \   'list',
@@ -28,5 +30,6 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ maps: [
       \   [ 'n', '-' ],
       \   [ 'n', '_' ],
+      \   [ 'n', 'q' ],
       \ ],
       \ })
