@@ -25,6 +25,8 @@ export HOMEBREW_INSTALL_CLEANUP=true
 
 export RIPGREP_CONFIG_PATH=~/.rgrc
 
+export RACO_TEST_ARGS='-j $$(nproc)'
+
 # personal vars {{{
 
 # OS test
