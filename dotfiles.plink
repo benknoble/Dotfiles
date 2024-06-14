@@ -130,6 +130,7 @@ LINKS = links/
 .irbrc <= irbrc
 .jupyter <= jupyter
 .latexmkrc <= latexmkrc
+.markdownlintrc <= markdownlintrc
 .newsboat <= newsboat
 .pryrc <= pryrc
 .pythonrc <= pythonrc
