@@ -10,6 +10,8 @@ reset_editor() {
   export MANPAGER='vim -M +MANPAGER --not-a-term -'
 }
 
+export MANWIDTH=80
+
 # use my color scheme for ls
 export LSCOLORS="gxfxcxdxbxegedabagacad"
 
