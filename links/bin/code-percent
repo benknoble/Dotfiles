@@ -1,0 +1,22 @@
+#! /bin/sh
+
+case $# in
+  (0) : continue ;;
+  (*) printf '%s\n' "usage: $0" '' \
+    'Calculates info about the number of lines in files listed on standard in.' \
+    'Columns are Row Number, File, Percent Total, Cumulative Percent Total.'
+  exit 2;
+esac
+
+# expects a list of file names on standard in
+xargs wc -l |
+  awk '
+    /total/ { total = $1; }
+    { counts[$2] = $1; }
+    END { for (k in counts) { print k, counts[k]*100/total; } }' |
+  sort -rn -k2 |
+  grep -v total |
+  { echo 'RowNumber File PercentTotal CumulativePercentTotal'
+    awk '{ total += $2; print $0, total; }' | nl; } |
+  column -t |
+  $PAGER
