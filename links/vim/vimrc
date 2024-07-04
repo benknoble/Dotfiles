@@ -60,6 +60,9 @@ set hlsearch
 if has('reltime')
   set incsearch
 endif
+set maxmempattern=2000
+nnoremap <silent> n n:call bk#cursor#blink(0.2)<cr>
+nnoremap <silent> N N:call bk#cursor#blink(0.2)<cr>
 " }}}
 
 " Time out for key codes {{{
@@ -362,6 +365,8 @@ if has('autocmd')
   let g:applescript_default_indent = 0
   let g:clojure_maxlines = 50
   let g:clojure_align_subforms = 1
+  " skip scheme checks for apathy to speed up loading
+  let g:scheme_load_path = []
   augroup vimrc_bash_fc
     autocmd!
     " bash's edit-and-execute-command (which probably leans on the fc mechanism)
@@ -372,14 +377,18 @@ if has('autocmd')
     " http://git.savannah.gnu.org/cgit/bash.git/tree/builtins/fc.def?h=bash-4.4-rc2#n394
     autocmd BufNewFile,BufReadPre *bash-fc* setlocal noundofile
   augroup end
+  augroup fix_formatoptions
+    autocmd!
+    autocmd FileType * setlocal formatoptions=tcrqlnj
+  augroup end
 endif
 " }}}
 
-" Unsorted {{{
-
-" spelling
+" Spelling {{{
 inoremap <C-L> <C-g>u<Esc>[s1z=gi<C-g>u
+" Spelling }}}
 
+" Terminal {{{
 set ttymouse=sgr
 if $TERM =~# '\v(tmux-256color)|(alacritty)'
   " so colors work properly in :term, because apparently vim will default to
@@ -399,36 +408,9 @@ endif
 if $COLORTERM ==# 'truecolor'
   set termguicolors
 endif
+" Terminal }}}
 
-" Like bash's <C-k> delete to end, similar to D in normal mode
-cnoremap <C-x> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
-
-" Conway Experimental {{{
-
-nnoremap <silent> n n:call bk#cursor#blink(0.2)<cr>
-nnoremap <silent> N N:call bk#cursor#blink(0.2)<cr>
-
-" }}}
-
-" Update "Last Change" line
-command Changed let s:old_lang = v:lc_time
-      \ | language time C
-      \ | keeppatterns %substitute/Last [cC]hanged\?:\zs\(\s*\).*/\=submatch(1)..strftime("%Y %b %d")/e
-      \ | execute 'language time' s:old_lang
-      \ | unlet! s:old_lang
-
-" italic comments
-if has('autocmd')
-  augroup italic_comments
-    autocmd!
-    autocmd ColorScheme * if g:colors_name =~# '\v^(dracula|alucard)*' |
-          \ highlight DraculaComment cterm=italic gui=italic |
-          \ else |
-          \ highlight Comment cterm=italic gui=italic |
-          \ endif
-  augroup end
-endif
-
+" Git {{{
 " When git starts up, it prepends it's libexec dir to PATH to allow it to find
 " external commands.
 "
@@ -458,11 +440,7 @@ augroup fix_git_path
   autocmd!
   autocmd VimEnter * call s:fix_git_path()
 augroup end
-
-augroup fix_formatoptions
-  autocmd!
-  autocmd FileType * setlocal formatoptions=tcrqlnj
-augroup end
+" Git }}}
 
 " Default plugins {{{
 let g:loaded_getscriptPlugin = 1
@@ -477,41 +455,41 @@ let g:loaded_csearch = 1
 let g:loaded_difforig = 1
 let g:loaded_funkeys = 1
 let g:keeponly = 1
+" TODO: v uses vnoremap, not xnoremap
+let g:vimpbcopy_maps = { 'n': '<leader>y', 'v': '<leader>y' }
 " }}}
-
-" function s:one_syntax_restore_opts(...) abort
-"   for [dict, var] in a:000
-"     if has_key(dict, var)
-"       execute printf('let &l:%s = "%s"', substitute(var, 'old_', '', ''), get(dict, var)->escape('"\'))
-"     endif
-"   endfor
-" endfunction
-
-" function s:one_syntax(on) abort
-"   let [w:old_spell, b:old_spelllang, b:old_spellcapcheck, b:old_spellfile] = [&l:spell, &l:spelllang, &l:spellcapcheck, &l:spellfile]
-"   if a:on is# 'on' && exists('b:current_syntax')
-"     execute 'ownsyntax' b:current_syntax
-"   else
-"     ownsyntax off
-"   endif
-"   call s:one_syntax_restore_opts([w:, 'old_spell'], [b:, 'old_spelllang'], [b:, 'old_spellcapcheck'], [b:, 'old_spellfile'])
-" endfunction
-
-" augroup one_syntax
-"   autocmd!
-"   autocmd WinEnter * call s:one_syntax('on')
-"   autocmd WinLeave * call s:one_syntax('off')
-" augroup end
-
-set maxmempattern=2000
-
-" For inserting a lozenge, digraph LZ
-" :help i_CTRL-L already has a meaning, but only when 'insertmode' is set
-" I don't use that, but let's make sure not to break anything
-inoremap <expr> <C-L> &insertmode ? '<C-L>' : '<C-k>LZ'
 
 " For dealing with vim --startuptime
 command StartupAnalyze /VIM STARTING/,$ sort! f /  [^ ]*  /
+
+let g:winresizer_start_key = '<leader>E'
+let g:winresizer_gui_start_key = '<leader>E'
+
+command DateISO read !date -Iseconds
+
+" Like Emacs <C-k> (delete to end) or D in normal mode
+cnoremap <C-x> <C-\>estrpart(getcmdline(), 0, getcmdpos() - 1)<CR>
+
+" Update "Last Change" line
+command Changed let s:old_lang = v:lc_time
+      \ | language time C
+      \ | keeppatterns %substitute/Last [cC]hanged\?:\zs\(\s*\).*/\=submatch(1)..strftime("%Y %b %d")/e
+      \ | execute 'language time' s:old_lang
+      \ | unlet! s:old_lang
+
+" Colorscheme {{{
+
+" italic comments
+if has('autocmd')
+  augroup italic_comments
+    autocmd!
+    autocmd ColorScheme * if g:colors_name =~# '\v^(dracula|alucard)*' |
+          \ highlight DraculaComment cterm=italic gui=italic |
+          \ else |
+          \ highlight Comment cterm=italic gui=italic |
+          \ endif
+  augroup end
+endif
 
 if has('autocmd')
   augroup fix_dracula_pro_colorcolumn
@@ -519,20 +497,6 @@ if has('autocmd')
   augroup end
 endif
 
-" skip scheme checks for apathy to speed up loading
-let g:scheme_load_path = []
-
-let g:winresizer_start_key = '<leader>E'
-let g:winresizer_gui_start_key = '<leader>E'
-
-" TODO: v uses vnoremap, not xnoremap
-let g:vimpbcopy_maps = { 'n': '<leader>y', 'v': '<leader>y' }
-
-command DateISO read !date -Iseconds
-
-" Unsorted }}}
-
-" Colorscheme {{{
 if ! exists('g:colors_name')
   let s:italic_default = 0
   if $TERM =~# '\v(xterm|tmux)-256color' || has('gui_running')
