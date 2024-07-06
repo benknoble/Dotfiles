@@ -18,7 +18,7 @@ endif
 " below (uncomment with "gcc" and run with "<localleader>el" to refresh):
 " +,+2delete | put! =execute('runtime ftplugin/man.vim \| command Man') | '[,'] Commentary | -2delete
 "     Nom               Args Adresse Complet     Définition
-"     Man               +            shellcmd    call s:GetPage(<q-mods>, <f-args>)
+"     Man               +            shellcmd    call dist#man#GetPage(<q-mods>, <f-args>)
 command -nargs=+ -complete=shellcmd Man delcommand Man
       \ | if &filetype is# 'man' | setlocal filetype=fixmeman | endif
       \ | runtime ftplugin/man.vim
