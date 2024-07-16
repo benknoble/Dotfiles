@@ -81,6 +81,7 @@
 	all = true
 [push]
 	recurseSubmodules = check
+	useForceIfIncludes = true
 [pull]
 	ff = only
 	; rebase = merges
