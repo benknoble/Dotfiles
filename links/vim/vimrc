@@ -295,7 +295,7 @@ if has('autocmd')
   augroup status_colors
     autocmd!
     autocmd ColorScheme dracula* call s:set_colors_to_dracula()
-    autocmd ColorScheme alucard call s:set_colors_to_alucard()
+    autocmd ColorScheme dracula_pro_alucard call s:set_colors_to_alucard()
   augroup end
 endif
 " }}}
@@ -483,7 +483,7 @@ command Changed let s:old_lang = v:lc_time
 if has('autocmd')
   augroup italic_comments
     autocmd!
-    autocmd ColorScheme * if g:colors_name =~# '\v^(dracula|alucard)*' |
+    autocmd ColorScheme * if g:colors_name =~# '^dracula.*' |
           \ highlight DraculaComment cterm=italic gui=italic |
           \ else |
           \ highlight Comment cterm=italic gui=italic |
@@ -532,7 +532,7 @@ if ! exists('g:colors_name')
   " consider reworked peachpuff
   function s:do_alucard() abort
     try
-      colorscheme alucard
+      colorscheme dracula_pro_alucard
     catch /^Vim\%((\a\+)\)\=:E185/
       colorscheme default
       set background=light
