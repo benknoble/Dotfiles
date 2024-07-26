@@ -477,6 +477,8 @@ command Changed let s:old_lang = v:lc_time
       \ | execute 'language time' s:old_lang
       \ | unlet! s:old_lang
 
+command -nargs=1 Meeting execute 'normal! IMeeting with <args>' | put =system('LC_ALL=C date') | -join | normal! f:daW.yypVr-
+
 " Colorscheme {{{
 
 " italic comments
