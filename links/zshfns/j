@@ -1,7 +1,9 @@
 #! /usr/bin/env zsh
 
 j () {
-  jobs -l
+  for jn in ${(k)jobtexts}; do
+    print -- "$[$jn] ${(s.:.)jobstates[$jn]} | ${jobtexts[$jn]} (${jobdirs[$jn]})"
+  done
 }
 
 j "$@"
