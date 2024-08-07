@@ -48,7 +48,7 @@ main() {
       ;;
   esac
   local files=()
-  mapfile -t files < <("$func" "$@")
+  mapfile -t files < <("$func" "$@" | sort | uniq)
   if (( ${#files[@]} > 0 )); then
     # file names are relative to repository root
     cd_to_toplevel && git_editor "${files[@]}"
