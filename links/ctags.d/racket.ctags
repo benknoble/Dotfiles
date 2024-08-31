@@ -1,0 +1,1 @@
+--regex-Scheme=/\([ \t]*struct[ \t]+([^[:space:]]+)/\1/f,function/
