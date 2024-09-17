@@ -1,0 +1,7 @@
+#! /bin/sh
+
+{
+  printf '%s\n' '<details><summary>range-diff:</summary>' '' '```'
+  cat
+  printf '%s\n' '```' '' '</details>'
+} | pbcopy
