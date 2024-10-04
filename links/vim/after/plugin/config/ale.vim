@@ -33,6 +33,8 @@ let g:ale_prolog_swipl_load = 'current_prolog_flag(argv, [File]), load_files(Fil
 " see ~/.vim/after/ftplugin/python.vim
 let g:ale_python_black_options = '--line-length 79'
 
+let g:ale_c_cc_options = '-Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wold-style-definition -Wshadow -Wpointer-arith -Wcast-qual -pedantic -std=c11'
+
 function s:ale_lsp_setup() abort
   setlocal omnifunc=ale#completion#OmniFunc
 
