@@ -18,8 +18,6 @@ commits_list() {
     git
     log
     --pretty'='format:$'\a%n%H\t%s %b'
-    # start somewhere
-    --all
   )
   if (($# > 0)) ; then
     command+=("$@")
