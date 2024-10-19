@@ -1,0 +1,37 @@
+#! /usr/bin/env racket
+#lang racket
+; vim: ft=racket
+
+(require xml
+         xml/path
+         net/http-client
+         racket/date)
+
+(define now (current-date))
+
+(define-values (month day)
+  (command-line
+   #:args ([month (~a (date-month now))] [day (~a (date-day now))])
+   (unless (string->number month)
+     (error "month should be numeric: " month))
+   (unless (string->number day)
+     (error "day should be numeric: " day))
+   (values (~r (string->number month) #:min-width 2 #:pad-string "0")
+           (~r (string->number day) #:min-width 2 #:pad-string "0"))))
+
+(define-values (_status _headers response)
+  (http-sendrecv "benknoble.github.io" "/sitemap.xml" #:ssl? #t))
+
+(define doc
+  (xml->xexpr (document-element (read-xml response))))
+
+(define locations
+  (se-path*/list '(loc) doc))
+
+(define posts
+  (filter-map
+   (λ (loc)
+     (regexp-match (pregexp (~a ".*" month "/" day ".*")) loc))
+   locations))
+
+(for-each (compose1 displayln first) posts)
