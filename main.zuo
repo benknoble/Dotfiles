@@ -1,0 +1,203 @@
+#lang zuo
+
+(provide-targets targets-at)
+
+(require zuo/shell)
+
+(define env (runtime-env))
+
+(define (targets-at at-dir [vars (hash)])
+  (define (lookup key [default ""])
+    (hash-ref vars key default))
+
+  (define links (path->complete-path (lookup 'LINKS "links")))
+
+  (define at-home
+    (make-at-dir (cdr (or (assoc "HOME" (hash-ref env 'env))
+                          (error "HOME not set in environment")))))
+  (define at-xdg-config
+    ;; TODO: read XDG vars
+    (make-at-dir (at-home ".config")))
+  (define at-links
+    (make-at-dir (at-dir links)))
+
+  (define ~/.ssh (at-home ".ssh"))
+  (define dirs
+    (list (at-xdg-config) (at-xdg-config "swi-prolog") ~/.ssh))
+
+  (define brewfile (lookup 'BREWFILE (at-dir "brew" "Brewfile")))
+  (define features (string-read (lookup 'FEATURES "git-extras brew-install rust")))
+  (define user-gitk (at-xdg-config "git" "gitk"))
+  (define dracula-gitk (at-dir "Dracula" "gitk" "gitk"))
+
+  (define alacritty-terminfo-url
+    "https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info")
+  (define brew-url
+    "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh")
+
+  (define tmux-terminfo
+    (at-home ".terminfo" "74" "tmux-256color"))
+
+  (define targets
+    `([:target default ()
+               ,(lambda (token)
+                  (alert "targets:")
+                  (for-each (lambda (t)
+                              (alert (~a "  " (list-ref t 1))))
+                            (filter (lambda (t)
+                                      (equal? (car t) ':target))
+                                    targets))
+                  (alert "features:")
+                  (for-each (lambda (f)
+                              (alert (~a "  " f)))
+                            '(git-extras brew-install rust)))]
+      [:target install (dirs symlink ,tmux-terminfo zcompile ,@features) ,void]
+      [:target update (pull-master update-submodules symlink brew-check vimtags rust zcompile) ,void]
+      [:target vimtags ()
+               ,(lambda (token)
+                  (shell/wait "vim +':helptags ALL' +q"))]
+      [:target ,brewfile ()
+               ,(lambda (dest token)
+                  (shell/wait "brew bundle dump --force" (~a "--file=" (string->shell dest))))]
+      [:target ,tmux-terminfo ()
+               ,(lambda (dest token)
+                  (shell/wait
+                   "curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz &&"
+                   "gunzip terminfo.src.gz &&"
+                   "tic -xe tmux-256color terminfo.src &&"
+                   "rm terminfo.src"))]
+      [:target dirs ()
+               ,(lambda (token)
+                  (for-each mkdir-p dirs)
+                  (shell/wait "chmod u=rwx,go=" (string->shell ~/.ssh)))]
+      [:target git-extras (,user-gitk) ,void]
+      [:target ,user-gitk (,dracula-gitk)
+               ,(lambda (dest token)
+                  (define dest-dir (car (split-path dest)))
+                  (when dest-dir
+                    (mkdir-p dest-dir))
+                  (cp* dracula-gitk dest))]
+      [:target brew-install ()
+               ,(lambda (token)
+                  (unless (find-executable-path "brew")
+                    (shell/wait (shell-subst "/bin/bash -c $(curl -fsSL ${url})"
+                                             (hash 'url (string->shell brew-url))))))]
+      [:target brew-setup ()
+               ,(lambda (token)
+                  (define brew-prefix (string-trim (shell/output "brew --prefix") "\n"))
+                  (define brew/bin/zsh (~a (string->shell brew-prefix) "/bin/zsh"))
+                  (for-each
+                   shell/wait
+                   `(["brew bundle install" ,(~a "--file=" (string->shell brewfile))]
+                     ["grep" ,brew/bin/zsh "/etc/shells"
+                      "|| sudo sh -c" ,(string->shell
+                                        (build-shell `["echo" ,brew/bin/zsh ">> /etc/shells"]))]
+                     ["chsh -s" ,brew/bin/zsh "$USER"])))]
+      [:target rust ("rust_packages")
+               ,(lambda (token)
+                  (when (find-executable-path "cargo")
+                    (for-each
+                     (lambda (package)
+                       (shell/wait "cargo install" package))
+                     (filter non-empty-string?
+                             (string-split (file->string "rust_packages") "\n")))))]
+      [:target pull-master ()
+               ,(lambda (token)
+                  (for-each
+                   shell/wait
+                   `(["git checkout master"]
+                     ["git pull --autostash"])))]
+      [:target update-submodules ()
+               ,(lambda (token)
+                  (for-each
+                   shell/wait
+                   `(["git submodule sync"]
+                     ["git submodule update --recursive"])))]
+      [:target brew-check (,brewfile)
+               ,(lambda (token)
+                  (shell/wait/no-verify "brew bundle check" (~a "--file=" (string->shell brewfile))))]
+      [:target zcompile (,(at-links "zcompile"))
+               ,(lambda (token)
+                  (when (find-executable-path "zsh")
+                    (shell/wait (at-links "zcompile"))))]
+      [:target compile-vim (,(at-links "bin/compile-vim"))
+               ,(lambda (token)
+                  (shell/wait "bash -c 'type readarray'")
+                  (shell/wait (at-links "bin/compile-vim")))]
+      [:target symlink ()
+               ,(lambda (token)
+                  (for-each
+                   (lambda (dest-symbol)
+                     (define dest-raw (symbol->string dest-symbol))
+                     (define src (at-links (hash-ref the-links dest-symbol)))
+                     (define dest (at-home dest-raw))
+                     (alert (~a "rm -rf " dest))
+                     (rm* dest)
+                     (symlink src #;<- dest)
+                     (alert (~a dest " -> " src)))
+                   (hash-keys the-links)))]))
+
+  (make-targets targets))
+
+(define the-links
+  ;; vim: `!iicolumn -t<enter>` and `gsii` will help
+  (hash
+   '.bash                       "bash"
+   '.bash_profile               "bash_profile"
+   '.bashrc                     "bashrc"
+   '.bin                        "bin"
+   '.clisprc.lisp               "clisprc.lisp"
+   '.clojure                    "clojure"
+   '.config/alacritty           "config/alacritty"
+   '.config/http-prompt         "config/http-prompt"
+   '.config/swi-prolog/init.pl  "config/swi-prolog/init.pl"
+   '.ctags.d                    "ctags.d"
+   '.gdbinit                    "gdbinit"
+   '.git_template               "git_template"
+   '.gitattributes              "gitattributes"
+   '.gitconfig                  "gitconfig"
+   '.gitignore_global           "gitignore_global"
+   '.gitshrc                    "gitshrc"
+   '.inputrc                    "inputrc"
+   '.irbrc                      "irbrc"
+   '.jupyter                    "jupyter"
+   '.latexmkrc                  "latexmkrc"
+   '.markdownlintrc             "markdownlintrc"
+   '.newsboat                   "newsboat"
+   '.pryrc                      "pryrc"
+   '.pythonrc                   "pythonrc"
+   '.rgrc                       "rgrc"
+   '.ssh/config                 "ssh/config"
+   '.tmux.conf                  "tmux.conf"
+   '.vim                        "vim"
+   '.zsh                        "zsh"
+   '.zshenv                     "zshenv"
+   '.zshfns                     "zshfns"
+   '.zshrc                      "zshrc"
+   ))
+
+(define (shell/output command-tree [options (hash)])
+  (define options*
+    (hash-remove options 'no-thread?))
+  (define wait
+    (cond
+      [(hash-ref options 'no-thread? #f) process-wait]
+      [else thread-process-wait]))
+  (define p
+    (shell command-tree (hash-set options 'stdout 'pipe)))
+  (define proc (hash-ref p 'process))
+  (wait proc)
+  (unless (= 0 (process-status proc))
+    (error 'shell/output "command failed:\n" command-tree))
+  (define stdout (hash-ref p 'stdout))
+  (fd-read stdout eof))
+
+(define (shell/wait/no-verify . args)
+  (define p (apply shell args))
+  (thread-process-wait (hash-ref p 'process)))
+
+(define (empty-string? s)
+  (string=? "" s))
+
+(define (non-empty-string? s)
+  (not (empty-string? s)))

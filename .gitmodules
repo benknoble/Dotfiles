@@ -99,9 +99,6 @@
 [submodule "links/vim/pack/languages/start/applescript"]
 	path = links/vim/pack/languages/opt/applescript
 	url = https://github.com/RobertAudi/applescript.vim.git
-[submodule "benknoble/plink"]
-	path = plink
-	url = https://github.com/benknoble/plink.git
 [submodule "vimben"]
 	path = links/vim/pack/benknoble
 	url = https://github.com/benknoble/vimben.git
@@ -151,3 +148,6 @@
 [submodule "links/vim/pack/utility/opt/jqplay"]
 	path = links/vim/pack/utility/opt/jqplay
 	url = https://github.com/bfrg/vim-jqplay
+[submodule "zuo"]
+	path = zuo
+	url = https://github.com/racket/zuo

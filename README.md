@@ -18,10 +18,10 @@ large part of that.
 
 First, clone the repo into your dotfiles directory (the name of the directory
 doesn't matter). If your git supports it, `--jobs ...` might be a good idea. You
-can skip the submodules if you choose, but you *must* have the plink submodule
-or a [plink](https://github.com/benknoble/plink) installation to build the
-makefile used for installation and maintenance. The submodule is the easiest
-route.
+can skip the submodules if you choose, but you *must* have the zuo submodule or
+a [zuo](https://docs.racket-lang.org/zuo/index.html) installation to execute
+build instructions used for installation and maintenance. The submodule is the
+easiest route.
 
 ```bash
 mkdir ~/Dotfiles
@@ -29,22 +29,22 @@ git clone --recurse-submodules https://github.com/benknoble/Dotfiles.git ~/Dotfi
 cd ~/Dotfiles
 ```
 
-Next, run `make` to kick things off:
+Next, run `./compile-zuo` to kick things off:
 
 ```bash
-./dotfiles.plink
-make install
+./compile-zuo
+zuo . install
 ```
 
 This will do several things:
 
-1. Use [Plink](https://github.com/benknoble/plink) to generate the makefile.
-1. Executes `make symlink`, which removes old files and creates the symlinks
-   :warning:**No backups are made. Create your own prior to installing if you
-   wish.**:warning:
-2. (Optional) Executes `make $(FEATURES)`. See the [Makefile](/dotfiles.plink)
-   for supported options and the defaults. `FEATURES=none` can be used to
-   skip this.
+1. Build [zuo](https://docs.racket-lang.org/zuo/index.html).
+1. Install symlinks with `zuo . symlink`, which removes old files and creates
+   the symlinks. :warning:**No backups are made. Create your own prior to
+   installing if you wish.**:warning:
+2. (Optional) Run `zuo . $(FEATURES)`. See the [zuo script](main.zuo) for
+   supported options and the defaults. Setting `FEATURES` to an empty string can
+   be used to skip this.
 
 At this point, you may want to setup brew, so do
 
@@ -54,11 +54,11 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 # macOS
 command -v brew
 
-make brew_setup
+zuo . brew-setup
 ```
 
 The next time you start a shell (probably homebrewed `zsh`, since that's what
-`make brew_setup` sets it to), your new config files will load , giving you
+`zuo . brew-setup` sets it to), your new config files will load, giving you
 access to a whole host of new command-line fu.
 
 `reload` is a helpful alias (defined for both `bash` and `zsh`) for when changes
@@ -68,18 +68,15 @@ environment. `:Reload` exists for `vim`, and there are reload bindings for both
 
 ### Keeping Up-to-date
 
-`make update` should be all you need.
+`zuo . update` should be all you need.
 
-### Other `make` things
+### Other `zuo` things
 
-Controlled via Plink and dotfiles.plink.
+The build script is _only_ guaranteed to work if run from the top-level of this
+repo. It does use zuo-isms to try to work elsewhere, but I haven't really tested
+it.
 
-The Makefile is _only_ guaranteed to work if run from the top-level of this
-repo.
-
-- provides useful targets (`make` prints a list)
-- customizable (see the top section of Makefile)
-- updates as needed
+Several useful targets are supported. `zuo .` prints a list.
 
 ## Documentation & Full Feature List
 
@@ -93,11 +90,12 @@ The old docs have been eliminated. They can be found in the git history.
 ### Theme
 
 I am now using the Dracula themes for all my software. You can find some of them
-under the Dracula directory and some in a vim package. Some are hand-coded and
+under the Dracula directory and some in a Vim package. Some are hand-coded and
 not official. Additionally, if Dracula Pro is available, I'm using that instead.
-I usually use the regular variant, though the Van Helsing variant is also nice.
+I usually use the Van Helsing variant, though the regular variant is also nice.
 
-I'm using Victor Mono as a font. Cursive italics have grown on me.
+I'm using Victor Mono as a font. Cursive italics have grown on me; ligatures
+have not.
 
 ### Code of Conduct
 
