@@ -37,6 +37,8 @@
 
   (define tmux-terminfo
     (at-home ".terminfo" "74" "tmux-256color"))
+  (define xterm-terminfo
+    (at-home ".terminfo" "78" "xterm-256color"))
 
   (define targets
     `([:target default ()
@@ -59,12 +61,13 @@
       [:target ,brewfile ()
                ,(lambda (dest token)
                   (shell/wait "brew bundle dump --force" (~a "--file=" (string->shell dest))))]
-      [:target ,tmux-terminfo ()
+      [:target (,tmux-terminfo ,xterm-terminfo) ()
                ,(lambda (dest token)
                   (shell/wait
                    "curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz &&"
                    "gunzip terminfo.src.gz &&"
                    "tic -xe tmux-256color terminfo.src &&"
+                   "tic -xe xterm-256color terminfo.src &&"
                    "rm terminfo.src"))]
       [:target dirs ()
                ,(lambda (token)
