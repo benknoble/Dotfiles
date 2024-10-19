@@ -44,6 +44,11 @@ call popsikey#register('<Leader>w', [
       \   info:   'edit notepad',
       \   action: ":Ewiki notepad\<CR>",
       \ },
+      \ #{
+      \   key:    'b',
+      \   info:   'find backlinks',
+      \   action: ":execute 'grep' expand('%:p:s?' .. g:wiki_root .. '??')[1:] g:wiki_root\<CR>",
+      \ },
       \ ],
       \ #{
       \   title: ' Wiki ',
