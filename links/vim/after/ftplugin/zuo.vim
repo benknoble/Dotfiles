@@ -2,6 +2,8 @@
 " Language:              zuo
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
+call sexp#filetype#do_filetype('zuo')
+
 let b:interpreter = 'racket'
 
 nmap <buffer> <Localleader>qe ysiebaquote <Esc>:silent! call repeat#set("\<Localleader>qe", -1)<CR>

@@ -382,6 +382,7 @@ if has('autocmd')
     autocmd!
     autocmd FileType * setlocal formatoptions=tcrqlnj
   augroup end
+  let g:sexp_filetypes = 'clojure,racket,racket-info,zuo,scheme,lisp,timl'
 endif
 " }}}
 

@@ -2,7 +2,7 @@
 " Language:              info
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-call sexp#filetype#do_filetype('scheme')
+call sexp#filetype#do_filetype('racket-info')
 
 let b:interpreter = 'racket'
 
