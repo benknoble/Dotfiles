@@ -18,5 +18,5 @@ jobs:
         with:
           ruby-version: '3.1'
       - run: |
-          ./dotfiles.plink
-          make install
+          ./compile-zuo
+          zuo . install
