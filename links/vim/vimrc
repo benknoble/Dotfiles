@@ -259,6 +259,7 @@ function! s:set_colors_to_dracula() abort
   hi link User5 DraculaOrange
 
   highlight link racketParen DraculaSubtle
+  highlight link zuoParen DraculaSubtle
   highlight link clojureParen DraculaSubtle
   highlight link lispParen DraculaSubtle
   highlight link infoParen DraculaSubtle
