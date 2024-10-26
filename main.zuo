@@ -196,6 +196,7 @@
   (fd-read stdout eof))
 
 (define (shell/wait/no-verify . args)
+  (displayln (build-shell args))
   (define p (apply shell args))
   (thread-process-wait (hash-ref p 'process)))
 
