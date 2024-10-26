@@ -138,7 +138,29 @@
                      (rm* dest)
                      (symlink src #;<- dest)
                      (alert (~a dest " -> " src)))
-                   (hash-keys the-links)))]))
+                   (hash-keys the-links)))]
+      [:target symlink-racket-paths ()
+               ,(lambda (token)
+                  (define paths
+                    (car
+                     (string-read
+                      (shell/output `("racket -I racket/base -e"
+                                      ,(string->shell
+                                        (string-join
+                                         '("(require setup/dirs)"
+                                           "(write (map path->bytes"
+                                           "            (list (find-user-console-bin-dir)"
+                                           "                  (find-user-man-dir))))")))))
+                      0
+                      "$(racket -I racket/base -e ...)")))
+                  (define bin-dir (car paths))
+                  (define man-dir (cadr paths))
+                  (define racket-bin (at-home ".racket-bin"))
+                  (define racket-man (at-home ".racket-man"))
+                  (symlink bin-dir #;<- racket-bin)
+                  (alert (~a racket-bin " -> " bin-dir))
+                  (symlink man-dir #;<- racket-man)
+                  (alert (~a racket-man " -> " man-dir)))]))
 
   (make-targets targets))
 

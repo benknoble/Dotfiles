@@ -14,14 +14,3 @@
   pathadd_front /usr/local/opt/openjdk/bin
   pathadd_front man /usr/local/opt/openjdk/libexec/openjdk.jdk/Contents/Home/man
 }
-
-command -v racket &>/dev/null && {
-  racket_paths=($(IFS=$'\n' racket -I racket/base -e '
-    (require setup/dirs)
-    (for-each displayln
-      (list (find-user-console-bin-dir)
-            (find-user-man-dir)))
-  '))
-  pathadd $racket_paths[1]
-  pathadd man $racket_paths[2]
-}
