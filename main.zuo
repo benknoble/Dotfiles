@@ -157,8 +157,10 @@
                   (define man-dir (cadr paths))
                   (define racket-bin (at-home ".racket-bin"))
                   (define racket-man (at-home ".racket-man"))
+                  (rm* racket-bin)
                   (symlink bin-dir #;<- racket-bin)
                   (alert (~a racket-bin " -> " bin-dir))
+                  (rm* racket-man)
                   (symlink man-dir #;<- racket-man)
                   (alert (~a racket-man " -> " man-dir)))]))
 
