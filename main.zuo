@@ -157,12 +157,9 @@
                   (define man-dir (cadr paths))
                   (define racket-bin (at-home ".racket-bin"))
                   (define racket-man (at-home ".racket-man"))
-                  (rm* racket-bin)
-                  (symlink bin-dir #;<- racket-bin)
-                  (alert (~a racket-bin " -> " bin-dir))
-                  (rm* racket-man)
-                  (symlink man-dir #;<- racket-man)
-                  (alert (~a racket-man " -> " man-dir)))]))
+                  (for-each make-racket-link
+                            (list (racket-link racket-bin bin-dir)
+                                  (racket-link racket-man man-dir))))]))
 
   (make-targets targets))
 
@@ -202,6 +199,15 @@
    '.zshfns                     "zshfns"
    '.zshrc                      "zshrc"
    ))
+
+(struct racket-link [src dest])
+
+(define (make-racket-link rl)
+  (define src (racket-link-src rl))
+  (define dest (racket-link-dest rl))
+  (rm* src)
+  (symlink dest #;<- src)
+  (alert (~a src " -> " dest)))
 
 (define (shell/output command-tree [options (hash)])
   (define options*
