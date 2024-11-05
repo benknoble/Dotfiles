@@ -1,5 +1,5 @@
 # tie them together like PATH/path
-typeset -T INFOPATH infopath
+typeset -xT INFOPATH infopath
 # enforce unique elements
 typeset -U path manpath mailpath fpath infopath cdpath
 
