@@ -29,6 +29,8 @@ export RIPGREP_CONFIG_PATH=~/.rgrc
 
 export RACO_TEST_ARGS='-j $$(nproc)'
 
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+
 # personal vars {{{
 
 # OS test

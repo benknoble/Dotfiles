@@ -35,10 +35,10 @@
   (define brew-url
     "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh")
 
+  (define terminfo
+    (at-home ".local" "share" "terminfo"))
   (define tmux-terminfo
-    (at-home ".terminfo" "74" "tmux-256color"))
-  (define xterm-terminfo
-    (at-home ".terminfo" "78" "xterm-256color"))
+    (build-path terminfo "74" "tmux-256color"))
 
   (define targets
     `([:target default ()
@@ -61,14 +61,16 @@
       [:target ,brewfile ()
                ,(lambda (dest token)
                   (shell/wait "brew bundle dump --force" (~a "--file=" (string->shell dest))))]
-      [:target (,tmux-terminfo ,xterm-terminfo) ()
+      [:target ,tmux-terminfo ()
                ,(lambda (dest token)
+                  (rm* dest)
                   (shell/wait
-                   "curl -LO https://invisible-island.net/datafiles/current/terminfo.src.gz &&"
-                   "gunzip terminfo.src.gz &&"
-                   "tic -xe tmux-256color terminfo.src &&"
-                   "tic -xe xterm-256color terminfo.src &&"
-                   "rm terminfo.src"))]
+                   "zsh -c"
+                   (string->shell
+                    (build-shell
+                     `("/usr/bin/tic -x -o" ,(string->shell terminfo)
+                       "=($(brew --prefix ncurses)/bin/infocmp -x tmux-256color |"
+                       "  sed -E 's/pairs#(0x10000|65536)/pairs#32767/')")))))]
       [:target dirs ()
                ,(lambda (token)
                   (for-each mkdir-p dirs)

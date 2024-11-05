@@ -512,6 +512,11 @@ if ! exists('g:colors_name')
     endif
     let s:italic_default = 1
   elseif $TERM ==# 'alacritty'
+    " for some reason, the alacritty profile isn't correct on my machine at the
+    " moment; probably because I'm stuck on macOS Monterey before the curses
+    " upgrade in Sonoma.
+    let &t_ZH = "\e[3m"
+    let &t_ZR = "\e[23m"
     let s:italic_default = 1
   endif
 
