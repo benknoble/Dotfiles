@@ -141,6 +141,9 @@
                      (symlink src #;<- dest)
                      (alert (~a dest " -> " src)))
                    (hash-keys the-links)))]
+      [:target gc-submodules ()
+               ,(lambda (token)
+                  (shell/wait "git submodule foreach" (string->shell "git gc --aggressive --prune=now")))]
       [:target symlink-racket-paths ()
                ,(lambda (token)
                   (define paths
