@@ -51,6 +51,7 @@
 	s = status --short
 	sb = show-branch
 	sbu = sb HEAD HEAD@{upstream}
+	sbup = sbu HEAD@{push}
 	sdiff = diff && git submodule foreach 'git diff'
 	spush = push --recurse-submodules=on-demand
 	sr = status --short --branch
