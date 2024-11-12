@@ -24,3 +24,4 @@ Pipfile.lock diff=json
 *.ins diff=tex
 *.yaml diff=yq
 *.yml diff=yq
+*.csv diff=csv
