@@ -8,7 +8,7 @@
 	bv = branch -vva
 	ca = commit --all
 	cc = commit
-	cce = !git commit --edit --file="$(git rev-parse --git-common-dir)"/COMMIT_EDITMSG
+	cce = !git commit --edit --file="$(git rev-parse --git-dir)"/COMMIT_EDITMSG
 	ce = config --edit
 	changed = diff --name-only
 	cm = commit --message
