@@ -78,6 +78,17 @@ it.
 
 Several useful targets are supported. `zuo .` prints a list.
 
+## Development
+
+A handful of useful Git aliases to add locally:
+
+```
+[alias]
+	plugins = !git ca -m 'all: update plugins'
+	spell = !git cc links/vim/spell/ -m 'vim: update spellfile'
+	brew = !git cc brew -m 'brew: update Brewfile'
+```
+
 ## Documentation & Full Feature List
 
 Check the code—this is where you should probably *not* use something until you
