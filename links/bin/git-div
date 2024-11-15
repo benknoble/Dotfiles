@@ -1,0 +1,56 @@
+#! /bin/sh
+
+# Inspired by: https://github.com/mjdominus/git-util/blob/master/bin/git-vee
+
+set -eu
+
+OPTIONS_SPEC="\
+$(basename -- "$0" | sed -e 's/-/ /') [<options>] [<base=HEAD> [<upstream>]]
+
+Show branch divergence between base and its upstream
+--
+v verbose: show divergence command"
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+. "$(git --exec-path)"/git-sh-setup
+set -u
+
+verbose=
+base=@
+upstream=
+
+set_upstream() {
+  if ! upstream="$(git rev-parse --verify --symbolic -q "$base@{push}")"; then
+    if ! upstream="$(git rev-parse --verify --symbolic -q "$base@{upstream}")"; then
+      die "could not determine upstream for base $base"
+    fi
+  fi
+}
+
+main() {
+  while test $# -gt 0; do
+    opt="$1"
+    shift
+    case "$opt" in
+      (-v) verbose=1 ;;
+      (--) break ;;
+    esac
+  done
+  case $# in
+    (0) : continue ;;
+    (1) base="$1" ;;
+    (2) base="$1"; upstream="$2" ;;
+    (*) printf '%s\n' 'too many arguments' >&2; usage ;;
+  esac
+  shift $#
+
+  test -z "$upstream" && set_upstream
+
+  set -- git graph --boundary --cherry-mark --left-right "$base...$upstream"
+  test -n "$verbose" && printf '%s\n' "$*" >&2
+  exec "$@"
+}
+
+main "$@"
