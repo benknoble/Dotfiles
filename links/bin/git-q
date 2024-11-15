@@ -1,0 +1,38 @@
+#! /bin/sh
+
+# Inspired by: https://github.com/mjdominus/git-util/blob/master/bin/git-q
+
+set -eu
+
+OPTIONS_SPEC="\
+$(basename -- "$0" | sed -e 's/-/ /') [-v] <spec-or-ref> [<ref>…]
+
+Query refs for data using pretty-format specs (default: %cd)
+--
+v verbose: show commit IDs instead of input refs"
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+. "$(git --exec-path)"/git-sh-setup
+set -u
+
+id=%S
+
+while test $# -gt 0; do
+  opt="$1"
+  shift
+  case "$opt" in
+    (-v) id=%h ;;
+    (--) break ;;
+  esac
+done
+test $# -eq 0 && usage
+
+query=%cd
+case "$1" in
+  (%*) query="$1"; shift ;;
+esac
+test $# -eq 0 && usage
+
+exec git show -s --format="$id $query" "$@"
