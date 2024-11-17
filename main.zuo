@@ -53,7 +53,7 @@
                   (for-each (lambda (f)
                               (alert (~a "  " f)))
                             '(git-extras brew-install rust)))]
-      [:target install (dirs symlink ,tmux-terminfo zcompile ,@features) ,void]
+      [:target install (dirs symlink zcompile ,@features) ,void]
       [:target update (pull-master update-submodules symlink brew-check vimtags rust zcompile) ,void]
       [:target vimtags ()
                ,(lambda (token)
