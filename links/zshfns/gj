@@ -1,7 +1,7 @@
 #! /usr/bin/env zsh
 
 gj () {
-  git jump $(history -1 | sed -E 's/[[:space:]]*[[:digit:]]+[[:space:]]*//' \
+  eval git jump $(history -1 | sed -E 's/[[:space:]]*[[:digit:]]+[[:space:]]*//' \
     | sed -E -e 's/(^git)|(^g)//' \
     -e 's/^[[:space:]]*//' \
     -e 's/^d/diff/' \
