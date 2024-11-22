@@ -245,6 +245,8 @@ bindkey -M viins '^K' insert-composed-char
 
 bindkey -M viins '^S' push-line
 
+bindkey -M viins '^O' execute-named-command
+
 # keys }}}
 
 # term {{{
