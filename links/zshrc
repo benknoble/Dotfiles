@@ -145,7 +145,8 @@ setopt completeinword
 zmodload zsh/complist
 bindkey -M menuselect ^Xi vi-insert
 bindkey -M menuselect ^E send-break
-zstyle ':completion:*' completer _extensions _complete _approximate
+bindkey -M viins '^I' complete-word
+zstyle ':completion:*' completer _expand _extensions _complete _approximate
 zstyle ':completion:*' menu select=5
 zstyle ':completion:*' list-separator '#'
 zstyle ':completion:*:descriptions' format '%F{green}(%d)%f'
