@@ -164,6 +164,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 # thing is nice, but most of the commands I *know* already (I'm not learning
 # git), and further it makes it stupid hard to get to aliases in completion
 zstyle ':completion:*:*:git:*' tag-order all-commands
+zstyle ':completion:*:*:g:*' tag-order all-commands
 
 # completion }}}
 
