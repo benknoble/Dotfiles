@@ -21,10 +21,26 @@ verbose=
 base=@
 upstream=
 
+rev_parse() {
+  git rev-parse --verify -q "$@"
+}
+
+# $1: suffix for base@{<suffix>} notation
+# $2: optional '=' to skip this suffix if equal to base
+try_upstream() {
+  if ! possible_upstream="$(rev_parse --symbolic "$base@{$1}")"; then
+    return 1
+  fi
+  if test "${2:-}" = = && test "$(rev_parse "$possible_upstream")" = "$(rev_parse "$base")"; then
+    return 1
+  fi
+  upstream=$possible_upstream
+}
+
 set_upstream() {
-  if ! upstream="$(git rev-parse --verify --symbolic -q "$base@{push}")"; then
-    if ! upstream="$(git rev-parse --verify --symbolic -q "$base@{upstream}")"; then
-      die "could not determine upstream for base $base"
+  if ! try_upstream push =; then
+    if ! try_upstream upstream; then
+      die "could not determine useful upstream for base $base"
     fi
   fi
 }
