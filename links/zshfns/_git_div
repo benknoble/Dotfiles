@@ -1,0 +1,9 @@
+#compdef git-div
+
+emulate -L zsh
+
+# change some options (may not be necessary)
+setopt $_comp_options
+
+# for git doc style invocations
+__git_complete_refs
