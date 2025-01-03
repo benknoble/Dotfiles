@@ -1,0 +1,35 @@
+#! /bin/zsh
+
+autoload -U zargs
+
+gh_headers=(
+  -H 'Accept: application/vnd.github+json'
+  -H 'X-GitHub-Api-Version: 2022-11-28'
+)
+
+list_repos() {
+  local repo=$1 && shift
+  gh api --paginate $gh_headers /orgs/"$repo"/repos |
+    jq -r 'map(.full_name) | .[]' |
+    if (($# == 0)); then cat; else grep -v ${(z):--e\ ${^@}}; fi
+}
+
+unsubscribe() {
+  gh api --silent --method DELETE $gh_headers /repos/"$1"/subscription
+}
+
+if ! command -v nproc >/dev/null; then
+  nproc() {
+    case $(uname -s) in
+      (Darwin|*BSD*) sysctl -n hw.ncpu;;
+      # no (Linux) case: nproc already there
+      # coreutils fallback
+      (*) getconf _NPROCESSORS_ONLN;;
+    esac
+  }
+fi
+
+case "$1" in
+  (-n) shift && list_repos "$@" ;;
+  (*) zargs -n 1 -P $(nproc) -- "${(f)$(list_repos "$@")}" -- unsubscribe ;;
+esac
