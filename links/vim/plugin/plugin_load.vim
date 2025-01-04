@@ -23,7 +23,7 @@ command -nargs=+ -complete=shellcmd Man delcommand Man
       \ | if &filetype is# 'man' | setlocal filetype=fixmeman | endif
       \ | runtime ftplugin/man.vim
       \ | if &filetype is# 'fixmeman' | setlocal filetype=man | endif
-      \ | <mods>Man <args>
+      \ | <mods> Man <args>
 
 let g:ft_man_open_mode = 'split'
 let g:ft_man_folding_enable = 1
