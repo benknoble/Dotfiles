@@ -15,7 +15,7 @@ setlocal nofoldenable
 " Search for options
 " Use very magic to make patterns easy, and case sensitive because -b != -B
 nnoremap <buffer> - /^\C\v\s*-
-nnoremap <buffer> _ /^\C\v\s*--
+nnoremap <buffer> _ /^\C\v\s*(-[^,]*,\s*)?--(\[no-\])?
 
 nnoremap <buffer> q :quit<enter>
 
