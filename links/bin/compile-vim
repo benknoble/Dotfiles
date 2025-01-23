@@ -29,6 +29,7 @@ clone_vim() {
 }
 
 build_and_install_vim() (
+  # future reference: https://github.com/Homebrew/homebrew-core/commit/174f85e0004c4aafc92714558c2b37c57e8ff925
   pushd "${VIM_SOURCE}"
   unset SDKROOT PYTHONPATH
   local python python_path
