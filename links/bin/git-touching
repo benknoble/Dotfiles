@@ -4,8 +4,9 @@ set -euo pipefail
 
 USAGE='[-h]
 
-Show commits touched by the current diffs
-(does not include deleted lines)'
+Show commits touched by the current diffs (does not include deleted lines).
+
+Use this when asking for help in a dirty repo.'
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
