@@ -108,11 +108,11 @@ color_name() {
 }
 
 filter() {
-  grep '.' | \
-    eval "$FILTER" | \
-    sort | \
-    uniq -c | \
-    sort -nr | \
+  grep '.' |
+    eval "$FILTER" |
+    sort |
+    uniq -c |
+    sort -nr |
     head -n "$LIMIT"
 }
 
@@ -134,10 +134,10 @@ if [[ "$(git branch | grep '\*')" =~ $REVIEW_BASE ]]; then
   files | filter | histogram | color_name
 else
   MERGE_BASE="$(git merge-base HEAD "$REVIEW_BASE")"
-  files | \
+  files |
     # If on separate branch, show heatmap for files changed since master
-    grep -xF -f <(git diff --name-only "$MERGE_BASE") | \
-    filter | \
-    histogram | \
+    grep -xF -f <(git diff --name-only "$MERGE_BASE") |
+    filter |
+    histogram |
     color_name
 fi
