@@ -129,7 +129,7 @@ else
   exit 1
 fi
 
-if [[ "$(git branch | grep '\*')" =~ $REVIEW_BASE ]]; then
+if [[ "$(git rev-parse HEAD)" == "$(git rev-parse "$REVIEW_BASE")" ]]; then
   # If on master, show heatmap for whole repo
   files | filter | histogram | color_name
 else
