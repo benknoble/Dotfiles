@@ -3,11 +3,9 @@
 
 set -euo pipefail
 
-dir="$( cd "$( dirname "${BASH_SOURCE[0]}")" && pwd )"
-
 # set up some common variables
-USAGE='[-h] [ref]
-Display commits introduced by last change to HEAD [or ref]'
+USAGE='[-h] [ref=HEAD] [<log-options>]
+Display commits introduced by last change to ref'
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
