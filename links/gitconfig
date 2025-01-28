@@ -127,6 +127,7 @@
 	mine = %C(yellow)%h%Creset%C(bold green)%d%Creset %s (%C(magenta)authored: %ar%Creset, %C(red)committed: %cr%Creset) %C(ul bold cyan)<%an>%Creset
 [rebase]
 	autoSquash = true
+	autoStash = true
 [status]
 	submodulesummary = 1
 	showstash = true
