@@ -128,6 +128,7 @@
 [rebase]
 	autoSquash = true
 	autoStash = true
+	updateRefs = true
 [status]
 	submodulesummary = 1
 	showstash = true
