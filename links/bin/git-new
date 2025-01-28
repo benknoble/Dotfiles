@@ -18,16 +18,7 @@ new() {
 }
 
 valid_ref() {
-  type="$(git cat-file -t "$ref" 2> /dev/null)"
-  case "$type" in
-    commit)
-      git rev-parse --verify --quiet "$ref" &> /dev/null
-      return $?
-      ;;
-    *)
-      return 1
-      ;;
-  esac
+  git rev-parse --verify --quiet --end-of-options "${ref}^{commit}" >/dev/null
 }
 
 ref=${1:-HEAD}
