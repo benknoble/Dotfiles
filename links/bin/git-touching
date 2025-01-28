@@ -2,21 +2,18 @@
 
 set -euo pipefail
 
-USAGE='[-h]
+OPTIONS_SPEC="\
+$(basename -- "$0" | sed -e 's/-/ /')
 
 Show commits touched by the current diffs (does not include deleted lines).
-
-Use this when asking for help in a dirty repo.'
+Use this when asking for help in a dirty repo.
+--"
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
 set +u
-source "$(git --exec-path)"/git-sh-setup
+. "$(git --exec-path)"/git-sh-setup
 set -u
-
-log() {
-  printf '%s\n' "$@"
-} >&2
 
 changed_lines() {
   while read -r -d '' file ; do
