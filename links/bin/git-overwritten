@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-# Usage: git overwritten [--[no-]color] [<base=HEAD@{upstream}>] [<head=HEAD>]
+# Usage: git overwritten [<base=HEAD@{upstream}>] [<head=HEAD>]
 #
 # Aggregates git blame information about original owners of lines changed or
 # removed in the '<base>...<head>' diff. Use this when asking for help in a
@@ -33,8 +33,6 @@ abort() {
 
 while [ "$#" -gt 0 ]; do
   case "$1" in
-  --color ) colorize=1 ;;
-  --no-color ) colorize= ;;
   -h | --help )
     sed -ne '/^#/!q;s/.\{1,2\}//;1d;p' < "$0"
     exit 0
@@ -53,15 +51,8 @@ done
 base=${base:-'HEAD@{upstream}'}
 head="${head:-HEAD}"
 
-[ -t 1 ] && colorize="${colorize:-1}"
-
-color() {
-  if [ -n "$colorize" ]; then
-    printf "\e[0;%dm%s\e[m" "$1" "$2"
-  else
-    echo -n "$2"
-  fi
-}
+color=auto
+[ -t 1 ] && color=always
 
 git diff "${base}...${head}" --diff-filter=DM --no-prefix -w -U0 | grep -v '^+' | awk '
   function print_range() {
@@ -90,31 +81,6 @@ git diff "${base}...${head}" --diff-filter=DM --no-prefix -w -U0 | grep -v '^+' 
     if (start) print_range()
   }
 ' | xargs -L1 git blame --line-porcelain "$base" | awk -v OFS=$'\t' '
-  BEGIN { num_lines = name_length = 0 }
-  function val() { sub(/^[a-z-]+ /, ""); return $0 }
-  /^[0-9a-f]{40} / { sha = $1 }
-  /^author / {
-    author = val()
-    len = length(author)
-    if (len > name_length) name_length = len
-  }
-  /^committer-time / { time = val() }
-  /^summary / { msg = val() }
-  /^\t/ {
-    print time, sha, author, msg
-    num_lines += 1
-  }
-  END { print name_length }
-' | sort -n | {
-  read -r name_length
-
-  while IFS=$'\t' read -r time sha author msg; do
-    date -r "$time" "+%Y-%m-%d" | tr -d $'\n'
-    printf ' '
-    color 33 "${sha:0:7}"
-    printf '  '
-    color 32 "$(printf "%${name_length}s" "$author")"
-    printf ': '
-    echo "$msg"
-  done
-} | sort -r | uniq -c
+/^[0-9a-f]{40} / { print $1 }
+' | xargs -L1 git show --color="$color" --no-patch --pretty='format:%C(auto)%h (%s, %as) by %an%n' |
+  sort | uniq -c | sort -rn

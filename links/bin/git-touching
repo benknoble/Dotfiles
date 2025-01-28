@@ -32,7 +32,7 @@ touched_commits() {
     | awk '{printf "log -1 -L%d,+1:%s --pretty=format:%%H%%n --no-patch\n", $1, $2}' \
     | 2>/dev/null xargs -L1 git \
     | xargs -L1 git show --color="$color" --no-patch --pretty='format:%C(auto)%h (%s, %as) by %an%n' \
-    | sort | uniq -c
+    | sort | uniq -c | sort -rn
 }
 
 main() {
