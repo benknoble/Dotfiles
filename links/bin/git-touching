@@ -29,7 +29,7 @@ touched_commits() {
   changed_lines \
     | awk '{printf "log -1 -L%d,+1:%s --pretty=format:%%H%%n --no-patch\n", $1, $2}' \
     | 2>/dev/null xargs -L1 git \
-    | sort | uniq
+    | sort | uniq -c
 }
 
 main() {
