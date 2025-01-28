@@ -47,7 +47,6 @@
 	remerf = "!f() { git rebase \"$1\" \"$2\"; git checkout \"$1\"; git merge --ff-only \"$2\"; }; f"
 	rems = for-each-ref --sort=-committerdate --format=\"%(refname:short)\t%(color:red)%(authorname)\t%(color:blue)%(authordate:relative)%(color:reset)\" refs/remotes
 	ri = rebase --interactive
-	ris = rebase --interactive --autosquash
 	rs = rebase --autosquash
 	s = status --short
 	sb = show-branch
