@@ -90,6 +90,10 @@
 [submodule]
 	fetchJobs = 4
 
+# global branch options
+[branch]
+	autoSetupRebase = always
+
 # diffs and merges
 [diff]
 	submodule = log
