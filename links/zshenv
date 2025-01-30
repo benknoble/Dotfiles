@@ -133,7 +133,7 @@ fi
 
 # brew paths
 if "$has_brew" ; then
-  brew_prefix="$(brew --prefix)"
+  brew_prefix="$(cat ~/.brew-prefix 2>/dev/null || brew --prefix | tee ~/.brew-prefix)"
   pathadd_front "$brew_prefix/bin"
   pathadd_front man "$brew_prefix/share/man"
   pathadd_front info "$brew_prefix/share/info"
