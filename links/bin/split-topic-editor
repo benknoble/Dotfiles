@@ -1,0 +1,20 @@
+#! /bin/sh
+
+# Write the following to "test" and invoke "split-topic-editor main-%f test":
+# pick 8a0bc0c7 1
+# pick 710a9ba9 2
+
+case $# in
+  (2) : continue ;;
+  (*) printf '%s\n' "usage: $0 format file" >&2; exit 1 ;;
+esac
+
+format=$1
+file=$2
+
+printf '%s\n' H 0a 'label base' . \
+  g/^pick/-1a\\ 'reset base' \
+  "%s/^pick \\([^[:space:]]\\{1,\\}\\) .*/&\\
+exec git branch \"\$(git show -s --format=\"$format\" \\1)\"" \
+  wq |
+  ed -s "$file"

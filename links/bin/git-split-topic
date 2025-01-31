@@ -1,0 +1,58 @@
+#! /bin/bash
+
+set -euo pipefail
+
+OPTIONS_SPEC="\
+$(basename -- "$0" | sed -e 's/-/ /') [<options>] [[--] <rebase-options>]
+
+Split <ref> into one branch per commit. Forward <rebase-options> to the
+interactive git rebase that does the splitting. The <topic> must have an
+upstream configuration, or one must be present in <rebase-options>. The <format>
+must not have spaces or special characters.
+
+Undo with 'git reset @{1}' and clean up branches.
+--
+t,topic=ref The topic to split [default: current branch]
+f,format=format Format string to name new branches [default: '<topic>-%f']
+"
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+. "$(git --exec-path)"/git-sh-setup
+set -u
+
+topic="$(git branch --show-current)"
+test -n "$topic" || topic="$(git rev-parse HEAD)"
+format="$topic-%f"
+rebase_options=()
+
+while test $# -gt 0; do
+  opt="$1"
+  shift
+  case "$opt" in
+    (-t)
+      if git rev-parse --quiet --verify "${1}^{commit}" >/dev/null; then
+        topic=$1 && shift
+      else
+        die "not a valid commit: $1"
+      fi
+      ;;
+    (-f) format=$1 && shift ;;
+    (--) break ;;
+  esac
+done
+rebase_options+=("$@")
+
+original_editor="$(git var GIT_SEQUENCE_EDITOR)"
+export GIT_SEQUENCE_EDITOR
+# Git turns this into something like the following (use GIT_TRACE):
+#   /bin/sh -c 'split-topic-editor <format> "$1" && <editor> "$@"' <$0=sequence-editor> <$1=todo-list>
+# so we omit the "$1" on the editor invocation, which gets all the arguments
+# anyway. (Otherwise the editor is asked to edit the same file twice.)
+GIT_SEQUENCE_EDITOR="split-topic-editor \"$format\" \"\$1\" && $original_editor"
+
+set -x
+
+git checkout -q "$topic"
+git rebase ${rebase_options:+"${rebase_options[@]}"} -i
