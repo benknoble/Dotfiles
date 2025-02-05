@@ -2,4 +2,12 @@
 
 set -euo pipefail
 
+previous=$1
+new=$2
+branch_or_ref=$3
+
+((branch_or_ref == 1)) &&
+  test "$previous" = "$new" &&
+  exit 0
+
 "$(git rev-parse --git-common-dir)"/hooks/ctags >/dev/null 2>&1
