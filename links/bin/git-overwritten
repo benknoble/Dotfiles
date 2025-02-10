@@ -7,15 +7,15 @@
 #
 # Each line of output represents a past commit, and consists of:
 # - number of lines from the commit that this diff affects
-# - commit date
-# - commit sha
-# - author name
+# - commit hash
 # - commit subject message
+# - commit date
+# - author name
 #
-# The commits are listed in the reverse chronological order.
+# The commits are listed from most affected to least.
 #
 # A handy trick is
-# # git show $(git overwritten | awk '{print $3}')
+# # git show $(git overwritten | awk '{print $2}')
 #
 # Author: Mislav Marohnić
 # Modified by David B. Knoble (and still needs some serious work)
