@@ -86,6 +86,7 @@
 	default = current
 [submodule]
 	fetchJobs = 4
+	recurse = true
 
 # global branch options
 [branch]
