@@ -47,6 +47,8 @@ set lazyredraw
 " so that you can undo CTRL-U after inserting a line break.
 " Revert with ":iunmap <C-U>".
 inoremap <C-U> <C-G>u<C-U>
+" Vim's defaults changed with v9.1.0899, and I like backspace empty
+set backspace=
 " }}}
 
 " Search options {{{
