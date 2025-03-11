@@ -123,6 +123,11 @@ export MANPATH
 # set up initial manpath before making changes
 if command -v manpath &>/dev/null ; then
   manpath=( "${(s<:>)$(MANPATH= manpath)}" )
+  tex_index=$manpath[(I)/Library/TeX/texbin/*]
+  if ((tex_index)) && test -L $manpath[tex_index]; then
+    manpath[tex_index]=()
+  fi
+  unset tex_index
 fi
 
 if command -v brew &>/dev/null ; then
