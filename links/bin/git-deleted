@@ -1,0 +1,32 @@
+#! /bin/sh
+
+# Inspired-by: https://leahneukirchen.org/blog/archive/2013/01/a-grab-bag-of-git-tricks.html
+# Copied-from: https://leahneukirchen.org/dotfiles/bin/git-attic
+# Original-license: Public Domain (https://leahneukirchen.org/dotfiles/README)
+
+set -eu
+
+USAGE="\
+[-M] [<log-options>]
+
+List deleted paths in Git repositories. Use -M to not show renamed files (in
+other words, show 'lost' content), and use other git-log options as you like.
+Limiting with a path is especially useful.
+
+Output format:
+
+    <date> <commit-deleting-path>^:<path>
+
+The second field (<commit>^:<path>) can be given to git-show to see the deleted
+path's contents.
+"
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+. "$(git --exec-path)"/git-sh-setup
+set -u
+
+git log --raw --no-renames --date=short --format="%h %cd" "$@" |
+  awk '/^[[:xdigit:]]/ { commit=$1; date=$2 }
+       /^:/ && $5 == "D" { print date, commit "^:" $6 }'
