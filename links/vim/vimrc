@@ -154,6 +154,13 @@ set shiftround
 set softtabstop=4
 " Use 'autoindent', which mostly does what you want and stays out of your way
 set autoindent
+" Poor man's editorconfig
+if has('autocmd')
+  augroup vimrc_detect_tabs
+    autocmd!
+    autocmd BufRead * silent if getline(1, '$')->join('') =~# '\t' | setlocal softtabstop=0 shiftwidth=8 noexpandtab | endif
+  augroup END
+endif
 " }}}
 
 " Line numbers {{{
