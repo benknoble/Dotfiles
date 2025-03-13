@@ -7,6 +7,7 @@ let g:loaded_plugin_load = 1
 if has('packages') && has('syntax') && has('eval')
   packadd matchit
   silent! packadd cfilter
+  silent! packadd editorconfig
 endif
 
 " Man {{{
