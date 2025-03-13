@@ -3,11 +3,12 @@
 set -euo pipefail
 
 OPTIONS_SPEC="\
-$(basename -- "$0" | sed -e 's/-/ /')
+$(basename -- "$0" | sed -e 's/-/ /') [--cached]
 
 Show commits touched by the current diffs (does not include deleted lines).
 Use this when asking for help in a dirty repo.
---"
+--
+c,cached show commits touched by staged changes"
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
@@ -15,11 +16,13 @@ set +u
 . "$(git --exec-path)"/git-sh-setup
 set -u
 
+cached=
+
 changed_lines() {
   while read -r -d '' file ; do
     git blame "$file" \
       | awk '$1 ~ /^0*$/ {printf "%d %s\n", NR,'" \"$file\"}"
-  done < <(git diff --name-only -z)
+  done < <(git diff ${cached:+--cached} --name-only -z)
 }
 
 touched_commits() {
@@ -34,6 +37,15 @@ touched_commits() {
 
 main() {
   cd_to_toplevel
+  while (($# > 0)); do
+    opt="$1"
+    shift
+    case "$opt" in
+      (-c) cached=1 ;;
+      (--) break;
+    esac
+  done
+  (($# == 0)) || usage
   touched_commits
 }
 
