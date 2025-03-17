@@ -33,6 +33,10 @@ bind-key ~ rev-sort
 bind-key o open-in-browser-and-mark-read
 bind-key O open-in-browser
 
+bind-key = open-all-unread-in-browser-and-mark-read
+bind-key L toggle-show-read-feeds
+bind-key ^G goto-title
+
 # Filters
 # define-filter "all feeds with 'fun' tag" "tags # \"fun\""
 define-filter "unread feeds" "unread_count > 0"
