@@ -88,6 +88,9 @@
 	fetchJobs = 4
 	recurse = true
 
+[tag]
+	sort = version:refname
+
 # global branch options
 [branch]
 	autoSetupRebase = always
