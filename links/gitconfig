@@ -99,6 +99,7 @@
 
 # diffs and merges
 [diff]
+	algorithm = histogram
 	submodule = log
 	tool = vimdiff
 	colorMoved = default
