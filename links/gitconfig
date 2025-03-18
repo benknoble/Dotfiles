@@ -91,6 +91,8 @@
 # global branch options
 [branch]
 	autoSetupRebase = always
+	sort = -committerdate
+	sort = -HEAD
 
 # diffs and merges
 [diff]
