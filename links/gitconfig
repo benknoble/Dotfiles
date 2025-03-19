@@ -89,7 +89,7 @@
 	recurse = true
 
 [tag]
-	sort = version:refname
+	sort = -version:refname
 
 # global branch options
 [branch]
