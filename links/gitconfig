@@ -124,6 +124,9 @@
 	trustExitCode = true
 [rerere]
 	enabled = true
+[blame]
+	markUnblamableLines = true
+	markIgnoredLines = true
 
 # interface
 [advice]
