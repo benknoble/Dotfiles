@@ -72,6 +72,8 @@
 [init]
 	templateDir = ~/.git_template
 	defaultBranch = main
+[help]
+	autocorrect = prompt
 
 # remotes
 [fetch]
