@@ -2,8 +2,8 @@ if ! exists(':ALEInfo')
   finish
 endif
 
+let g:ale_set_loclist = 0
 let g:ale_set_signs = 0
-let g:ale_lint_on_enter = 0
 let g:ale_fix_on_save = 0
 
 let g:ale_cursor_detail = 1
@@ -42,10 +42,10 @@ function s:ale_lsp_setup() abort
   nnoremap <buffer> gD :ALEFindReferences<CR>
   nnoremap <buffer> g* :ALESymbolSearch <C-r><C-w>
 
-  nnoremap <buffer> [l :ALEPrevious<CR>
-  nnoremap <buffer> [L :ALEFirst<CR>
-  nnoremap <buffer> ]l :ALENext<CR>
-  nnoremap <buffer> ]L :ALELast<CR>
+  nnoremap <buffer> <c-k> :ALEPrevious<CR>
+  nnoremap <buffer> <localleader><c-k> :ALEFirst<CR>
+  nnoremap <buffer> <c-j> :ALENext<CR>
+  nnoremap <buffer> <localleader><c-j> :ALELast<CR>
 
   " Currently not actually visible (?)
   echom 'LSP started'
@@ -86,6 +86,11 @@ call popsikey#register('<leader>a', [
       \    key: 'i',
       \    info: 'Show info',
       \    action: ":ALEInfo\<CR>",
+      \ },
+      \ #{
+      \    key: 'p',
+      \    info: 'Populate the location list',
+      \    action: ":ALEPopulateLocList\<enter>",
       \ },
       \ ], #{
       \   title: ' ALE ',
