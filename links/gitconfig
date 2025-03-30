@@ -149,6 +149,10 @@
 	multiedit = true
 	annotate = true
 	confirm = auto
+[format]
+	coverLetter = auto
+	useAutoBase = whenAble
+	notes = true
 
 # external: lfs
 [filter "lfs"]
