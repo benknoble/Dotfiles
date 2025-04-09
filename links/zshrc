@@ -168,6 +168,9 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*:*:git:*' tag-order all-commands
 zstyle ':completion:*:*:g:*' tag-order all-commands
 
+zstyle ':completion:all-matches::::' completer _all_matches _complete
+zstyle ':completion:all-matches:*' insert true
+
 # completion }}}
 
 # options }}}
@@ -205,6 +208,8 @@ zle -N insert-composed-char
 
 zle -N predict-on
 zle -N predict-off
+
+zle -C all-matches complete-word _generic
 
 # widgets }}}
 
@@ -250,6 +255,8 @@ bindkey -M viins '^K' insert-composed-char
 bindkey -M viins '^S' push-line
 
 bindkey -M viins '^O' execute-named-command
+
+bindkey -M viins '^A' all-matches
 
 # keys }}}
 
