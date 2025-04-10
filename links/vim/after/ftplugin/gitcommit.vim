@@ -18,6 +18,9 @@ nnoremap <buffer> <LocalLeader>d :DiffGitCached<CR>
 command -buffer -bar -nargs=? Ref execute 'read !git show --no-patch --format=reference' empty(<q-args>) ? @* : <q-args> | -join
 command -buffer -bar Describe read !git config branch.$(git branch --show-current).description
 
+" disable EditorConfig here
+let b:EditorConfig_disable = 1
+
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ opts: [
       \   'shiftwidth',
@@ -33,5 +36,8 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ commands: [
       \   'Ref',
       \   'Describe',
+      \ ],
+      \ vars: [
+      \   'b:EditorConfig_disable',
       \ ],
       \ })

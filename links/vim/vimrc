@@ -158,7 +158,7 @@ set autoindent
 if has('autocmd')
   augroup vimrc_detect_tabs
     autocmd!
-    autocmd BufRead * silent if getline(1, '$')->join('') =~# '\t' | setlocal softtabstop=0 shiftwidth=8 noexpandtab | endif
+    autocmd BufRead * silent if index(['gitcommit', 'xxd', 'gitrebase'], &filetype) < 0 && getline(1, '$')->join('') =~# '\t' | setlocal softtabstop=0 shiftwidth=8 noexpandtab | endif
   augroup END
 endif
 " }}}
