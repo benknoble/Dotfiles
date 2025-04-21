@@ -86,6 +86,8 @@
 	recurseSubmodules = check
 	useForceIfIncludes = true
 	default = current
+[pull]
+	rebase = merges
 [submodule]
 	fetchJobs = 4
 	recurse = true
