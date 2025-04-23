@@ -18,7 +18,7 @@ frequency() {
 }
 
 histogram() {
-  barchart "$@"
+  barchart
 }
 
 sum_changes() {
