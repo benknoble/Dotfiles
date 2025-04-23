@@ -27,7 +27,7 @@ sum_changes() {
   /^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}$/ { date = $1 }
   # file line
   /^[[:digit:]]+[[:space:]]+/ { sums[date] += $1 - $2 }
-  END { for (d in sums) print d, sums[d] }
+  END { for (d in sums) if (sums[d] > 0) print sums[d], d }
   '
 }
 
@@ -37,7 +37,7 @@ dategraph_() {
 }
 
 dategraph_additions() {
-  git log --format=%as --numstat "$@" | sum_changes | sort -g | histogram
+  git log --format=%as --numstat "$@" | sum_changes | sort -k2 | histogram
 }
 
 main() {
