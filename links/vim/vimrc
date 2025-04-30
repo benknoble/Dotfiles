@@ -108,7 +108,7 @@ if has('autocmd')
 endif
 " Display completion matches in the status line
 set wildmenu
-set wildmode=longest,full
+set wildmode=longest:full:lastused,full
 if has('patch-8.2.4325')
   set wildoptions+=pum
 endif
