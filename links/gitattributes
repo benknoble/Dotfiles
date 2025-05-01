@@ -25,3 +25,5 @@ Pipfile.lock diff=json
 *.yaml diff=yq
 *.yml diff=yq
 *.csv diff=csv
+
+# vim: filetype=gitattributes
