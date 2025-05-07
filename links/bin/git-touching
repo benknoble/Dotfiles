@@ -6,7 +6,7 @@ OPTIONS_SPEC="\
 $(basename -- "$0" | sed -e 's/-/ /') [--cached]
 
 Show commits touched by the current diffs (does not include deleted lines).
-Use this when asking for help in a dirty repo.
+Use this when asking for help in a dirty repo. See also git-overwitten.
 --
 c,cached show commits touched by staged changes"
 SUBDIRECTORY_OK=true

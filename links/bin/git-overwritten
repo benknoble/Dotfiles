@@ -3,7 +3,7 @@
 #
 # Aggregates git blame information about original owners of lines changed or
 # removed in the '<base>...<head>' diff. Use this when asking for help in a
-# clean repo or when asking for review.
+# clean repo or when asking for review. See also git-touching.
 #
 # Each line of output represents a past commit, and consists of:
 # - number of lines from the commit that this diff affects
