@@ -18,6 +18,7 @@
 # # git show $(git overwritten | awk '{print $2}')
 #
 # Author: Mislav Marohnić
+# Original script: https://mislav.net/2014/02/hidden-documentation/
 # Modified by David B. Knoble (and still needs some serious work)
 
 set -euo pipefail
