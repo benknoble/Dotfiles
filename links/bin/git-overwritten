@@ -22,7 +22,6 @@
 
 set -euo pipefail
 
-colorize=
 unset head
 unset base
 
