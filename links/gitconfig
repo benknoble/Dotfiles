@@ -155,6 +155,7 @@
 	confirm = auto
 [format]
 	coverLetter = auto
+	coverFromDescription = auto
 	useAutoBase = whenAble
 	notes = true
 [trailer]
