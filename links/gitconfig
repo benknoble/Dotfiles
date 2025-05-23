@@ -158,6 +158,8 @@
 	coverFromDescription = auto
 	useAutoBase = whenAble
 	notes = true
+[trailer "t"]
+	cmd = git-find-ticket
 
 # external: lfs
 [filter "lfs"]

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if test -n "$1"; then
+  printf '%s\n' "$1"
+  exit
+fi
+
+# shellcheck disable=SC2209
+GIT_EDITOR=cat git branch --edit-description |
+  grep Ticket: |
+  sed 's/^Ticket:[[:space:]]*//;q'
