@@ -158,8 +158,6 @@
 	coverFromDescription = auto
 	useAutoBase = whenAble
 	notes = true
-[trailer]
-	ifExists = addIfDifferent
 
 # external: lfs
 [filter "lfs"]
