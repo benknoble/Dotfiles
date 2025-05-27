@@ -1,7 +1,7 @@
 # vim: foldmethod=marker
 
 # reload
-alias reload='. ~/.zshenv && . ~/.zshrc && print "reloaded"'
+alias reload='. ~/.zshenv && . ~/.zprofile && . ~/.zshrc && print "reloaded"'
 freload() {
   for f; { unfunction $f; autoload -U $f }
 }

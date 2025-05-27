@@ -199,6 +199,7 @@
    '.ssh/config                 "ssh/config"
    '.tmux.conf                  "tmux.conf"
    '.vim                        "vim"
+   '.zprofile                   "zprofile"
    '.zsh                        "zsh"
    '.zshenv                     "zshenv"
    '.zshfns                     "zshfns"
