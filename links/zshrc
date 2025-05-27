@@ -6,6 +6,56 @@ freload() {
   for f; { unfunction $f; autoload -U $f }
 }
 
+# sourcing {{{
+
+# probably not many of these...
+for file in ~/.zsh/*.zsh(N) ; do
+  source "$file"
+done
+for file in ~/.zsh/"$OS"/*.zsh(N) ; do
+  source "$file"
+done
+
+if [[ -d ~/.personal ]]; then
+  for file in ~/.personal/*.zsh(N) ; do
+    source "$file"
+  done
+  for file in ~/.personal/"$OS"/*.zsh(N) ; do
+    source "$file"
+  done
+fi
+
+# autoload {{{
+
+pathadd_front f ~/.zshfns
+
+fns=(
+  # standard distribution
+  # completion
+  compinit
+  # widgets
+  edit-command-line
+  surround
+  insert-files
+  insert-composed-char
+  predict-on
+  # help
+  ${^fpath}/run-help*(N:t)
+  # commands
+  zargs
+  zcalc
+  zmv
+
+  # my stuff
+  ~/.zshfns/*(N:t)
+)
+(( ${#fns} > 0 )) && autoload -U "${fns[@]}"
+unset fns
+
+# autoload }}}
+
+# sourcing }}}
+
 # VARS {{{
 
 autoload -U add-zsh-hook add-zle-hook-widget

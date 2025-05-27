@@ -1,1 +1,200 @@
 # vim: ft=zsh
+
+# tie them together like PATH/path
+typeset -xT INFOPATH infopath
+# enforce unique elements
+typeset -U path manpath mailpath fpath infopath cdpath
+
+reset_editor() {
+  # set default editor to vim
+  export VISUAL="$(command -v vim)"
+  export EDITOR="$VISUAL"
+  export MANPAGER='vim -M +MANPAGER --not-a-term -'
+}
+
+export MANWIDTH=80
+
+# use my color scheme for ls
+export LSCOLORS="gxfxcxdxbxegedabagacad"
+
+# use less on any system
+export LESS="RWi"
+export PAGER="less"
+
+export PYTHONSTARTUP=~/.pythonrc
+export VIRTUAL_ENV_DISABLE_PROMPT=true
+
+export HOMEBREW_NO_AUTO_UPDATE=true
+export HOMEBREW_INSTALL_CLEANUP=true
+
+export RIPGREP_CONFIG_PATH=~/.rgrc
+
+export RACO_TEST_ARGS='-j $$(nproc)'
+
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+
+# personal vars {{{
+
+# OS test
+case "$OSTYPE" in
+  darwin* ) OS=mac ;;
+  linux* ) OS=linux ;;
+esac
+
+# file to hold private keys
+private=~/.private
+
+# personal vars }}}
+
+# paths {{{
+
+# debugging paths added via pathadd
+pathdebug=
+
+pathprint () {
+  if (($# == 0)); then
+    set -- PATH
+  fi
+  for path_var ; do
+    path_var=${(U)path_var}
+    [[ "$path_var" != *PATH ]] && path_var+=PATH
+    print -lr -- "$path_var" "${(@s<:>)${(P)path_var}}"
+  done
+}
+
+_pathdebug () {
+  if [[ -n "$pathdebug" ]]; then
+    local ptype="${(U)1}"
+    local added="$2"
+    [[ "${ptype}" != *PATH ]] && ptype+=PATH
+    # find the file which is our caller's caller
+    # stack[1] = me
+    # stack[2] = who called me
+    # stack[3] = source of path change
+    local source="${funcstack[3]}"
+    # we were called from interactive
+    [[ -z "$source" ]] && source=interactive
+    [[ "$source" == '(anon)' ]] && source="${funcstack[4]}"
+    printf '%s DEBUG:\t%s\t(%s)\n' "$ptype" "$source" "$added" >&2
+  fi
+}
+
+pathadd () {
+  if (($# == 1)); then
+    set -- path "$1"
+  fi
+  local path_type="$1"
+  local path_var="${(L)path_type}"
+  local addition="$2"
+  [[ "$path_var" != *path ]] && path_var+=path
+  eval "${path_var}+=( ${(q)addition} )"
+  _pathdebug "$path_type" "$addition"
+}
+
+pathadd_front () {
+  if (($# == 1)); then
+    set -- path "$1"
+  fi
+  local path_type="$1"
+  local path_var="${(L)path_type}"
+  local addition="$2"
+  [[ "$path_var" != *path ]] && path_var+=path
+  eval "${path_var}=( $addition \"\${${path_var}[@]}\" )"
+  _pathdebug "$path_type" "$addition"
+}
+
+pathrm () {
+  if (($# == 1)); then
+    set -- path "$1"
+  fi
+  local path_type="$1"
+  local path_var="${(L)path_type}"
+  local deletion="$2"
+  [[ "$path_var" != *path ]] && path_var+=path
+  eval "${path_var}=(\"\${(@)${path_var}:#${deletion}}\")"
+  _pathdebug "RM $path_type" "$deletion"
+}
+
+# set up initial path to be sure brew will be found
+if [[ -x /usr/libexec/path_helper ]]; then
+  eval "$(/usr/libexec/path_helper)"
+fi
+
+# who knows why this isn't exported by default
+export MANPATH
+# set up initial manpath before making changes
+if command -v manpath &>/dev/null ; then
+  manpath=( "${(s<:>)$(MANPATH= manpath)}" )
+  tex_index=$manpath[(I)/Library/TeX/texbin/*]
+  if ((tex_index)) && test -L $manpath[tex_index]; then
+    manpath[tex_index]=()
+  fi
+  unset tex_index
+fi
+
+if command -v brew &>/dev/null ; then
+  has_brew=true
+else
+  has_brew=false
+fi
+
+# brew paths
+if "$has_brew" ; then
+  brew_prefix="$(cat ~/.brew-prefix 2>/dev/null || brew --prefix | tee ~/.brew-prefix)"
+  pathadd_front "$brew_prefix/bin"
+  pathadd_front man "$brew_prefix/share/man"
+  pathadd_front info "$brew_prefix/share/info"
+  pathadd_front f "$brew_prefix/share/zsh-completions"
+fi
+
+if command -v python3 >/dev/null 2>&1 ;  then
+  pathadd "$(python3 -m site --user-base)/bin"
+fi
+
+pathadd ~/.bin
+
+if command -v go >/dev/null 2>&1 ; then
+  pathadd ~/go/bin
+  pathadd ~/.vim/pack/languages/opt/go/tools/bin
+fi
+
+() {
+  local git==git
+  local gitjump="${git:h:h}/share/git-core/contrib/git-jump"
+  [[ -x "$gitjump"/git-jump ]] && pathadd "$gitjump"
+}
+
+pathadd_front .git/safe/../../bin
+
+() {
+  local perl_bin=~/perl5/bin
+  pathadd "$perl_bin"
+  if [[ -d "$perl_bin" ]]; then
+    local perl_root="${perl_bin:h}"
+    PERL5LIB="${perl_root}/lib/perl5${PERL5LIB:+:${PERL5LIB}}"
+    export PERL5LIB
+    PERL_LOCAL_LIB_ROOT="${perl_root}${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
+    export PERL_LOCAL_LIB_ROOT
+    PERL_MB_OPT="--install_base ${perl_root}"
+    export PERL_MB_OPT
+    PERL_MM_OPT="INSTALL_BASE=${perl_root}"
+    export PERL_MM_OPT
+  fi
+}
+
+() {
+  local cargo_bin=~/.cargo/bin
+  [[ -d "$cargo_bin" ]] && pathadd "$cargo_bin"
+}
+
+pathadd ~/.personal/bin
+
+[[ -r "$private" ]] && source "$private"
+
+reset_editor
+
+unset has_brew
+unset private
+unset OS
+
+# paths }}}
