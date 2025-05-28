@@ -8,6 +8,12 @@ freload() {
 
 # sourcing {{{
 
+# OS test
+case "$OSTYPE" in
+  darwin* ) OS=mac ;;
+  linux* ) OS=linux ;;
+esac
+
 # probably not many of these...
 for file in ~/.zsh/*.zsh(N) ; do
   source "$file"
@@ -24,6 +30,8 @@ if [[ -d ~/.personal ]]; then
     source "$file"
   done
 fi
+
+unset OS
 
 # autoload {{{
 

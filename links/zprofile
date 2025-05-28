@@ -35,12 +35,6 @@ export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
 # personal vars {{{
 
-# OS test
-case "$OSTYPE" in
-  darwin* ) OS=mac ;;
-  linux* ) OS=linux ;;
-esac
-
 # file to hold private keys
 private=~/.private
 
@@ -195,6 +189,5 @@ reset_editor
 
 unset has_brew
 unset private
-unset OS
 
 # paths }}}
