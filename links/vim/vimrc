@@ -421,38 +421,6 @@ if $COLORTERM ==# 'truecolor'
 endif
 " Terminal }}}
 
-" Git {{{
-" When git starts up, it prepends it's libexec dir to PATH to allow it to find
-" external commands.
-"
-" Thus, if vim is invoked via a git process (such as the contrib git-jump, my
-" own git-ed, or any other usage of GIT_EDITOR/VISUAL/EDITOR in git commands, be
-" they scripts or internals--with the exception of manually invoking the script
-" yourself, without using git: sh .../git-jump), $PATH will contain something
-" like libexec/git-core.
-"
-" We don't generally want it in vim's $PATH, though, as it is passed down to
-" *all* subprocesses, including shells started with :terminal or :shell.
-function s:fix_git_path() abort
-  const slash = exists('+shellslash') && !&shellslash ? '\\' : '/'
-  const git_core_base = printf('%slib\%%(exec\)\?%sgit-core', slash, slash)
-  " optimization: early return
-  if $PATH !~# git_core_base
-    return
-  endif
-  const path_sep = has('win32') ? ';' : ':'
-  const new_path = split($PATH, path_sep)
-        \ ->filter({_, d -> d !~# git_core_base..'$' })
-        \ ->join(path_sep)
-  let $PATH = new_path
-endfunction
-
-augroup fix_git_path
-  autocmd!
-  autocmd VimEnter * call s:fix_git_path()
-augroup end
-" Git }}}
-
 " Default plugins {{{
 let g:loaded_getscriptPlugin = 1
 let g:loaded_logiPat = 1

@@ -101,9 +101,8 @@ GIT_PS1_SHOWCOLORHINTS=''
 GIT_PS1_SHOWCONFLICTSTATE=yes
 
 () {
-  local git gitprompt
-  git==git
-  gitprompt=${git:h:h}/etc/bash_completion.d/git-prompt.sh
+  local gitprompt
+  gitprompt="$(<~/.brew-prefix)/etc/bash_completion.d/git-prompt.sh"
   [[ -r "$gitprompt" ]] && source "$gitprompt"
 }
 
