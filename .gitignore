@@ -1,4 +1,3 @@
 links/jupyter/migrated
-Makefile
 *.zwc
 !env
