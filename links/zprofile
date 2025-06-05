@@ -185,9 +185,20 @@ pathadd ~/.personal/bin
 
 [[ -r "$private" ]] && source "$private"
 
+# OS test
+case "$OSTYPE" in
+  darwin* ) OS=mac ;;
+  linux* ) OS=linux ;;
+esac
+
+for file in ~/.zsh/{,"$OS"/}env/*.zsh(N) ~/.personal/{,"$OS"/}env/*.zsh(N); do
+  source "$file"
+done
+
 reset_editor
 
 unset has_brew
 unset private
+unset OS
 
 # paths }}}

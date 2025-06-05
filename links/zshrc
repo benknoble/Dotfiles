@@ -14,22 +14,9 @@ case "$OSTYPE" in
   linux* ) OS=linux ;;
 esac
 
-# probably not many of these...
-for file in ~/.zsh/*.zsh(N) ; do
+for file in ~/.zsh/{,"$OS"/}interactive/*.zsh(N) ~/.personal/{,"$OS"/}interactive/*.zsh(N); do
   source "$file"
 done
-for file in ~/.zsh/"$OS"/*.zsh(N) ; do
-  source "$file"
-done
-
-if [[ -d ~/.personal ]]; then
-  for file in ~/.personal/*.zsh(N) ; do
-    source "$file"
-  done
-  for file in ~/.personal/"$OS"/*.zsh(N) ; do
-    source "$file"
-  done
-fi
 
 unset OS
 
