@@ -1,5 +1,3 @@
-# ignore vim's swp files
-*.swp
 links/jupyter/migrated
 Makefile
 *.zwc
