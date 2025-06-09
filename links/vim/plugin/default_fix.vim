@@ -12,6 +12,10 @@ set path-=/usr/include
 
 " Do not recognize octal number for Ctrl-A and Ctrl-K
 set nrformats-=octal
+" And do use "blank" if available
+if has('patch-9.1.0537')
+  set nrformats+=blank
+endif
 
 " Confirm potentially problematic operations
 " Like quitting without writing
