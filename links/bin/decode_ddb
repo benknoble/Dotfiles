@@ -1,0 +1,3 @@
+#! /bin/sh
+
+exec jq 'import "aws" as aws; aws::decode_ddb'
