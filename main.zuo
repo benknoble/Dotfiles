@@ -189,6 +189,7 @@
    '.gitshrc                    "gitshrc"
    '.inputrc                    "inputrc"
    '.irbrc                      "irbrc"
+   '.jq                         "jq"
    '.jupyter                    "jupyter"
    '.latexmkrc                  "latexmkrc"
    '.markdownlintrc             "markdownlintrc"
