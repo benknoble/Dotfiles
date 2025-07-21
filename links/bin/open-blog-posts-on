@@ -1,0 +1,30 @@
+#! /bin/zsh
+
+usage() {
+  print "usage: $0 <month start-day end-day>…" >&2
+  if (($#)); then
+    print "$@" >&2
+  fi
+  exit 1
+}
+
+fix_digit() {
+  if ((1 <= $1 && $1 < 10)); then
+    print 0$(($1))
+  elif (($1 <= ${2:-31})); then
+    print $1
+  else
+    usage "bad date: $1"
+  fi
+}
+
+if (($# % 3 != 0)); then usage 'wrong number of arguments'; fi
+
+while (($#)); do
+  case "$1$2$3" in
+    (<->) : continue ;;
+    (*) usage "not a number: $1 $2..$3" ;;
+  esac
+  print -l -- $(fix_digit $1 12)\ {$(fix_digit $2)..$(fix_digit $3)}
+  shift 3
+done | xargs -P8 -L1 blog-posts-on | sort -r | tee >(cat >&2) | xargs open
