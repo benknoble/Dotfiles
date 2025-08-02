@@ -37,7 +37,7 @@
 	lupp = log HEAD@{upstream}.. --patch
 	merc = merge --no-ff
 	merf = merge --ff-only
-	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --stdin;}; f"
+	name-when-merged = "!f() { git when-merged -c \"$@\" | git name-rev --annotate-stdin;}; f"
 	newb = switch -c
 	patch = add --patch
 	pf = push --force-with-lease
