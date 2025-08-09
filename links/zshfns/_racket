@@ -76,7 +76,8 @@ _racket_read_installed_package() {
 _racket_read_migrate_version() {
   local -a versions
   versions=(
-    "${(f)$(_racket_call migrate-versions '(require pkg/lib) (for-each displayln (pkg-migrate-available-versions))')}"
+    "${(f)$(_racket_call migrate-versions '(require pkg/lib) (for-each displayln (pkg-migrate-available-versions))' |
+              sort -t. -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr )}"
   )
   _wanted migrate-versions expl migrate-version compadd -a versions
 }
