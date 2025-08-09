@@ -197,6 +197,7 @@
    '.pryrc                      "pryrc"
    '.pythonrc                   "pythonrc"
    '.rgrc                       "rgrc"
+   '.shellcheckrc               "shellcheckrc"
    '.ssh/config                 "ssh/config"
    '.tmux.conf                  "tmux.conf"
    '.vim                        "vim"

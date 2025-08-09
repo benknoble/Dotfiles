@@ -1,0 +1,7 @@
+enable=deprecate-which
+enable=check-set-e-suppressed
+enable=check-extra-masked-returns
+
+external-sources=true
+source-path=SCRIPTDIR
+source-path=/usr/local/opt/git/libexec/git-core/
