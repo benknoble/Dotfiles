@@ -1,0 +1,5 @@
+#! /bin/zsh
+
+case "$OSTYPE" in
+  darwin*) osascript -e "display notification \"${1:-done}\"" ;;
+esac
