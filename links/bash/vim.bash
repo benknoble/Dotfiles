@@ -39,7 +39,7 @@ complete -A command vf
 
 vff() {
   if (($# == 1)) ; then
-    vim $(rg --files | grep "$1")
+    vim $(rg --files | rg "$1")
   else
     printf '%s\n' 'Usage: vff filename' '' 'Find {filename} to edit' \
       'Relies on rg(1)'
