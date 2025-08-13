@@ -326,6 +326,8 @@ if &t_Co > 2 || has("gui_running")
   let g:tex_conceal = 'abdmg'
   " don't spell check
   let g:tex_comment_nospell = 1
+  " rustfmt versions I care use --emit files
+  let g:rustfmt_emit_files = 1
 endif
 
 let g:do_minimal = v:true

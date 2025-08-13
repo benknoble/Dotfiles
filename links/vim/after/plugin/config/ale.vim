@@ -35,6 +35,8 @@ let g:ale_python_black_options = '--line-length 79'
 
 let g:ale_c_cc_options = '-Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wold-style-definition -Wshadow -Wpointer-arith -Wcast-qual -pedantic -std=c11'
 
+let g:ale_rust_cargo_use_clippy = 1
+
 function s:ale_lsp_setup() abort
   setlocal omnifunc=ale#completion#OmniFunc
 
