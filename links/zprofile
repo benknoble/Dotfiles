@@ -81,7 +81,7 @@ pathadd () {
   local path_var="${(L)path_type}"
   local addition="$2"
   [[ "$path_var" != *path ]] && path_var+=path
-  eval "${path_var}+=( ${(q)addition} )"
+  eval "${path_var}"'+=( "${addition}" )'
   _pathdebug "$path_type" "$addition"
 }
 
@@ -93,7 +93,7 @@ pathadd_front () {
   local path_var="${(L)path_type}"
   local addition="$2"
   [[ "$path_var" != *path ]] && path_var+=path
-  eval "${path_var}=( $addition \"\${${path_var}[@]}\" )"
+  eval "${path_var}"'=( "$addition" "${'"${path_var}"'[@]}" )'
   _pathdebug "$path_type" "$addition"
 }
 
