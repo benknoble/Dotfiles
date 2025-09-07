@@ -2,13 +2,19 @@
 
 set -euo pipefail
 
-USAGE='[-h] | [commitish] [commitish]?
-Edit changed files
+OPTIONS_SPEC="\
+$(basename -- "$0" | sed -e 's/-/ /')
+$(basename -- "$0" | sed -e 's/-/ /') [commitish] [commitish]?
 
-Given:
-  - 0 commits: edit "dirty" files
-  - 1 commit:  edit files changed by that commit
-  - 2 commits: edit files changed between those commits'
+Edit changed files.
+
+In the first form, edit changed files.
+
+In the second form, edit files based on given commits:
+  - with 1 commit,  edit files changed by that commit
+  - with 2 commits, edit files changed between those commits
+--
+"
 SUBDIRECTORY_OK=true
 
 # source git-sh-setup for some helpers
@@ -32,6 +38,13 @@ edit_diff() {
 }
 
 main() {
+  while test $# -gt 0; do
+    opt="$1"
+    shift
+    case "$opt" in
+      (--) break ;;
+    esac
+  done
   local func
   case $# in
     0) func=edit_current ;;
