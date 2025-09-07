@@ -3,7 +3,7 @@
 set -euo pipefail
 
 OPTIONS_SPEC="\
-$(basename -- "$0" | sed -e 's/-/ /')
+$(basename -- "$0" | sed -e 's/-/ /') [-c|--cached]
 $(basename -- "$0" | sed -e 's/-/ /') [commitish] [commitish]?
 
 Edit changed files.
@@ -14,6 +14,7 @@ In the second form, edit files based on given commits:
   - with 1 commit,  edit files changed by that commit
   - with 2 commits, edit files changed between those commits
 --
+c,cached Edit 'git diff --cached' files
 "
 SUBDIRECTORY_OK=true
 
@@ -23,7 +24,7 @@ source "$(git --exec-path)"/git-sh-setup
 set -u
 
 edit_current() {
-  git diff --name-only
+  git diff --name-only "$@"
 }
 
 edit_commit() {
@@ -38,22 +39,24 @@ edit_diff() {
 }
 
 main() {
+  local func=()
+  local cached
   while test $# -gt 0; do
     opt="$1"
     shift
     case "$opt" in
+      (-c) cached=--cached ;;
       (--) break ;;
     esac
   done
-  local func
   case $# in
-    0) func=edit_current ;;
-    1) func=edit_commit ;;
-    2) func=edit_diff ;;
+    0) func=(edit_current ${cached:+"${cached}"}) ;;
+    1) func=(edit_commit) ;;
+    2) func=(edit_diff) ;;
     *) usage ;;
   esac
   local files=()
-  mapfile -t files < <("$func" "$@" | sort | uniq)
+  mapfile -t files < <("${func[@]}" "$@" | sort | uniq)
   if (( ${#files[@]} > 0 )); then
     # file names are relative to repository root
     cd_to_toplevel && git_editor "${files[@]}"
