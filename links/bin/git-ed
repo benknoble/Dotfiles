@@ -34,18 +34,10 @@ edit_diff() {
 main() {
   local func
   case $# in
-    0)
-      func=edit_current
-      ;;
-    1)
-      func=edit_commit
-      ;;
-    2)
-      func=edit_diff
-      ;;
-    *)
-      usage
-      ;;
+    0) func=edit_current ;;
+    1) func=edit_commit ;;
+    2) func=edit_diff ;;
+    *) usage ;;
   esac
   local files=()
   mapfile -t files < <("$func" "$@" | sort | uniq)
