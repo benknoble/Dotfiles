@@ -14,6 +14,12 @@ augroup WikiCommit
   autocmd BufWritePost <buffer> call bk#wiki#commit()
 augroup END
 
+" these are killed when adding the dotted filetype :((
+" but they aren't run? So it's not like I lose the maps… weird.
+" Really makes me want a better solution to make filetypes more automatically
+" composable.
+" It looks like $VIMRUNTIME/ftplugin/html.vim is the culprit. I've got
+" https://github.com/vim/vim/pull/18267 open to address that.
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ maps: [
       \   ['n', 'gf'],
