@@ -13,7 +13,7 @@
 	changed = diff --name-only
 	cm = commit --message
 	co = checkout
-	conflict = log --oneline --left-right --merge
+	conflict = graph --left-right --boundary --merge
 	cp = cherry-pick
 	ctags = hook run ctags
 	d = diff
