@@ -30,6 +30,7 @@
 	igv = ig --verbose
 	intend = add --intent-to-add
 	j = jump
+	list-all-objects = cat-file --batch-check --batch-all-objects --unordered
 	logp = log --graph --abbrev-commit --pretty=mine
 	logpall = logp --all
 	lol = log --oneline
