@@ -8,6 +8,12 @@ if s:mapped_c_h
   inoremap <buffer> <C-h> <C-r>=wiki#ins_complete_wikis()<CR>
 endif
 
+augroup WikiCommit
+  " can't use autocmd! here because it would clear the group entirely
+  autocmd! * <buffer>
+  autocmd BufWritePost <buffer> call bk#wiki#commit()
+augroup END
+
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ maps: [
       \   ['n', 'gf'],
@@ -15,4 +21,7 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \   ['n', '<C-w><C-f>'],
       \   ['n', '<C-w>gf'],
       \ ] + (s:mapped_c_h ? [['i', '<C-h>']] : []),
+      \ custom: [
+      \   'autocmd! WikiCommit * <buffer>',
+      \ ]
       \ })
