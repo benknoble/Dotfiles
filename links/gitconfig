@@ -3,7 +3,9 @@
 	amend = commit --amend
 	b = branch -vv
 	bd = branch --delete
+	bdesc = !git -c core.editor=cat branch --edit-description | git stripspace -s
 	bdf = branch --delete --force
+	bed = branch --edit-description
 	blame-more = blame -w -CCC -M
 	bv = branch -vva
 	ca = commit --all
