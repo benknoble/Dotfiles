@@ -1,0 +1,96 @@
+#! /bin/bash
+
+set -euo pipefail
+
+OPTIONS_SPEC="\
+$(basename -- "$0" | sed -e 's/-/ /') [-x] [-r <rev>] [-- <git-grep options>…] <pattern> [-- <pathspec>…]
+
+Run git-blame for git-grep matches. Cannot handle 'weird'
+filenames, like those containg spaces or unprintables.
+
+Do not supply a tree-ish with the other git-grep options;
+use -r to supply such a revision.
+--
+r,rev!=revision A revision (default: HEAD) to search and blame.
+v               Show commands
+"
+OPTIONS_KEEPDASHDASH=1
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+. "$(git --exec-path)"/git-sh-setup
+set -u
+
+revision=HEAD
+verbose=
+
+while test $# -gt 0; do
+  opt="$1"
+  shift
+  case "$opt" in
+    (-r)
+      revision=$1;
+      if ! git rev-parse --quiet --verify "$revision" >/dev/null; then
+        die "bad revision: $revision"
+      fi
+      shift ;;
+    (-v) verbose=1 ;;
+    (--) break ;;
+  esac
+done
+[[ "$1" == -- ]] && shift
+
+bad_grep() {
+  die "unsupported grep option in $*" ;
+}
+
+# these options break the program
+for arg; do
+  case "$arg" in
+    (--) break ;;
+    (-v|--invert-match)                                             bad_grep "$arg" ;;
+    (-h|--no-full-name|--no-line-number|--column)                   bad_grep "$arg" ;;
+    (-[lL]|--files-with-matches|--name-only|--files-without-match)  bad_grep "$arg" ;;
+    (-O|--open-files-in-pager)                                      bad_grep "$arg" ;;
+    (-z|--null)                                                     bad_grep "$arg" ;;
+    (-c|--count)                                                    bad_grep "$arg" ;;
+    (--break|--heading)                                             bad_grep "$arg" ;;
+    (-p|--show-function)                                            bad_grep "$arg" ;;
+    (-A|--after-context|-B|--before-context|-C|--context|-[0-9])    bad_grep "$arg" ;;
+    (-W|--function-context)                                         bad_grep "$arg" ;;
+    (--untracked|--no-index)                                        bad_grep "$arg" ;;
+  esac
+done
+
+args=("$@")
+case "$*" in
+  (*' -- '*)
+    # place $revision before the --
+    args=()
+    while (( $# > 0 )); do
+      opt=$1
+      shift
+      case $opt in
+        (--)
+          args+=("$revision" -- "$@")
+          break ;;
+        (*) args+=("$opt") ;;
+      esac
+    done
+    ;;
+  (*) args+=("$revision")
+esac
+
+args=(--no-full-name --no-column --line-number --no-recurse-submodules "${args[@]}")
+
+test -n "$verbose" && >&2 printf '%s\n' "git grep ${args[*]}"
+
+git grep "${args[@]}" |
+  # throw away binary files
+  grep -av '^Binary file' |
+  while IFS=: read -r rev file line_number rest; do
+    printf '%s\0' "$file" -L "$line_number,$line_number" "$rev"
+    printf '\0'
+  done |
+  git blame-stdin ${verbose:+-v}

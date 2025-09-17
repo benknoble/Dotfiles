@@ -1,0 +1,52 @@
+#! /bin/bash
+
+set -euo pipefail
+
+OPTIONS_SPEC="\
+$(basename -- "$0" | sed -e 's/-/ /') [-v]
+
+Run git-blame for files from standard in.
+
+The input format is a series of nul-delimited records,
+where each record has the following format:
+
+  <file><nul>[<blame-option><nul>]…
+
+Thus a double-nul ends the record.
+--
+v verbose: Show commands
+"
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+. "$(git --exec-path)"/git-sh-setup
+set -u
+
+verbose=
+
+while test $# -gt 0; do
+  opt="$1"
+  shift
+  case "$opt" in
+    (-v) verbose=1 ;;
+    (--) break ;;
+  esac
+done
+
+case $# in
+  (0) : continue ;;
+  (*) usage ;;
+esac
+
+while IFS= read -rd '' file; do
+  cmd=(git blame)
+  while read -rd '' opt; do
+    case ${#opt} in
+      (0) break ;;
+      (*) cmd+=("$opt") ;;
+    esac
+  done
+  test -n "$verbose" && >&2 printf '%s %s\n' "${cmd[*]}" "$file"
+  "${cmd[@]}" "$file"
+done
