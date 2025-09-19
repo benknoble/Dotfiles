@@ -1,0 +1,43 @@
+#! /usr/bin/env racket
+#lang racket
+; vim: ft=racket
+
+(require (only-in racket/gui)
+         pict
+         threading
+         data-frame
+         sawzall
+         graphite)
+
+(define-values (data-file out)
+  (command-line
+   #:args (data-file out)
+   (values data-file out)))
+
+(define-values (min max avg)
+  (for/lists (min? max? avg?
+              #:result (values (filter values min?)
+                               (filter values max?)
+                               (filter values avg?)))
+             ([line (in-lines (open-input-file data-file))])
+    (match line
+      [(pregexp #px"^min: ([[:digit:].]+)" (list _ (app string->number min))) (values min #f #f)]
+      [(pregexp #px"^max: ([[:digit:].]+)" (list _ (app string->number max))) (values #f max #f)]
+      [(pregexp #px"^avg: ([[:digit:].]+)" (list _ (app string->number avg))) (values #f #f avg)]
+      [_ (values #f #f #f)])))
+
+(define df
+  (make-data-frame #:series (list (make-series "min" #:data (list->vector min))
+                                  (make-series "max" #:data (list->vector max))
+                                  (make-series "avg" #:data (list->vector avg)))))
+
+(~> df
+    (pivot-longer everything #:names-to "stat" #:values-to "words")
+    (graph #:data _
+            #:mapping (aes #:y "stat" #:x "words")
+            #:y-label "Stat" #:x-label "Number of words"
+            #:x-transform logarithmic-transform
+            #:title "Commit message length (words)"
+            (boxplot #:invert? #t #:show-outliers? #t)
+            (points))
+    (save-pict out))
