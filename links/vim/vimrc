@@ -95,6 +95,9 @@ set completeopt+=longest
 " popups instead of preview
 set completeopt+=popup
 set completepopup=align:menu
+" fuzzy matching! Especially useful for filenames
+" TODO: try completefuzzycollect ?
+set completeopt+=fuzzy
 " Make matching handle case better
 set infercase
 if has('autocmd')
