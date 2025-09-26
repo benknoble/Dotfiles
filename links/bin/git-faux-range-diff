@@ -1,0 +1,41 @@
+#! /bin/sh
+
+USAGE="v1 v2 [upstream=origin] [-- <diff-options>]
+
+Diff the files changed from upstream...v1 and upstream...v2 in v1...v2. Kind of
+like a range-diff without the commits. Especially useful when v2 is a
+squash-and-refactor of v1."
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+. "$(git --exec-path)"/git-sh-setup
+set -u
+
+upstream=origin
+v1=
+v2=
+
+while test $# -gt 0; do
+  opt="$1"
+  shift
+  case "$opt" in
+    (--) break ;;
+  esac
+  if test -z "$v1"; then
+    v1=$opt
+  elif test -z "$v2"; then
+    v2=$opt
+  else
+    upstream=$opt
+  fi
+done
+[[ "${1:-}" == -- ]] && shift
+
+if test -z "$v1" || test -z "$v2"; then
+  usage
+fi
+
+# intentionally not quoting subshells: want newline splitting to turn into
+# arguments here
+git diff "$v1" "$v2" "$@" -- $(git diff --name-only "$upstream"..."$v1") $(git diff --name-only "$upstream"..."$v2")
