@@ -4,7 +4,7 @@
 
 let python_highlight_all = 1
 let b:interpreter = 'python3'
-call bk#python#search_pipfile()
+call bk#python#search_tools()
 
 nnoremap <buffer> <LocalLeader>t :execute 'term' b:interpreter 'setup.py test -q'<CR>
 
