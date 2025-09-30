@@ -30,9 +30,6 @@ let g:ale_prolog_swipl_timeout = 10
 let g:ale_prolog_swipl_load = 'current_prolog_flag(argv, [File]), load_files(File, [sandboxed(false)]), halt.'
 
 let g:ale_python_auto_poetry = v:true
-" keep python files limited in line length (88 is too much)
-" see ~/.vim/after/ftplugin/python.vim
-let g:ale_python_black_options = '--line-length 79'
 
 let g:ale_c_cc_options = '-Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes -Wold-style-definition -Wshadow -Wpointer-arith -Wcast-qual -pedantic -std=c11'
 
