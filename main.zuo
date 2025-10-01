@@ -53,7 +53,7 @@
                   (for-each (lambda (f)
                               (alert (~a "  " f)))
                             '(git-extras brew-install rust)))]
-      [:target install (dirs symlink zcompile ,@features) ,void]
+      [:target install (symlink zcompile ,@features) ,void]
       [:target update (pull-master update-submodules symlink brew-check vimtags rust zcompile) ,void]
       [:target vimtags ()
                ,(lambda (token)
@@ -129,7 +129,7 @@
                ,(lambda (token)
                   (shell/wait "bash -c 'type readarray'")
                   (shell/wait (at-links "bin/compile-vim")))]
-      [:target symlink ()
+      [:target symlink (dirs)
                ,(lambda (token)
                   (for-each
                    (lambda (dest-symbol)
