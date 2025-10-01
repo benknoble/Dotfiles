@@ -23,7 +23,7 @@
 
   (define ~/.ssh (at-home ".ssh"))
   (define dirs
-    (list (at-xdg-config) (at-xdg-config "swi-prolog") ~/.ssh))
+    (list (at-xdg-config) (at-xdg-config "swi-prolog") (at-xdg-config "yt-dlp") ~/.ssh))
 
   (define brewfile (lookup 'BREWFILE (at-dir "brew" "Brewfile")))
   (define features (string-read (lookup 'FEATURES "git-extras brew-install rust")))
@@ -180,6 +180,7 @@
    '.config/alacritty           "config/alacritty"
    '.config/http-prompt         "config/http-prompt"
    '.config/swi-prolog/init.pl  "config/swi-prolog/init.pl"
+   '.config/yt-dlp/config       "config/yt-dlp/config"
    '.ctags.d                    "ctags.d"
    '.gdbinit                    "gdbinit"
    '.git_template               "git_template"
