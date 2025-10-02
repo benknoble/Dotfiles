@@ -3,7 +3,7 @@
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
 " Find headers *when we want them*!
-setlocal path+=/usr/local/include,/usr/include
+setlocal path+=/usr/local/include,/opt/homebrew/include,/usr/include
 
 inoreabbrev <buffer> #i #include
 inoreabbrev <buffer> #d #define
