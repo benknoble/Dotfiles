@@ -4,4 +4,9 @@ enable=check-extra-masked-returns
 
 external-sources=true
 source-path=SCRIPTDIR
+# macOS Intel
 source-path=/usr/local/opt/git/libexec/git-core/
+# macOS Apple Silicon
+source-path=/opt/homebrew/opt/git/libexec/git-core/
+# self-compiled with prefix=$HOME
+source-path=~/share/git-core
