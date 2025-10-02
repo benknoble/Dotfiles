@@ -1,4 +1,5 @@
 [[ -d "$brew_prefix"/lib/ruby/gems/3.3.0/bin ]] && pathadd_front "$brew_prefix"/lib/ruby/gems/3.3.0/bin
+[[ -d "$brew_prefix"/lib/ruby/gems/3.4.0/bin ]] && pathadd_front "$brew_prefix"/lib/ruby/gems/3.4.0/bin
 [[ -d "$brew_prefix"/opt/ruby/bin ]] && pathadd_front "$brew_prefix"/opt/ruby/bin
 
 [[ -d "$brew_prefix"/smlnj/bin ]] && pathadd "$brew_prefix"/smlnj/bin
