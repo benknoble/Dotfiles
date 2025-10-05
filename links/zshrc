@@ -184,6 +184,8 @@ setopt noglobalexport
 
 # completion {{{
 
+tagsfile=.git/tags
+
 setopt autolist
 setopt automenu
 setopt completeinword
