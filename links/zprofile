@@ -146,6 +146,7 @@ if command -v python3 >/dev/null 2>&1 ;  then
 fi
 
 pathadd ~/.bin
+pathadd ~/bin
 
 if command -v go >/dev/null 2>&1 ; then
   pathadd ~/go/bin
