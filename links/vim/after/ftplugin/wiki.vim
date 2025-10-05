@@ -28,6 +28,6 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \   ['n', '<C-w>gf'],
       \ ] + (s:mapped_c_h ? [['i', '<C-h>']] : []),
       \ custom: [
-      \   'autocmd! WikiCommit * <buffer>',
+      \   'execute "autocmd! WikiCommit * <buffer>"',
       \ ]
       \ })

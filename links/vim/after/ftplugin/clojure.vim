@@ -42,6 +42,6 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \   [ 'i', 'o' ],
       \ ],
       \ custom: [
-      \   'autocmd! CljRequire * <buffer>',
+      \   'execute "autocmd! CljRequire * <buffer>"',
       \ ]
       \ })
