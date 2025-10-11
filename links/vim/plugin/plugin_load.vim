@@ -17,7 +17,7 @@ endif
 " runtime ftplugin/man.vim
 " So let's hotload it the first time we need it, based on the attributes from
 " below (uncomment with "gcc" and run with "<localleader>el" to refresh):
-" +,+2delete | put! =execute('runtime ftplugin/man.vim \| command Man') | '[,'] Commentary | -2delete
+" +,+2delete | put! =execute('delcommand Man \| runtime ftplugin/man.vim \| command Man') | '[,'] Commentary | delete | -3delete
 "     Nom               Args Adresse Complet     Définition
 "     Man               +            shellcmd    call dist#man#GetPage(<q-mods>, <f-args>)
 command -nargs=+ -complete=shellcmd Man delcommand Man
