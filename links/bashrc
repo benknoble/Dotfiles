@@ -186,6 +186,7 @@ fi
 if [[ "$(type -t __git_complete)" == function ]] && [[ "$(type -t g)" == function ]]; then
   __git_complete g git
 fi
+complete -F _command doas
 
 # custom }}}
 

@@ -324,6 +324,7 @@ export GIT_COMPLETION_SHOW_ALL=1
 export GIT_COMPLETION_SHOW_ALL_COMMANDS=1
 
 compinit
+compdef doas=sudo
 
 # I use <esc>/ to start a search, but I type fast enough for it to trigger
 # _history-complete-older. Get rid of it
