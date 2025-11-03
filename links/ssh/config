@@ -5,7 +5,6 @@ Host *
     ControlPath ~/.ssh/control:%C
     UpdateHostKeys ask
     AddKeysToAgent yes
-    UseKeychain yes
 
 # host specific; may be symlinked or machine-specific
 Include host-*
