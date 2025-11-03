@@ -1,3 +1,4 @@
 links/jupyter/migrated
 *.zwc
 !env
+/links/config/alacritty/machine.toml

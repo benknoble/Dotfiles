@@ -27,9 +27,6 @@ LC_MONETARY = "fr_FR.UTF-8"
 LC_NUMERIC = "fr_FR.UTF-8"
 LC_TIME = "fr_FR.UTF-8"
 
-[font]
-size = 12.5
-
 [font.glyph_offset]
 x = 0
 y = 0
@@ -621,5 +618,6 @@ live_config_reload = true
 working_directory = "None"
 
 import = [
-    "~/.config/alacritty/colors.toml"
+    "~/.config/alacritty/colors.toml",
+    "~/.config/alacritty/machine.toml"
 ]
