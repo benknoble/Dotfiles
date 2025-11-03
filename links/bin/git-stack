@@ -1,0 +1,98 @@
+#! /bin/bash
+
+# Inspired-by: https://andrewlock.net/pushing-a-whole-stack-of-branches-with-a-single-git-command/
+
+set -eu
+
+OPTIONS_SPEC="\
+$(basename -- "$0" | sed -e 's/-/ /') [<options>] [<base=HEAD> [<upstream>]]
+
+Show branches pointing to commits between base and its upstream. Note in a true
+stack that the default upstream may be the wrong choice; try giving origin/main
+or similar.
+--
+v verbose: show command"
+SUBDIRECTORY_OK=true
+
+# source git-sh-setup for some helpers
+set +u
+. "$(git --exec-path)"/git-sh-setup
+set -u
+
+verbose=
+base=@
+upstream=
+
+rev_parse() {
+  git rev-parse --verify -q "$@"
+}
+
+# $1: suffix for base@{<suffix>} notation
+# $2: optional '=' to skip this suffix if equal to base
+try_upstream() {
+  if ! possible_upstream="$(rev_parse --symbolic "$base@{$1}")"; then
+    return 1
+  fi
+  if test "${2:-}" = = && test "$(rev_parse "$possible_upstream")" = "$(rev_parse "$base")"; then
+    return 1
+  fi
+  upstream=$possible_upstream
+}
+
+set_upstream() {
+  if ! try_upstream push =; then
+    if ! try_upstream upstream; then
+      die "could not determine useful upstream for base $base"
+    fi
+  fi
+}
+
+main() {
+  while test $# -gt 0; do
+    opt="$1"
+    shift
+    case "$opt" in
+      (-v) verbose=1 ;;
+      (--) break ;;
+    esac
+  done
+  case $# in
+    (0) : continue ;;
+    (1) base="$1" ;;
+    (2) base="$1"; upstream="$2" ;;
+    (*) printf '%s\n' 'too many arguments' >&2; usage ;;
+  esac
+  shift $#
+
+  test -z "$upstream" && set_upstream
+
+  # alternate
+  # git rev-list "$upstream..$base" | xargs git name-rev --refs='refs/heads/*' |
+  #   while read -r sha ref; do
+  #     if git check-ref-format --branch "$ref" >/dev/null 2>&1; then
+  #       printf '%s %s\n' "$sha" "$ref"
+  #     fi
+  #   done
+
+  # # todo: is there a pattern (plumbing) for this already that lets me keep the
+  # # refnames in topological order without parsing git-log?
+  # comm=(
+  #   join
+  #   '<(' git rev-list "'$upstream..$base'" '|' sort ')'
+  #   '<(' git for-each-ref --format="'%(objectname) %(refname:strip=2)'" refs/heads '|' sort ')'
+  # )
+  # # TODO: perhaps instead filter for-each-ref output for those that point to a
+  # # SHA in rev-list… output (grep??)
+
+  comm=(
+    git rev-list --simplify-by-decoration "'$upstream..$base'" \|
+      xargs git name-rev --no-tags # no-tags is silently ignored
+  )
+
+  test -n "$verbose" && printf '%s\n' "${comm[*]}" >&2
+  eval "${comm[*]}"
+
+  # current testing: g -C ~c/vms-server stack foo origin/main
+}
+
+main "$@"
