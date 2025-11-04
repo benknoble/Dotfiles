@@ -95,7 +95,10 @@ GIT_PS1_SHOWCONFLICTSTATE=yes
 
 () {
   local gitprompt
-  gitprompt="$(<~/.brew-prefix)/etc/bash_completion.d/git-prompt.sh"
+  case $OS in
+    (mac) gitprompt="$(<~/.brew-prefix)/etc/bash_completion.d/git-prompt.sh" ;;
+    (linux) gitprompt=/usr/share/git/git-prompt.sh ;;
+  esac
   [[ -r "$gitprompt" ]] && source "$gitprompt"
 }
 
