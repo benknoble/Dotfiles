@@ -1,6 +1,7 @@
 " Undo /etc/vim/vimrc settings first
 set backspace& autoindent& history& ruler& viminfo& suffixes& numberwidth&
 set modeline& fileencodings& guifontset& hlsearch&
+unmap Q
 " - Skip turning off syntax, since my vimrc is smart enough to already check
 "   t_Co, has('gui_running'), _and_ !exists("g:syntax_on") before calling
 "   `syntax enabled`.
