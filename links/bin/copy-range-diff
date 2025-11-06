@@ -4,4 +4,13 @@
   printf '%s\n' '<details><summary>range-diff:</summary>' '' '```'
   cat
   printf '%s\n' '```' '' '</details>'
-} | pbcopy
+} | {
+  if command -v pbcopy >/dev/null 2>&1; then
+    pbcopy
+  elif command -v xsel >/dev/null 2>&1; then
+    xsel -bi
+  else
+    echo 'No known clipboard provider available' >&2
+    exit 1
+  fi
+}

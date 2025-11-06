@@ -1,2 +1,2 @@
-alias pbcopy='xsel -bi'
-alias pbpaste='xsel -bo'
+pbcopy() { xsel -bi; }
+pbpaste() { xsel -bo; }
