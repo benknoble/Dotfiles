@@ -22,12 +22,6 @@ setlocal nosmartindent
 setlocal textwidth=80
 setlocal shiftwidth=2
 
-" Comment formatting
-if (has("comments"))
-  setlocal comments=sr:(*,mb:*,ex:*)
-  setlocal fo=cqort
-endif
-
 " Only define the function once.
 "if exists("*GetSMLIndent")
 "finish
@@ -228,8 +222,6 @@ let b:undo_indent = bk#ftplugin#undo(#{
       \   'smartindent',
       \   'textwidth',
       \   'shiftwidth',
-      \   'comments',
-      \   'formatoptions',
       \ ],
       \ funcs: [
       \   'GetSMLIndent',
