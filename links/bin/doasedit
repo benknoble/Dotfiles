@@ -33,13 +33,19 @@ temp="$(mktemp -t "${filename%.*}"XXX."${filename#*.}")"
 
 # if the source file does exist then copy its contents over to the temporary file
 if [ -n "$file_exists" ]; then
-    # TODO should also abort if EDITOR fails
-    cat "$1" >"$temp" && ${EDITOR:-vi} "$temp"
+    cat "$1" >"$temp" || { echo "$0: failed to create temporary copy of $1 for editing" >&2 && exit 1; }
+    ${EDITOR:-vi} "$temp" || {
+        echo "$0: ${EDITOR:-vi} failed" >&2
+        rm "$temp" && exit 1
+    }
     # if the file is unchanged then exit
     cmp "$1" "$temp" -s && rm "$temp" && echo "doasedit: $1 unchanged" && exit 0
 # if the source file does not exist then create a new file
 else
-    ${EDITOR:-vi} "$temp"
+    ${EDITOR:-vi} "$temp" || {
+        echo "$0: ${EDITOR:-vi} failed" >&2
+        rm "$temp" && exit 1
+    }
     # clean up and exit if file is empty
     ! [ -s "$temp" ] && echo "doasedit: $1 not written" && rm "$temp" && exit 0
 fi
