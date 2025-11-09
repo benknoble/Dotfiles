@@ -1,0 +1,86 @@
+#! /bin/bash
+
+set -euo pipefail
+
+usage() {
+	printf '%s\n' "usage: $0 <cmd>" '' 'Where <cmd> is one of'
+	typeset -F | sed -n '/declare -f cmd_/s///p'
+} >&2
+
+log() { printf '%s\n' "$@"; } >&2
+
+die() { log "$@"; exit 1; }
+
+TOTAL=1618
+LANDSCAPE_TOTAL=1033
+PORTRAIT_TOTAL=585
+if (( LANDSCAPE_TOTAL + PORTRAIT_TOTAL != TOTAL )); then
+	die "bug: $LANDSCAPE_TOTAL + $PORTRAIT_TOTAL != $TOTAL"
+fi
+
+LARGE=4000
+SMALL=2667
+MONITOR=3840x2160
+
+cmd_extract() {
+	local zip_dir="${1?"usage: extract <zip_dir>"}"; shift
+	mkdir -p "$zip_dir/extracted/"{landscape,portrait}
+	pushd "$zip_dir/extracted"
+
+	if (( $(find landscape portrait -name '*png' | wc -l) == TOTAL )); then
+		log "found already extracted $TOTAL pngs"
+		return
+	fi
+
+	if (( $(find . -name '*jpg' | wc -l) != TOTAL )); then
+		log "unzipping"
+		find "$zip_dir" -maxdepth 1 -name '*zip' -exec unzip {} \;
+		if $(( $(find . -name '*jpg' | wc -l) != TOTAL )); then
+			die "did not extract all $TOTAL files"
+		fi
+	else
+		log "found already extracted $TOTAL jpgs"
+	fi
+
+	log "converting"
+	find . -name '*jpg' -print0 |
+		parallel -0 magick mogrify -format png {}
+	if (( $(find . -name '*png' | wc -l) != TOTAL )); then
+		die "did not convert all $TOTAL files"
+	fi
+
+	log "sorting"
+	find -name '*png' -exec magick identify  -ping -format '%i %wx%h\n' {} + |
+		grep ${LARGE}x | awk '{print $1}' | xargs mv -t landscape/
+	find -name '*png' -exec magick identify  -ping -format '%i %wx%h\n' {} + |
+		grep ${SMALL}x | awk '{print $1}' | xargs mv -t portrait/
+	if ! { (( $(find landscape -name '*png' | wc -l) != LANDSCAPE_TOTAL)) &&
+		(( $(find portrait -name '*png' | wc -l) != PORTRAIT_TOTAL)) }; then
+		die "did not sort all $TOTAL files into landscape ($LANDSCAPE_TOTAL), portrait ($PORTRAIT_TOTAL)"
+	fi
+
+	popd
+}
+
+cmd_postprocess() {
+	local extracted_dir="${1?"usage: postprocess <extracted_dir>"}"; shift
+	pushd "$extracted_dir"
+	mkdir -p resized
+
+	find landscape portrait -name '*png' -print0 |
+		parallel -0 magick {} -resize $MONITOR -size $MONITOR xc:black +swap -gravity center -composite resized/{/}
+
+	popd
+}
+
+case $# in
+	(0) usage && die ;;
+	(*) : continue ;;
+esac
+
+cmd=cmd_$1; shift
+if typeset -F "$cmd" &>/dev/null; then
+	"$cmd" "$@"
+else
+	usage && die
+fi
