@@ -1,0 +1,3 @@
+#! /bin/sh
+
+view /var/log/eclean.log /var/log/emerge-sync.log /var/log/root-backup.log
