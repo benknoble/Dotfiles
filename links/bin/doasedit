@@ -1,0 +1,55 @@
+#!/bin/sh
+
+# LICENSE: https://github.com/koalagang/doasedit/blob/main/LICENSE (BSD-3-Clause)
+# Copyright 2021 "Gabriel"
+# Modified D. Ben Knoble
+
+# AUTHOR: koalagang (https://github.com/koalagang) and other contributors
+# Dependencies: doas, GNU coreutils, GNU diffutils, an editor
+# You can find the doasedit repository at https://github.com/koalagang/doasedit
+
+# handle errors
+error() {
+    echo "doasedit: error: $1" && exit 1
+}
+
+if [ -f "$1" ]; then
+    file_exists=1
+elif [ -d "$1" ]; then
+    error "$1: Is a directory"
+fi
+
+[ -z "$1" ] && error 'no file path provided'
+[ -n "$2" ] && error 'expected only one argument'
+[ "$(whoami)" = 'root' ] && error 'cannot be run as root'
+[ -w "$1" ] && error 'editing files in a writeable directory is not permitted'
+
+# create a temporary file which is named with the following format:
+# if source file = '/etc/pacman.conf' then
+# the temporary file with be '/tmp/pacmanxyz.conf' where xyz is a random string of letters and numbers
+# if there is no extension then it will not contain the extension obviously
+filename="$(basename -- "$1")"
+temp="$(mktemp -t "${filename%.*}"XXX."${filename#*.}")"
+
+# if the source file does exist then copy its contents over to the temporary file
+if [ -n "$file_exists" ]; then
+    # TODO should also abort if EDITOR fails
+    cat "$1" >"$temp" && ${EDITOR:-vi} "$temp"
+    # if the file is unchanged then exit
+    cmp "$1" "$temp" -s && rm "$temp" && echo "doasedit: $1 unchanged" && exit 0
+# if the source file does not exist then create a new file
+else
+    ${EDITOR:-vi} "$temp"
+    # clean up and exit if file is empty
+    ! [ -s "$temp" ] && echo "doasedit: $1 not written" && rm "$temp" && exit 0
+fi
+
+# copy the contents of temporary file into the source file
+# attempt three times in case the user mistypes the root password
+write_file() {
+    ${DOASEDIT:-doas} dd if="$temp" of="$1" status=none
+}
+write_file "$1" || write_file "$1" || write_file "$1"
+
+# cleanup
+rm "$temp"
