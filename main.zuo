@@ -202,6 +202,7 @@
    '.ssh/config                 "ssh/config"
    '.tmux.conf                  "tmux.conf"
    '.vim                        "vim"
+   '.xinitrc                    "xinitrc"
    '.zprofile                   "zprofile"
    '.zsh                        "zsh"
    '.zshenv                     "zshenv"
