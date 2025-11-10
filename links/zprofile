@@ -33,6 +33,8 @@ export RACO_TEST_ARGS='-j $$(nproc)'
 
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
+export LEDGER_FILE=$HOME/code/finance/current.journal
+
 # personal vars {{{
 
 # file to hold private keys
