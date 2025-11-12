@@ -1,7 +1,7 @@
 " Undo /etc/vim/vimrc settings first
 set backspace& autoindent& history& ruler& viminfo& suffixes& numberwidth&
 set modeline& fileencodings& guifontset& hlsearch&
-unmap Q
+silent! unmap Q
 " - Skip turning off syntax, since my vimrc is smart enough to already check
 "   t_Co, has('gui_running'), _and_ !exists("g:syntax_on") before calling
 "   `syntax enabled`.
@@ -12,9 +12,9 @@ unmap Q
 " - is_bash set later, fine
 " Hmph. These autocommand set options like tabstop, shiftwidth, expandtab
 " globally insetad of locally. Broken.
-autocmd! gentoo
+silent! autocmd! gentoo
 " Don't need this variable: I have a vimrc
-unlet g:skip_defaults_vim
+unlet! g:skip_defaults_vim
 " Can't revert the Filetype * autocommand for omnifunc because it's not in a
 " group, so I'll just have duplicates.
 
