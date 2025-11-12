@@ -7,8 +7,8 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
-        colors = true
-        interval = 1
+	colors = true
+	interval = 1
 	markup = pango
 }
 
@@ -23,13 +23,13 @@ order += "tztime local"
 order += "volume main"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+	format_up = "W: (%quality at %essid) %ip"
+	format_down = "W: down"
 }
 
 ethernet _first_ {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+	format_up = "E: %ip (%speed)"
+	format_down = "E: down"
 }
 
 battery all {
@@ -37,21 +37,21 @@ battery all {
 }
 
 disk "/" {
-        format = "%avail"
+	format = "%avail"
 }
 
 load {
-        format = "%1min"
+	format = "%1min"
 }
 
 memory {
-        format = "%used/%available"
-        threshold_degraded = "1G"
-        format_degraded = "MEMORY < %available"
+	format = "%used/%available"
+	threshold_degraded = "1G"
+	format_degraded = "MEMORY < %available"
 }
 
 tztime local {
-        format = "<span size='x-large'>%Y-%m-%d %H:%M:%S</span>"
+	format = "<span size='x-large'>%Y-%m-%d %H:%M:%S</span>"
 }
 
 volume main {
