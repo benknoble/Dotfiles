@@ -1,0 +1,7 @@
+#! /bin/sh
+
+if command -vp open >/dev/null 2>&1; then
+  command -p open "$@"
+else
+  xdg-open "$@"
+fi
