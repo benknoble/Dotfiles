@@ -46,7 +46,7 @@ This will do several things:
    supported options and the defaults. Setting `FEATURES` to an empty string can
    be used to skip this.
 
-At this point, you may want to setup brew, so do
+At this point, you may want to setup brew (I skip this on Gentoo). Do
 
 ```bash
 # Linux
