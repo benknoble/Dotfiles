@@ -1,6 +1,6 @@
 # options
 # auto-reload yes
-browser "open -a Safari %u"
+browser open
 refresh-on-startup yes
 save-path ~/articles/
 text-width 80
