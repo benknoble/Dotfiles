@@ -11,7 +11,7 @@
 	ca = commit --all
 	cc = commit
 	cce = !git commit --edit --file="$(git rev-parse --git-dir)"/COMMIT_EDITMSG
-	ce = config --edit
+	ce = config edit
 	changed = diff --name-only
 	cm = commit --message
 	co = checkout
