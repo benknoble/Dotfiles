@@ -52,6 +52,9 @@ build_and_install_vim() (
 )
 
 main() {
+  if command -v emerge >/dev/null 2>/dev/null; then
+    doas emerge -a '=app-editors/vim-core-9999' '=app-editors/vim-9999'
+  fi
   install_deps
   clone_vim
   time build_and_install_vim
