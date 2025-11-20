@@ -465,6 +465,8 @@ if has('patch-9.1.1009')
   set diffopt+=linematch:60
 endif
 
+command -nargs=1 ZshOptSearch let @/ = split(<q-args>, '\zs')->map({_, v -> printf("[%s%s]", tolower(v), toupper(v)) })->join('_*') | normal! n
+
 " Colorscheme {{{
 
 " italic comments
