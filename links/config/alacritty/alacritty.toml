@@ -601,7 +601,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 decorations = "buttonless"
 dynamic_padding = false
 dynamic_title = true
-opacity = 1.0
+opacity = 0.90
 option_as_alt = "OnlyLeft"
 startup_mode = "Windowed"
 

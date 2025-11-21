@@ -181,6 +181,7 @@
    '.config/http-prompt         "config/http-prompt"
    '.config/i3                  "config/i3"
    '.config/i3status            "config/i3status"
+   '.config/picom               "config/picom"
    '.config/swi-prolog/init.pl  "config/swi-prolog/init.pl"
    '.config/yt-dlp/config       "config/yt-dlp/config"
    '.ctags.d                    "ctags.d"

@@ -23,6 +23,8 @@ font pango:Victor Mono 10
 # display is configured for the tray.
 exec --no-startup-id xrandr --output DisplayPort-3 --primary
 
+exec --no-startup-id picom -b
+
 # see /usr/share/X11/locale/en_US.UTF-8/Compose
 exec --no-startup-id setxkbmap -option compose:caps
 
