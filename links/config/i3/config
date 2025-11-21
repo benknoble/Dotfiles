@@ -23,6 +23,9 @@ font pango:Victor Mono 10
 # display is configured for the tray.
 exec --no-startup-id xrandr --output DisplayPort-3 --primary
 
+# see /usr/share/X11/locale/en_US.UTF-8/Compose
+exec --no-startup-id setxkbmap -option compose:caps
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
