@@ -34,6 +34,7 @@ ethernet _first_ {
 
 battery trackpad {
 	format = "■ tp %status %percentage"
+	format_percentage = "%.00f%s"
 	status_bat = "🔋"
 	status_chr = "⚡"
 	status_full = "☻ "
