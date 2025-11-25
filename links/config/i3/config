@@ -44,7 +44,7 @@ exec --no-startup-id gentoo-pipewire-launcher
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # lock!
-bindsym $mod+x exec i3lock --ignore-empty-password --show-failed-attempts --show-keyboard-layout --image $(find -L ~/wallpapers -type f -name '*png' |  shuf -n1)
+bindsym $mod+x exec i3lock --ignore-empty-password --show-failed-attempts --show-keyboard-layout --image $(rotate wallpapers show)
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status

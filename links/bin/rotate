@@ -1,0 +1,83 @@
+#! /bin/zsh
+
+set -euo pipefail
+
+usage() {
+  printf '%s\n' "usage: ${ZSH_ARGZERO:t} <list> <next|shuffle|show>" '' \
+    '<list> names a list in ${XDG_CONFIG_HOME:-$HOME/.config}/rotate' '' \
+    '- next: rotate to next item, shuffling if end reached, and show it' \
+    '- shuffle: shuffle list and reset to 1st item' \
+    '- show: show current item'
+}
+
+setup() {
+  if ! test -e "$shuf_data"; then
+    <"$listfile" shuf >"$shuf_data"
+  fi
+  if ! test -e "$current_data"; then
+    printf '1\n' >"$current_data"
+  fi
+}
+
+cmd_next() {
+  setup
+  next=$(( $(current) + 1 ))
+  printf '%d\n' "$next" >"$current_data"
+  if out_of_bounds; then
+    cmd_shuffle
+  fi
+  cmd_show
+}
+
+cmd_shuffle() {
+  <"$listfile" shuf >"$shuf_data"
+  printf '1\n' >"$current_data"
+}
+
+cmd_show() {
+  setup
+  if out_of_bounds; then
+    log "error: list index $(current) is out of bounds for length $(len)"
+    log "to manually reset: 'rm $current_data'"
+    die 1
+  fi
+  sed -n "$(current)p" "$shuf_data"
+}
+
+out_of_bounds() { (( $(current) > $(len) )) }
+current() { <"$current_data" }
+len() { wc -l <"$shuf_data" }
+log() { printf '%s\n' "$@" >&2 }
+die() { exit 1 }
+
+case ${1-} in
+  (-h|--help)
+    usage
+    exit 0
+    ;;
+esac
+
+if (($# != 2)); then
+  usage >&2; die
+fi
+
+list=$1
+cmd=$2
+
+listfile=${XDG_CONFIG_HOME:-$HOME/.config}/rotate/$list
+test -e $listfile || {
+  log "no such listfile: $listfile"
+  die
+}
+state=${XDG_STATE_HOME:-$HOME/.local/state}/rotate/$list
+mkdir -p "$state"
+
+current_data=$state/current
+shuf_data=$state/shuf
+
+case $2 in
+  (next) cmd_next ;;
+  (shuffle) cmd_shuffle ;;
+  (show) cmd_show ;;
+  (*) usage >&2; die;;
+esac
