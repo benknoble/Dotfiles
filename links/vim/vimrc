@@ -400,6 +400,7 @@ endif
 
 " Spelling {{{
 inoremap <C-L> <C-g>u<Esc>[s1z=gi<C-g>u
+set spelloptions+=camel
 " Spelling }}}
 
 " Terminal {{{
