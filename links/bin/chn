@@ -1,0 +1,15 @@
+#! /bin/zsh
+
+if (( $# < 2 )); then
+  printf 'usage: %s <count> <prog> [<arg>…]' "$0"
+  exit 1
+fi
+
+count=$1; shift
+
+prog='cat'
+while (( count-- > 0 )); do
+  prog+=" | ${(q@)@}"
+done
+
+eval "$prog"
