@@ -1,0 +1,29 @@
+#! /bin/bash
+
+set -euo pipefail
+
+LATEST_STAGE3=https://distfiles.gentoo.org/releases/amd64/autobuilds/current-stage3-amd64-openrc/latest-stage3-amd64-openrc.txt
+CHROOT=~/gentoo-test
+
+download_latest_stage3() {
+  local temp
+  temp=$(mktemp)
+  touch -d '00:00:00 today' "$temp"
+  if [[ ~/Downloads/stage3-amd64-latest.tar.xz -nt "$temp" ]]; then
+    rm "$temp"
+    return
+  fi
+  rm "$temp"
+  local latest
+  latest="$(wget "$LATEST_STAGE3" -O - | grep ^stage3-amd64 | awk '{print $1}')"
+  wget "$(dirname "$LATEST_STAGE3")/$latest" -O ~/Downloads/stage3-amd64-latest.tar.xz
+  touch ~/Downloads/stage3-amd64-latest.tar.xz
+}
+
+download_latest_stage3
+rm -fr "$CHROOT"
+mkdir "$CHROOT"
+pushd "$CHROOT"
+tar xpf ~/Downloads/stage3-amd64-latest.tar.xz --xattrs-include='*.*' --numeric-owner || true
+cp --dereference /etc/resolv.conf etc/resolv.conf
+doas arch-chroot "$CHROOT"
