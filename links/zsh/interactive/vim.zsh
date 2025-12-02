@@ -73,7 +73,7 @@ vh() {
 vw() {
   { vim ="$*" } always {
     if (( TRY_BLOCK_ERROR == 1 )) ; then
-    printf '%s\n' 'Usage: vw cmd' '' 'edit file defining {cmd}'
+      printf '%s\n' 'Usage: vw cmd' '' 'edit file defining {cmd}'
     fi
   }
 }
