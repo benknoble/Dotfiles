@@ -1,5 +1,6 @@
+__v_file=${(%):-%N}
 v_funcs() {
-  $PAGER ~/.zsh/vim.zsh
+  $PAGER $__v_file
 }
 
 v() {
