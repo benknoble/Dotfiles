@@ -314,6 +314,10 @@ bindkey -M viins '^A' all-matches
 # disable flow control
 stty -ixon -ixoff
 
+if [[ $TERM = *tmux* ]]; then
+  unset DBUS_SESSION_BUS_ADDRESS
+fi
+
 # term }}}
 
 # shell }}}
