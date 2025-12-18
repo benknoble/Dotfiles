@@ -11,9 +11,9 @@ export def Hyperlink(text: string)
     # grab the highest number in the document til this point
     var max = getline(1, '.')->map((idx, line) => matchlist(line, '^\[\(\d\+\)\]:')->get(1, '0')->str2nr())->max()
     var n = max + 1
-    # we are "the end of the next hyperlink block, if there is one",
-    # which might be the end of the document (but that could be a link line):
-    if line('.') == line('$') && getline('.') !~# '^\[\d\+\]:'
+    # We are at "the end of the next hyperlink block, if there is one":
+    # there might not be such a block at all. If not, open a new paragraph.
+    if getline('.') !~# '^\[\d\+\]:'
       normal! o
     endif
     put =printf('[%d]: %s', n, text)
