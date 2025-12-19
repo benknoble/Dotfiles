@@ -1,0 +1,11 @@
+#! /bin/sh
+
+end="${1:-@}"
+start="$end@{upstream}"
+if test $# -eq 2; then
+  start=$2
+fi
+
+# shellcheck disable=SC2016 # $0 is for the "sh -c"
+git rev-list --reverse "$start..$end" |
+  xargs -n1 sh -c 'git show -s --format=%s%n%n%b $0 | git interpret-trailers --parse'
