@@ -185,3 +185,5 @@ bar {
 	position top
 	tray_output primary
 }
+
+for_window [class="^vesktop$"] move to workspace $ws10, floating enable, resize set 1750 1900, move position center
