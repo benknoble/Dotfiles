@@ -1,3 +1,4 @@
 #!/bin/sh
 
+setxkbmap -option compose:caps
 exec dbus-launch --exit-with-session i3
