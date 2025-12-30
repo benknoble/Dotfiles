@@ -27,4 +27,4 @@ while (($#)); do
   esac
   print -l -- $(fix_digit $1 12)\ {$(fix_digit $2)..$(fix_digit $3)}
   shift 3
-done | xargs -P8 -L1 blog-posts-on | sort -r | tee >(cat >&2) | xargs open
+done | xargs -P8 -L1 blog-posts-on | sort -r | tee >(cat >&2) | xargs -L1 open
