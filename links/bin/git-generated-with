@@ -1,6 +1,16 @@
 #! /bin/sh
 
-# Put Generated-with: <cmd> in a branch description to let this command
-# evaluated it. See links/gitconfig for bdesc, bed aliases.
+set -eu
+
+USAGE='[-h]
+Put "Generated-with: <cmd>" in a branch description to let this command evaluate
+it. See links/gitconfig for bdesc, bed aliases.
+'
+SUBDIRECTORY_OK=true
+NONGIT_OK=true
+
+set +u
+. "$(git --exec-path)"/git-sh-setup
+set -u
 
 eval "$(git bdesc | git interpret-trailers --parse | grep ^Generated-with | cut -d: -f 2-)"
