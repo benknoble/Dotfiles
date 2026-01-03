@@ -24,6 +24,11 @@ let g:ale_fixers = {
       \ 'go': ['gofmt'],
       \ }
 
+" disable completion limiting: while this value isn't documented as special, the
+" underlying code uses the "list[: N - 1]" construct; as a result, N=0 implies
+" that the whole list is returned.
+let g:ale_completion_max_suggestions = 0
+
 " lengthen prolog timeout
 let g:ale_prolog_swipl_timeout = 10
 " no sandboxing
