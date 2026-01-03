@@ -182,7 +182,7 @@ pathadd_front .git/safe/../../bin
 
 () {
   local cargo_bin=~/.cargo/bin
-  [[ -d "$cargo_bin" ]] && pathadd "$cargo_bin"
+  [[ -d "$cargo_bin" ]] && pathadd_front "$cargo_bin"
 }
 
 pathadd ~/.personal/bin
