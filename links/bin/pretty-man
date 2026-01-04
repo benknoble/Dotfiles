@@ -1,0 +1,3 @@
+#! /bin/sh
+
+MANROFFOPT=-Tutf8\ -P-i man -t "$@" | eval "${PAGER:-less}"
