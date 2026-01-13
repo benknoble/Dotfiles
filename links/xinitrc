@@ -1,4 +1,6 @@
 #!/bin/sh
 
+# TODO: do I also need this in i3 config? I put it there first, but it seemed to
+# maybe not be permanent?
 setxkbmap -option compose:caps
 exec dbus-launch --exit-with-session i3
