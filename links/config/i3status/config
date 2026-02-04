@@ -10,6 +10,9 @@ general {
 	colors = true
 	interval = 1
 	markup = pango
+	color_good = "#8AFF80"
+	color_degraded = "#FFFF80"
+	color_bad = "#FF9580"
 }
 
 order += "ipv6"
