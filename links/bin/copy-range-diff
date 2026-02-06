@@ -1,7 +1,12 @@
 #! /bin/sh
 
+summary=
+if test $# -gt 0; then
+  summary=" (<code>$*</code>)"
+fi
+
 {
-  printf '%s\n' '<details><summary>range-diff:</summary>' '' '```'
+  printf '%s\n' "<details><summary>range-diff${summary}:</summary>" '' '```'
   cat
   printf '%s\n' '```' '' '</details>'
 } | {

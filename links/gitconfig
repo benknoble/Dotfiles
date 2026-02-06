@@ -47,7 +47,7 @@
 	r = rebase
 	rc = rebase --continue
 	rdup = range-diff @{upstream} @{push} @
-	rdupc = !git rdup | copy-range-diff
+	rdupc = !git rdup | copy-range-diff "git range-diff $(git rev-parse --symbolic-full-name @{upstream} @{push} @ | cut -d/ -f3-)"
 	ref = show --no-patch --format=reference
 	remerf = "!f() { git rebase \"$1\" \"$2\"; git checkout \"$1\"; git merge --ff-only \"$2\"; }; f"
 	rems = for-each-ref --sort=-committerdate --format=\"%(refname:short)\t%(color:red)%(authorname)\t%(color:blue)%(authordate:relative)%(color:reset)\" refs/remotes
