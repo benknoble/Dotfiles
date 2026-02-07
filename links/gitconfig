@@ -118,7 +118,7 @@
 [diff "yq"]
 	textconv = "f(){ yq -P eval 'sort_keys(..)' \"$1\" 2>/dev/null || cat \"$1\"; }; f"
 [diff "csv"]
-	textconv = "f() { mlr --csv cat \"$1\" || true; }; f"
+	textconv = "f() { mlr --csv -N cat \"$1\" || true; }; f"
 [difftool]
 	prompt = no
 [merge]
