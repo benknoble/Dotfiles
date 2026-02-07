@@ -151,3 +151,6 @@
 [submodule "zuo"]
 	path = zuo
 	url = https://github.com/racket/zuo
+[submodule "links/vim/pack/languages/opt/ledger"]
+	path = links/vim/pack/languages/opt/ledger
+	url = https://github.com/ledger/vim-ledger

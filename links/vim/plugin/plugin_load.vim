@@ -51,4 +51,5 @@ packadd scribble
 packadd coqtail
 packadd jqplay
 packadd dwarffortress
+packadd ledger
 " Optional Packages }}}
