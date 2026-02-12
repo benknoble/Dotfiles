@@ -136,7 +136,7 @@
 [blame]
 	markUnblamableLines = true
 	markIgnoredLines = true
-	; ignoreRevsFile = :(optional).git-blame-ignore-revs
+	ignoreRevsFile = :(optional).git-blame-ignore-revs
 
 # interface
 [advice]
