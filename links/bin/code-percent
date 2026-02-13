@@ -14,7 +14,7 @@ xargs wc -l |
     /total/ { total = $1; }
     { counts[$2] = $1; }
     END { for (k in counts) { print k, counts[k]*100/total; } }' |
-  sort -rn -k2 |
+  LC_ALL=C sort -rn -k2 |
   grep -v total |
   { echo 'RowNumber File PercentTotal CumulativePercentTotal'
     awk '{ total += $2; print $0, total; }' | nl; } |
