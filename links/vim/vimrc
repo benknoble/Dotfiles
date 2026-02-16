@@ -339,6 +339,7 @@ function s:minimal_colors() abort
         \ 'Typedef', 'Tag', 'Debug']
     execute 'highlight clear' group
   endfor
+  highlight link Function Bold
 endfunction
 
 function s:toggle_minimal() abort
