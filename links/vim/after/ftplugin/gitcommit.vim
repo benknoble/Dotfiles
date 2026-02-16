@@ -12,6 +12,7 @@ setlocal spell spelllang=en_us
 setlocal formatoptions-=a
 
 setlocal comments+=b:>
+setlocal formatlistpat+=\\\|^\\s*•\\s\\+
 
 nnoremap <buffer> <LocalLeader>d :DiffGitCached<CR>
 
