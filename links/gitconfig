@@ -81,6 +81,11 @@
 	autocorrect = prompt
 
 # remotes
+[pull]
+	rebase = merges
+[submodule]
+	fetchJobs = 4
+	recurse = true
 [fetch]
 	recurseSubmodules = on-demand
 	prune = true
@@ -91,11 +96,6 @@
 	recurseSubmodules = check
 	useForceIfIncludes = true
 	default = current
-[pull]
-	rebase = merges
-[submodule]
-	fetchJobs = 4
-	recurse = true
 
 [tag]
 	sort = -version:refname
