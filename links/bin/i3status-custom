@@ -1,0 +1,79 @@
+#! /bin/bash
+
+# Based on https://github.com/i3/i3status/blob/main/contrib/any_position_wrapper.sh
+# and https://github.com/i3/i3status/blob/main/contrib/net-speed.sh
+
+# This i3status wrapper allows to add custom information in any position of the statusline
+# It was developed for i3bar (JSON format)
+
+# The idea is to define "holder" modules in i3status config and then replace them
+
+# In order to make this example work you need to add
+# order += "tztime holder__hey_man"
+# and
+# tztime holder__hey_man {
+#        format = "holder__hey_man"
+# }
+# in i3staus config
+
+# Don't forget that i3status config should contain:
+# general {
+#   output_format = i3bar
+# }
+#
+# and i3 config should contain:
+# bar {
+#   status_command exec /path/to/this/script.sh
+# }
+
+# Make sure jq is installed
+# That's it
+
+# You can easily add multiple custom modules using additional "holders"
+
+update_holder() {
+  jq -c --arg instance "$1" --argjson replacement "$2" '(.[] | select(.instance == $instance)) |= $replacement'
+}
+
+remove_holder() {
+  jq -c --arg instance "$1" 'del(.[] | select(.instance == $instance))'
+}
+
+# see ddcutil capabilities output
+hw_brightness() {
+  local cmd brightness
+  if ! brightness="$(ddcutil --terse getvcp 10 2>/dev/null)"; then
+    remove_holder placeholder_hw_brightness
+    return
+  fi
+  read -ra cmd <<<"$brightness"
+  brightness=${cmd[3]}
+  if test "$brightness"; then
+    update_holder placeholder_hw_brightness '{"full_text":"☼'"$brightness"'"}'
+  else
+    remove_holder placeholder_hw_brightness
+  fi
+}
+
+hw_volume() {
+  local cmd volume
+  if ! volume="$(ddcutil --terse getvcp 62 2>/dev/null)"; then
+    remove_holder placeholder_hw_volume
+    return
+  fi
+  read -ra cmd <<<"$volume"
+  volume=${cmd[3]}
+  if test "$volume"; then
+    update_holder placeholder_hw_volume '{"full_text":"H♪ '"$volume"'"}'
+  else
+    remove_holder placeholder_hw_volume
+  fi
+}
+
+i3status | (read -r line && echo "$line" && read -r line && echo "$line" && read -r line && echo "$line" &&
+  while read -r line; do
+    printf ,
+    printf '%s\n' "${line#,}" |
+      hw_brightness |
+      hw_volume
+  done)

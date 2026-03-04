@@ -13,8 +13,11 @@ general {
 	color_good = "#8AFF80"
 	color_degraded = "#FFFF80"
 	color_bad = "#FF9580"
+	output_format = "i3bar"
 }
 
+order += "tztime placeholder_hw_volume"
+order += "tztime placeholder_hw_brightness"
 order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
@@ -64,4 +67,12 @@ tztime local {
 
 volume main {
 	device = "pulse"
+}
+
+tztime placeholder_hw_volume {
+	format = "placeholder_hw_volume"
+}
+
+tztime placeholder_hw_brightness {
+	format = "placeholder_hw_brightness"
 }
