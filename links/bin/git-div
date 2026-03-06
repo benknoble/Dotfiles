@@ -54,17 +54,12 @@ main() {
       (--) break ;;
     esac
   done
-  case $# in
-    (0) : continue ;;
-    (1) base="$1" ;;
-    (2) base="$1"; upstream="$2" ;;
-    (*) printf '%s\n' 'too many arguments' >&2; usage ;;
-  esac
-  shift $#
+  test $# -gt 0 && base="$1" && shift
+  test $# -gt 0 && upstream="$1" && shift
 
   test -z "$upstream" && set_upstream
 
-  set -- git -c log.decorate=true log --oneline --graph --boundary --cherry-mark --left-right "$base...$upstream"
+  set -- git -c log.decorate=true log --oneline --graph --boundary --cherry-mark --left-right "$base...$upstream" "$@"
   test -n "$verbose" && printf '%s\n' "$*" >&2
   exec "$@"
 }
