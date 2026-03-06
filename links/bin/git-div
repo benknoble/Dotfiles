@@ -64,7 +64,7 @@ main() {
 
   test -z "$upstream" && set_upstream
 
-  set -- git log --oneline --graph --boundary --cherry-mark --left-right "$base...$upstream"
+  set -- git -c log.decorate=true log --oneline --graph --boundary --cherry-mark --left-right "$base...$upstream"
   test -n "$verbose" && printf '%s\n' "$*" >&2
   exec "$@"
 }
