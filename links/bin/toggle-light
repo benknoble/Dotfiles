@@ -18,7 +18,7 @@ find_alacritty_config() {
 
 current_color_file() {
   local alacritty="$1"
-  grep colors.toml "$alacritty" | jq -r . | sed "s,~,$HOME,"
+  grep colors.toml "$alacritty" | sed -e "s,~,$HOME," -e 's/^[[:space:]]*"//' -e 's/",$//'
 }
 
 current_colors() {
