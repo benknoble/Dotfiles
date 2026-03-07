@@ -39,10 +39,14 @@ remove_holder() {
   jq -c --arg instance "$1" 'del(.[] | select(.instance == $instance))'
 }
 
+ddcutil_get() {
+  ddcutil --terse --sleep-multiplier 0.01 --bus 15 getvcp "$@" 2>/dev/null
+}
+
 # see ddcutil capabilities output
 hw_brightness() {
   local cmd brightness
-  if ! brightness="$(ddcutil --terse getvcp 10 2>/dev/null)"; then
+  if ! brightness="$(ddcutil_get 10)"; then
     remove_holder placeholder_hw_brightness
     return
   fi
@@ -57,7 +61,7 @@ hw_brightness() {
 
 hw_volume() {
   local cmd volume
-  if ! volume="$(ddcutil --terse getvcp 62 2>/dev/null)"; then
+  if ! volume="$(ddcutil_get 62)"; then
     remove_holder placeholder_hw_volume
     return
   fi
