@@ -56,14 +56,14 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # "10" is my Brightness on the ViewSonic over DisplayPort
 # ddcutil getvcp 10
-# ddcutil setvcp 10 <N>
-bindsym XF86MonBrightnessUp exec --no-startup-id ddcutil --sleep-multiplier 0.01 --bus 15 setvcp 10 $(($(ddcutil --sleep-multiplier 0.01 --bus 15 --terse getvcp 10 | awk '{print $4}') + 5))
-bindsym XF86MonBrightnessDown exec --no-startup-id ddcutil --sleep-multiplier 0.01 --bus 15 setvcp 10 $(($(ddcutil --sleep-multiplier 0.01 --bus 15 --terse getvcp 10 | awk '{print $4}') - 5))
+# ddcutil setvcp 10 [+|-] <N>
+bindsym XF86MonBrightnessUp exec --no-startup-id ddcutil --sleep-multiplier 0.01 --bus 15 setvcp 10 + 5
+bindsym XF86MonBrightnessDown exec --no-startup-id ddcutil --sleep-multiplier 0.01 --bus 15 setvcp 10 - 5
 
 mode "hardware" {
     # "62" is my Volume on the ViewSonic over DisplayPort
-    bindsym XF86AudioRaiseVolume exec --no-startup-id ddcutil --sleep-multiplier 0.01 --bus 15 setvcp 62 $(($(ddcutil --sleep-multiplier 0.01 --bus 15 --terse getvcp 62 | awk '{print $4}') + 5))
-    bindsym XF86AudioLowerVolume exec --no-startup-id ddcutil --sleep-multiplier 0.01 --bus 15 setvcp 62 $(($(ddcutil --sleep-multiplier 0.01 --bus 15 --terse getvcp 62 | awk '{print $4}') - 5))
+    bindsym XF86AudioRaiseVolume exec --no-startup-id ddcutil --sleep-multiplier 0.01 --bus 15 setvcp 62 + 5
+    bindsym XF86AudioLowerVolume exec --no-startup-id ddcutil --sleep-multiplier 0.01 --bus 15 setvcp 62 - 5
     bindsym Return mode "default"
     bindsym Escape mode "default"
     bindsym $mod+Control+Mod4+Shift+h mode "default"
