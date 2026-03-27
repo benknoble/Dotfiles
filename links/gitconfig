@@ -162,6 +162,7 @@
 	coverFromDescription = auto
 	useAutoBase = whenAble
 	notes = true
+	commitListFormat = modern
 [trailer "t"]
 	cmd = git-find-ticket
 
