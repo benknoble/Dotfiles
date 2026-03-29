@@ -171,6 +171,7 @@
 (define the-links
   ;; vim: `!iicolumn -t<enter>` and `gsii` will help
   (hash
+   '.Xresources                 "Xresources"
    '.bash                       "bash"
    '.bash_profile               "bash_profile"
    '.bashrc                     "bashrc"

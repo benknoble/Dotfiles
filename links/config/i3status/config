@@ -62,7 +62,7 @@ memory {
 }
 
 tztime local {
-	format = "<span size='x-large'>%Y-%m-%d %H:%M:%S</span>"
+	format = "%Y-%m-%d %H:%M:%S"
 }
 
 volume main {
