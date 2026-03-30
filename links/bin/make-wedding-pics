@@ -35,7 +35,7 @@ cmd_extract() {
 	if (( $(find . -name '*jpg' | wc -l) != TOTAL )); then
 		log "unzipping"
 		find "$zip_dir" -maxdepth 1 -name '*zip' -exec unzip {} \;
-		if $(( $(find . -name '*jpg' | wc -l) != TOTAL )); then
+		if (( $(find . -name '*jpg' | wc -l) != TOTAL )); then
 			die "did not extract all $TOTAL files"
 		fi
 	else
