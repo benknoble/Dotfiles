@@ -12,14 +12,14 @@ endfunction
 
 " see after/ftplugin/coq.vim
 function CoqtailHookDefineMappings() abort
-  nunmap <buffer> <localleader>cj
-  nunmap <buffer> <localleader>ck
+  silent! nunmap <buffer> <localleader>cj
+  silent! nunmap <buffer> <localleader>ck
   nmap <buffer> ) <Plug>RocqNext
   nmap <buffer> ( <Plug>RocqUndo
 
-  nunmap <buffer> <localleader>cl
+  silent! nunmap <buffer> <localleader>cl
   nmap <buffer> gl <Plug>RocqToLine
 
-  nunmap <buffer> <localleader>cG
+  silent! nunmap <buffer> <localleader>cG
   nmap <buffer> g. <Plug>RocqJumpToEnd
 endfunction
