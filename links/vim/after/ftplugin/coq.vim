@@ -2,7 +2,7 @@
 " Language:              coq
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-let b:interpreter = 'rlwrap coqtop'
+let b:interpreter = 'rlwrap rocq repl'
 
 setlocal shiftwidth=2 softtabstop=2
 " indent/coq.vim makes this 2, but I don't work with hard-tabs
