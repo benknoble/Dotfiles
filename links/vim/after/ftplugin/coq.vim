@@ -29,57 +29,8 @@ inoreabbrev <buffer> <expr> compose bk#abbr#not_comment('compose', '∘')
 nnoremap <buffer> <localleader>a :call bk#coq#get_def(expand('<cword>'), 'About')<CR>
 nnoremap <buffer> <localleader>p :call bk#coq#get_def(expand('<cword>'), 'Print')<CR>
 
-let s:maps = []
-
-if exists('*coqtail#register')
-  " The function coqtail#define_mappings gets called all the time in
-  " unpredictable ways, meaning I can't
-  "
-  " silent! nunmap <buffer> <localleader>cgg
-  " silent! nunmap <buffer> <localleader>cGG
-  " silent! nunmap <buffer> g]
-  " silent! nunmap <buffer> G]
-  " silent! nunmap <buffer> g[
-  " silent! nunmap <buffer> G[
-  "
-  " to get rid of the mappings I want.
-  " Instead, let's replicate the logic (twice, actually; see undo_ftplugin) and
-  " keep only the maps I want.
-  " cf. plugin/config/coqtail.vim where maps are disabled and the prefix is set.
-  let s:map_prefix = get(g:, 'coqtail_map_prefix', '<leader>c')
-
-  let s:maps = [
-        \   ['Start', 'c', 'n'],
-        \   ['Stop', 'q', 'n'],
-        \   ['Interrupt', '!<C-c>', 'n'],
-        \   ['Next', '!)', 'n'],
-        \   ['Undo', '!(', 'n'],
-        \   ['ToLine', '!gl', 'n'],
-        \   ['ToTop', 'T', 'n'],
-        \   ['JumpToEnd', '!g.', 'n'],
-        \   ['GotoDef', 'g', 'n'],
-        \   ['Search', 's', 'nx'],
-        \   ['Check', 'h', 'nx'],
-        \   ['About', 'a', 'nx'],
-        \   ['Print', 'p', 'nx'],
-        \   ['Locate', 'f', 'nx'],
-        \   ['RestorePanels', 'r', 'n'],
-        \   ['ToggleDebug', 'd', 'n'],
-        \ ]
-
-  for [s:cmd, s:key, s:types] in s:maps
-    for s:type in split(s:types, '\zs')
-      if !hasmapto('<Plug>Coq' . s:cmd, s:type)
-        let s:prefix = s:map_prefix
-        if s:key[0] ==# '!'
-          let s:key = s:key[1:]
-          let s:prefix = ''
-        endif
-        execute s:type . 'map <buffer> ' . s:prefix . s:key . ' <Plug>Coq' . s:cmd
-      endif
-    endfor
-  endfor
-endif
+" see plugin/config/coqtail.vim
+let s:maps = ['(', ')', 'gl', 'g.' ]
 
 let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ opts: [
@@ -94,10 +45,7 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \ maps: [
       \   [ 'n', '<localleader>a'],
       \   [ 'n', '<localleader>p'],
-      \ ] + map(s:maps, { _, v ->
-      \       split(v[2], '\zs')
-      \       ->map({ _, type -> [type, v[1][0] is# '!' ? v[1][1:] : s:map_prefix . v[1]]})
-      \       ->flatten(1)}),
+      \ ] + map(s:maps, { _, v -> [ 'n', v ] }),
       \ abbrevs: [
       \   [ 'i', 'forall' ],
       \   [ 'i', 'exists' ],
