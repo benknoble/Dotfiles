@@ -10,6 +10,8 @@ setlocal tabstop<
 " ftplugin/coq.vim adds 'n', which won't work for me
 setlocal comments=sr:(*,mb:*,ex:*)
 
+Conceal
+
 inoreabbrev <buffer> <expr> forall bk#abbr#not_comment('forall', '∀')
 inoreabbrev <buffer> <expr> exists bk#abbr#not_comment('exists', '∃')
 inoreabbrev <buffer> <expr> /\ bk#abbr#not_comment('/\', '∧')
@@ -63,5 +65,8 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \   [ 'i', 'le' ],
       \   [ 'i', 'ge' ],
       \   [ 'i', 'compose' ],
+      \ ],
+      \ custom: [
+      \   'Reveal',
       \ ],
       \ })
