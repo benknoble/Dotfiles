@@ -304,6 +304,7 @@ if has('autocmd')
     autocmd!
     autocmd ColorScheme dracula* call s:set_colors_to_dracula()
     autocmd ColorScheme dracula_pro_alucard call s:set_colors_to_alucard()
+    autocmd ColorScheme alucard call s:set_colors_to_alucard()
   augroup end
 endif
 " }}}
@@ -472,7 +473,7 @@ command -nargs=1 ZshOptSearch let @/ = split(<q-args>, '\zs')->map({_, v -> prin
 if has('autocmd')
   augroup italic_comments
     autocmd!
-    autocmd ColorScheme * if g:colors_name =~# '^dracula.*' |
+    autocmd ColorScheme * if g:colors_name =~# '\v(^dracula.*)|^alucard$' |
           \ highlight DraculaComment cterm=italic gui=italic |
           \ else |
           \ highlight Comment cterm=italic gui=italic |
@@ -513,6 +514,7 @@ if ! exists('g:colors_name')
       colorscheme dracula_pro_van_helsing
     catch /^Vim\%((\a\+)\)\=:E185/
       try
+        silent! packadd! dracula
         colorscheme dracula
       catch /^Vim\%((\a\+)\)\=:E185/
         colorscheme default
@@ -528,8 +530,13 @@ if ! exists('g:colors_name')
     try
       colorscheme dracula_pro_alucard
     catch /^Vim\%((\a\+)\)\=:E185/
-      colorscheme default
-      set background=light
+      try
+        silent! packadd! dracula
+        colorscheme alucard
+      catch /^Vim\%((\a\+)\)\=:E185/
+        colorscheme default
+        set background=light
+      endtry
     endtry
   endfunction
   " End Alucard }}}
