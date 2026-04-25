@@ -33,6 +33,7 @@ exec --no-startup-id setxkbmap -option compose:caps
 exec --no-startup-id dex --autostart --environment i3
 
 exec --no-startup-id 1password --silent
+exec --no-startup-id flameshot
 
 exec --no-startup-id feh --bg-center --no-fehbg "$(rotate wallpapers show)"
 
