@@ -4,4 +4,8 @@ if pgrep -u benknoble i3lock >/dev/null 2>&1; then
   exit 0
 fi
 
+if ! pgrep -u benknoble i3 >/dev/null 2>&1; then
+  exit 0
+fi
+
 DISPLAY=:0 /usr/bin/feh --bg-center --no-fehbg "$($HOME/.bin/rotate wallpapers next)"
