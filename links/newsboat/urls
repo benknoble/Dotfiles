@@ -40,6 +40,8 @@ https://purplesyringa.moe/blog/feed.rss "tech" "rust"
 https://www.iankduncan.com/rss.xml "tech"
 https://planet.gentoo.org/rss20.xml "tech" "gentoo"
 https://david.rothlis.net/articles.feed "tech"
+https://bcantrill.dtrace.org/index.xml "tech" "oxide"
+https://oxide.computer/blog/feed "tech" "oxide"
 
 http://journal.stuffwithstuff.com/rss.xml "~Bob Nystrom" "tech"
 https://blog.sanctum.geek.nz/feed/ "tech"
