@@ -1,0 +1,3 @@
+#! /bin/sh
+
+i3lock "$@" --ignore-empty-password --show-failed-attempts --show-keyboard-layout --image "$(~/.bin/rotate wallpapers show)"

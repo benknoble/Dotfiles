@@ -39,16 +39,13 @@ exec --no-startup-id flameshot
 
 exec --no-startup-id feh --bg-center --no-fehbg "$(rotate wallpapers show)"
 
-# xss-lock is for sleep/hibernate? loginctl lock-session didn't work for me with this installed, and I just need a "regular" session lock
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# screen before suspend. Use loginctl lock-session to lock your screen. (It also
+# triggers automatically on the "xset s" timeout.)
+exec --no-startup-id xss-lock --transfer-sleep-lock -- screenlock -n
 
 # lock!
-bindsym $mod+x exec i3lock --ignore-empty-password --show-failed-attempts --show-keyboard-layout --image $(rotate wallpapers show)
+bindsym $mod+x exec loginctl lock-session
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
