@@ -1,3 +1,9 @@
-#! /bin/sh
+#! /bin/bash
+
+PROCS=( firefox vesktop 1password )
+
+killall -STOP -r "${PROCS[@]}"
 
 i3lock "$@" --ignore-empty-password --show-failed-attempts --show-keyboard-layout --image "$(~/.bin/rotate wallpapers show)"
+
+killall -CONT -r "${PROCS[@]}"
