@@ -13,7 +13,11 @@ linux_alert() {
   notify-send --urgency=low -i "$icon" "$subj" "$msg"
 }
 
+macos_alert() {
+  osascript -e "display notification \"${1:-done}\""
+}
+
 case "$OSTYPE" in
-  darwin*) osascript -e "display notification \"${1:-done}\"" ;;
+  darwin*) macos_alert "$@" ;;
   linux-gnu) linux_alert "$@" ;;
 esac
