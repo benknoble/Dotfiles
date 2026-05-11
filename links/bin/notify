@@ -14,7 +14,10 @@ linux_alert() {
 }
 
 macos_alert() {
-  osascript -e "display notification \"${1:-done}\""
+  local subj="${1:-Alert}"
+  (($# > 0)) && shift
+  local msg="$*"
+  osascript -e "display notification ${(q)msg} with title ${(q)subj}"
 }
 
 case "$OSTYPE" in
