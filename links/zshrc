@@ -136,7 +136,7 @@ show_venv_name() {
 }
 
 _precmd_title() {
-  local title="$(sed 's/%F{[[:lower:]]*}\|%f//g' <<<"${${(f)PS1}[1]}")"
+  local title="$(sed 's/%F{[[:lower:]]*}\|%f//g' <<<"${${(f)PS1}[1]}\t${RPS1}")"
   print -Pn "\e]0;${title}\e\\"
 }
 
