@@ -115,10 +115,13 @@
 	mnemonicprefix = true
 [diff "json"]
 	textconv = "f(){ gron \"$1\" 2>/dev/null || cat \"$1\"; }; f"
+	cachetextconv = true
 [diff "yq"]
 	textconv = "f(){ yq -P eval 'sort_keys(..)' \"$1\" 2>/dev/null || cat \"$1\"; }; f"
+	cachetextconv = true
 [diff "csv"]
 	textconv = "f() { mlr --csv -N cat \"$1\" || true; }; f"
+	cachetextconv = true
 [difftool]
 	prompt = no
 [merge]
