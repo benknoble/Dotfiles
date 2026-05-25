@@ -154,3 +154,6 @@
 [submodule "links/vim/pack/languages/opt/ledger"]
 	path = links/vim/pack/languages/opt/ledger
 	url = https://github.com/ledger/vim-ledger
+[submodule "links/vim/pack/utility/start/unicode"]
+	path = links/vim/pack/utility/start/unicode
+	url = https://github.com/chrisbra/unicode.vim
