@@ -40,17 +40,17 @@ let g:ale_c_cc_options = '-Wall -Wextra -Wmissing-prototypes -Wstrict-prototypes
 
 let g:ale_rust_cargo_use_clippy = 1
 
+nnoremap <c-k> :ALEPrevious<CR>
+nnoremap <localleader><c-k> :ALEFirst<CR>
+nnoremap <c-j> :ALENext<CR>
+nnoremap <localleader><c-j> :ALELast<CR>
+
 function s:ale_lsp_setup() abort
   setlocal omnifunc=ale#completion#OmniFunc
 
   nnoremap <buffer> gd :ALEGoToDefinition<CR>
   nnoremap <buffer> gD :ALEFindReferences<CR>
   nnoremap <buffer> g* :ALESymbolSearch <C-r><C-w>
-
-  nnoremap <buffer> <c-k> :ALEPrevious<CR>
-  nnoremap <buffer> <localleader><c-k> :ALEFirst<CR>
-  nnoremap <buffer> <c-j> :ALENext<CR>
-  nnoremap <buffer> <localleader><c-j> :ALELast<CR>
 
   " Currently not actually visible (?)
   echom 'LSP started'
