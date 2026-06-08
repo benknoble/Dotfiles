@@ -95,6 +95,7 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+y [urgent=latest] focus
 
 # move focused window
 bindsym $mod+Shift+h move left
