@@ -17,7 +17,7 @@
 	co = checkout
 	conflict = graph --left-right --boundary --merge
 	cp = cherry-pick
-	ctags = hook run ctags
+	ctags = "!if git hook run -h | grep -q allow-unknown-hook-name; then git hook run --allow-unknown-hook-name ctags; else git hook run ctags; fi"
 	d = diff
 	dc = diff --cached
 	ds = diff --stat
