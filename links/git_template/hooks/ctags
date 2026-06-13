@@ -7,7 +7,8 @@ set +u
 source "$(git --exec-path)"/git-sh-setup
 set -u
 
-GIT_DIR="$(git rev-parse --git-common-dir)"
+# this should use git rev-parse --git-path… but what about TEMP? Hm.
+GIT_DIR="$(git rev-parse --git-dir)"
 TEMP="$GIT_DIR/$$.tags"
 FINAL="$GIT_DIR/tags"
 
