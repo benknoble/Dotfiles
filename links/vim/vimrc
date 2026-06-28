@@ -272,6 +272,10 @@ function! s:set_colors_to_dracula() abort
   highlight link infoParen DraculaSubtle
   highlight link schemeParentheses DraculaSubtle
   highlight link scribbleParen DraculaSubtle
+
+  " const l:purple = hlget('DraculaPurple', v:true)[0]
+  " execute 'highlight DraculaComment ctermfg=' .. purple.ctermfg
+  " execute 'highlight DraculaComment guifg=' .. purple.guifg
 endfunction
 
 function! s:set_colors_to_alucard() abort
