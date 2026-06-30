@@ -282,6 +282,9 @@ bindkey -M viins '^U' backward-kill-line
 bindkey -M viins '^W' backward-kill-word
 bindkey -M viins '^Y' yank
 
+# the usual C-g to abort most editor commands (:, /)
+bindkey '^g' send-break
+
 # and set incremental searches
 bindkey -M viins '^R' history-incremental-search-backward
 
