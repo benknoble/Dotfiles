@@ -284,6 +284,8 @@ bindkey -M viins '^Y' yank
 
 # the usual C-g to abort most editor commands (:, /)
 bindkey '^g' send-break
+# but keep list-expand, which is on that key by default
+bindkey '^xg' list-expand
 
 # and set incremental searches
 bindkey -M viins '^R' history-incremental-search-backward
