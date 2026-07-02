@@ -153,6 +153,9 @@ fi
 # why this is off by default is beyond me
 setopt interactivecomments
 
+# facilitate single quotes in single quotes
+setopt rc_quotes
+
 # substitutions in prompts
 setopt promptsubst
 # and clear the right prompt when done
