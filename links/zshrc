@@ -190,6 +190,7 @@ setopt histallowclobber
 setopt autocd
 setopt globstarshort
 setopt correct
+setopt extendedglob
 
 # make some more sense:
 # no multi io redirections
