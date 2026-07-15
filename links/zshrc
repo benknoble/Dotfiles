@@ -205,9 +205,9 @@ setopt autolist
 setopt automenu
 setopt completeinword
 zmodload zsh/complist
-bindkey -M menuselect ^Xi vi-insert
-bindkey -M menuselect ^E send-break
-bindkey -M menuselect ^K accept-and-hold
+bindkey -M menuselect '^Xi' vi-insert
+bindkey -M menuselect '^E' send-break
+bindkey -M menuselect '^K' accept-and-hold
 bindkey -M menuselect / accept-and-infer-next-history
 bindkey -M viins '^I' complete-word
 zstyle ':completion:*' completer _expand _extensions _complete _approximate
