@@ -1,0 +1,19 @@
+#! /bin/sh
+
+if ! test -e /mnt/cdrom/'Spooky Mansion Deluxe Setup.EXE'
+then
+  doas mkdir -p /mnt/cdrom/ &&
+  doas mount -o loop ~/Games/i-spy-spooky-mansion-deluxe/'I Spy Spooky Mansion Deluxe (Scholastic) (2005).iso'
+fi &&
+
+if ! test -e ~/'.wine/drive_c/Program Files (x86)/Scholastic/I SPY Spooky Mansion Deluxe/spooky2.exe'
+then
+  wine-vanilla-11.0 /mnt/cdrom/'Spooky Mansion Deluxe Setup.EXE'
+fi &&
+
+wine-vanilla-11.0 'C:\Program Files (x86)\Scholastic\I SPY Spooky Mansion Deluxe\spooky2.exe'
+
+# cleanup!
+
+feh --bg-center --no-fehbg "$(rotate wallpapers show)"
+i3-msg '[class="^vesktop$"] move position center'
