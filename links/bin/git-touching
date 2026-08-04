@@ -21,7 +21,7 @@ cached=
 changed_lines() {
   while read -r -d '' file ; do
     git blame "$file" \
-      | awk '$1 ~ /^0*$/ {printf "%d %s\n", NR,'" \"$file\"}"
+      | awk -v file="$file" '$1 ~ /^0*$/ {printf "%d %s\n", NR, file }'
   done < <(git diff ${cached:+--cached} --name-only -z)
 }
 
