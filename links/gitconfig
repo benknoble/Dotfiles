@@ -156,6 +156,7 @@
 [status]
 	submodulesummary = 1
 	showstash = true
+	compareBranches = @{upstream} @{push}
 [sendemail]
 	multiedit = true
 	annotate = true
