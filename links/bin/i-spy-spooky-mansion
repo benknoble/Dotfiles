@@ -8,10 +8,10 @@ fi &&
 
 if ! test -e ~/'.wine/drive_c/Program Files (x86)/Scholastic/I SPY Spooky Mansion Deluxe/spooky2.exe'
 then
-  wine-vanilla-11.0 /mnt/cdrom/'Spooky Mansion Deluxe Setup.EXE'
+  wine /mnt/cdrom/'Spooky Mansion Deluxe Setup.EXE'
 fi &&
 
-wine-vanilla-11.0 'C:\Program Files (x86)\Scholastic\I SPY Spooky Mansion Deluxe\spooky2.exe'
+wine 'C:\Program Files (x86)\Scholastic\I SPY Spooky Mansion Deluxe\spooky2.exe'
 
 # cleanup!
 
