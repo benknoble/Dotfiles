@@ -40,6 +40,7 @@ while test $# -gt 0; do
   esac
 done
 [[ "${1-}" == -- ]] && shift
+test $# -eq 0 && usage
 
 bad_grep() {
   die "unsupported grep option in $*" ;
