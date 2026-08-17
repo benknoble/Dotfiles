@@ -211,7 +211,7 @@ bindkey -M menuselect '^E' send-break
 bindkey -M menuselect '^K' accept-and-hold
 bindkey -M menuselect / accept-and-infer-next-history
 bindkey -M viins '^I' complete-word
-zstyle ':completion:*' completer _expand _extensions _complete _approximate
+zstyle ':completion:*' completer _expand _extensions _complete _approximate _prefix
 zstyle ':completion:*' menu select=5
 zstyle ':completion:*' list-separator '#'
 zstyle ':completion:*:descriptions' format '%F{green}(%d)%f'
@@ -235,6 +235,8 @@ zstyle ':completion:*:*:g:*' tag-order all-commands
 
 zstyle ':completion:all-matches::::' completer _all_matches _complete
 zstyle ':completion:all-matches:*' insert true
+
+zstyle ':completion::prefix:::' add-space true
 
 # completion }}}
 
