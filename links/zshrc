@@ -299,6 +299,8 @@ bindkey '^xg' list-expand
 
 # and set incremental searches
 bindkey -M viins '^R' history-incremental-search-backward
+bindkey -M viins '^X^P' history-beginning-search-backward
+bindkey -M viins '^X^N' history-beginning-search-forward
 
 # let 'space' magically expand history command-line fu
 bindkey -M viins ' ' magic-space
