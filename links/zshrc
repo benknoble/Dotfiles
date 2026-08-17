@@ -238,6 +238,8 @@ zstyle ':completion::prefix:::' add-space true
 
 zstyle ':completion:*:*:-command-:*:functions' ignored-patterns '_*'
 
+zstyle ':completion:*:paths' expand prefix suffix
+
 # completion }}}
 
 # options }}}
