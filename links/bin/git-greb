@@ -39,7 +39,7 @@ while test $# -gt 0; do
     (--) break ;;
   esac
 done
-[[ "$1" == -- ]] && shift
+[[ "${1-}" == -- ]] && shift
 
 bad_grep() {
   die "unsupported grep option in $*" ;
