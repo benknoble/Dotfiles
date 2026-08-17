@@ -3,7 +3,7 @@
 set -euo pipefail
 
 OPTIONS_SPEC="\
-$(basename -- "$0" | sed -e 's/-/ /') [-x] [-r <rev>] [-- <git-grep options>…] <pattern> [-- <pathspec>…]
+$(basename -- "$0" | sed -e 's/-/ /') [-v] [-r <rev>] [-- <git-grep options>…] <pattern> [-- <pathspec>…]
 
 Run git-blame for git-grep matches. Cannot handle 'weird'
 filenames, like those containg spaces or unprintables.
