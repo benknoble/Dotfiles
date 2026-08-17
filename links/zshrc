@@ -220,6 +220,7 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' list-colors ${(s<:>)LS_COLORS}
 
 # this is installed as common-commands by the completion engine,
 # and I DONT LIKE IT
