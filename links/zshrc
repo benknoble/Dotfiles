@@ -216,13 +216,10 @@ zstyle ':completion:*' menu select=5
 zstyle ':completion:*' list-separator '#'
 zstyle ':completion:*:descriptions' format '%F{green}(%d)%f'
 zstyle ':completion:*' group-name ''
+# regular -> smartcase -> partial around any in [] -> left completion
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' auto-description 'specify: %d'
-# regular ->
-# smartcase ->
-# partial around any in [] ->
-# left completion
 
 # this is installed as common-commands by the completion engine,
 # and I DONT LIKE IT
