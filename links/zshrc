@@ -288,6 +288,7 @@ bindkey -v
 bindkey -M viins '^H' backward-delete-char
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^Xu' kill-whole-line
 bindkey -M viins '^W' backward-kill-word
 bindkey -M viins '^Y' yank
 
