@@ -2,8 +2,8 @@
 " Language:              Git commit file
 " Maintainer:            Ben Knoble <ben.knoble@gmail.com>
 
-" Indent two spaces
-setlocal shiftwidth=2 softtabstop=2
+" Indent 4 spaces
+setlocal shiftwidth=4 softtabstop=4
 
 " Spell check on for commit messages
 setlocal spell spelllang=en_us
