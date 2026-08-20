@@ -20,44 +20,33 @@ weekly_git_log() {
 }
 
 weekly_git_stats() {
-  tail -n 1 <( weekly_git_log ) \
-    | awk '{ print $1 }' \
-    | xargs git diff --shortstat
+  weekly_git_log | tail -n 1 | awk '{ print $1 }' | xargs git diff --shortstat
 }
 
 features_merged() {
-  {
-    weekly_git_log | grep -E "Merge (pull|branch) "
-  } || echo "None"
+  weekly_git_log | { grep -E "Merge (pull|branch) " || true; }
+
 }
 
 count_features() {
-  if [[ "$1" == "None" ]]; then
-    echo 0
-  else
-      sed '/^\s*$/d' <<<"$1" \
-      | wc -l \
-      | awk '{ print $1 }'
-  fi
+  sed '/^\s*$/d' | wc -l | awk '{ print $1 }'
 }
 
 display_weekly_stats() {
-  echo "Stats (Last week - Today)"
-  echo "---------------------"
-  echo "${1:-No stats available}"
-  echo
-  echo "Features ($2)"
-  echo "-------------"
-  echo "$3"
+  printf '%s\n' "Stats (Last week - Today)"
+  printf '%s\n' "---------------------"
+  printf '%s\n' "${1:-No stats available}"
+  printf '\n'
+  printf '%s\n' "Features ($2)"
+  printf '%s\n' "-------------"
+  printf '%s\n' "$3"
 }
 
 weekly() {
-  local stats
+  local stats features features_count
   stats="$(weekly_git_stats)"
-  local features
   features="$(features_merged)"
-  local features_count
-  features_count="$(count_features "$features")"
+  features_count="$(features_merged | count_features)"
   display_weekly_stats "$stats" "$features_count" "$features"
 }
 
