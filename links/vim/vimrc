@@ -303,7 +303,7 @@ if has('autocmd')
   augroup status_colors
     autocmd!
     autocmd ColorScheme dracula* call s:set_colors_to_dracula()
-    autocmd ColorScheme dracula_pro_alucard call s:set_colors_to_alucard()
+    autocmd ColorScheme dracula-pro-alucard call s:set_colors_to_alucard()
     autocmd ColorScheme alucard call s:set_colors_to_alucard()
   augroup end
 endif
@@ -483,7 +483,7 @@ endif
 
 if has('autocmd')
   augroup fix_dracula_pro_colorcolumn
-    autocmd ColorScheme dracula_pro* highlight! link ColorColumn DraculaBgLighter
+    autocmd ColorScheme dracula-pro* highlight! link ColorColumn DraculaBgLighter
   augroup end
 endif
 
@@ -511,7 +511,7 @@ if ! exists('g:colors_name')
   let g:dracula_colorterm = get(g:, 'dracula_colorterm', 0)
   function s:do_dracula() abort
     try
-      colorscheme dracula_pro_van_helsing
+      colorscheme dracula-pro-van-helsing
     catch /^Vim\%((\a\+)\)\=:E185/
       try
         silent! packadd! dracula
@@ -528,7 +528,7 @@ if ! exists('g:colors_name')
   " consider reworked peachpuff
   function s:do_alucard() abort
     try
-      colorscheme dracula_pro_alucard
+      colorscheme dracula-pro-alucard
     catch /^Vim\%((\a\+)\)\=:E185/
       try
         silent! packadd! dracula
