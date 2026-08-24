@@ -197,6 +197,8 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+default_floating_border normal 5
+
 # class                 border  bground text    indicator child_border
 client.focused          #708CA9 #708CA9 #F8F8F2 #708CA9   #708CA9
 client.focused_inactive #414D58 #414D58 #F8F8F2 #414D58   #414D58
