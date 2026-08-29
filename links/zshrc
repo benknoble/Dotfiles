@@ -240,6 +240,8 @@ zstyle ':completion:*:*:-command-:*:functions' ignored-patterns '_*'
 
 zstyle ':completion:*:paths' expand prefix suffix
 
+zstyle ':completion::expand:*' keep-prefix true
+
 # completion }}}
 
 # options }}}
