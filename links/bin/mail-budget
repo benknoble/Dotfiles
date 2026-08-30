@@ -1,0 +1,23 @@
+#! /bin/zsh
+
+# XXX: needs a login shell (or one with it's environment) to be invoked:
+# requires (at least) LEDGER_FILE and locale environment variables to be set
+
+{
+  print -l 'From: D. Ben Knoble <ben.knoble@gmail.com>' 'To: D. Ben Knoble <ben.knoble@gmail.com>' 'Cc: Savannah Knoble <savannahlayne07@gmail.com>' 'Subject: Monthly Budget' \
+    'Content-Type: text/html' 'MIME-Version: 1.0' ''
+  cat <<EOF
+<html>
+  <head>
+    <title>Monthly Budget</title>
+  </head>
+  <body>
+    <pre>
+EOF
+  (cd ~/code/finance/ && make monthly-budget)
+  cat <<EOF
+    </pre>
+  </body>
+</html>
+EOF
+} | sendmail -t
