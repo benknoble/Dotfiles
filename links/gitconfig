@@ -169,6 +169,8 @@
 	commitListFormat = modern
 [trailer "t"]
 	cmd = git-find-ticket
+[stash]
+	index = true
 
 # external: lfs
 [filter "lfs"]
