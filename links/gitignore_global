@@ -74,3 +74,6 @@ Cargo.lock
 # Zuo
 _zuo.db
 _zuo_tc.db
+
+# system backup
+.backupignore
