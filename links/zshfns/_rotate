@@ -1,0 +1,16 @@
+#compdef rotate
+
+local lists_dir state
+local -a lists
+lists_dir=${XDG_CONFIG_HOME:-$HOME/.config}/rotate
+lists=($lists_dir/*)
+lists=($lists:t)
+
+_arguments : \
+    '1:rotatable list:->list' \
+    '2:action:(next shuffle show)' \
+    && return 0
+
+case $state in
+  (list) _describe -t rotate-lists 'rotatable list' lists && return 0 ;;
+esac
