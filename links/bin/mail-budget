@@ -14,7 +14,7 @@
   <body>
     <pre>
 EOF
-  (cd ~/code/finance/ && make monthly-budget)
+  (cd ~/code/finance/ && make monthly-budget "$@")
   cat <<EOF
     </pre>
   </body>
