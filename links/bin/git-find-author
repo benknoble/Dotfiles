@@ -1,0 +1,5 @@
+#! /bin/sh
+
+test -n "$1" &&
+  author="$1" && shift &&
+  git log --author="$author" --pretty="%an <%ae>" -1 "$@"
