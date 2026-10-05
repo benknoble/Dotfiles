@@ -9,8 +9,4 @@ if ! pgrep -u benknoble picom
 then picom -b
 fi
 
-alacritty &
-firefox-bin &
-vesktop-bin &
-
 exec dbus-run-session i3
