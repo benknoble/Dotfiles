@@ -186,6 +186,7 @@
    '.config/swi-prolog/init.pl  "config/swi-prolog/init.pl"
    '.config/yt-dlp/config       "config/yt-dlp/config"
    '.ctags.d                    "ctags.d"
+   '.digrc                      "digrc"
    '.gdbinit                    "gdbinit"
    '.git_template               "git_template"
    '.gitattributes              "gitattributes"
