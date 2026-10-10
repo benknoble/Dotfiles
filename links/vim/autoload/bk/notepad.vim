@@ -6,6 +6,7 @@ function bk#notepad#make() abort
   xnoremap <buffer> <localleader>w :call bk#notepad#move_to_weekend()<CR>
   setlocal suffixesadd+=.md
   setlocal bufhidden=unload
+  setlocal syntax+=markdown
   let b:undo_ftplugin = bk#ftplugin#undo(#{
         \ opts: [
         \   'suffixesadd',
