@@ -45,6 +45,8 @@ fns=(
 (( ${#fns} > 0 )) && autoload -U "${fns[@]}"
 unset fns
 
+autoload -Uz ~/Dotfiles/zsh-defer/zsh-defer
+
 # autoload }}}
 
 # sourcing }}}

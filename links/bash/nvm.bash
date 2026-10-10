@@ -23,5 +23,9 @@ else
 fi
 
 if [[ -s ./.nvmrc ]] ; then
-  use_nvm
+  if [[ -n "$ZSH_VERSION" ]]; then
+    zsh-defer -c 'use_nvm && nvm use'
+  else
+    use_nvm
+  fi
 fi
