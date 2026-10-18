@@ -8,16 +8,6 @@ freload() {
 
 # sourcing {{{
 
-# OS test
-case "$OSTYPE" in
-  darwin* ) OS=mac ;;
-  linux* ) OS=linux ;;
-esac
-
-for file in ~/.zsh/{,"$OS"/}interactive/*.zsh(N) ~/.personal/{,"$OS"/}interactive/*.zsh(N); do
-  source "$file"
-done
-
 # autoload {{{
 
 pathadd_front f ~/.zshfns
@@ -48,6 +38,16 @@ unset fns
 autoload -Uz ~/Dotfiles/zsh-defer/zsh-defer
 
 # autoload }}}
+
+# OS test
+case "$OSTYPE" in
+  darwin* ) OS=mac ;;
+  linux* ) OS=linux ;;
+esac
+
+for file in ~/.zsh/{,"$OS"/}interactive/*.zsh(N) ~/.personal/{,"$OS"/}interactive/*.zsh(N); do
+  source "$file"
+done
 
 # sourcing }}}
 
