@@ -17,6 +17,3 @@ $(cd ~/code/finance/ && make monthly-budget "$@")
   </body>
 </html>
 EOF
-
-print -l 'From: D. Ben Knoble <ben.knoble@gmail.com>' 'To: D. Ben Knoble <ben.knoble@gmail.com>' \
-  'Subject: Monthly Budget' '' 'Your budget is updated in the usual place.' | sendmail -t
