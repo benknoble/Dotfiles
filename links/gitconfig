@@ -74,6 +74,7 @@
 	attributesFile = ~/.gitattributes
 	pager = less -FRX
 	commentChar = ";"
+	useNanosec = true
 [init]
 	templateDir = ~/.git_template
 	defaultBranch = main
