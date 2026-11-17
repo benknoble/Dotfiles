@@ -46,6 +46,7 @@
 	pf = push --force-with-lease
 	r = rebase
 	rc = rebase --continue
+	rd1 = range-diff @{1}...
 	rdup = range-diff @{upstream} @{push} @
 	rdupc = !git rdup | copy-range-diff "git range-diff $(git rev-parse --symbolic-full-name @{upstream} @{push} @ | cut -d/ -f3-)"
 	ref = show --no-patch --format=reference
