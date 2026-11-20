@@ -43,7 +43,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- screenlock -n
 
 exec alacritty
 exec firefox-bin
-exec vesktop-bin
+# exec vesktop-bin
 exec steam
 
 # lock!
