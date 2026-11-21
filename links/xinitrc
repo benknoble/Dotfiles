@@ -10,4 +10,5 @@ then picom -b
 fi
 
 export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR?should be set by elogind}/bus"
+dbus-update-activation-environment DISPLAY XAUTHORITY
 exec i3
