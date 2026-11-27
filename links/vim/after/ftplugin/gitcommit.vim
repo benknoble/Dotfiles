@@ -30,6 +30,7 @@ let b:undo_ftplugin = bk#ftplugin#undo(#{
       \   'spelllang',
       \   'formatoptions',
       \   'comments',
+      \   'formatlistpat',
       \ ],
       \ maps: [
       \   [ 'n', '<LocalLeader>d' ],
